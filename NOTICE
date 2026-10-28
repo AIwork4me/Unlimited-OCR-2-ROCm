@@ -19,3 +19,8 @@ See docs/UPSTREAM_AUDIT.md and docs/SECURITY.md for revision-specific attributio
 Triton Windows is a separate MIT-licensed project:
 https://github.com/triton-lang/triton-windows
 Its wheel and bundled components retain their respective licenses.
+
+The official V2 Markdown postprocessor is redistributed unchanged at
+src/unlimited_ocr_2_rocm/_upstream/process_unlimitedOCR2.py, from Baidu
+Git commit 4d0bebab8714e0f3b0c811cd44bf422ddb49daae.
+The complete Baidu MIT license is included beside it as LICENSE-Baidu.txt.

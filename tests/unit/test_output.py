@@ -30,7 +30,7 @@ def test_assessment_requires_markers_order_and_exact_numbers():
         "<PAGE>Alpha 123<PAGE>Alpha 123",
         "<PAGE>Alpha 123<PAGE>Beta 457",
         "Alpha 123 Beta 456",
-        "<PAGE>Alpha 123<PAGE>Beta 456<PAGE>",
+        "<PAGE>Alpha 123<PAGE>Beta 456<PAGE><PAGE>",
     ):
         assert assess(bad, truth)["status"] == "FAIL"
 
@@ -45,3 +45,48 @@ def test_refuses_empty_truth_and_text():
 def test_untrusted_markup_is_never_evaluated():
     raw = "<|det|>__import__('os').system('bad')<|/det|>Safe 42"
     assert normalize(raw) == "Safe42"
+
+
+def test_correct_table_keeps_adjacent_numeric_cell_boundaries():
+    raw = (
+        "<PAGE><table><tr><td>Item</td><td>Quantity</td><td>Price</td></tr>"
+        "<tr><td>Apples</td><td>3</td><td>12.50</td></tr>"
+        "<tr><td>Oranges</td><td>5</td><td>8.00</td></tr></table>"
+    )
+    truth = [
+        {
+            "text": "Item Quantity Price Apples 3 12.50 Oranges 5 8.00",
+            "numbers": ["3", "12.50", "5", "8.00"],
+            "requires_table": True,
+        }
+    ]
+    assert assess(raw, truth)["status"] == "PASS"
+
+
+def test_raw_output_bytes_preserve_mixed_line_endings(tmp_path):
+    from unlimited_ocr_2_rocm.output import preserve_raw
+
+    raw = "<PAGE>中文\nsecond\r\nthird\r"
+    path = tmp_path / "raw.txt"
+    preserve_raw(path, raw)
+    assert path.read_bytes() == b"<PAGE>\xe4\xb8\xad\xe6\x96\x87\nsecond\r\nthird\r"
+
+
+def test_official_v2_block_metadata_is_not_ocr_text():
+    raw = (
+        "<PAGE><BLOCK>title<LEVEL1>[10,20,900,90]<FORK>ROCm OCR Test\n"
+        "<BLOCK>text[10,100,900,180]<FORK>Hello 42"
+    )
+    assert normalize(raw) == "ROCmOCRTestHello42"
+    assert assess(raw, [{"text": "ROCm OCR Test Hello 42", "numbers": ["42"]}])["status"] == "PASS"
+
+
+def test_one_empty_terminal_page_marker_is_reported_separately():
+    raw = "<PAGE>Alpha 123<PAGE>Beta 456<PAGE>\n"
+    truth = [{"text": "Alpha 123", "numbers": ["123"]}, {"text": "Beta 456", "numbers": ["456"]}]
+    result = assess(raw, truth)
+    assert result["status"] == "PASS"
+    assert result["raw_page_markers"] == 3
+    assert result["content_page_count"] == 2
+    assert result["terminal_empty_marker"] is True
+    assert result["raw_marker_count_matches_input"] is False

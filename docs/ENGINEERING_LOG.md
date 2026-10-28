@@ -66,3 +66,42 @@
   Independent parallel-range download matched its SHA256. The official Xet
   client in a separate downloader venv cached the smaller model shard;
   larger shard still pending at this entry. No global Python modified.
+
+## First native inference, compatibility RCA and review fixes
+
+- Both official weight shards downloaded and match immutable LFS SHA-256.
+  Unmodified native infer loads BF16 parameters on cuda:0, then fails in SAM
+  window_unpartition with hipErrorInvalidValue. Full failure is preserved.
+- Reduced to two forwards of one random-weight SAM block; plain layout-copy
+  loop passes. HIP peek instrumentation finds SDPA leaves error1 before the
+  later copy. A default-SDPA output also fails an independent FP32 reference.
+- Fresh GPU MATH SDPA leaves HIP error0 and matches the same reference
+  (max error 0.00387, predeclared 0.03 tolerance). Three SAM block forwards pass.
+  TheRock issue7992 describes the same exact-stack pattern on another GPU;
+  that report is context, not our hardware evidence.
+- Minimal runtime compatibility: scope public sdpa_kernel(MATH) to each SAM
+  and CLIP forward. Restore settings immediately, preserve all official
+  source/weights and decoder DASH/Triton. No CPU path or error clearing.
+- First adapted English inference finishes with twelve native e2e calls and
+  correct text; initial validator incorrectly included V2 block metadata.
+  Audited pinned GitHub utils/process_unlimitedOCR2.py in full, vendored it
+  unchanged with Baidu MIT license, and use its block parser/convert semantics.
+  OCR thresholds unchanged. The original validation FAIL remains preserved.
+- English/Chinese/mixed/table plus repeated Unicode/recovery run all PASS,
+  CER 0.0 and exact important numbers; twelve native decoder calls per run.
+- Independent code review found six Important issues: table numeric cell
+  boundaries, Gate E baseline proof, inherited routing overrides, raw newline
+  bytes, telemetry masking errors, and Windows11/CPU identity enforcement.
+  Each has a regression; no Critical or Minor findings.
+- Ruling: preserve native generation's single empty trailing PAGE as an EOF
+  terminator, not a content page. The 2-page raw output has correct ordered
+  content (CER0 each) and three markers because _uocr_page_count_guard forces
+  EOS only after marker_cum>expected_pages. Official _parse_blocks skips an
+  empty final segment. Structural policy therefore counts verified content
+  pages and separately reports raw markers/terminal_empty_marker; only one
+  empty trailing marker is allowed. Middle/extra empty pages still fail.
+  This documented structural-interpretation correction follows actual V2
+  semantics; the prior strict-marker FAIL is retained. Text/numeric thresholds
+  are not relaxed. Cost if wrong: an application requiring exactly N raw
+  delimiters must inspect raw_marker_count_matches_input rather than the
+  content-page acceptance status.

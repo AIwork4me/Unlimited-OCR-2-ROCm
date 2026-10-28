@@ -18,10 +18,17 @@ def generate(destination: Path) -> None:
         "english": ["ROCm OCR Test", "Hello from Windows.", "Invoice 2026", "Total 123.45"],
         "chinese": ["中文识别测试", "人工智能读取文档", "订单编号 2026", "合计 123.45 元"],
         "mixed": ["Mixed 中英文测试", "Windows 原生推理", "订单 Order 395", "金额 Total 8060.50"],
+        "math": ["Simple Mathematics", "Math check: 2 + 3 = 5", "Subtraction: 10 - 4 = 6"],
     }
     for i, word in enumerate(["Atlas", "Boreal", "Cedar", "Delta", "Ember"], 1):
         cases[f"page_{i}"] = [f"Page {i}", f"Document {word}", f"Code {100 + i}"]
     records = {}
+    numbers_by_case = {
+        "english": ["2026", "123.45"],
+        "chinese": ["2026", "123.45"],
+        "mixed": ["395", "8060.50"],
+        "math": ["2", "3", "5", "10", "4", "6"],
+    }
     for name, lines in cases.items():
         image = Image.new("RGB", (900, 600), "white")
         draw = ImageDraw.Draw(image)
@@ -32,17 +39,9 @@ def generate(destination: Path) -> None:
         records[name] = {
             "image": path.name,
             "text": "\n".join(lines),
-            "numbers": {
-                "english": ["2026", "123.45"],
-                "chinese": ["2026", "123.45"],
-                "mixed": ["395", "8060.50"],
-            }.get(name, [str(name.split("_")[-1]), str(100 + int(name.split("_")[-1]))])
+            "numbers": [str(name.split("_")[-1]), str(100 + int(name.split("_")[-1]))]
             if name.startswith("page_")
-            else {
-                "english": ["2026", "123.45"],
-                "chinese": ["2026", "123.45"],
-                "mixed": ["395", "8060.50"],
-            }[name],
+            else numbers_by_case[name],
             "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         }
     image = Image.new("RGB", (1000, 650), "white")
@@ -65,14 +64,39 @@ def generate(destination: Path) -> None:
         "requires_table": True,
         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
     }
+    for i, row in enumerate(rows[1:], 1):
+        image = Image.new("RGB", (1000, 650), "white")
+        draw = ImageDraw.Draw(image)
+        for x in xs:
+            draw.line((x, ys[0], x, ys[2]), fill="black", width=3)
+        for y in ys[:3]:
+            draw.line((xs[0], y, xs[-1], y), fill="black", width=3)
+        for row_index, values in enumerate([rows[0], row]):
+            for col, value in enumerate(values):
+                draw.text((xs[col] + 20, ys[row_index] + 30), value, font=font, fill="black")
+        path = destination / f"table_page_{i}.png"
+        image.save(path)
+        records[f"table_page_{i}"] = {
+            "image": path.name,
+            "text": " ".join(rows[0] + row),
+            "numbers": row[1:],
+            "requires_table": True,
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        }
     manifest = {
         "font": font_path.name,
         "font_sha256": hashlib.sha256(font_path.read_bytes()).hexdigest(),
         "acceptance": {
             "max_normalized_cer": 0.02,
             "important_numbers": "exact token match",
-            "pages": "exact raw marker count and per-page ordered text comparison",
-            "set_before_first_inference": True,
+            "pages": (
+                "exact content-page count/order; at most one empty terminal PAGE, "
+                "reported separately"
+            ),
+            "text_and_numeric_thresholds_set_before_first_inference": True,
+            "terminal_page_policy": (
+                "documented native-guard interpretation; see ENGINEERING_LOG.md"
+            ),
         },
         "cases": records,
     }

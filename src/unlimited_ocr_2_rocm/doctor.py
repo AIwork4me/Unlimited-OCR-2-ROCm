@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import importlib
 import importlib.metadata
 import json
@@ -27,6 +28,18 @@ def require_stack(report: dict[str, Any]) -> None:
     errors = []
     if report.get("platform") != "Windows":
         errors.append("Phase 1 requires native Windows")
+    hardware = report.get("windows_hardware", {})
+    os_info = hardware.get("os", {})
+    build = str(os_info.get("BuildNumber", ""))
+    if (
+        "Windows 11" not in str(os_info.get("Caption", ""))
+        or not build.isdigit()
+        or int(build) < 22000
+    ):
+        errors.append("Windows 11 client build evidence required")
+    cpu = str(hardware.get("cpu", {}).get("Name", ""))
+    if re.search(r"AMD.*RYZEN\s+AI\s+MAX\+?\s+(?:PRO\s+)?395\b", cpu, re.IGNORECASE) is None:
+        errors.append("Ryzen AI MAX+ 395 / confirmed PRO 395 required")
     if not str(report.get("python", "")).startswith("3.10."):
         errors.append("Phase 1 requires the verified CPython 3.10 environment")
     if str(report.get("machine", "")).lower() not in {"amd64", "x86_64"}:
@@ -126,7 +139,8 @@ def collect_environment() -> dict[str, Any]:
     if platform.system() == "Windows":
         command = (
             "$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); "
-            "@{os=Get-CimInstance Win32_OperatingSystem | "
+            "@{machine_uuid=(Get-CimInstance Win32_ComputerSystemProduct).UUID;"
+            "os=Get-CimInstance Win32_OperatingSystem | "
             "Select-Object Caption,Version,BuildNumber,TotalVisibleMemorySize,FreePhysicalMemory;"
             "cpu=Get-CimInstance Win32_Processor | Select-Object Name;"
             "gpu=Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion} "
@@ -138,7 +152,14 @@ def collect_environment() -> dict[str, Any]:
             encoding="utf-8",
             check=True,
         )
-        result["windows_hardware"] = json.loads(proc.stdout.lstrip("\ufeff"))
+        hardware = json.loads(proc.stdout.lstrip("\ufeff"))
+        machine_uuid = hardware.pop("machine_uuid", "")
+        hardware["machine_uuid_sha256"] = (
+            hashlib.sha256(machine_uuid.strip().lower().encode()).hexdigest()
+            if machine_uuid
+            else None
+        )
+        result["windows_hardware"] = hardware
     result["memory"] = memory_snapshot()
     return result
 

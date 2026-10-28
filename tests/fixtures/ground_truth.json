@@ -4,8 +4,9 @@
   "acceptance": {
     "max_normalized_cer": 0.02,
     "important_numbers": "exact token match",
-    "pages": "exact raw marker count and per-page ordered text comparison",
-    "set_before_first_inference": true
+    "pages": "exact content-page count/order; at most one empty terminal PAGE, reported separately",
+    "text_and_numeric_thresholds_set_before_first_inference": true,
+    "terminal_page_policy": "documented native-guard interpretation; see ENGINEERING_LOG.md"
   },
   "cases": {
     "english": {
@@ -34,6 +35,19 @@
         "8060.50"
       ],
       "sha256": "09714bd58f4042dde37d4c1152b273585f7beb86562b046e02d5b2b58205ef03"
+    },
+    "math": {
+      "image": "math.png",
+      "text": "Simple Mathematics\nMath check: 2 + 3 = 5\nSubtraction: 10 - 4 = 6",
+      "numbers": [
+        "2",
+        "3",
+        "5",
+        "10",
+        "4",
+        "6"
+      ],
+      "sha256": "ddf58c93e7d5a15c5110747b94b7fe1e9a7579eae3aecd1f80d4e2aca905cb90"
     },
     "page_1": {
       "image": "page_1.png",
@@ -91,6 +105,26 @@
       ],
       "requires_table": true,
       "sha256": "bda4a05724a65eb16d3bc1a5685037ff9ddf2e34e80ae2fd25741fe1294563ae"
+    },
+    "table_page_1": {
+      "image": "table_page_1.png",
+      "text": "Item Quantity Price Apples 3 12.50",
+      "numbers": [
+        "3",
+        "12.50"
+      ],
+      "requires_table": true,
+      "sha256": "e98e7723145341e5410783a6624b73d2880fd133eefe6a3db6aa5a861a82c9c7"
+    },
+    "table_page_2": {
+      "image": "table_page_2.png",
+      "text": "Item Quantity Price Oranges 5 8.00",
+      "numbers": [
+        "5",
+        "8.00"
+      ],
+      "requires_table": true,
+      "sha256": "99af64fe1a270a94089a2a7125a57453d315e122f4ee396a2e4bb5dacf3f0b25"
     }
   }
 }

@@ -5,7 +5,8 @@ param(
     [string]$CacheDir = (Join-Path $env:USERPROFILE ".cache\unlimited-ocr2-phase1\models"),
     [string]$OutputPath = (Join-Path $PSScriptRoot ("..\eval\results\run-" + (Get-Date -Format "yyyyMMdd-HHmmss"))),
     [switch]$ReuseEnvironment,
-    [switch]$Offline
+    [switch]$Offline,
+    [string]$BaselinePath = ""
 )
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
@@ -57,6 +58,7 @@ try {
     Invoke-Step "download" (@("-m", "unlimited_ocr_2_rocm", "download", "--cache-dir", $CacheDir) + $offlineArgs)
     $snapshot=Join-Path $CacheDir "models--baidu--Unlimited-OCR-2\snapshots\9cf077c4b206e0e2a31879df937b0b0bcba3661c"
     Invoke-Step "sparse" @((Join-Path $PSScriptRoot "probe_sparse.py"), "--source", $snapshot, "--output", (Join-Path $outputRoot "sparse.json"))
+    Invoke-Step "vision-sdpa" @((Join-Path $PSScriptRoot "probe_vision_sdpa.py"), "--source", $snapshot, "--output", (Join-Path $outputRoot "vision-sdpa.json"))
     Invoke-Step "single" (@((Join-Path $PSScriptRoot "smoke_single.py"), "--fixtures", (Join-Path $repoRoot "tests\fixtures"), "--cache-dir", $CacheDir, "--output", (Join-Path $outputRoot "single")) + $offlineArgs)
     Invoke-Step "multi" (@((Join-Path $PSScriptRoot "smoke_multi.py"), "--fixtures", (Join-Path $repoRoot "tests\fixtures"), "--cache-dir", $CacheDir, "--output", (Join-Path $outputRoot "multi")) + $offlineArgs)
     $status = "PASS"
@@ -69,14 +71,22 @@ try {
         status=$status; timestamp_utc=[DateTime]::UtcNow.ToString("o")
         clean_environment=(-not $ReuseEnvironment); offline_model=$Offline.IsPresent
         model_revision="9cf077c4b206e0e2a31879df937b0b0bcba3661c"
-        same_physical_machine=$true; steps=@($steps.ToArray())
+        same_physical_machine=$null; steps=@($steps.ToArray())
         gate_A="see doctor.json"; gate_B="see sparse.json and single/load.json"
         gate_C="see single/suite.json"; gate_D="see multi/suite.json"
-        gate_E=$(if ($status -eq "PASS" -and -not $ReuseEnvironment) {"PASS"} else {"NOT PROVEN"})
+        gate_E="NOT PROVEN"; phase1_status="BLOCKED"
     }
     if (Get-Variable failure -ErrorAction SilentlyContinue) { $manifest.error=$failure }
     $json=$manifest | ConvertTo-Json -Depth 12
     $json=$json.Replace($env:USERPROFILE.Replace("\","\\"), "<USERPROFILE>").Replace($env:USERPROFILE, "<USERPROFILE>")
     [IO.File]::WriteAllText((Join-Path $outputRoot "reproduction.json"), $json, [Text.UTF8Encoding]::new($false))
+    if (Test-Path -LiteralPath $venvPython) {
+        $summaryArgs=@("-m", "unlimited_ocr_2_rocm.repro", "--root", $outputRoot,
+            "--fixtures", (Join-Path $repoRoot "tests\fixtures"))
+        if (-not $ReuseEnvironment) {$summaryArgs += "--fresh"}
+        if ($BaselinePath) {$summaryArgs += @("--baseline", [IO.Path]::GetFullPath($BaselinePath))}
+        & $venvPython @summaryArgs
+        if ($LASTEXITCODE -ne 0) { $status="FAIL" }
+    }
 }
 if ($status -ne "PASS") { exit 1 }

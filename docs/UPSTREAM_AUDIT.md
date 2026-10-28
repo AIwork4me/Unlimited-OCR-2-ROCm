@@ -121,6 +121,27 @@ The generation loop sends only the last hidden position to the LM head, avoiding
 
 The postprocessor splits on `<PAGE>` and drops text before the first marker when markers occur. It recognizes `<|ref|>label<|/ref|><|det|>coordinates<|/det|>` plus a secondary detector form, scales coordinates from 0–999, draws boxes, and substitutes extracted image links into Markdown. Output is model-generated text with structural tags, not a validated JSON schema. Raw Markdown should be stored/viewed as untrusted content. [Postprocessor](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L98-L206), [save implementation](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L1207-L1228).
 
+## Official V2 postprocessor follow-up
+
+The preceding HF save helper is a legacy visualization implementation; it
+does not describe actual V2 block output and is not called by this wrapper.
+Actual V2 output uses `<PAGE><BLOCK>label[coordinates]<FORK>content`,
+with optional title levels, cross/append chains, MERGE markers and HTML tables.
+
+The separately audited [official V2 converter](https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/utils/process_unlimitedOCR2.py)
+uses only argparse/os/re and contains no eval, exec, subprocess or network
+execution. Its full source was read before integration. SHA-256:
+`fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782`.
+It is vendored byte-for-byte under `_upstream/` with Baidu's MIT license.
+We use its block parser for per-page content inspection and convert() for
+readable Markdown. Raw output remains separate and unchanged. Union-find
+merge semantics join cross-page fragments and drop repeated table headers.
+The [utils README](https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/utils/README.md)
+explicitly documents that raw V2 output is not Markdown.
+
+Pinned GitHub infer.py was also inspected: it imports SGLang's logit
+processor and sends HTTP requests; it is excluded from our Transformers path.
+
 ## Licensing and redistribution
 
 The pinned [GitHub license](https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/LICENSE) is MIT, copyright 2026 Baidu; the HF model card declares MIT. Preserve that complete notice for copies/substantial portions, including a copied postprocessor. The inspected HF file list does not contain a standalone `LICENSE`; archive the GitHub license alongside pinned model provenance rather than assuming metadata is the full license text.

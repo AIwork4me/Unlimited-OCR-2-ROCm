@@ -20,6 +20,10 @@ def valid():
         "cuda_build": None,
         "gpu_available": True,
         "gpu": {"name": "AMD Radeon(TM) 8060S Graphics", "arch": "gfx1151"},
+        "windows_hardware": {
+            "os": {"Caption": "Microsoft Windows 11 Home", "BuildNumber": "26200"},
+            "cpu": {"Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S"},
+        },
     }
 
 
@@ -66,3 +70,28 @@ def test_accepts_target_identity():
     report = valid()
     report["gpu"]["arch"] = "gfx1151:sramecc-:xnack-"
     require_stack(report)
+
+
+@pytest.mark.parametrize(
+    "hardware",
+    [
+        {},
+        {
+            "os": {"Caption": "Microsoft Windows 10 Home", "BuildNumber": "19045"},
+            "cpu": {"Name": "AMD RYZEN AI MAX+ 395"},
+        },
+        {
+            "os": {"Caption": "Microsoft Windows Server 2025", "BuildNumber": "26100"},
+            "cpu": {"Name": "AMD RYZEN AI MAX+ 395"},
+        },
+        {
+            "os": {"Caption": "Microsoft Windows 11 Home", "BuildNumber": "26200"},
+            "cpu": {"Name": "AMD Ryzen 9 7950X"},
+        },
+    ],
+)
+def test_refuses_wrong_or_missing_os_and_cpu_evidence(hardware):
+    report = valid()
+    report["windows_hardware"] = hardware
+    with pytest.raises(RuntimeError):
+        require_stack(report)

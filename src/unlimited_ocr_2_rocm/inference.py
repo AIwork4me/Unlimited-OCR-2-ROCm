@@ -7,10 +7,11 @@ import traceback
 from pathlib import Path
 from typing import Any
 
+from ._upstream.process_unlimitedOCR2 import convert
 from .config import file_sha256
 from .doctor import memory_snapshot, write_json
 from .model import NativeModel
-from .output import assess, normalize
+from .output import assess, normalize, preserve_raw
 
 
 def validate_inputs(images: list[Path], multi: bool) -> list[Path]:
@@ -56,6 +57,7 @@ def run_native(
         "model": native.evidence,
     }
     previous_kernels = len(native.kernels)
+    previous_vision = len(getattr(native, "vision", []))
     torch.cuda.reset_peak_memory_stats()
     torch.cuda.synchronize()
     start = time.perf_counter()
@@ -89,7 +91,8 @@ def run_native(
                     "prefill_seconds": result["prefill_time"],
                 }
         torch.cuda.synchronize()
-        (output / "raw.txt").write_text(raw, encoding="utf-8")
+        preserve_raw(output / "raw.txt", raw)
+        preserve_raw(output / "readable.md", convert(raw))
         (output / "normalized.txt").write_text(normalize(raw), encoding="utf-8")
         kernels = native.kernels[previous_kernels:]
         report.update(
@@ -113,7 +116,11 @@ def run_native(
         report["status"] = "FAIL"
         report["traceback"] = traceback.format_exc()
     finally:
+        report["vision_inputs"] = getattr(native, "vision", [])[previous_vision:]
         report["synchronized_wall_seconds"] = time.perf_counter() - start
-        report["memory_after"] = memory_snapshot()
+        try:
+            report["memory_after"] = memory_snapshot()
+        except Exception:
+            report["memory_after_error"] = traceback.format_exc()
         write_json(output / "manifest.json", report)
     return report

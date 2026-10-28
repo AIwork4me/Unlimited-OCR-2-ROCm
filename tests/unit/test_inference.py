@@ -31,3 +31,48 @@ def test_phase1_page_limit_is_enforced(tmp_path: Path):
     image.touch()
     with pytest.raises(ValueError):
         validate_inputs([image] * 6, multi=True)
+
+
+def test_failed_gpu_telemetry_does_not_hide_original_error(tmp_path, monkeypatch):
+    import contextlib
+    import json
+    import sys
+    from types import SimpleNamespace
+
+    import unlimited_ocr_2_rocm.inference as inference
+
+    monkeypatch.setitem(
+        sys.modules,
+        "torch",
+        SimpleNamespace(
+            inference_mode=contextlib.nullcontext,
+            cuda=SimpleNamespace(reset_peak_memory_stats=lambda: None, synchronize=lambda: None),
+        ),
+    )
+    samples = 0
+
+    def memory():
+        nonlocal samples
+        samples += 1
+        if samples > 1:
+            raise RuntimeError("diagnostic query failed")
+        return {"process_rss_bytes": 123}
+
+    monkeypatch.setattr(inference, "memory_snapshot", memory)
+
+    def fail_kernel(*args, **kwargs):
+        raise RuntimeError("original kernel error")
+
+    native = SimpleNamespace(
+        model=SimpleNamespace(infer=fail_kernel),
+        tokenizer=None,
+        kernels=[],
+        evidence={"unit_test_integration_double": True},
+    )
+    image = Path(__file__).resolve().parents[1] / "fixtures" / "english.png"
+    output = tmp_path / "failure"
+    report = inference.run_native(native, [image], output)
+    saved = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+    assert report["status"] == "FAIL"
+    assert "original kernel error" in saved["traceback"]
+    assert "diagnostic query failed" in saved["memory_after_error"]

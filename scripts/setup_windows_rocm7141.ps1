@@ -37,6 +37,9 @@ Invoke-CheckedPython $venvPython @("-c",
     "import sys,struct; assert sys.prefix!=sys.base_prefix and sys.version_info[:2]==(3,10) and struct.calcsize('P')==8")
 $evidence = Join-Path $environmentRoot "phase1-install"
 New-Item -ItemType Directory -Force -Path $evidence | Out-Null
+Invoke-CheckedPython $venvPython @("-m", "pip", "install", "pip==26.2.2",
+    "setuptools==81.0.0", "wheel==0.48.0", "packaging==26.3",
+    "--report", (Join-Path $evidence "installer-tools.json"))
 
 # Mandatory package names, extras, versions and index are kept exactly.
 Invoke-CheckedPython $venvPython @("-m", "pip", "install", "--index-url",

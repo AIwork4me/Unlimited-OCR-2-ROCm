@@ -55,6 +55,35 @@ raises, and fewer than twelve successful decoder-layer calls fails the run.
 Official decode remains its original PyTorch bias-aware attention algorithm.
 This is observation/guarding, not a kernel rewrite.
 
+## Vision SDPA failure and minimal runtime compatibility
+
+The unchanged model loads 6.69GB of official weights on GPU, but native
+single-page inference initially fails at deepencoder.py:890 with
+hipErrorInvalidValue. Synchronization before that copy succeeds. A two-call
+SAM-block reproduction fails without OCR weights, while twenty plain copies
+of the same tensor layout pass. HIP peek instrumentation isolates the earlier
+default scaled_dot_product_attention call: it leaves HIP error1.
+
+A direct BF16 SDPA comparison at [54,12,196,64] also fails numerically
+(97.4% of elements outside rtol/atol0.03, max error5.1182). A fresh process
+using GPU MATH SDPA leaves HIP error0 and matches the independent FP32
+softmax(QK/sqrt(d)+bias)V reference (max error about0.00387). Three repeated
+SAM-block forwards pass. Production does not clear or ignore HIP errors.
+The diagnostic experiment cleared a recorded error only to inspect the
+otherwise corrupted default output; that behavior is not in the adapter.
+
+The narrow adapter scopes the public sdpa_kernel(MATH) context separately
+around SAM and CLIP encoder forward calls. It restores prior settings after
+each call, preserves BF16 model/input/output, and records GPU tensor shapes.
+Decoder DASH, trained routing, page-aware positions, native e2e kernels and
+generation remain unchanged. This is an explicitly disclosed runtime
+compatibility change; downloaded upstream files and weights remain byte-identical.
+
+[TheRock issue7992](https://github.com/ROCm/TheRock/issues/7992) describes
+the same exact-stack pattern on gfx1201. That is corroborating issue history,
+not validation of another GPU here. We do not change the mandated versions.
+See scripts/probe_vision_sdpa.py and diagnostics for the regression evidence.
+
 ## Download observations
 
 The first PyPI Triton download took about eleven minutes at roughly 65kB/s.

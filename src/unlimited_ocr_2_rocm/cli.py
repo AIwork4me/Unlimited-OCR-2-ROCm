@@ -34,7 +34,7 @@ def parser() -> argparse.ArgumentParser:
             command.add_argument("--fixtures", type=Path, default=Path("tests/fixtures"))
             if name == "smoke-single":
                 command.add_argument(
-                    "--cases", nargs="+", default=["english", "chinese", "mixed", "table"]
+                    "--cases", nargs="+", default=["english", "chinese", "mixed", "table", "math"]
                 )
             else:
                 command.add_argument(
@@ -110,6 +110,18 @@ def smoke(args: argparse.Namespace) -> int:
                     break
             if results[-1]["status"] != "PASS":
                 break
+        if results and all(item["status"] == "PASS" for item in results):
+            truth = [ground_truth["cases"][f"table_page_{i}"] for i in (1, 2)]
+            result = run_native(
+                native,
+                [args.fixtures / page["image"] for page in truth],
+                args.output / "table_2_pages",
+                multi=True,
+                truth=truth,
+                max_new_tokens=args.max_new_tokens * 2,
+            )
+            results.append({"case": "table_2_pages", "status": result["status"]})
+            print(f"table_2_pages: {result['status']}", flush=True)
     passed = bool(results) and all(item["status"] == "PASS" for item in results)
     write_json(
         args.output / "suite.json", {"status": "PASS" if passed else "FAIL", "cases": results}
