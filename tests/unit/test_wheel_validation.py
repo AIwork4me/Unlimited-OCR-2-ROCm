@@ -199,6 +199,25 @@ def test_sanitization_handles_case_slashes_and_json_escaping():
         assert "<USERPROFILE>" in result
     payload = json.dumps({"path": "C:\\Users\\Example\\x"})
     assert json.loads(module.sanitize_text(payload, home))["path"] == "<USERPROFILE>\\x"
+    signed = "https://release-assets.githubusercontent.com/a/file?se=soon&sig=secret&jwt=secret"
+    assert module.sanitize_text(signed, home) == (
+        "https://release-assets.githubusercontent.com/a/file?<SIGNED_QUERY_REDACTED>"
+    )
+    plain = "https://repo.amd.com/public/file.whl#sha256=abc"
+    assert module.sanitize_text(plain, home) == plain
+    request = "GET /asset/file?se=soon&sig=secret HTTP/1.1"
+    assert module.sanitize_text(request, home) == (
+        "GET /asset/file?<SIGNED_QUERY_REDACTED> HTTP/1.1"
+    )
+    for prefix, suffix in (("", ""), ('"', '"'), ("'", "'")):
+        relative = prefix + "/asset/file?sig=REVIEW_SECRET" + suffix
+        assert module.sanitize_text(relative, home) == (
+            prefix + "/asset/file?<SIGNED_QUERY_REDACTED>" + suffix
+        )
+    payload = json.dumps({"request": "/asset/file?sig=REVIEW_SECRET"})
+    assert json.loads(module.sanitize_text(payload, home))["request"] == (
+        "/asset/file?<SIGNED_QUERY_REDACTED>"
+    )
 
 
 @pytest.mark.parametrize(

@@ -12,6 +12,16 @@ def sanitize_text(text: str, home: str) -> str:
     variants = {normal, normal.replace("/", "\\"), normal.replace("/", "\\\\")}
     for prefix in sorted(variants, key=len, reverse=True):
         text = re.sub(re.escape(prefix), lambda _: "<USERPROFILE>", text, flags=re.IGNORECASE)
+
+    # CMake's verbose HTTP traces can contain temporary signed asset redirects.
+    def redact_url(match: re.Match[str]) -> str:
+        url = match.group(0)
+        if "?" in url and re.search(r"(?:sig|jwt|signature|x-amz-credential)=", url, re.I):
+            return url.split("?", 1)[0] + "?<SIGNED_QUERY_REDACTED>"
+        return url
+
+    text = re.sub(r'https?://[^\s<>"\x27]+', redact_url, text)
+    text = re.sub(r'(?<![^\s<>"\x27])/[^\s<>"\x27]+\?[^\s<>"\x27]+', redact_url, text)
     return text
 
 
