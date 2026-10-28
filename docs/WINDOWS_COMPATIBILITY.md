@@ -55,7 +55,7 @@ vector-add and DASH-kernel manifests provide local evidence separately.
 
 An actual clean install exposed the legacy path boundary in an AMD
 hipBLASLt wheel: the same Tensile file exists at total path lengths251/257,
-but extraction failed at260 under the longer venv name. Setup now detects
+but extraction failed at 260 under the longer venv name. Setup now detects
 that known entry before downloading/installing. Use a short dedicated
 VenvPath; no registry or security change was made. The failed installation
 was confined to its new isolated environment and is retained as a diagnostic.

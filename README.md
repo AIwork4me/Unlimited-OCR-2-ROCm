@@ -9,7 +9,7 @@ It preserves the trained weights, BF16, native `infer()`, native
 
 **Physical Windows validation: A–E PASS.** English, Chinese, mixed text,
 tables, simple arithmetic and repeated native 2/3/5-page inference passed
-in two isolated environments on this machine, with normalized CER0.
+in two isolated environments on this machine, with normalized CER 0.
 Read [the executed validation record](docs/VALIDATION.md) and
 [full report](docs/FINAL_REPORT.md) for exact scope and evidence.
 

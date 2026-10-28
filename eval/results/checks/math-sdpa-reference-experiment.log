@@ -1,0 +1,2 @@
+math pending HIP error 0
+[{'backend': 'math', 'pending_hip_error': 0, 'max_abs_error': 0.003793478012084961, 'mean_abs_error': 0.00012966871145181358}]

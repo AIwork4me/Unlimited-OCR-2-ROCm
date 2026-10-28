@@ -1,0 +1,16 @@
+In file included from \\?\<USERPROFILE>\AppData\Local\Temp\tmp4g8joxff\hip_utils.c:5:
+In file included from <USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Include\Python.h:118:
+<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Include\cpython/pytime.h(120,59): warning: declaration of 'struct timeval' will not be visible outside of this function [-Wvisibility]
+  120 | PyAPI_FUNC(int) _PyTime_FromTimeval(_PyTime_t *tp, struct timeval *tv);
+      |                                                           ^
+<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Include\cpython/pytime.h(127,12): warning: declaration of 'struct timeval' will not be visible outside of this function [-Wvisibility]
+  127 |     struct timeval *tv,
+      |            ^
+<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Include\cpython/pytime.h(132,12): warning: declaration of 'struct timeval' will not be visible outside of this function [-Wvisibility]
+  132 |     struct timeval *tv,
+      |            ^
+\\?\<USERPROFILE>\AppData\Local\Temp\tmp4g8joxff\hip_utils.c(290,132): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  290 | static const char *hipLibSearchPaths[] = {"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv <D1><E9>֤\\lib\\site-packages\\_rocm_sdk_core\\bin\\amdhip64_7.dll"};
+      |                                                                                                                                    ^~~~~~~~
+4 warnings generated.
+Triton-0/1/2: PASS �� <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\eval\results\Windows ���� verified\triton.json

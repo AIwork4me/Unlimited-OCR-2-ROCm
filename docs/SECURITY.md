@@ -61,7 +61,7 @@ Generation toggles global inference/page-scope state and temporarily changes con
 The official V2 converter is separate from the unsafe HF legacy drawing
 helper. It is vendored unchanged with its MIT license after full static
 review. Our wrapper bounds raw input to one million characters and generated
-title levels to16 before convert(); otherwise a short LEVEL1000000 could
+title levels to 16 before convert(); otherwise a short LEVEL1000000 could
 expand a huge heading. Rejected output retains literal raw bytes and its
 failure manifest. Regressions cover ordinary/oversized headings and evidence
 preservation.

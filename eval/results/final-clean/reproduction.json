@@ -1,0 +1,17 @@
+{
+  "status": "FAIL",
+  "run_id": "67d337e2-7e25-40fd-86a9-ca67cc202257",
+  "timestamp_utc": "2026-10-28T04:30:29.9820049Z",
+  "clean_environment": true,
+  "offline_model": false,
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "same_physical_machine": null,
+  "steps": [],
+  "gate_A": "see doctor.json",
+  "gate_B": "see sparse.json and single/load.json",
+  "gate_C": "see single/suite.json",
+  "gate_D": "see multi/suite.json",
+  "gate_E": "NOT PROVEN",
+  "phase1_status": "BLOCKED",
+  "error": "Exception: <USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\scripts\\setup_windows_rocm7141.ps1:15\r\nLine |\r\n  15 |          throw \"Python command failed (exit $LASTEXITCODE): $($Argumen …\r\n     |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n     | Python command failed (exit 1): -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/\r\n     | torch[device-gfx1151]==2.12.0+rocm7.14.1 torchvision[device-gfx1151]==0.27.0+rocm7.14.1\r\n     | torchaudio==2.11.0+rocm7.14.1 --report\r\n     | <USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-verified\\phase1-install\\rocm-install.json\r\n\r\n"
+}

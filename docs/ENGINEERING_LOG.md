@@ -128,3 +128,31 @@
   No long-path registry/security/driver setting changed. The failing install
   and error metadata remain diagnostic evidence; no inference success is
   attributed to that failed environment.
+
+## Final accepted evidence
+
+- final-baseline: A/B/C/D PASS, producer provenance valid; existing isolated
+  environment, cached-model offline workflow.
+- Windows 中文 verified: new isolated venv with spaces/Chinese, creation
+  witness bound to workflow run ID; A/B/C/D/E PASS. Distinct producer IDs,
+  same hashed physical machine, 44 artifact hashes and 42 locked packages match.
+- Thirteen required requests pass per environment, 26 accepted requests total.
+  All page CER values are0, important numbers exact, each request records12
+  native synchronized DASH e2e calls.
+- Full pytest with real GPU opt-in:58 passed,15 upstream TorchScript warnings.
+  CPU subset56; actual GPU tests2. Ruff/format/mypy/build/CLI/pip check pass.
+- Idempotent setup was repeated on the prepared Unicode-path venv. Exact stack
+  and BF16 still pass. Child Python stdio is temporarily UTF-8 with the
+  caller's encoding restored; resulting Unicode diagnostics were checked.
+- Initial install reports exported as package provenance; accepted manifests,
+  raw outputs, original failures and actual test/build logs exported. Home
+  paths redacted; original local logs remain private outside Git.
+- Draft PR1 opened and attached to this task. Final readiness follows evidence
+  commit and successful final-head CPU checks. No merge/release/publication.
+# Evidence publication integrity
+
+The final exporter verified all 26 accepted raw outputs against their recorded
+SHA-256 and literal UTF-8 bytes, parsed 128 JSON records, and checked the fresh
+run's baseline-manifest hash. Evidence files disable Git text conversion so
+Windows checkout/staging cannot change hashed bytes. Staged blobs are compared
+with the verified local files before publication.

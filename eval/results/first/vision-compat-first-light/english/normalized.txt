@@ -1,0 +1,1 @@
+text[59,99,354,156]ROCmOCRTesttext[59,240,442,301]HellofromWindows.text[59,383,290,443]Invoice2026text[59,525,278,583]Total123.45

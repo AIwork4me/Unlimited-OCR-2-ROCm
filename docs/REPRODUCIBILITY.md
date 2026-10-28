@@ -21,7 +21,7 @@ different producing environment IDs, matching machine/artifacts/locked packages,
 all required cases, and an environment-creation witness tied to the workflow
 run ID. Re-summarizing under another interpreter cannot manufacture that proof.
 A fresh flag contradicting the recorded workflow is rejected.
-Choose a short venv path: an AMD wheel entry fails at260 total path characters.
+Choose a short venv path: an AMD wheel entry fails at 260 total path characters.
 Setup detects that boundary; do not change the registry.
 
 The mandatory installation inside that environment is:

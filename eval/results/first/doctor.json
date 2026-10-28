@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-10-28T03:25:57.212083+00:00",
+  "timestamp_utc": "2026-10-28T04:06:17.434828+00:00",
   "platform": "Windows",
   "windows_version": "10.0.26200",
   "python": "3.10.20",
@@ -41,14 +41,16 @@
       "Version": "10.0.26200",
       "BuildNumber": "26200",
       "TotalVisibleMemorySize": 129654596,
-      "FreePhysicalMemory": 94621504
-    }
+      "FreePhysicalMemory": 86990040
+    },
+    "machine_uuid_sha256": "6c01f2febebede491776762bda2e7f24e19575d076284576b76d53c3296a2fa7"
   },
   "memory": {
-    "process_rss_bytes": 488882176,
+    "process_rss_bytes": 497565696,
+    "process_peak_rss_bytes": 497565696,
     "system_total_bytes": 132766306304,
-    "system_available_bytes": 96937758720,
-    "system_memory_percent": 27.0,
+    "system_available_bytes": 86969167872,
+    "system_memory_percent": 34.5,
     "gpu_allocated_bytes": 0,
     "gpu_reserved_bytes": 0,
     "gpu_peak_allocated_bytes": 0,
@@ -65,12 +67,13 @@
     "dtype": "torch.bfloat16",
     "max_abs_error": 4.76837158203125e-07,
     "absolute_tolerance": 1e-05,
-    "synchronized_seconds": 0.13918529998045415,
+    "synchronized_seconds": 0.16810449992772192,
     "memory_before": {
-      "process_rss_bytes": 509591552,
+      "process_rss_bytes": 518246400,
+      "process_peak_rss_bytes": 571531264,
       "system_total_bytes": 132766306304,
-      "system_available_bytes": 96953593856,
-      "system_memory_percent": 27.0,
+      "system_available_bytes": 85916114944,
+      "system_memory_percent": 35.3,
       "gpu_allocated_bytes": 0,
       "gpu_reserved_bytes": 0,
       "gpu_peak_allocated_bytes": 0,
@@ -81,10 +84,11 @@
       ]
     },
     "memory_after": {
-      "process_rss_bytes": 625180672,
+      "process_rss_bytes": 634327040,
+      "process_peak_rss_bytes": 641613824,
       "system_total_bytes": 132766306304,
-      "system_available_bytes": 96833462272,
-      "system_memory_percent": 27.1,
+      "system_available_bytes": 85070254080,
+      "system_memory_percent": 35.9,
       "gpu_allocated_bytes": 79697920,
       "gpu_reserved_bytes": 81788928,
       "gpu_peak_allocated_bytes": 79702016,

@@ -1,0 +1,11 @@
+default pending HIP error 1
+Traceback (most recent call last):
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.local\sdpa_repro.py", line 31, in <module>
+    torch.testing.assert_close(out.float(),reference,rtol=0.03,atol=0.03)
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\testing\_comparison.py", line 1631, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: Tensor-likes are not close!
+
+Mismatched elements: 7916810 / 8128512 (97.4%)
+Greatest absolute difference: 5.118227005004883 at index (19, 4, 130, 16) (up to 0.03 allowed)
+Greatest relative difference: 180920448.0 at index (45, 11, 184, 5) (up to 0.03 allowed)

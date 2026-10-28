@@ -62,12 +62,12 @@ single-page inference initially fails at deepencoder.py:890 with
 hipErrorInvalidValue. Synchronization before that copy succeeds. A two-call
 SAM-block reproduction fails without OCR weights, while twenty plain copies
 of the same tensor layout pass. HIP peek instrumentation isolates the earlier
-default scaled_dot_product_attention call: it leaves HIP error1.
+default scaled_dot_product_attention call: it leaves HIP error 1.
 
 A direct BF16 SDPA comparison at [54,12,196,64] also fails numerically
-(97.4% of elements outside rtol/atol0.03, max error5.1182). A fresh process
-using GPU MATH SDPA leaves HIP error0 and matches the independent FP32
-softmax(QK/sqrt(d)+bias)V reference (max error about0.00387). Three repeated
+(97.4% of elements outside rtol/atol0.03, max error 5.1182). A fresh process
+using GPU MATH SDPA leaves HIP error 0 and matches the independent FP32
+softmax(QK/sqrt(d)+bias)V reference (max error about 0.00387). Three repeated
 SAM-block forwards pass. Production does not clear or ignore HIP errors.
 The diagnostic experiment cleared a recorded error only to inspect the
 otherwise corrupted default output; that behavior is not in the adapter.
@@ -85,6 +85,10 @@ not validation of another GPU here. We do not change the mandated versions.
 See scripts/probe_vision_sdpa.py and diagnostics for the regression evidence.
 
 ## Download observations
+
+The error-clearing reference inspection above is an isolated
+**NON-NATIVE / NON-PARITY diagnostic experiment**. It produces no accepted
+OCR result and is not used by the production adapter or acceptance workflow.
 
 The first PyPI Triton download took about eleven minutes at roughly 65kB/s.
 A range download independently reproduced the exact wheel hash. Ordinary

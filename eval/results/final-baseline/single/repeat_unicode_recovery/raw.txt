@@ -1,0 +1,4 @@
+<PAGE><BLOCK>text[59, 99, 354, 156]<FORK>ROCm OCR Test
+<BLOCK>text[59, 240, 442, 301]<FORK>Hello from Windows.
+<BLOCK>text[59, 383, 290, 443]<FORK>Invoice 2026
+<BLOCK>text[59, 525, 279, 583]<FORK>Total 123.45

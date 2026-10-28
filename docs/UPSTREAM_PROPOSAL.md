@@ -4,7 +4,7 @@ This proposal is prepared locally; no upstream issue/comment/PR was posted.
 
 ## PyTorch / TheRock vision SDPA regression
 
-Native Windows 11 build26200, Ryzen AI MAX+395, Radeon8060S/gfx1151,
+Native Windows 11 build 26200, Ryzen AI MAX+ 395, Radeon 8060S/gfx1151,
 driver32.0.22032.6002, CPython3.10.20. Exact required packages:
 torch2.12.0+rocm7.14.1, torchvision0.27.0+rocm7.14.1,
 torchaudio2.11.0+rocm7.14.1; torch.version.hip7.14.60850.
@@ -12,7 +12,7 @@ torchaudio2.11.0+rocm7.14.1; torch.version.hip7.14.60850.
 The official Unlimited OCR2 weights load correctly. Its SAM encoder fails
 at a subsequent permute/contiguous after default SDPA. Synchronizing first
 does not eliminate the error. A plain copy loop with the same layout passes.
-HIP peek tracing isolates error1 immediately after default SDPA. Its result
+HIP peek tracing isolates error 1 immediately after default SDPA. Its result
 also fails an independent FP32 attention reference.
 
 Reproduce the reduced SAM/SDPA case without model weights:

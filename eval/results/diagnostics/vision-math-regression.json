@@ -1,0 +1,175 @@
+{
+  "environment": {
+    "timestamp_utc": "2026-10-28T04:01:37.385177+00:00",
+    "platform": "Windows",
+    "windows_version": "10.0.26200",
+    "python": "3.10.20",
+    "machine": "AMD64",
+    "executable": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+    "packages": {
+      "torch": "2.12.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1"
+    },
+    "environment": {},
+    "hip": "7.14.60850",
+    "rocm": "7.14.1",
+    "cuda_build": null,
+    "gpu_available": true,
+    "gpu": {
+      "name": "AMD Radeon(TM) 8060S Graphics",
+      "arch": "gfx1151",
+      "pytorch_visible_budget_bytes": 83954728960,
+      "properties": "_CudaDeviceProperties(name='AMD Radeon(TM) 8060S Graphics', major=11, minor=5, gcnArchName='gfx1151', total_memory=80065MB, multi_processor_count=20, uuid=30303030-3031-3936-3030-303030303030, pci_bus_id=196, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+      "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+    },
+    "windows_hardware": {
+      "gpu": [
+        {
+          "Name": "GameViewer Virtual Display Adapter",
+          "DriverVersion": "15.6.5.199"
+        },
+        {
+          "Name": "AMD Radeon(TM) 8060S Graphics",
+          "DriverVersion": "32.0.22032.6002"
+        }
+      ],
+      "cpu": {
+        "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+      },
+      "os": {
+        "Caption": "Microsoft Windows 11 家庭版 中文版",
+        "Version": "10.0.26200",
+        "BuildNumber": "26200",
+        "TotalVisibleMemorySize": 129654596,
+        "FreePhysicalMemory": 87693640
+      }
+    },
+    "memory": {
+      "process_rss_bytes": 497336320,
+      "process_peak_rss_bytes": 497336320,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 89840074752,
+      "system_memory_percent": 32.3,
+      "gpu_allocated_bytes": 0,
+      "gpu_reserved_bytes": 0,
+      "gpu_peak_allocated_bytes": 0,
+      "gpu_peak_reserved_bytes": 0,
+      "gpu_free_total_bytes": [
+        83786756096,
+        83954728960
+      ]
+    }
+  },
+  "probe": {
+    "status": "PASS",
+    "mode": "math",
+    "block_calls": 3,
+    "events": [
+      {
+        "module": "sam_block_regression",
+        "backend": "GPU MATH SDPA",
+        "inputs": [
+          {
+            "shape": [
+              6,
+              40,
+              40,
+              768
+            ],
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "module": "sam_block_regression",
+        "backend": "GPU MATH SDPA",
+        "inputs": [
+          {
+            "shape": [
+              6,
+              40,
+              40,
+              768
+            ],
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "module": "sam_block_regression",
+        "backend": "GPU MATH SDPA",
+        "inputs": [
+          {
+            "shape": [
+              6,
+              40,
+              40,
+              768
+            ],
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "module": "sdpa_reference_regression",
+        "backend": "GPU MATH SDPA",
+        "inputs": [
+          {
+            "shape": [
+              54,
+              12,
+              196,
+              64
+            ],
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16"
+          },
+          {
+            "shape": [
+              54,
+              12,
+              196,
+              64
+            ],
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16"
+          },
+          {
+            "shape": [
+              54,
+              12,
+              196,
+              64
+            ],
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16"
+          },
+          {
+            "shape": [
+              54,
+              12,
+              196,
+              196
+            ],
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16"
+          }
+        ],
+        "status": "PASS"
+      }
+    ],
+    "max_abs_error": 0.0038712024688720703,
+    "rtol": 0.03,
+    "atol": 0.03,
+    "hip_error_after": 0,
+    "attention_flags_restored": true
+  },
+  "status": "PASS"
+}

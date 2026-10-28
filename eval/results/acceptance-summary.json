@@ -1,0 +1,26 @@
+{
+  "hardware_status": "PASS",
+  "gates": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS"
+  },
+  "accepted_requests": 26,
+  "requests_per_environment": 13,
+  "max_normalized_CER": 0.0,
+  "all_important_numbers_match": true,
+  "cpu_tests": 56,
+  "physical_gpu_tests": 2,
+  "full_pytest_passed": 58,
+  "source_runtime_commit": "5a670e93acb7ac6e4c4ff05fd8f355ac5a6befd5",
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "github_revision": "4d0bebab8714e0f3b0c811cd44bf422ddb49daae",
+  "baseline_environment_id": "0d19fbb72f6f87cbfcd5ec9666883b1729f09f57b7b1329bbee3e8d43e8a3184",
+  "clean_environment_id": "805548572651e98eeb8a70feb4623357bc28d2a0f5f485e63eff3f7e2c5983ba",
+  "fresh_environment": true,
+  "producer_evidence_valid": true,
+  "same_physical_machine": true,
+  "pull_request": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/pull/1"
+}
