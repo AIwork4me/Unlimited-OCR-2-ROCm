@@ -1,0 +1,53 @@
+...sss......FFF                                                          [100%]
+================================== FAILURES ===================================
+_________ test_final_classification_includes_new_downstream_hip_error _________
+
+    def test_final_classification_includes_new_downstream_hip_error():
+        m = reporting()
+>       assert hasattr(m, "hip_failed"), "Final HIP event scan missing"
+E       AssertionError: Final HIP event scan missing
+E       assert False
+E        +  where False = hasattr(<module 'rca_reporting' from '<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\reporting.py'>, 'hip_failed')
+
+tests\unit\test_sdpa_rca_reporting.py:221: AssertionError
+________ test_matrix_refuses_previous_failure_logs_without_child_json _________
+
+tmp_path = WindowsPath('<USERPROFILE>/AppData/Local/Temp/pytest-of-rocm/pytest-1799/test_matrix_refuses_previous_f0')
+
+    def test_matrix_refuses_previous_failure_logs_without_child_json(tmp_path):
+        import json
+        import subprocess
+        output = tmp_path / "prior-crash"
+        output.mkdir()
+        prior_log = output / "crashed.stderr.log"
+        prior_log.write_bytes(b"original crash traceback\n")
+        manifest = output / "process-manifest.json"
+        manifest.write_bytes(b'[{"original":true}]\n')
+        cases = tmp_path / "cases.json"
+        cases.write_text(json.dumps([{"name": "crashed", "args": ["--help"]}]))
+        result = subprocess.run([sys.executable, str(ROOT / "experiments/sdpa_rca/compare_backends.py"), "--cases", str(cases), "--output", str(output)], capture_output=True)
+>       assert result.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\S...test-1799\\test_matrix_refuses_previous_f0\\prior-crash'], returncode=0, stdout=b'crashed 0 None None\r\n', stderr=b'').returncode
+
+tests\unit\test_sdpa_rca_reporting.py:240: AssertionError
+____________ test_process_runner_cannot_truncate_existing_streams _____________
+
+tmp_path = WindowsPath('<USERPROFILE>/AppData/Local/Temp/pytest-of-rocm/pytest-1799/test_process_runner_cannot_tru0')
+
+    def test_process_runner_cannot_truncate_existing_streams(tmp_path):
+        from compare_backends import run_case
+        log = tmp_path / "original.stderr.log"
+        log.write_bytes(b"original error\n")
+>       with pytest.raises(FileExistsError):
+E       Failed: DID NOT RAISE <class 'FileExistsError'>
+
+tests\unit\test_sdpa_rca_reporting.py:250: Failed
+=========================== short test summary info ===========================
+SKIPPED [1] tests\unit\test_sdpa_rca_reporting.py:60: could not import 'torch': No module named 'torch'
+SKIPPED [1] tests\unit\test_sdpa_rca_reporting.py:77: could not import 'torch': No module named 'torch'
+SKIPPED [1] tests\unit\test_sdpa_rca_reporting.py:89: could not import 'torch': No module named 'torch'
+FAILED tests/unit/test_sdpa_rca_reporting.py::test_final_classification_includes_new_downstream_hip_error
+FAILED tests/unit/test_sdpa_rca_reporting.py::test_matrix_refuses_previous_failure_logs_without_child_json
+FAILED tests/unit/test_sdpa_rca_reporting.py::test_process_runner_cannot_truncate_existing_streams
+3 failed, 9 passed, 3 skipped in 1.14s

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "scalar-default",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "1",
+      "1",
+      "--mask",
+      "none"
+    ]
+  },
+  {
+    "name": "scalar-math-profile",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "1",
+      "1",
+      "--mask",
+      "none",
+      "--backend",
+      "MATH",
+      "--trace",
+      "profiler"
+    ]
+  },
+  {
+    "name": "copy-only",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--operation",
+      "copy_only"
+    ]
+  }
+]

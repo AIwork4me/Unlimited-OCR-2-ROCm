@@ -149,3 +149,9 @@ UNOBSERVED means the tracing mechanism did not expose a named backend; it is nev
 ## Interpretation
 
 The scalar no-mask FLASH failure has the smallest possible positive dimensions. The scalar bias input uses MATH and passes; efficient D=1 is rejected as unsupported. Thus shape-only minimization that silently changes dispatch can conceal the defect. Copy-only passes; arithmetic/cast/copy following fused SDPA retain or report its earlier error. B passes all supported counterparts of the original isolation matrix. Multiple clean-process repetitions support deterministic reproduction for the fixed seed; no reliability estimate for arbitrary hardware is claimed.
+
+## Post-review harness validation
+
+The original matrix above contains 113 child reports. After the independent review fixes, three additional fresh-process conditions used the current producer code: [scalar DEFAULT](../../eval/rca/gfx1151-rocm7141/review-regression/scalar-default.json) FAIL with observed FLASH, [scalar MATH with profiler](../../eval/rca/gfx1151-rocm7141/review-regression/scalar-math-profile.json) PASS with observed MATH, and [copy-only](../../eval/rca/gfx1151-rocm7141/review-regression/copy-only.json) PASS. They are indexed separately as `post_review_records` in the experiment manifest; historical records/logs remain untouched.
+
+Final checks: [command manifest](../../eval/rca/gfx1151-rocm7141/checks-final/process-manifest.json), [CPU suite](../../eval/rca/gfx1151-rocm7141/checks-final/pytest-cpu.stdout.log) **68 passed, 5 expected skips**, [physical suite](../../eval/rca/gfx1151-rocm7141/checks-final/pytest-physical.stdout.log) **73 passed, 15 upstream TorchScript warnings**. The physical suite includes all optional CPU-reference tests plus the existing GPU/OCR tests. Ruff, formatting, mypy, build and pip check exit 0. [Independent review and dispositions](REVIEW.md).

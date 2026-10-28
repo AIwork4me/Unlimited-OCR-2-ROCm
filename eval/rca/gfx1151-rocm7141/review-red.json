@@ -1,0 +1,17 @@
+{
+  "purpose": "Expected failing pre-fix CPU regressions; NON-ACCEPTANCE",
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "tests/unit/test_sdpa_rca_reporting.py",
+    "-q"
+  ],
+  "observed_exit_code": 1,
+  "result": "3 expected failing regressions, 9 passed, 3 torch-optional skips",
+  "code_under_test_commit": "7fdadff",
+  "regression_definition_containing_commit": "302ba8a",
+  "stdout_original_sha256": "472c592b6ae0e231ac4767854a289c9341eca1ea9b99f53fef2dab9055f1e494",
+  "stderr_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "note": "Definitions were subsequently normalized by Ruff. This record documents the observed pre-fix RED output; it is not a final acceptance result."
+}

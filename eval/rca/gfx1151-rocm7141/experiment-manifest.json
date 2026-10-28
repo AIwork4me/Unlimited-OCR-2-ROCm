@@ -4784,5 +4784,127 @@
       "environment_provenance": "provenance-torch-only-B.json"
     }
   ],
-  "note": "Derived index. Original child JSON and streams remain authoritative. MATH dispatch-mode UNOBSERVED is not relabeled: see separate profiler evidence. Driver identity joins environment_provenance, collected on the same physical machine."
+  "note": "Derived index. Original child JSON and streams remain authoritative. MATH dispatch-mode UNOBSERVED is not relabeled: see separate profiler evidence. Driver identity joins environment_provenance, collected on the same physical machine.",
+  "post_review_records": [
+    {
+      "path": "review-regression/copy-only.json",
+      "run_id": "fea97dd5-bf22-4c29-8f0c-8e91a4e55acf",
+      "utc": "2026-10-28T07:33:38.308071+00:00",
+      "git_commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "script_sha256": "9673a18c38e48b1a5969d04b50ef691c13a8a6099092150ae5eda2d0380baf13",
+      "reporting_sha256": "eb1ed2c5ca146e78c973495825ee52272aee46f442f71df2ef3fa0332b7ed79c",
+      "fixture_sha256": "a889de7a3cdb612299e6f2e885655f14171566414e9cda06ff3faab686cd5a86",
+      "backend_requested": "DEFAULT",
+      "backend_observed": "UNOBSERVED",
+      "status": "PASS",
+      "acceptance": true,
+      "exit_code": 0,
+      "numerical": null,
+      "arguments": {
+        "shape": [
+          1,
+          2,
+          16,
+          64
+        ],
+        "dtype": "bfloat16",
+        "mask": "bias",
+        "backend": "DEFAULT",
+        "operation": "copy_only",
+        "trace": "dispatch",
+        "noncontiguous": false,
+        "causal": false,
+        "scale": null,
+        "seed": 7992,
+        "clear_error_nonacceptance": false,
+        "output": ".local\\rca\\review-regression\\copy-only.json"
+      },
+      "environment_provenance": "provenance-torch-only-A-restored.json"
+    },
+    {
+      "path": "review-regression/scalar-default.json",
+      "run_id": "8093bf7b-249e-4c8e-ad1f-4123e386a88b",
+      "utc": "2026-10-28T07:33:28.886581+00:00",
+      "git_commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "script_sha256": "9673a18c38e48b1a5969d04b50ef691c13a8a6099092150ae5eda2d0380baf13",
+      "reporting_sha256": "eb1ed2c5ca146e78c973495825ee52272aee46f442f71df2ef3fa0332b7ed79c",
+      "fixture_sha256": "2327964b3cd3acf123400cd57647979abe1aad5fe049f1da631c4dac7fa865d1",
+      "backend_requested": "DEFAULT",
+      "backend_observed": "FLASH_ATTENTION",
+      "status": "FAIL",
+      "acceptance": true,
+      "exit_code": 1,
+      "numerical": null,
+      "arguments": {
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "dtype": "bfloat16",
+        "mask": "none",
+        "backend": "DEFAULT",
+        "operation": "copy",
+        "trace": "dispatch",
+        "noncontiguous": false,
+        "causal": false,
+        "scale": null,
+        "seed": 7992,
+        "clear_error_nonacceptance": false,
+        "output": ".local\\rca\\review-regression\\scalar-default.json"
+      },
+      "environment_provenance": "provenance-torch-only-A-restored.json"
+    },
+    {
+      "path": "review-regression/scalar-math-profile.json",
+      "run_id": "6e49547c-0f8d-4cee-8866-3bcf9da22f4e",
+      "utc": "2026-10-28T07:33:33.497123+00:00",
+      "git_commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "script_sha256": "9673a18c38e48b1a5969d04b50ef691c13a8a6099092150ae5eda2d0380baf13",
+      "reporting_sha256": "eb1ed2c5ca146e78c973495825ee52272aee46f442f71df2ef3fa0332b7ed79c",
+      "fixture_sha256": "2327964b3cd3acf123400cd57647979abe1aad5fe049f1da631c4dac7fa865d1",
+      "backend_requested": "MATH",
+      "backend_observed": "MATH",
+      "status": "PASS",
+      "acceptance": true,
+      "exit_code": 0,
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "relative_denominator_floor": 1e-06,
+        "max_abs_error_finite": 0.0,
+        "mean_abs_error_finite": 0.0,
+        "max_relative_error_finite": 0.0,
+        "failing_elements": 0,
+        "total_elements": 1,
+        "failing_percent": 0.0,
+        "nonfinite_actual": 0,
+        "nan_actual": 0,
+        "inf_actual": 0,
+        "nonfinite_reference": 0
+      },
+      "arguments": {
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "dtype": "bfloat16",
+        "mask": "none",
+        "backend": "MATH",
+        "operation": "copy",
+        "trace": "profiler",
+        "noncontiguous": false,
+        "causal": false,
+        "scale": null,
+        "seed": 7992,
+        "clear_error_nonacceptance": false,
+        "output": ".local\\rca\\review-regression\\scalar-math-profile.json"
+      },
+      "environment_provenance": "provenance-torch-only-A-restored.json"
+    }
+  ],
+  "post_review_indexed_utc": "2026-10-28T07:36:02.014531+00:00"
 }
