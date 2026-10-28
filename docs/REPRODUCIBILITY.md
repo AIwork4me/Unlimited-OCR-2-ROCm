@@ -6,8 +6,11 @@ sufficient free RAM/disk. CPU CI does not perform these tests.
 ```powershell
 # Select an installed CPython 3.10 interpreter, for example:
 $Python310 = (uv python find 3.10)
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-a" -OutputPath "eval/results/run-a"
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-b" -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
+$VenvA = "C:\uocr\a"
+$VenvB = "C:\uocr\b"
+$CacheDir = "C:\uocr\cache"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath $VenvA -CacheDir $CacheDir -OutputPath "eval/results/run-a"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath $VenvB -CacheDir $CacheDir -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
 ```
 
 uv is optional: replace $Python310 with the full path of an existing CPython
@@ -15,6 +18,12 @@ uv is optional: replace $Python310 with the full path of an existing CPython
 Scripts refuse an existing non-venv directory and never install into global
 Python. Clean reproduction refuses an existing environment; choose a new
 VenvPath. Setup alone can be repeated on an existing dedicated venv.
+Run from the repository root. The short environment/cache paths above work
+independently of checkout depth. Choose another short writable root if
+`C:\uocr` is unavailable; both venv paths must be unused for this clean pair,
+and output directories must be new. Later commands should invoke
+`C:\uocr\b\Scripts\python.exe` explicitly, or the corresponding interpreter
+under your chosen root; no activation or global CLI lookup is necessary.
 
 The first run establishes A–D. Gate E requires a linked baseline pair:
 different producing environment IDs, matching machine/artifacts/locked packages,
@@ -44,7 +53,7 @@ manifests, raw/normalized OCR, command lists, logs and reproduction.json.
 Once installed and cached, an offline model rerun is:
 
 ```powershell
-.\scripts\reproduce_windows.ps1 -VenvPath ".venv-b" -ReuseEnvironment -Offline
+.\scripts\reproduce_windows.ps1 -VenvPath "C:\uocr\b" -CacheDir "C:\uocr\cache" -OutputPath "eval/results/run-b-offline" -ReuseEnvironment -Offline
 ```
 
 This rerun does not invoke pip installation. A fresh offline package install

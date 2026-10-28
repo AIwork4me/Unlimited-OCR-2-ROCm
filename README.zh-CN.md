@@ -21,25 +21,32 @@ torchvision 0.27.0+rocm7.14.1；torchaudio 2.11.0+rocm7.14.1；
 ROCm 7.14.1（HIP 构建号 7.14.60850）；triton-windows 3.7.1.post27；
 Transformers 4.52.1。不自动升级到 Transformers 5.x 或 Triton 3.8。
 
-选择已安装的 Python 3.10；若已安装 uv：
+从仓库根目录运行，选择已安装的 Python 3.10。使用尚不存在且可写的短环境路径：
+AMD wheel 的某个文件在完整路径达到 260 字符时会解压失败。
+虚拟环境与缓存可放在深层仓库目录之外，无需修改注册表。若已安装 uv：
 
 ```powershell
 $Python310 = (uv python find 3.10)
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-a" -OutputPath "eval/results/run-a"
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-b" -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
+$VenvA = "C:\uocr\a"
+$VenvB = "C:\uocr\b"
+$CacheDir = "C:\uocr\cache"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath $VenvA -CacheDir $CacheDir -OutputPath "eval/results/run-a"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath $VenvB -CacheDir $CacheDir -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
 ```
 
-没有 uv 时，把 $Python310 设置为 Python 3.10 的完整路径。
+没有 uv 时，把 `$Python310` 设置为 Python 3.10 的完整路径。
+若 `C:\uocr` 不可写，选择其他可写的短目录；若输出目录已有结果，使用新目录。
 脚本创建独立虚拟环境，安装指定 AMD 包及锁定依赖，执行真实 GPU 与
 OCR 检查并保存 JSON 清单。不会修改全局 Python、驱动、安全功能或永久 PATH。
 普通安装本项目包不会自动安装或替换 torch。
 
-已配置环境中的使用示例：
+使用上面创建的第二个环境；显式指定其解释器，无需激活虚拟环境：
 
 ```powershell
-unlimited-ocr2-rocm doctor
-unlimited-ocr2-rocm single "C:\文档\测试 page.png" --output "C:\OCR结果\单页"
-unlimited-ocr2-rocm multi "第1页.png" "第2页.png" --output "C:\OCR结果\多页"
+$OcrPython = "C:\uocr\b\Scripts\python.exe"
+& $OcrPython -m unlimited_ocr_2_rocm doctor
+& $OcrPython -m unlimited_ocr_2_rocm single "C:\文档\测试 page.png" --cache-dir "C:\uocr\cache" --output "C:\OCR结果\单页"
+& $OcrPython -m unlimited_ocr_2_rocm multi "第1页.png" "第2页.png" --cache-dir "C:\uocr\cache" --output "C:\OCR结果\多页"
 ```
 
 可指定 `--cache-dir`、`--offline` 和 `--max-new-tokens`。

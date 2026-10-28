@@ -39,28 +39,40 @@ has been physically validated by this project.
 
 ## Setup and validation
 
-Select an existing CPython 3.10 interpreter. If uv is installed:
+Run from the repository root. Select an existing CPython 3.10 interpreter.
+Use unused, writable short environment paths: an AMD wheel entry reaches the
+Windows extraction limit at 260 total characters. The environments and cache
+can live outside a deeply nested checkout; no registry change is needed.
+If uv is installed:
 
 ```powershell
 $Python310 = (uv python find 3.10)
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-a" -OutputPath "eval/results/run-a"
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-b" -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
+$VenvA = "C:\uocr\a"
+$VenvB = "C:\uocr\b"
+$CacheDir = "C:\uocr\cache"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath $VenvA -CacheDir $CacheDir -OutputPath "eval/results/run-a"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath $VenvB -CacheDir $CacheDir -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
 ```
 
-Otherwise set $Python310 to that interpreter's full path. Setup creates a
+Otherwise set `$Python310` to that interpreter's full path. Choose another
+short writable root if `C:\uocr` is unavailable, and new output directories
+if these already contain results. Setup creates a
 dedicated venv and installs the exact AMD stack, hash-pinned Triton and locked
 dependencies. It never replaces global Python or changes drivers/security.
 The distribution has no automatic torch dependency; a plain pip package
 installation does not prepare the GPU stack.
 
-To inspect individual steps in an already prepared environment:
+To inspect individual steps, use the second environment created above.
+These commands select its interpreter explicitly; activation is unnecessary:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/doctor_windows.py
-.\.venv\Scripts\python.exe scripts/probe_triton.py
-.\.venv\Scripts\python.exe -m unlimited_ocr_2_rocm download --cache-dir "C:\model cache"
-.\.venv\Scripts\python.exe scripts/smoke_single.py --cache-dir "C:\model cache" --output "eval/results/single-new"
-.\.venv\Scripts\python.exe scripts/smoke_multi.py --cache-dir "C:\model cache" --output "eval/results/multi-new"
+$OcrPython = "C:\uocr\b\Scripts\python.exe"
+$CacheDir = "C:\uocr\cache"
+& $OcrPython scripts/doctor_windows.py
+& $OcrPython scripts/probe_triton.py
+& $OcrPython -m unlimited_ocr_2_rocm download --cache-dir $CacheDir
+& $OcrPython scripts/smoke_single.py --cache-dir $CacheDir --output "eval/results/single-new"
+& $OcrPython scripts/smoke_multi.py --cache-dir $CacheDir --output "eval/results/multi-new"
 ```
 
 Run multi-page correctness only after single-page correctness succeeds.
@@ -69,8 +81,9 @@ The suite uses the official `infer_multi()` for the whole ordered document.
 ## Your documents
 
 ```powershell
-unlimited-ocr2-rocm single "C:\documents\中文 page.png" --output "C:\OCR output\single"
-unlimited-ocr2-rocm multi "page 1.png" "page 2.png" --output "C:\OCR output\multi"
+$OcrPython = "C:\uocr\b\Scripts\python.exe"
+& $OcrPython -m unlimited_ocr_2_rocm single "C:\documents\中文 page.png" --cache-dir "C:\uocr\cache" --output "C:\OCR output\single"
+& $OcrPython -m unlimited_ocr_2_rocm multi "page 1.png" "page 2.png" --cache-dir "C:\uocr\cache" --output "C:\OCR output\multi"
 ```
 
 Both accept `--cache-dir`, `--offline` and `--max-new-tokens`. Use a new
