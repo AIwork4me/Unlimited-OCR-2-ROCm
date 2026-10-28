@@ -57,3 +57,13 @@ environment, historical evidence, issue #2 or PR #3 is changed.
   classification issues. Both were reproduced RED and fixed GREEN (26 tests).
 - Ruling: the named optional bias FLASH capability probe may be UNSUPPORTED;
   required no-mask FLASH and additive-bias EFFICIENT still must execute.
+- SDK 7.14.1 development wheel recovered, ETag/ZIP CRC checked, explicitly
+  installed and initialized; build environment pip check passes.
+- Final source readiness: 11/37 top-level pins ready; CUTLASS exact fetch failed
+  early EOF and TLS EOF on retry (exit 128). No CMake cache or candidate wheel.
+  Final decision BUILD_BLOCKED; candidate installation and GPU tests NOT_RUN.
+- Final local checks: 86 CPU tests pass, two GPU markers skipped; 27 independent
+  physical baseline runs preserved. Ruff/format/mypy/OCR package build and all
+  three isolated pip checks pass.
+- Separate final review: all 177 evidence Git blobs and 176 export records
+  verified; no remaining actionable findings. Publication/hosted CI follows.
