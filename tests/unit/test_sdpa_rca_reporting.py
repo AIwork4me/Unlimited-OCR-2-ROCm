@@ -1,11 +1,13 @@
 """Evidence classifications must not promote unsupported, nonfinite or unobserved results."""
 
 import importlib.util
+import sys
 from pathlib import Path
 
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "experiments/sdpa_rca"))
 
 
 def reporting():
@@ -131,7 +133,51 @@ def test_provenance_parses_runtime_commit_independently_of_image_signature():
     spec = importlib.util.spec_from_file_location("rca_provenance", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    text = "#define AOTRITON_VERSION_MINOR 12u\n#define AOTRITON_GIT_SHA1 05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920\n"
+    text = (
+        "#define AOTRITON_VERSION_MINOR 12u\n"
+        "#define AOTRITON_GIT_SHA1 05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920\n"
+    )
     result = module.parse_header(text)
     assert result["AOTRITON_VERSION_MINOR"] == "12u"
     assert result["AOTRITON_GIT_SHA1"] == "05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920"
+
+
+def test_evidence_export_retains_original_digest_and_sanitizes_nested_json(tmp_path):
+    path = ROOT / "experiments/sdpa_rca/export_evidence.py"
+    assert path.exists(), "Evidence exporter missing"
+    spec = importlib.util.spec_from_file_location("rca_export", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    source = tmp_path / "private.json"
+    source.write_bytes(
+        b'{"traceback":"C:\\\\Users\\\\someone\\\\probe.py: hipErrorInvalidValue",'
+        b'"run_id":"original-run"}\r\n'
+    )
+    target = tmp_path / "public.json"
+    record = module.export_file(source, target, r"C:\Users\someone")
+    import hashlib
+    import json
+
+    assert record["original_sha256"] == hashlib.sha256(source.read_bytes()).hexdigest()
+    assert record["published_sha256"] == hashlib.sha256(target.read_bytes()).hexdigest()
+    assert json.loads(target.read_text())["run_id"] == "original-run"
+    assert "someone" not in target.read_text()
+    assert "hipErrorInvalidValue" in target.read_text()
+
+
+def test_runner_timeout_keeps_partial_streams(tmp_path):
+    import sys
+
+    path = ROOT / "experiments/sdpa_rca/compare_backends.py"
+    spec = importlib.util.spec_from_file_location("rca_runner_timeout", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    result = module.run_case(
+        [sys.executable, "-u", "-c", "import time; print('started'); time.sleep(2)"],
+        tmp_path / "timeout",
+        ROOT,
+        timeout=0.5,
+    )
+    assert result["exit_code"] == 124
+    assert result["timed_out"] is True
+    assert (tmp_path / "timeout.stdout.log").read_text() == "started\n"

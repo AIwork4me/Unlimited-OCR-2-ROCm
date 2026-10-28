@@ -6,28 +6,39 @@ import os
 import subprocess
 import sys
 import time
+import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 
 from reporting import sha256, write_json
 
 
-def run_case(command, stem, cwd):
+def run_case(command, stem, cwd, timeout=300):
     stem = Path(stem)
     stem.parent.mkdir(parents=True, exist_ok=True)
     stdout, stderr = stem.with_suffix(".stdout.log"), stem.with_suffix(".stderr.log")
     start = time.monotonic()
+    utc = datetime.now(timezone.utc).isoformat()
+    timed_out = False
     with stdout.open("wb") as out, stderr.open("wb") as err:
-        process = subprocess.run(
-            command,
-            cwd=cwd,
-            stdout=out,
-            stderr=err,
-            env=dict(os.environ, PYTHONIOENCODING="utf-8"),
-            timeout=300,
-        )
+        try:
+            process = subprocess.run(
+                command,
+                cwd=cwd,
+                stdout=out,
+                stderr=err,
+                env=dict(os.environ, PYTHONIOENCODING="utf-8"),
+                timeout=timeout,
+            )
+            code = process.returncode
+        except subprocess.TimeoutExpired:
+            code, timed_out = 124, True
     return {
         "command": command,
-        "exit_code": process.returncode,
+        "exit_code": code,
+        "timed_out": timed_out,
+        "process_run_id": str(uuid.uuid4()),
+        "utc": utc,
         "wall_seconds": time.monotonic() - start,
         "stdout_sha256": sha256(stdout),
         "stderr_sha256": sha256(stderr),

@@ -73,9 +73,11 @@ def main():
             "powershell",
             "-NoProfile",
             "-Command",
-            "@{os=Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber; "
+            "@{os=Get-CimInstance Win32_OperatingSystem | "
+            "Select-Object Caption,Version,BuildNumber; "
             "cpu=Get-CimInstance Win32_Processor | Select-Object Name; "
-            "gpu=Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion,DriverDate} "
+            "gpu=Get-CimInstance Win32_VideoController | "
+            "Select-Object Name,DriverVersion,DriverDate} "
             "| ConvertTo-Json -Depth 5",
         ],
         text=True,
