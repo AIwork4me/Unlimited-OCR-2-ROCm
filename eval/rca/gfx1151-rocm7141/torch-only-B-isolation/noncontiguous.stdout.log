@@ -1,0 +1,4 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_copy', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+PASS requested: DEFAULT observed: EFFICIENT_ATTENTION run: 48f5e3c1-ae37-4b10-8df6-d7a874c07b6b numerics: {'atol': 0.03, 'rtol': 0.03, 'relative_denominator_floor': 1e-06, 'max_abs_error_finite': 0.006483316421508789, 'mean_abs_error_finite': 0.0005697447340935469, 'max_relative_error_finite': 4.676216125488281, 'failing_elements': 0, 'total_elements': 2048, 'failing_percent': 0.0, 'nonfinite_actual': 0, 'nan_actual': 0, 'inf_actual': 0, 'nonfinite_reference': 0}

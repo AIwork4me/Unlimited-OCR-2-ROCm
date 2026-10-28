@@ -1,0 +1,117 @@
+[
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-A-restored-full\\default.json",
+      "--backend",
+      "DEFAULT"
+    ],
+    "exit_code": 1,
+    "timed_out": false,
+    "process_run_id": "530a04df-3713-4bfd-b88a-3ae2ce77b409",
+    "utc": "2026-10-28T07:07:00.452587+00:00",
+    "wall_seconds": 4.984000000054948,
+    "stdout_sha256": "60fa37a3db2f785da93c7d149699e37ac62d9d3662a21aede125a95dc11c7165",
+    "stderr_sha256": "186aaffe9295df299131d4f3b197b31fa451cfd61eb43e3fb7f84be5570ce5f8",
+    "case": "default",
+    "run_id": "489afbc7-3dbb-4864-b898-3d8783a25fb2",
+    "status": "FAIL",
+    "backend_observed": "EFFICIENT_ATTENTION",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-A-restored-full\\math.json",
+      "--backend",
+      "MATH"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "3d53ecc5-b53f-4443-9294-56feb805c9da",
+    "utc": "2026-10-28T07:07:05.453174+00:00",
+    "wall_seconds": 5.842999999993481,
+    "stdout_sha256": "6f644dbb051c021012a6e6c1ac7e7b0808e8c21df029ec3a4e3bf5f40843c017",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "case": "math",
+    "run_id": "4406c750-74d8-46ae-ae16-0e9b17794d00",
+    "status": "PASS",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-A-restored-full\\flash_attention.json",
+      "--backend",
+      "FLASH_ATTENTION"
+    ],
+    "exit_code": 2,
+    "timed_out": false,
+    "process_run_id": "8c940c6a-1659-4c73-9eb2-c27e85d203fe",
+    "utc": "2026-10-28T07:07:11.310832+00:00",
+    "wall_seconds": 3.140999999945052,
+    "stdout_sha256": "c37792a8809fd5cc12e6fbbfb8fdcab766b5df022361c8c226dd24be5f6dc85e",
+    "stderr_sha256": "0f622df5cb149799c834de74206002162a6397d46e60e770674f4578290c4740",
+    "case": "flash_attention",
+    "run_id": "d1fededd-5852-4f2c-ae4a-df4cf99e69c4",
+    "status": "UNSUPPORTED",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-A-restored-full\\efficient_attention.json",
+      "--backend",
+      "EFFICIENT_ATTENTION"
+    ],
+    "exit_code": 1,
+    "timed_out": false,
+    "process_run_id": "db3c6ded-4e28-440e-9bd2-873355e1c038",
+    "utc": "2026-10-28T07:07:14.476648+00:00",
+    "wall_seconds": 5.062000000034459,
+    "stdout_sha256": "55b1d4031f1fdd19a986f9ea6696fa785d4ac18a1a124987c6d6d010aff1a654",
+    "stderr_sha256": "186aaffe9295df299131d4f3b197b31fa451cfd61eb43e3fb7f84be5570ce5f8",
+    "case": "efficient_attention",
+    "run_id": "b3104930-8d86-4d1e-9f3c-94b1b593873a",
+    "status": "FAIL",
+    "backend_observed": "EFFICIENT_ATTENTION",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-A-restored-full\\cudnn_attention.json",
+      "--backend",
+      "CUDNN_ATTENTION"
+    ],
+    "exit_code": 2,
+    "timed_out": false,
+    "process_run_id": "415758d7-3c45-43bd-8265-c09efdb53711",
+    "utc": "2026-10-28T07:07:19.567604+00:00",
+    "wall_seconds": 3.093999999924563,
+    "stdout_sha256": "df7fed2f9de699e05ea9aab06609107d90c8662a080dc4b375cf210831b6d889",
+    "stderr_sha256": "cf33fbc2d50a41e8b11be58549c3cbff1b7034bc8025da8587a9bede9b8c2a3e",
+    "case": "cudnn_attention",
+    "run_id": "c247ed54-713b-4a26-8b0f-487ec64928c5",
+    "status": "UNSUPPORTED",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  }
+]

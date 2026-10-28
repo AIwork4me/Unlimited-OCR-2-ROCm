@@ -1,0 +1,66 @@
+{
+  "run_id": "da63742f-37a9-4b59-b4c2-e9ca8dfef747",
+  "utc": "2026-10-28T07:14:44.793517+00:00",
+  "A_to_B": {
+    "unchanged_fields": [
+      "packages",
+      "architecture",
+      "system",
+      "runtime_header",
+      "loaded_modules"
+    ],
+    "unchanged_module_sha256": {
+      "amdhip64_7.dll": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "aotriton_v2.dll": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22",
+      "liblzma.dll": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f",
+      "dl.dll": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca",
+      "torch_hip.dll": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94"
+    },
+    "only_image_payload_changed": true
+  },
+  "A_to_restored": {
+    "unchanged_fields": [
+      "packages",
+      "architecture",
+      "system",
+      "runtime_header",
+      "loaded_modules"
+    ],
+    "unchanged_module_sha256": {
+      "amdhip64_7.dll": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "aotriton_v2.dll": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22",
+      "liblzma.dll": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f",
+      "dl.dll": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca",
+      "torch_hip.dll": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94"
+    },
+    "only_image_payload_changed": false
+  },
+  "primary_unchanged": {
+    "unchanged_fields": [
+      "packages",
+      "architecture",
+      "system",
+      "runtime_header",
+      "loaded_modules"
+    ],
+    "unchanged_module_sha256": {
+      "amdhip64_7.dll": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "aotriton_v2.dll": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22",
+      "dl.dll": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca",
+      "liblzma.dll": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f",
+      "torch_hip.dll": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94"
+    },
+    "only_image_payload_changed": false
+  },
+  "input_provenance_run_ids": {
+    "A": "5b586e32-b44b-4391-9bf9-2b4acd1465fd",
+    "B": "8fcd0fba-23a8-4875-89c0-cde4620e491c",
+    "A_restored": "61a550db-585a-4112-8c66-f6ff1ba50c8a"
+  },
+  "diagnostic_archive": {
+    "url": "https://github.com/ROCm/aotriton/releases/download/0.12.50tp/aotriton-0.12.50tp-images-amd-gfx115x.tar.gz",
+    "sha256": "3177387a15c678b30057f4584d1fc1b8f8db56163890cb5c98f27450209f5a7b",
+    "size": 187785051
+  },
+  "invariant_limit": "Recorded core versions, driver/system, header and five loaded DLLs are fixed. No claim of exhaustive OS memory/process state identity."
+}

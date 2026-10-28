@@ -1,0 +1,53 @@
+[
+  {
+    "state": "A",
+    "producer_run_id": "b95f3025-398f-4e59-8a9b-213d7e4390cd",
+    "full_trace_sha256": "51a4eb27f72a6f976db1914ee6aa500335d5044b1158a7df4ce967fbbb446043",
+    "line_count": 405,
+    "module_load_calls": 0,
+    "launch_lines": [
+      {
+        "line": 361,
+        "text": ":3:hip_module.cpp           :570 : 960793172287 us: [pid:56168 tid: 0x9fbb5]  hipModuleLaunchKernel ( char array:<null>, 1, 1, 1, 0, 0, 0, 0, char array:<null>, 000002B6E7730480, char array:<null> ) "
+      },
+      {
+        "line": 362,
+        "text": ":3:hip_module.cpp           :596 : 960793172295 us: [pid:56168 tid: 0x9fbb5] hipModuleLaunchKernel: Returned hipErrorInvalidValue : "
+      }
+    ]
+  },
+  {
+    "state": "B",
+    "producer_run_id": "02ea76a8-2637-4900-894f-00f6b4d3a2c4",
+    "full_trace_sha256": "d38ad9f66df2d17c7d19380e64e2a190844fc0a25fc6bbcc0f3cb3d5f2a5d27b",
+    "line_count": 438,
+    "module_load_calls": 1,
+    "launch_lines": [
+      {
+        "line": 368,
+        "text": ":3:hip_module.cpp           :570 : 961045981193 us: [pid:92576 tid: 0xa1441]  hipModuleLaunchKernel ( 000001FD70369930, 1, 1, 1, 128, 1, 1, 1024, char array:<null>, 000001FD6FFA5110, char array:<null> ) "
+      },
+      {
+        "line": 369,
+        "text": ":3:hip_module.cpp           :605 : 961045981203 us: [pid:92576 tid: 0xa1441] hipModuleLaunchKernel: Returned hipSuccess : "
+      }
+    ]
+  },
+  {
+    "state": "A-restored",
+    "producer_run_id": "89b06073-04cc-41d6-9ba8-6988b95b3480",
+    "full_trace_sha256": "5aadb8f047528eab1ce9979e9938909008c8067839e049c301713e1eadbc1580",
+    "line_count": 405,
+    "module_load_calls": 0,
+    "launch_lines": [
+      {
+        "line": 361,
+        "text": ":3:hip_module.cpp           :570 : 961463792996 us: [pid:74564 tid: 0x2dac1]  hipModuleLaunchKernel ( char array:<null>, 1, 1, 1, 0, 0, 0, 0, char array:<null>, 0000021958F38290, char array:<null> ) "
+      },
+      {
+        "line": 362,
+        "text": ":3:hip_module.cpp           :596 : 961463793004 us: [pid:74564 tid: 0x2dac1] hipModuleLaunchKernel: Returned hipErrorInvalidValue : "
+      }
+    ]
+  }
+]

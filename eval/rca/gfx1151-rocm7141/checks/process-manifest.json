@@ -1,0 +1,105 @@
+[
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "check",
+      "src",
+      "scripts",
+      "tests",
+      "experiments/sdpa_rca"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "e44b7a3c-4fc5-4539-82b8-21c8ec0cfcd4",
+    "utc": "2026-10-28T07:13:44.736780+00:00",
+    "wall_seconds": 0.13412980001885444,
+    "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "ruff"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "format",
+      "--check",
+      "src",
+      "scripts",
+      "tests",
+      "experiments/sdpa_rca"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "0d704d6e-8c52-4bbe-945f-3f390a035c77",
+    "utc": "2026-10-28T07:13:44.881563+00:00",
+    "wall_seconds": 0.128468899987638,
+    "stdout_sha256": "6ed8d1cb172b51dddf192664f6e4b2a6c56db357a990dcce6f028de11201bd61",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "format"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "pytest"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "cf675fbd-04d5-42b3-baff-432310f8cedf",
+    "utc": "2026-10-28T07:13:45.018546+00:00",
+    "wall_seconds": 1.4982327999314293,
+    "stdout_sha256": "1281243f7857936018f2f5e42953df88c07403d364fe040935168a82659cbc6e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "pytest-cpu"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "mypy",
+      "src"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "ba370d16-29d9-4d0c-82e8-3a89bac16254",
+    "utc": "2026-10-28T07:13:46.527287+00:00",
+    "wall_seconds": 3.9609523999970406,
+    "stdout_sha256": "e522fa370334927ac2ccb7106100045b572938dd238093267de825336e6704f2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "mypy"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "build"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "97795f37-d8b6-4013-94e5-bfe1d77138fe",
+    "utc": "2026-10-28T07:13:50.500649+00:00",
+    "wall_seconds": 10.527190599939786,
+    "stdout_sha256": "3285639f5c43e1fd14a9decfe659fdafbedb865b409f83edf4fccb9278374bcf",
+    "stderr_sha256": "e06196cdafefab81f4a8cb1a71a04f85dbaa5d476437922b1e2cb04d6b2d6fc7",
+    "name": "build"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "1585c1ff-b97e-4b6d-94f5-0ca56d001b9e",
+    "utc": "2026-10-28T07:14:01.048100+00:00",
+    "wall_seconds": 0.566937500028871,
+    "stdout_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "pip-check"
+  }
+]

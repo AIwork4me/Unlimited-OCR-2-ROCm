@@ -1,0 +1,20 @@
+[
+  {
+    "wheel_tag_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (79.0.1)\nRoot-Is-Purelib: false\nTag: cp310-cp310-win_amd64\n\n",
+    "sha256": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+    "size": 114472348,
+    "embedded_dlls": {
+      "torch/lib/aotriton_v2.dll": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22",
+      "torch/lib/torch_hip.dll": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94"
+    }
+  },
+  {
+    "wheel_tag_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (79.0.1)\nRoot-Is-Purelib: false\nTag: cp313-cp313-win_amd64\n\n",
+    "sha256": "687ad7d7c4c36cceb7f3374f5ae63d6f6ad15ef96782ca1259efa216a84d1a15",
+    "size": 114508323,
+    "embedded_dlls": {
+      "torch/lib/aotriton_v2.dll": "f093102dd7ddd71dfcb510eee03631a8ff10f55576062d6b1abd5064f372a3ba",
+      "torch/lib/torch_hip.dll": "56eb38f7707d3dd9f1c987be2f0b924d787a3453aa5c5d87ad2056c40016ff7d"
+    }
+  }
+]

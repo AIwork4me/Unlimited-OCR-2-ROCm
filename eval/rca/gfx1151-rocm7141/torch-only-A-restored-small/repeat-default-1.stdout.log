@@ -1,0 +1,4 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 1, 'synchronize': 'OK', 'hip_after_sync': 1}
+{'stage': 'after_copy', 'hip_before_sync': 1, 'synchronize': 'OK', 'hip_after_sync': 1}
+FAIL requested: DEFAULT observed: EFFICIENT_ATTENTION run: 569ba4d4-d0e0-489a-98a4-73560a1c05ae numerics: None

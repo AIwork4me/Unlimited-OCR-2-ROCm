@@ -1,0 +1,75 @@
+{
+  "scope": "Exact immutable upstream source inspected; downloaded source files remain private rather than redistributing upstream code",
+  "sources": [
+    {
+      "repository": "pytorch/pytorch",
+      "commit": "098172edc887399a593f0c74ae5c40b1fe043801",
+      "path": "cmake/External/aotriton.cmake",
+      "url": "https://github.com/pytorch/pytorch/blob/098172edc887399a593f0c74ae5c40b1fe043801/cmake/External/aotriton.cmake",
+      "local_inspection_filename": "aotriton.cmake",
+      "downloaded_local_sha256": "cc052059dfd186dc9b08c5b81b17048fdcda5afaf5fb003e62c03087edd18a6f"
+    },
+    {
+      "repository": "pytorch/pytorch",
+      "commit": "098172edc887399a593f0c74ae5c40b1fe043801",
+      "path": "aten/src/ATen/native/transformers/cuda/attention.cu",
+      "url": "https://github.com/pytorch/pytorch/blob/098172edc887399a593f0c74ae5c40b1fe043801/aten/src/ATen/native/transformers/cuda/attention.cu",
+      "local_inspection_filename": "attention.cu",
+      "downloaded_local_sha256": "6ab968bae53c9c5bc13781752301338533f9a2dd25bbd232f09d621f0cb95734"
+    },
+    {
+      "repository": "pytorch/pytorch",
+      "commit": "098172edc887399a593f0c74ae5c40b1fe043801",
+      "path": "aten/src/ATen/native/transformers/cuda/sdp_utils.cpp",
+      "url": "https://github.com/pytorch/pytorch/blob/098172edc887399a593f0c74ae5c40b1fe043801/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp",
+      "local_inspection_filename": "sdp_utils.cpp",
+      "downloaded_local_sha256": "e825bcb1b6f3844060cb6258f9706c10f8e75a2fc950f3f4cd357c9148c8f151"
+    },
+    {
+      "repository": "pytorch/pytorch",
+      "commit": "098172edc887399a593f0c74ae5c40b1fe043801",
+      "path": "aten/src/ATen/native/transformers/hip/flash_attn/aot/mha_all_aot.hip",
+      "url": "https://github.com/pytorch/pytorch/blob/098172edc887399a593f0c74ae5c40b1fe043801/aten/src/ATen/native/transformers/hip/flash_attn/aot/mha_all_aot.hip",
+      "local_inspection_filename": "mha_all_aot.hip",
+      "downloaded_local_sha256": "cdbfbd6e5e034655230624d4b58eb2ece6d2026767eeacf6682b516238ecc82c"
+    },
+    {
+      "repository": "ROCm/aotriton",
+      "commit": "05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920",
+      "path": "v3src/packed_kernel_common.cc",
+      "url": "https://github.com/ROCm/aotriton/blob/05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920/v3src/packed_kernel_common.cc",
+      "local_inspection_filename": "packed_kernel_common.cc",
+      "downloaded_local_sha256": "e131732169ef70ff163aebfe38d065609e89769f6f621a3ea344099a1fe24ecf"
+    },
+    {
+      "repository": "ROCm/aotriton",
+      "commit": "05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920",
+      "path": "v3src/on_device_kernel.cc",
+      "url": "https://github.com/ROCm/aotriton/blob/05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920/v3src/on_device_kernel.cc",
+      "local_inspection_filename": "on_device_kernel.cc",
+      "downloaded_local_sha256": "177551da6214772ab1a1a549abba3d0afc1d6e14102d10c6bb587390d7d79e87"
+    },
+    {
+      "repository": "ROCm/aotriton",
+      "commit": "05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920",
+      "path": "v3src/triton_kernel.cc",
+      "url": "https://github.com/ROCm/aotriton/blob/05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920/v3src/triton_kernel.cc",
+      "local_inspection_filename": "triton_kernel.cc",
+      "downloaded_local_sha256": "8bee99efb811da42c03c93a3a81ff81713308dfcfee2962b6a3c6afd35651fed"
+    },
+    {
+      "repository": "ROCm/aotriton",
+      "commit": "6e00ef3e335b45dfb49065259533b59c68995bfe",
+      "path": "v3src/packed_kernel_common.cc",
+      "url": "https://github.com/ROCm/aotriton/blob/6e00ef3e335b45dfb49065259533b59c68995bfe/v3src/packed_kernel_common.cc",
+      "local_inspection_filename": "images013-packed_kernel_common.cc",
+      "downloaded_local_sha256": "c1feb7719e42577e76dd7eacd1dc579f7827dbc27c2d36615371f16947fb5721"
+    }
+  ],
+  "upstream_fix": {
+    "url": "https://github.com/ROCm/pytorch/commit/d1abf10723386209420f7427f24744c5afc4d96f",
+    "file": "cmake/External/aotriton.cmake",
+    "change": "runtime pin 05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920 -> c073da80c4bcb814f562bb62e1b2ff821fa2cdd1",
+    "tested": false
+  }
+}

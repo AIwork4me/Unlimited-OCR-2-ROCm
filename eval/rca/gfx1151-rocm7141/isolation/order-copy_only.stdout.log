@@ -1,0 +1,4 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_copy_only', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+PASS requested: DEFAULT observed: UNOBSERVED run: 824de23f-e801-4876-ba7a-af0eb55ce1d7 numerics: None

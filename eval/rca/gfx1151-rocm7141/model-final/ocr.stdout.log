@@ -1,0 +1,47 @@
+[CodeStamp] warmup-window-page-switches-v4 sha256=86da9c563870 mtime=2026-10-28 15:11:46 switches=local_window:1,page_prefill:0 file=<USERPROFILE>\AppData\Local\Temp\uocr2-reviewed-modules-raogg07v\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\_sparse_base_impl.py
+[PageRope] mode=page2d head_dim=128 tok_theta=10000.0 fallback_1d_theta=500000.0 page_pairs=1 page_theta=256.0 page_mod=2 tok_freq_mode=resample page_span=0
+[PageRope] pairs page/1 tok/63 capacity page=3pages tok=27143tokens
+[PageRope main] mode=page2d head_dim=128 page_pairs=1 page_theta=256.0 tok_theta=10000.0 tok_freq_mode=resample page_mod=2 capacity page=3pages tok=27143tokens
+[DASH] differentiable DASH attention active (entmax router, block_size=32, local_window=128, index_dim=128, main_rope=page2d, idx_rope=page2d, page_bucket=True); first dash layer_idx=0
+[PageRope layer=0 row0] n_pages=1 page_mod=2 folded_pages=[0, 1] prompt(page0)[0-4#5] uniq_coords=899/899 p1:img#893 txt#0 ok=False
+[PageAwareKL layer=0] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=0 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=1] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=1 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=2] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=2 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=3] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=3 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=4] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=4 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=5] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=5 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=6] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=6 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=7] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=7 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=8] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=8 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=9] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=9 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=10] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=10 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=11] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=11 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[debug DeepseekV2Model] indexer_kl_loss_type=NoneType count=0 return_dict=True training=False
+[debug DeepseekV2Model post-set] hasattr=True getattr=None id(out)=1539075484224
+english: PASS
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False

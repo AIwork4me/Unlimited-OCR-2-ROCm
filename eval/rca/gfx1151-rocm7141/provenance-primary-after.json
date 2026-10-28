@@ -1,0 +1,267 @@
+{
+  "run_id": "3df1b52c-bc99-4695-a378-76890a6f1c15",
+  "utc": "2026-10-28T07:11:30.603172+00:00",
+  "git_commit": "42658a9d3071d49581afb74f02829d5f626b24f7",
+  "script_sha256": "4aaaf1c469eb31ae382affa1aff7e51eac9ba5106c862811455d80e18cf287a9",
+  "python": "3.10.20 (main, May 10 2026, 19:31:32) [MSC v.1944 64 bit (AMD64)]",
+  "os": "Windows-10-10.0.26200-SP0",
+  "system": {
+    "gpu": [
+      {
+        "Name": "GameViewer Virtual Display Adapter",
+        "DriverVersion": "15.6.5.199",
+        "DriverDate": "/Date(1772236800000)/"
+      },
+      {
+        "Name": "AMD Radeon(TM) 8060S Graphics",
+        "DriverVersion": "32.0.22032.6002",
+        "DriverDate": "/Date(1765756800000)/"
+      }
+    ],
+    "cpu": {
+      "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+    },
+    "os": {
+      "Caption": "Microsoft Windows 11 \u5bb6\u5ead\u7248 \u4e2d\u6587\u7248",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    }
+  },
+  "gpu": "AMD Radeon(TM) 8060S Graphics",
+  "architecture": "gfx1151",
+  "torch_version": "2.12.0+rocm7.14.1",
+  "hip_version": "7.14.60850",
+  "torch_commit": "098172edc887399a593f0c74ae5c40b1fe043801",
+  "torch_config": "PyTorch built with:\n  - C++ Version: 202002\n  - clang 23.0.0\n  - MSVC 194435228\n  - Intel(R) MKL-DNN v3.11.2 (Git Hash 03c022d3ffdcee958cfacbe720048e725fdf644c)\n  - OpenMP 202011\n  - LAPACK is enabled (usually provided by MKL)\n  - CPU capability usage: AVX512\n  - HIP Runtime 7.14.60850\n  - MIOpen 3.5.2\n  - Build settings: BLAS_INFO=open, BUILD_TYPE=Release, COMMIT_SHA=098172edc887399a593f0c74ae5c40b1fe043801, CUDA_FLAGS= -DLIBCUDACXX_ENABLE_SIMPLIFIED_COMPLEX_OPERATIONS -Xcompiler /Zc:__cplusplus -Xcompiler /Zc:preprocessor -Xcompiler /w -w -Xcompiler /FS -Xfatbin -compress-all  -Xcompiler=/wd4819,/wd4503,/wd4190,/wd4244,/wd4251,/wd4275,/wd4522 -Wno-deprecated-gpu-targets --expt-extended-lambda -DCUB_WRAPPED_NAMESPACE=at_cuda_detail -DDISABLE_CUSPARSE_DEPRECATED -DCUDA_HAS_FP16=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__, CXX_COMPILER=C:/home/runner/_work/_tool/Python/3.10.11/x64/Lib/site-packages/_rocm_sdk_devel/lib/llvm/bin/clang-cl.exe, CXX_FLAGS=/DWIN32 /D_WINDOWS /EHsc /Zc:__cplusplus /bigobj /FS /utf-8 -DUSE_PTHREADPOOL -DNDEBUG -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE /wd4624 /wd4068 /wd4067 /wd4267 /wd4661 /wd4717 /wd4244 /wd4804 /wd4273, LAPACK_INFO=open, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, TORCH_VERSION=2.12.0, USE_CUDA=OFF, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=OFF, USE_NNPACK=OFF, USE_OPENMP=ON, USE_ROCM=ON, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=OFF, USE_XPU=OFF, \n",
+  "packages": {
+    "addict": "2.4.0",
+    "amd-torchvision-device-gfx1151": "0.27.0+rocm7.14.1",
+    "amd-torch-device-gfx1151": "2.12.0+rocm7.14.1",
+    "amd-torch-device-gfx115x": "2.12.0+rocm7.14.1",
+    "certifi": "2026.10.23",
+    "charset-normalizer": "3.5.2",
+    "colorama": "0.4.6",
+    "easydict": "1.13",
+    "einops": "0.8.2",
+    "exceptiongroup": "1.3.1",
+    "filelock": "3.29.1",
+    "fsspec": "2026.4.0",
+    "huggingface-hub": "0.36.0",
+    "idna": "3.20",
+    "iniconfig": "2.3.1",
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.3",
+    "mpmath": "1.3.0",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "packaging": "26.3",
+    "pillow": "12.0.0",
+    "pip": "26.2.2",
+    "pluggy": "1.7.0",
+    "psutil": "7.1.2",
+    "Pygments": "2.21.0",
+    "pytest": "8.4.2",
+    "PyYAML": "6.0.3",
+    "regex": "2026.9.29",
+    "requests": "2.34.2",
+    "rocm": "7.14.1",
+    "rocm-bootstrap": "0.1.0",
+    "rocm-sdk-core": "7.14.1",
+    "rocm-sdk-device-gfx1151": "7.14.1",
+    "rocm-sdk-libraries": "7.14.1",
+    "safetensors": "0.8.0",
+    "setuptools": "81.0.0",
+    "sympy": "1.14.0",
+    "tokenizers": "0.21.4",
+    "tomli": "2.5.0",
+    "torch": "2.12.0+rocm7.14.1",
+    "torchaudio": "2.11.0+rocm7.14.1",
+    "torchvision": "0.27.0+rocm7.14.1",
+    "tqdm": "4.70.1",
+    "transformers": "4.52.1",
+    "triton-windows": "3.7.1.post27",
+    "typing_extensions": "4.15.0",
+    "unlimited-ocr-2-rocm": "0.0.1.dev0",
+    "urllib3": "2.8.0",
+    "wheel": "0.48.0"
+  },
+  "runtime_header": {
+    "text": "#if !defined(TORCH_STABLE_ONLY) && !defined(TORCH_TARGET_VERSION)\n// Copyright \u6f0f 2023-2025 Advanced Micro Devices, Inc.\n// SPDX-License-Identifier: MIT\n\n#ifndef AOTRITON_V2_CONFIG_H\n#define AOTRITON_V2_CONFIG_H\n\n#define AOTRITON_ENABLE_SUFFIX 0\n\n#if AOTRITON_ENABLE_SUFFIX\n/* #undef AOTRITON_NAME_SUFFIX */\n#define AOTRITON_NS aotriton\n#else\n#define AOTRITON_NAME_SUFFIX\n#define AOTRITON_NS aotriton\n#endif\n\n#define AOTRITON_VERSION_MAJOR 0u\n#define AOTRITON_VERSION_MINOR 12u\n#define AOTRITON_VERSION_PATCH 50u\n// Note the packaged SHA1 string may be different from the github release tag\n// due to chicken-and-egg issue.\n#define AOTRITON_GIT_SHA1 05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920\n\n#ifdef _MSC_VER\n#define AOTRITON_API __declspec(dllexport)\n#else\n#define AOTRITON_API __attribute__ ((visibility (\"default\")))\n#endif\n\n#endif\n\n#else\n#error \"This file should not be included when either TORCH_STABLE_ONLY or TORCH_TARGET_VERSION is defined.\"\n#endif  // !defined(TORCH_STABLE_ONLY) && !defined(TORCH_TARGET_VERSION)\n",
+    "parsed": {
+      "AOTRITON_VERSION_MAJOR": "0u",
+      "AOTRITON_VERSION_MINOR": "12u",
+      "AOTRITON_VERSION_PATCH": "50u",
+      "AOTRITON_GIT_SHA1": "05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920"
+    },
+    "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\include\\aotriton\\config.h",
+    "size": 1057,
+    "sha256": "a7c2ae355d5a50392c6d29a37de6cc4bebb34a43f2aef0bb5e7ae008104e6f13"
+  },
+  "image_signatures": [
+    {
+      "signature": {
+        "AOTRITON_GIT_SHA1": "6e00ef3e335b45dfb49065259533b59c68995bfe",
+        "AOTRITON_GIT_TREESHA1": "0a9c220761603465c794bc6522564452d43ebc23",
+        "DB_SHA256": {
+          "primary": {
+            "gfx90a": {
+              "flash": {
+                "attn_fwd": "54c28f0b5e9ee625632e33116660037554bb6d2c244ef518151c06082041884f",
+                "bwd_kernel_dk_dv": "f308b8bcd57b533df949c5ed5db42b8c69e3ec9f73109a680a4b4c437f623e91",
+                "bwd_kernel_dq": "7c21f52ec15ef0f5a61a2ace4d1847d0ff1aaaa1d27b51e315b25fb7ac6277e2",
+                "bwd_kernel_fuse": "3822ddb65e9cfdd72179a4f6355ee41ef4a67c0810ac5f5eaf57264f70f2f1b5"
+              }
+            },
+            "gfx942": {
+              "flash": {
+                "attn_fwd": "30f5c1efff133111f161875817d86aa6ca50f419f6776e1dd08e37c5bb029e8c",
+                "bwd_kernel_dk_dv": "d2a290e57ac2886f8ffc034bfa153eb5fbf7058947e3ce7fda7dd31918261122",
+                "bwd_kernel_dq": "da83488dc3a46c45537af87ad150baf70daaa37b6e0360c7e560020988cbf8b1",
+                "bwd_kernel_fuse": "b3c20f03ae35156956bf1428db6939a871195430b272d13a9e0726cd6c4bf747"
+              }
+            },
+            "gfx950": {
+              "flash": {
+                "attn_fwd": "0b0a72908315efbb582c6e7971d891649c449bf675c4502f37c504b089876423",
+                "bwd_kernel_dk_dv": "625064eeb0784ae2479582321f59bcd76bbf8dacbcf5059cc625cafa6e30006d",
+                "bwd_kernel_dq": "438b5a1cf0659943ca748fb1cb3b590f7cc704cfbcb21cb36c3963462b0c0ff9",
+                "bwd_kernel_fuse": "26186723c2c409d82c82cbed6be8b798c680b82e1a549144793d8f83679485ee"
+              }
+            },
+            "gfx1100": {
+              "flash": {
+                "attn_fwd": "360fc6f5b1af1362c5a8b5d46673f6368f42d9076f73ebef2dc9633bf7cf6bd0",
+                "bwd_kernel_dk_dv": "19d8ec6aa939c2f5978ef9a5aeb770466e4c2391226d0d3bf8aaf19bbf4cc230",
+                "bwd_kernel_dq": "a3b13aaaf4298bc4fac8318ed8918cee84d94c76eaa3748e2c382e3fd974e44d",
+                "bwd_kernel_fuse": "ffa557eb485815f69333f2eb3d0a94dcdc5195c3eb05cc26711b206407bcd081"
+              }
+            },
+            "gfx1101": {
+              "flash": {}
+            },
+            "gfx1102": {
+              "flash": {}
+            },
+            "gfx1103": {
+              "flash": {}
+            },
+            "gfx1150": {
+              "flash": {}
+            },
+            "gfx1151": {
+              "flash": {}
+            },
+            "gfx1152": {
+              "flash": {}
+            },
+            "gfx1153": {
+              "flash": {}
+            },
+            "gfx1201": {
+              "flash": {
+                "attn_fwd": "a11d1435cda69b01eec3e72885d1334396356854216afdeeec5863d244e77dd9",
+                "bwd_kernel_dk_dv": "5ba7c0e10d88feb43f4e7e48b625d96ad1b2fdfb3a3a2411de92dbb12838067f",
+                "bwd_kernel_dq": "94d803f10b94e8ccb85b4beff5dabb083363854ffa895153abdd715b2c18ea4f",
+                "bwd_kernel_fuse": "fd7ec757bb0ec8177f2a70477a510bdbde54f04206fd0f751aef2f33dd6a927a"
+              }
+            },
+            "gfx1200": {
+              "flash": {}
+            },
+            "gfx1250": {
+              "flash": {}
+            }
+          },
+          "secondary": {
+            "op": "23f108bb68d0d4d83faa860181443ef0c4e62c18cc1745efc654d9f5fb6e8d3d"
+          }
+        },
+        "TRITON_VERSION": "3.7.0+gitdb82b800.aotriton0.13"
+      },
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\__signature__",
+      "size": 2953,
+      "sha256": "03e77e8c75805d4587ddf8bad848d0dab1ec7626b34911e07218b26537f904fe"
+    }
+  ],
+  "loaded_modules": [
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\_rocm_sdk_core\\bin\\amdhip64_7.dll",
+      "size": 22097408,
+      "sha256": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton_v2.dll",
+      "size": 15560192,
+      "sha256": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\liblzma.dll",
+      "size": 195584,
+      "sha256": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\dl.dll",
+      "size": 16896,
+      "sha256": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\torch_hip.dll",
+      "size": 70957568,
+      "sha256": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94"
+    }
+  ],
+  "image_files": [
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\__signature__",
+      "size": 2953,
+      "sha256": "03e77e8c75805d4587ddf8bad848d0dab1ec7626b34911e07218b26537f904fe"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\attn_fwd.zip",
+      "size": 42290126,
+      "sha256": "adfb2fd4d07046cb40a5cf853303a01eb0cf79bc35094d033cf85955a2906850"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\bwd_kernel_dk_dv.zip",
+      "size": 34876538,
+      "sha256": "5916c09b132cea66437b7179412ac3b7d5a0e8753e392e17e2187a6f20d257ee"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\bwd_kernel_dq.zip",
+      "size": 35632082,
+      "sha256": "ac662db1ef47e329d0c1393fb93a6d73aeae0f9995766816777c530e452bad98"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\bwd_kernel_fuse.zip",
+      "size": 73713770,
+      "sha256": "4e3c9ca45cff2996dc0b04851a210a359c00f5ca4fe0fba39f056b436ede9b63"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\bwd_preprocess.zip",
+      "size": 712286,
+      "sha256": "109e9b3b5eda351066eea7d73980019dd81f1d72ef3c41883fce382b96934b8d"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\bwd_preprocess_varlen.zip",
+      "size": 715262,
+      "sha256": "4ef1d3238cc0ad5544ceb62ceca2ede3952e1fc73d9bb01aad436998edd3a57d"
+    },
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\debug_simulate_encoded_softmax.zip",
+      "size": 13230,
+      "sha256": "4ccc9fa5780fad18ae984e833fbb1d5a071851f7bb7baf72ff7625dff994946e"
+    }
+  ],
+  "image_archive_samples": [
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\lib\\aotriton.images\\amd-gfx115x\\flash\\attn_fwd.zip",
+      "entries": 396,
+      "first_names": [
+        "Q='*fp16:16';BLOCK_DMODEL=16;PADDED_HEAD=False;ENABLE_DROPOUT=False;CAUSAL_TYPE=0;BIAS_TYPE=0",
+        "Q='*fp16:16';BLOCK_DMODEL=16;PADDED_HEAD=False;ENABLE_DROPOUT=False;CAUSAL_TYPE=0;BIAS_TYPE=1",
+        "Q='*fp16:16';BLOCK_DMODEL=16;PADDED_HEAD=False;ENABLE_DROPOUT=False;CAUSAL_TYPE=3;BIAS_TYPE=0"
+      ]
+    }
+  ],
+  "source_claim_limit": "Headers identify packaged build metadata; DLL hash and imports must corroborate actual runtime. No DLL source SHA export assumed."
+}
