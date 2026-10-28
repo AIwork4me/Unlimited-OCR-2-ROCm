@@ -1,0 +1,8 @@
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|����������     | 1/2 [00:00<00:00,  5.80it/s]
+Loading checkpoint shards: 100%|��������������������| 2/2 [00:00<00:00,  8.93it/s]
+<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\profiler\profiler.py:272: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\triton\language\core.py:2284: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+  warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")

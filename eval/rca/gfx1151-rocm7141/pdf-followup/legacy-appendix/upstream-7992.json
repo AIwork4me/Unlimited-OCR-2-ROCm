@@ -1,0 +1,58 @@
+{
+  "issue": {
+    "url": "https://github.com/ROCm/TheRock/issues/7992",
+    "title": "[Windows][gfx1201] torch 2.12.0+rocm7.14.1 and +rocm10.0.0: kernels fail with hipErrorInvalidValue after any SDPA call; +rocm7.14.0 is fine",
+    "issue_number": 7992,
+    "body": "## Summary\n\nOn Windows with a Radeon AI PRO R9700 (gfx1201), the PyTorch wheels `torch==2.12.0+rocm7.14.1`\n(from `https://repo.amd.com/rocm/whl-multi-arch/`) and `torch==2.12.0+rocm10.0.0`\n(from `https://stable.repo.amd.com/rocm/whl-next/`) exhibit the same regression:\nonce `torch.nn.functional.scaled_dot_product_attention` has been called (any backend\nselected by default), certain unrelated kernels afterwards fail with\n`AcceleratorError: CUDA error: invalid argument` (`hipErrorInvalidValue`).\n\n`torch==2.12.0+rocm7.14.0` from the same multi-arch index, same machine, same driver,\nsame Python, passes every test. Note that 7.14.0 and 7.14.1 report the *same*\n`torch.version.hip` (`7.14.60850`), so the difference is in the torch build, not the\nHIP runtime.\n\nDisabling the flash / mem-efficient SDPA backends\n(`torch.backends.cuda.enable_flash_sdp(False)`, `enable_mem_efficient_sdp(False)`)\nbefore any SDPA call makes all subsequent kernels succeed.\n\nPractical impact: ComfyUI 0.34 crashes on a plain SDXL text-encoder forward pass\n(SDPA followed by a dtype cast) on 7.14.1 and 10.0.0; works on 7.14.0.\n\n## Environment\n\n- GPU: AMD Radeon AI PRO R9700 32 GB (gfx1201); iGPU Ryzen 7 5700G (gfx90c) present,\n  hidden via `HIP_VISIBLE_DEVICES=0`\n- OS: Windows 10 (x64)\n- Driver: AMD Software PRO Edition 26.10.36 (260727a-203347C)\n- Python: 3.13.15 (python.org)\n- `torch.cuda.get_device_properties(0)`: `gcnArchName='gfx1201', major=12, minor=0, total_memory=32624MB`\n- Failing wheels:\n  - `torch==2.12.0+rocm7.14.1`, `torchvision==0.27.0+rocm7.14.1`, `torchaudio==2.11.0+rocm7.14.1`\n    installed with `torch[device-gfx1201]` from `https://repo.amd.com/rocm/whl-multi-arch/`\n    (`rocm-sdk-core 7.14.1`, `torch.version.hip == '7.14.60850'`)\n  - `torch==2.12.0+rocm10.0.0`, `torchvision==0.27.0+rocm10.0.0`, `torchaudio==2.11.0+rocm10.0.0`\n    installed with `torch[device-gfx1201]` from `https://stable.repo.amd.com/rocm/whl-next/`\n    (`rocm-sdk-core 10.0.0`, `torch.version.hip == '7.15.26333'`)\n- Working wheel: `torch==2.12.0+rocm7.14.0` from `https://repo.amd.com/rocm/whl-multi-arch/`\n  (`rocm-sdk-core 7.14.0`, `torch.version.hip == '7.14.60850'`)\n\n`AMD_SERIALIZE_KERNEL=1` does not change the outcome. (`AMD_SERIALIZE_KERNEL=3` is\nrejected by these builds: \"valid values are 0 or 1\".)\n\n## Reproducer\n\n`test_order.py`:\n\n```python\nimport sys, torch\nimport torch.nn.functional as F\nfrom torch.nn.attention import sdpa_kernel, SDPBackend\n\ndef t(name, fn):\n    try:\n        fn(); torch.cuda.synchronize(); print(\"OK   \", name)\n    except Exception as e:\n        print(\"FAIL \", name, \"|\", str(e).splitlines()[0])\n\nmode = sys.argv[1] if len(sys.argv) > 1 else \"flash_first\"\nif mode == \"no_flash\":\n    torch.backends.cuda.enable_flash_sdp(False)\n    torch.backends.cuda.enable_mem_efficient_sdp(False)\n\nq = torch.randn(1, 20, 77, 64, device=\"cuda\", dtype=torch.float16)\n\ndef math_sdpa():\n    with sdpa_kernel(SDPBackend.MATH):\n        return F.scaled_dot_product_attention(q, q, q)\n\nt(\"e4m3 cast (before any sdpa)\", lambda: torch.randn(1280, 1280, device=\"cuda\").to(torch.float8_e4m3fn))\nt(\"MATH sdpa (before default)\",  math_sdpa)\nt(\"default sdpa\",                lambda: F.scaled_dot_product_attention(q, q, q))\nt(\"e4m3 cast (after sdpa)\",      lambda: torch.randn(1280, 1280, device=\"cuda\").to(torch.float8_e4m3fn))\nt(\"softmax fp32 (after sdpa)\",   lambda: torch.softmax(torch.randn(20, 77, 77, device=\"cuda\"), -1))\nt(\"linear fp32 (after sdpa)\",    lambda: F.linear(torch.randn(77, 1280, device=\"cuda\"), torch.randn(1280, 1280, device=\"cuda\")))\n```\n\nRun:\nset HIP_VISIBLE_DEVICES=0\npython test_order.py flash_first\npython test_order.py no_flash\n\n\n## Results\n\n`torch 2.12.0+rocm7.14.1` and `2.12.0+rocm10.0.0`, `flash_first`:\n\nOK e4m3 cast (before any sdpa)\nOK MATH sdpa (before default)\nOK default sdpa\nFAIL e4m3 cast (after sdpa) | CUDA error: invalid argument\nOK softmax fp32 (after sdpa)\nOK linear fp32 (after sdpa)\n\n\nSame wheels, `no_flash`: all six OK.\n\n`torch 2.12.0+rocm7.14.0`, `flash_first`: all six OK.\n\nA second script that runs SDPA with each backend in turn shows the same pattern on the\nfailing wheels: `default` OK, then `MATH` FAIL, `FLASH_ATTENTION` OK,\n`EFFICIENT_ATTENTION` OK, then `float32 -> float8_e4m3fn` FAIL while\n`float32 -> float8_e5m2` OK. In isolation (no SDPA in the process) every one of those\noperations, including the e4m3fn cast, succeeds on all three wheels — the failure only\nappears for kernels launched *after* an SDPA call while the flash/mem-efficient\nbackends are enabled.\n\n## Expected\n\nKernels launched after an SDPA call should not fail; behaviour should match\n`2.12.0+rocm7.14.0`.\n\n## Notes\n\n- The failure is deterministic (reproduced ~10 times across the two failing wheels).\n- Triton (`triton-windows 3.7.1.post27`) is *not* involved: the same result with it\n  uninstalled, and `triton.jit` kernels themselves run fine on all three wheels.\n- Happy to run additional diagnostics (e.g. `AMD_LOG_LEVEL`, specific env flags) on request.\n- This round of debugging was done by Claude Fable 5.1. It's difficult to understand for me. 😅",
+    "state": "closed",
+    "user": {
+      "login": "overdoingism",
+      "name": "overdoingism",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/70434709?v=4",
+      "id": 70434709
+    },
+    "assignees": [
+      {
+        "login": "harkgill-amd",
+        "name": "harkgill-amd",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/170955491?v=4",
+        "id": 170955491
+      }
+    ],
+    "labels": [
+      {
+        "name": "status: triage",
+        "color": "585dd7",
+        "description": "Indicates an issue has been assigned for investigation."
+      }
+    ],
+    "milestone": null,
+    "state_reason": "completed",
+    "comments": 4,
+    "created_at": "2026-09-08T12:01:53Z",
+    "updated_at": "2026-09-15T14:24:03Z",
+    "closed_at": "2026-09-15T14:24:03Z",
+    "display_url": "https://github.com/ROCm/TheRock/issues/7992",
+    "display_title": "[Windows][gfx1201] torch 2.12.0+rocm7.14.1 and +rocm10.0.0: kernels fail with hipErrorInvalidValue after any SDPA call; +rocm7.14.0 is fine"
+  },
+  "comments": [
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5591764777",
+      "body": "Hey @overdoignism, can you try this reproducer out on the latest nightlies? There was a HIP/AOTriton hash version mismatch which also manifested as `hipErrorInvalidValue` and was only recently resolved - I'm curious to see if this is the same and a test on latest would help confirm."
+    },
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5592002534",
+      "body": "Confirmed fixed on the latest nightly. Same machine (R9700 / gfx1201, Win10, driver 26.10.36, Python 3.13.15), fresh venv:\n\n- torch 2.15.0a0+rocm10.1.0a20260908, torchvision 0.30.0a0, torchaudio 2.11.0.3\n- rocm-sdk-core / libraries / device-gfx1201 10.1.0a20260908\n\n`test_order.py flash_first`: all 6 OK. `test_order.py no_flash`: all 6 OK.\n`test_sdpa.py`: default / MATH / FLASH / EFFICIENT all OK; float8_e4m3fn and e5m2 casts OK.\n\nOne caveat: the nightly is torch 2.15 whereas the failing wheels were 2.12, so torch itself also changed — but the pass is consistent with the HIP/AOTriton hash mismatch you described. Will re-check when a stable 2.12/10.0.x wheel with the fix lands. Thanks!"
+    },
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5665913175",
+      "body": ">One caveat: the nightly is torch 2.15 whereas the failing wheels were 2.12, so torch itself also changed — but the pass is consistent with the HIP/AOTriton hash mismatch you described. Will re-check when a stable 2.12/10.0.x wheel with the fix lands. Thanks!\n\nYou can find torch==2.12.0 wheels over on on nightly.repo.amd.com/rocm/whl-next/. For example, https://nightly.repo.amd.com/rocm/pytorch/whl-next/torch/torch-2.12.0%2Brocm10.2.0a20260914-cp312-cp312-win_amd64.whl."
+    },
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5681886576",
+      "body": "Closing this out as the issue has been resolved in latest nightlies. Feel free to leave a comment if you're still running into this/similar issues."
+    }
+  ]
+}

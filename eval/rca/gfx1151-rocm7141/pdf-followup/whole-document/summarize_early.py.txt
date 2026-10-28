@@ -1,0 +1,5 @@
+from pathlib import Path
+import json
+p=Path('.local/pdf-pipeline-rca/unadapted/manifest.json');d=json.loads(p.read_text(encoding='utf-8'));e=d['first_hip_error'];print({'status':d['status'],'PDF_pages':d['page_count'],'SDPA_number':e['number'],'backend':e['backend_observed'],'Q_shape':e['qkv_shapes'][0],'mask_shape':e['mask_shape'],'HIP_before':e['hip_before'],'HIP_after':e['hip_after'],'DASH_calls':len(d['native_kernels'])})
+for e in d['events']:
+    if e['stage'] in ('official_build_inputs_begin','official_build_inputs_complete','official_generate_begin','decoder_prefill_begin'):print(e)

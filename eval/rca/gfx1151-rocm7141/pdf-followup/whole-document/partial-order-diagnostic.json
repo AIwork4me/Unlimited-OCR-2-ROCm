@@ -1,0 +1,59 @@
+{
+  "purpose": "Text-layer fingerprint check of already-completed segments; not an OCR accuracy acceptance threshold",
+  "rows": [
+    {
+      "output_segment": 1,
+      "best_matching_PDF_page": 1,
+      "text_fingerprint_dice": 0.947209653092006,
+      "same_index_score": 0.947209653092006
+    },
+    {
+      "output_segment": 2,
+      "best_matching_PDF_page": 2,
+      "text_fingerprint_dice": 0.8497316636851521,
+      "same_index_score": 0.8497316636851521
+    },
+    {
+      "output_segment": 3,
+      "best_matching_PDF_page": 3,
+      "text_fingerprint_dice": 0.9835088416451421,
+      "same_index_score": 0.9835088416451421
+    },
+    {
+      "output_segment": 4,
+      "best_matching_PDF_page": 4,
+      "text_fingerprint_dice": 0.9413427561837456,
+      "same_index_score": 0.9413427561837456
+    },
+    {
+      "output_segment": 5,
+      "best_matching_PDF_page": 5,
+      "text_fingerprint_dice": 0.9407407407407408,
+      "same_index_score": 0.9407407407407408
+    },
+    {
+      "output_segment": 6,
+      "best_matching_PDF_page": 6,
+      "text_fingerprint_dice": 0.829854969932791,
+      "same_index_score": 0.829854969932791
+    },
+    {
+      "output_segment": 7,
+      "best_matching_PDF_page": 7,
+      "text_fingerprint_dice": 0.6771026797559034,
+      "same_index_score": 0.6771026797559034
+    },
+    {
+      "output_segment": 8,
+      "best_matching_PDF_page": 8,
+      "text_fingerprint_dice": 0.9632164242942686,
+      "same_index_score": 0.9632164242942686
+    },
+    {
+      "output_segment": 9,
+      "best_matching_PDF_page": 9,
+      "text_fingerprint_dice": 0.7340277777777777,
+      "same_index_score": 0.7340277777777777
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "verified_utc": "2026-10-28T08:46:07.714660+00:00",
+  "input_pdf_sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+  "input_pages": 15,
+  "dpi": 300,
+  "route": "Official pdf_to_images reader, then one native Transformers infer_multi with all 15 ordered page images",
+  "reader_provenance_correction": {
+    "utc": "2026-10-28T08:37:42.470774+00:00",
+    "remote_source_git_blob": "8782f6e14af3fc0b052e2bfc245dd88e33756084",
+    "observed_snapshot_git_blob": "34054be064cc707f00471a5a59bf7cd85d4b42b9",
+    "observed_snapshot_sha256": "7e6409e5b993dc16d81d98aeaa6103fbe1f951ddbd24356e6cd5a0c539d1896b",
+    "canonical_snapshot_git_blob": "8782f6e14af3fc0b052e2bfc245dd88e33756084",
+    "canonical_snapshot_sha256": "43a888efc4069811d0f33d0ca248c2533aa206846d17b73d5b7d5e00029bd71e",
+    "local_snapshot_difference": "remove_one_terminal_LF",
+    "canonical_snapshot": ".local\\pdf-pipeline-rca\\upstream\\official-README.canonical.md",
+    "original_observed_snapshot_preserved": true,
+    "reader_function_AST_identical": true,
+    "manifest_function_sha256_kind": "UTF-8 normalized-LF source used for compilation; not a hash of the CRLF file bytes",
+    "function_source_lf_sha256": "61a853a242535357a400efbb6d4ea22f6cbfdd3082199f988f71c18753d94ee0",
+    "saved_function_file_sha256": "090a0566cb95974fa61cbc618fa69d3897b4d851e9a75286dd05feaaf160a5ac"
+  },
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "source_and_weight_inventory_verified_again": true,
+  "package_and_driver_invariants_between_cohorts": true,
+  "primary_RCA_runtime_and_images_unchanged": [
+    {
+      "kind": "dll",
+      "name": "amdhip64_7.dll",
+      "sha256": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033"
+    },
+    {
+      "kind": "dll",
+      "name": "aotriton_v2.dll",
+      "sha256": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22"
+    },
+    {
+      "kind": "dll",
+      "name": "liblzma.dll",
+      "sha256": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f"
+    },
+    {
+      "kind": "dll",
+      "name": "dl.dll",
+      "sha256": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca"
+    },
+    {
+      "kind": "dll",
+      "name": "torch_hip.dll",
+      "sha256": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94"
+    },
+    {
+      "kind": "images",
+      "name": "__signature__",
+      "sha256": "03e77e8c75805d4587ddf8bad848d0dab1ec7626b34911e07218b26537f904fe"
+    },
+    {
+      "kind": "images",
+      "name": "attn_fwd.zip",
+      "sha256": "adfb2fd4d07046cb40a5cf853303a01eb0cf79bc35094d033cf85955a2906850"
+    },
+    {
+      "kind": "images",
+      "name": "bwd_kernel_dk_dv.zip",
+      "sha256": "5916c09b132cea66437b7179412ac3b7d5a0e8753e392e17e2187a6f20d257ee"
+    },
+    {
+      "kind": "images",
+      "name": "bwd_kernel_dq.zip",
+      "sha256": "ac662db1ef47e329d0c1393fb93a6d73aeae0f9995766816777c530e452bad98"
+    },
+    {
+      "kind": "images",
+      "name": "bwd_kernel_fuse.zip",
+      "sha256": "4e3c9ca45cff2996dc0b04851a210a359c00f5ca4fe0fba39f056b436ede9b63"
+    },
+    {
+      "kind": "images",
+      "name": "bwd_preprocess.zip",
+      "sha256": "109e9b3b5eda351066eea7d73980019dd81f1d72ef3c41883fce382b96934b8d"
+    },
+    {
+      "kind": "images",
+      "name": "bwd_preprocess_varlen.zip",
+      "sha256": "4ef1d3238cc0ad5544ceb62ceca2ede3952e1fc73d9bb01aad436998edd3a57d"
+    },
+    {
+      "kind": "images",
+      "name": "debug_simulate_encoded_softmax.zip",
+      "sha256": "4ccc9fa5780fad18ae984e833fbb1d5a071851f7bb7baf72ff7625dff994946e"
+    },
+    {
+      "kind": "runtime_header",
+      "name": "config.h",
+      "sha256": "a7c2ae355d5a50392c6d29a37de6cc4bebb34a43f2aef0bb5e7ae008104e6f13"
+    }
+  ],
+  "unadapted": {
+    "run_id": "eaadf93f-28d4-4bb2-b575-04dce902596e",
+    "status": "FAIL",
+    "wall_seconds": 24.141000000061467,
+    "first_error": {
+      "number": 1,
+      "module": "sam_model",
+      "page": 1,
+      "qkv_shapes": [
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ]
+      ],
+      "qkv_strides": [
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ]
+      ],
+      "dtype": "torch.bfloat16",
+      "mask_shape": [
+        25,
+        12,
+        196,
+        196
+      ],
+      "backend_observed": "EFFICIENT_ATTENTION",
+      "hip_before": 0,
+      "hip_after": 1,
+      "synchronize": "OK"
+    },
+    "DASH_calls": 0
+  },
+  "math": {
+    "run_id": "8c816946-cf2f-4b09-9ebd-7e7fb815c962",
+    "status": "INFERENCE_COMPLETED_NOT_ACCURACY_SCORED",
+    "output_tokens": 13836,
+    "generation": {
+      "finish_reason": "stop",
+      "num_pages_out": 15,
+      "expected_pages": 15,
+      "time": 1276.4088945388794,
+      "prefill_time": 11.959940433502197
+    },
+    "wall_seconds": 1300.984999999986,
+    "vision_completions": {
+      "SAM": 15,
+      "CLIP": 15
+    },
+    "SDPA_calls": 540,
+    "HIP_errors": 0,
+    "native_DASH_calls": 12,
+    "structure": {
+      "raw_page_markers": 15,
+      "content_segments": 15,
+      "terminal_empty_marker": false,
+      "nonempty_content_per_segment": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "raw_sha256": "2fde62d850f3e07cb914c792e818f9378cbea287fb80423ab6beec44130cf1c4",
+    "readable_sha256": "e898b25ffa675e4e8c22c4e041ae53f563d23047159514ec931a45f5d2ef4ad6",
+    "memory": {
+      "process_rss_bytes": 8103555072,
+      "process_peak_rss_bytes": 9560043520,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 78189056000,
+      "system_memory_percent": 41.1,
+      "gpu_allocated_bytes": 6865890304,
+      "gpu_reserved_bytes": 9542041600,
+      "gpu_peak_allocated_bytes": 9298788352,
+      "gpu_peak_reserved_bytes": 9542041600,
+      "gpu_free_total_bytes": [
+        67832827904,
+        83954728960
+      ]
+    }
+  },
+  "order_diagnostic": {
+    "matching_page_indices": 15,
+    "scores": [
+      0.947209653092006,
+      0.8497316636851521,
+      0.9835088416451421,
+      0.9413427561837456,
+      0.9407407407407408,
+      0.829854969932791,
+      0.6771026797559034,
+      0.9632164242942686,
+      0.7340277777777777,
+      0.9503753127606339,
+      0.9687337154768109,
+      0.9366540335679481,
+      0.9942353340115293,
+      0.978349912229374,
+      0.9735525375268048
+    ],
+    "accuracy_scored": false,
+    "accuracy_threshold": null
+  },
+  "causal_scope": "Corroboration on the real full-PDF pipeline of the previously demonstrated exact-stack packaged runtime/image contract defect; this comparison is not a new images-only A/B experiment.",
+  "tracked_tree_clean": true,
+  "tests": "No production implementation changed in this follow-up; no new full CPU-suite claim. These post-run assertions verify the original physical inference records."
+}

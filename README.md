@@ -103,6 +103,8 @@ itself and inspects markup without evaluating it. See [security notes](docs/SECU
 
 ## Evidence and scope
 
+The SDPA investigation now includes an [official Transformers full-PDF trace and reproduction guide](docs/rca/FULL_PDF_PIPELINE.md), the [exact original 15-page PDF test fixture](eval/rca/gfx1151-rocm7141/pdf-followup/input/Unlimited-OCR-2.pdf), and [complete OCR outputs/raw traces](eval/rca/gfx1151-rocm7141/pdf-followup/README.md). With the existing scoped GPU MATH adapter, one native request completes all 15 pages while retaining DASH. OCR accuracy for this paper is unscored; this diagnostic bypasses the CLI's five-image input gate without changing it.
+
 Phase 1 PASS requires A: environment, B: native model/kernels, C: OCR
 correctness, D: native ordered multi-page correctness and E: a second clean
 environment on the same real machine. Unexecuted checks are NOT TESTED.

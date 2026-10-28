@@ -1,0 +1,98 @@
+{
+  "run_id": "65381e17-026c-4301-a50d-253e34553b2e",
+  "utc": "2026-10-28T08:05:28.528246+00:00",
+  "pdf_sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+  "pdf_pages": 15,
+  "tested_pages": [
+    1
+  ],
+  "render_dpi": 144,
+  "direct_pdf": "Pillow UnidentifiedImageError before vision/SDPA; separate unsupported-input-format issue",
+  "replay_results": [
+    {
+      "encoder": "sam_model",
+      "requested": "DEFAULT",
+      "observed": "EFFICIENT_ATTENTION",
+      "status": "FAIL",
+      "run_id": "861bef18-483b-4bc4-9409-283c735d9373",
+      "fixture_sha256": "5c2755ea26bb00c36852a34c24024fd864e4bbf334454ef34a2af4494c3ca8ba",
+      "hip_after_sdpa": 1,
+      "max_abs_error": null,
+      "report": "sam_model-DEFAULT.json"
+    },
+    {
+      "encoder": "sam_model",
+      "requested": "MATH",
+      "observed": "MATH",
+      "status": "PASS",
+      "run_id": "da673d50-e069-41c9-8ce4-407c2ca77da5",
+      "fixture_sha256": "5c2755ea26bb00c36852a34c24024fd864e4bbf334454ef34a2af4494c3ca8ba",
+      "hip_after_sdpa": 0,
+      "max_abs_error": 0.00390625,
+      "report": "sam_model-MATH.json"
+    },
+    {
+      "encoder": "vision_model",
+      "requested": "DEFAULT",
+      "observed": "FLASH_ATTENTION",
+      "status": "FAIL",
+      "run_id": "b9774512-9ae6-4f19-9db4-8c5b6f070436",
+      "fixture_sha256": "e9b8411e86b46dff85c757983893223efd03f48c324d6bd89634df3fa770a560",
+      "hip_after_sdpa": 1,
+      "max_abs_error": null,
+      "report": "vision_model-DEFAULT.json"
+    },
+    {
+      "encoder": "vision_model",
+      "requested": "MATH",
+      "observed": "MATH",
+      "status": "PASS",
+      "run_id": "650ff5ed-70d1-4617-9087-7125da99392e",
+      "fixture_sha256": "e9b8411e86b46dff85c757983893223efd03f48c324d6bd89634df3fa770a560",
+      "hip_after_sdpa": 0,
+      "max_abs_error": 0.0019503235816955566,
+      "report": "vision_model-MATH.json"
+    }
+  ],
+  "loaded_component_file_invariants": [
+    {
+      "name": "amdhip64_7.dll",
+      "expected": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "actual": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "match": true
+    },
+    {
+      "name": "aotriton_v2.dll",
+      "expected": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22",
+      "actual": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22",
+      "match": true
+    },
+    {
+      "name": "dl.dll",
+      "expected": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca",
+      "actual": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca",
+      "match": true
+    },
+    {
+      "name": "liblzma.dll",
+      "expected": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f",
+      "actual": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f",
+      "match": true
+    },
+    {
+      "name": "torch_hip.dll",
+      "expected": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94",
+      "actual": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94",
+      "match": true
+    }
+  ],
+  "adapted_page_inference": {
+    "status": "INFERENCE_ONLY",
+    "tokens": 546,
+    "DASH_calls": 12,
+    "finish_reason": "stop",
+    "accuracy": "Not independently scored; INFERENCE_ONLY is not an OCR correctness PASS"
+  },
+  "source_weights_and_adapter": "Unmodified; model-load.json records original pinned hashes",
+  "publication": "Local diagnostic only; PDF and captured tensors not committed or uploaded"
+}

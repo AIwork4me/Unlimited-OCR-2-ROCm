@@ -1,0 +1,11 @@
+def pdf_to_images(pdf_path, dpi=300):
+    doc = fitz.open(pdf_path)
+    tmp_dir = tempfile.mkdtemp(prefix="pdf_ocr_")
+    mat = fitz.Matrix(dpi / 72, dpi / 72)
+    image_paths = []
+    for i, page in enumerate(doc):
+        image_path = os.path.join(tmp_dir, f"page_{i + 1:04d}.png")
+        page.get_pixmap(matrix=mat).save(image_path)
+        image_paths.append(image_path)
+    doc.close()
+    return image_paths

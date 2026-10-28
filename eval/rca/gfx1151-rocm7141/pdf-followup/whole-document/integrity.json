@@ -1,0 +1,6 @@
+{
+  "verified_files": 55,
+  "all_match": true,
+  "sumfile_sha256": "0d9fff5c2f13bc968c61f0c2b59ae9db86b0dbd2588211c3153d460ee7f23a4b",
+  "scope": "Local preserved PDF pipeline artifacts; input PDF hash and pinned model hashes are separately verified in summary.json"
+}

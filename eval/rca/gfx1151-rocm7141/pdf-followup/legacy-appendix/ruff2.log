@@ -1,0 +1,12 @@
+E501 Line too long (117 > 100)
+   --> tests\unit\test_sdpa_rca_reporting.py:134:101
+    |
+132 |     module = importlib.util.module_from_spec(spec)
+133 |     spec.loader.exec_module(module)
+134 |     text = "#define AOTRITON_VERSION_MINOR 12u\n#define AOTRITON_GIT_SHA1 05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920\n"
+    |                                                                                                     ^^^^^^^^^^^^^^^^^
+135 |     result = module.parse_header(text)
+136 |     assert result["AOTRITON_VERSION_MINOR"] == "12u"
+    |
+
+Found 1 error.

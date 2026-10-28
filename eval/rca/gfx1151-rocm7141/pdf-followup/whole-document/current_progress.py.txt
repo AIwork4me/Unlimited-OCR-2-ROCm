@@ -1,0 +1,4 @@
+import pathlib,json,collections
+base=pathlib.Path('.local/pdf-pipeline-rca');events=[json.loads(x) for x in (base/'math/trace.jsonl').read_text(encoding='utf-8').splitlines()]
+counts=collections.Counter(e['stage'] for e in events);sdpa=[e for e in events if e['stage']=='SDPA'];enc=[e for e in events if e['stage']=='encoder_end'];print({'official_image_opens':counts['official_Image_open'],'vision_completions':dict(collections.Counter(e['encoder'] for e in enc)),'SDPA_calls':len(sdpa),'SDPA_errors':[e['number'] for e in sdpa if e['hip_before'] or e['hip_after']],'decoder_layers':[e['layer'] for e in events if e['stage']=='decoder_layer_first_entry'],'first_observed_backends':[(e['module'],e['backend_observed']) for e in sdpa if 'profiler_operators' in e]})
+if (base/'math/progress.json').exists():print(json.loads((base/'math/progress.json').read_text(encoding='utf-8')))

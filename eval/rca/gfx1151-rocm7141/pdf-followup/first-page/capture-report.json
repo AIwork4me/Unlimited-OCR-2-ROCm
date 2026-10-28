@@ -1,0 +1,215 @@
+{
+  "run_id": "ae324ee6-67df-4e29-8bec-6c03bb865923",
+  "utc": "2026-10-28T08:00:33.736020+00:00",
+  "purpose": "Read-only actual-PDF page diagnostic; production MATH adapter preserved",
+  "script_sha256": "45751584dd833c08924309c23ba753c9381d05cd9bc849d58f36a4ed45ba74d7",
+  "pdf": {
+    "pdf_sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+    "page_count": 15,
+    "encrypted": false,
+    "first_page_text": "Unlimited OCR Works 2\nPioneering the OCR-3.0 Era: From Long- to Unlimited-Horizon Parsing\nBaidu ERNIE Team\nAbstract\nUnlimited OCR ushers the era of long-horizon parsing, substantially mitigating the growth of\nworking memory as document lengthens. However, as document length scales to hundreds\nof pages, the visual context grows substantially, sharply increasing the computational cost\nof each decoding step and limiting the scalability of ultra-long document parsing. Inspired\nby human book transcription via localized focus without re-scanning preceding pages, we\nintroduce Unlimited OCR 2, a document parsing model that looks only at what it transcribes.\nBuilding on Unlimited OCR, we upgrade all the decoder attention modules to Sparse Reference\nSliding Window Attention (SR-SWA), bounding active reference tokens to a fixed capacity and\nthus sustaining constant computational costs across arbitrarily long documents. By combining\nSR-SWA with Unlimited-Horizon Decoding Paradigm, Unlimited OCR 2 enables document\nparsing over virtually unlimited lengths without prohibitive memory overhead. At the hundred-\npage scale, Unlimited OCR 2 achieves 7.0\u00d7 and 5.6\u00d7 per-step speedups over Full Attention and\nR-SWA, respectively. Furthermore, it delivers state-of-the-art end-to-end performance on both\nMPDocBench and MarathonDocBench, our newly proposed benchmark targeting hundred-\npage document parsing. Ultimately, the capacity for uninterrupted, one-shot document parsing\nsignifies a fundamental paradigm shift into the OCR 3.0 era.\nPage 1 Page 2  Page 3 Ongoing Generation\nAttended Visual TokenAttended Text TokenNext TokenNot Attended Token\nPage 1 Page 2  Page 3 Ongoing Generation\n\u2026 \u2026\n\u2026\u2026\n(a)  R-SWA (b)  SR-SWAVisualtoken cost overload\nHuman-like selection of visual tokens\nInputOutputInputOutput\nFocus Wisely \nActive Pages\nFigure 1 | R-SWA vs SR-SWA. R-SWA computes attention over all visual tokens across pages,\ninducing extreme visual redundancy; SR-SWA sparsely attends to relevant visual regions,\naligning machine decoding with human reading intuition."
+  },
+  "page_image_sha256": "850453ac6519d55e73b7d9ff310e705342fb5633744c9576eebdae6b8dc86197",
+  "captures": {
+    "sam_model": {
+      "fixture": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-input-check\\sam_model-actual-input.pt",
+      "fixture_sha256": "5c2755ea26bb00c36852a34c24024fd864e4bbf334454ef34a2af4494c3ca8ba",
+      "shape": [
+        [
+          54,
+          12,
+          196,
+          64
+        ],
+        [
+          54,
+          12,
+          196,
+          64
+        ],
+        [
+          54,
+          12,
+          196,
+          64
+        ]
+      ],
+      "gpu_stride": [
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ]
+      ],
+      "dtype": "torch.bfloat16",
+      "mask_shape": [
+        54,
+        12,
+        196,
+        196
+      ],
+      "mask_dtype": "torch.bfloat16",
+      "dropout_p": 0.0,
+      "is_causal": false,
+      "scale": null
+    },
+    "vision_model": {
+      "fixture": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-input-check\\vision_model-actual-input.pt",
+      "fixture_sha256": "e9b8411e86b46dff85c757983893223efd03f48c324d6bd89634df3fa770a560",
+      "shape": [
+        [
+          6,
+          16,
+          101,
+          64
+        ],
+        [
+          6,
+          16,
+          101,
+          64
+        ],
+        [
+          6,
+          16,
+          101,
+          64
+        ]
+      ],
+      "gpu_stride": [
+        [
+          310272,
+          64,
+          3072,
+          1
+        ],
+        [
+          310272,
+          64,
+          3072,
+          1
+        ],
+        [
+          310272,
+          64,
+          3072,
+          1
+        ]
+      ],
+      "dtype": "torch.bfloat16",
+      "mask_shape": null,
+      "mask_dtype": null,
+      "dropout_p": 0.0,
+      "is_causal": false,
+      "scale": null
+    }
+  },
+  "inference_status": "INFERENCE_ONLY",
+  "native_kernel_count": 12,
+  "tokens": 546,
+  "traceback": null,
+  "vision_events": [
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            6,
+            3,
+            640,
+            640
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            6,
+            3,
+            640,
+            640
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            6,
+            1024,
+            10,
+            10
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            1,
+            1024,
+            16,
+            16
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "status": "INFERENCE_ONLY"
+}

@@ -1,0 +1,46 @@
+import sys,pathlib,json,hashlib,subprocess,collections,datetime,uuid
+sys.path.insert(0,'experiments/sdpa_rca')
+from reporting import write_json,sha256
+root=pathlib.Path.cwd();out=root/'.local/rca/public-source'
+write_json(out/'upstream-7992.json',{'url':'https://github.com/ROCm/TheRock/issues/7992','closed_at':'2026-09-15T00:00:00Z (date from issue; time unspecified)','scope':'Reading notes, not local hardware evidence','reporter_configuration':'gfx1201 / Radeon AI PRO R9700, Windows 10, Python 3.13.15, driver PRO 26.10.36','failing_torch':['2.12.0+rocm7.14.1','2.12.0+rocm10.0.0'],'reported_passing_nightly':'torch 2.15.0a0+rocm10.1.0a20260908; ROCm core/libraries/device 10.1.0a20260908','discussion':[{'url':'https://github.com/ROCm/TheRock/issues/7992#issuecomment-5591764777','paraphrase':'AMD maintainer asked for a current-nightly test, mentioning a recently addressed HIP/AOTriton hash-version pairing problem.'},{'url':'https://github.com/ROCm/TheRock/issues/7992#issuecomment-5592002534','paraphrase':'Reporter obtained passing default/math/flash/efficient and ordering tests in a clean nightly environment, while noting that both torch and ROCm changed.'},{'url':'https://github.com/ROCm/TheRock/issues/7992#issuecomment-5665913175','paraphrase':'Maintainer linked an available torch 2.12 / ROCm 10.2 nightly as a way to hold the major torch version fixed.'},{'url':'https://github.com/ROCm/TheRock/issues/7992#issuecomment-5681886576','paraphrase':'Maintainer closed the issue after the nightly resolution.'}],'local_conclusion':'Lead only: no exact fixed binary or commit is established by this issue. Follow-up references #7315 and ROCm/pytorch #3568 provide more specific source history.'})
+for source in json.loads((out/'source-provenance.json').read_text())['sources']:
+    source['downloaded_local_sha256']=sha256(root/'.local/rca'/source['local_inspection_filename'])
+sources=json.loads((out/'source-provenance.json').read_text())
+for source in sources['sources']:source['downloaded_local_sha256']=sha256(root/'.local/rca'/source['local_inspection_filename'])
+write_json(out/'source-provenance.json',sources)
+commits=subprocess.check_output(['git','rev-list','HEAD'],text=True).splitlines()
+paths=['experiments/sdpa_rca/repro_sdpa.py','experiments/sdpa_rca/reporting.py','experiments/sdpa_rca/collect_provenance.py','scripts/probe_vision_sdpa.py','scripts/smoke_single.py']
+lookup={}
+for commit in commits:
+    for path in paths:
+        r=subprocess.run(['git','show',f'{commit}:{path}'],capture_output=True)
+        if r.returncode==0:lookup.setdefault(hashlib.sha256(r.stdout).hexdigest(),{'commit':commit,'path':path,'url':f'https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/{commit}/{path}'})
+needed=set()
+for path in out.rglob('*.json'):
+    data=json.loads(path.read_text(encoding='utf-8-sig'))
+    def scan(value):
+        if isinstance(value,dict):
+            for key,item in value.items():
+                if key in ('script_sha256','reporting_sha256') and isinstance(item,str):needed.add(item)
+                else:scan(item)
+        elif isinstance(value,list):
+            for item in value:scan(item)
+    scan(data)
+matched=[{'sha256':key,**lookup[key]} for key in sorted(needed) if key in lookup]
+unmatched=sorted(needed-set(lookup))
+write_json(out/'producer-sources.json',{'note':'Maps actual producing bytes to containing commits; producer HEAD may precede an uncommitted collector addition. Script hashes, not an assertion of clean checkout, identify the source.','sources':matched,'unmatched':unmatched})
+print('Producer source hashes:',len(matched),'unmatched:',unmatched)
+manifest=json.loads((out/'experiment-manifest.json').read_text())
+records=manifest['records'];groups=collections.defaultdict(collections.Counter)
+for r in records:groups[r['path'].split('/')[0]][r['status']]+=1
+lines=['# Executed SDPA test matrix','','All 113 standalone child reports below come from fresh native Windows gfx1151 processes. A/B/A changes only the image-directory payload in the secondary environment. Primary baseline remains unchanged. Child stdout/stderr and process exit codes accompany each JSON. The two explicitly non-acceptance clearing diagnostics are retained and excluded from acceptance claims.','','Frozen tolerances: BF16 .03/.03; FP16 .005/.005; FP32 .0001/.0001 (atol/rtol). CPU seed 7992, exact quantized fixture hashing. All argument arrays, full run IDs, numerical statistics and provenance joins are in the [machine-readable index](../../eval/rca/gfx1151-rocm7141/experiment-manifest.json).','','## Groups','','| Group | PASS | FAIL | UNSUPPORTED |','|---|---:|---:|---:|']
+for name,count in sorted(groups.items()):lines.append(f"| {name} | {count['PASS']} | {count['FAIL']} | {count['UNSUPPORTED']} |")
+lines+=['','UNOBSERVED means the tracing mechanism did not expose a named backend; it is never replaced with the requested flag. The separate profiler-MATH case observes `aten::_scaled_dot_product_attention_math`. HIP traces without dispatcher instrumentation remain UNOBSERVED in their raw reports. Unsupported routes execute no attention kernel.','','## Individual conditions','','`A`: torch-only-A; `B`: torch-only-B-*; `A restored`: torch-only-A-restored-*. baseline/isolation use the untouched original OCR venv. Full names retain provenance context. Max abs is measured against the independent CPU reference; dash means not measured. A process with a pending error does not read its invalid output in acceptance.','','| Artifact / condition | Shape | Dtype / mask | Requested → observed | Status | Max abs | Run ID |','|---|---|---|---|---|---:|']
+for r in records:
+    a=r['arguments'];numerical=r.get('numerical');error='—' if not numerical else f"{numerical['max_abs_error_finite']:.9g}"
+    tag=r['status']+(' (NON-ACCEPTANCE)' if not r['acceptance'] else '')
+    link='../../eval/rca/gfx1151-rocm7141/'+r['path']
+    shape='×'.join(map(str,a['shape']))
+    lines.append(f"| [{r['path']}]({link}) | {shape} | {a['dtype']} / {a['mask']} | {r['backend_requested']} → {r['backend_observed']} | {tag} | {error} | `{r['run_id']}` |")
+lines+=['','## Model cross-check','','[Fresh-process manifest](../../eval/rca/gfx1151-rocm7141/model-final/process-manifest.json): SAM default exits 1; SAM MATH exits 0 after three block forwards and a reference check; two accepted English OCR requests (normal and Unicode/recovery) retain the existing adapter, BF16, unchanged official hashes and 12 native DASH calls per request. The larger Phase 1 suite was not rerun.','','## Interpretation','','The scalar no-mask FLASH failure has the smallest possible positive dimensions. The scalar bias input uses MATH and passes; efficient D=1 is rejected as unsupported. Thus shape-only minimization that silently changes dispatch can conceal the defect. Copy-only passes; arithmetic/cast/copy following fused SDPA retain or report its earlier error. B passes all supported counterparts of the original isolation matrix. Multiple clean-process repetitions support deterministic reproduction for the fixed seed; no reliability estimate for arbitrary hardware is claimed.']
+(root/'docs/rca/TEST_MATRIX.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')

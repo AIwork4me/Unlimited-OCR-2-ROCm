@@ -1,0 +1,66 @@
+{
+  "version": "1",
+  "pip_version": "26.2.2",
+  "install": [
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/a8/b6/2a9a8556000199bbf80a5915dcd15d550d1e5288894316445c54726aaf53/pymupdf-1.27.2.2-cp310-abi3-win_amd64.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "09bb53f9486ccb5297030cbc2dbdae845ba1c3c5126e96eb2d16c4f118de0b5b"
+          },
+          "hash": "sha256=09bb53f9486ccb5297030cbc2dbdae845ba1c3c5126e96eb2d16c4f118de0b5b"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "PyMuPDF",
+        "version": "1.27.2.2",
+        "summary": "A high performance Python library for data extraction, analysis, conversion & manipulation of PDF (and other) documents.",
+        "description_content_type": "text/markdown",
+        "author": "Artifex",
+        "author_email": "support@artifex.com",
+        "license": "Dual Licensed - GNU AFFERO GPL 3.0 or Artifex Commercial License",
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Information Technology",
+          "Operating System :: MacOS",
+          "Operating System :: Microsoft :: Windows",
+          "Operating System :: POSIX :: Linux",
+          "Programming Language :: C",
+          "Programming Language :: C++",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Topic :: Utilities",
+          "Topic :: Multimedia :: Graphics",
+          "Topic :: Software Development :: Libraries"
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Documentation, https://pymupdf.readthedocs.io/",
+          "Source, https://github.com/pymupdf/pymupdf",
+          "Tracker, https://github.com/pymupdf/PyMuPDF/issues",
+          "Changelog, https://pymupdf.readthedocs.io/en/latest/changes.html"
+        ],
+        "description": "# PyMuPDF\n\n**PyMuPDF** is a high performance **Python** library for data extraction, analysis, conversion & manipulation of [PDF (and other) documents](https://pymupdf.readthedocs.io/en/latest/the-basics.html#supported-file-types).\n\n# Community\nJoin us on **Discord** here: [#pymupdf](https://discord.gg/TSpYGBW4eq)\n\n\n# Installation\n\n**PyMuPDF** requires **Python 3.10 or later**, install using **pip** with:\n\n`pip install PyMuPDF`\n\nThere are **no mandatory** external dependencies. However, some [optional features](#pymupdf-optional-features) become available only if additional packages are installed.\n\nYou can also try without installing by visiting [PyMuPDF.io](https://pymupdf.io/#examples).\n\n\n# Usage\n\nBasic usage is as follows:\n\n```python\nimport pymupdf # imports the pymupdf library\ndoc = pymupdf.open(\"example.pdf\") # open a document\nfor page in doc: # iterate the document pages\n  text = page.get_text() # get plain text encoded as UTF-8\n\n```\n\n\n# Documentation\n\nFull documentation can be found on [pymupdf.readthedocs.io](https://pymupdf.readthedocs.io).\n\n\n\n# <a id=\"pymupdf-optional-features\"></a>Optional Features\n\n* [fontTools](https://pypi.org/project/fonttools/) for creating font subsets.\n* [pymupdf-fonts](https://pypi.org/project/pymupdf-fonts/) contains some nice fonts for your text output.\n* [Tesseract-OCR](https://github.com/tesseract-ocr/tesseract) for optical character recognition in images and document pages.\n\n\n\n# About\n\n**PyMuPDF** adds **Python** bindings and abstractions to [MuPDF](https://mupdf.com/), a lightweight **PDF**, **XPS**, and **eBook** viewer, renderer, and toolkit. Both **PyMuPDF** and **MuPDF** are maintained and developed by [Artifex Software, Inc](https://artifex.com).\n\n**PyMuPDF** was originally written by [Jorj X. McKie](mailto:jorj.x.mckie@outlook.de).\n\n\n# License and Copyright\n\n**PyMuPDF** is available under [open-source AGPL](https://www.gnu.org/licenses/agpl-3.0.html) and commercial license agreements. If you determine you cannot meet the requirements of the **AGPL**, please contact [Artifex](https://artifex.com/contact/pymupdf-inquiry.php) for more information regarding a commercial license.\n"
+      }
+    }
+  ],
+  "environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.10.20",
+    "os_name": "nt",
+    "platform_machine": "AMD64",
+    "platform_release": "10",
+    "platform_system": "Windows",
+    "platform_version": "10.0.26200",
+    "python_full_version": "3.10.20",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.10",
+    "sys_platform": "win32"
+  }
+}

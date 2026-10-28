@@ -1,0 +1,14 @@
+import sys,pathlib,json,uuid,datetime,subprocess
+sys.path.insert(0,'experiments/sdpa_rca')
+from compare_backends import run_case
+from reporting import write_json
+root=pathlib.Path.cwd(); out=root/'.local/rca/checks';out.mkdir(exist_ok=True)
+py=str(pathlib.Path.home()/'.codex/worktrees/phase1-windows-gfx1151/Unlimited-OCR-2-ROCm/.venv-cpu/Scripts/python.exe')
+checks=[('ruff',[py,'-m','ruff','check','src','scripts','tests','experiments/sdpa_rca']),('format',[py,'-m','ruff','format','--check','src','scripts','tests','experiments/sdpa_rca']),('pytest-cpu',[py,'-m','pytest']),('mypy',[py,'-m','mypy','src']),('build',[py,'-m','build']),('pip-check',[py,'-m','pip','check'])]
+results=[]
+for name,command in checks:
+    r=run_case(command,out/name,root);r['name']=name
+    results.append(r);write_json(out/'process-manifest.json',results)
+    print(name,r['exit_code'],flush=True)
+    print((out/(name+'.stdout.log')).read_text(encoding='utf-8')[-500:],flush=True)
+assert all(r['exit_code']==0 for r in results)

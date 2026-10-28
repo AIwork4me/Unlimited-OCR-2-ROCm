@@ -1,0 +1,117 @@
+[
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "check",
+      "src",
+      "scripts",
+      "tests",
+      "experiments/sdpa_rca"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "ad5f0e03-5051-4cff-bfa6-997e522266a1",
+    "utc": "2026-10-28T09:04:28.362262+00:00",
+    "wall_seconds": 0.14000000001396984,
+    "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "ruff",
+    "code_commit": "2d5555636869c9b1399738b056e402a37528d94f",
+    "scope": "CPU package checks only; docs/evidence publication working tree"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "format",
+      "--check",
+      "src",
+      "scripts",
+      "tests",
+      "experiments/sdpa_rca"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "853f3c9a-be6a-400f-94e4-bb9d76c838a8",
+    "utc": "2026-10-28T09:04:28.550301+00:00",
+    "wall_seconds": 0.1410000000614673,
+    "stdout_sha256": "6ed8d1cb172b51dddf192664f6e4b2a6c56db357a990dcce6f028de11201bd61",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "format",
+    "code_commit": "2d5555636869c9b1399738b056e402a37528d94f",
+    "scope": "CPU package checks only; docs/evidence publication working tree"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "pytest"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "3456ae99-217c-4451-b8b4-ad3f6d6d043c",
+    "utc": "2026-10-28T09:04:28.732096+00:00",
+    "wall_seconds": 2.14000000001397,
+    "stdout_sha256": "e772d08ec0d827c59dc3d683c2e7b0e93d2d8b2a1a51319ac56b10ece7d3e6cc",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "pytest",
+    "code_commit": "2d5555636869c9b1399738b056e402a37528d94f",
+    "scope": "CPU package checks only; docs/evidence publication working tree"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "mypy",
+      "src"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "0c12da6d-1f37-495e-9463-319018197a20",
+    "utc": "2026-10-28T09:04:30.933531+00:00",
+    "wall_seconds": 4.405999999959022,
+    "stdout_sha256": "e522fa370334927ac2ccb7106100045b572938dd238093267de825336e6704f2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "mypy",
+    "code_commit": "2d5555636869c9b1399738b056e402a37528d94f",
+    "scope": "CPU package checks only; docs/evidence publication working tree"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "build"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "c06c1508-4653-4274-9320-fcc3b332d34b",
+    "utc": "2026-10-28T09:04:35.395789+00:00",
+    "wall_seconds": 10.515999999945052,
+    "stdout_sha256": "9263f2862d1ef2967fbdbcfa071cf814455c766da5cad30235816eeac5ef5f4d",
+    "stderr_sha256": "e06196cdafefab81f4a8cb1a71a04f85dbaa5d476437922b1e2cb04d6b2d6fc7",
+    "name": "build",
+    "code_commit": "2d5555636869c9b1399738b056e402a37528d94f",
+    "scope": "CPU package checks only; docs/evidence publication working tree"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv-cpu\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "eac29e7e-224c-4b5b-8beb-a48fe710472a",
+    "utc": "2026-10-28T09:04:45.965442+00:00",
+    "wall_seconds": 0.9849999999860302,
+    "stdout_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "pip-check",
+    "code_commit": "2d5555636869c9b1399738b056e402a37528d94f",
+    "scope": "CPU package checks only; docs/evidence publication working tree"
+  }
+]

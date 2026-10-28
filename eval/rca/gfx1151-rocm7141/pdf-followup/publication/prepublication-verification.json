@@ -1,0 +1,16 @@
+{
+  "utc": "2026-10-28T09:03:13.855499+00:00",
+  "status": "PASS",
+  "export_original_published_pairs_verified": 113,
+  "original_PDF_exact_bytes": true,
+  "PDF_sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+  "source_and_new_report_links_valid": true,
+  "new_text_privacy_scan": "PASS",
+  "documented_preparation_executed": true,
+  "configured_trace_compiles": true,
+  "official_CPU_renderer_rerun_exit": 0,
+  "rendered_pages": 15,
+  "all_15_PNG_hashes_equal_original_run": true,
+  "GPU_rerun": "NOT RUN during publication; original physical process evidence retained",
+  "archival_documents": "Historical local reports/scripts may contain historical local links and require configured paths; final guide is authoritative"
+}
