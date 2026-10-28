@@ -1,0 +1,515 @@
+{
+  "native_entrypoint": "infer",
+  "inputs": [
+    {
+      "path": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\tests\\fixtures\\mixed.png",
+      "sha256": "09714bd58f4042dde37d4c1152b273585f7beb86562b046e02d5b2b58205ef03"
+    }
+  ],
+  "memory_before": {
+    "process_rss_bytes": 11854876672,
+    "process_peak_rss_bytes": 11878006784,
+    "system_total_bytes": 132766306304,
+    "system_available_bytes": 71144034304,
+    "system_memory_percent": 46.4,
+    "gpu_allocated_bytes": 6865838592,
+    "gpu_reserved_bytes": 11272192000,
+    "gpu_peak_allocated_bytes": 9205006336,
+    "gpu_peak_reserved_bytes": 11272192000,
+    "gpu_free_total_bytes": [
+      62245916672,
+      83954728960
+    ]
+  },
+  "max_new_tokens": 1024,
+  "model": {
+    "status": "PASS",
+    "model_id": "baidu/Unlimited-OCR-2",
+    "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "code_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "source_and_weight_hashes": {
+      "configuration_deepseek_v2.py": "b8470dd616ba8745fce6e27b093aef73a098863cc891b2477dcf9326a36000f7",
+      "dash_attention.py": "960b460acd816df8e561e73dccd5683acb95445eddc723c4f0d6ed1f462b2f77",
+      "model.safetensors.index.json": "dc60a31ecb77eb03e166345d18cbe25bc71d2a19cc6fc089d8a9ac1c7f209671",
+      "special_tokens_map.json": "9e89493d7938e7710c524dbaff613c3648f0a018262417af78505128004e5cb4",
+      "tokenizer.json": "c55c165e32c5a67830362a53e1f548c8930dcc8469efa30ff3252a982799c589",
+      "generation_config.json": "dcd0479f3a12e5e4413d956197f8a4074408e4901834b38c7e036519134e05af",
+      "_sparse_base_impl.py": "86da9c5638704bb9338575040568a97b3e10820bbeb426f51c07e866f3423ccd",
+      "sparse_gather_e2e_triton.py": "58f1bc46093d47b00744970677e66bfbd7485a2d13810f46d13d867ceda13dd4",
+      "modeling_deepseekv2.py": "24a15dfd47578ab24a7a4d4e977dc5d7a23dfef0a2a4c4bf73fcf3e2ce7acaf2",
+      "config.json": "607d130a70d5af5a35329aa237acd68651f45504c62cc7ced981066f4e781126",
+      "sparse_gather_triton.py": "c3de717ffaca40240c665b8d645f15a9d1999feeabaa94beb35caad877c2f0f4",
+      "tokenizer_config.json": "ceba7d221f265cca4c98b5e0a1d48c10107270b7b29c12396610d6d0fd64b126",
+      "modeling_unlimitedocr.py": "f6df813cef23cc28b1daca40fd8cb20740d05a238e7b9dfa2334531fdcf39f1f",
+      "deepencoder.py": "419b63388c1645b9b72c716070cdca36cd0be6047049424dc75941d3a00aaf1f",
+      "packing_patch.py": "e60d842c210c9f1d6cd2ae328cf9127a75f7941a0cea2a8e9abc14662f770c6c",
+      "conversation.py": "ec7b6ce89bcda643de1f43269ffa66a7b2e65dc3ed30e427958f776546b4ba03",
+      "model-00001-of-00002.safetensors": "4c40b740f209fd7682040d4ebf19409208acde5c401ccd2dde426d0f41542f18",
+      "model-00002-of-00002.safetensors": "9490b82fa47f89e5110eb5577f8ab1b6694c12121905dbc086ddb10207a4ba0c"
+    },
+    "source_patch": null,
+    "environment": {
+      "timestamp_utc": "2026-10-28T04:29:41.497601+00:00",
+      "platform": "Windows",
+      "windows_version": "10.0.26200",
+      "python": "3.10.20",
+      "machine": "AMD64",
+      "executable": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "environment_id": "0d19fbb72f6f87cbfcd5ec9666883b1729f09f57b7b1329bbee3e8d43e8a3184",
+      "isolated_environment": true,
+      "installed_packages": {
+        "unlimited-ocr-2-rocm": "0.0.1.dev0",
+        "addict": "2.4.0",
+        "amd-torchvision-device-gfx1151": "0.27.0+rocm7.14.1",
+        "amd-torch-device-gfx1151": "2.12.0+rocm7.14.1",
+        "amd-torch-device-gfx115x": "2.12.0+rocm7.14.1",
+        "certifi": "2026.10.23",
+        "charset-normalizer": "3.5.2",
+        "colorama": "0.4.6",
+        "easydict": "1.13",
+        "einops": "0.8.2",
+        "exceptiongroup": "1.3.1",
+        "filelock": "3.29.1",
+        "fsspec": "2026.4.0",
+        "huggingface-hub": "0.36.0",
+        "idna": "3.20",
+        "iniconfig": "2.3.1",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.4.2",
+        "numpy": "2.2.6",
+        "packaging": "26.3",
+        "pillow": "12.0.0",
+        "pip": "26.2.2",
+        "pluggy": "1.7.0",
+        "psutil": "7.1.2",
+        "pygments": "2.21.0",
+        "pytest": "8.4.2",
+        "pyyaml": "6.0.3",
+        "regex": "2026.9.29",
+        "requests": "2.34.2",
+        "rocm": "7.14.1",
+        "rocm-bootstrap": "0.1.0",
+        "rocm-sdk-core": "7.14.1",
+        "rocm-sdk-device-gfx1151": "7.14.1",
+        "rocm-sdk-libraries": "7.14.1",
+        "safetensors": "0.8.0",
+        "setuptools": "81.0.0",
+        "sympy": "1.14.0",
+        "tokenizers": "0.21.4",
+        "tomli": "2.5.0",
+        "torch": "2.12.0+rocm7.14.1",
+        "torchaudio": "2.11.0+rocm7.14.1",
+        "torchvision": "0.27.0+rocm7.14.1",
+        "tqdm": "4.70.1",
+        "transformers": "4.52.1",
+        "triton-windows": "3.7.1.post27",
+        "typing-extensions": "4.15.0",
+        "urllib3": "2.8.0",
+        "wheel": "0.48.0"
+      },
+      "packages": {
+        "torch": "2.12.0+rocm7.14.1",
+        "torchvision": "0.27.0+rocm7.14.1",
+        "torchaudio": "2.11.0+rocm7.14.1"
+      },
+      "environment": {},
+      "hip": "7.14.60850",
+      "rocm": "7.14.1",
+      "cuda_build": null,
+      "gpu_available": true,
+      "gpu": {
+        "name": "AMD Radeon(TM) 8060S Graphics",
+        "arch": "gfx1151",
+        "pytorch_visible_budget_bytes": 83954728960,
+        "properties": "_CudaDeviceProperties(name='AMD Radeon(TM) 8060S Graphics', major=11, minor=5, gcnArchName='gfx1151', total_memory=80065MB, multi_processor_count=20, uuid=30303030-3031-3936-3030-303030303030, pci_bus_id=196, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+        "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+      },
+      "windows_hardware": {
+        "gpu": [
+          {
+            "Name": "GameViewer Virtual Display Adapter",
+            "DriverVersion": "15.6.5.199"
+          },
+          {
+            "Name": "AMD Radeon(TM) 8060S Graphics",
+            "DriverVersion": "32.0.22032.6002"
+          }
+        ],
+        "cpu": {
+          "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+        },
+        "os": {
+          "Caption": "Microsoft Windows 11 家庭版 中文版",
+          "Version": "10.0.26200",
+          "BuildNumber": "26200",
+          "TotalVisibleMemorySize": 129654596,
+          "FreePhysicalMemory": 83549840
+        },
+        "machine_uuid_sha256": "6c01f2febebede491776762bda2e7f24e19575d076284576b76d53c3296a2fa7"
+      },
+      "memory": {
+        "process_rss_bytes": 498139136,
+        "process_peak_rss_bytes": 498139136,
+        "system_total_bytes": 132766306304,
+        "system_available_bytes": 85448540160,
+        "system_memory_percent": 35.6,
+        "gpu_allocated_bytes": 0,
+        "gpu_reserved_bytes": 0,
+        "gpu_peak_allocated_bytes": 0,
+        "gpu_peak_reserved_bytes": 0,
+        "gpu_free_total_bytes": [
+          83786756096,
+          83954728960
+        ]
+      }
+    },
+    "native_dependencies": {
+      "transformers": "4.52.1",
+      "triton-windows": "3.7.1.post27",
+      "huggingface-hub": "0.36.0",
+      "tokenizers": "0.21.4"
+    },
+    "wrapper_source_hashes": {
+      "__init__.py": "6e73e42492b9ae3b81897f015d3c0e0c0e280c202f50ee6375a8513d1f013c57",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "_upstream\\__init__.py": "bc4567a25369bdc56080213ecddc5d2e9b147417d0f8e869d38dd9fdd99169c2",
+      "_upstream\\process_unlimitedOCR2.py": "fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782",
+      "cli.py": "2b1b29a7cab324dd365fe675f03dfc71dcef025416011821f47c47b3fcadb876",
+      "compat.py": "57144ea391f327fae43645601bc9a635b108cc69de8f9b1d04e37d7cbfe99432",
+      "config.py": "e90513526bb0f1d86ed9d75387a5730fca3e9d851720d528302fb7c63d6a1f93",
+      "doctor.py": "4900c132dfc539edd9dd729130bd96cc6f39703b718a20b374a78f53a97e3f99",
+      "inference.py": "1a815fd4886eda5628801d51fcc3d150fb8a2ede44ec980be60863cb24e9a85c",
+      "model.py": "885403a2c678d99347dae31ea74e046ddd6b58dc81ca4d2d1c7d826a11dc2ca4",
+      "output.py": "5c278f67e8de45028aa2795842948226ad67c4400b43ecbe4519110f2c207f33",
+      "repro.py": "d0701bc8e8aa0add1ae0cc2aae91812ec3737b57002d61a304f99c944b04904c"
+    },
+    "cold_load_seconds": 11.462481299997307,
+    "parameter_device": "cuda:0",
+    "parameter_dtype": "torch.bfloat16",
+    "memory_before_load": {
+      "process_rss_bytes": 542236672,
+      "process_peak_rss_bytes": 591233024,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 85409001472,
+      "system_memory_percent": 35.7,
+      "gpu_allocated_bytes": 0,
+      "gpu_reserved_bytes": 0,
+      "gpu_peak_allocated_bytes": 0,
+      "gpu_peak_reserved_bytes": 0,
+      "gpu_free_total_bytes": [
+        83786756096,
+        83954728960
+      ]
+    },
+    "memory_after_load": {
+      "process_rss_bytes": 3532382208,
+      "process_peak_rss_bytes": 9557823488,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 76886450176,
+      "system_memory_percent": 42.1,
+      "gpu_allocated_bytes": 6786129920,
+      "gpu_reserved_bytes": 6822035456,
+      "gpu_peak_allocated_bytes": 6786129920,
+      "gpu_peak_reserved_bytes": 6822035456,
+      "gpu_free_total_bytes": [
+        74024316928,
+        83954728960
+      ]
+    },
+    "attention_dispatch": "mha_eager with official DASH enabled",
+    "runtime_compatibility": {
+      "vision_sdpa": "GPU MATH, scoped separately to SAM and CLIP forward",
+      "reason": "default SDPA leaves hipErrorInvalidValue and fails numerical reference",
+      "decoder_DASH_and_Triton": "unchanged",
+      "global_attention_settings": "restored after each vision call"
+    }
+  },
+  "upstream_timing": {
+    "generation_seconds": 6.363812446594238,
+    "prefill_seconds": 1.4118921756744385
+  },
+  "output_token_count": 84,
+  "finish_reason": "stop",
+  "raw_sha256": "07fb7e56534864260ed091396198bd629638e93c12deee1c8701a90d86912d87",
+  "raw_output": "<PAGE><BLOCK>text[56, 95, 379, 165]<FORK>Mixed 中英文测试\n<BLOCK>text[55, 239, 395, 306]<FORK>Windows 原生推理\n<BLOCK>text[55, 380, 334, 448]<FORK>订单 Order 395\n<BLOCK>text[55, 521, 392, 591]<FORK>金额 Total 8060.50",
+  "native_kernels": [
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        899,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    }
+  ],
+  "native_kernel_count": 12,
+  "correctness": {
+    "status": "PASS",
+    "threshold_max_cer": 0.02,
+    "input_page_count": 1,
+    "raw_page_markers": 1,
+    "content_page_count": 1,
+    "terminal_empty_marker": false,
+    "raw_marker_count_matches_input": true,
+    "page_count_match": true,
+    "no_substantive_preamble": true,
+    "ordered_page_content_match": true,
+    "pages": [
+      {
+        "page": 1,
+        "ground_truth": "Mixed 中英文测试\nWindows 原生推理\n订单 Order 395\n金额 Total 8060.50",
+        "normalized_truth": "Mixed中英文测试Windows原生推理订单Order395金额Total8060.50",
+        "normalized_prediction": "Mixed中英文测试Windows原生推理订单Order395金额Total8060.50",
+        "character_error_rate": 0.0,
+        "important_numbers_match": true,
+        "structure_valid": true,
+        "status": "PASS"
+      }
+    ]
+  },
+  "status": "PASS",
+  "vision_inputs": [
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            6,
+            3,
+            640,
+            640
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            6,
+            3,
+            640,
+            640
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            6,
+            1024,
+            10,
+            10
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            1,
+            1024,
+            16,
+            16
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "synchronized_wall_seconds": 6.430219099973328,
+  "memory_after": {
+    "process_rss_bytes": 11855683584,
+    "process_peak_rss_bytes": 11878817792,
+    "system_total_bytes": 132766306304,
+    "system_available_bytes": 71043391488,
+    "system_memory_percent": 46.5,
+    "gpu_allocated_bytes": 6865838592,
+    "gpu_reserved_bytes": 11272192000,
+    "gpu_peak_allocated_bytes": 9205006336,
+    "gpu_peak_reserved_bytes": 11272192000,
+    "gpu_free_total_bytes": [
+      62245916672,
+      83954728960
+    ]
+  }
+}

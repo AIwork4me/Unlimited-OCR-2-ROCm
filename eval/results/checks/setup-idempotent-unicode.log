@@ -1,0 +1,56 @@
+Requirement already satisfied: pip==26.2.2 in .\.venv 验证\lib\site-packages (26.2.2)
+Requirement already satisfied: setuptools==81.0.0 in .\.venv 验证\lib\site-packages (81.0.0)
+Requirement already satisfied: wheel==0.48.0 in .\.venv 验证\lib\site-packages (0.48.0)
+Requirement already satisfied: packaging==26.3 in .\.venv 验证\lib\site-packages (26.3)
+Looking in indexes: https://repo.amd.com/rocm/whl-multi-arch/
+Requirement already satisfied: torch==2.12.0+rocm7.14.1 in .\.venv 验证\lib\site-packages (from torch[device-gfx1151]==2.12.0+rocm7.14.1) (2.12.0+rocm7.14.1)
+Requirement already satisfied: torchvision==0.27.0+rocm7.14.1 in .\.venv 验证\lib\site-packages (from torchvision[device-gfx1151]==0.27.0+rocm7.14.1) (0.27.0+rocm7.14.1)
+Requirement already satisfied: torchaudio==2.11.0+rocm7.14.1 in .\.venv 验证\lib\site-packages (2.11.0+rocm7.14.1)
+Requirement already satisfied: filelock in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (3.29.1)
+Requirement already satisfied: typing-extensions>=4.10.0 in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (4.15.0)
+Requirement already satisfied: setuptools<82 in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (81.0.0)
+Requirement already satisfied: sympy>=1.13.3 in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (3.4.2)
+Requirement already satisfied: jinja2 in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (3.1.6)
+Requirement already satisfied: fsspec>=0.8.5 in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (2026.4.0)
+Requirement already satisfied: rocm==7.14.1 in .\.venv 验证\lib\site-packages (from rocm[libraries]==7.14.1->torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (7.14.1)
+Requirement already satisfied: rocm-bootstrap in .\.venv 验证\lib\site-packages (from torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (0.1.0)
+Requirement already satisfied: numpy in .\.venv 验证\lib\site-packages (from torchvision==0.27.0+rocm7.14.1->torchvision[device-gfx1151]==0.27.0+rocm7.14.1) (2.2.6)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in .\.venv 验证\lib\site-packages (from torchvision==0.27.0+rocm7.14.1->torchvision[device-gfx1151]==0.27.0+rocm7.14.1) (12.0.0)
+Requirement already satisfied: rocm-sdk-core==7.14.1 in .\.venv 验证\lib\site-packages (from rocm==7.14.1->rocm[libraries]==7.14.1->torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (7.14.1)
+Requirement already satisfied: rocm-sdk-libraries==7.14.1 in .\.venv 验证\lib\site-packages (from rocm[libraries]==7.14.1->torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (7.14.1)
+Requirement already satisfied: amd-torch-device-gfx1151==2.12.0+rocm7.14.1 in .\.venv 验证\lib\site-packages (from torch[device-gfx1151]==2.12.0+rocm7.14.1) (2.12.0+rocm7.14.1)
+Requirement already satisfied: amd-torch-device-gfx115x==2.12.0+rocm7.14.1 in .\.venv 验证\lib\site-packages (from torch[device-gfx1151]==2.12.0+rocm7.14.1) (2.12.0+rocm7.14.1)
+Requirement already satisfied: rocm-sdk-device-gfx1151==7.14.1 in .\.venv 验证\lib\site-packages (from amd-torch-device-gfx1151==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (7.14.1)
+Requirement already satisfied: amd-torchvision-device-gfx1151==0.27.0+rocm7.14.1 in .\.venv 验证\lib\site-packages (from torchvision[device-gfx1151]==0.27.0+rocm7.14.1) (0.27.0+rocm7.14.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in .\.venv 验证\lib\site-packages (from sympy>=1.13.3->torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in .\.venv 验证\lib\site-packages (from jinja2->torch==2.12.0+rocm7.14.1->torch[device-gfx1151]==2.12.0+rocm7.14.1) (3.0.3)
+Requirement already satisfied: triton-windows==3.7.1.post27 in .\.venv 验证\lib\site-packages (from -r <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\requirements\triton.txt (line 1)) (3.7.1.post27)
+Requirement already satisfied: psutil==7.1.2 in .\.venv 验证\lib\site-packages (7.1.2)
+Obtaining file:///<USERPROFILE>/.codex/worktrees/phase1-windows-gfx1151/Unlimited-OCR-2-ROCm
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: unlimited-ocr-2-rocm
+  Building editable for unlimited-ocr-2-rocm (pyproject.toml): started
+  Building editable for unlimited-ocr-2-rocm (pyproject.toml): finished with status 'done'
+  Created wheel for unlimited-ocr-2-rocm: filename=unlimited_ocr_2_rocm-0.0.1.dev0-0.editable-py3-none-any.whl size=6250 sha256=05dc6ff4968a6a7a24b4a36d052375b0b3d782483ac46a9eb14a31a71987b264
+  Stored in directory: <USERPROFILE>\AppData\Local\Temp\pip-ephem-wheel-cache-5prrdjst\wheels\17\4a\5d\0c653e28893cd75e0470eff32e43261d307586c2269cb1d16a
+Successfully built unlimited-ocr-2-rocm
+Installing collected packages: unlimited-ocr-2-rocm
+  Attempting uninstall: unlimited-ocr-2-rocm
+    Found existing installation: unlimited-ocr-2-rocm 0.0.1.dev0
+    Uninstalling unlimited-ocr-2-rocm-0.0.1.dev0:
+      Successfully uninstalled unlimited-ocr-2-rocm-0.0.1.dev0
+Successfully installed unlimited-ocr-2-rocm-0.0.1.dev0
+Python 3.10.20
+pip 26.2.2 from <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv 验证\lib\site-packages\pip (python 3.10)
+
+No broken requirements found.
+Gate A: PASS — <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv 验证\phase1-install\doctor.json
+Isolated interpreter: <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv 验证\Scripts\python.exe

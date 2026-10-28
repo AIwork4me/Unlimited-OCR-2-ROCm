@@ -1,0 +1,149 @@
+# Unlimited-OCR-2 upstream audit
+
+Audit date: 2026-10-28. This is a **static source audit**, not a report of model execution, kernel compilation, package installation, or hardware validation. The target is native Windows, Python 3.10, `torch==2.12.0+rocm7.14.1`, `torchvision==0.27.0+rocm7.14.1`, `torchaudio==2.11.0+rocm7.14.1`, `triton-windows==3.7.1.post27`, and `transformers==4.52.1`, with gfx1151. No SGLang installation and no Unlimited-OCR V1 are part of this path.
+
+## Findings that govern the native path
+
+1. **Keep the custom DASH kernel enabled and prove that it ran.** Its import/shape fallback exists, but compiler and launch exceptions are not caught by the DASH caller. A successful run that silently uses its dense fallback is not proof of native custom-kernel support. See the kernel matrix below.
+2. **Never pass untrusted OCR output through the unmodified bounding-box postprocessor.** It uses `eval()` on generated detection text. `infer(..., save_results=False)` avoids that path without changing model computation. See [SECURITY.md](SECURITY.md).
+3. **The supported decoder dispatch is `mha_eager`.** With this checkpoint's `use_mla=false`, selecting Transformers `sdpa` or `flash_attention_2` produces a dispatch name absent from the source dictionary. Explicit `attn_implementation="eager"` is a source-supported compatibility setting; this still reaches native DASH/Triton and does not disable sparse attention. [Dispatch source, lines 3620–3645](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L3620-L3645).
+4. **Do not apply the README's constant-memory claims to the Transformers implementation.** This implementation grows a full KV cache, appends router keys, and uses full-key matmuls with sparse masks at decode. These are source facts, not measured performance results.
+5. **There is no static basis for calling Windows Triton NVIDIA-only.** The exact post27 release reports RDNA3.5 unit-test coverage. That is platform evidence, not validation of these model kernels on this machine. [Exact release](https://github.com/triton-lang/triton-windows/releases/tag/v3.7.1-windows.post27).
+
+## Pinned evidence and scope
+
+The primary model is [baidu/Unlimited-OCR-2 at `9cf077c4b206e0e2a31879df937b0b0bcba3661c`](https://huggingface.co/baidu/Unlimited-OCR-2/tree/9cf077c4b206e0e2a31879df937b0b0bcba3661c). The accompanying GitHub README and license are from [baidu/Unlimited-OCR at `4d0bebab8714e0f3b0c811cd44bf422ddb49daae`](https://github.com/baidu/Unlimited-OCR/tree/4d0bebab8714e0f3b0c811cd44bf422ddb49daae). References below use the model commit, not `main`. Transformers `v4.52.1` resolves to commit `945727948c1143a10ac6f7d811aa58bb0d126b5b` (annotated tag object `335365b4093a7c36907aa7a3dbb3e6715c524951`); its source links below use that commit.
+
+All ten downloaded Python files were included in full-file import, external-call, unsafe-operation and backend-reference scans; the model, vision, router, cache, kernel-wrapper and output call paths were traced in the actual source. Configuration, tokenizer metadata, checkpoint index and both READMEs were also inspected. No upstream Python module was imported or executed for this audit. The custom SGLang wheel, paper, weight tensor contents, and third-party package binaries are outside this source audit. Absence of suspicious calls in these files is not a security certification.
+
+| Python source | Lines | SHA-256 of downloaded bytes |
+|---|---:|---|
+| `_sparse_base_impl.py` | 4471 | `86da9c5638704bb9338575040568a97b3e10820bbeb426f51c07e866f3423ccd` |
+| `configuration_deepseek_v2.py` | 212 | `b8470dd616ba8745fce6e27b093aef73a098863cc891b2477dcf9326a36000f7` |
+| `conversation.py` | 280 | `ec7b6ce89bcda643de1f43269ffa66a7b2e65dc3ed30e427958f776546b4ba03` |
+| `dash_attention.py` | 1349 | `960b460acd816df8e561e73dccd5683acb95445eddc723c4f0d6ed1f462b2f77` |
+| `deepencoder.py` | 1056 | `419b63388c1645b9b72c716070cdca36cd0be6047049424dc75941d3a00aaf1f` |
+| `modeling_deepseekv2.py` | 531 | `24a15dfd47578ab24a7a4d4e977dc5d7a23dfef0a2a4c4bf73fcf3e2ce7acaf2` |
+| `modeling_unlimitedocr.py` | 1228 | `f6df813cef23cc28b1daca40fd8cb20740d05a238e7b9dfa2334531fdcf39f1f` |
+| `packing_patch.py` | 168 | `e60d842c210c9f1d6cd2ae328cf9127a75f7941a0cea2a8e9abc14662f770c6c` |
+| `sparse_gather_e2e_triton.py` | 407 | `58f1bc46093d47b00744970677e66bfbd7485a2d13810f46d13d867ceda13dd4` |
+| `sparse_gather_triton.py` | 524 | `c3de717ffaca40240c665b8d645f15a9d1999feeabaa94beb35caad877c2f0f4` |
+
+The [checkpoint index](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/model.safetensors.index.json) names two safetensors shards and declares `total_size=6687958536` bytes. This is weight storage metadata, not required peak RAM/VRAM. The shard tensors were not read for this audit.
+
+## Actual architecture
+
+### Entry point and decoder
+
+The top-level `auto_map` maps `AutoConfig` to `modeling_unlimitedocr.UnlimitedOCRConfig` and `AutoModel` to `UnlimitedOCRForCausalLM`. The nested `language_config.auto_map` contains historical differently named modules; use the top-level mapping. The exact checkpoint is 12 decoder layers, hidden width 1280, 10 query and 10 KV heads, head dimension 128, vocabulary 129280, `use_mla=false`, BF16, and maximum configured position 131072. [Configuration](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/config.json#L1-L116).
+
+The base is a custom DeepSeek-family decoder, not the library's stock model. The first layer uses a dense SiLU gated MLP (intermediate width 6848); layers 1–11 use MoE. Each MoE has 64 routed experts of intermediate width 896, selects 6 experts per token with a float32 softmax gate and greedy top-k, and adds a shared-expert MLP of width `2*896`. `ep_size=1` takes local expert routing, sorting and per-expert PyTorch linear operations. No fused MoE, external DeepGEMM, or distributed service is required by this inference branch. The `ep_size>1` distributed all-to-all branch exists but is not selected by this checkpoint. [Gate and MoE](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L503-L824), [layer selection](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L3632-L3661).
+
+`modeling_deepseekv2.py` imports and re-exports the base namespace, then monkey-patches `SlidingWindowLlamaAttention.__init__`, `.forward`, and the base weight-init hook. For `training_stage="dash"`, it temporarily initializes the indexer as warmup, preserves that indexer for page helpers, and installs a `DashAttention` router. These are process-global class mutations. [Overlay setup](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L25-L94), [patch installation](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L216-L262).
+
+### Vision and projector
+
+`UnlimitedOCRModel` instantiates a modified SAM ViT-B image encoder and a CLIP-L-shaped transformer, followed by a **linear** `2048 -> 1280` projector and learned newline/view-separator embeddings. The CLIP embedding consumes the SAM feature map as its supplied patch embeddings, so this is a serial fused encoder path rather than two independent RGB encoders. SAM uses width 768, 12 blocks, 12 heads, patch size 16, window size 14, global blocks 2/5/8/11, a 256-channel neck and two stride-2 convolutions ending at 1024 channels. CLIP has width 1024, 24 blocks and 16 heads. Its output excluding the class token is concatenated with the flattened 1024-channel SAM features before projection. [Construction and vision fusion](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L629-L789), [SAM](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/deepencoder.py#L604-L709), [CLIP configuration](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/deepencoder.py#L512-L537).
+
+Both CLIP attention branches call PyTorch `scaled_dot_product_attention`; `use_flash_attn=False` does not mean a separate `flash-attn` package is needed. SAM also uses SDPA with relative-position bias. The optional `build_sam_fast_vit_b()` uses `torch.compile`, but the model constructor calls `build_sam_vit_b()` instead. [CLIP attention](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/deepencoder.py#L312-L368), [SAM attention](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/deepencoder.py#L817-L845), [builder](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/deepencoder.py#L1003-L1056).
+
+### SR-SWA, DASH and page positions
+
+The checkpoint enables sparse attention in all 12 layers. Relevant constants are block size 32, index dimension 128, one index head, four local blocks (128 tokens), `head_cls` summarization, 12 selected remote blocks, inference top-M default 16, entmax scale 128 and prior floor 0.0001. Nominal read budget is `12*32 + 128 = 512` tokens, reduced by unavailable/invalid/causally masked slots. The checkpoint also carries `sparse_topk_blocks=16`; do not confuse that base-stage setting with the inference DASH remote budget. [Pinned sparse settings](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/config.json#L117-L199).
+
+DASH computes separate normalized router q/k projections; `head_cls` gives a learned within-block weighted key summary. Inference scores remote blocks, restricts candidates using page-aware masks, takes a top-M window, applies 1.5-entmax and then selects hard top-K remote blocks. Centered `log(prior)` supplies a per-remote-block bias; local-window keys have zero bias and win on overlap. A query with no page/image candidates falls back to its otherwise eligible remote candidates. This page restriction is a routing domain with fallback, not a universal ban on cross-page contextual information. [Inference router](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L296-L451), [candidate builder](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L2404-L2737).
+
+The main and index branches use page2d RoPE: token-within-page coordinates plus a dedicated page-frequency pair. Here 63 frequency pairs use the token axis, one uses the page axis, and page coordinates are reduced modulo 2 **only when computing angles**. Original page numbers remain available to masks and the decode state machine. Image/page token IDs are 128815/128827; marker-based image page assignment falls back to groups of 273 image tokens for legacy marker-free layouts. The forward hands token IDs and per-page prefill counts to all layers so decode retains page2d state. Missing/invalid coordinates can fall back to 1D; that fallback must not be mistaken for validated page-aware behavior. [2D RoPE](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L1984-L2061), [decode coordinates](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L1438-L1489), [propagation](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L663-L693).
+
+`infer()` enables a distinct inference router using a checkpoint-config snapshot: construction mutates live router config through scheduler persistence. Calling arbitrary `forward()`/HF `generate()` is not interchangeable with `infer()`. DASH rejects packed rows explicitly. [Inference switch](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L146-L244), [snapshot restoration](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L296-L335).
+
+## GPU kernel call graph and fallback boundaries
+
+| Custom entry | Actual caller and activation | Wrapper restrictions and failure behavior |
+|---|---|---|
+| `triton_gather_attention_e2e` | DASH prefill: `_infer_prefill_attend` -> `router._forward_triton`; also DASH training-style forward. Requires `router.use_triton`, `q.is_cuda`, no attention mask. | One index head, equal q/k lengths, 2D position IDs exactly `arange(T)`, value dimension <=128 and rounded key dimension <=256. Unsupported wrapper shape returns `None`; missing import returns `None`. Compilation/launch errors propagate. |
+| `triton_gather_attention` | Base non-DASH sparse-stage gather branch in `SlidingWindowLlamaAttention`; controlled by `GATHER_ATTN_TRITON=1`. It is not the selected DASH prefill kernel. | No explicit mask; equal q/k length; index heads divide query and KV heads; 2D positions. Supports segment-aware packing. Caller catches exceptions and falls back to block-mask attention. |
+| `triton_block_max_score` | Base indexer's `select_and_kl_loss`; controlled by `INDEXER_SCORE_TRITON=1` and CUDA-device tensor. It is not used by the `head_cls` inference scorer. | 3D q/k, rounded index dimension <=256. Caller catches exceptions and falls back to dense score matmul. |
+
+Sources: [DASH caller and dense fallback, lines 1207–1260](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/dash_attention.py#L1207-L1260); [DASH inference caller, lines 433–451](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L433-L451); [e2e metadata and wrapper](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/sparse_gather_e2e_triton.py#L278-L407); [base gather caller](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L1735-L1773); [score caller](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L3281-L3353); [base wrappers](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/sparse_gather_triton.py#L379-L524).
+
+The e2e forward uses `triton.jit`, block pointers, masked `tl.load`/`tl.store`, `tl.dot` and online softmax; backward additionally uses atomic bias-gradient accumulation. Launches use four warps. There is no inline PTX, `nvcc`, CUDA-specific `libdevice`, or NVIDIA architecture check in these custom source files. That removes an obvious source-level NVIDIA lock, but says nothing about successful AMD code generation. The wrappers do not exhaustively validate dtype, device, strides or index bounds; their intended caller supplies contiguous BF16 inputs and bounded selections. [Kernel body](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/sparse_gather_e2e_triton.py#L27-L276).
+
+DASH decode is `_dash_decode_forward -> _decode_attend`, implemented in PyTorch, without a custom Triton decode kernel. It computes full-cache score matmuls followed by the local/remote mask. `infer()` deliberately disables ring/sliding-cache config and uses `DynamicCache`; router keys are concatenated each step. Consequently a 512-token logical working-reference set does **not** bound physical cache memory or score computation in this HF path. [Decode](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L455-L531), [generation cache](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L1126-L1205).
+
+For a native support result, preserve DASH, page2d positions, MoE, BF16 and the custom e2e kernel. Record actual runtime target/backend, successful compilation and invocation of that kernel, finite outputs, and end-to-end OCR completion. Importing `triton`, observing `torch.cuda.is_available()`, or observing that the two unused base-stage kernels import is insufficient. Turning `dash_use_triton` off is a **non-native diagnostic** only, not the accepted result. Do not silently disable the algorithm after a compiler error.
+
+## Dependencies and API compatibility
+
+The upstream [tested setup](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/README.md#L79-L97) uses Python 3.10 and Transformers 4.52.1, but Torch 2.13.0 on NVIDIA A800 80GB. That is different from the requested Torch 2.12 ROCm stack. Do not copy its unqualified installation command into the fixed target environment.
+
+| Dependency/API | Source use and static conclusion |
+|---|---|
+| Python 3.10 | Matches upstream's stated Python version. Source inspection supplies no reason to change it. |
+| Torch 2.12.0+rocm7.14.1 | SDPA, BF16 tensors, PyTorch MoE and cache operations are used; no explicit Torch 2.13 version gate exists. Binary/API/kernel compatibility with the exact ROCm wheel remains a runtime question. |
+| torchvision 0.27.0+rocm7.14.1 | Imported unconditionally for `ToTensor`, `Normalize`, `Compose` and `InterpolationMode`; matching binary import is still required even though model preprocessing only uses transforms. |
+| torchaudio 2.11.0+rocm7.14.1 | Not imported in any of the ten upstream Python files. Preserve the required version; this audit does not certify its separate ABI compatibility with Torch 2.12. |
+| Triton Windows 3.7.1.post27 | Both kernel files import the Python module `triton` and `triton.language`. Distribution name differs from import name. The exact release has a CPython 3.10 Windows x64 wheel and reports RDNA3.5 unit tests. These facts do not establish model-kernel compatibility. [PyPI](https://pypi.org/project/triton-windows/3.7.1.post27/), [release commit](https://github.com/triton-lang/triton-windows/commit/f097d7da980dea45b5fd8f6b18dce4f63ff52540). |
+| Transformers 4.52.1 | Uses custom `PreTrainedModel`, `Cache`/`DynamicCache`, Llama attention/rotary helpers, `ROPE_INIT_FUNCTIONS`, legacy mask helper, outputs and `TextStreamer`; private imports make arbitrary upgrades unsafe. |
+| Pillow, NumPy, requests, tqdm | Unconditional entrypoint imports. `requests` and `BytesIO` are imported but no network request is made by the inspected image-inference path. Pillow performs local file open, resize/pad and optional drawing/saving. |
+| addict, easydict, einops | Unconditional source dependencies: `addict.Dict`, `easydict.EasyDict`, `rearrange`/`repeat`. These are not optional just because the model weights are safetensors. |
+| flash-attn, xformers, flex attention | FlashAttention import is availability-guarded; xformers is try/except-guarded and disabled in config. Flex attention is try/except-imported and a `torch.compile` wrapper is created at module import, even though `use_flex_attention=false`. The chosen DASH path does not require installing these external attention backends. |
+| SGLang, vLLM, ms-swift | Comments/docstrings refer to parity and training integrations; no import of these packages occurs in these ten Python files. They are not dependencies of this native Transformers entry point. |
+
+The custom attention initializer compensates for the newer library Llama attention by creating `LlamaRotaryEmbedding(config=config)` when needed. The exact Transformers release retains the imported helper symbols and `DynamicCache.update/get_seq_length`; its cache shape API is `get_max_cache_shape`, while upstream `prepare_inputs_for_generation` guards old `get_max_length` with `getattr`. `infer()` uses its own decode loop, bypassing HF `generate()`. These are static API matches, not import validation. [Upstream adaptation](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L1366-L1377), [exact Transformers Llama API](https://github.com/huggingface/transformers/blob/945727948c1143a10ac6f7d811aa58bb0d126b5b/src/transformers/models/llama/modeling_llama.py#L75-L103), [exact cache API](https://github.com/huggingface/transformers/blob/945727948c1143a10ac6f7d811aa58bb0d126b5b/src/transformers/cache_utils.py#L109-L158).
+
+### `trust_remote_code` and recursive source scanning
+
+For Transformers 4.52.1, `get_relative_imports` regex finds `from .name import ...` even inside `try`; `get_imports` AST traversal skips `try` bodies. Local loading copies entrypoint-relative files only, then recursively hashes their dependencies. Remote-ID loading recursively caches/checks dependencies. Thus remote loading can require Triton from the kernel files despite entrypoint try wrappers. Direct entrypoint imports explicitly include `_sparse_base_impl`, DASH, packing and both kernels, so a complete local snapshot includes them. Removing a referenced file can fail hashing before execution. [Loader, lines 82–213, 243–255, 361–409](https://github.com/huggingface/transformers/blob/945727948c1143a10ac6f7d811aa58bb0d126b5b/src/transformers/dynamic_module_utils.py#L82-L213), [entrypoint hints](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L1-L37).
+
+`AutoConfig` itself maps to the modeling entrypoint and therefore can import the full model code. Reading JSON or AST is inert; `AutoConfig.from_pretrained(..., trust_remote_code=True)` is already a code-execution boundary. A complete pinned local snapshot avoids mutable remote code and dependency-discovery differences; it does not sandbox execution. The tokenizer metadata names `LlamaTokenizerFast` and contains no tokenizer `auto_map` in the inspected file.
+
+## Windows-specific assessment
+
+**Established source constraints:** image embedding injection calls bare `.cuda()` on masks at lines 785/789. This prevents an unmodified CPU-only image path and assumes the default CUDA-namespace device, potentially causing multi-GPU placement conflicts. ROCm PyTorch also uses the `cuda` namespace; those names alone do not establish an NVIDIA requirement. The native code has no direct POSIX shell launch, hardcoded Linux shared-library path, or compulsory NCCL use in its `ep_size=1` path. [Image injection](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L780-L789), [ROCm/HIP namespace documentation](https://docs.pytorch.org/docs/2.12/notes/hip.html).
+
+**Potential Windows integration blockers requiring evidence:** exact wheel DLL/ABI imports, driver/HIP runtime discovery, Triton compiler/linker availability, actual AMD backend selection, BF16 SDPA and convolution coverage, block-pointer/dot lowering for this e2e kernel, and sufficient allocated GPU/shared memory. None was tested by this audit. The versioned Triton release makes gfx1151 investigation reasonable; no upstream source condition explicitly rejects Windows or gfx1151. Do not spoof architecture or claim support solely from a generic GPU-support table.
+
+**Concrete non-platform incompatibilities:** unsupported attention dispatch names, missing required Python packages, absent local relative modules, packed DASH input, or a changed Transformers private API. These should be separated from an actual compiler/device failure in any later diagnostic log.
+
+## Inference and output contract
+
+`infer()` accepts one local filename/PIL image or an ordered list. It opens files locally, converts RGB, and builds `<PAGE><image>` per image when no placeholders are supplied. A single `<image>` placeholder expands for multiple pages; other placeholder-count mismatches raise. Empty text without images raises. Auto mode uses dynamic 640px tiles for one sufficiently large page, and a 1024px padded global view per page for multiple pages. Base mode contributes `16*17+1=273` image tokens; local tiles add a stitched grid and newline tokens. Input tensors use BF16 pixels and long IDs. These functions take image files, not PDF decoding or URL fetching. [Input building](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L531-L580), [public inference](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L1039-L1124).
+
+The generation loop sends only the last hidden position to the LM head, avoiding `[sequence,129280]` logits. It is greedy at temperature zero, optionally samples above zero, defaults to context limit 131072 and applies a page-count guard plus optional generated-token n-gram constraints. The page guard is a logit policy, not a guarantee of accurate output or even completion before the length cap. The tokenizer's huge sentinel `model_max_length` is not the model's usable capacity. [Generation loop](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L1126-L1205), [guard](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L583-L605).
+
+| Entry/output | Structure |
+|---|---|
+| `infer(..., return_dict=False)` | Generated string; special tokens retained, EOS excluded. |
+| `infer(..., return_dict=True)` | `text`, `token_ids`, `prompt_token_ids`, `finish_reason` (`stop`/`length`), `num_pages_out`, `expected_pages`, `time`, `prefill_time`, plus `prompt`. |
+| `infer_multi(...)` | `(text, len(token_ids))`; delegates to `infer`, defaults to `crop_mode=False` and requires a nonempty image list. Do not separately pass `return_dict` through kwargs because the wrapper already supplies it. |
+| `save_results=True` with output path | Writes `result_raw.md`, processed `result.md`, `result_with_boxes_<page>.jpg`, and extracted `images/page_<page>_<index>.jpg`. This invokes the unsafe postprocessor unless patched. |
+
+The postprocessor splits on `<PAGE>` and drops text before the first marker when markers occur. It recognizes `<|ref|>label<|/ref|><|det|>coordinates<|/det|>` plus a secondary detector form, scales coordinates from 0–999, draws boxes, and substitutes extracted image links into Markdown. Output is model-generated text with structural tags, not a validated JSON schema. Raw Markdown should be stored/viewed as untrusted content. [Postprocessor](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L98-L206), [save implementation](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L1207-L1228).
+
+## Official V2 postprocessor follow-up
+
+The preceding HF save helper is a legacy visualization implementation; it
+does not describe actual V2 block output and is not called by this wrapper.
+Actual V2 output uses `<PAGE><BLOCK>label[coordinates]<FORK>content`,
+with optional title levels, cross/append chains, MERGE markers and HTML tables.
+
+The separately audited [official V2 converter](https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/utils/process_unlimitedOCR2.py)
+uses only argparse/os/re and contains no eval, exec, subprocess or network
+execution. Its full source was read before integration. SHA-256:
+`fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782`.
+It is vendored byte-for-byte under `_upstream/` with Baidu's MIT license.
+We use its block parser for per-page content inspection and convert() for
+readable Markdown. Raw output remains separate and unchanged. Union-find
+merge semantics join cross-page fragments and drop repeated table headers.
+The [utils README](https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/utils/README.md)
+explicitly documents that raw V2 output is not Markdown.
+
+Pinned GitHub infer.py was also inspected: it imports SGLang's logit
+processor and sends HTTP requests; it is excluded from our Transformers path.
+
+## Licensing and redistribution
+
+The pinned [GitHub license](https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/LICENSE) is MIT, copyright 2026 Baidu; the HF model card declares MIT. Preserve that complete notice for copies/substantial portions, including a copied postprocessor. The inspected HF file list does not contain a standalone `LICENSE`; archive the GitHub license alongside pinned model provenance rather than assuming metadata is the full license text.
+
+`_sparse_base_impl.py` explicitly retains DeepSeek/Hugging Face copyright and Apache-2.0 terms in lines 1–19. The custom gather file states adaptation from flash-linear-attention NSA kernels. Deepencoder and drawing helpers do not carry their own separate license header. These facts mean the MIT root notice is not a reason to remove third-party notices; retain source headers, include applicable Apache-2.0 text/notices for redistributed derivatives, and trace copied component provenance before broader redistribution. No dedicated separate postprocessor license was found in the inspected material. [Base notice](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/_sparse_base_impl.py#L1-L19), [kernel attribution](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/sparse_gather_triton.py#L1-L20).

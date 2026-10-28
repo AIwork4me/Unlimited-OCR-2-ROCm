@@ -1,0 +1,12 @@
+..........................................................               [100%]
+============================== warnings summary ===============================
+tests/gpu/test_physical_device.py: 14 warnings
+  <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\jit\_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/gpu/test_physical_device.py::test_real_single_page_ocr
+  <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\jit\_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+58 passed, 15 warnings in 48.85s

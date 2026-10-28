@@ -1,0 +1,15 @@
+name: Local Windows GPU validation instructions
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  instructions:
+    runs-on: windows-latest
+    steps:
+      - shell: pwsh
+        run: |
+          Write-Output "This hosted runner has no validated gfx1151 GPU."
+          Write-Output "Run scripts/reproduce_windows.ps1 on the physical machine."
+          Write-Output "Upload sanitized eval/results evidence to the feature PR."
+          Write-Output "No GPU tests are executed or claimed by this workflow."

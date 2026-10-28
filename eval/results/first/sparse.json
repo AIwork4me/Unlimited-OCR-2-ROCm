@@ -1,0 +1,132 @@
+{
+  "environment": {
+    "timestamp_utc": "2026-10-28T03:36:53.679711+00:00",
+    "platform": "Windows",
+    "windows_version": "10.0.26200",
+    "python": "3.10.20",
+    "machine": "AMD64",
+    "executable": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+    "packages": {
+      "torch": "2.12.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1"
+    },
+    "environment": {},
+    "hip": "7.14.60850",
+    "rocm": "7.14.1",
+    "cuda_build": null,
+    "gpu_available": true,
+    "gpu": {
+      "name": "AMD Radeon(TM) 8060S Graphics",
+      "arch": "gfx1151",
+      "pytorch_visible_budget_bytes": 83954728960,
+      "properties": "_CudaDeviceProperties(name='AMD Radeon(TM) 8060S Graphics', major=11, minor=5, gcnArchName='gfx1151', total_memory=80065MB, multi_processor_count=20, uuid=30303030-3031-3936-3030-303030303030, pci_bus_id=196, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+      "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+    },
+    "windows_hardware": {
+      "gpu": [
+        {
+          "Name": "GameViewer Virtual Display Adapter",
+          "DriverVersion": "15.6.5.199"
+        },
+        {
+          "Name": "AMD Radeon(TM) 8060S Graphics",
+          "DriverVersion": "32.0.22032.6002"
+        }
+      ],
+      "cpu": {
+        "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+      },
+      "os": {
+        "Caption": "Microsoft Windows 11 家庭版 中文版",
+        "Version": "10.0.26200",
+        "BuildNumber": "26200",
+        "TotalVisibleMemorySize": 129654596,
+        "FreePhysicalMemory": 93288428
+      }
+    },
+    "memory": {
+      "process_rss_bytes": 497078272,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 95563079680,
+      "system_memory_percent": 28.0,
+      "gpu_allocated_bytes": 0,
+      "gpu_reserved_bytes": 0,
+      "gpu_peak_allocated_bytes": 0,
+      "gpu_peak_reserved_bytes": 0,
+      "gpu_free_total_bytes": [
+        83786756096,
+        83954728960
+      ]
+    }
+  },
+  "probe": {
+    "status": "PASS",
+    "kernel": "triton_gather_attention_e2e",
+    "source_hashes": {
+      "configuration_deepseek_v2.py": "b8470dd616ba8745fce6e27b093aef73a098863cc891b2477dcf9326a36000f7",
+      "dash_attention.py": "960b460acd816df8e561e73dccd5683acb95445eddc723c4f0d6ed1f462b2f77",
+      "model.safetensors.index.json": "dc60a31ecb77eb03e166345d18cbe25bc71d2a19cc6fc089d8a9ac1c7f209671",
+      "special_tokens_map.json": "9e89493d7938e7710c524dbaff613c3648f0a018262417af78505128004e5cb4",
+      "tokenizer.json": "c55c165e32c5a67830362a53e1f548c8930dcc8469efa30ff3252a982799c589",
+      "generation_config.json": "dcd0479f3a12e5e4413d956197f8a4074408e4901834b38c7e036519134e05af",
+      "_sparse_base_impl.py": "86da9c5638704bb9338575040568a97b3e10820bbeb426f51c07e866f3423ccd",
+      "sparse_gather_e2e_triton.py": "58f1bc46093d47b00744970677e66bfbd7485a2d13810f46d13d867ceda13dd4",
+      "modeling_deepseekv2.py": "24a15dfd47578ab24a7a4d4e977dc5d7a23dfef0a2a4c4bf73fcf3e2ce7acaf2",
+      "config.json": "607d130a70d5af5a35329aa237acd68651f45504c62cc7ced981066f4e781126",
+      "sparse_gather_triton.py": "c3de717ffaca40240c665b8d645f15a9d1999feeabaa94beb35caad877c2f0f4",
+      "tokenizer_config.json": "ceba7d221f265cca4c98b5e0a1d48c10107270b7b29c12396610d6d0fd64b126",
+      "modeling_unlimitedocr.py": "f6df813cef23cc28b1daca40fd8cb20740d05a238e7b9dfa2334531fdcf39f1f",
+      "deepencoder.py": "419b63388c1645b9b72c716070cdca36cd0be6047049424dc75941d3a00aaf1f",
+      "packing_patch.py": "e60d842c210c9f1d6cd2ae328cf9127a75f7941a0cea2a8e9abc14662f770c6c",
+      "conversation.py": "ec7b6ce89bcda643de1f43269ffa66a7b2e65dc3ed30e427958f776546b4ba03"
+    },
+    "cases": [
+      {
+        "query_shape": [
+          1,
+          10,
+          160,
+          128
+        ],
+        "status": "PASS",
+        "device": "cuda:0",
+        "max_abs_error": 0.008694171905517578,
+        "mean_abs_error": 0.0004093826864846051,
+        "rtol": 0.03,
+        "atol": 0.03,
+        "compile_and_run_seconds": 1.3058013999834657
+      },
+      {
+        "query_shape": [
+          1,
+          10,
+          173,
+          128
+        ],
+        "status": "PASS",
+        "device": "cuda:0",
+        "max_abs_error": 0.008460521697998047,
+        "mean_abs_error": 0.00040159793570637703,
+        "rtol": 0.03,
+        "atol": 0.03,
+        "compile_and_run_seconds": 0.8415760999778286
+      }
+    ],
+    "memory_after": {
+      "process_rss_bytes": 966950912,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 95008468992,
+      "system_memory_percent": 28.4,
+      "gpu_allocated_bytes": 83457024,
+      "gpu_reserved_bytes": 113246208,
+      "gpu_peak_allocated_bytes": 87886848,
+      "gpu_peak_reserved_bytes": 113246208,
+      "gpu_free_total_bytes": [
+        83424284672,
+        83954728960
+      ]
+    }
+  },
+  "status": "PASS"
+}

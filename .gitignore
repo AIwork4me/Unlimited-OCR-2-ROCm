@@ -14,3 +14,8 @@ dist/
 *.bin
 .env
 eval/results/private/
+eval/results/**/中文 input/
+eval/results/baseline/
+eval/results/clean/
+eval/results/first/single/
+eval/results/first/multi-corrected/
