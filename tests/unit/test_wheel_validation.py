@@ -1,6 +1,7 @@
 """CPU-only evidence gates: no torch or model imports."""
 
 import copy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -198,3 +199,18 @@ def test_sanitization_handles_case_slashes_and_json_escaping():
         assert "<USERPROFILE>" in result
     payload = json.dumps({"path": "C:\\Users\\Example\\x"})
     assert json.loads(module.sanitize_text(payload, home))["path"] == "<USERPROFILE>\\x"
+
+
+@pytest.mark.parametrize(
+    "name,digest",
+    [
+        ("repro_sdpa.py", "9673a18c38e48b1a5969d04b50ef691c13a8a6099092150ae5eda2d0380baf13"),
+        ("reporting.py", "eb1ed2c5ca146e78c973495825ee52272aee46f442f71df2ef3fa0332b7ed79c"),
+        (
+            "collect_provenance.py",
+            "4aaaf1c469eb31ae382affa1aff7e51eac9ba5106c862811455d80e18cf287a9",
+        ),
+    ],
+)
+def test_immutable_rca_producers(name, digest):
+    assert hashlib.sha256(SCRIPT.with_name(name).read_bytes()).hexdigest() == digest

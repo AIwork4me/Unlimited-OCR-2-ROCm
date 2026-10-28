@@ -51,3 +51,10 @@ Private originals and wheels remain outside Git in `C:/b`. Published evidence
 must neutralize user-profile paths, preserve original/published digest pairs,
 and checksum the final bytes. Neither SDK distributions nor wheel/DLL payloads
 belong in this evidence repository.
+
+The baseline was executed while the collector scripts were uncommitted additions
+to main's content. Its recorded checkout commit is therefore main, while the
+recorded script digests identify the exact producers. The frozen reproducer and
+reference resolve to the immutable RCA commit. A subsequent typing-only change
+to the runner is recorded separately; the exact earlier source snapshot is
+preserved with its matching execution digest. No acceptance criteria changed.
