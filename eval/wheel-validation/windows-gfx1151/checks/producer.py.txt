@@ -1,0 +1,23 @@
+from pathlib import Path
+import subprocess,json,uuid,datetime,hashlib
+out=Path('C:/b/checks');out.mkdir(exist_ok=True)
+qa='C:/b/qa/Scripts/python.exe'
+commands={
+'ruff':[qa,'-m','ruff','check','src','scripts','tests','experiments/pytorch212_wheel'],
+'format':[qa,'-m','ruff','format','--check','src','scripts','tests','experiments/pytorch212_wheel'],
+'mypy':[qa,'-m','mypy','src','experiments/pytorch212_wheel/compare_results.py','experiments/pytorch212_wheel/collect_build_provenance.py','experiments/pytorch212_wheel/validate_wheel.py','experiments/pytorch212_wheel/export_evidence.py'],
+'pytest-cpu':[qa,'-m','pytest'],
+'package-build':[qa,'-m','build'],
+'pip-check-qa':[qa,'-m','pip','check'],
+'pip-check-baseline':['C:/b/old/Scripts/python.exe','-m','pip','check'],
+'pip-check-build':['C:/b/be/Scripts/python.exe','-m','pip','check'],
+}
+manifest={'run_id':str(uuid.uuid4()),'checkout_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd='C:/uocr',text=True).strip(),'checks':[],'claim_limit':'CPU package checks are not PyTorch build success or physical GPU acceptance.'}
+for name,cmd in commands.items():
+    r={'name':name,'command':cmd,'start_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+    with (out/(name+'.stdout.log')).open('wb') as stdout,(out/(name+'.stderr.log')).open('wb') as stderr:
+        p=subprocess.run(cmd,cwd='C:/uocr',stdout=stdout,stderr=stderr,check=False)
+    r['exit_code']=p.returncode;r['end_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    manifest['checks'].append(r);(out/'processes.json').write_text(json.dumps(manifest,indent=2))
+    print(name,p.returncode,flush=True)
+if any(r['exit_code'] for r in manifest['checks']):raise SystemExit(1)

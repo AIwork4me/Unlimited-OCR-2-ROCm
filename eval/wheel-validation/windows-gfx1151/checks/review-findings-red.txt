@@ -1,0 +1,30 @@
+..................FF......                                               [100%]
+================================== FAILURES ===================================
+_________________ test_unsupported_with_dirty_hip_is_failure __________________
+
+    def test_unsupported_with_dirty_hip_is_failure():
+        r = clean_report()
+        r.update(status="UNSUPPORTED", exit_code=2)
+        r["events"][-1]["hip_after_sync"] = 1
+>       assert comparison.classify_case(r, 2) == "FAIL"
+E       AssertionError: assert 'UNSUPPORTED' == 'FAIL'
+E         
+E         - FAIL
+E         + UNSUPPORTED
+
+tests\unit\test_wheel_validation.py:102: AssertionError
+__________ test_only_named_optional_unsupported_control_is_excluded ___________
+
+    def test_only_named_optional_unsupported_control_is_excluded():
+>       statuses = comparison.acceptance_statuses([
+            {"case": "vision_flash_unsupported", "status": "UNSUPPORTED"},
+            {"case": "small_flash_1", "status": "UNSUPPORTED"},
+            {"case": "small_efficient_1", "status": "FUSED_PASS"},
+        ])
+E       AttributeError: module 'wheel_comparison' has no attribute 'acceptance_statuses'
+
+tests\unit\test_wheel_validation.py:106: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/unit/test_wheel_validation.py::test_unsupported_with_dirty_hip_is_failure
+FAILED tests/unit/test_wheel_validation.py::test_only_named_optional_unsupported_control_is_excluded
+2 failed, 24 passed in 0.10s

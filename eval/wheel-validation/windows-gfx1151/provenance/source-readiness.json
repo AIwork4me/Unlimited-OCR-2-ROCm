@@ -1,0 +1,273 @@
+{
+  "run_id": "32739ab2-b27a-452c-9ed4-d3bc323fafa9",
+  "utc": "2026-10-28T13:05:08.207623+00:00",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "status": " M third_party/benchmark\n M third_party/cpp-httplib\n M third_party/cpuinfo\n M third_party/flatbuffers\n M third_party/gemmlowp/gemmlowp\n M third_party/gloo\n M third_party/googletest\n M third_party/ideep\n M third_party/ittapi\n M third_party/kineto\n M third_party/kleidiai\n M third_party/mimalloc\n M third_party/mslk\n M third_party/nlohmann\n M third_party/onnx\n M third_party/pocketfft\n M third_party/protobuf\n M third_party/pthreadpool\n M third_party/pybind11\n M third_party/python-peachpy\n M third_party/sleef\n M third_party/tensorpipe\n",
+  "submodules": [
+    {
+      "path": "android/libs/fbjni",
+      "declared_sha": "7e1e1fe3858c63c251c637ae41a20de425dde96f",
+      "actual_head": "7e1e1fe3858c63c251c637ae41a20de425dde96f",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/FP16",
+      "declared_sha": "4dfe081cf6bcd15db339cf2680b9281b8451eeb3",
+      "actual_head": "4dfe081cf6bcd15db339cf2680b9281b8451eeb3",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/FXdiv",
+      "declared_sha": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "actual_head": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/NNPACK",
+      "declared_sha": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+      "actual_head": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/NVTX",
+      "declared_sha": "3ebbc93ded7285963bff932c678fa367eb393ba6",
+      "actual_head": "3ebbc93ded7285963bff932c678fa367eb393ba6",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/VulkanMemoryAllocator",
+      "declared_sha": "1d8f600fd424278486eade7ed3e877c99f0846b1",
+      "actual_head": "1d8f600fd424278486eade7ed3e877c99f0846b1",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/XNNPACK",
+      "declared_sha": "51a0103656eff6fc9bfd39a4597923c4b542c883",
+      "actual_head": "51a0103656eff6fc9bfd39a4597923c4b542c883",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/aiter",
+      "declared_sha": "9a469a608b2c10b7157df573a38d31e5bf4038b4",
+      "actual_head": "9a469a608b2c10b7157df573a38d31e5bf4038b4",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/benchmark",
+      "declared_sha": "299e5928955cc62af9968370293b916f5130916f",
+      "actual_head": "fbd453799701cdf0fcbdff56dbbb8ab7e6d78534",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/composable_kernel",
+      "declared_sha": "cd9e41c4eae94f11e7d6e39751e8e13f46653030",
+      "actual_head": "cd9e41c4eae94f11e7d6e39751e8e13f46653030",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/cpp-httplib",
+      "declared_sha": "4d7c9a788de136071ccf0dd4e96239151e2adadb",
+      "actual_head": "290c4c0bbee4fc22e8250873c7fd6c08dafce9d7",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/cpuinfo",
+      "declared_sha": "f858c30bcb16f8effd5ff46996f0514539e17abc",
+      "actual_head": "783a616b2197d7e48d6507210d1d0009fbf1f590",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/cudnn_frontend",
+      "declared_sha": "a91f0e04dcea10515f0f776fc5a89535e316a9c8",
+      "actual_head": "a91f0e04dcea10515f0f776fc5a89535e316a9c8",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/cutlass",
+      "declared_sha": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+      "actual_head": null,
+      "head_matches": false,
+      "query_exit": 128
+    },
+    {
+      "path": "third_party/fbgemm",
+      "declared_sha": "c246916f9e3804eacc3c95058e51cce02ae00fff",
+      "actual_head": null,
+      "head_matches": false,
+      "query_exit": 128
+    },
+    {
+      "path": "third_party/flash-attention",
+      "declared_sha": "fec3a6a18460c1b40f097208d4c16fe8964a679d",
+      "actual_head": null,
+      "head_matches": false,
+      "query_exit": 128
+    },
+    {
+      "path": "third_party/flatbuffers",
+      "declared_sha": "a2cd1ea3b6d3fee220106b5fed3f7ce8da9eb757",
+      "actual_head": "f58d5768f1fd0df9f71aa6ae5f63645e2637c31f",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/fmt",
+      "declared_sha": "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+      "actual_head": null,
+      "head_matches": false,
+      "query_exit": 128
+    },
+    {
+      "path": "third_party/gemmlowp/gemmlowp",
+      "declared_sha": "3fb5c176c17c765a3492cd2f0321b0dab712f350",
+      "actual_head": "16e8662c34917be0065110bfcd9cc27d30f52fdf",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/gloo",
+      "declared_sha": "3135b0b41b67dde590eef0938a0bf3d6238df5f7",
+      "actual_head": "8d8f8645ed5ef28aeca751bf17119efab5de2244",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/googletest",
+      "declared_sha": "52eb8108c5bdec04579160ae17225d66034bd723",
+      "actual_head": "cd8e73f067129f8489e35c7b51c7a68552b289d2",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/ideep",
+      "declared_sha": "e539e0f9774e2018f0d56fe865da66581f692e3d",
+      "actual_head": "b0b2f563376f0c366a36ca3549247d1e9d9ae5dd",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/ittapi",
+      "declared_sha": "0c57540822deb5dae43bef6c1cc9b3be4772a033",
+      "actual_head": "54835bb96f1b85f8f21841ce821487f69d95ecce",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/kineto",
+      "declared_sha": "b2103f78d13fde4937af010c0ef8e24313568bc5",
+      "actual_head": "ae1f4eb2db483b0e31952566d6b834f339501dcf",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/kleidiai",
+      "declared_sha": "d7770c89632329a9914ef1a90289917597639cbe",
+      "actual_head": "d2db7fe057186950233e776d1eceef0e49892dfb",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/mimalloc",
+      "declared_sha": "048d969a1c5ee2fb89c226298f41ea38445546ef",
+      "actual_head": "8b08dbb8f9c8db7f01e9abe5b1a981d985e1fa46",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/mslk",
+      "declared_sha": "3d332d1c0c0ac7765852c97b3979c9ef913e037f",
+      "actual_head": "9b86d3b0e2730ed34eeeb6eb2237f3cd725944a0",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/nlohmann",
+      "declared_sha": "55f93686c01528224f448c19128836e7df245f72",
+      "actual_head": "da83aa92c88aa4bcacc3bc29cef59fec5d257543",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/onnx",
+      "declared_sha": "e709452ef2bbc1d113faf678c24e6d3467696e83",
+      "actual_head": "ff69739ae7c8f32da845bedc81864ba694361ea0",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/pocketfft",
+      "declared_sha": "0fa0ef591e38c2758e3184c6c23e497b9f732ffa",
+      "actual_head": "4d865cba24359b05b37da4e75aee24498c3b78e7",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/protobuf",
+      "declared_sha": "d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a",
+      "actual_head": "38ade5ac7eb6d708c6b6a28db29e58f07edb23cb",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/psimd",
+      "declared_sha": "072586a71b55b7f8c584153d223e95687148a900",
+      "actual_head": "072586a71b55b7f8c584153d223e95687148a900",
+      "head_matches": true,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/pthreadpool",
+      "declared_sha": "4fe0e1e183925bf8cfa6aae24237e724a96479b8",
+      "actual_head": "560c60d342a76076f0557a3946924c6478470044",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/pybind11",
+      "declared_sha": "f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8",
+      "actual_head": "2a33aba3190cbf57ab3d46183858351b8321bba2",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/python-peachpy",
+      "declared_sha": "f45429b087dd7d5bc78bb40dc7cf06425c252d67",
+      "actual_head": "913d74c35a6b1d330e90bfc055208ce5b06b35a0",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/sleef",
+      "declared_sha": "5a1d179df9cf652951b59010a2d2075372d67f68",
+      "actual_head": "7623d6cfa2712462880fa63a4d0f0b5f775d1a83",
+      "head_matches": false,
+      "query_exit": 0
+    },
+    {
+      "path": "third_party/tensorpipe",
+      "declared_sha": "2b4cd91092d335a697416b2a3cb398283246849d",
+      "actual_head": "b4b77d1006e764fb5cc42597d17d2b110211c2d1",
+      "head_matches": false,
+      "query_exit": 0
+    }
+  ],
+  "all_top_level_pins_ready": false,
+  "recursive_readiness_verified": false,
+  "cmake_cache_exists": false,
+  "wheel_files": [],
+  "decision": "BUILD_BLOCKED",
+  "primary_blocker": "Pinned source dependency fetch failed; current checkout is not build-ready. No candidate wheel exists."
+}

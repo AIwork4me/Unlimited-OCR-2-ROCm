@@ -1,0 +1,71 @@
+{
+  "utc": "2026-10-28T13:10:28.848603+00:00",
+  "baseline_counts": {
+    "CONTROL_PASS": 1,
+    "FAIL": 21,
+    "MATH_PASS": 4,
+    "UNSUPPORTED": 1
+  },
+  "baseline_red_reproduced": true,
+  "baseline_drift": false,
+  "fixtures": {
+    "scalar": {
+      "sha256": "2327964b3cd3acf123400cd57647979abe1aad5fe049f1da631c4dac7fa865d1",
+      "cases": [
+        "scalar_default_1",
+        "scalar_default_2",
+        "scalar_default_3",
+        "scalar_flash_1",
+        "scalar_flash_2",
+        "scalar_flash_3",
+        "scalar_math"
+      ],
+      "within_baseline_identical": true,
+      "candidate_match": null
+    },
+    "small_no_mask": {
+      "sha256": "e39ed68c0b8e26c1949d4c05c1ff75479a43910b027ac06d1472da1251aae8c0",
+      "cases": [
+        "small_flash_1",
+        "small_flash_2",
+        "small_flash_3",
+        "small_math",
+        "flash_launch"
+      ],
+      "within_baseline_identical": true,
+      "candidate_match": null
+    },
+    "small_bias": {
+      "sha256": "a889de7a3cdb612299e6f2e885655f14171566414e9cda06ff3faab686cd5a86",
+      "cases": [
+        "small_efficient_1",
+        "small_efficient_2",
+        "small_efficient_3",
+        "small_bias_math",
+        "efficient_arithmetic",
+        "efficient_launch"
+      ],
+      "within_baseline_identical": true,
+      "candidate_match": null
+    },
+    "vision": {
+      "sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+      "cases": [
+        "vision_default_1",
+        "vision_default_2",
+        "vision_default_3",
+        "vision_efficient_1",
+        "vision_efficient_2",
+        "vision_efficient_3",
+        "vision_math",
+        "copy_only",
+        "vision_flash_unsupported"
+      ],
+      "within_baseline_identical": true,
+      "candidate_match": null
+    }
+  },
+  "candidate": null,
+  "paired_artifact_comparison_completed": false,
+  "limitation": "No candidate artifact exists. Original RED cannot classify current source as regression or fix."
+}

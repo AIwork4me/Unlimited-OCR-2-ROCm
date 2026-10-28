@@ -1,0 +1,114 @@
+{
+  "run_id": "e45854e8-5c11-49b4-9d86-2c513d32cb23",
+  "checkout_sha": "d1be062edc73197264c9f43996fa413f8162b8e2",
+  "checks": [
+    {
+      "name": "ruff",
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests",
+        "experiments/pytorch212_wheel"
+      ],
+      "start_utc": "2026-10-28T13:09:20.961254+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:21.066659+00:00"
+    },
+    {
+      "name": "format",
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "scripts",
+        "tests",
+        "experiments/pytorch212_wheel"
+      ],
+      "start_utc": "2026-10-28T13:09:21.067226+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:21.164227+00:00"
+    },
+    {
+      "name": "mypy",
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "mypy",
+        "src",
+        "experiments/pytorch212_wheel/compare_results.py",
+        "experiments/pytorch212_wheel/collect_build_provenance.py",
+        "experiments/pytorch212_wheel/validate_wheel.py",
+        "experiments/pytorch212_wheel/export_evidence.py"
+      ],
+      "start_utc": "2026-10-28T13:09:21.164683+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:21.634798+00:00"
+    },
+    {
+      "name": "pytest-cpu",
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "pytest"
+      ],
+      "start_utc": "2026-10-28T13:09:21.635371+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:22.394472+00:00"
+    },
+    {
+      "name": "package-build",
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "build"
+      ],
+      "start_utc": "2026-10-28T13:09:22.395015+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:34.942305+00:00"
+    },
+    {
+      "name": "pip-check-qa",
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "start_utc": "2026-10-28T13:09:34.943055+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:35.587905+00:00"
+    },
+    {
+      "name": "pip-check-baseline",
+      "command": [
+        "C:/b/old/Scripts/python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "start_utc": "2026-10-28T13:09:35.588413+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:36.336720+00:00"
+    },
+    {
+      "name": "pip-check-build",
+      "command": [
+        "C:/b/be/Scripts/python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "start_utc": "2026-10-28T13:09:36.337255+00:00",
+      "exit_code": 0,
+      "end_utc": "2026-10-28T13:09:36.749914+00:00"
+    }
+  ],
+  "claim_limit": "CPU package checks are not PyTorch build success or physical GPU acceptance."
+}

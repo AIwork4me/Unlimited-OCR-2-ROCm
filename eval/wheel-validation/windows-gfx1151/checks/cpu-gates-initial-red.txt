@@ -1,0 +1,16 @@
+
+=================================== ERRORS ====================================
+____________ ERROR collecting tests/unit/test_wheel_validation.py _____________
+tests\unit\test_wheel_validation.py:14: in <module>
+    SPEC.loader.exec_module(comparison)
+<frozen importlib._bootstrap_external>:879: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1016: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1073: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: 'C:\\uocr\\experiments\\pytorch212_wheel\\compare_results.py'
+=========================== short test summary info ===========================
+ERROR tests/unit/test_wheel_validation.py - FileNotFoundError: [Errno 2] No s...
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.11s
