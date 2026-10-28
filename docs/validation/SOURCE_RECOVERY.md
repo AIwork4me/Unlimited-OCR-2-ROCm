@@ -23,6 +23,21 @@ directories during configuration even with tests disabled, so its sparse
 checkout was expanded. FBGEMM was automatically disabled by the unmodified
 platform guards; its setup prerequisites were nevertheless recovered.
 
+The first native compiler diagnostic exposed another required source input:
+`torch/csrc/profiler/kineto_shim.h:15` includes `ActivityType.h` unconditionally,
+even with USE_KINETO=OFF. The marker-only Kineto checkout therefore was
+insufficient. Its full tree was recovered at unchanged commit
+`b2103f78d13fde4937af010c0ef8e24313568bc5` (363 missing objects), then the
+official builder resumed. The missing-header diagnostic is classified as an
+incomplete source-materialization failure, not an AOTriton compiler regression.
+
+After native compilation and linking completed, CMake installation exposed the
+PSIMD header `include/psimd.h`, installed by FP16 even on this x86_64 graph.
+PSIMD was expanded at unchanged commit
+`072586a71b55b7f8c584153d223e95687148a900` (five missing objects). A scan of
+literal third-party source paths in generated install scripts found only that
+missing path. This was an installation-input gap, not a compiler/linker defect.
+
 Official HIPIFY also reads MSLK's `include/mslk/utils/tuning_cache.cuh`
 (`tools/amd_build/build_amd.py:224`). That directory was expanded before
 rerunning the frozen TheRock HIPIFY command successfully. The generated source
@@ -98,7 +113,7 @@ ROCm graph; they do not establish that every upstream optional target can build.
 | `third_party/googletest` | `52eb8108c5bdec04579160ae17225d66034bd723` | sparse markers |
 | `third_party/ideep` | `e539e0f9774e2018f0d56fe865da66581f692e3d` | full |
 | `third_party/ittapi` | `0c57540822deb5dae43bef6c1cc9b3be4772a033` | full |
-| `third_party/kineto` | `b2103f78d13fde4937af010c0ef8e24313568bc5` | sparse markers |
+| `third_party/kineto` | `b2103f78d13fde4937af010c0ef8e24313568bc5` | initially markers; expanded full after first missing-header diagnostic |
 | `third_party/kleidiai` | `d7770c89632329a9914ef1a90289917597639cbe` | sparse markers |
 | `third_party/mimalloc` | `048d969a1c5ee2fb89c226298f41ea38445546ef` | full |
 | `third_party/mslk` | `3d332d1c0c0ac7765852c97b3979c9ef913e037f` | markers + HIPIFY utils |
@@ -106,7 +121,7 @@ ROCm graph; they do not establish that every upstream optional target can build.
 | `third_party/onnx` | `e709452ef2bbc1d113faf678c24e6d3467696e83` | full |
 | `third_party/pocketfft` | `0fa0ef591e38c2758e3184c6c23e497b9f732ffa` | full |
 | `third_party/protobuf` | `d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a` | full |
-| `third_party/psimd` | `072586a71b55b7f8c584153d223e95687148a900` | sparse markers |
+| `third_party/psimd` | `072586a71b55b7f8c584153d223e95687148a900` | initially markers; expanded full for FP16 installation |
 | `third_party/pthreadpool` | `4fe0e1e183925bf8cfa6aae24237e724a96479b8` | full |
 | `third_party/pybind11` | `f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8` | full |
 | `third_party/python-peachpy` | `f45429b087dd7d5bc78bb40dc7cf06425c252d67` | sparse markers |
@@ -115,4 +130,3 @@ ROCm graph; they do not establish that every upstream optional target can build.
 | `third_party/fbgemm/external/asmjit` | `a3199e8857792cd10b7589ff5d58343d2c9008ea` | full |
 | `third_party/fbgemm/external/cpuinfo` | `161a9ec374884f4b3e85725cb22e05f9458fdc93` | full |
 | `third_party/ideep/mkl-dnn` | `03c022d3ffdcee958cfacbe720048e725fdf644c` | full |
-

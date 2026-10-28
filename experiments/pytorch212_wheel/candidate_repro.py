@@ -9,6 +9,7 @@ import os
 import struct
 import subprocess
 import sys
+import zipfile
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,32 @@ def digest(path: Path) -> str:
         for block in iter(lambda: f.read(1024 * 1024), b""):
             h.update(block)
     return h.hexdigest()
+
+
+def native_binary_facts(
+    site: Path, inventory: dict[str, str], modules: list[Path]
+) -> dict[str, Any]:
+    """Hash every installed native member and identify all loaded matching modules."""
+    site = site.resolve()
+    installed = {name: (site / name).resolve() for name in inventory}
+    if any(not path.is_relative_to(site) for path in installed.values()):
+        raise ValueError("Native inventory escapes the candidate site-packages")
+    wanted = {Path(n).name.lower() for n in inventory}
+    selected = [p.resolve() for p in modules if p.name.lower() in wanted]
+    if len({p.name.lower() for p in selected}) != len(selected):
+        raise ValueError("Duplicate loaded candidate native module basename")
+    inside = all(p.is_relative_to(site) for p in selected)
+    canonical = {path: name for name, path in installed.items()}
+    return {
+        "binaries": {name: digest(path) for name, path in installed.items()},
+        "loaded_binaries": {
+            canonical.get(p, p.relative_to(site).as_posix()): digest(p) for p in selected
+        }
+        if inside
+        else {},
+        "loaded_binaries_within_venv": inside,
+        "loaded_paths": [str(p) for p in selected],
+    }
 
 
 def runtime_facts(profile: dict[str, Any], environment: dict[str, Any]) -> dict[str, Any]:
@@ -39,12 +66,13 @@ def runtime_facts(profile: dict[str, Any], environment: dict[str, Any]) -> dict[
     installed_hash = origin["archive_info"]["hashes"]["sha256"]
     # Keep the legacy helper byte-identical; do not type-check it as new code.
     modules = [Path(p) for p in importlib.import_module("collect_provenance").loaded_modules()]
-    wanted = {Path(n).name.lower() for n in profile["binaries"]}
-    selected = [p.resolve() for p in modules if p.name.lower() in wanted]
-    if len(selected) != len(wanted) or len({p.name.lower() for p in selected}) != len(wanted):
-        raise ValueError("Missing or duplicate candidate runtime modules")
-    inside = all(p.is_relative_to(site) for p in selected)
-    binaries = {p.relative_to(site).as_posix(): digest(p) for p in selected} if inside else {}
+    native = native_binary_facts(site, profile["binaries"], modules)
+    with zipfile.ZipFile(wheel) as archive:
+        artifact_binaries = {
+            name: hashlib.sha256(archive.read(name)).hexdigest()
+            for name in archive.namelist()
+            if name.startswith("torch/") and name.lower().endswith((".dll", ".pyd"))
+        }
     image_root = site / "torch/lib/aotriton.images"
     images = {
         p.relative_to(site).as_posix(): digest(p) for p in image_root.rglob("*") if p.is_file()
@@ -71,8 +99,8 @@ def runtime_facts(profile: dict[str, Any], environment: dict[str, Any]) -> dict[
         if sys.platform == "win32" and struct.calcsize("P") == 8
         else "WRONG_PLATFORM",
         "import_within_venv": Path(torch.__file__).resolve().is_relative_to(site),
-        "loaded_binaries_within_venv": inside,
-        "binaries": binaries,
+        **native,
+        "artifact_binaries": artifact_binaries,
         "images": images,
         "runtime_header_sha256": digest(site / "torch/include/aotriton/config.h"),
         "image_signatures": signatures,
@@ -90,7 +118,6 @@ def runtime_facts(profile: dict[str, Any], environment: dict[str, Any]) -> dict[
             if "AOTRITON" in k or k == "HSA_OVERRIDE_GFX_VERSION"
         },
         "torch_file": str(torch.__file__),
-        "loaded_paths": [str(p) for p in selected],
     }
     return facts
 

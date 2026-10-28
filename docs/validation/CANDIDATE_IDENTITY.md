@@ -33,10 +33,16 @@ Every subsequent fresh acceptance process independently checks:
 - Original built wheel SHA-256, recorded installed-wheel SHA-256 and rehashed
   wheel bytes agree; imported torch git version equals frozen source `60dd50f…`.
 - CPython cp310 x64/Windows, HIP 7.14.60850 and physical gfx1151 identity agree.
-- Imported torch and all required loaded AOTriton/torch_hip/HIP DLLs come from
-  the intended isolated prefix; duplicate or missing relevant DLLs are refused.
-- Loaded DLL bytes, complete installed image-file inventory/signatures and
-  runtime-header hash match the artifact-derived profile.
+- Every torch DLL/PYD member is independently rehashed from the actual wheel and
+  the installed copy. This includes the CPU reference implementation, Python
+  extension and C10 libraries, plus native members that happen not to be loaded.
+- Every loaded module matching an artifact basename comes from its expected
+  candidate path and has the expected hash. Required CPU/Python/C10/HIP/AOTriton
+  core modules must be loaded; duplicate or foreign matching modules are refused.
+  Genuinely optional modules may remain unloaded, with their installed bytes
+  still verified.
+- Complete installed image-file inventory/signatures and runtime-header hash
+  match the artifact-derived profile.
 - A fresh `sys.executable -m pip check` succeeds in that same process environment;
   interpreter, prefix, command, stdout/stderr and exit are recorded.
 - No AOTriton source/target override or architecture override is active.
@@ -60,3 +66,13 @@ The 26 candidate tests exercise torch-only acceptance, frozen source/recipe pins
 wheel/source/HIP/ABI/architecture drift, environment/pip interpreter mismatch,
 DLL/image/header changes, missing payloads, unchanged AST nodes, frozen producer
 digest and all three forms of the prohibited error-clearing option.
+
+Actual-artifact review subsequently found that the initial native inventory
+covered only four torch DLLs and omitted loaded CPU/Python/C10 binaries. Seven
+new failing regression cases reproduced the gap before the fix. The expanded
+gate now has **35 candidate tests + 30 existing gate tests** passing, including
+foreign core modules, missing loaded core modules, and omitted or modified
+optional payloads. Independent review verified all **15 wheel native binaries
+plus the SDK HIP DLL**, seven images and actual loaded paths against the real
+candidate installation. The identity gate is cleared for the GPU matrix; this
+identity review alone does not establish numerical correctness or valid launches.

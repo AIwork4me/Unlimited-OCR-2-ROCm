@@ -32,6 +32,19 @@ def facts():
             "torch/lib/aotriton_v2.dll": "b" * 64,
             "torch/lib/torch_hip.dll": "c" * 64,
             "_rocm_sdk_core/bin/amdhip64_7.dll": "d" * 64,
+            **{
+                "torch/lib/" + name: "b" * 64
+                for name in (
+                    "torch_cpu.dll",
+                    "torch_python.dll",
+                    "c10.dll",
+                    "c10_hip.dll",
+                    "dl.dll",
+                    "liblzma.dll",
+                    "nnapi_backend.dll",
+                )
+            },
+            "torch/_C.cp310-win_amd64.pyd": "c" * 64,
         },
         "images": {"torch/lib/aotriton.images/amd-gfx115x/attn_fwd.zip": "e" * 64},
         "image_signatures": [{"TRITON_VERSION": "aotriton0.14"}],
@@ -39,6 +52,8 @@ def facts():
     }
     observed = copy.deepcopy(p)
     observed.update(
+        artifact_binaries={k: v for k, v in p["binaries"].items() if k.startswith("torch/")},
+        loaded_binaries={k: v for k, v in p["binaries"].items() if "nnapi_backend" not in k},
         import_within_venv=True,
         loaded_binaries_within_venv=True,
         imported_git_version=p["source_sha"],
@@ -59,6 +74,55 @@ def test_torch_only_candidate_does_not_need_old_audio_or_vision():
     identity.validate_identity(profile, runtime)
     assert "torchvision" not in runtime["packages"]
     assert "torchaudio" not in runtime["packages"]
+
+
+@pytest.mark.parametrize(
+    "member",
+    [
+        "torch/lib/torch_cpu.dll",
+        "torch/lib/torch_python.dll",
+        "torch/lib/c10.dll",
+        "torch/lib/c10_hip.dll",
+        "torch/_C.cp310-win_amd64.pyd",
+    ],
+)
+def test_foreign_loaded_core_binary_is_rejected(member):
+    p, r = facts()
+    value = r["loaded_binaries"].pop(member)
+    r["loaded_binaries"]["foreign/" + member.split("/")[-1]] = value
+    with pytest.raises(ValueError):
+        identity.validate_identity(p, r)
+
+
+def test_required_cpu_reference_binary_cannot_be_omitted():
+    p, r = facts()
+    for inventory in (p["binaries"], r["binaries"], r["loaded_binaries"]):
+        inventory.pop("torch/lib/torch_cpu.dll")
+    with pytest.raises(ValueError):
+        identity.validate_identity(p, r)
+
+
+def test_core_binary_must_actually_be_loaded():
+    p, r = facts()
+    r["loaded_binaries"].pop("torch/lib/torch_cpu.dll")
+    with pytest.raises(ValueError):
+        identity.validate_identity(p, r)
+
+
+def test_unloaded_optional_binary_still_has_its_installed_hash_checked():
+    p, r = facts()
+    identity.validate_identity(p, r)
+    r["binaries"]["torch/lib/nnapi_backend.dll"] = "0" * 64
+    with pytest.raises(ValueError):
+        identity.validate_identity(p, r)
+
+
+def test_profile_cannot_omit_an_optional_artifact_binary():
+    p, r = facts()
+    p["binaries"].pop("torch/lib/nnapi_backend.dll")
+    r["binaries"].pop("torch/lib/nnapi_backend.dll")
+    with pytest.raises(ValueError):
+        identity.validate_identity(p, r)
 
 
 @pytest.mark.parametrize(

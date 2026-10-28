@@ -48,11 +48,10 @@ def main() -> None:
                     values[node.target.id] = ast.literal_eval(node.value)
         if values.get("git_version") != SOURCE_SHA or values.get("hip") != "7.14.60850":
             raise ValueError("Built wheel version.py does not identify the frozen source and SDK")
-        important = {"aotriton_v2.dll", "torch_hip.dll", "dl.dll", "liblzma.dll"}
         binaries = {
             n: hashlib.sha256(wheel.read(n)).hexdigest()
             for n in wheel.namelist()
-            if n.startswith("torch/lib/") and n.split("/")[-1] in important
+            if n.startswith("torch/") and n.lower().endswith((".dll", ".pyd"))
         }
         images = {
             n: hashlib.sha256(wheel.read(n)).hexdigest()

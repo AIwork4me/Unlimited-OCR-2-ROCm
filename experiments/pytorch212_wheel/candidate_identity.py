@@ -9,6 +9,18 @@ SOURCE_SHA = "60dd50f143fd9b10ac23cde8cdd34be61232b139"
 THEROCK_SHA = "6d34c9b6f3e752b8f718b0c81f3070df77ce3283"
 AOTRITON_PIN = "7a6963a7265d2cf0fc48c6a63464386134d32483"
 REPRO_SHA256 = "9673a18c38e48b1a5969d04b50ef691c13a8a6099092150ae5eda2d0380baf13"
+REQUIRED_LOADED_BINARIES = {
+    "aotriton_v2.dll",
+    "torch_hip.dll",
+    "torch_cpu.dll",
+    "torch_python.dll",
+    "c10.dll",
+    "c10_hip.dll",
+    "_c.cp310-win_amd64.pyd",
+    "dl.dll",
+    "liblzma.dll",
+    "amdhip64_7.dll",
+}
 
 
 def validate_acceptance_arguments(args: Any) -> None:
@@ -74,9 +86,15 @@ def validate_identity(profile: dict[str, Any], runtime: dict[str, Any]) -> None:
             raise ValueError(f"Candidate {field} differ from artifact inventory")
         if any(not re.fullmatch(r"[0-9a-f]{64}", h) for h in values.values()):
             raise ValueError(f"Invalid {field} digest")
-    names = {p.replace("\\", "/").split("/")[-1] for p in profile["binaries"]}
-    if not {"aotriton_v2.dll", "torch_hip.dll", "amdhip64_7.dll"} <= names:
-        raise ValueError("Required loaded ROCm/AOTriton binaries absent")
+    artifact = {k: v for k, v in profile["binaries"].items() if k.startswith("torch/")}
+    if not artifact or artifact != runtime.get("artifact_binaries"):
+        raise ValueError("Native profile does not cover the actual wheel inventory")
+    loaded = runtime.get("loaded_binaries", {})
+    if not loaded or any(profile["binaries"].get(k) != v for k, v in loaded.items()):
+        raise ValueError("Loaded native binaries differ from their artifact paths or hashes")
+    names = {p.replace("\\", "/").split("/")[-1].lower() for p in loaded}
+    if len(names) != len(loaded) or not REQUIRED_LOADED_BINARIES <= names:
+        raise ValueError("Required loaded torch/ROCm/AOTriton core binaries absent or duplicated")
     for field in ("image_signatures", "runtime_header_sha256"):
         if not profile.get(field) or profile[field] != runtime.get(field):
             raise ValueError(f"Candidate {field} differs from packaged identity")
