@@ -214,3 +214,56 @@ def test_redaction_catches_repr_escaped_windows_paths_in_build_logs():
         m.sanitize(r"C:\\Users\\someone\\venv\\torch.dll", r"C:\Users\someone")
         == r"<USERPROFILE>\\venv\\torch.dll"
     )
+
+
+def test_final_classification_includes_new_downstream_hip_error():
+    m = reporting()
+    assert hasattr(m, "hip_failed"), "Final HIP event scan missing"
+    events = [
+        {"stage": "after_sdpa", "hip_before_sync": 0, "hip_after_sync": 0},
+        {"stage": "after_copy", "hip_before_sync": 1, "hip_after_sync": 1},
+    ]
+    assert m.hip_failed(events)
+    assert (
+        m.classify({"failing_elements": 0, "nonfinite_actual": 0}, m.hip_failed(events)) == "FAIL"
+    )
+    assert not m.hip_failed(events[:1])
+
+
+def test_matrix_refuses_previous_failure_logs_without_child_json(tmp_path):
+    import json
+    import subprocess
+
+    output = tmp_path / "prior-crash"
+    output.mkdir()
+    prior_log = output / "crashed.stderr.log"
+    prior_log.write_bytes(b"original crash traceback\n")
+    manifest = output / "process-manifest.json"
+    manifest.write_bytes(b'[{"original":true}]\n')
+    cases = tmp_path / "cases.json"
+    cases.write_text(json.dumps([{"name": "crashed", "args": ["--help"]}]))
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "experiments/sdpa_rca/compare_backends.py"),
+            "--cases",
+            str(cases),
+            "--output",
+            str(output),
+        ],
+        capture_output=True,
+    )
+    assert result.returncode != 0
+    assert prior_log.read_bytes() == b"original crash traceback\n"
+    assert manifest.read_bytes() == b'[{"original":true}]\n'
+    assert not (output / "crashed.stdout.log").exists()
+
+
+def test_process_runner_cannot_truncate_existing_streams(tmp_path):
+    from compare_backends import run_case
+
+    log = tmp_path / "original.stderr.log"
+    log.write_bytes(b"original error\n")
+    with pytest.raises(FileExistsError):
+        run_case([sys.executable, "-c", "print('new')"], tmp_path / "original", ROOT)
+    assert log.read_bytes() == b"original error\n"

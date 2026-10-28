@@ -37,6 +37,14 @@ def classify(stats, hip_error):
     return "PASS" if stats else "INCOMPLETE"
 
 
+def hip_failed(events):
+    """Inspect the entire recorded sequence, including downstream checkpoints."""
+    return any(
+        event.get("hip_before_sync") or event.get("hip_after_sync") or event.get("traceback")
+        for event in events
+    )
+
+
 def audit_ab_provenance(left, right):
     """Reject a purported images-only A/B if a recorded core component changed."""
     checked = ["packages", "architecture", "system"]

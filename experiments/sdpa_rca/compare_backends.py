@@ -17,10 +17,12 @@ def run_case(command, stem, cwd, timeout=300):
     stem = Path(stem)
     stem.parent.mkdir(parents=True, exist_ok=True)
     stdout, stderr = stem.with_suffix(".stdout.log"), stem.with_suffix(".stderr.log")
+    if stdout.exists() or stderr.exists():
+        raise FileExistsError(f"Refusing to overwrite process streams: {stem}")
     start = time.monotonic()
     utc = datetime.now(timezone.utc).isoformat()
     timed_out = False
-    with stdout.open("wb") as out, stderr.open("wb") as err:
+    with stdout.open("xb") as out, stderr.open("xb") as err:
         try:
             process = subprocess.run(
                 command,
@@ -66,6 +68,8 @@ def main():
             )
         ]
     )
+    if args.output.exists() and any(args.output.iterdir()):
+        parser.error("Use a fresh empty output directory; previous failures must be preserved")
     args.output.mkdir(parents=True, exist_ok=True)
     if len({case["name"] for case in cases}) != len(cases):
         parser.error("Duplicate case names would overwrite evidence")

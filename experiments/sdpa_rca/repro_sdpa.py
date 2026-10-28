@@ -16,6 +16,7 @@ from pathlib import Path
 
 from reporting import (
     classify,
+    hip_failed,
     numerical_stats,
     observed_backend,
     reference_attention,
@@ -146,7 +147,7 @@ def execute(args, report):
             return func(*args, **(kwargs or {}))
 
     checkpoint("before_sdpa")
-    if any(e.get("hip_after_sync") or e.get("traceback") for e in events):
+    if hip_failed(events):
         raise RuntimeError("GPU not clean before experiment")
     backend = getattr(SDPBackend, args.backend) if args.backend != "DEFAULT" else None
     params = torch.backends.cuda.SDPAParams(q, k, v, mask, 0.0, args.causal, False)
@@ -179,9 +180,7 @@ def execute(args, report):
             operators.extend(e.key for e in profiler.key_averages())
         report["backend_observed"] = observed_backend(operators)
         checkpoint("after_sdpa")
-    pending = any(
-        e.get("hip_before_sync") or e.get("hip_after_sync") or e.get("traceback") for e in events
-    )
+    pending = hip_failed(events)
     if pending and args.clear_error_nonacceptance:
         cleared = hip.hipGetLastError()
         events.append({"stage": "EXPLICIT_NON_ACCEPTANCE_CLEAR", "cleared_error": cleared})
@@ -199,6 +198,7 @@ def execute(args, report):
             report["downstream_traceback"] = traceback.format_exc()
             print(report["downstream_traceback"], file=sys.stderr, flush=True)
         checkpoint("after_" + args.operation)
+    pending = hip_failed(events)
     if output is not None and (not pending or args.clear_error_nonacceptance):
         actual = output.cpu()
         report["numerical"] = numerical_stats(actual, reference, *TOLERANCES[args.dtype])

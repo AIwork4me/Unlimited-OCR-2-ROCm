@@ -91,9 +91,11 @@ Following the discussion found [TheRock #7315](https://github.com/ROCm/TheRock/i
 
 A = unmodified exact-stack torch-only environment; B = same environment with only the image directory replaced by the official 0.12 image payload; A′ = original images restored. Separate fresh processes for every condition. Original OCR venv is never altered.
 
-Original shape DEFAULT: A FAIL → B PASS → A′ FAIL; forced efficient has the same transition. Scalar no-mask FLASH: A FAIL → B PASS → A′ FAIL. Three repeated [1,1,1,8] efficient conditions follow the same pattern; three MATH controls pass in every state. B also passes every supported entry of the original minimization/dtype/mask/stride/causal/order matrix. [A/B run index](TEST_MATRIX.md).
+Scalar no-mask FLASH: secondary A FAIL → B PASS → A′ FAIL. Three repeated [1,1,1,8] efficient conditions follow the same pattern; three MATH controls pass in every state. These are the same-environment, three-state causal experiments. B also passes every supported entry of the original minimization/dtype/mask/stride/causal/order matrix. [A/B run index](TEST_MATRIX.md).
 
-Representative original-layout run IDs: A `3b502856-1295-4640-a134-e9498dabb4a8`; B `738b674f-32b1-43f8-8132-c49aeda6db94`. The complete index includes A′ and all scalar/repetition IDs, plus exact fixtures and commands. No failed experiment was discarded.
+Scalar run IDs: secondary A `edc25492-5643-4355-a1cd-40669094f8ef`; B `645f5ec1-f514-418e-9b45-1a6e8c638822`; A′ `af8f5c94-0de1-4358-a969-617980e3fe1c`. All use fixture hash `2327964b3cd3acf123400cd57647979abe1aad5fe049f1da631c4dac7fa865d1`.
+
+At the original large shape, the initial FAIL was in the **primary OCR venv** (`3b502856-1295-4640-a134-e9498dabb4a8`), B PASS in the secondary venv (`738b674f-32b1-43f8-8132-c49aeda6db94`), and restored-secondary FAIL (`489afbc7-3dbb-4864-b898-3d8783a25fb2`). The initial secondary A did not run the large shape. Thus large-shape evidence includes a controlled B→A′ reversal plus a separate primary baseline, rather than a complete secondary large-shape A/B/A. The complete index retains every environment, run ID, exact fixture and command. No failed experiment was discarded.
 
 ## 16. Causal explanation
 
@@ -130,3 +132,5 @@ One actual Windows gfx1151 system, inference forward only; no backward/training,
 [Standalone program](../../experiments/sdpa_rca/repro_sdpa.py), [PowerShell instructions](../../experiments/sdpa_rca/README.md), [raw reports/logs](../../eval/rca/gfx1151-rocm7141/), [experiment index](../../eval/rca/gfx1151-rocm7141/experiment-manifest.json), [SHA256SUMS](../../eval/rca/gfx1151-rocm7141/SHA256SUMS.txt), [original→published digests](../../eval/rca/gfx1151-rocm7141/export-manifest.json), [producer source history](../../eval/rca/gfx1151-rocm7141/producer-sources.json), [upstream handoff](UPSTREAM_HANDOFF.md).
 
 Raw child JSON remains authoritative; summaries are derived indexes. Private originals remain local, home paths are neutralized, and published bytes have independent checksums. Producer commit records the working repository HEAD; collector/reporting additions occasionally preceded their own commit, so the source index resolves each **actual script digest** to the later commit containing those exact bytes instead of pretending every producing checkout was clean.
+
+[Independent review](REVIEW.md) verified the numerical reference and artifact hashes, and identified reporting/preservation issues corrected before publication. Historical reports were audited: none of their recorded PASS results contains a HIP error. The collector's locale decoding displays the UTF-8 copyright symbol incorrectly in header text; ASCII identifiers and raw header hashes are unaffected. This display-only minor remains documented.
