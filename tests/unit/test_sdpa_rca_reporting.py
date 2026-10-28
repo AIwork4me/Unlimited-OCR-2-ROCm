@@ -123,3 +123,15 @@ def test_runner_retains_real_failed_process_and_stderr(tmp_path):
     assert (tmp_path / "failed.stdout.log").read_text() == "real stdout\n"
     assert (tmp_path / "failed.stderr.log").read_text() == "real error\n"
     assert len(result["stdout_sha256"]) == 64
+
+
+def test_provenance_parses_runtime_commit_independently_of_image_signature():
+    path = ROOT / "experiments/sdpa_rca/collect_provenance.py"
+    assert path.exists(), "Provenance collector missing"
+    spec = importlib.util.spec_from_file_location("rca_provenance", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    text = "#define AOTRITON_VERSION_MINOR 12u\n#define AOTRITON_GIT_SHA1 05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920\n"
+    result = module.parse_header(text)
+    assert result["AOTRITON_VERSION_MINOR"] == "12u"
+    assert result["AOTRITON_GIT_SHA1"] == "05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920"
