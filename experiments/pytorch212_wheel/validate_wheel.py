@@ -17,6 +17,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--python", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--identity-profile", type=Path)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     conditions = [
@@ -72,13 +73,19 @@ def main() -> None:
         ]
     )
     manifest: dict[str, Any] = {"run_id": str(uuid.uuid4()), "processes": [], "scripts": {}}
-    for name in ("repro_sdpa.py", "reporting.py", "validate_wheel.py"):
+    producers = ["repro_sdpa.py", "reporting.py", "validate_wheel.py"]
+    if args.identity_profile:
+        producers += ["candidate_repro.py", "candidate_identity.py"]
+        manifest["identity_profile_sha256"] = hashlib.sha256(
+            args.identity_profile.read_bytes()
+        ).hexdigest()
+    for name in producers:
         manifest["scripts"][name] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
     for name, shape, mask, backend, operation, trace, launch_log in cases:
         report = args.output / f"{name}.json"
         command = [
             str(args.python),
-            str(ROOT / "repro_sdpa.py"),
+            str(ROOT / ("candidate_repro.py" if args.identity_profile else "repro_sdpa.py")),
             "--shape",
             *map(str, shape),
             "--mask",
@@ -94,6 +101,8 @@ def main() -> None:
             "--output",
             str(report),
         ]
+        if args.identity_profile:
+            command += ["--identity-profile", str(args.identity_profile)]
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1")
         if launch_log:
             env["AMD_LOG_LEVEL"] = "4"

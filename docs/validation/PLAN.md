@@ -67,3 +67,40 @@ environment, historical evidence, issue #2 or PR #3 is changed.
   three isolated pip checks pass.
 - Separate final review: all 177 evidence Git blobs and 176 export records
   verified; no remaining actionable findings. Publication/hosted CI follows.
+
+## Continuation: unblock and finish PR #4
+
+The user's continuation requests completion using the same frozen sources and
+installed SDK. Preserve the original blocked evidence as an earlier attempt.
+
+1. Inspect Windows ROCm dependency guards and setup marker checks; recover exact
+   pins via commit-only filtered fetch and sparse checkouts for excluded targets.
+   Materialize full CPU/Windows dependencies and their required nested gitlinks.
+2. Reuse C:/b/be and SDK 7.14.1. Resume the official frozen builder with
+   --no-install-rocm, gfx1151, FLASH/EFFICIENT ON, parallelism 8. Preserve actual
+   configure/compiler/linker stdout, stderr and first fault.
+3. Add a separately reviewed candidate identity profile without modifying frozen
+   baseline producers. Gate source SHA, wheel hash, cp310, HIP/gfx1151 and actual
+   loaded binary/image identities; no old audio/vision requirement for torch-only.
+   Prove gate behavior with CPU regression tests before GPU execution.
+4. If built, inspect/hash the wheel, explicitly install in C:/b/new and verify
+   provenance; run identical fixtures/seed/reference/thresholds, actual fused
+   routes, three processes, downstream probes and HIP launch logs.
+5. Update only PR #4; remotely verify final head, all evidence bytes and both
+   hosted CPU jobs. Decision remains evidence-driven, with no network-to-regression
+   inference and no production/OCR/upstream source modifications.
+
+- Prior publication bc75cfe: all 177 evidence blobs independently fetched from
+  GitHub and SHA-256 verified; Windows/Ubuntu PR CPU jobs passed.
+- CUTLASS pin recovered with sparse setup-marker checkout. Frozen setup.py checks
+  all declared folders, while CUDA-only CUTLASS kernels are guarded by USE_CUDA.
+- All 37 top-level gitlinks and three compiled nested dependencies now pinned;
+  root source clean before builder. ONNX/protobuf/oneDNN recovered by batches of
+  exact object IDs; no TLS verification disabled and no source revision changed.
+- Builder resumed in an MSVC child with --no-install-rocm. Existing local trusted
+  Clash/Mihomo proxy is scoped to the build subprocess, with no global settings.
+- Candidate identity adapter separately reviewed: 26 candidate tests plus 30
+  existing gate tests pass. Review issues (stale pip-check proof and abbreviated
+  error-clearing options) reproduced RED, fixed GREEN, and confirmed by reviewer.
+  Tensor/reference/seed/mask/backend AST semantics unchanged outside two identity
+  nodes. Candidate GPU execution remains conditional on an actual installed wheel.

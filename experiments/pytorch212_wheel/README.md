@@ -5,10 +5,11 @@ Production source and the historical RCA are unchanged.
 
 `repro_sdpa.py`, `reporting.py` and `collect_provenance.py` are copied **byte for
 byte** from [RCA commit 6b643f51](https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/tree/6b643f51d4078c4bb841f6a48734cf2206090311/experiments/sdpa_rca).
-The reproducer requires the mandated 3.10.20/7.14.60850/package trio identity.
-It refuses mismatches; it never changes thresholds or fixtures. A future candidate
-that changes this identity needs an explicit, separately reviewed identity-only
-adapter before this runner can be used; do not loosen numerical acceptance.
+The baseline producer requires the mandated 3.10.20/7.14.60850/package trio identity.
+It refuses mismatches; it never changes thresholds or fixtures. A separate
+`candidate_repro.py` uses a reviewed identity-only AST adapter guarded by the exact
+baseline producer digest. Exactly two baseline identity nodes change; unit tests
+compare all other AST nodes. No baseline file is edited.
 
 Run from a dedicated native Windows CPython 3.10 x64 environment, never production:
 
@@ -27,6 +28,31 @@ operators. AMD_LOG_LEVEL=4 is scoped to two additional minimal launch runs.
 The runner's own exit zero means collection completed, **not GPU acceptance**.
 Read `summary.json` and each raw report. A report without measured numerics cannot
 pass. An UNOBSERVED backend cannot pass. DEFAULT selecting MATH is MATH_PASS.
+
+For the source-built torch-only candidate, first inspect the wheel and explicitly
+install it in a fresh environment. `prepare_candidate_profile.py` derives expected
+runtime/image/header hashes from the built wheel and verified SDK core wheel,
+checks embedded source/ABI/HIP identity, and compares actual imported/loaded bytes.
+No historical torchvision or torchaudio package is required. Every acceptance
+process re-hashes the artifact and installed payloads, runs pip check using its
+own interpreter, and rejects parsed error-clearing options (including aliases).
+Build recipe identities remain tied to the separate build provenance.
+
+```powershell
+C:/b/new/Scripts/python.exe experiments/pytorch212_wheel/prepare_candidate_profile.py `
+  --wheel C:/b/out/wheels/ACTUAL_BUILT_TORCH.whl `
+  --sdk-core-wheel C:/b/wheels/rocm_sdk_core-7.14.1-py3-none-win_amd64.whl `
+  --install-report C:/b/resume/candidate-install.json `
+  --pip-check-record C:/b/resume/candidate-pip-check.json `
+  --output C:/b/resume/candidate-profile.json
+C:/b/qa/Scripts/python.exe experiments/pytorch212_wheel/validate_wheel.py `
+  --python C:/b/new/Scripts/python.exe --identity-profile C:/b/resume/candidate-profile.json `
+  --output C:/b/candidate
+```
+
+The example wheel filename is a placeholder. A profile is not created until an
+actual artifact and valid install exist. Tensor fixtures, seed 7992, masks,
+reference, tolerances, dispatch and HIP checkpoints remain the frozen experiment.
 
 The exact source recipe, SDK dependencies and raw build attempts are separate
 from runtime evidence. `compare_results.decide` requires callers to establish
