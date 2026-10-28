@@ -1,0 +1,19 @@
+name: Reproducible bug
+description: Report an actionable native Windows ROCm failure
+body:
+  - type: textarea
+    attributes:
+      label: Reproduction and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Exact environment, command and sanitized traceback
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Public synthetic input, raw output and validation manifest
+  - type: textarea
+    attributes:
+      label: Proposed fix or interest in contributing a patch

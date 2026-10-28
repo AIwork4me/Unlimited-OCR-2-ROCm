@@ -1,0 +1,1 @@
+triton-windows==3.7.1.post27 --hash=sha256:01ede775b102c91acc89fc6946b946451f966cb64856c650d244d37ea3bbdee5

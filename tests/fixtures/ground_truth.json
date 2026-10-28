@@ -1,0 +1,96 @@
+{
+  "font": "msyh.ttc",
+  "font_sha256": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f",
+  "acceptance": {
+    "max_normalized_cer": 0.02,
+    "important_numbers": "exact token match",
+    "pages": "exact raw marker count and per-page ordered text comparison",
+    "set_before_first_inference": true
+  },
+  "cases": {
+    "english": {
+      "image": "english.png",
+      "text": "ROCm OCR Test\nHello from Windows.\nInvoice 2026\nTotal 123.45",
+      "numbers": [
+        "2026",
+        "123.45"
+      ],
+      "sha256": "0415e96e99e66b079e12bb7e40006a966cd5c9b3d0e18f8fb070e61bcfde4cd0"
+    },
+    "chinese": {
+      "image": "chinese.png",
+      "text": "中文识别测试\n人工智能读取文档\n订单编号 2026\n合计 123.45 元",
+      "numbers": [
+        "2026",
+        "123.45"
+      ],
+      "sha256": "a6b464b0f4e6065d952a031b6f09e09efcc1a81a400c7195f1935e1b844e54f5"
+    },
+    "mixed": {
+      "image": "mixed.png",
+      "text": "Mixed 中英文测试\nWindows 原生推理\n订单 Order 395\n金额 Total 8060.50",
+      "numbers": [
+        "395",
+        "8060.50"
+      ],
+      "sha256": "09714bd58f4042dde37d4c1152b273585f7beb86562b046e02d5b2b58205ef03"
+    },
+    "page_1": {
+      "image": "page_1.png",
+      "text": "Page 1\nDocument Atlas\nCode 101",
+      "numbers": [
+        "1",
+        "101"
+      ],
+      "sha256": "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e"
+    },
+    "page_2": {
+      "image": "page_2.png",
+      "text": "Page 2\nDocument Boreal\nCode 102",
+      "numbers": [
+        "2",
+        "102"
+      ],
+      "sha256": "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625"
+    },
+    "page_3": {
+      "image": "page_3.png",
+      "text": "Page 3\nDocument Cedar\nCode 103",
+      "numbers": [
+        "3",
+        "103"
+      ],
+      "sha256": "4aab8ecfb402dac49daf070704768e0ceeaab14bec572e07ee6c76310ed538d8"
+    },
+    "page_4": {
+      "image": "page_4.png",
+      "text": "Page 4\nDocument Delta\nCode 104",
+      "numbers": [
+        "4",
+        "104"
+      ],
+      "sha256": "fbbedcae51819976300ae30459c9b6e3dffc3c882b7aa2fb41d93e4b8a44d74e"
+    },
+    "page_5": {
+      "image": "page_5.png",
+      "text": "Page 5\nDocument Ember\nCode 105",
+      "numbers": [
+        "5",
+        "105"
+      ],
+      "sha256": "530773d30a2907a3644069bf80e3b7aec04f9f20f8c0cd8ccb1ce83ff96bed51"
+    },
+    "table": {
+      "image": "table.png",
+      "text": "Item Quantity Price Apples 3 12.50 Oranges 5 8.00",
+      "numbers": [
+        "3",
+        "12.50",
+        "5",
+        "8.00"
+      ],
+      "requires_table": true,
+      "sha256": "bda4a05724a65eb16d3bc1a5685037ff9ddf2e34e80ae2fd25741fe1294563ae"
+    }
+  }
+}

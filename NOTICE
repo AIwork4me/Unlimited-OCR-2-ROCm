@@ -1,0 +1,21 @@
+Unlimited-OCR-2-ROCm is an independent AMD ROCm adaptation project.
+It is not an official Baidu or AMD product.
+
+Wrapper code: Copyright (c) 2026 AIwork4me, MIT.
+
+Official model and source: Baidu Unlimited OCR 2,
+https://github.com/baidu/Unlimited-OCR
+https://huggingface.co/baidu/Unlimited-OCR-2
+Model card declares MIT; pinned GitHub LICENSE credits Baidu Inc.
+The pinned _sparse_base_impl.py and configuration_deepseek_v2.py retain
+DeepSeek-AI / Hugging Face Apache-2.0 headers. The gather implementation
+acknowledges adaptation from flash-linear-attention. Preserve original
+headers and applicable licenses when redistributing copied source.
+
+This distribution downloads upstream artifacts separately. It does not
+redistribute model weights, model implementation or Windows system fonts.
+See docs/UPSTREAM_AUDIT.md and docs/SECURITY.md for revision-specific attribution.
+
+Triton Windows is a separate MIT-licensed project:
+https://github.com/triton-lang/triton-windows
+Its wheel and bundled components retain their respective licenses.

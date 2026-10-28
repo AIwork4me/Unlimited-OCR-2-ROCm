@@ -1,0 +1,110 @@
+{
+  "environment": {
+    "timestamp_utc": "2026-10-28T03:35:59.021013+00:00",
+    "platform": "Windows",
+    "windows_version": "10.0.26200",
+    "python": "3.10.20",
+    "machine": "AMD64",
+    "executable": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+    "packages": {
+      "torch": "2.12.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1"
+    },
+    "environment": {},
+    "hip": "7.14.60850",
+    "rocm": "7.14.1",
+    "cuda_build": null,
+    "gpu_available": true,
+    "gpu": {
+      "name": "AMD Radeon(TM) 8060S Graphics",
+      "arch": "gfx1151",
+      "pytorch_visible_budget_bytes": 83954728960,
+      "properties": "_CudaDeviceProperties(name='AMD Radeon(TM) 8060S Graphics', major=11, minor=5, gcnArchName='gfx1151', total_memory=80065MB, multi_processor_count=20, uuid=30303030-3031-3936-3030-303030303030, pci_bus_id=196, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+      "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+    },
+    "windows_hardware": {
+      "gpu": [
+        {
+          "Name": "GameViewer Virtual Display Adapter",
+          "DriverVersion": "15.6.5.199"
+        },
+        {
+          "Name": "AMD Radeon(TM) 8060S Graphics",
+          "DriverVersion": "32.0.22032.6002"
+        }
+      ],
+      "cpu": {
+        "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+      },
+      "os": {
+        "Caption": "Microsoft Windows 11 家庭版 中文版",
+        "Version": "10.0.26200",
+        "BuildNumber": "26200",
+        "TotalVisibleMemorySize": 129654596,
+        "FreePhysicalMemory": 93720196
+      }
+    },
+    "memory": {
+      "process_rss_bytes": 497152000,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 95996248064,
+      "system_memory_percent": 27.7,
+      "gpu_allocated_bytes": 0,
+      "gpu_reserved_bytes": 0,
+      "gpu_peak_allocated_bytes": 0,
+      "gpu_peak_reserved_bytes": 0,
+      "gpu_free_total_bytes": [
+        83786756096,
+        83954728960
+      ]
+    }
+  },
+  "probe": {
+    "status": "PASS",
+    "version": "3.7.1",
+    "target": "GPUTarget(backend='hip', arch='gfx1151', warp_size=32)",
+    "device": "cuda:0",
+    "elements": 4097,
+    "max_abs_error": 0.0,
+    "compile_and_run_seconds": 0.27879779995419085,
+    "assembly_keys": [
+      "source",
+      "ttir",
+      "ttgir",
+      "llir",
+      "amdgcn",
+      "hsaco"
+    ],
+    "amdgcn_sha256": "1923db7093afaf61c947f406bde985a99c53be899840c8755ea2a4037e1fe60e",
+    "memory_before": {
+      "process_rss_bytes": 598892544,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 95755644928,
+      "system_memory_percent": 27.9,
+      "gpu_allocated_bytes": 50688,
+      "gpu_reserved_bytes": 2097152,
+      "gpu_peak_allocated_bytes": 50688,
+      "gpu_peak_reserved_bytes": 2097152,
+      "gpu_free_total_bytes": [
+        83760406528,
+        83954728960
+      ]
+    },
+    "memory_after": {
+      "process_rss_bytes": 740970496,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 95576162304,
+      "system_memory_percent": 28.0,
+      "gpu_allocated_bytes": 50688,
+      "gpu_reserved_bytes": 2097152,
+      "gpu_peak_allocated_bytes": 72704,
+      "gpu_peak_reserved_bytes": 2097152,
+      "gpu_free_total_bytes": [
+        83594010624,
+        83954728960
+      ]
+    }
+  },
+  "status": "PASS"
+}
