@@ -15,7 +15,12 @@ def sha256(path):
 
 
 def sanitize(text, home):
-    for prefix in (home, home.replace("\\", "/"), home.replace("/", "\\")):
+    for prefix in (
+        home.replace("\\", "\\\\"),
+        home,
+        home.replace("\\", "/"),
+        home.replace("/", "\\"),
+    ):
         text = text.replace(prefix, "<USERPROFILE>")
     return text
 

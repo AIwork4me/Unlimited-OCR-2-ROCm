@@ -206,3 +206,11 @@ def test_ab_audit_rejects_a_changed_dll_or_package_even_when_images_change():
     b["packages"]["torch"] = "newer"
     with pytest.raises(ValueError, match="packages"):
         m.audit_ab_provenance(a, b)
+
+
+def test_redaction_catches_repr_escaped_windows_paths_in_build_logs():
+    m = reporting()
+    assert (
+        m.sanitize(r"C:\\Users\\someone\\venv\\torch.dll", r"C:\Users\someone")
+        == r"<USERPROFILE>\\venv\\torch.dll"
+    )
