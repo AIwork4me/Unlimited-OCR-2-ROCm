@@ -1,0 +1,3 @@
+From https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
+ * branch            1d8f600fd424278486eade7ed3e877c99f0846b1 -> FETCH_HEAD
+HEAD is now at 1d8f600 Version 3.3.0

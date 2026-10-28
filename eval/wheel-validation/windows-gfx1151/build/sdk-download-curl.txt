@@ -1,0 +1,15 @@
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 1 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '8388608-16777215', '--max-time', '120', '--retry', '2', '-D', 'C:\\b\\sdk-parts\\1.headers', '-o', 'C:\\b\\sdk-parts\\1', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 0 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '0-8388607', '--max-time', '120', '--retry', '2', '-D', 'C:\\b\\sdk-parts\\0.headers', '-o', 'C:\\b\\sdk-parts\\0', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl'])
+cucruclru: (28) Opelration tim:e d(rl:  o(2u2t 8)a O8p)f eOpterartiero na1 2titmeidon  0007 timemioud llioseutc aondsftter 1 2afte r0 w007i 1200m0t7i mlh l7il9islec99on56dis 5 oswuecitothn 7950 of5d8s  wi583t886h  65o08 bytes u72481rt oe uceivt ofoedf 
+83 8388608 8860byte8s rec eivebytesd
+ received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 1 1 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '8388608-16777215', '--max-time', '120', '--retry', '2', '-D', 'C:\\b\\sdk-parts\\1.headers', '-o', 'C:\\b\\sdk-parts\\1', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 2 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '16777216-25165823', '--max-time', '120', '--retry', '2', '-D', 'C:\\b\\sdk-parts\\2.headers', '-o', 'C:\\b\\sdk-parts\\2', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl'])
+complete 1 / 79 199
+curl: (28) Operation timed out after 120000 milliseconds with 6684672 out of 8388608 bytes received
+curl: (28) Operation timed out after 120000 milliseconds with 6573460 out of 8388608 bytes received
+curl: (28) Operation timed out after 120014 milliseconds with 6256961 out of 8388608 bytes received

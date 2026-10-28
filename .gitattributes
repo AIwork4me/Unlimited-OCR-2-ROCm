@@ -7,3 +7,4 @@
 *.yml text eol=lf
 *.png binary
 eval/results/** -text -whitespace
+eval/wheel-validation/** -text -whitespace

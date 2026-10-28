@@ -1,0 +1,6 @@
+packaging==26.3
+rocm==7.14.1
+rocm-sdk-core @ file:///C:/b/wheels/rocm_sdk_core-7.14.1-py3-none-win_amd64.whl#sha256=49eb83cb89d50562944a1f0eaf65f4e21f4557813de53e78d022fee81bbfb6e7
+rocm-sdk-devel @ file:///C:/b/wheels/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl#sha256=cf05e6cdc9dc9a1ba291c76e6777b3d58767a49e34c1223f4475c740401c7532
+rocm-sdk-device-gfx1151 @ file:///C:/b/wheels/rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl#sha256=8ea906238b6247ce8230bc7a02ab99d410fbae524e3c1ce57e6457c9229ff79a
+rocm-sdk-libraries @ file:///C:/b/wheels/rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl#sha256=f5f639b488e3e78a44bebba786e917a98c4386001a3fa2a27393a9ce97e2a32d

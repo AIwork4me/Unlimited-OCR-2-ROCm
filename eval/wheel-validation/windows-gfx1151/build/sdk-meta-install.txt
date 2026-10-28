@@ -1,0 +1,9 @@
+Looking in indexes: https://repo.amd.com/rocm/whl-multi-arch/
+Collecting rocm==7.14.1 (from rocm[devel,device-gfx1151,libraries]==7.14.1)
+  Using cached rocm-7.14.1-py3-none-any.whl
+Requirement already satisfied: rocm-sdk-core==7.14.1 in c:\b\be\lib\site-packages (from rocm==7.14.1->rocm[devel,device-gfx1151,libraries]==7.14.1) (7.14.1)
+Requirement already satisfied: rocm-sdk-device-gfx1151==7.14.1 in c:\b\be\lib\site-packages (from rocm[devel,device-gfx1151,libraries]==7.14.1) (7.14.1)
+Requirement already satisfied: rocm-sdk-libraries==7.14.1 in c:\b\be\lib\site-packages (from rocm[devel,device-gfx1151,libraries]==7.14.1) (7.14.1)
+Requirement already satisfied: rocm-sdk-devel==7.14.1 in c:\b\be\lib\site-packages (from rocm[devel,device-gfx1151,libraries]==7.14.1) (7.14.1)
+Installing collected packages: rocm
+Successfully installed rocm-7.14.1

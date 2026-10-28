@@ -1,0 +1,22 @@
+{
+  "command": [
+    "git",
+    "-C",
+    "C:/b/pytorch/third_party/XNNPACK",
+    "-c",
+    "http.lowSpeedLimit=1024",
+    "-c",
+    "http.lowSpeedTime=30",
+    "fetch",
+    "--depth",
+    "1",
+    "--filter=blob:none",
+    "origin",
+    "51a0103656eff6fc9bfd39a4597923c4b542c883"
+  ],
+  "start_utc": "2026-10-28T12:56:25.873249+00:00",
+  "timeout_seconds": 120,
+  "purpose": "bounded independent fetch of exact declared gitlink; no source changes",
+  "exit_code": 0,
+  "end_utc": "2026-10-28T12:56:27.917857+00:00"
+}

@@ -1,0 +1,4 @@
+AMD clang version 23.0.0git (https://github.com/ROCm/llvm-project.git f30ae3e6b680ad23dcf522e668c6d4c5c90838d0+PATCHED:1efe4605317a40d2170d33617075bd5675d0d558)
+Target: x86_64-pc-windows-msvc
+Thread model: posix
+InstalledDir: C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin

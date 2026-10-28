@@ -1,0 +1,14 @@
+{
+  "url": "https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl",
+  "size": 655227267,
+  "sha256": "cf05e6cdc9dc9a1ba291c76e6777b3d58767a49e34c1223f4475c740401c7532",
+  "elapsed_seconds": 816.0797588825226,
+  "transport": "8 parallel HTTP byte-range requests; each Content-Range/size checked; unchanged concatenated bytes",
+  "s3_multipart_etag": "8d2e02112b72a8cf7d7f8b36195be4ec-79",
+  "s3_etag_matches_headers": true,
+  "zip_crc_all_members_pass": true,
+  "package_metadata": {
+    "METADATA": "Metadata-Version: 2.4\nName: rocm-sdk-devel\nVersion: 7.14.1\n\n",
+    "WHEEL": "Wheel-Version: 1.0\nGenerator: setuptools (81.0.0)\nRoot-Is-Purelib: true\nTag: py3-none-win_amd64\n\n"
+  }
+}

@@ -1,0 +1,4 @@
+From https://github.com/google/XNNPACK
+ * branch              51a0103656eff6fc9bfd39a4597923c4b542c883 -> FETCH_HEAD
+Submodule path 'third_party/XNNPACK': checked out '51a0103656eff6fc9bfd39a4597923c4b542c883'
+fatal: Unable to find current revision in submodule path 'third_party/aiter'
