@@ -1,0 +1,53 @@
+import concurrent.futures, datetime, hashlib, json, pathlib, subprocess, time, urllib.parse, urllib.request
+root = pathlib.Path.cwd()
+head = subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+remote = subprocess.check_output(['git','ls-remote','origin','refs/heads/investigation/windows-gfx1151-sdpa-root-cause'],text=True).split()[0]
+assert head == remote, (head,remote)
+subprocess.run(['git','fetch','origin','investigation/windows-gfx1151-sdpa-root-cause'],check=True,capture_output=True)
+expected = {}
+sums_files = ['eval/rca/gfx1151-rocm7141/SHA256SUMS.txt','eval/rca/gfx1151-rocm7141/pdf-followup/SHA256SUMS.txt']
+counts = {}
+for filename in sums_files:
+    rows = subprocess.check_output(['git','show','FETCH_HEAD:'+filename]).decode().splitlines()
+    counts[filename] = len(rows)
+    for line in rows:
+        digest, relative = line.split('  ',1)
+        path = (pathlib.PurePosixPath(filename).parent / relative).as_posix()
+        assert path not in expected, path
+        expected[path] = digest
+paths = set(expected) | set(sums_files)
+paths.update(json.loads((root/'.local/rca/referenced-files.json').read_text(encoding='utf-8')))
+paths.update(subprocess.check_output(['git','diff','--name-only','2d5555636869c9b1399738b056e402a37528d94f',head],text=True).splitlines())
+for doc in [root/'README.md', *sorted((root/'docs/rca').glob('*.md'))]: paths.add(doc.relative_to(root).as_posix())
+tree = subprocess.check_output(['git','ls-tree','-r','--full-tree','FETCH_HEAD']).decode().splitlines()
+oids = {line.split('\t',1)[1]:line.split('\t',1)[0].split()[-1] for line in tree}
+paths = sorted(paths)
+assert all(p in oids for p in paths)
+data = subprocess.check_output(['git','cat-file','--batch'],input=('\n'.join(oids[p] for p in paths)+'\n').encode())
+blobs = {}; cursor = 0
+for path in paths:
+    end = data.index(b'\n',cursor); header = data[cursor:end].decode().split(); size = int(header[2]); cursor = end+1
+    assert header[0] == oids[path] and header[1] == 'blob'
+    blob = data[cursor:cursor+size]; cursor += size+1; blobs[path] = blob
+    if path in expected: assert hashlib.sha256(blob).hexdigest() == expected[path], path
+assert cursor == len(data)
+print('Remote Git blobs match',len(expected),'checksum entries; HTTP files',len(paths),flush=True)
+def check(path):
+    url = 'https://raw.githubusercontent.com/AIwork4me/Unlimited-OCR-2-ROCm/'+head+'/'+urllib.parse.quote(path,safe='/')
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(url,timeout=40) as response: actual=response.read(); status=response.status
+            assert actual == blobs[path], path
+            return {'path':path,'url':url,'status':status,'bytes':len(actual),'sha256':hashlib.sha256(actual).hexdigest()}
+        except Exception:
+            if attempt == 2: raise
+            time.sleep(1)
+results = []
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+    for row in pool.map(check,paths):
+        results.append(row)
+        if len(results)%100 == 0: print('HTTP byte equality',len(results),'/',len(paths),flush=True)
+report = {'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'PASS','commit':head,'remote_ref':remote,'checksum_sets':counts,'remote_checksum_entries_verified':len(expected),'HTTP_GET_files_verified':len(results),'exact_original_PDF_sha256':'1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444','files':results}
+target=root/'.local/github-pdf-export'/('remote-verification-'+head[:8]+'.json')
+target.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+print(json.dumps({k:v for k,v in report.items() if k!='files'}),flush=True)
