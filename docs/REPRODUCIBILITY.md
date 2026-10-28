@@ -6,7 +6,8 @@ sufficient free RAM/disk. CPU CI does not perform these tests.
 ```powershell
 # Select an installed CPython 3.10 interpreter, for example:
 $Python310 = (uv python find 3.10)
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-clean"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-a" -OutputPath "eval/results/run-a"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-b" -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
 ```
 
 uv is optional: replace $Python310 with the full path of an existing CPython
@@ -14,6 +15,14 @@ uv is optional: replace $Python310 with the full path of an existing CPython
 Scripts refuse an existing non-venv directory and never install into global
 Python. Clean reproduction refuses an existing environment; choose a new
 VenvPath. Setup alone can be repeated on an existing dedicated venv.
+
+The first run establishes A–D. Gate E requires a linked baseline pair:
+different producing environment IDs, matching machine/artifacts/locked packages,
+all required cases, and an environment-creation witness tied to the workflow
+run ID. Re-summarizing under another interpreter cannot manufacture that proof.
+A fresh flag contradicting the recorded workflow is rejected.
+Choose a short venv path: an AMD wheel entry fails at260 total path characters.
+Setup detects that boundary; do not change the registry.
 
 The mandatory installation inside that environment is:
 
@@ -35,7 +44,7 @@ manifests, raw/normalized OCR, command lists, logs and reproduction.json.
 Once installed and cached, an offline model rerun is:
 
 ```powershell
-.\scripts\reproduce_windows.ps1 -VenvPath ".venv-clean" -ReuseEnvironment -Offline
+.\scripts\reproduce_windows.ps1 -VenvPath ".venv-b" -ReuseEnvironment -Offline
 ```
 
 This rerun does not invoke pip installation. A fresh offline package install

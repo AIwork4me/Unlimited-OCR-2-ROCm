@@ -30,12 +30,17 @@ if ($Offline) { $offlineArgs = @("--offline") }
 function Invoke-Step {
     param([string]$Name, [string[]]$Arguments)
     $entry = [ordered]@{name=$Name; command=@($venvPython) + $Arguments; status="FAIL"}
+    $priorPythonEncoding = $env:PYTHONIOENCODING
     try {
+        $env:PYTHONIOENCODING = "utf-8"
         & $venvPython @Arguments *> (Join-Path $outputRoot "$Name.log")
         $entry.exit_code = $LASTEXITCODE
         if ($LASTEXITCODE -ne 0) { throw "$Name failed; inspect $Name.log" }
         $entry.status = "PASS"
-    } finally { $steps.Add($entry) }
+    } finally {
+        $env:PYTHONIOENCODING = $priorPythonEncoding
+        $steps.Add($entry)
+    }
 }
 
 Push-Location $repoRoot

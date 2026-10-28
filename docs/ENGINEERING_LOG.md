@@ -120,3 +120,11 @@
   and are excluded from published acceptance. Their local files remain.
 - Final acceptance uses final-baseline and final-clean only. A new isolated
   environment is being created for final-clean after these corrections.
+
+- The final-clean attempt failed during AMD wheel extraction at a260-character
+  Tensile file path. The same entry exists at251/257 characters in working
+  venvs. Added early setup path-boundary detection and selected a shorter
+  isolated path, including spaces/Chinese for direct path-handling validation.
+  No long-path registry/security/driver setting changed. The failing install
+  and error metadata remain diagnostic evidence; no inference success is
+  attributed to that failed environment.

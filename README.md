@@ -7,10 +7,16 @@ Phase 1 targets **Windows 11 + Ryzen AI MAX+ 395 + Radeon 8060S (gfx1151)**.
 It preserves the trained weights, BF16, native `infer()`, native
 `infer_multi()`, DASH routing and the official attention kernels.
 
-**Validation is in progress.** Real BF16 GPU, HIP Triton vector-add and the
-official DASH prefill-kernel reference checks pass. Model correctness and
-fresh-environment reproduction are not implied by those checks. Read
-[the executed validation record](docs/VALIDATION.md) before assigning a gate.
+**Physical Windows validation: A–E PASS.** English, Chinese, mixed text,
+tables, simple arithmetic and repeated native 2/3/5-page inference passed
+in two isolated environments on this machine, with normalized CER0.
+Read [the executed validation record](docs/VALIDATION.md) and
+[full report](docs/FINAL_REPORT.md) for exact scope and evidence.
+
+The required stack's default vision SDPA is faulty here. A disclosed,
+model-local GPU MATH SDPA context covers SAM/CLIP only; decoder DASH/Triton
+and native generation remain unchanged. Raw page markers are preserved,
+including a possible single empty terminal marker.
 
 [中文说明](README.zh-CN.md) · [Upstream audit](docs/UPSTREAM_AUDIT.md) ·
 [Reproduction](docs/REPRODUCIBILITY.md) · [Windows compatibility](docs/WINDOWS_COMPATIBILITY.md)
@@ -37,7 +43,8 @@ Select an existing CPython 3.10 interpreter. If uv is installed:
 
 ```powershell
 $Python310 = (uv python find 3.10)
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-clean"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-a" -OutputPath "eval/results/run-a"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-b" -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
 ```
 
 Otherwise set $Python310 to that interpreter's full path. Setup creates a
@@ -87,7 +94,8 @@ Phase 1 PASS requires A: environment, B: native model/kernels, C: OCR
 correctness, D: native ordered multi-page correctness and E: a second clean
 environment on the same real machine. Unexecuted checks are NOT TESTED.
 Synthetic acceptance uses normalized CER <= 0.02, exact important numbers and
-exact page markers/order, with raw outputs retained.
+exact content-page count/order, with raw outputs retained. One empty terminal
+PAGE may be an end delimiter; raw count and this condition are reported separately.
 
 CPU CI runs lint, formatting, types, tests, builds and CLI smoke without torch
 or model downloads. It does not imply Linux inference support or GPU testing

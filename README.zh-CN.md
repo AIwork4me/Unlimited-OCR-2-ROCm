@@ -7,9 +7,14 @@
 Radeon 8060S（gfx1151）。保留官方 V2 权重、BF16、DASH、
 `infer()` 和整份文档的原生 `infer_multi()`。
 
-**验证仍在进行。** 真实 GPU BF16、HIP Triton 向量加法和官方 DASH
-预填充内核参考对照已通过。这些结果不等于模型 OCR 正确性或全流程可复现。
-最终以 [VALIDATION.md](docs/VALIDATION.md) 的实际执行记录为准。
+**实体 Windows 验证 A–E 全部通过。** 两个隔离环境均通过英文、中文、
+混合文本、表格、简单算术和原生 2/3/5 页重复推理；规范化 CER 为0。
+完整范围与证据见 [VALIDATION.md](docs/VALIDATION.md) 和
+[最终报告](docs/FINAL_REPORT.md)。
+
+指定版本的默认视觉 SDPA 在本机存在错误，因此仅对 SAM/CLIP 前向调用
+使用有范围的 GPU MATH SDPA；解码器 DASH/Triton 和原生生成保持不变。
+保留原始页标记，并单独记录可能出现的一个空尾部 PAGE 分隔符。
 
 固定环境：CPython 3.10.20 x64；torch 2.12.0+rocm7.14.1；
 torchvision 0.27.0+rocm7.14.1；torchaudio 2.11.0+rocm7.14.1；
@@ -20,7 +25,8 @@ Transformers 4.52.1。不自动升级到 Transformers 5.x 或 Triton 3.8。
 
 ```powershell
 $Python310 = (uv python find 3.10)
-.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-clean"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-a" -OutputPath "eval/results/run-a"
+.\scripts\reproduce_windows.ps1 -Python $Python310 -VenvPath ".venv-b" -OutputPath "eval/results/run-b" -BaselinePath "eval/results/run-a/reproduction.json"
 ```
 
 没有 uv 时，把 $Python310 设置为 Python 3.10 的完整路径。

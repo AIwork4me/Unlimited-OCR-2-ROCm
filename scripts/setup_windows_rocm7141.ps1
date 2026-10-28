@@ -10,9 +10,15 @@ Set-StrictMode -Version Latest
 
 function Invoke-CheckedPython {
     param([string]$Executable, [string[]]$Arguments)
-    & $Executable @Arguments
-    if ($LASTEXITCODE -ne 0) {
-        throw "Python command failed (exit $LASTEXITCODE): $($Arguments -join ' ')"
+    $priorPythonEncoding = $env:PYTHONIOENCODING
+    try {
+        $env:PYTHONIOENCODING = "utf-8"
+        & $Executable @Arguments
+        if ($LASTEXITCODE -ne 0) {
+            throw "Python command failed (exit $LASTEXITCODE): $($Arguments -join ' ')"
+        }
+    } finally {
+        $env:PYTHONIOENCODING = $priorPythonEncoding
     }
 }
 
@@ -23,6 +29,10 @@ $repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
 $environmentRoot = [IO.Path]::GetFullPath($VenvPath)
 if ($environmentRoot -eq [IO.Path]::GetPathRoot($environmentRoot)) {
     throw "Refusing filesystem root as virtual environment."
+}
+$knownLongEntry = "Lib\site-packages\_rocm_sdk_libraries\bin\hipblaslt\library\gfx1151\TensileLibrary_BB_BB_HA_Bias_Aux_SAV_UA_Type_BB_HPA_Contraction_l_Ailk_Bjlk_Cijk_Dijk_gfx1151.dat.zlib"
+if ((Join-Path $environmentRoot $knownLongEntry).Length -ge 260) {
+    throw "This AMD wheel reaches the Windows 260-character path boundary. Choose a shorter dedicated VenvPath (for example C:\uocr2-env). No registry change is required."
 }
 Invoke-CheckedPython $Python @("-c",
     "import sys,struct; assert sys.platform=='win32' and sys.version_info[:2]==(3,10) and struct.calcsize('P')==8, 'Use 64-bit CPython 3.10'")

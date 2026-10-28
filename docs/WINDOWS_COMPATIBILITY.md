@@ -53,6 +53,13 @@ vector-add and DASH-kernel manifests provide local evidence separately.
   short paths. If one blocks a future run, preserve the error and investigate
   the smallest reproduction before requesting a security-setting decision.
 
+An actual clean install exposed the legacy path boundary in an AMD
+hipBLASLt wheel: the same Tensile file exists at total path lengths251/257,
+but extraction failed at260 under the longer venv name. Setup now detects
+that known entry before downloading/installing. Use a short dedicated
+VenvPath; no registry or security change was made. The failed installation
+was confined to its new isolated environment and is retained as a diagnostic.
+
 No Linux inference, WSL2, Docker, virtual machine, W7900/gfx1100, gfx1200,
 or other physical GPU validation is claimed. Linux CPU CI checks only the
 package's hardware-independent contracts.
