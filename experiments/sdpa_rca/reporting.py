@@ -32,6 +32,30 @@ def classify(stats, hip_error):
     return "PASS" if stats else "INCOMPLETE"
 
 
+def audit_ab_provenance(left, right):
+    """Reject a purported images-only A/B if a recorded core component changed."""
+    checked = ["packages", "architecture", "system"]
+    for field in checked:
+        if left[field] != right[field]:
+            raise ValueError(f"A/B changed {field}")
+    if left["runtime_header"]["sha256"] != right["runtime_header"]["sha256"]:
+        raise ValueError("A/B changed runtime_header")
+
+    def modules(report):
+        return {
+            p["path"].replace("\\", "/").split("/")[-1].lower(): p["sha256"]
+            for p in report["loaded_modules"]
+        }
+
+    if modules(left) != modules(right):
+        raise ValueError("A/B changed loaded_modules")
+    return {
+        "unchanged_fields": [*checked, "runtime_header", "loaded_modules"],
+        "unchanged_module_sha256": modules(left),
+        "only_image_payload_changed": left["image_files"] != right["image_files"],
+    }
+
+
 def observed_backend(operators):
     mapping = {
         "_scaled_dot_product_attention_math": "MATH",

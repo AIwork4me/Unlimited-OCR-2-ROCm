@@ -181,3 +181,28 @@ def test_runner_timeout_keeps_partial_streams(tmp_path):
     assert result["exit_code"] == 124
     assert result["timed_out"] is True
     assert (tmp_path / "timeout.stdout.log").read_text() == "started\n"
+
+
+def test_ab_audit_rejects_a_changed_dll_or_package_even_when_images_change():
+    import copy
+
+    m = reporting()
+    assert hasattr(m, "audit_ab_provenance"), "Controlled A/B audit missing"
+    a = {
+        "packages": {"torch": "exact"},
+        "architecture": "gfx1151",
+        "system": {"driver": "same"},
+        "runtime_header": {"sha256": "header"},
+        "loaded_modules": [{"path": r"C:\env\runtime.dll", "sha256": "runtime"}],
+        "image_files": [{"path": r"C:\env\aotriton.images\old.zip", "sha256": "old"}],
+    }
+    b = copy.deepcopy(a)
+    b["image_files"] = [{"path": r"C:\env\aotriton.images\new.aks2", "sha256": "new"}]
+    assert m.audit_ab_provenance(a, b)["only_image_payload_changed"] is True
+    b["loaded_modules"][0]["sha256"] = "other-runtime"
+    with pytest.raises(ValueError, match="loaded_modules"):
+        m.audit_ab_provenance(a, b)
+    b = copy.deepcopy(a)
+    b["packages"]["torch"] = "newer"
+    with pytest.raises(ValueError, match="packages"):
+        m.audit_ab_provenance(a, b)
