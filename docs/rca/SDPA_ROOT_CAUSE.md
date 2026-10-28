@@ -134,3 +134,5 @@ One actual Windows gfx1151 system, inference forward only; no backward/training,
 Raw child JSON remains authoritative; summaries are derived indexes. Private originals remain local, home paths are neutralized, and published bytes have independent checksums. Producer commit records the working repository HEAD; collector/reporting additions occasionally preceded their own commit, so the source index resolves each **actual script digest** to the later commit containing those exact bytes instead of pretending every producing checkout was clean.
 
 [Independent review](REVIEW.md) verified the numerical reference and artifact hashes, and identified reporting/preservation issues corrected before publication. Historical reports were audited: none of their recorded PASS results contains a HIP error. The collector's locale decoding displays the UTF-8 copyright symbol incorrectly in header text; ASCII identifiers and raw header hashes are unaffected. This display-only minor remains documented.
+
+[GitHub Issue, PR and publication verification](GITHUB_DELIVERY.md).
