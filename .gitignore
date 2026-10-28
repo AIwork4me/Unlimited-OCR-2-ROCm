@@ -1,0 +1,16 @@
+.venv*/
+.local/
+.upstream/
+.superpowers/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+*.safetensors
+*.bin
+.env
+eval/results/private/
