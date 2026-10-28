@@ -21,9 +21,13 @@ def read_report(path: Path) -> dict[str, Any]:
 
 
 def classify_case(report: dict[str, Any], process_exit: int) -> str:
+    events = report.get("events", [])
+    if any(
+        e.get("hip_before_sync") or e.get("hip_after_sync") or e.get("traceback") for e in events
+    ):
+        return "FAIL"
     if report.get("status") == "UNSUPPORTED" and process_exit == report.get("exit_code") == 2:
         return "UNSUPPORTED"
-    events = report.get("events", [])
     if process_exit or report.get("exit_code") != 0 or report.get("status") == "FAIL":
         return "FAIL"
     if report.get("traceback") or report.get("downstream_traceback"):
@@ -64,6 +68,15 @@ def classify_case(report: dict[str, Any], process_exit: int) -> str:
     if actual in FUSED:
         return "FUSED_PASS"
     return "MATH_PASS" if actual == "MATH" else "INCONCLUSIVE"
+
+
+def acceptance_statuses(records: list[dict[str, Any]]) -> list[str]:
+    """Exclude only the explicitly optional additive-mask FLASH capability probe."""
+    return [
+        r["status"]
+        for r in records
+        if not (r["case"] == "vision_flash_unsupported" and r["status"] == "UNSUPPORTED")
+    ]
 
 
 def valid_provenance(p: dict[str, Any]) -> bool:

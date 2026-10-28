@@ -48,3 +48,12 @@ environment, historical evidence, issue #2 or PR #3 is changed.
   worktree placement would retain a long user-profile path.
 - Ruling: the user's complete specification and explicit autonomous execution
   replace further design/permission questions.
+- Baseline: all 27 fresh-process conditions completed. 21 fused FAIL, four
+  profiled MATH_PASS, copy-only CONTROL_PASS, optional bias FLASH UNSUPPORTED.
+  Both launch traces reproduce null-function/zero-block hipErrorInvalidValue.
+- First actual TheRock build exited 1 during SDK-devel HTTP timeout, before
+  compilation. Retrying downloads and shallow pinned submodule fetches.
+- CPU gate tests: 24 initial pass; separate reviewer identified two conservative
+  classification issues. Both were reproduced RED and fixed GREEN (26 tests).
+- Ruling: the named optional bias FLASH capability probe may be UNSUPPORTED;
+  required no-mask FLASH and additive-bias EFFICIENT still must execute.

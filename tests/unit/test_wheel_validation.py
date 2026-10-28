@@ -95,6 +95,30 @@ def test_unsupported_is_not_pass():
     assert comparison.classify_case(r, 2) == "UNSUPPORTED"
 
 
+def test_unsupported_with_dirty_hip_is_failure():
+    r = clean_report()
+    r.update(status="UNSUPPORTED", exit_code=2)
+    r["events"][-1]["hip_after_sync"] = 1
+    assert comparison.classify_case(r, 2) == "FAIL"
+
+
+def test_only_named_optional_unsupported_control_is_excluded():
+    statuses = comparison.acceptance_statuses(
+        [
+            {"case": "vision_flash_unsupported", "status": "UNSUPPORTED"},
+            {"case": "small_flash_1", "status": "UNSUPPORTED"},
+            {"case": "small_efficient_1", "status": "FUSED_PASS"},
+        ]
+    )
+    assert statuses == ["UNSUPPORTED", "FUSED_PASS"]
+    assert comparison.decide(True, True, True, statuses, matrix_complete=True) == "INCONCLUSIVE"
+    assert comparison.acceptance_statuses(
+        [
+            {"case": "vision_flash_unsupported", "status": "FAIL"},
+        ]
+    ) == ["FAIL"]
+
+
 def test_report_parser_rejects_non_object_and_nonfinite(tmp_path):
     p = tmp_path / "report.json"
     for text in ("[]", '{"x": NaN}', '{"x": Infinity}'):
@@ -158,3 +182,19 @@ def test_final_decision_never_infers_candidate_from_baseline():
 @pytest.mark.parametrize("dtype,tol", [("bfloat16", 0.03), ("float16", 0.005), ("float32", 0.0001)])
 def test_frozen_thresholds(dtype, tol):
     assert comparison.TOLERANCES[dtype] == (tol, tol)
+
+
+def test_sanitization_handles_case_slashes_and_json_escaping():
+    from importlib.util import module_from_spec, spec_from_file_location
+
+    spec = spec_from_file_location("wheel_export", SCRIPT.with_name("export_evidence.py"))
+    assert spec and spec.loader
+    module = module_from_spec(spec)
+    spec.loader.exec_module(module)
+    home = "C:/Users/Example"
+    for text in ("c:/users/example/x", "C:\\Users\\Example\\x", r"C:\\Users\\Example\\x"):
+        result = module.sanitize_text(text, home)
+        assert "example" not in result.lower()
+        assert "<USERPROFILE>" in result
+    payload = json.dumps({"path": "C:\\Users\\Example\\x"})
+    assert json.loads(module.sanitize_text(payload, home))["path"] == "<USERPROFILE>\\x"
