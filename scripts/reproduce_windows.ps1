@@ -23,6 +23,7 @@ if ($Offline -and -not $ReuseEnvironment) {
 New-Item -ItemType Directory -Force -Path $outputRoot | Out-Null
 $steps = [Collections.Generic.List[object]]::new()
 $status = "FAIL"
+$runId = [guid]::NewGuid().ToString()
 $offlineArgs = @()
 if ($Offline) { $offlineArgs = @("--offline") }
 
@@ -47,7 +48,8 @@ try {
         if (Test-Path $environmentRoot) {
             throw "Clean reproduction requires a new VenvPath; use -ReuseEnvironment for reruns."
         }
-        & (Join-Path $PSScriptRoot "setup_windows_rocm7141.ps1") -Python $Python -VenvPath $environmentRoot *> (Join-Path $outputRoot "setup.log")
+        & (Join-Path $PSScriptRoot "setup_windows_rocm7141.ps1") -Python $Python -VenvPath $environmentRoot -RunId $runId *> (Join-Path $outputRoot "setup.log")
+        Copy-Item -LiteralPath (Join-Path $environmentRoot "phase1-install\creation.json") -Destination (Join-Path $outputRoot "environment-creation.json")
     }
     Invoke-Step "isolated-python" @("-c", "import sys; assert sys.prefix!=sys.base_prefix")
     Invoke-Step "pip-check" @("-m", "pip", "check")
@@ -68,7 +70,7 @@ try {
 } finally {
     Pop-Location
     $manifest = [ordered]@{
-        status=$status; timestamp_utc=[DateTime]::UtcNow.ToString("o")
+        status=$status; run_id=$runId; timestamp_utc=[DateTime]::UtcNow.ToString("o")
         clean_environment=(-not $ReuseEnvironment); offline_model=$Offline.IsPresent
         model_revision="9cf077c4b206e0e2a31879df937b0b0bcba3661c"
         same_physical_machine=$null; steps=@($steps.ToArray())

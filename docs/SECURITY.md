@@ -56,6 +56,16 @@ Bound local image size, decoded pixel count, page count, crop count, prompt leng
 
 Generation toggles global inference/page-scope state and temporarily changes config, restoring it in `finally`. This is not a thread-isolation guarantee: serialize inference calls per process/model or use separate workers. Exception handling should preserve the original compiler/launch traceback. The native requirement keeps `dash_use_triton=True`; falling back or disabling it must be explicitly labeled a diagnostic, never reported as custom-kernel success. [State switch](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_deepseekv2.py#L296-L335), [generation cleanup](https://huggingface.co/baidu/Unlimited-OCR-2/blob/9cf077c4b206e0e2a31879df937b0b0bcba3661c/modeling_unlimitedocr.py#L1150-L1205).
 
+## Bounded official V2 conversion
+
+The official V2 converter is separate from the unsafe HF legacy drawing
+helper. It is vendored unchanged with its MIT license after full static
+review. Our wrapper bounds raw input to one million characters and generated
+title levels to16 before convert(); otherwise a short LEVEL1000000 could
+expand a huge heading. Rejected output retains literal raw bytes and its
+failure manifest. Regressions cover ordinary/oversized headings and evidence
+preservation.
+
 ## License preservation
 
 Preserve the pinned [Baidu MIT license](https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/LICENSE), source copyright headers and third-party notices when copying or patching helpers. The base source explicitly contains Apache-2.0 terms; the gather source acknowledges flash-linear-attention adaptation. A security patch does not remove attribution obligations. No separate postprocessor license was present in the inspected files. See the licensing section of [UPSTREAM_AUDIT.md](UPSTREAM_AUDIT.md).

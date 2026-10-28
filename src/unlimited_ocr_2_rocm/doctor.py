@@ -23,6 +23,10 @@ STACK = {
 }
 
 
+def environment_identity() -> str:
+    return hashlib.sha256(str(Path(sys.prefix).resolve()).casefold().encode()).hexdigest()
+
+
 def require_stack(report: dict[str, Any]) -> None:
     """Reject version drift, alternate hardware and CPU execution."""
     errors = []
@@ -107,6 +111,13 @@ def collect_environment() -> dict[str, Any]:
         "python": platform.python_version(),
         "machine": platform.machine(),
         "executable": sys.executable,
+        "environment_id": environment_identity(),
+        "isolated_environment": sys.prefix != sys.base_prefix,
+        "installed_packages": {
+            distribution.metadata["Name"].lower().replace("_", "-"): distribution.version
+            for distribution in importlib.metadata.distributions()
+            if distribution.metadata["Name"]
+        },
         "packages": {},
         "environment": {
             key: value

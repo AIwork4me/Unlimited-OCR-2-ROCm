@@ -7,11 +7,10 @@ import traceback
 from pathlib import Path
 from typing import Any
 
-from ._upstream.process_unlimitedOCR2 import convert
 from .config import file_sha256
 from .doctor import memory_snapshot, write_json
 from .model import NativeModel
-from .output import assess, normalize, preserve_raw
+from .output import assess, convert_readable, normalize, preserve_raw
 
 
 def validate_inputs(images: list[Path], multi: bool) -> list[Path]:
@@ -92,7 +91,7 @@ def run_native(
                 }
         torch.cuda.synchronize()
         preserve_raw(output / "raw.txt", raw)
-        preserve_raw(output / "readable.md", convert(raw))
+        preserve_raw(output / "readable.md", convert_readable(raw))
         (output / "normalized.txt").write_text(normalize(raw), encoding="utf-8")
         kernels = native.kernels[previous_kernels:]
         report.update(

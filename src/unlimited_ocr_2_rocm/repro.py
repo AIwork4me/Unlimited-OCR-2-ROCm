@@ -3,10 +3,7 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
-import importlib.metadata
 import json
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +22,8 @@ def compare_reproduction(
             failures.append(f"{label} did not pass all A-D gates")
         if run.get("required_cases_passed") is not True:
             failures.append(f"{label} lacks required cases")
+        if run.get("producer_evidence_valid") is not True:
+            failures.append(f"{label} has missing or conflicting producer provenance")
         if not run.get("environment_id"):
             failures.append(f"{label} lacks environment identity")
     if baseline.get("environment_id") == current.get("environment_id"):
@@ -35,6 +34,40 @@ def compare_reproduction(
         if not baseline.get(name) or baseline.get(name) != current.get(name):
             failures.append(f"Missing or different {name}")
     return {"status": "NOT PROVEN" if failures else "PASS", "reasons": failures}
+
+
+def bind_provenance(
+    workflow: dict[str, Any],
+    producers: list[dict[str, Any]],
+    creation: dict[str, Any] | None,
+    requested_fresh: bool,
+) -> dict[str, Any]:
+    errors = []
+    identities = {producer.get("environment_id") for producer in producers}
+    identity = next(iter(identities)) if len(identities) == 1 and None not in identities else None
+    if not producers or not identity:
+        errors.append("Missing or inconsistent producing environment identities")
+    if any(producer.get("isolated_environment") is not True for producer in producers):
+        errors.append("A producing environment is not confirmed isolated")
+    recorded_fresh = workflow.get("clean_environment")
+    if not workflow.get("run_id") or not isinstance(recorded_fresh, bool):
+        errors.append("Missing workflow creation record")
+    if requested_fresh != recorded_fresh:
+        errors.append("Freshness flag contradicts recorded workflow")
+    creation_ok = bool(
+        creation
+        and creation.get("environment_id") == identity
+        and creation.get("run_id") == workflow.get("run_id")
+        and creation.get("created_new") is True
+    )
+    if recorded_fresh and not creation_ok:
+        errors.append("Fresh run lacks a matching environment-creation witness")
+    return {
+        "environment_id": identity,
+        "fresh_environment": bool(recorded_fresh and creation_ok and not errors),
+        "producer_evidence_valid": not errors,
+        "producer_provenance_errors": errors,
+    }
 
 
 def summarize(
@@ -56,6 +89,22 @@ def summarize(
     single_ok = all(singles.get(case) == "PASS" for case in expected_single)
     multi_ok = all(multis.get(case) == "PASS" for case in expected_multi)
     record["required_cases_passed"] = single_ok and multi_ok
+    producers = [
+        doctor,
+        triton.get("environment", {}),
+        sparse.get("environment", {}),
+        read("vision-sdpa.json").get("environment", {}),
+        load.get("environment", {}),
+        read("multi/load.json").get("environment", {}),
+    ]
+    for category, cases in (("single", expected_single), ("multi", expected_multi)):
+        for case in cases:
+            producers.append(
+                read(f"{category}/{case}/manifest.json").get("model", {}).get("environment", {})
+            )
+    record.update(
+        bind_provenance(record, producers, read("environment-creation.json") or None, fresh)
+    )
     english = read("single/english/manifest.json")
     record["gates"] = {
         "A": "PASS" if doctor.get("status") == "PASS" else "FAIL",
@@ -84,10 +133,6 @@ def summarize(
         if uuid
         else {}
     )
-    record["environment_id"] = hashlib.sha256(
-        str(Path(sys.prefix).resolve()).casefold().encode()
-    ).hexdigest()
-    record["fresh_environment"] = fresh
     package_root = Path(__file__).parent
     hashes = dict(load.get("wrapper_source_hashes", {}))
     hashes["upstream-lock.json"] = file_sha256(package_root / "upstream-lock.json")
@@ -103,15 +148,28 @@ def summarize(
     record["artifact_hashes"] = hashes
     record["model_revision"] = read_lock()["model_revision"]
     versions = {}
+    installed = doctor.get("installed_packages", {})
     lock = package_root.parents[1] / "requirements/windows-cp310.lock.txt"
     if lock.is_file():
         for line in lock.read_text(encoding="utf-8-sig").splitlines():
             if "==" in line:
                 name = line.split("==", 1)[0]
-                try:
-                    versions[name] = importlib.metadata.version(name)
-                except importlib.metadata.PackageNotFoundError:
-                    versions[name] = "MISSING"
+                versions[name] = installed.get(name.lower().replace("_", "-"), "MISSING")
+                expected_version = line.split("==", 1)[1]
+                if versions[name] != expected_version:
+                    record["producer_provenance_errors"].append(
+                        f"Run package differs from lock: {name}"
+                    )
+                    record["producer_evidence_valid"] = False
+                for producer in producers:
+                    actual = producer.get("installed_packages", {}).get(
+                        name.lower().replace("_", "-")
+                    )
+                    if actual != versions[name]:
+                        record["producer_provenance_errors"].append(
+                            f"Inconsistent run package: {name}"
+                        )
+                        record["producer_evidence_valid"] = False
     record["package_versions"] = versions
     baseline = None
     if baseline_path is not None:

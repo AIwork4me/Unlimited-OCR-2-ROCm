@@ -2,7 +2,8 @@
 param(
     [string]$Python = "python",
     [string]$VenvPath = (Join-Path $PSScriptRoot "..\.venv"),
-    [switch]$SkipModelDependencies
+    [switch]$SkipModelDependencies,
+    [string]$RunId = ([guid]::NewGuid().ToString())
 )
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
@@ -25,7 +26,8 @@ if ($environmentRoot -eq [IO.Path]::GetPathRoot($environmentRoot)) {
 }
 Invoke-CheckedPython $Python @("-c",
     "import sys,struct; assert sys.platform=='win32' and sys.version_info[:2]==(3,10) and struct.calcsize('P')==8, 'Use 64-bit CPython 3.10'")
-if (Test-Path -LiteralPath $environmentRoot) {
+$createdNew = -not (Test-Path -LiteralPath $environmentRoot)
+if (-not $createdNew) {
     if (-not (Test-Path -LiteralPath (Join-Path $environmentRoot "pyvenv.cfg"))) {
         throw "Existing directory is not a venv; refusing to modify it: $environmentRoot"
     }
@@ -66,6 +68,10 @@ if (-not $SkipModelDependencies) {
         "-c", (Join-Path $repoRoot "requirements\stack.txt"))
 }
 Invoke-CheckedPython $venvPython @("-m", "pip", "install", "--no-deps", "-e", $repoRoot)
+$creationArgs=@((Join-Path $PSScriptRoot "record_environment.py"), "--output",
+    (Join-Path $evidence "creation.json"), "--run-id", $RunId)
+if ($createdNew) { $creationArgs += "--created-new" }
+Invoke-CheckedPython $venvPython $creationArgs
 Invoke-CheckedPython $venvPython @("--version")
 Invoke-CheckedPython $venvPython @("-m", "pip", "--version")
 Invoke-CheckedPython $venvPython @("-m", "pip", "check")

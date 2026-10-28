@@ -105,3 +105,18 @@
   are not relaxed. Cost if wrong: an application requiring exactly N raw
   delimiters must inspect raw_marker_count_matches_input rather than the
   content-page acceptance status.
+
+## Review follow-up and final-run scope
+
+- Follow-up review covered substantive compatibility/postprocessor/repro code
+  added after the initial review. It found two additional Important issues.
+- Fixed conversion expansion via bounded heading metadata before invoking the
+  byte-identical official converter. Raw survives rejection; regression passes.
+- Fixed Gate E provenance: identity/inventory come from producing doctor/load/
+  case reports, not the summarizer interpreter. All producing IDs must agree.
+  A fresh workflow requires a matching run-ID/environment-ID creation witness;
+  --fresh cannot override recorded clean_environment=false. Regression passes.
+- Earlier exploratory baseline/clean summaries predate these proof corrections
+  and are excluded from published acceptance. Their local files remain.
+- Final acceptance uses final-baseline and final-clean only. A new isolated
+  environment is being created for final-clean after these corrections.

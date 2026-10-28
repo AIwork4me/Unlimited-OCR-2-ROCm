@@ -8,7 +8,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from ._upstream.process_unlimitedOCR2 import _parse_blocks
+from ._upstream.process_unlimitedOCR2 import _parse_blocks, convert
 
 
 def readable_text(text: str) -> str:
@@ -29,6 +29,15 @@ def normalize(text: str) -> str:
 
 def preserve_raw(path: Path, raw: str) -> None:
     path.write_bytes(raw.encode("utf-8"))
+
+
+def convert_readable(raw: str) -> str:
+    if len(raw) > 1_000_000:
+        raise ValueError("Readable output exceeds the bounded input size")
+    for level in re.findall(r"<\s*/?\s*LEVEL\s*(\d*)\s*[>}]?", raw, flags=re.IGNORECASE):
+        if len(level) > 2 or (level and int(level) > 16):
+            raise ValueError("Generated heading level exceeds the safe bound of 16")
+    return str(convert(raw))
 
 
 def split_pages(raw: str) -> list[str]:

@@ -15,3 +15,5 @@ dist/
 .env
 eval/results/private/
 eval/results/**/中文 input/
+eval/results/baseline/
+eval/results/clean/

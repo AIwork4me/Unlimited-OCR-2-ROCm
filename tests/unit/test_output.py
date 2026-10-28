@@ -90,3 +90,12 @@ def test_one_empty_terminal_page_marker_is_reported_separately():
     assert result["content_page_count"] == 2
     assert result["terminal_empty_marker"] is True
     assert result["raw_marker_count_matches_input"] is False
+
+
+def test_readable_conversion_bounds_generated_heading_levels():
+    from unlimited_ocr_2_rocm.output import convert_readable
+
+    assert convert_readable("<PAGE><BLOCK>title<LEVEL1>[1,2,3,4]<FORK>Hi") == "# Hi"
+    for level in ("1000000", "9" * 5000):
+        with pytest.raises(ValueError, match="heading"):
+            convert_readable(f"<PAGE><BLOCK>title<LEVEL{level}>[1,2,3,4]<FORK>Hi")
