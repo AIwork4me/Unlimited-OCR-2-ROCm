@@ -14,7 +14,7 @@
     "skipped": 6
   },
   "default_attention": "MATH; unchanged",
-  "documentation_change": "Review-status sentence updated after independent approval; reviewed code and tests unchanged",
+  "documentation_change": "Review-status sentence and prospective temporary-cache path updated after approval; preserved C:/b junction keeps runtime cache paths short. Reviewed code and tests unchanged.",
   "focused_tests": {
     "command": ".b/benchmark-cpu/Scripts/python.exe -m pytest tests/unit/test_native_completion.py tests/unit/test_inference.py tests/unit/test_benchmark_ledger.py --basetemp=.b/native-completion/keys-focused -q",
     "failed": 0,
@@ -29,7 +29,7 @@
   },
   "physical_linux": "NOT RUN",
   "physical_windows": "NOT RUN",
-  "published_contract_sha256": "ce6ca712fcfdf2a33c3c07cc2fae9c17a1491b57aff761c92a7066359f7f14bc",
+  "published_contract_sha256": "ab6b8c1f40758ab083be8dd69908c77c1bc2367c1f0d48666cc278cd24062ff6",
   "reviewed_contract_sha256": "cd35c383ec6d569753ad9d21da8e6ea90cd50147243672619a839ec921012394",
   "schema": 1,
   "scope": "Native completion CPU contract; no GPU or benchmark execution",

@@ -172,7 +172,7 @@ Select a fresh output path for each repetition.
 $NativePython = 'C:\b\o\Scripts\python.exe'
 $RuntimeRoot = Join-Path (Get-Location) '.b/native-completion-runtime'
 New-Item -ItemType Directory -Force "$RuntimeRoot/tmp", "$RuntimeRoot/triton" | Out-Null
-$env:TEMP = "$RuntimeRoot/tmp"
+$env:TEMP = 'C:\b\native-completion-runtime\tmp'
 $env:TMP = "$RuntimeRoot/tmp"
 $env:PYTHONUTF8 = '1'
 $env:PYTHONPATH = Join-Path (Get-Location) 'src'
