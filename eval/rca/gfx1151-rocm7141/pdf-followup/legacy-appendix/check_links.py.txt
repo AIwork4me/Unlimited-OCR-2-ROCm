@@ -1,0 +1,12 @@
+import re,pathlib,urllib.parse,json,subprocess,sys
+root=pathlib.Path.cwd();files=[root/'README.md',*list((root/'docs/rca').glob('*.md')),*list((root/'experiments/sdpa_rca').glob('*.md'))]
+missing=[];references=[]
+for file in files:
+    for link in re.findall(r'\]\(([^)]+)\)',file.read_text(encoding='utf-8-sig')):
+        if '://' in link or link.startswith('#'):continue
+        target=(file.parent/urllib.parse.unquote(link.split('#')[0])).resolve()
+        if not target.exists():missing.append((str(file.relative_to(root)),link))
+        elif target.is_file():references.append(target.relative_to(root).as_posix())
+print('Local referenced files',len(set(references)),'missing',missing)
+assert not missing
+pathlib.Path('.local/rca/referenced-files.json').write_text(json.dumps(sorted(set(references)),indent=2))

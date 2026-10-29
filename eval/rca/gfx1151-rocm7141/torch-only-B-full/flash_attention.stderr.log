@@ -1,0 +1,19 @@
+<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py:167: UserWarning: Memory efficient kernel not used because: (Triggered internally at B:\src\pytorch\aten\src\ATen\native\transformers\hip\sdp_utils.cpp:1042.)
+  output = functional.scaled_dot_product_attention(
+<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py:167: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at B:\src\pytorch\aten\src\ATen/native/transformers/sdp_utils_cpp.h:552.)
+  output = functional.scaled_dot_product_attention(
+<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py:167: UserWarning: Flash attention kernel not used because: (Triggered internally at B:\src\pytorch\aten\src\ATen\native\transformers\hip\sdp_utils.cpp:1044.)
+  output = functional.scaled_dot_product_attention(
+<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py:167: UserWarning: Flash Attention does not support non-null attn_mask. (Triggered internally at B:\src\pytorch\aten\src\ATen/native/transformers/sdp_utils_cpp.h:262.)
+  output = functional.scaled_dot_product_attention(
+<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py:167: UserWarning: cuDNN attention kernel not used because: (Triggered internally at B:\src\pytorch\aten\src\ATen\native\transformers\hip\sdp_utils.cpp:1046.)
+  output = functional.scaled_dot_product_attention(
+<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py:167: UserWarning: Torch was not compiled with cuDNN attention. (Triggered internally at B:\src\pytorch\aten\src\ATen\native\transformers\hip\sdp_utils.cpp:792.)
+  output = functional.scaled_dot_product_attention(
+Traceback (most recent call last):
+  File "<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py", line 262, in main
+    execute(args, report)
+  File "<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py", line 167, in execute
+    output = functional.scaled_dot_product_attention(
+RuntimeError: No available kernel. Aborting execution.
+

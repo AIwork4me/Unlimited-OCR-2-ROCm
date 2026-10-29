@@ -1,0 +1,864 @@
+
+File: <USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\Lib\site-packages\torch\lib\aotriton_v2.dll
+Format: COFF-x86-64
+Arch: x86_64
+AddressSize: 64bit
+Import {
+  Name: dl.dll
+  ImportLookupTableRVA: 0x95AAC8
+  ImportAddressTableRVA: 0x95AD98
+  Symbol: dladdr (0)
+}
+Import {
+  Name: amdhip64_7.dll
+  ImportLookupTableRVA: 0x95AAD8
+  ImportAddressTableRVA: 0x95ADA8
+  Symbol: hipGetDevice (273)
+  Symbol: hipGetDevicePropertiesR0600 (278)
+  Symbol: hipModuleGetFunction (568)
+  Symbol: hipModuleLaunchKernel (574)
+  Symbol: hipModuleLoadDataEx (577)
+  Symbol: hipModuleUnload (583)
+  Symbol: hipPeekAtLastError (590)
+  Symbol: hipStreamGetDevice (626)
+}
+Import {
+  Name: liblzma.dll
+  ImportLookupTableRVA: 0x95AB20
+  ImportAddressTableRVA: 0x95ADF0
+  Symbol: lzma_code (0)
+  Symbol: lzma_stream_decoder (0)
+}
+Import {
+  Name: KERNEL32.dll
+  ImportLookupTableRVA: 0x95AB38
+  ImportAddressTableRVA: 0x95AE08
+  Symbol: AcquireSRWLockExclusive (0)
+  Symbol: AcquireSRWLockShared (1)
+  Symbol: AreFileApisANSI (37)
+  Symbol: CloseHandle (157)
+  Symbol: CreateFileW (230)
+  Symbol: DisableThreadLibraryCalls (322)
+  Symbol: FormatMessageA (463)
+  Symbol: GetCurrentProcess (577)
+  Symbol: GetCurrentProcessId (578)
+  Symbol: GetCurrentThreadId (582)
+  Symbol: GetLastError (653)
+  Symbol: GetLocaleInfoEx (656)
+  Symbol: GetSystemTimeAsFileTime (794)
+  Symbol: InitializeSListHead (922)
+  Symbol: IsDebuggerPresent (944)
+  Symbol: IsProcessorFeaturePresent (952)
+  Symbol: LocalFree (1026)
+  Symbol: MultiByteToWideChar (1059)
+  Symbol: QueryPerformanceCounter (1153)
+  Symbol: ReadFile (1193)
+  Symbol: ReleaseSRWLockExclusive (1258)
+  Symbol: ReleaseSRWLockShared (1259)
+  Symbol: RtlCaptureContext (1289)
+  Symbol: RtlLookupFunctionEntry (1297)
+  Symbol: RtlVirtualUnwind (1304)
+  Symbol: SetUnhandledExceptionFilter (1464)
+  Symbol: SleepConditionVariableSRW (1482)
+  Symbol: TerminateProcess (1496)
+  Symbol: UnhandledExceptionFilter (1531)
+  Symbol: WakeAllConditionVariable (1581)
+  Symbol: WideCharToMultiByte (1612)
+}
+Import {
+  Name: MSVCP140.dll
+  ImportLookupTableRVA: 0x95AC38
+  ImportAddressTableRVA: 0x95AF08
+  Symbol: ?_Syserror_map@std@@YAPEBDH@Z (627)
+  Symbol: ?_Throw_Cpp_error@std@@YAXH@Z (629)
+  Symbol: ?_Winerror_map@std@@YAHH@Z (645)
+  Symbol: ?_Xbad_function_call@std@@YAXXZ (652)
+  Symbol: ?_Xlength_error@std@@YAXPEBD@Z (654)
+  Symbol: ?_Xout_of_range@std@@YAXPEBD@Z (655)
+  Symbol: _Mtx_lock (1413)
+  Symbol: _Mtx_unlock (1417)
+}
+Import {
+  Name: VCRUNTIME140.dll
+  ImportLookupTableRVA: 0x95AC80
+  ImportAddressTableRVA: 0x95AF50
+  Symbol: _CxxThrowException (1)
+  Symbol: __C_specific_handler (8)
+  Symbol: __CxxFrameHandler3 (14)
+  Symbol: __std_exception_copy (33)
+  Symbol: __std_exception_destroy (34)
+  Symbol: __std_terminate (35)
+  Symbol: __std_type_info_destroy_list (37)
+  Symbol: memcmp (59)
+  Symbol: memcpy (60)
+  Symbol: memmove (61)
+  Symbol: memset (62)
+}
+Import {
+  Name: api-ms-win-crt-locale-l1-1-0.dll
+  ImportLookupTableRVA: 0x95ACE0
+  ImportAddressTableRVA: 0x95AFB0
+  Symbol: ___lc_codepage_func (0)
+}
+Import {
+  Name: api-ms-win-crt-runtime-l1-1-0.dll
+  ImportLookupTableRVA: 0x95ACF0
+  ImportAddressTableRVA: 0x95AFC0
+  Symbol: _cexit (22)
+  Symbol: _configure_narrow_argv (24)
+  Symbol: _crt_atexit (30)
+  Symbol: _execute_onexit_table (34)
+  Symbol: _initialize_narrow_environment (51)
+  Symbol: _initialize_onexit_table (52)
+  Symbol: _initterm (54)
+  Symbol: _initterm_e (55)
+  Symbol: _invoke_watson (58)
+  Symbol: _register_onexit_function (60)
+  Symbol: _seh_filter_dll (63)
+}
+Import {
+  Name: api-ms-win-crt-heap-l1-1-0.dll
+  ImportLookupTableRVA: 0x95AD50
+  ImportAddressTableRVA: 0x95B020
+  Symbol: _callnewh (8)
+  Symbol: free (24)
+  Symbol: malloc (25)
+}
+Import {
+  Name: api-ms-win-crt-string-l1-1-0.dll
+  ImportLookupTableRVA: 0x95AD70
+  ImportAddressTableRVA: 0x95B040
+  Symbol: strlen (139)
+  Symbol: wcslen (163)
+}
+Import {
+  Name: api-ms-win-crt-math-l1-1-0.dll
+  ImportLookupTableRVA: 0x95AD88
+  ImportAddressTableRVA: 0x95B058
+  Symbol: ceilf (125)
+}
+Export {
+  Ordinal: 1
+  Name: ??$cdiv@I@aotriton@@YAIII@Z
+  RVA: 0x580FF0
+}
+Export {
+  Ordinal: 2
+  Name: ??0?$TensorView@$00@aotriton@@QEAA@XZ
+  RVA: 0x57DE10
+}
+Export {
+  Ordinal: 3
+  Name: ??0?$TensorView@$00@aotriton@@QEAA@_JV?$array@_K$00@std@@1W4DType@1@@Z
+  RVA: 0x57DE30
+}
+Export {
+  Ordinal: 4
+  Name: ??0?$TensorView@$01@aotriton@@QEAA@XZ
+  RVA: 0x57DEE0
+}
+Export {
+  Ordinal: 5
+  Name: ??0?$TensorView@$01@aotriton@@QEAA@_JV?$array@_K$01@std@@1W4DType@1@@Z
+  RVA: 0x57DF00
+}
+Export {
+  Ordinal: 6
+  Name: ??0?$TensorView@$02@aotriton@@QEAA@XZ
+  RVA: 0x57DFD0
+}
+Export {
+  Ordinal: 7
+  Name: ??0?$TensorView@$02@aotriton@@QEAA@_JV?$array@_K$02@std@@1W4DType@1@@Z
+  RVA: 0x57DFF0
+}
+Export {
+  Ordinal: 8
+  Name: ??0?$TensorView@$03@aotriton@@QEAA@XZ
+  RVA: 0x57E0C0
+}
+Export {
+  Ordinal: 9
+  Name: ??0?$TensorView@$03@aotriton@@QEAA@_JV?$array@_K$03@std@@1W4DType@1@@Z
+  RVA: 0x57E0E0
+}
+Export {
+  Ordinal: 10
+  Name: ??0?$TensorView@$0A@@aotriton@@QEAA@XZ
+  RVA: 0x1010
+}
+Export {
+  Ordinal: 11
+  Name: ??0?$TensorView@$0A@@aotriton@@QEAA@_JW4DType@1@@Z
+  RVA: 0x1030
+}
+Export {
+  Ordinal: 12
+  Name: ??0KernelControl@v3@aotriton@@QEAA@XZ
+  RVA: 0x10B0
+}
+Export {
+  Ordinal: 13
+  Name: ??0KernelFineControl@v3@aotriton@@QEAA@$$QEAV012@@Z
+  RVA: 0x1130
+}
+Export {
+  Ordinal: 14
+  Name: ??0KernelFineControl@v3@aotriton@@QEAA@AEBV012@@Z
+  RVA: 0x10F0
+}
+Export {
+  Ordinal: 15
+  Name: ??0KernelFineControl@v3@aotriton@@QEAA@_K@Z
+  RVA: 0x5768A0
+}
+Export {
+  Ordinal: 16
+  Name: ??0attn_bwd_params@flash@v3@aotriton@@QEAA@XZ
+  RVA: 0x581100
+}
+Export {
+  Ordinal: 17
+  Name: ??0attn_fwd_params@flash@v3@aotriton@@QEAA@XZ
+  RVA: 0x584550
+}
+Export {
+  Ordinal: 18
+  Name: ??0attn_options@flash@v3@aotriton@@QEAA@XZ
+  RVA: 0x13A0
+}
+Export {
+  Ordinal: 19
+  Name: ??1KernelFineControl@v3@aotriton@@QEAA@XZ
+  RVA: 0x12C0
+}
+Export {
+  Ordinal: 20
+  Name: ??4?$StreamTemplate@PEAUihipStream_t@@@aotriton@@QEAAAEAV01@$$QEAV01@@Z
+  RVA: 0x580FA0
+}
+Export {
+  Ordinal: 21
+  Name: ??4?$StreamTemplate@PEAUihipStream_t@@@aotriton@@QEAAAEAV01@AEBV01@@Z
+  RVA: 0x580FA0
+}
+Export {
+  Ordinal: 22
+  Name: ??4?$TensorView@$00@aotriton@@QEAAAEAV01@$$QEAV01@@Z
+  RVA: 0x1410
+}
+Export {
+  Ordinal: 23
+  Name: ??4?$TensorView@$00@aotriton@@QEAAAEAV01@AEBV01@@Z
+  RVA: 0x1410
+}
+Export {
+  Ordinal: 24
+  Name: ??4?$TensorView@$01@aotriton@@QEAAAEAV01@$$QEAV01@@Z
+  RVA: 0x13F0
+}
+Export {
+  Ordinal: 25
+  Name: ??4?$TensorView@$01@aotriton@@QEAAAEAV01@AEBV01@@Z
+  RVA: 0x13F0
+}
+Export {
+  Ordinal: 26
+  Name: ??4?$TensorView@$02@aotriton@@QEAAAEAV01@$$QEAV01@@Z
+  RVA: 0x57DFA0
+}
+Export {
+  Ordinal: 27
+  Name: ??4?$TensorView@$02@aotriton@@QEAAAEAV01@AEBV01@@Z
+  RVA: 0x57DFA0
+}
+Export {
+  Ordinal: 28
+  Name: ??4?$TensorView@$03@aotriton@@QEAAAEAV01@$$QEAV01@@Z
+  RVA: 0x13C0
+}
+Export {
+  Ordinal: 29
+  Name: ??4?$TensorView@$03@aotriton@@QEAAAEAV01@AEBV01@@Z
+  RVA: 0x13C0
+}
+Export {
+  Ordinal: 30
+  Name: ??4?$TensorView@$0A@@aotriton@@QEAAAEAV01@$$QEAV01@@Z
+  RVA: 0x1000
+}
+Export {
+  Ordinal: 31
+  Name: ??4?$TensorView@$0A@@aotriton@@QEAAAEAV01@AEBV01@@Z
+  RVA: 0x1000
+}
+Export {
+  Ordinal: 32
+  Name: ??4BwdExtraArguments@flash@v2@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 33
+  Name: ??4BwdExtraArguments@flash@v2@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 34
+  Name: ??4CausalType@flash@v3@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 35
+  Name: ??4CausalType@flash@v3@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 36
+  Name: ??4CppTune@v2@aotriton@@QEAAAEAU012@$$QEAU012@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 37
+  Name: ??4CppTune@v2@aotriton@@QEAAAEAU012@AEBU012@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 38
+  Name: ??4FusedBwdExtraArguments@flash@v2@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 39
+  Name: ??4FusedBwdExtraArguments@flash@v2@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 40
+  Name: ??4FwdExtraArguments@flash@v2@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 41
+  Name: ??4FwdExtraArguments@flash@v2@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 42
+  Name: ??4KernelControl@v3@aotriton@@QEAAAEAU012@$$QEAU012@@Z
+  RVA: 0x10D0
+}
+Export {
+  Ordinal: 43
+  Name: ??4KernelControl@v3@aotriton@@QEAAAEAU012@AEBU012@@Z
+  RVA: 0x10D0
+}
+Export {
+  Ordinal: 44
+  Name: ??4KernelFineControl@v3@aotriton@@QEAAAEAV012@$$QEAV012@@Z
+  RVA: 0x1180
+}
+Export {
+  Ordinal: 45
+  Name: ??4KernelFineControl@v3@aotriton@@QEAAAEAV012@AEBV012@@Z
+  RVA: 0x1150
+}
+Export {
+  Ordinal: 46
+  Name: ??4VarlenType@flash@v3@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 47
+  Name: ??4VarlenType@flash@v3@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 48
+  Name: ??4WindowValue@flash@v3@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 49
+  Name: ??4WindowValue@flash@v3@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 50
+  Name: ??4attn_bwd_params@flash@v3@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x1530
+}
+Export {
+  Ordinal: 51
+  Name: ??4attn_bwd_params@flash@v3@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x1440
+}
+Export {
+  Ordinal: 52
+  Name: ??4attn_fwd_params@flash@v3@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x1430
+}
+Export {
+  Ordinal: 53
+  Name: ??4attn_fwd_params@flash@v3@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x1430
+}
+Export {
+  Ordinal: 54
+  Name: ??4attn_options@flash@v3@aotriton@@QEAAAEAU0123@$$QEAU0123@@Z
+  RVA: 0x13B0
+}
+Export {
+  Ordinal: 55
+  Name: ??4attn_options@flash@v3@aotriton@@QEAAAEAU0123@AEBU0123@@Z
+  RVA: 0x13B0
+}
+Export {
+  Ordinal: 56
+  Name: ??AKernelFineControl@v3@aotriton@@QEBA?AV?$shared_ptr@UKernelControl@v3@aotriton@@@std@@_K@Z
+  RVA: 0x576950
+}
+Export {
+  Ordinal: 57
+  Name: ??B?$TensorView@$00@aotriton@@QEBA_NXZ
+  RVA: 0x1040
+}
+Export {
+  Ordinal: 58
+  Name: ??B?$TensorView@$01@aotriton@@QEBA_NXZ
+  RVA: 0x1040
+}
+Export {
+  Ordinal: 59
+  Name: ??B?$TensorView@$02@aotriton@@QEBA_NXZ
+  RVA: 0x1040
+}
+Export {
+  Ordinal: 60
+  Name: ??B?$TensorView@$03@aotriton@@QEBA_NXZ
+  RVA: 0x1040
+}
+Export {
+  Ordinal: 61
+  Name: ??B?$TensorView@$0A@@aotriton@@QEBA_NXZ
+  RVA: 0x1040
+}
+Export {
+  Ordinal: 62
+  Name: ?BottomRightAligned@WindowValue@flash@v3@aotriton@@2HB
+  RVA: 0x5EF190
+}
+Export {
+  Ordinal: 63
+  Name: ?CompactVarlen@VarlenType@flash@v3@aotriton@@2CB
+  RVA: 0x5EF195
+}
+Export {
+  Ordinal: 64
+  Name: ?Default@KernelControl@v3@aotriton@@2GB
+  RVA: 0x5EF000
+}
+Export {
+  Ordinal: 65
+  Name: ?ExtractImage@KernelControl@v3@aotriton@@2GB
+  RVA: 0x5EF00A
+}
+Export {
+  Ordinal: 66
+  Name: ?Ignore@KernelControl@v3@aotriton@@2GB
+  RVA: 0x5EF002
+}
+Export {
+  Ordinal: 67
+  Name: ?Manual@KernelControl@v3@aotriton@@2GB
+  RVA: 0x5EF004
+}
+Export {
+  Ordinal: 68
+  Name: ?None@CausalType@flash@v3@aotriton@@2CB
+  RVA: 0x5EF188
+}
+Export {
+  Ordinal: 69
+  Name: ?None@VarlenType@flash@v3@aotriton@@2CB
+  RVA: 0x5EF194
+}
+Export {
+  Ordinal: 70
+  Name: ?PaddedVarlen@VarlenType@flash@v3@aotriton@@2CB
+  RVA: 0x5EF196
+}
+Export {
+  Ordinal: 71
+  Name: ?Query@KernelControl@v3@aotriton@@2GB
+  RVA: 0x5EF008
+}
+Export {
+  Ordinal: 72
+  Name: ?Skip@KernelControl@v3@aotriton@@2GB
+  RVA: 0x5EF006
+}
+Export {
+  Ordinal: 73
+  Name: ?StridedVarlen@VarlenType@flash@v3@aotriton@@2CB
+  RVA: 0x5EF197
+}
+Export {
+  Ordinal: 74
+  Name: ?TopLeftAligned@WindowValue@flash@v3@aotriton@@2HB
+  RVA: 0x5EF18C
+}
+Export {
+  Ordinal: 75
+  Name: ?WindowedAttention@CausalType@flash@v3@aotriton@@2CB
+  RVA: 0x5EF189
+}
+Export {
+  Ordinal: 76
+  Name: ?at@KernelFineControl@v3@aotriton@@QEBA?AV?$shared_ptr@UKernelControl@v3@aotriton@@@std@@_K@Z
+  RVA: 0x576A70
+}
+Export {
+  Ordinal: 77
+  Name: ?attn_bwd@flash@v2@aotriton@@YA?AW4hipError_t@@V?$TensorView@$03@3@000M000000V?$TensorView@$01@3@1MV?$TensorView@$0A@@3@2_J_NV?$StreamTemplate@PEAUihipStream_t@@@3@PEAUBwdExtraArguments@123@@Z
+  RVA: 0x582F70
+}
+Export {
+  Ordinal: 78
+  Name: ?attn_bwd@flash@v3@aotriton@@YA?AW4hipError_t@@AEBUattn_bwd_params@123@HV?$StreamTemplate@PEAUihipStream_t@@@3@PEBUattn_options@123@@Z
+  RVA: 0x5812A0
+}
+Export {
+  Ordinal: 79
+  Name: ?attn_bwd_compact_varlen@flash@v2@aotriton@@YA?AW4hipError_t@@V?$TensorView@$03@3@00V?$TensorView@$00@3@1HH0M000000V?$TensorView@$01@3@2MV?$TensorView@$0A@@3@3_J_NV?$StreamTemplate@PEAUihipStream_t@@@3@PEAUBwdExtraArguments@123@@Z
+  RVA: 0x583440
+}
+Export {
+  Ordinal: 80
+  Name: ?attn_bwd_fused@flash@v2@aotriton@@YA?AW4hipError_t@@V?$TensorView@$03@3@000M000000V?$TensorView@$01@3@MV?$TensorView@$0A@@3@2_J_NV?$StreamTemplate@PEAUihipStream_t@@@3@PEAUFusedBwdExtraArguments@123@@Z
+  RVA: 0x583D50
+}
+Export {
+  Ordinal: 81
+  Name: ?attn_fwd@flash@v2@aotriton@@YA?AW4hipError_t@@V?$TensorView@$03@3@000MV?$TensorView@$01@3@0MV?$TensorView@$0A@@3@2_J220_N2V?$StreamTemplate@PEAUihipStream_t@@@3@PEAUFwdExtraArguments@123@@Z
+  RVA: 0x584F60
+}
+Export {
+  Ordinal: 82
+  Name: ?attn_fwd@flash@v3@aotriton@@YA?AW4hipError_t@@AEBUattn_fwd_params@123@HV?$StreamTemplate@PEAUihipStream_t@@@3@PEBUattn_options@123@@Z
+  RVA: 0x5846C0
+}
+Export {
+  Ordinal: 83
+  Name: ?attn_fwd_compact_varlen@flash@v2@aotriton@@YA?AW4hipError_t@@V?$TensorView@$03@3@000V?$TensorView@$00@3@1HHMV?$TensorView@$01@3@0MV?$TensorView@$0A@@3@3_J330_N3V?$StreamTemplate@PEAUihipStream_t@@@3@PEAUFwdExtraArguments@123@@Z
+  RVA: 0x585350
+}
+Export {
+  Ordinal: 84
+  Name: ?check_gpu@flash@v2@aotriton@@YA?AW4hipError_t@@V?$StreamTemplate@PEAUihipStream_t@@@3@@Z
+  RVA: 0x5841E0
+}
+Export {
+  Ordinal: 85
+  Name: ?data_ptr@?$TensorView@$00@aotriton@@QEBAPEAXXZ
+  RVA: 0x1070
+}
+Export {
+  Ordinal: 86
+  Name: ?data_ptr@?$TensorView@$01@aotriton@@QEBAPEAXXZ
+  RVA: 0x1070
+}
+Export {
+  Ordinal: 87
+  Name: ?data_ptr@?$TensorView@$02@aotriton@@QEBAPEAXXZ
+  RVA: 0x1070
+}
+Export {
+  Ordinal: 88
+  Name: ?data_ptr@?$TensorView@$03@aotriton@@QEBAPEAXXZ
+  RVA: 0x1070
+}
+Export {
+  Ordinal: 89
+  Name: ?data_ptr@?$TensorView@$0A@@aotriton@@QEBAPEAXXZ
+  RVA: 0x1070
+}
+Export {
+  Ordinal: 90
+  Name: ?debug_simulate_encoded_softmax@flash@v2@aotriton@@YA?AW4hipError_t@@V?$TensorView@$03@3@MV?$TensorView@$0A@@3@1_KV?$StreamTemplate@PEAUihipStream_t@@@3@@Z
+  RVA: 0x5842E0
+}
+Export {
+  Ordinal: 91
+  Name: ?dtype@?$TensorView@$00@aotriton@@QEBA?AW4DType@2@XZ
+  RVA: 0x57DEA0
+}
+Export {
+  Ordinal: 92
+  Name: ?dtype@?$TensorView@$01@aotriton@@QEBA?AW4DType@2@XZ
+  RVA: 0x57DF60
+}
+Export {
+  Ordinal: 93
+  Name: ?dtype@?$TensorView@$02@aotriton@@QEBA?AW4DType@2@XZ
+  RVA: 0x57E080
+}
+Export {
+  Ordinal: 94
+  Name: ?dtype@?$TensorView@$03@aotriton@@QEBA?AW4DType@2@XZ
+  RVA: 0x16B0
+}
+Export {
+  Ordinal: 95
+  Name: ?dtype@?$TensorView@$0A@@aotriton@@QEBA?AW4DType@2@XZ
+  RVA: 0x1080
+}
+Export {
+  Ordinal: 96
+  Name: ?ensure_initialized@KernelFineControl@v3@aotriton@@AEBAX_K@Z
+  RVA: 0x5767F0
+}
+Export {
+  Ordinal: 97
+  Name: ?getGpuFromStream@aotriton@@YA?AW4Gpu@1@PEAUihipStream_t@@@Z
+  RVA: 0x57E290
+}
+Export {
+  Ordinal: 98
+  Name: ?getMultiProcessorCount@aotriton@@YAHPEAUihipStream_t@@@Z
+  RVA: 0x57E4B0
+}
+Export {
+  Ordinal: 99
+  Name: ?get_null_tensor@?$TensorView@$00@aotriton@@SA?AV12@W4DType@2@@Z
+  RVA: 0x57DEC0
+}
+Export {
+  Ordinal: 100
+  Name: ?get_null_tensor@?$TensorView@$01@aotriton@@SA?AV12@W4DType@2@@Z
+  RVA: 0x57DF80
+}
+Export {
+  Ordinal: 101
+  Name: ?get_null_tensor@?$TensorView@$02@aotriton@@SA?AV12@W4DType@2@@Z
+  RVA: 0x57E0A0
+}
+Export {
+  Ordinal: 102
+  Name: ?get_null_tensor@?$TensorView@$03@aotriton@@SA?AV12@W4DType@2@@Z
+  RVA: 0x57E170
+}
+Export {
+  Ordinal: 103
+  Name: ?get_null_tensor@?$TensorView@$0A@@aotriton@@SA?AV12@W4DType@2@@Z
+  RVA: 0x1090
+}
+Export {
+  Ordinal: 104
+  Name: ?isArchExperimentallySupported@aotriton@@YA_NPEAUihipStream_t@@@Z
+  RVA: 0x57E460
+}
+Export {
+  Ordinal: 105
+  Name: ?kVersion@attn_bwd_params@flash@v3@aotriton@@2HB
+  RVA: 0x5EF19C
+}
+Export {
+  Ordinal: 106
+  Name: ?kVersion@attn_fwd_params@flash@v3@aotriton@@2HB
+  RVA: 0x5EF198
+}
+Export {
+  Ordinal: 107
+  Name: ?kparam_data_ptr@?$TensorView@$00@aotriton@@QEBAPEAXXZ
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 108
+  Name: ?kparam_data_ptr@?$TensorView@$01@aotriton@@QEBAPEAXXZ
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 109
+  Name: ?kparam_data_ptr@?$TensorView@$02@aotriton@@QEBAPEAXXZ
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 110
+  Name: ?kparam_data_ptr@?$TensorView@$03@aotriton@@QEBAPEAXXZ
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 111
+  Name: ?kparam_data_ptr@?$TensorView@$0A@@aotriton@@QEBAPEAXXZ
+  RVA: 0x10A0
+}
+Export {
+  Ordinal: 112
+  Name: ?kparam_stride@?$TensorView@$00@aotriton@@QEBAPEAXH@Z
+  RVA: 0x57DEB0
+}
+Export {
+  Ordinal: 113
+  Name: ?kparam_stride@?$TensorView@$01@aotriton@@QEBAPEAXH@Z
+  RVA: 0x57DF70
+}
+Export {
+  Ordinal: 114
+  Name: ?kparam_stride@?$TensorView@$02@aotriton@@QEBAPEAXH@Z
+  RVA: 0x57E090
+}
+Export {
+  Ordinal: 115
+  Name: ?kparam_stride@?$TensorView@$03@aotriton@@QEBAPEAXH@Z
+  RVA: 0x5DC70
+}
+Export {
+  Ordinal: 116
+  Name: ?native@?$StreamTemplate@PEAUihipStream_t@@@aotriton@@QEBAPEAUihipStream_t@@XZ
+  RVA: 0x1070
+}
+Export {
+  Ordinal: 117
+  Name: ?size@?$TensorView@$00@aotriton@@QEBA_KH@Z
+  RVA: 0x57DE50
+}
+Export {
+  Ordinal: 118
+  Name: ?size@?$TensorView@$01@aotriton@@QEBA_KH@Z
+  RVA: 0x57DE50
+}
+Export {
+  Ordinal: 119
+  Name: ?size@?$TensorView@$02@aotriton@@QEBA_KH@Z
+  RVA: 0x57DE50
+}
+Export {
+  Ordinal: 120
+  Name: ?size@?$TensorView@$03@aotriton@@QEBA_KH@Z
+  RVA: 0x57DE50
+}
+Export {
+  Ordinal: 121
+  Name: ?size@?$TensorView@$0A@@aotriton@@QEBA_KH@Z
+  RVA: 0x1050
+}
+Export {
+  Ordinal: 122
+  Name: ?size@KernelFineControl@v3@aotriton@@QEBA_KXZ
+  RVA: 0x576C90
+}
+Export {
+  Ordinal: 123
+  Name: ?size_ptr@?$TensorView@$00@aotriton@@QEBAPEB_KXZ
+  RVA: 0x576360
+}
+Export {
+  Ordinal: 124
+  Name: ?size_ptr@?$TensorView@$01@aotriton@@QEBAPEB_KXZ
+  RVA: 0x576360
+}
+Export {
+  Ordinal: 125
+  Name: ?size_ptr@?$TensorView@$02@aotriton@@QEBAPEB_KXZ
+  RVA: 0x576360
+}
+Export {
+  Ordinal: 126
+  Name: ?size_ptr@?$TensorView@$03@aotriton@@QEBAPEB_KXZ
+  RVA: 0x576360
+}
+Export {
+  Ordinal: 127
+  Name: ?sizes@?$TensorView@$00@aotriton@@QEBA?AV?$array@_K$00@std@@XZ
+  RVA: 0x57DE70
+}
+Export {
+  Ordinal: 128
+  Name: ?sizes@?$TensorView@$01@aotriton@@QEBA?AV?$array@_K$01@std@@XZ
+  RVA: 0x57DF30
+}
+Export {
+  Ordinal: 129
+  Name: ?sizes@?$TensorView@$02@aotriton@@QEBA?AV?$array@_K$02@std@@XZ
+  RVA: 0x57E030
+}
+Export {
+  Ordinal: 130
+  Name: ?sizes@?$TensorView@$03@aotriton@@QEBA?AV?$array@_K$03@std@@XZ
+  RVA: 0x57E120
+}
+Export {
+  Ordinal: 131
+  Name: ?sizes@?$TensorView@$0A@@aotriton@@QEBA?AV?$array@_K$0A@@std@@XZ
+  RVA: 0x1060
+}
+Export {
+  Ordinal: 132
+  Name: ?stride@?$TensorView@$00@aotriton@@QEBA_KH@Z
+  RVA: 0x57DE60
+}
+Export {
+  Ordinal: 133
+  Name: ?stride@?$TensorView@$01@aotriton@@QEBA_KH@Z
+  RVA: 0x57DF20
+}
+Export {
+  Ordinal: 134
+  Name: ?stride@?$TensorView@$02@aotriton@@QEBA_KH@Z
+  RVA: 0x57E020
+}
+Export {
+  Ordinal: 135
+  Name: ?stride@?$TensorView@$03@aotriton@@QEBA_KH@Z
+  RVA: 0x57E110
+}
+Export {
+  Ordinal: 136
+  Name: ?stride@?$TensorView@$0A@@aotriton@@QEBA_KH@Z
+  RVA: 0x1050
+}
+Export {
+  Ordinal: 137
+  Name: ?stride_ptr@?$TensorView@$00@aotriton@@QEBAPEB_KXZ
+  RVA: 0x57DE90
+}
+Export {
+  Ordinal: 138
+  Name: ?stride_ptr@?$TensorView@$01@aotriton@@QEBAPEB_KXZ
+  RVA: 0x57DF50
+}
+Export {
+  Ordinal: 139
+  Name: ?stride_ptr@?$TensorView@$02@aotriton@@QEBAPEB_KXZ
+  RVA: 0x57E070
+}
+Export {
+  Ordinal: 140
+  Name: ?stride_ptr@?$TensorView@$03@aotriton@@QEBAPEB_KXZ
+  RVA: 0x57E160
+}
+Export {
+  Ordinal: 141
+  Name: ?strides@?$TensorView@$00@aotriton@@QEBA?AV?$array@_K$00@std@@XZ
+  RVA: 0x57DE80
+}
+Export {
+  Ordinal: 142
+  Name: ?strides@?$TensorView@$01@aotriton@@QEBA?AV?$array@_K$01@std@@XZ
+  RVA: 0x57DF40
+}
+Export {
+  Ordinal: 143
+  Name: ?strides@?$TensorView@$02@aotriton@@QEBA?AV?$array@_K$02@std@@XZ
+  RVA: 0x57E050
+}
+Export {
+  Ordinal: 144
+  Name: ?strides@?$TensorView@$03@aotriton@@QEBA?AV?$array@_K$03@std@@XZ
+  RVA: 0x57E140
+}
+Export {
+  Ordinal: 145
+  Name: ?strides@?$TensorView@$0A@@aotriton@@QEBA?AV?$array@_K$0A@@std@@XZ
+  RVA: 0x1060
+}

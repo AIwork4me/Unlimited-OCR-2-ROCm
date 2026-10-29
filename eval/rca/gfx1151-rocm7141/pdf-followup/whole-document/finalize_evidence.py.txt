@@ -1,0 +1,126 @@
+"""Read-only post-run verification; write derived local reports, never rewrite runs."""
+import datetime
+import hashlib
+import json
+import pathlib
+import subprocess
+import sys
+
+sys.path.insert(0, 'src')
+from unlimited_ocr_2_rocm.config import read_lock, verify_files
+from unlimited_ocr_2_rocm.output import normalize, split_pages
+
+base = pathlib.Path('.local/pdf-pipeline-rca')
+def read(path):
+    return json.loads(pathlib.Path(path).read_text(encoding='utf-8'))
+def sha(path):
+    digest = hashlib.sha256()
+    with pathlib.Path(path).open('rb') as stream:
+        for block in iter(lambda: stream.read(8 * 1024 * 1024), b''):
+            digest.update(block)
+    return digest.hexdigest()
+def save(path, value):
+    pathlib.Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+render = read(base / 'render-manifest.json')
+raw_run = read(base / 'unadapted/manifest.json')
+math = read(base / 'math/manifest.json')
+raw_load = read(base / 'unadapted/model-load.json')
+math_load = read(base / 'math/model-load.json')
+lock = read_lock()
+expected = {**lock['files'], **lock['weights']}
+snapshot = pathlib.Path.home() / '.cache/unlimited-ocr2-phase1/models/models--baidu--Unlimited-OCR-2/snapshots' / lock['model_revision']
+current_model = verify_files(snapshot, expected)
+assert raw_load['source_and_weight_hashes'] == math_load['source_and_weight_hashes'] == current_model
+assert sha(render['pdf']) == render['pdf_sha256']
+assert raw_run['ordered_pages'] == math['ordered_pages'] == render['pages']
+for page in render['pages']:
+    assert sha(page['path']) == page['sha256']
+for run in (raw_run, math):
+    opens = [e for e in run['events'] if e['stage'] == 'official_Image_open']
+    assert [e['path'] for e in opens] == [p['path'] for p in render['pages']]
+    assert all(e['size'] == [2481, 3508] for e in opens)
+    entries = [e for e in run['events'] if e['stage'] == 'official_infer_multi_begin']
+    assert len(entries) == 1 and entries[0]['ordered_page_count'] == 15 and entries[0]['one_document_request']
+    built = next(e for e in run['events'] if e['stage'] == 'official_build_inputs_complete')
+    assert built['prompt_tokens'] == 4115 and built['image_tokens'] == 4095
+    assert run['environment']['packages'] == {'torch': '2.12.0+rocm7.14.1', 'torchvision': '0.27.0+rocm7.14.1', 'torchaudio': '2.11.0+rocm7.14.1'}
+    assert run['environment']['gpu']['arch'] == 'gfx1151'
+assert raw_run['environment']['installed_packages'] == math['environment']['installed_packages']
+assert raw_run['environment']['windows_hardware']['gpu'] == math['environment']['windows_hardware']['gpu']
+
+provenance = read('.local/rca/provenance-primary-after.json')
+file_audits = []
+for kind, records in [('dll', provenance['loaded_modules']), ('images', provenance['image_files']), ('runtime_header', [provenance['runtime_header']])]:
+    for record in records:
+        assert sha(record['path']) == record['sha256'], record['path']
+        file_audits.append({'kind': kind, 'name': pathlib.Path(record['path']).name, 'sha256': record['sha256']})
+first = raw_run['first_hip_error']
+assert raw_run['status'] == 'FAIL' and first['stage'] == 'SDPA'
+assert first['number'] == 1 and first['module'] == 'sam_model' and first['page'] == 1
+assert first['hip_before'] == 0 and first['hip_after'] == 1
+assert first['backend_observed'] == 'EFFICIENT_ATTENTION'
+assert len(raw_run['native_kernels']) == 0
+assert math['status'] == 'INFERENCE_COMPLETED_NOT_ACCURACY_SCORED' and math['exit_code'] == 0
+assert math['generation']['finish_reason'] == 'stop' and math['generation']['num_pages_out'] == 15
+assert math['first_hip_error'] is None and math['sdpa_calls'] == 540
+sdpa = [e for e in math['events'] if e['stage'] == 'SDPA']
+assert len(sdpa) == 540 and all(e['hip_before'] == e['hip_after'] == 0 for e in sdpa)
+for e in math['events']:
+    for key in ('hip_before_sync', 'hip_after_sync'):
+        assert e.get(key, 0) == 0
+    assert e.get('synchronize') != 'FAIL'
+assert len(math['native_kernels']) == 12 and all(k['synchronized'] for k in math['native_kernels'])
+assert all(k['query_shape'][-2] == 4115 for k in math['native_kernels'])
+ends = [e for e in math['events'] if e['stage'] == 'encoder_end']
+assert sum(e['encoder'] == 'sam_model' for e in ends) == 15
+assert sum(e['encoder'] == 'vision_model' for e in ends) == 15
+assert {e['layer'] for e in math['events'] if e['stage'] == 'decoder_layer_first_entry'} == set(range(12))
+assert sha(base / 'math/raw.txt') == math['raw_sha256']
+token_ids = read(base / 'math/token-ids.json')
+assert len(token_ids['token_ids']) == math['output_tokens']
+assert len(token_ids['prompt_token_ids']) == 4115
+raw = (base / 'math/raw.txt').read_text(encoding='utf-8')
+segments = split_pages(raw)
+if segments and not segments[-1].strip():
+    segments = segments[:-1]
+assert len(segments) == 15 and all(normalize(p) for p in segments)
+
+def grams(text):
+    text = normalize(text).casefold()
+    return {text[i:i+5] for i in range(max(0, len(text)-4))}
+refs = read(base / 'pdf-text-layer-reference.json')
+reference = [grams(r['text']) for r in refs]
+rows = []
+for i, part in enumerate(segments, 1):
+    g = grams(part)
+    scores = [2 * len(g & r) / max(1, len(g) + len(r)) for r in reference]
+    best = max(range(len(scores)), key=lambda j: scores[j])
+    rows.append({'output_segment': i, 'best_matching_PDF_page': best + 1, 'text_fingerprint_dice': scores[best], 'same_index_score': scores[i-1], 'next_best_score': max(s for j, s in enumerate(scores) if j != best)})
+order = {'purpose': 'Diagnostic normalized 5-character-gram set Dice against the PDF text layer; not CER/WER, manually verified ground truth or an OCR acceptance threshold. Text layer was never model input.', 'threshold': None, 'matching_page_indices': sum(r['output_segment'] == r['best_matching_PDF_page'] for r in rows), 'rows': rows}
+save(base / 'full-order-diagnostic.json', order)
+source_audit = read(base / 'source-byte-audit.json')
+assert source_audit['canonical_snapshot_git_blob'] == render['source_git_blob']
+assert source_audit['function_source_lf_sha256'] == render['function_sha256']
+assert source_audit['reader_function_AST_identical']
+assert sha(base / 'upstream/official-README.md') == render['source_readme_sha256'] == source_audit['observed_snapshot_sha256']
+assert sha(base / 'upstream/official-README.canonical.md') == source_audit['canonical_snapshot_sha256']
+assert sha(base / 'upstream/pdf_to_images.py') == source_audit['saved_function_file_sha256']
+assert sha(base / 'trace_official_native.py') == raw_run['script_sha256'] == math['script_sha256']
+dirty = subprocess.check_output(['git', 'status', '--porcelain'], text=True)
+assert not dirty.strip(), dirty
+summary = {
+    'verified_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    'input_pdf_sha256': render['pdf_sha256'], 'input_pages': 15, 'dpi': 300,
+    'route': 'Official pdf_to_images reader, then one native Transformers infer_multi with all 15 ordered page images',
+    'reader_provenance_correction': source_audit,
+    'model_revision': lock['model_revision'], 'source_and_weight_inventory_verified_again': True,
+    'package_and_driver_invariants_between_cohorts': True, 'primary_RCA_runtime_and_images_unchanged': file_audits,
+    'unadapted': {'run_id': raw_run['run_id'], 'status': raw_run['status'], 'wall_seconds': raw_run['wall_seconds'], 'first_error': {k: first[k] for k in ('number', 'module', 'page', 'qkv_shapes', 'qkv_strides', 'dtype', 'mask_shape', 'backend_observed', 'hip_before', 'hip_after', 'synchronize')}, 'DASH_calls': 0},
+    'math': {'run_id': math['run_id'], 'status': math['status'], 'output_tokens': math['output_tokens'], 'generation': math['generation'], 'wall_seconds': math['wall_seconds'], 'vision_completions': {'SAM': 15, 'CLIP': 15}, 'SDPA_calls': 540, 'HIP_errors': 0, 'native_DASH_calls': 12, 'structure': math['output_structure'], 'raw_sha256': math['raw_sha256'], 'readable_sha256': sha(base / 'math/readable.md'), 'memory': math['memory_final']},
+    'order_diagnostic': {'matching_page_indices': order['matching_page_indices'], 'scores': [r['same_index_score'] for r in rows], 'accuracy_scored': False, 'accuracy_threshold': None},
+    'causal_scope': 'Corroboration on the real full-PDF pipeline of the previously demonstrated exact-stack packaged runtime/image contract defect; this comparison is not a new images-only A/B experiment.',
+    'tracked_tree_clean': True, 'tests': 'No production implementation changed in this follow-up; no new full CPU-suite claim. These post-run assertions verify the original physical inference records.',
+}
+save(base / 'summary.json', summary)
+print(json.dumps({k: v for k, v in summary.items() if k not in ('primary_RCA_runtime_and_images_unchanged', 'reader_provenance_correction')}, ensure_ascii=False, indent=2))

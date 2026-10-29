@@ -1,0 +1,241 @@
+{
+  "run_id": "da673d50-e069-41c9-8ce4-407c2ca77da5",
+  "utc": "2026-10-28T08:03:09.155015+00:00",
+  "script_sha256": "0a428dc05d483d8d195d866a5bafa173537b65ed4db13eb43546c688365b011e",
+  "fixture_sha256": "5c2755ea26bb00c36852a34c24024fd864e4bbf334454ef34a2af4494c3ca8ba",
+  "encoder": "sam_model",
+  "backend_requested": "MATH",
+  "events": [
+    {
+      "stage": "before_sdpa",
+      "hip_before_sync": 0,
+      "synchronize": "OK",
+      "hip_after_sync": 0
+    },
+    {
+      "stage": "after_sdpa",
+      "hip_before_sync": 0,
+      "synchronize": "OK",
+      "hip_after_sync": 0
+    },
+    {
+      "stage": "after_copy",
+      "hip_before_sync": 0,
+      "synchronize": "OK",
+      "hip_after_sync": 0
+    }
+  ],
+  "status": "PASS",
+  "acceptance": true,
+  "error_clearing": false,
+  "environment": {
+    "timestamp_utc": "2026-10-28T08:03:10.820967+00:00",
+    "platform": "Windows",
+    "windows_version": "10.0.26200",
+    "python": "3.10.20",
+    "machine": "AMD64",
+    "executable": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+    "environment_id": "0d19fbb72f6f87cbfcd5ec9666883b1729f09f57b7b1329bbee3e8d43e8a3184",
+    "isolated_environment": true,
+    "installed_packages": {
+      "unlimited-ocr-2-rocm": "0.0.1.dev0",
+      "addict": "2.4.0",
+      "amd-torchvision-device-gfx1151": "0.27.0+rocm7.14.1",
+      "amd-torch-device-gfx1151": "2.12.0+rocm7.14.1",
+      "amd-torch-device-gfx115x": "2.12.0+rocm7.14.1",
+      "certifi": "2026.10.23",
+      "charset-normalizer": "3.5.2",
+      "colorama": "0.4.6",
+      "easydict": "1.13",
+      "einops": "0.8.2",
+      "exceptiongroup": "1.3.1",
+      "filelock": "3.29.1",
+      "fsspec": "2026.4.0",
+      "huggingface-hub": "0.36.0",
+      "idna": "3.20",
+      "iniconfig": "2.3.1",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.4.2",
+      "numpy": "2.2.6",
+      "packaging": "26.3",
+      "pillow": "12.0.0",
+      "pip": "26.2.2",
+      "pluggy": "1.7.0",
+      "psutil": "7.1.2",
+      "pygments": "2.21.0",
+      "pytest": "8.4.2",
+      "pyyaml": "6.0.3",
+      "regex": "2026.9.29",
+      "requests": "2.34.2",
+      "rocm": "7.14.1",
+      "rocm-bootstrap": "0.1.0",
+      "rocm-sdk-core": "7.14.1",
+      "rocm-sdk-device-gfx1151": "7.14.1",
+      "rocm-sdk-libraries": "7.14.1",
+      "safetensors": "0.8.0",
+      "setuptools": "81.0.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.21.4",
+      "tomli": "2.5.0",
+      "torch": "2.12.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "tqdm": "4.70.1",
+      "transformers": "4.52.1",
+      "triton-windows": "3.7.1.post27",
+      "typing-extensions": "4.15.0",
+      "urllib3": "2.8.0",
+      "wheel": "0.48.0"
+    },
+    "packages": {
+      "torch": "2.12.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1"
+    },
+    "environment": {},
+    "hip": "7.14.60850",
+    "rocm": "7.14.1",
+    "cuda_build": null,
+    "gpu_available": true,
+    "gpu": {
+      "name": "AMD Radeon(TM) 8060S Graphics",
+      "arch": "gfx1151",
+      "pytorch_visible_budget_bytes": 83954728960,
+      "properties": "_CudaDeviceProperties(name='AMD Radeon(TM) 8060S Graphics', major=11, minor=5, gcnArchName='gfx1151', total_memory=80065MB, multi_processor_count=20, uuid=30303030-3031-3936-3030-303030303030, pci_bus_id=196, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+      "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+    },
+    "windows_hardware": {
+      "gpu": [
+        {
+          "Name": "GameViewer Virtual Display Adapter",
+          "DriverVersion": "15.6.5.199"
+        },
+        {
+          "Name": "AMD Radeon(TM) 8060S Graphics",
+          "DriverVersion": "32.0.22032.6002"
+        }
+      ],
+      "cpu": {
+        "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+      },
+      "os": {
+        "Caption": "Microsoft Windows 11 \u5bb6\u5ead\u7248 \u4e2d\u6587\u7248",
+        "Version": "10.0.26200",
+        "BuildNumber": "26200",
+        "TotalVisibleMemorySize": 129654596,
+        "FreePhysicalMemory": 86732596
+      },
+      "machine_uuid_sha256": "6c01f2febebede491776762bda2e7f24e19575d076284576b76d53c3296a2fa7"
+    },
+    "memory": {
+      "process_rss_bytes": 498528256,
+      "process_peak_rss_bytes": 498528256,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 88844095488,
+      "system_memory_percent": 33.1,
+      "gpu_allocated_bytes": 0,
+      "gpu_reserved_bytes": 0,
+      "gpu_peak_allocated_bytes": 0,
+      "gpu_peak_reserved_bytes": 0,
+      "gpu_free_total_bytes": [
+        83786756096,
+        83954728960
+      ]
+    }
+  },
+  "qkv_shapes": [
+    [
+      54,
+      12,
+      196,
+      64
+    ],
+    [
+      54,
+      12,
+      196,
+      64
+    ],
+    [
+      54,
+      12,
+      196,
+      64
+    ]
+  ],
+  "qkv_strides": [
+    [
+      150528,
+      12544,
+      64,
+      1
+    ],
+    [
+      150528,
+      12544,
+      64,
+      1
+    ],
+    [
+      150528,
+      12544,
+      64,
+      1
+    ]
+  ],
+  "mask_shape": [
+    54,
+    12,
+    196,
+    196
+  ],
+  "dtype": "torch.bfloat16",
+  "operators": [
+    "aten::scaled_dot_product_attention",
+    "aten::_scaled_dot_product_attention_math",
+    "aten::to",
+    "aten::_to_copy",
+    "aten::empty_strided",
+    "aten::copy_",
+    "aten::mul",
+    "aten::transpose",
+    "aten::as_strided",
+    "aten::matmul",
+    "aten::expand",
+    "aten::reshape",
+    "aten::view",
+    "aten::_reshape_alias",
+    "aten::bmm",
+    "aten::_unsafe_view",
+    "aten::add_",
+    "aten::_safe_softmax",
+    "aten::softmax",
+    "aten::_softmax",
+    "aten::isneginf",
+    "aten::all",
+    "aten::scalar_tensor",
+    "aten::empty",
+    "aten::fill_",
+    "aten::where"
+  ],
+  "backend_observed": "MATH",
+  "downstream_copy": "OK",
+  "numerical": {
+    "atol": 0.03,
+    "rtol": 0.03,
+    "relative_denominator_floor": 1e-06,
+    "max_abs_error_finite": 0.00390625,
+    "mean_abs_error_finite": 0.00010369250230723992,
+    "max_relative_error_finite": 0.011059455573558807,
+    "failing_elements": 0,
+    "total_elements": 8128512,
+    "failing_percent": 0.0,
+    "nonfinite_actual": 0,
+    "nan_actual": 0,
+    "inf_actual": 0,
+    "nonfinite_reference": 0
+  },
+  "exit_code": 0
+}

@@ -1,0 +1,212 @@
+{
+  "run_id": "94fb4278-33c6-48ef-b602-e8df101b26ec",
+  "utc": "2026-10-28T07:00:09.257126+00:00",
+  "git_commit": "8eb29531cc4caf2eb8eafa3cad37251ffb62e05d",
+  "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6",
+  "reporting_sha256": "f465bd17753bb1dad38bbf84fefb6fb5ceae4bfe027965ebfd92c3d377a46474",
+  "arguments": {
+    "shape": [
+      1,
+      1,
+      1,
+      8
+    ],
+    "dtype": "bfloat16",
+    "mask": "bias",
+    "backend": "DEFAULT",
+    "operation": "copy",
+    "trace": "dispatch",
+    "noncontiguous": false,
+    "causal": false,
+    "scale": null,
+    "seed": 7992,
+    "clear_error_nonacceptance": false,
+    "output": ".local\\rca\\torch-only-A\\repeat-default-3.json"
+  },
+  "command": [
+    "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+    "--output",
+    ".local\\rca\\torch-only-A\\repeat-default-3.json",
+    "--shape",
+    "1",
+    "1",
+    "1",
+    "8"
+  ],
+  "acceptance": true,
+  "backend_requested": "DEFAULT",
+  "backend_observed": "EFFICIENT_ATTENTION",
+  "events": [
+    {
+      "stage": "before_sdpa",
+      "hip_before_sync": 0,
+      "synchronize": "OK",
+      "hip_after_sync": 0
+    },
+    {
+      "stage": "after_sdpa",
+      "hip_before_sync": 1,
+      "synchronize": "OK",
+      "hip_after_sync": 1
+    },
+    {
+      "stage": "after_copy",
+      "hip_before_sync": 1,
+      "synchronize": "OK",
+      "hip_after_sync": 1
+    }
+  ],
+  "operators": [
+    "aten.constant_pad_nd.default",
+    "aten.slice.Tensor",
+    "aten.expand.default",
+    "aten._scaled_dot_product_efficient_attention.default"
+  ],
+  "status": "FAIL",
+  "tolerances": {
+    "atol": 0.03,
+    "rtol": 0.03
+  },
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "windows_build": "10.0.26200",
+    "python": "3.10.20 (main, May 10 2026, 19:31:32) [MSC v.1944 64 bit (AMD64)]",
+    "machine": "AMD64",
+    "torch": "2.12.0+rocm7.14.1",
+    "hip": "7.14.60850",
+    "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+    "gpu": "AMD Radeon(TM) 8060S Graphics",
+    "architecture": "gfx1151",
+    "packages": {
+      "amd-torchvision-device-gfx1151": "0.27.0+rocm7.14.1",
+      "amd-torch-device-gfx1151": "2.12.0+rocm7.14.1",
+      "amd-torch-device-gfx115x": "2.12.0+rocm7.14.1",
+      "filelock": "3.29.1",
+      "fsspec": "2026.4.0",
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.4.2",
+      "numpy": "2.2.6",
+      "packaging": "26.3",
+      "pillow": "12.2.0",
+      "pip": "26.2.2",
+      "rocm": "7.14.1",
+      "rocm-bootstrap": "0.1.0",
+      "rocm-sdk-core": "7.14.1",
+      "rocm-sdk-device-gfx1151": "7.14.1",
+      "rocm-sdk-libraries": "7.14.1",
+      "setuptools": "81.0.0",
+      "sympy": "1.14.0",
+      "torch": "2.12.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "typing_extensions": "4.15.0",
+      "wheel": "0.48.0"
+    },
+    "runtime_overrides": {}
+  },
+  "hip_library": "<USERPROFILE>\\.codex\\v\\s7141\\Lib\\site-packages\\_rocm_sdk_core\\bin\\amdhip64_7.dll",
+  "fixture_sha256": "f4055b8962a95f6bff4957317ad0312a53e448798d9989170e069be12213e7c4",
+  "tensors": [
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        8
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        8,
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        8
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        8,
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        8
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        8,
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "gpu_strides": [
+    [
+      8,
+      8,
+      8,
+      1
+    ],
+    [
+      8,
+      8,
+      8,
+      1
+    ],
+    [
+      8,
+      8,
+      8,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ]
+  ],
+  "capabilities": {
+    "flash": false,
+    "efficient": true,
+    "cudnn": false
+  },
+  "downstream_shape": [
+    1,
+    1,
+    8,
+    1
+  ],
+  "prohibited_imports_loaded": [],
+  "exit_code": 1
+}

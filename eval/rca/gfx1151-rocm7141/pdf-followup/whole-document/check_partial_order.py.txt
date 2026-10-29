@@ -1,0 +1,12 @@
+import pathlib,json,re,sys
+sys.path.insert(0,'src')
+from unlimited_ocr_2_rocm.output import normalize,split_pages
+base=pathlib.Path('.local/pdf-pipeline-rca');refs=json.loads((base/'pdf-text-layer-reference.json').read_text(encoding='utf-8'))
+def grams(text):
+    value=normalize(text).casefold();return {value[i:i+5] for i in range(max(0,len(value)-4))}
+reference=[grams(r['text']) for r in refs];raw=(base/'math/partial-raw.txt').read_text(encoding='utf-8');parts=split_pages(raw);rows=[]
+for i,part in enumerate(parts[:-1],1):
+    g=grams(part)
+    scores=[2*len(g&r)/max(1,len(g)+len(r)) for r in reference];best=max(range(len(scores)),key=lambda j:scores[j]);rows.append({'output_segment':i,'best_matching_PDF_page':best+1,'text_fingerprint_dice':scores[best],'same_index_score':scores[i-1] if i<=len(scores) else None})
+print(json.dumps(rows,indent=2))
+(base/'partial-order-diagnostic.json').write_text(json.dumps({'purpose':'Text-layer fingerprint check of already-completed segments; not an OCR accuracy acceptance threshold','rows':rows},indent=2)+'\n',encoding='utf-8')

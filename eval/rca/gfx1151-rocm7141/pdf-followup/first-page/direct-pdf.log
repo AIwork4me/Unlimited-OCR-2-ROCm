@@ -1,0 +1,6 @@
+PIL direct-PDF test
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv-cpu\lib\site-packages\PIL\Image.py", line 3560, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file '<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\Unlimited-OCR-2.pdf'

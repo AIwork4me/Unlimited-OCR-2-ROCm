@@ -95,3 +95,5 @@ A range download independently reproduced the exact wheel hash. Ordinary
 HTTP weight downloading was replaced with the official hf-xet client in a
 separate downloader environment. These are transport observations, not ROCm
 compatibility failures. Runtime wheels and model identities remain pinned.
+
+The follow-up [standalone L4 investigation](rca/SDPA_ROOT_CAUSE.md) adds controlled runtime/image assembly evidence and an independent CPU reference; the earlier observations above remain historical evidence.

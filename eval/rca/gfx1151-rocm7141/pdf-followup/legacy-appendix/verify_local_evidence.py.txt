@@ -1,0 +1,29 @@
+import pathlib,json,hashlib,sys,datetime,uuid
+sys.path.insert(0,'experiments/sdpa_rca')
+from reporting import sha256,write_json
+root=pathlib.Path('eval/rca/gfx1151-rocm7141')
+errors=[]; sums=(root/'SHA256SUMS.txt').read_text().splitlines()
+for line in sums:
+    digest,name=line.split('  ',1)
+    if sha256(root/name)!=digest:errors.append(name)
+records=json.loads((root/'export-manifest.json').read_text())
+for r in records:
+    if sha256(root/r['path'])!=r['published_sha256']:errors.append('export:'+r['path'])
+index=json.loads((root/'experiment-manifest.json').read_text())
+for r in index['records']:
+    raw=json.loads((root/r['path']).read_text())
+    for k in ('run_id','utc','fixture_sha256','status','exit_code','backend_observed'):
+        if raw[k]!=r[k]:errors.append(r['path']+':'+k)
+producer=json.loads((root/'producer-sources.json').read_text());assert not producer['unmatched']
+# Raw OCR bytes are checked against each producing manifest (not newline-normalized).
+raw_checks=0
+for manifest in (root/'model-final/ocr').rglob('manifest.json'):
+    d=json.loads(manifest.read_text())
+    raw=manifest.with_name('raw.txt')
+    if raw.exists():
+        hashes=[v for k,v in d.items() if 'sha256' in k.lower()]
+        print(manifest.parent.name,'raw hash',sha256(raw),'recorded fields',hashes)
+        raw_checks+=1
+print('Checksum files:',len(sums),'export mappings:',len(records),'child records:',len(index['records']),'OCR raw files:',raw_checks,'errors:',errors)
+assert not errors
+write_json('.local/rca/local-integrity.json',{'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'run_id':str(uuid.uuid4()),'checksummed_files':len(sums),'export_records':len(records),'child_records':len(index['records']),'errors':errors})

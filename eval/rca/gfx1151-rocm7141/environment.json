@@ -1,0 +1,39 @@
+{
+  "run_id": "b3c99413-9f86-4739-aa94-e48e4ef5283e",
+  "utc": "2026-10-28T06:57:50.040420+00:00",
+  "architecture": "gfx1151",
+  "system": {
+    "gpu": [
+      {
+        "Name": "GameViewer Virtual Display Adapter",
+        "DriverVersion": "15.6.5.199",
+        "DriverDate": "/Date(1772236800000)/"
+      },
+      {
+        "Name": "AMD Radeon(TM) 8060S Graphics",
+        "DriverVersion": "32.0.22032.6002",
+        "DriverDate": "/Date(1765756800000)/"
+      }
+    ],
+    "cpu": {
+      "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+    },
+    "os": {
+      "Caption": "Microsoft Windows 11 \u5bb6\u5ead\u7248 \u4e2d\u6587\u7248",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    }
+  },
+  "python": "3.10.20 (main, May 10 2026, 19:31:32) [MSC v.1944 64 bit (AMD64)]",
+  "torch": "2.12.0+rocm7.14.1",
+  "hip": "7.14.60850",
+  "source": "provenance-baseline.json",
+  "baseline_environment": "existing isolated Phase 1 venv; never mutated",
+  "secondary_environment": "fresh torch-only venv; cached exact mandatory wheels; no Python Triton, Transformers or OCR package installed; A/B/A changes images only; original images restored",
+  "secondary_dependency_differences": {
+    "pillow": [
+      "12.0.0",
+      "12.2.0"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 1, 'synchronize': 'OK', 'hip_after_sync': 1}
+NON-ACCEPTANCE hipGetLastError: 1
+{'stage': 'after_copy', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+FAIL requested: DEFAULT observed: EFFICIENT_ATTENTION run: e1809368-a2a1-459c-ad2d-b9bdf3f5176a numerics: {'atol': 0.03, 'rtol': 0.03, 'relative_denominator_floor': 1e-06, 'max_abs_error_finite': 1.5701974630355835, 'mean_abs_error_finite': 0.0921892449259758, 'max_relative_error_finite': 1.0, 'failing_elements': 6381920, 'total_elements': 8128512, 'failing_percent': 78.51277084908037, 'nonfinite_actual': 0, 'nan_actual': 0, 'inf_actual': 0, 'nonfinite_reference': 0}

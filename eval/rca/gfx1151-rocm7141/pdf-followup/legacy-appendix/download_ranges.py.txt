@@ -1,0 +1,30 @@
+import concurrent.futures, hashlib, pathlib, urllib.request, time
+url='https://github.com/ROCm/aotriton/releases/download/0.12.50tp/aotriton-0.12.50tp-images-amd-gfx115x.tar.gz'
+root=pathlib.Path('.local/rca'); size=187785051; count=16
+# Resolve GitHub's signed public asset URL once, without reading its body.
+with urllib.request.urlopen(urllib.request.Request(url, method='HEAD'), timeout=60) as response:
+    resolved=response.url
+
+def download(i):
+    start=size*i//count; end=size*(i+1)//count-1
+    path=root/f'images.part{i}'
+    if path.exists() and path.stat().st_size==end-start+1: return path
+    req=urllib.request.Request(resolved, headers={'Range':f'bytes={start}-{end}'})
+    with urllib.request.urlopen(req, timeout=120) as response, path.open('wb') as target:
+        if response.status!=206 or not response.headers.get('Content-Range','').startswith(f'bytes {start}-'):
+            raise RuntimeError(f'Range not honored: {response.status} {response.headers}')
+        while block:=response.read(1024*1024): target.write(block)
+    assert path.stat().st_size==end-start+1
+    print('finished',i,flush=True)
+    return path
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=count) as pool:
+    paths=list(pool.map(download,range(count)))
+final=root/'images012-matched.tar.gz'
+with final.open('wb') as out:
+    for p in paths:
+        with p.open('rb') as f:
+            while block:=f.read(1024*1024): out.write(block)
+actual=hashlib.sha256(final.read_bytes()).hexdigest()
+assert actual=='3177387a15c678b30057f4584d1fc1b8f8db56163890cb5c98f27450209f5a7b',actual
+print(actual,flush=True)

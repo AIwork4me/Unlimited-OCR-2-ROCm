@@ -1,0 +1,27 @@
+import datetime, hashlib, json, pathlib, re
+root = pathlib.Path.cwd(); private = root/'.local/github-pdf-export'; out = root/'eval/rca/gfx1151-rocm7141/pdf-followup'
+def sha(data): return hashlib.sha256(data).hexdigest()
+manifest = json.loads((out/'export-manifest.json').read_text(encoding='utf-8'))
+sources = [(p, 'publication/checks/'+p.name) for p in sorted((private/'checks').iterdir()) if p.is_file()]
+sources += [(private/name, 'publication/'+name) for name in ('prepublication-verification.json','publication-review.json')]
+sources += [(private/name, 'publication/'+name+'.txt') for name in ('verify_prepublication.py','run_cpu_checks.py','finalize_publication.py')]
+for source, name in sources:
+    assert not (out/name).exists(), name
+    original = source.read_bytes(); text = original.decode('utf-8-sig')
+    home = str(pathlib.Path.home())
+    for prefix in (home.replace('\\','\\\\'), home, home.replace('\\','/')):
+        text = re.sub(re.escape(prefix), '<USERPROFILE>', text, flags=re.I)
+    text = re.sub(r"(?i)[a-z]:[\\/]+users[\\/]+[^\\/\s\"'<>]+", '<USERPROFILE>', text)
+    data = text.encode('utf-8'); target = out/name; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
+    manifest['records'].append({'source':source.relative_to(root).as_posix(),'path':name,'category':'publication-verification','original_sha256':sha(original),'published_sha256':sha(data),'original_bytes':len(original),'published_bytes':len(data),'transform':'UTF-8, home/build-user paths neutralized; archived producer text'})
+manifest['publication_checks_finalized_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+(out/'export-manifest.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+paths = sorted(p for p in out.rglob('*') if p.is_file() and p.name != 'SHA256SUMS.txt')
+(out/'SHA256SUMS.txt').write_text(''.join(sha(p.read_bytes())+'  '+p.relative_to(out).as_posix()+'\n' for p in paths),encoding='utf-8')
+for row in manifest['records']: assert sha((out/row['path']).read_bytes()) == row['published_sha256']
+for p in paths:
+    if p.suffix == '.pdf': continue
+    text = p.read_bytes().decode('utf-8-sig')
+    assert not re.search(r'(?i)[a-z]:[\\/]+users[\\/]+', text), p
+    assert not re.search(r'(?:github_pat_|gh[pousr]_)[A-Za-z0-9_]{20,}',text), p
+print('Final exported records',len(manifest['records']),'checksum entries',len(paths))

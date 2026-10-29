@@ -1,0 +1,4 @@
+import pathlib,json,sys
+sys.path.insert(0,'experiments/sdpa_rca')
+from reporting import write_json
+p=pathlib.Path('.local/rca/public-source/upstream-7992.json'); d=json.loads(p.read_text());d.pop('closed_at',None);d['closed_date']='2026-09-15';write_json(p,d)

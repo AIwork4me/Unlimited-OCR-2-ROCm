@@ -1,0 +1,28 @@
+import pathlib,subprocess,hashlib,json,re,concurrent.futures,urllib.request,urllib.error,datetime,uuid,time
+root=pathlib.Path.cwd();head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+# Read actual remote refs, fetch its objects, and compare every uploaded artifact blob.
+remote=subprocess.check_output(['git','ls-remote','origin','refs/heads/investigation/windows-gfx1151-sdpa-root-cause'],text=True).split()[0]
+assert remote==head,(remote,head)
+subprocess.run(['git','fetch','origin','investigation/windows-gfx1151-sdpa-root-cause'],check=True,capture_output=True)
+sums=(root/'eval/rca/gfx1151-rocm7141/SHA256SUMS.txt').read_text().splitlines();blob_results=[]
+for line in sums:
+    expected,name=line.split('  ',1);path='eval/rca/gfx1151-rocm7141/'+name
+    actual=hashlib.sha256(subprocess.check_output(['git','show',f'FETCH_HEAD:{path}'])).hexdigest()
+    assert actual==expected,path
+    blob_results.append({'path':path,'sha256':actual})
+refs=json.loads((root/'.local/rca/referenced-files.json').read_text())
+def check(path):
+    url='https://raw.githubusercontent.com/AIwork4me/Unlimited-OCR-2-ROCm/'+head+'/'+urllib.parse.quote(path,safe='/')
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(url,timeout=45) as response:data=response.read();status=response.status
+            expected=subprocess.check_output(['git','show',f'{head}:{path}'])
+            assert data==expected,path
+            return {'path':path,'url':url,'status':status,'sha256':hashlib.sha256(data).hexdigest()}
+        except Exception:
+            if attempt==2:raise
+            time.sleep(1)
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:results=list(pool.map(check,refs))
+report={'run_id':str(uuid.uuid4()),'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':head,'remote_ref':remote,'remote_evidence_blobs':blob_results,'referenced_files_http_get':results,'status':'PASS'}
+(root/'.local/rca/publication-verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+print('Remote artifact checksums:',len(blob_results),'referenced URLs:',len(results),'status PASS',head)

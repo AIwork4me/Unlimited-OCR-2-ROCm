@@ -1,0 +1,148 @@
+"""One-off official Transformers whole-PDF pipeline trace. No upstream file edits."""
+import argparse, contextlib, ctypes, datetime, importlib, json, os, pathlib, subprocess, sys, tempfile, time, traceback, uuid
+root=pathlib.Path.cwd();sys.path.insert(0,str(root/'src'));sys.path.insert(0,str(root/'experiments/sdpa_rca'))
+from reporting import sha256, write_json, observed_backend
+from unlimited_ocr_2_rocm.config import read_lock, verify_files, download_snapshot
+from unlimited_ocr_2_rocm.doctor import collect_environment, require_stack, memory_snapshot
+from unlimited_ocr_2_rocm.model import NativeModel, load_model, require_model_dependencies, require_native_environment
+from unlimited_ocr_2_rocm.output import preserve_raw, convert_readable, split_pages, normalize
+parser=argparse.ArgumentParser();parser.add_argument('--mode',choices=['unadapted','math'],required=True);a=parser.parse_args()
+base=root/'.local/pdf-pipeline-rca';out=base/a.mode
+if out.exists():raise FileExistsError('Use a new diagnostic mode directory')
+out.mkdir();started=time.monotonic();run_id=str(uuid.uuid4())
+report={'run_id':run_id,'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'script_sha256':sha256(__file__),'mode':a.mode,'entry':'official model.infer_multi, all PDF pages in ONE request','status':'RUNNING','events':[],'sdpa_calls':0,'vision_calls':{},'first_hip_error':None,'production_files_changed':False}
+log=(out/'trace.jsonl').open('x',encoding='utf-8');active={'module':None,'page':None};first_profile=set();native=None
+
+def event(stage,**details):
+    record={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'elapsed':round(time.monotonic()-started,4),'stage':stage,**details};report['events'].append(record);log.write(json.dumps(record,ensure_ascii=False)+'\n');log.flush();return record
+
+def checkpoint(stage):
+    before=hip.hipPeekAtLastError();failure=None
+    try:torch.cuda.synchronize()
+    except Exception:failure=traceback.format_exc()
+    after=hip.hipPeekAtLastError();e=event(stage,hip_before_sync=before,hip_after_sync=after,synchronize='OK' if failure is None else 'FAIL',traceback=failure)
+    if (before or after or failure) and report['first_hip_error'] is None:report['first_hip_error']=e
+    return e
+
+try:
+    render=json.loads((base/'render-manifest.json').read_text(encoding='utf-8'));pages=[p['path'] for p in render['pages']]
+    assert render['page_count']==15 and len(pages)==15
+    for p,record in zip(pages,render['pages']):assert sha256(p)==record['sha256']
+    report['pdf_sha256']=render['pdf_sha256'];report['render_run_id']=render['run_id'];report['ordered_pages']=render['pages'];report['page_count']=len(pages);event('official_pdf_reader_complete',pages=len(pages),dpi=render['dpi'],renderer=render['pymupdf'])
+    import torch
+    import torch.nn.functional as F
+    from torch.utils._python_dispatch import TorchDispatchMode
+    torch.manual_seed(7992);env=collect_environment();require_stack(env);report['environment']=env
+    hip_path=pathlib.Path(sys.prefix)/'Lib/site-packages/_rocm_sdk_core/bin/amdhip64_7.dll';hip=ctypes.WinDLL(str(hip_path));hip.hipPeekAtLastError.restype=ctypes.c_int;report['hip_library_sha256']=sha256(hip_path)
+    cache=pathlib.Path.home()/'.cache/unlimited-ocr2-phase1/models';event('model_load_begin')
+    if a.mode=='math':native=load_model(cache,offline=True)
+    else:
+        import importlib.metadata
+        require_native_environment(dict(os.environ));require_model_dependencies({n:importlib.metadata.version(n) for n in ('transformers','triton-windows','huggingface-hub','tokenizers')})
+        lock=read_lock();snapshot=download_snapshot(cache,offline=True);hashes=verify_files(snapshot,{**lock['files'],**lock['weights']})
+        os.environ['HF_MODULES_CACHE']=tempfile.mkdtemp(prefix='uocr2-pdf-reviewed-')
+        from transformers import AutoModel,AutoTokenizer
+        tokenizer=AutoTokenizer.from_pretrained(str(snapshot),trust_remote_code=True,local_files_only=True)
+        model=AutoModel.from_pretrained(str(snapshot),trust_remote_code=True,local_files_only=True,use_safetensors=True,torch_dtype=torch.bfloat16,attn_implementation='eager').eval().cuda()
+        torch.cuda.synchronize()
+        assert all(p.device.type=='cuda' and p.dtype==torch.bfloat16 for p in model.parameters())
+        native=NativeModel(tokenizer,model,{'environment':env,'model_revision':lock['model_revision'],'source_and_weight_hashes':hashes,'source_patch':None,'runtime_compatibility':'Unadapted official-model DIAGNOSTIC process. Production loader/adapter unchanged.'})
+        # Same observation-only DASH instrumentation and refusal of dense prefill as production.
+        prefix=model.__class__.__module__.rsplit('.',1)[0];km=importlib.import_module(prefix+'.sparse_gather_e2e_triton');original_kernel=km.triton_gather_attention_e2e
+        def kernel(*args,**kwargs):
+            q=args[0] if args else kwargs['query_states'];assert q.device.type=='cuda' and q.dtype==torch.bfloat16
+            result=original_kernel(*args,**kwargs);assert result is not None and result.device.type=='cuda';torch.cuda.synchronize();native.kernels.append({'name':'triton_gather_attention_e2e','query_shape':list(q.shape),'device':str(q.device),'dtype':str(q.dtype),'synchronized':True});return result
+        km.triton_gather_attention_e2e=kernel
+        routers=[m for m in model.modules() if m.__class__.__name__=='DashAttention'];assert len(routers)==12 and all(m.use_triton for m in routers)
+        def refuse(*args,**kwargs):raise RuntimeError('Native DASH dense prefill fallback refused')
+        for router in routers:router._forward_dense=refuse
+    write_json(out/'model-load.json',native.evidence);checkpoint('model_load_complete');report['memory_after_load']=memory_snapshot()
+    module=sys.modules[native.model.__class__.__module__]
+    # Observe official image opening and input builder, without replacing their behavior.
+    original_open=module.Image.open
+    def image_open(path,*args,**kwargs):
+        result=original_open(path,*args,**kwargs);event('official_Image_open',path=str(path),size=list(result.size));return result
+    module.Image.open=image_open
+    original_builder=module._uocr_build_inputs
+    def build(*args,**kwargs):
+        event('official_build_inputs_begin',page_count=len(args[2]) if len(args)>2 else None,crop_mode=kwargs.get('crop_mode'))
+        result=original_builder(*args,**kwargs);ids,imgs,seq,spatial=result;event('official_build_inputs_complete',prompt_tokens=ids.numel(),image_tokens=int(seq.sum()),pixel_tensor_shapes=[list(t.shape) for t in imgs],spatial=spatial.tolist() if hasattr(spatial,'tolist') else spatial);return result
+    module._uocr_build_inputs=build
+    # Encoder boundaries retain production MATH contexts only in the math cohort.
+    def watch_encoder(name,original):
+        def watched(*args,**kwargs):
+            report['vision_calls'][name]=report['vision_calls'].get(name,0)+1;index=report['vision_calls'][name];prior=active.copy();active.update(module=name,page=index)
+            event('encoder_begin',encoder=name,page=index,inputs=[{'shape':list(x.shape),'dtype':str(x.dtype),'device':str(x.device)} for x in args if isinstance(x,torch.Tensor)])
+            try:
+                result=original(*args,**kwargs);checkpoint(name+'_complete');event('encoder_end',encoder=name,page=index,output_shape=list(result.shape),dtype=str(result.dtype),device=str(result.device));return result
+            except Exception:event('encoder_exception',encoder=name,page=index,traceback=traceback.format_exc());raise
+            finally:active.update(prior)
+        return watched
+    for name in ('sam_model','vision_model'):
+        encoder=getattr(native.model.model,name);encoder.forward=watch_encoder(name,encoder.forward)
+    original_sdpa=F.scaled_dot_product_attention
+    class Trace(TorchDispatchMode):
+        def __init__(self):super().__init__();self.ops=[]
+        def __torch_dispatch__(self,func,types,args=(),kwargs=None):self.ops.append(str(func));return func(*args,**(kwargs or {}))
+    def sdpa(*args,**kwargs):
+        report['sdpa_calls']+=1;number=report['sdpa_calls'];q,k,v=args[:3];mask=args[3] if len(args)>3 else kwargs.get('attn_mask');before=hip.hipPeekAtLastError();torch.cuda.synchronize()
+        trace=Trace();use_profile=active['module'] not in first_profile;profile=torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU]) if use_profile else contextlib.nullcontext()
+        call={'number':number,**active,'qkv_shapes':[list(t.shape) for t in (q,k,v)],'qkv_strides':[list(t.stride()) for t in (q,k,v)],'dtype':str(q.dtype),'mask_shape':None if mask is None else list(mask.shape),'hip_before':before,'requested':'MATH scoped encoder' if a.mode=='math' else 'DEFAULT'}
+        if use_profile:call['entry_stack']=traceback.format_stack(limit=8)
+        try:
+            with profile:
+                with trace:result=original_sdpa(*args,**kwargs)
+            after=hip.hipPeekAtLastError();torch.cuda.synchronize();call['hip_after']=hip.hipPeekAtLastError();call['synchronize']='OK';call['operators']=list(dict.fromkeys(trace.ops))
+            if use_profile:
+                call['profiler_operators']=[e.key for e in profile.key_averages()];first_profile.add(active['module'])
+            call['backend_observed']=observed_backend(call.get('profiler_operators',[])+trace.ops);e=event('SDPA',**call)
+            if (before or after or call['hip_after']) and report['first_hip_error'] is None:report['first_hip_error']=e;write_json(out/'first-failure.json',e)
+            return result
+        except Exception:call['traceback']=traceback.format_exc();event('SDPA_exception',**call);raise
+    F.scaled_dot_product_attention=sdpa
+    # Record original generation return details; infer_multi still receives the original result.
+    original_generate=native.model._uocr_generate
+    def generate(*args,**kwargs):
+        event('official_generate_begin',max_new_tokens=kwargs.get('max_new_tokens'),max_length=kwargs.get('max_length'),page_count_guard=kwargs.get('page_count_guard'),DASH_topm=kwargs.get('dash_topm'))
+        result=original_generate(*args,**kwargs);report['generation']={k:v for k,v in result.items() if k not in ('text','token_ids','prompt_token_ids')};write_json(out/'token-ids.json',{'token_ids':result['token_ids'],'prompt_token_ids':result['prompt_token_ids']});event('official_generate_end',**report['generation']);return result
+    native.model._uocr_generate=generate
+    original_guard=module._uocr_page_count_guard;progress={'tokens':-1,'page_markers':0}
+    def guard(logits,gen,*args,**kwargs):
+        length=len(gen);markers=progress['page_markers']
+        if length and length!=progress['tokens'] and gen[-1]==128827:markers=gen.count(128827)
+        if length%256==0 or markers!=progress['page_markers']:
+            progress.update(tokens=length,page_markers=markers);progress['utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();write_json(out/'progress.json',progress);preserve_raw(out/'partial-raw.txt',native.tokenizer.decode(gen,skip_special_tokens=False))
+            if markers!=report.get('last_marker',0):print('PAGE_MARKERS',markers,'tokens',length,flush=True);report['last_marker']=markers
+        return original_guard(logits,gen,*args,**kwargs)
+    module._uocr_page_count_guard=guard
+    # Prefill/first-decode and each first decoder layer are observed without changing tensors.
+    original_forward=native.model.model.forward;forward_seen=set()
+    def forward(*args,**kwargs):
+        ids=kwargs.get('input_ids');phase='prefill' if ids is not None and ids.shape[-1]>1 else 'decode';first=phase not in forward_seen
+        if first:forward_seen.add(phase);event('decoder_'+phase+'_begin',input_ids_shape=None if ids is None else list(ids.shape))
+        result=original_forward(*args,**kwargs)
+        if first:checkpoint('decoder_'+phase+'_complete');event('decoder_'+phase+'_end',native_DASH_calls=len(native.kernels))
+        return result
+    native.model.model.forward=forward
+    for index,layer in enumerate(native.model.model.layers):
+        seen={'value':False}
+        def pre(m,args,kwargs,index=index,seen=seen):
+            if not seen['value']:
+                seen['value']=True;h=args[0] if args else kwargs.get('hidden_states');event('decoder_layer_first_entry',layer=index,hidden_shape=None if h is None else list(h.shape))
+        layer.register_forward_pre_hook(pre,with_kwargs=True)
+    event('official_infer_multi_begin',ordered_page_count=len(pages),one_document_request=True,crop_mode=False,max_new_tokens=39321)
+    with torch.inference_mode():raw,tokens=native.model.infer_multi(native.tokenizer,image_files=pages,save_results=False,max_new_tokens=39321,eval_mode=True,tps_interval=256)
+    checkpoint('official_infer_multi_complete');preserve_raw(out/'raw.txt',raw);preserve_raw(out/'readable.md',convert_readable(raw));report['output_tokens']=tokens;report['raw_sha256']=sha256(out/'raw.txt');report['native_kernels']=native.kernels
+    segments=split_pages(raw);terminal=bool(segments and not segments[-1].strip());content=segments[:-1] if terminal else segments;report['output_structure']={'raw_page_markers':raw.count('<PAGE>'),'content_segments':len(content),'terminal_empty_marker':terminal,'nonempty_content_per_segment':[bool(normalize(p)) for p in content]}
+    complete=(report.get('generation',{}).get('finish_reason')=='stop' and len(content)==15 and all(normalize(p) for p in content) and len(native.kernels)>=12 and report['first_hip_error'] is None)
+    report['status']='INFERENCE_COMPLETED_NOT_ACCURACY_SCORED' if complete else 'FAIL';event('pipeline_finished',status=report['status'],tokens=tokens,structure=report['output_structure'])
+except Exception:
+    report['status']='FAIL';report['traceback']=traceback.format_exc();event('pipeline_exception',traceback=report['traceback']);print(report['traceback'],file=sys.stderr,flush=True)
+finally:
+    report['wall_seconds']=time.monotonic()-started
+    if native is not None:
+        report['native_kernels']=native.kernels;report['production_vision_adapter_events']=native.vision
+        try:report['memory_final']=memory_snapshot()
+        except Exception:report['memory_final_traceback']=traceback.format_exc()
+    report['exit_code']=0 if report['status']=='INFERENCE_COMPLETED_NOT_ACCURACY_SCORED' else 1;write_json(out/'manifest.json',report);log.close()
+print('FINAL',a.mode,report['status'],report.get('output_tokens'),report['wall_seconds'],flush=True);raise SystemExit(report['exit_code'])

@@ -1,0 +1,35 @@
+import sys,pathlib,json,shutil,uuid,datetime,subprocess,re,hashlib
+sys.path.insert(0,'experiments/sdpa_rca')
+from reporting import write_json,sha256,audit_ab_provenance
+root=pathlib.Path.cwd();private=root/'.local/rca';out=private/'public-source'
+out.mkdir(exist_ok=True)
+for directory in ('baseline','isolation','torch-only-A','torch-only-B-full','torch-only-B-small','torch-only-B-isolation','torch-only-A-restored-full','torch-only-A-restored-small','model-final','checks'):
+    for source in (private/directory).rglob('*'):
+        if source.is_file() and source.suffix in ('.json','.log','.txt'):
+            target=out/source.relative_to(private);target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
+files=['conditions.json','repetition-cases.json','provenance-baseline.json','provenance-torch-only-A.json','provenance-torch-only-B.json','provenance-torch-only-A-restored.json','provenance-primary-after.json','wheel-body-verification.json','upstream-7992.json','aotriton-pe.txt','torch-hip-imports.txt','model-default.json','model-math.json','model-default.stdout.log','model-default.stderr.log','model-math.stdout.log','model-math.stderr.log']
+for name in files:shutil.copyfile(private/name,out/name)
+for state in ('A','B','A-restored'):
+    for suffix in ('.json','.stdout.log','.stderr.log'):
+        shutil.copyfile(private/f'hip-{state}{suffix}',out/f'hip-{state}{suffix}')
+a=json.loads((private/'provenance-torch-only-A.json').read_text());b=json.loads((private/'provenance-torch-only-B.json').read_text());ar=json.loads((private/'provenance-torch-only-A-restored.json').read_text());primary=json.loads((private/'provenance-baseline.json').read_text());primary_after=json.loads((private/'provenance-primary-after.json').read_text())
+audit={'run_id':str(uuid.uuid4()),'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'A_to_B':audit_ab_provenance(a,b),'A_to_restored':audit_ab_provenance(a,ar),'primary_unchanged':audit_ab_provenance(primary,primary_after),'input_provenance_run_ids':{'A':a['run_id'],'B':b['run_id'],'A_restored':ar['run_id']},'diagnostic_archive':{'url':'https://github.com/ROCm/aotriton/releases/download/0.12.50tp/aotriton-0.12.50tp-images-amd-gfx115x.tar.gz','sha256':sha256(private/'images012-matched.tar.gz'),'size':(private/'images012-matched.tar.gz').stat().st_size},'invariant_limit':'Recorded core versions, driver/system, header and five loaded DLLs are fixed. No claim of exhaustive OS memory/process state identity.'}
+assert audit['A_to_B']['only_image_payload_changed']
+assert not audit['A_to_restored']['only_image_payload_changed']
+assert not audit['primary_unchanged']['only_image_payload_changed']
+write_json(out/'controlled-ab.json',audit)
+trace=[]
+for state in ('A','B','A-restored'):
+    path=private/f'hip-{state}.stderr.log';text=path.read_text(encoding='utf-8');lines=text.splitlines()
+    trace.append({'state':state,'producer_run_id':json.loads((private/f'hip-{state}.json').read_text())['run_id'],'full_trace_sha256':sha256(path),'line_count':len(lines),'module_load_calls':len(re.findall(r'hipModuleLoadData(?:Ex)? \(',text)),'launch_lines':[{'line':i+1,'text':line} for i,line in enumerate(lines) if 'hipModuleLaunchKernel' in line]})
+write_json(out/'hip-launch-evidence.json',trace)
+records=[]
+for path in sorted(out.rglob('*.json')):
+    data=json.loads(path.read_text(encoding='utf-8-sig'))
+    if isinstance(data,dict) and 'backend_requested' in data:
+        record={'path':path.relative_to(out).as_posix(),**{k:data.get(k) for k in ('run_id','utc','git_commit','script_sha256','reporting_sha256','fixture_sha256','backend_requested','backend_observed','status','acceptance','exit_code','numerical','arguments')}}
+        record['environment_provenance']='provenance-baseline.json' if record['path'].startswith(('baseline/','isolation/')) else ('provenance-torch-only-B.json' if record['path'].startswith('torch-only-B') or record['path'].startswith('hip-B.') else 'provenance-torch-only-A.json')
+        records.append(record)
+write_json(out/'experiment-manifest.json',{'run_id':str(uuid.uuid4()),'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'records':records,'note':'Derived index. Original child JSON and streams remain authoritative. MATH dispatch-mode UNOBSERVED is not relabeled: see separate profiler evidence. Driver identity joins environment_provenance, collected on the same physical machine.'})
+write_json(out/'environment.json',{'run_id':primary['run_id'],'utc':primary['utc'],'architecture':primary['architecture'],'system':primary['system'],'python':primary['python'],'torch':primary['torch_version'],'hip':primary['hip_version'],'source':'provenance-baseline.json','baseline_environment':'existing isolated Phase 1 venv; never mutated','secondary_environment':'fresh torch-only venv; cached exact mandatory wheels; no Python Triton, Transformers or OCR package installed; A/B/A changes images only; original images restored','secondary_dependency_differences':{k:[primary['packages'].get(k),a['packages'].get(k)] for k in a['packages'] if primary['packages'].get(k)!=a['packages'].get(k)}})
+print('Prepared',len(records),'standalone child reports; raw files',len(list(out.rglob('*'))))

@@ -1,0 +1,33 @@
+E501 Line too long (149 > 100)
+   --> tests\unit\test_sdpa_rca_reporting.py:222:101
+    |
+220 | …
+221 | …missing"
+222 | … "hip_after_sync": 0}, {"stage": "after_copy", "hip_before_sync": 1, "hip_after_sync": 1}]
+    |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+223 | …
+224 | …tual": 0}, m.hip_failed(events)) == "FAIL"
+    |
+
+E501 Line too long (101 > 100)
+   --> tests\unit\test_sdpa_rca_reporting.py:224:101
+    |
+222 |     events = [{"stage": "after_sdpa", "hip_before_sync": 0, "hip_after_sync": 0}, {"stage": "after_copy", "hip_before_sync": 1, "hip_…
+223 |     assert m.hip_failed(events)
+224 |     assert m.classify({"failing_elements": 0, "nonfinite_actual": 0}, m.hip_failed(events)) == "FAIL"
+    |                                                                                                     ^
+225 |     assert not m.hip_failed(events[:1])
+    |
+
+E501 Line too long (170 > 100)
+   --> tests\unit\test_sdpa_rca_reporting.py:239:101
+    |
+237 | …
+238 | …"]}]))
+239 | …sdpa_rca/compare_backends.py"), "--cases", str(cases), "--output", str(output)], capture_output=True)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+240 | …
+241 | …
+    |
+
+Found 3 errors.

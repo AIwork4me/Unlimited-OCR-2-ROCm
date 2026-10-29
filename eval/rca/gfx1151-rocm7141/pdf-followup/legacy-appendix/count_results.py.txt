@@ -1,0 +1,8 @@
+import sys,pathlib,collections,json
+sys.path.insert(0,'experiments/sdpa_rca')
+from reporting import write_json
+p=pathlib.Path('eval/rca/gfx1151-rocm7141/experiment-manifest.json');r=json.loads(p.read_text())['records']
+print('Acceptance:',dict(collections.Counter(x['status'] for x in r if x['acceptance'])))
+print('Non-acceptance:',dict(collections.Counter(x['status'] for x in r if not x['acceptance'])))
+for name in ['torch-only-A/scalar-none.json','torch-only-B-small/scalar-none.json','torch-only-A-restored-small/scalar-none.json','torch-only-A-restored-full/default.json']:
+    d=json.loads((p.parent/name).read_text());print(name,d['run_id'],d['status'],d['fixture_sha256'])

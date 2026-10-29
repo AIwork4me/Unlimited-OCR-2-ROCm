@@ -1,0 +1,119 @@
+"""Publish selected text evidence and explicit user-authorized original PDF.
+
+No GPU execution, original mutation, credentials, weights or large tensor blobs.
+"""
+import datetime
+import hashlib
+import json
+import pathlib
+import re
+import shutil
+import sys
+
+root = pathlib.Path.cwd()
+private = root / '.local'
+out = root / 'eval/rca/gfx1151-rocm7141/pdf-followup'
+home = str(pathlib.Path.home())
+records = []
+inventory = []
+assert not out.exists(), 'Do not overwrite prior published evidence'
+out.mkdir(parents=True)
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+def neutralize(text):
+    for prefix in (home.replace('\\', '\\\\'), home, home.replace('\\', '/')):
+        text = re.sub(re.escape(prefix), '<USERPROFILE>', text, flags=re.IGNORECASE)
+    # Historical traces include nested JSON escaping and build-host user roots.
+    text = re.sub(r"(?i)[a-z]:[\\/]+users[\\/]+[^\\/\s\"'<>]+", '<USERPROFILE>', text)
+    assert not re.search(r'(?i)[a-z]:[\\/]+users[\\/]+', text), 'Unneutralized user-directory path'
+    assert not re.search(r'(?:github_pat_|gh[pousr]_)[A-Za-z0-9_]{20,}', text), 'Potential credential'
+    return text
+
+def write_json(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+def export(source, relative, category):
+    original = source.read_bytes()
+    target = out / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    encoding = 'utf-8-sig'
+    try:
+        text = original.decode(encoding)
+    except UnicodeDecodeError:
+        encoding = 'cp936'
+        text = original.decode(encoding)  # Historical Windows Poppler stream; strict decoding.
+    data = neutralize(text).encode('utf-8')
+    target.write_bytes(data)
+    item = {'source': source.relative_to(root).as_posix(), 'path': relative, 'category': category,
+            'original_sha256': digest(original), 'published_sha256': digest(data),
+            'original_bytes': len(original), 'published_bytes': len(data),
+            'source_text_encoding': encoding,
+            'transform': 'Transcode to UTF-8; replace explicit home and Windows user-directory prefixes with <USERPROFILE>; preserve source text and line endings otherwise'}
+    if target.suffix in ('.json', '.jsonl'):
+        if target.suffix == '.json':
+            json.loads(data.decode())
+        else:
+            for line in data.decode().splitlines():
+                if line.strip(): json.loads(line)
+    records.append(item)
+    return item
+
+def entry(source):
+    return {'source': source.relative_to(root).as_posix(), 'bytes': source.stat().st_size, 'sha256': digest(source.read_bytes())}
+
+extensions = {'.json', '.jsonl', '.log', '.txt', '.md', '.py'}
+for dirname, public in [('pdf-input-check', 'first-page'), ('pdf-pipeline-rca', 'whole-document')]:
+    for source in sorted((private / dirname).rglob('*')):
+        if not source.is_file() or '__pycache__' in source.parts:
+            continue
+        relative = source.relative_to(private / dirname)
+        item = entry(source)
+        if source.suffix in extensions or source.name == 'SHA256SUMS':
+            name = (pathlib.PurePosixPath(public) / pathlib.PurePosixPath(relative.as_posix())).as_posix()
+            if source.suffix == '.py':
+                name += '.txt'
+            if source.name in ('RESULTS.md', 'INVESTIGATION.md'):
+                name = str(pathlib.PurePosixPath(name).with_name('historical-' + source.name))
+            export(source, name, dirname)
+            item.update(disposition='published_sanitized_text', published_path=name)
+        else:
+            item.update(disposition='not_published_regenerable_binary', reason='Rendered PNGs or captured tensors are regenerable from the original fixed PDF and recorded scripts; no unnecessary binary artifacts')
+        inventory.append(item)
+
+# Supplement the already-public core RCA without replacing any original artifact.
+old_manifest = json.loads((root / 'eval/rca/gfx1151-rocm7141/export-manifest.json').read_text(encoding='utf-8'))
+old_by_hash = {r['original_sha256']: r['path'] for r in old_manifest}
+skip_dirs = {'public-source', 'public-reviewed', 'public-final'}
+for source in sorted((private / 'rca').rglob('*')):
+    if not source.is_file() or any(part in skip_dirs or part == '__pycache__' for part in source.relative_to(private / 'rca').parts):
+        continue
+    if source.suffix not in extensions:
+        continue  # Cached wheel/image binaries and copied upstream C++ have existing provenance records.
+    item = entry(source)
+    if item['sha256'] in old_by_hash:
+        item.update(disposition='already_published_original_digest', published_path='../' + old_by_hash[item['sha256']])
+    else:
+        relative = 'legacy-appendix/' + source.relative_to(private / 'rca').as_posix()
+        if source.suffix == '.py': relative += '.txt'
+        export(source, relative, 'legacy-supplement')
+        item.update(disposition='published_sanitized_text', published_path=relative)
+    inventory.append(item)
+
+# User explicitly requested redistribution of this exact input on 2026-10-28.
+pdf = pathlib.Path(r'<USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\Unlimited-OCR-2.pdf')
+expected = '1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444'
+assert digest(pdf.read_bytes()) == expected and pdf.stat().st_size == 1515878
+target = out / 'input/Unlimited-OCR-2.pdf'
+target.parent.mkdir(parents=True, exist_ok=True)
+shutil.copyfile(pdf, target)
+assert digest(target.read_bytes()) == expected
+records.append({'source': 'explicit user-supplied original PDF', 'path': 'input/Unlimited-OCR-2.pdf', 'category': 'user-authorized-test-fixture', 'original_sha256': expected, 'published_sha256': expected, 'original_bytes': 1515878, 'published_bytes': 1515878, 'transform': 'NONE: exact original PDF bytes'})
+
+export(private / 'github-pdf-export/upstream-LICENSE', 'whole-document/upstream/LICENSE', 'Baidu source MIT notice')
+export(pathlib.Path(__file__), 'publication/export_all.py.txt', 'publication-producer')
+write_json(out / 'inventory.json', {'scope': 'Substantive text artifacts from the core RCA and both PDF follow-ups; redundant export staging directories, caches and compiled bytecode excluded', 'entries': inventory})
+write_json(out / 'export-manifest.json', {'published_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'records': records, 'preservation': 'Private originals retained without mutation. Historical reports keep their original scope/status/publication wording and are superseded by the final full-document report. Archived Python producer files use .py.txt, not importable package code.'})
+print(json.dumps({'published_files': len(records), 'inventory_entries': len(inventory), 'bytes': sum(p.stat().st_size for p in out.rglob('*') if p.is_file()), 'pdf_sha256': expected}))

@@ -1,0 +1,3 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+UNSUPPORTED requested: EFFICIENT_ATTENTION observed: UNOBSERVED run: 5a9adc1a-e6bd-4dc9-b435-3b8a4ddae5d5 numerics: None

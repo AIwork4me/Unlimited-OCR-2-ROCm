@@ -1,0 +1,3 @@
+from pathlib import Path
+import json
+base=Path('.local/pdf-pipeline-rca');refs=json.loads((base/'pdf-text-layer-reference.json').read_text(encoding='utf-8'));print('PDF text-layer characters by page:',[(r['page'],len(r['text'])) for r in refs]);a=json.loads((base/'unadapted/model-load.json').read_text(encoding='utf-8'));b=json.loads((base/'math/model-load.json').read_text(encoding='utf-8'));print('Identical official source/weight hashes:',a['source_and_weight_hashes']==b['source_and_weight_hashes']);print('Environment metadata keys:',list(a['environment']));print('Whole-model MATH adapter declared:',b['runtime_compatibility']);print('Latest generation progress:',json.loads((base/'math/progress.json').read_text(encoding='utf-8')))

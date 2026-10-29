@@ -1,0 +1,112 @@
+{
+  "purpose": "Diagnostic normalized 5-character-gram set Dice against the PDF text layer; not CER/WER, manually verified ground truth or an OCR acceptance threshold. Text layer was never model input.",
+  "threshold": null,
+  "matching_page_indices": 15,
+  "rows": [
+    {
+      "output_segment": 1,
+      "best_matching_PDF_page": 1,
+      "text_fingerprint_dice": 0.947209653092006,
+      "same_index_score": 0.947209653092006,
+      "next_best_score": 0.26462836056932
+    },
+    {
+      "output_segment": 2,
+      "best_matching_PDF_page": 2,
+      "text_fingerprint_dice": 0.8497316636851521,
+      "same_index_score": 0.8497316636851521,
+      "next_best_score": 0.1550759392486011
+    },
+    {
+      "output_segment": 3,
+      "best_matching_PDF_page": 3,
+      "text_fingerprint_dice": 0.9835088416451421,
+      "same_index_score": 0.9835088416451421,
+      "next_best_score": 0.2616294011822154
+    },
+    {
+      "output_segment": 4,
+      "best_matching_PDF_page": 4,
+      "text_fingerprint_dice": 0.9413427561837456,
+      "same_index_score": 0.9413427561837456,
+      "next_best_score": 0.22749625828522557
+    },
+    {
+      "output_segment": 5,
+      "best_matching_PDF_page": 5,
+      "text_fingerprint_dice": 0.9407407407407408,
+      "same_index_score": 0.9407407407407408,
+      "next_best_score": 0.2017733045770429
+    },
+    {
+      "output_segment": 6,
+      "best_matching_PDF_page": 6,
+      "text_fingerprint_dice": 0.829854969932791,
+      "same_index_score": 0.829854969932791,
+      "next_best_score": 0.17759632559326358
+    },
+    {
+      "output_segment": 7,
+      "best_matching_PDF_page": 7,
+      "text_fingerprint_dice": 0.6771026797559034,
+      "same_index_score": 0.6771026797559034,
+      "next_best_score": 0.14051973051010588
+    },
+    {
+      "output_segment": 8,
+      "best_matching_PDF_page": 8,
+      "text_fingerprint_dice": 0.9632164242942686,
+      "same_index_score": 0.9632164242942686,
+      "next_best_score": 0.1518186610437533
+    },
+    {
+      "output_segment": 9,
+      "best_matching_PDF_page": 9,
+      "text_fingerprint_dice": 0.7340277777777777,
+      "same_index_score": 0.7340277777777777,
+      "next_best_score": 0.15217995001388504
+    },
+    {
+      "output_segment": 10,
+      "best_matching_PDF_page": 10,
+      "text_fingerprint_dice": 0.9503753127606339,
+      "same_index_score": 0.9503753127606339,
+      "next_best_score": 0.1316815783436568
+    },
+    {
+      "output_segment": 11,
+      "best_matching_PDF_page": 11,
+      "text_fingerprint_dice": 0.9687337154768109,
+      "same_index_score": 0.9687337154768109,
+      "next_best_score": 0.18504240555127216
+    },
+    {
+      "output_segment": 12,
+      "best_matching_PDF_page": 12,
+      "text_fingerprint_dice": 0.9366540335679481,
+      "same_index_score": 0.9366540335679481,
+      "next_best_score": 0.23689776733254994
+    },
+    {
+      "output_segment": 13,
+      "best_matching_PDF_page": 13,
+      "text_fingerprint_dice": 0.9942353340115293,
+      "same_index_score": 0.9942353340115293,
+      "next_best_score": 0.1944055944055944
+    },
+    {
+      "output_segment": 14,
+      "best_matching_PDF_page": 14,
+      "text_fingerprint_dice": 0.978349912229374,
+      "same_index_score": 0.978349912229374,
+      "next_best_score": 0.19228295819935692
+    },
+    {
+      "output_segment": 15,
+      "best_matching_PDF_page": 15,
+      "text_fingerprint_dice": 0.9735525375268048,
+      "same_index_score": 0.9735525375268048,
+      "next_best_score": 0.18704537582265326
+    }
+  ]
+}

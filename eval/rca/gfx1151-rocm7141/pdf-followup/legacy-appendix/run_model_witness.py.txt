@@ -1,0 +1,21 @@
+import sys, pathlib, json, datetime,uuid,subprocess
+sys.path.insert(0,'experiments/sdpa_rca')
+from compare_backends import run_case
+from reporting import sha256,write_json
+root=pathlib.Path.cwd(); out=root/'.local/rca/model-final';out.mkdir(exist_ok=True)
+py=pathlib.Path.home()/'.codex/worktrees/phase1-windows-gfx1151/Unlimited-OCR-2-ROCm/.venv/Scripts/python.exe'
+cache=pathlib.Path.home()/'.cache/unlimited-ocr2-phase1/models'
+source=cache/'models--baidu--Unlimited-OCR-2/snapshots/9cf077c4b206e0e2a31879df937b0b0bcba3661c'
+records=[]
+for mode in ('default','math'):
+    stem=out/('sam-'+mode)
+    command=[str(py),'scripts/probe_vision_sdpa.py','--source',str(source),'--mode',mode,'--output',str(stem.with_suffix('.json'))]
+    record=run_case(command,stem,root)
+    record.update(script_sha256=sha256('scripts/probe_vision_sdpa.py'),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
+    records.append(record)
+command=[str(py),'scripts/smoke_single.py','--cases','english','--cache-dir',str(cache),'--offline','--output',str(out/'ocr')]
+record=run_case(command,out/'ocr',root)
+record.update(script_sha256=sha256('scripts/smoke_single.py'),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
+records.append(record)
+write_json(out/'process-manifest.json',records)
+print([(r['exit_code'],r['process_run_id']) for r in records])

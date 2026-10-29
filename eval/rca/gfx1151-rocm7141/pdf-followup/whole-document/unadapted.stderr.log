@@ -1,0 +1,51 @@
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|����������     | 1/2 [00:00<00:00,  6.66it/s]
+Loading checkpoint shards: 100%|��������������������| 2/2 [00:00<00:00, 10.26it/s]
+<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\profiler\profiler.py:272: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+Traceback (most recent call last):
+  File "<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\.local\pdf-pipeline-rca\trace_official_native.py", line 134, in <module>
+    with torch.inference_mode():raw,tokens=native.model.infer_multi(native.tokenizer,image_files=pages,save_results=False,max_new_tokens=39321,eval_mode=True,tps_interval=256)
+  File "<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\modeling_unlimitedocr.py", line 1118, in infer_multi
+    res = self.infer(tokenizer, prompt=prompt.replace('<image>', '') if prompt.count('<image>') == 1 else prompt,
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\modeling_unlimitedocr.py", line 1087, in infer
+    res = self._uocr_generate(
+  File "<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\.local\pdf-pipeline-rca\trace_official_native.py", line 107, in generate
+    result=original_generate(*args,**kwargs);report['generation']={k:v for k,v in result.items() if k not in ('text','token_ids','prompt_token_ids')};write_json(out/'token-ids.json',{'token_ids':result['token_ids'],'prompt_token_ids':result['prompt_token_ids']});event('official_generate_end',**report['generation']);return result
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\modeling_unlimitedocr.py", line 1162, in _uocr_generate
+    out = self.model(input_ids=ids, past_key_values=cache, use_cache=True,
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\.local\pdf-pipeline-rca\trace_official_native.py", line 123, in forward
+    result=original_forward(*args,**kwargs)
+  File "<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\modeling_unlimitedocr.py", line 765, in forward
+    global_features_1 = sam_model(image_ori_p)
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\.local\pdf-pipeline-rca\trace_official_native.py", line 77, in watched
+    result=original(*args,**kwargs);checkpoint(name+'_complete');event('encoder_end',encoder=name,page=index,output_shape=list(result.shape),dtype=str(result.dtype),device=str(result.device));return result
+  File "<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\deepencoder.py", line 703, in forward
+    x = blk(x)
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "<USERPROFILE>\.codex\worktrees\phase1-windows-gfx1151\Unlimited-OCR-2-ROCm\.venv\lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\deepencoder.py", line 770, in forward
+    x = window_unpartition(x, self.window_size, pad_hw, (H, W))
+  File "<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\deepencoder.py", line 890, in window_unpartition
+    x = x.permute(0, 1, 3, 2, 4, 5).contiguous().view(B, Hp, Wp, -1)
+torch.AcceleratorError: CUDA error: invalid argument
+Search for `hipErrorInvalidValue' in https://rocm.docs.amd.com/projects/HIP/en/latest/index.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing AMD_SERIALIZE_KERNEL=3
+Device-side assertion tracking was not enabled by user.
+
