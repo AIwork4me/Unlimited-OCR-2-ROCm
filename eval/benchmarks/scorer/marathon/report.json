@@ -1,0 +1,485 @@
+{
+  "exit_code": 2,
+  "overall": null,
+  "profile": "marathon",
+  "scorer_lock_sha256": "f3ce60fae6161b389304325a2c6c331902d507b772515b6041fa37468fc80ed3",
+  "selftest": {
+    "checks": {
+      "FigureF1": {
+        "actual": 25.0,
+        "expected": 25,
+        "status": "PASS"
+      },
+      "FormulaCDM": {
+        "reason": "CDM_RENDERER_UNAVAILABLE",
+        "status": "BLOCKED"
+      },
+      "HeadingTEDS": {
+        "actual": 75.0,
+        "expected": 75,
+        "status": "PASS"
+      },
+      "ReadOrderEdit": {
+        "actual": 66.66666666666667,
+        "expected": 66.66666666666667,
+        "status": "PASS"
+      },
+      "T-TableTEDS": {
+        "actual": 50.0,
+        "expected": 50,
+        "status": "PASS"
+      },
+      "T-TextEdit": {
+        "actual": 37.5,
+        "expected": 37.5,
+        "status": "PASS"
+      },
+      "TableTEDS": {
+        "actual": 50.0,
+        "expected": 50,
+        "status": "PASS"
+      },
+      "TextEdit": {
+        "actual": 37.5,
+        "expected": 37.5,
+        "status": "PASS"
+      }
+    },
+    "environment": {
+      "controls": {
+        "MPDOC_CDM_NPROC": "1",
+        "MPDOC_DOC_BUDGET": "0",
+        "MPDOC_EVAL_NPROC": "1",
+        "MPDOC_TEDS_NPROC": "1",
+        "MPDOC_TEDS_TIMEOUT": "300"
+      },
+      "packages": {
+        "ImageIO": "2.38.0",
+        "Levenshtein": "0.27.1",
+        "PyWavelets": "1.8.0",
+        "PyYAML": "6.0.2",
+        "Pygments": "2.21.0",
+        "RapidFuzz": "3.14.5",
+        "aiohappyeyeballs": "2.7.1",
+        "aiohttp": "3.14.5",
+        "aiosignal": "1.4.0",
+        "anyio": "4.15.1",
+        "apted": "1.0.3",
+        "async-timeout": "5.0.1",
+        "attrs": "26.1.0",
+        "beautifulsoup4": "4.13.4",
+        "certifi": "2026.10.23",
+        "charset-normalizer": "3.5.2",
+        "click": "8.5.0",
+        "colorama": "0.4.6",
+        "contourpy": "1.3.2",
+        "cycler": "0.12.1",
+        "datasets": "5.1.0",
+        "dill": "0.4.1",
+        "evaluate": "0.4.3",
+        "exceptiongroup": "1.3.1",
+        "filelock": "4.1.0",
+        "fonttools": "4.65.0",
+        "frozenlist": "1.8.0",
+        "fsspec": "2026.7.0",
+        "func_timeout": "4.3.5",
+        "h11": "0.16.0",
+        "hf-xet": "1.7.1",
+        "httpcore2": "2.14.0",
+        "httpx2": "2.14.0",
+        "huggingface_hub": "2.3.0",
+        "idna": "3.20",
+        "kiwisolver": "1.5.1",
+        "lazy-loader": "0.6",
+        "loguru": "0.7.3",
+        "lxml": "5.3.0",
+        "markdown-it-py": "4.2.0",
+        "matplotlib": "3.9.4",
+        "mdurl": "0.1.2",
+        "mmeval": "0.2.1",
+        "multidict": "7.1.0",
+        "multiprocess": "0.70.19",
+        "networkx": "3.4.2",
+        "numpy": "1.26.4",
+        "opencv-python": "4.11.0.86",
+        "packaging": "26.3",
+        "pandas": "2.2.3",
+        "pillow": "10.4.0",
+        "pip": "23.0.1",
+        "plum-dispatch": "1.7.4",
+        "propcache": "0.5.4",
+        "pyarrow": "25.0.1",
+        "pylatexenc": "2.10",
+        "pyparsing": "3.3.3",
+        "python-dateutil": "3.0.0",
+        "pytz": "2026.5",
+        "requests": "2.34.2",
+        "rich": "15.0.0",
+        "scikit-image": "0.20.0",
+        "scipy": "1.13.1",
+        "setuptools": "79.0.1",
+        "six": "1.17.0",
+        "soupsieve": "2.10",
+        "tabulate": "0.9.0",
+        "tifffile": "2025.5.10",
+        "tomli": "2.5.0",
+        "tqdm": "4.67.1",
+        "truststore": "0.10.5",
+        "typing_extensions": "4.16.0",
+        "tzdata": "2026.6",
+        "unlimited-ocr-2-rocm": "0.0.1.dev0",
+        "urllib3": "2.8.0",
+        "win32_setctime": "1.2.1",
+        "xxhash": "4.0.2",
+        "yarl": "1.25.1"
+      },
+      "platform": "Windows-10-10.0.26200-SP0",
+      "postprocessor_sha256": "fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782",
+      "producer_sha256": {
+        "__init__.py": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+        "cli.py": "4130868fb65a6c7191487ce7eb364facd6e6d40c5ccf6955ed9ecc85352727cc",
+        "ledger.py": "7d2d39fa75c21ae3d83e5e9a995a0e86843b7d11452d2f530a973b94752e60a9",
+        "manifest.py": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+        "scorer.py": "1886e9c201134eef666ac098350aa28efd8155fc025675396e2861d6f4730b6f",
+        "worker.py": "093bb68660150d20b912cef8575c5a85aa2b384bc7e124bdd4046baec6cc2dd9"
+      },
+      "python": "3.10.20 (main, May 10 2026, 19:31:32) [MSC v.1944 64 bit (AMD64)]",
+      "python_sha256": "9148604557f300ef091486b518764079fe1d3b269bdd54b9150b15b8ea0343b4"
+    },
+    "fixtures": {
+      "display_formula": [
+        {
+          "gt": "x+y=z",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "a.pdf",
+          "norm_gt": "x+y=z",
+          "norm_pred": "x+y=z",
+          "pred": "x+y=z"
+        }
+      ],
+      "figure": [
+        {
+          "gt_count": 2,
+          "img_id": "a.pdf",
+          "matched_count": 1,
+          "pred_count": 2
+        },
+        {
+          "gt_count": 1,
+          "img_id": "b.pdf",
+          "matched_count": 0,
+          "pred_count": 0
+        }
+      ],
+      "head": [
+        {
+          "gt": [
+            "# A",
+            "## B"
+          ],
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "a.pdf",
+          "norm_gt": [
+            "# A",
+            "## B"
+          ],
+          "norm_pred": [
+            "# A",
+            "## B"
+          ],
+          "pred": [
+            "# A",
+            "## B"
+          ]
+        },
+        {
+          "gt": [
+            "# C"
+          ],
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "b.pdf",
+          "norm_gt": [
+            "# C"
+          ],
+          "norm_pred": [],
+          "pred": []
+        }
+      ],
+      "merged_table": [
+        {
+          "gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "a.pdf",
+          "norm_gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "norm_pred": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "pred": "<html><body><table><tr><td>cell</td></tr></table></body></html>"
+        },
+        {
+          "gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "b.pdf",
+          "norm_gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "norm_pred": "",
+          "pred": ""
+        }
+      ],
+      "merged_text_block": [
+        {
+          "gt": "abcd",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "a.pdf",
+          "norm_gt": "abcd",
+          "norm_pred": "abxd",
+          "pred": "abxd"
+        },
+        {
+          "gt": "ab",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "b.pdf",
+          "norm_gt": "ab",
+          "norm_pred": "",
+          "pred": ""
+        }
+      ],
+      "reading_order": [
+        {
+          "gt": [
+            1,
+            2,
+            3
+          ],
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "a.pdf",
+          "norm_gt": [
+            1,
+            2,
+            3
+          ],
+          "norm_pred": [
+            1,
+            3,
+            2
+          ],
+          "pred": [
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "gt": [
+            1
+          ],
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "b.pdf",
+          "norm_gt": [
+            1
+          ],
+          "norm_pred": [
+            1
+          ],
+          "pred": [
+            1
+          ]
+        }
+      ],
+      "table": [
+        {
+          "gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "a.pdf",
+          "norm_gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "norm_pred": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "pred": "<html><body><table><tr><td>cell</td></tr></table></body></html>"
+        },
+        {
+          "gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "b.pdf",
+          "norm_gt": "<html><body><table><tr><td>cell</td></tr></table></body></html>",
+          "norm_pred": "",
+          "pred": ""
+        }
+      ],
+      "text_block": [
+        {
+          "gt": "abcd",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "a.pdf",
+          "norm_gt": "abcd",
+          "norm_pred": "abxd",
+          "pred": "abxd"
+        },
+        {
+          "gt": "ab",
+          "gt_attribute": [
+            {}
+          ],
+          "gt_idx": 1,
+          "img_id": "b.pdf",
+          "norm_gt": "ab",
+          "norm_pred": "",
+          "pred": ""
+        }
+      ]
+    },
+    "metrics": {
+      "FigureF1": 25.0,
+      "FormulaCDM": null,
+      "HeadingTEDS": 75.0,
+      "ReadOrderEdit": 66.66666666666667,
+      "T-TableTEDS": 50.0,
+      "T-TextEdit": 37.5,
+      "TableTEDS": 50.0,
+      "TextEdit": 37.5
+    },
+    "official_result": {
+      "figure": {
+        "all": {
+          "FigureF1": {
+            "all": 0.25
+          }
+        }
+      },
+      "head": {
+        "all": {
+          "HeadTEDS": {
+            "all": 0.75
+          }
+        }
+      },
+      "merged_table": {
+        "all": {
+          "TEDS": {
+            "all": 0.5
+          },
+          "TEDS_structure_only": {
+            "all": 0.5
+          }
+        }
+      },
+      "merged_text_block": {
+        "all": {
+          "Edit_dist": {
+            "ALL_page_avg": 0.625,
+            "edit_sample_avg": 0.625,
+            "edit_whole": 0.5
+          }
+        }
+      },
+      "reading_order": {
+        "all": {
+          "Edit_dist": {
+            "ALL_page_avg": 0.3333333333333333,
+            "edit_sample_avg": 0.3333333333333333,
+            "edit_whole": 0.5
+          }
+        }
+      },
+      "table": {
+        "all": {
+          "TEDS": {
+            "all": 0.5
+          },
+          "TEDS_structure_only": {
+            "all": 0.5
+          }
+        }
+      },
+      "text_block": {
+        "all": {
+          "Edit_dist": {
+            "ALL_page_avg": 0.625,
+            "edit_sample_avg": 0.625,
+            "edit_whole": 0.5
+          }
+        }
+      }
+    },
+    "overall": null,
+    "pipeline": {
+      "ground_truth_sha256": "a0974da4a956c0a8f65840ffd35cd2d1251035de433dca9cf710b32cb4d18997",
+      "metrics": {
+        "FigureF1": 100.0,
+        "FormulaCDM": null,
+        "HeadingTEDS": 100.0,
+        "ReadOrderEdit": 100.0,
+        "T-TableTEDS": 100.0,
+        "T-TextEdit": 100.0,
+        "TableTEDS": 100.0,
+        "TextEdit": 100.0
+      },
+      "raw_sha256": "be2fa07fc49ee5f8fe930f58bf40e5ac37ed45c511ba308347bd862818304522",
+      "status": "PASS"
+    },
+    "status": "BLOCKED",
+    "tools": {
+      "kpsewhich": {
+        "sha256": "90e5bd3477fb1af7f9d1f8c858de31137aab4df57b29928ba82b7d00b2dd85db",
+        "status": "PASS",
+        "version": [
+          "kpathsea version 6.4.2",
+          "Copyright 2026 Karl Berry & Olaf Weber.",
+          "License LGPLv2.1+: GNU Lesser GPL version 2.1 or later <https://gnu.org/licenses/lgpl.html>"
+        ]
+      },
+      "magick": {
+        "sha256": "7a5dcb4d013033275e8430c7c27e77aca384f00eba7ae2145f437d9b63ad6fd9",
+        "status": "PASS",
+        "version": [
+          "Version: ImageMagick 7.1.2-26 Q16-HDRI x64 38ba210:20260621 https://imagemagick.org",
+          "Copyright: (C) 1999 ImageMagick Studio LLC",
+          "License: https://imagemagick.org/license/"
+        ]
+      },
+      "node": {
+        "sha256": "b3094d0b49f9ad602262a9921551737bb97637c05dd357a06ae98188d7290aa3",
+        "status": "PASS",
+        "version": [
+          "v24.16.0"
+        ]
+      },
+      "xelatex": {
+        "reason": "NOT_INSTALLED",
+        "status": "BLOCKED"
+      }
+    }
+  },
+  "status": "BLOCKED"
+}

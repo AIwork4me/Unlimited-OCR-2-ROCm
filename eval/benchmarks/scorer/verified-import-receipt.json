@@ -1,0 +1,210 @@
+{
+  "marathon": {
+    "checks": {
+      "FigureF1": {
+        "actual": 25.0,
+        "expected": 25,
+        "status": "PASS"
+      },
+      "FormulaCDM": {
+        "reason": "CDM_RENDERER_UNAVAILABLE",
+        "status": "BLOCKED"
+      },
+      "HeadingTEDS": {
+        "actual": 75.0,
+        "expected": 75,
+        "status": "PASS"
+      },
+      "ReadOrderEdit": {
+        "actual": 66.66666666666667,
+        "expected": 66.66666666666667,
+        "status": "PASS"
+      },
+      "T-TableTEDS": {
+        "actual": 50.0,
+        "expected": 50,
+        "status": "PASS"
+      },
+      "T-TextEdit": {
+        "actual": 37.5,
+        "expected": 37.5,
+        "status": "PASS"
+      },
+      "TableTEDS": {
+        "actual": 50.0,
+        "expected": 50,
+        "status": "PASS"
+      },
+      "TextEdit": {
+        "actual": 37.5,
+        "expected": 37.5,
+        "status": "PASS"
+      }
+    },
+    "executed_source_commit": "4c717571d82782b629ab7c3817ba2d18a8fbe61b",
+    "lock_sha256_at_execution": "efc4baf2614dfe5d5f232e6309bf44d579df3a9e4645976667e26c7d9fa4190a",
+    "note": "Complete source snapshots/logs retained locally; current CI uploads independently generated receipts for its exact head. Subsequent changes to the benchmark lock only add archive acquisition/page digest metadata.",
+    "overall": null,
+    "pipeline": {
+      "ground_truth_sha256": "a0974da4a956c0a8f65840ffd35cd2d1251035de433dca9cf710b32cb4d18997",
+      "metrics": {
+        "FigureF1": 100.0,
+        "FormulaCDM": null,
+        "HeadingTEDS": 100.0,
+        "ReadOrderEdit": 100.0,
+        "T-TableTEDS": 100.0,
+        "T-TextEdit": 100.0,
+        "TableTEDS": 100.0,
+        "TextEdit": 100.0
+      },
+      "raw_sha256": "be2fa07fc49ee5f8fe930f58bf40e5ac37ed45c511ba308347bd862818304522",
+      "status": "PASS"
+    },
+    "private_complete_artifact_inventory_sha256": "05fec4ea008360db3c9fff961e79f1c5902ead3526a6054c202c4831034b6d77",
+    "producer_sha256": {
+      "__init__.py": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+      "cli.py": "9f3bdfca9400a8e6d8b8bf5b54008536a3c25a4a4cb607958785bef0ce52dbe8",
+      "ledger.py": "dacf08f02383bd330c6dca14d2780a2354b20f758e5a7137fc609aa5ffdea0cb",
+      "manifest.py": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+      "scorer.py": "5ab71945b38c46e2c67ae733fc5a4dbadcda6a65459cd8ada9f76792fe04f327",
+      "worker.py": "9bcc6b8a4302c17698fb03ed058719b52c2f000e8950160865ca457dae75bf32"
+    },
+    "requirements_sha256": "12e19dfd496976e804c2f89a50038ea03875fe086fcde66f6e4a788d26fe2c40",
+    "status": "BLOCKED",
+    "tools": {
+      "kpsewhich": {
+        "sha256": "90e5bd3477fb1af7f9d1f8c858de31137aab4df57b29928ba82b7d00b2dd85db",
+        "status": "PASS",
+        "version": [
+          "kpathsea version 6.4.2",
+          "Copyright 2026 Karl Berry & Olaf Weber.",
+          "License LGPLv2.1+: GNU Lesser GPL version 2.1 or later <https://gnu.org/licenses/lgpl.html>"
+        ]
+      },
+      "magick": {
+        "sha256": "7a5dcb4d013033275e8430c7c27e77aca384f00eba7ae2145f437d9b63ad6fd9",
+        "status": "PASS",
+        "version": [
+          "Version: ImageMagick 7.1.2-26 Q16-HDRI x64 38ba210:20260621 https://imagemagick.org",
+          "Copyright: (C) 1999 ImageMagick Studio LLC",
+          "License: https://imagemagick.org/license/"
+        ]
+      },
+      "node": {
+        "sha256": "b3094d0b49f9ad602262a9921551737bb97637c05dd357a06ae98188d7290aa3",
+        "status": "PASS",
+        "version": [
+          "v24.16.0"
+        ]
+      },
+      "xelatex": {
+        "reason": "NOT_INSTALLED",
+        "status": "BLOCKED"
+      }
+    }
+  },
+  "qwen": {
+    "checks": {
+      "FigureF1": {
+        "actual": 25.0,
+        "expected": 25,
+        "status": "PASS"
+      },
+      "FormulaCDM": {
+        "reason": "CDM_RENDERER_UNAVAILABLE",
+        "status": "BLOCKED"
+      },
+      "HeadingTEDS": {
+        "actual": 75.0,
+        "expected": 75,
+        "status": "PASS"
+      },
+      "ReadOrderEdit": {
+        "actual": 66.66666666666667,
+        "expected": 66.66666666666667,
+        "status": "PASS"
+      },
+      "T-TableTEDS": {
+        "actual": 50.0,
+        "expected": 50,
+        "status": "PASS"
+      },
+      "T-TextEdit": {
+        "actual": 37.5,
+        "expected": 37.5,
+        "status": "PASS"
+      },
+      "TableTEDS": {
+        "actual": 50.0,
+        "expected": 50,
+        "status": "PASS"
+      },
+      "TextEdit": {
+        "actual": 37.5,
+        "expected": 37.5,
+        "status": "PASS"
+      }
+    },
+    "executed_source_commit": "4c717571d82782b629ab7c3817ba2d18a8fbe61b",
+    "lock_sha256_at_execution": "efc4baf2614dfe5d5f232e6309bf44d579df3a9e4645976667e26c7d9fa4190a",
+    "note": "Complete source snapshots/logs retained locally; current CI uploads independently generated receipts for its exact head. Subsequent changes to the benchmark lock only add archive acquisition/page digest metadata.",
+    "overall": null,
+    "pipeline": {
+      "ground_truth_sha256": "a0974da4a956c0a8f65840ffd35cd2d1251035de433dca9cf710b32cb4d18997",
+      "metrics": {
+        "FigureF1": 100.0,
+        "FormulaCDM": null,
+        "HeadingTEDS": 100.0,
+        "ReadOrderEdit": 100.0,
+        "T-TableTEDS": 100.0,
+        "T-TextEdit": 100.0,
+        "TableTEDS": 100.0,
+        "TextEdit": 100.0
+      },
+      "raw_sha256": "be2fa07fc49ee5f8fe930f58bf40e5ac37ed45c511ba308347bd862818304522",
+      "status": "PASS"
+    },
+    "private_complete_artifact_inventory_sha256": "9942deda8f0a32f40edf81800295181492b3193a52e521668c95e18cc1f052cc",
+    "producer_sha256": {
+      "__init__.py": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+      "cli.py": "9f3bdfca9400a8e6d8b8bf5b54008536a3c25a4a4cb607958785bef0ce52dbe8",
+      "ledger.py": "dacf08f02383bd330c6dca14d2780a2354b20f758e5a7137fc609aa5ffdea0cb",
+      "manifest.py": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+      "scorer.py": "5ab71945b38c46e2c67ae733fc5a4dbadcda6a65459cd8ada9f76792fe04f327",
+      "worker.py": "9bcc6b8a4302c17698fb03ed058719b52c2f000e8950160865ca457dae75bf32"
+    },
+    "requirements_sha256": "12e19dfd496976e804c2f89a50038ea03875fe086fcde66f6e4a788d26fe2c40",
+    "status": "BLOCKED",
+    "tools": {
+      "kpsewhich": {
+        "sha256": "90e5bd3477fb1af7f9d1f8c858de31137aab4df57b29928ba82b7d00b2dd85db",
+        "status": "PASS",
+        "version": [
+          "kpathsea version 6.4.2",
+          "Copyright 2026 Karl Berry & Olaf Weber.",
+          "License LGPLv2.1+: GNU Lesser GPL version 2.1 or later <https://gnu.org/licenses/lgpl.html>"
+        ]
+      },
+      "magick": {
+        "sha256": "7a5dcb4d013033275e8430c7c27e77aca384f00eba7ae2145f437d9b63ad6fd9",
+        "status": "PASS",
+        "version": [
+          "Version: ImageMagick 7.1.2-26 Q16-HDRI x64 38ba210:20260621 https://imagemagick.org",
+          "Copyright: (C) 1999 ImageMagick Studio LLC",
+          "License: https://imagemagick.org/license/"
+        ]
+      },
+      "node": {
+        "sha256": "b3094d0b49f9ad602262a9921551737bb97637c05dd357a06ae98188d7290aa3",
+        "status": "PASS",
+        "version": [
+          "v24.16.0"
+        ]
+      },
+      "xelatex": {
+        "reason": "NOT_INSTALLED",
+        "status": "BLOCKED"
+      }
+    }
+  }
+}

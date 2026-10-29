@@ -1,0 +1,30 @@
+{
+  "all_eight_scorer": "BLOCKED",
+  "implementation_ci": {
+    "head_sha": "4c717571d82782b629ab7c3817ba2d18a8fbe61b",
+    "jobs": {
+      "cpu_ubuntu": "PASS",
+      "cpu_windows": "PASS",
+      "scorer_ubuntu_marathon": "PASS",
+      "scorer_windows_qwen": "PASS"
+    },
+    "run_url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/actions/runs/40851097947"
+  },
+  "independent_review": {
+    "benchmark_tests_passed": 44,
+    "remaining_important_findings": 0
+  },
+  "local_cpu": {
+    "build": "PASS",
+    "installed_wheel_cli_smoke": "PASS",
+    "mypy": "PASS",
+    "pip_check": "PASS",
+    "pytest_passed": 177,
+    "pytest_skipped": 5,
+    "ruff": "PASS",
+    "ruff_format": "PASS"
+  },
+  "no_gpu_benchmark_executed": true,
+  "overall": null,
+  "timestamp_utc": "2026-10-29T09:43:39.019332+00:00"
+}

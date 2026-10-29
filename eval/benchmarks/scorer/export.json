@@ -1,0 +1,44 @@
+[
+  {
+    "artifact": "qwen/report.json",
+    "original_sha256": "ab49b12923be31c5550138568cf22bc89213e3310170a3e4b6f8be43637ce4bc",
+    "published_sha256": "ab49b12923be31c5550138568cf22bc89213e3310170a3e4b6f8be43637ce4bc",
+    "transformation": "UTF-8 repository/home path substitution only"
+  },
+  {
+    "artifact": "qwen/stdout.log",
+    "original_sha256": "a947a08c509e1ca268a06370405d4d9219d6a18fb6472e10716968cf7f2a88df",
+    "published_sha256": "a947a08c509e1ca268a06370405d4d9219d6a18fb6472e10716968cf7f2a88df",
+    "transformation": "UTF-8 repository/home path substitution only"
+  },
+  {
+    "artifact": "qwen/stderr.log",
+    "original_sha256": "2f903e30043e8ddc7165cf9468d40110924b2cb82281e500b338a678ca823f3f",
+    "published_sha256": "2f903e30043e8ddc7165cf9468d40110924b2cb82281e500b338a678ca823f3f",
+    "transformation": "UTF-8 repository/home path substitution only"
+  },
+  {
+    "artifact": "marathon/report.json",
+    "original_sha256": "e62309c8e7f7bdafd6cf0fa3813908438cc86e57bf70a759b8a827883a237242",
+    "published_sha256": "e62309c8e7f7bdafd6cf0fa3813908438cc86e57bf70a759b8a827883a237242",
+    "transformation": "UTF-8 repository/home path substitution only"
+  },
+  {
+    "artifact": "marathon/stdout.log",
+    "original_sha256": "d47c8cd1785a0049d444dc87bf2010822fafd4f0b8973823794af47675df0feb",
+    "published_sha256": "d47c8cd1785a0049d444dc87bf2010822fafd4f0b8973823794af47675df0feb",
+    "transformation": "UTF-8 repository/home path substitution only"
+  },
+  {
+    "artifact": "marathon/stderr.log",
+    "original_sha256": "f16bbc37989504c9617eb958d06bc032fbd0d3493bbbd93925724ef758d9f728",
+    "published_sha256": "f16bbc37989504c9617eb958d06bc032fbd0d3493bbbd93925724ef758d9f728",
+    "transformation": "UTF-8 repository/home path substitution only"
+  },
+  {
+    "artifact": "windows-marathon-fork-failure.log",
+    "original_sha256": "567bfad34b1b30198e5e0fb82c8ff9c4142be256b241d3575b0634c78f8a24d3",
+    "published_sha256": "bd1cd7a34eeacee3750b09774cf3400d13dc4f55b2e5d82a5843bc50c09c996c",
+    "transformation": "UTF-8 repository/home path substitution only; failed earlier fixture attempt, not acceptance"
+  }
+]
