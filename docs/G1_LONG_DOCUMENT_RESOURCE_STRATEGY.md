@@ -282,13 +282,84 @@ model process therefore needs samples and fresh-process comparisons to explain
 RSS growth. Source `time`/`prefill_time` and synchronized wrapper wall time have
 different boundaries; report each with its name. Load time is separate.
 
-| New G1 physical series | Source of measurements | Status |
-| --- | --- | --- |
-| 1 page: single automatic crop; base if separately named | Physical producer manifest and watchdog samples | PENDING; no numbers asserted here |
-| 2 ordered base pages | Physical producer manifest and watchdog samples | PENDING |
-| 3 ordered base pages | Physical producer manifest and watchdog samples | PENDING |
-| 5 ordered base pages | Physical producer manifest and watchdog samples | PENDING |
-| 15/30/50/100 pages under future resource profiles | Separate reviewed policy plus future physical receipts | BLOCKED; analytical design only |
+The following appended measurements come from the completed original-wheel
+physical `before` and `after` arms under `.b/g1/`. Each arm loads one model
+process and runs the fixture sequence; the within-arm repeats reuse that
+loaded process. They are not fresh-process repetitions of each case. All 13
+normal cases in each arm passed; corresponding raw bytes, prompt/output IDs
+and the mode/count fields below agree. No cold/warm JIT timing comparison or
+speed claim is made. Exact byte values and SHA-256 bindings to all 26 source
+summaries are retained in `.b/resource/physical-measurement-facts.json`.
+
+| Case | Pages / layout | Prompt IDs | Image IDs | Output IDs | Decode ceiling |
+| --- | --- | ---: | ---: | ---: | ---: |
+| `english` | 1 / single auto-crop | 899 | 893 | 80 | 1024 |
+| `chinese` | 1 / single auto-crop | 899 | 893 | 82 | 1024 |
+| `mixed` | 1 / single auto-crop | 899 | 893 | 84 | 1024 |
+| `table` | 1 / single auto-crop | 899 | 893 | 60 | 1024 |
+| `math` | 1 / single auto-crop | 899 | 893 | 72 | 1024 |
+| `repeat_unicode_recovery` | 1 / single auto-crop | 899 | 893 | 80 | 1024 |
+| `pages_2_run_1` | 2 / ordered base | 553 | 546 | 116 | 2048 |
+| `pages_2_run_2` | 2 / ordered base | 553 | 546 | 116 | 2048 |
+| `pages_3_run_1` | 3 / ordered base | 827 | 819 | 171 | 3072 |
+| `pages_3_run_2` | 3 / ordered base | 827 | 819 | 171 | 3072 |
+| `pages_5_run_1` | 5 / ordered base | 1375 | 1365 | 286 | 5120 |
+| `pages_5_run_2` | 5 / ordered base | 1375 | 1365 | 286 | 5120 |
+| `table_2_pages` | 2 / ordered base | 553 | 546 | 94 | 2048 |
+
+Memory values below are GiB (`bytes / 2^30`), rounded to three decimals.
+`A/R` means per-invocation GPU allocated/reserved high-water marks retained in
+the in-worker `summary.memory_after`; `RSS/peak` means that worker's RSS at
+that snapshot and its **process-lifetime** Windows peak working set. The
+latter is not a per-request peak, and reservation can retain allocations from
+earlier cases even though GPU peak counters reset per request. The wrapper's
+own exit snapshots are also retained in the facts receipt; host RSS can move
+between that boundary and the harness's later summary snapshot. These are
+actual model-worker readings, never launcher RSS.
+
+| Case | Before GPU A/R | After GPU A/R | Before worker RSS/peak | After worker RSS/peak |
+| --- | ---: | ---: | ---: | ---: |
+| `english` | 8.573 / 8.908 | 8.573 / 8.908 | 9.294 / 9.315 | 9.253 / 9.274 |
+| `chinese` | 8.573 / 10.498 | 8.573 / 10.498 | 11.080 / 11.102 | 11.038 / 11.060 |
+| `mixed` | 8.573 / 10.498 | 8.573 / 10.498 | 11.080 / 11.102 | 11.039 / 11.061 |
+| `table` | 8.573 / 10.498 | 8.573 / 10.498 | 11.081 / 11.103 | 11.040 / 11.062 |
+| `math` | 8.573 / 10.498 | 8.573 / 10.498 | 11.081 / 11.103 | 11.040 / 11.062 |
+| `repeat_unicode_recovery` | 8.573 / 10.498 | 8.573 / 10.498 | 11.081 / 11.103 | 11.041 / 11.062 |
+| `pages_2_run_1` | 8.568 / 10.498 | 8.568 / 10.498 | 11.049 / 11.122 | 10.993 / 11.065 |
+| `pages_2_run_2` | 8.568 / 10.498 | 8.568 / 10.498 | 11.050 / 11.122 | 10.996 / 11.065 |
+| `pages_3_run_1` | 8.574 / 10.498 | 8.574 / 10.498 | 11.091 / 11.137 | 11.033 / 11.079 |
+| `pages_3_run_2` | 8.574 / 10.498 | 8.574 / 10.498 | 11.091 / 11.145 | 11.036 / 11.090 |
+| `pages_5_run_1` | 8.589 / 10.510 | 8.589 / 10.510 | 11.116 / 11.173 | 11.066 / 11.122 |
+| `pages_5_run_2` | 8.589 / 10.510 | 8.589 / 10.510 | 11.117 / 11.174 | 11.069 / 11.125 |
+| `table_2_pages` | 8.568 / 10.510 | 8.568 / 10.510 | 11.118 / 11.174 | 11.069 / 11.125 |
+
+These five-page fixtures generated only **286 output IDs**, with 1375 prompt
+IDs and a requested ceiling of 5120. They did **not** stress 5120 generated
+tokens, the 8192-token wrapper limit, or the analytical five-page envelope.
+The measured single-page auto-crop case uses 893 image IDs, so it cannot be
+treated as a 273-image-ID single base case. The two-page table fixture is a
+separate content/layout case from the ordered text-page fixtures. Its empty
+terminal PAGE and the text two-page fixtures' excess-marker guard branch are
+retained in the native/guard receipts; native stop alone remains insufficient
+to prove semantic completion.
+
+**Watchdog lesson:** the `.b/g1-physical/{before-process,after-process}/host-memory.jsonl`
+streams sampled the roughly
+4-MB Python redirector/launcher PID, not the roughly 10–12-GB model worker.
+Those launcher-only RSS samples cannot calibrate model peak RSS, host growth
+or higher-tier admission. In-worker snapshots above are valid observations,
+but cannot reconstruct unobserved between-snapshot host peaks or establish
+live watchdog coverage. Before any future tier, identify and bind the actual
+model-worker PID, creation time, executable/argv and owned descendant tree;
+sample that worker and account separately for its owned descendants. Confirm
+the sampled identity stays live, and prove owned-tree cancellation/timeout
+cleanup with PID-reuse checks. A launcher PID must not stand in for worker
+coverage. This monitoring prerequisite remains unmet by the launcher-only
+stream; these new receipts therefore do not admit a higher tier.
+
+| Future physical series | Status |
+| --- | --- |
+| 15/30/50/100 pages under future resource profiles | BLOCKED / NOT_RUN in G1; analytical design only; requires separate reviewed policy and actual-worker monitoring |
 
 The immutable [historical whole-PDF trace](rca/FULL_PDF_PIPELINE.md) records one
 15-page scoped-MATH native request with 4115 prompt IDs, 13836 output IDs and
