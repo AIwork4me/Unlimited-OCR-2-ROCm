@@ -1,0 +1,56 @@
+E501 Line too long (102 > 100)
+  --> experiments\sdpa_rca\collect_provenance.py:76:101
+   |
+74 |             "-NoProfile",
+75 |             "-Command",
+76 |             "@{os=Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber; "
+   |                                                                                                     ^^
+77 |             "cpu=Get-CimInstance Win32_Processor | Select-Object Name; "
+78 |             "gpu=Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion,DriverDate} "
+   |
+
+E501 Line too long (103 > 100)
+  --> experiments\sdpa_rca\collect_provenance.py:78:101
+   |
+76 |             "@{os=Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber; "
+77 |             "cpu=Get-CimInstance Win32_Processor | Select-Object Name; "
+78 |             "gpu=Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion,DriverDate} "
+   |                                                                                                     ^^^
+79 |             "| ConvertTo-Json -Depth 5",
+80 |         ],
+   |
+
+E501 Line too long (117 > 100)
+   --> tests\unit\test_sdpa_rca_reporting.py:134:101
+    |
+132 |     module = importlib.util.module_from_spec(spec)
+133 |     spec.loader.exec_module(module)
+134 |     text = "#define AOTRITON_VERSION_MINOR 12u\n#define AOTRITON_GIT_SHA1 05f26c2d8fbdcf8dd6d95b9544d04f7a39fc9920\n"
+    |                                                                                                     ^^^^^^^^^^^^^^^^^
+135 |     result = module.parse_header(text)
+136 |     assert result["AOTRITON_VERSION_MINOR"] == "12u"
+    |
+
+E501 Line too long (127 > 100)
+   --> tests\unit\test_sdpa_rca_reporting.py:147:101
+    |
+145 |     spec.loader.exec_module(module)
+146 |     source = tmp_path / "private.json"
+147 |     source.write_bytes(b'{"traceback":"<USERPROFILE>\\\\probe.py: hipErrorInvalidValue","run_id":"original-run"}\r\n')
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+148 |     target = tmp_path / "public.json"
+149 |     record = module.export_file(source, target, r'<USERPROFILE>')
+    |
+
+E501 Line too long (146 > 100)
+   --> tests\unit\test_sdpa_rca_reporting.py:165:101
+    |
+163 | …
+164 | …
+165 | … "import time; print('started'); time.sleep(2)"], tmp_path / "timeout", ROOT, timeout=.5)
+    |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+166 | …
+167 | …
+    |
+
+Found 5 errors.

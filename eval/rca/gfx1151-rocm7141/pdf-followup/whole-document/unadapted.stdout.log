@@ -1,0 +1,7 @@
+[CodeStamp] warmup-window-page-switches-v4 sha256=86da9c563870 mtime=2026-10-28 16:18:07 switches=local_window:1,page_prefill:0 file=<USERPROFILE>\AppData\Local\Temp\uocr2-pdf-reviewed-2a6zcf2y\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\_sparse_base_impl.py
+[PageRope] mode=page2d head_dim=128 tok_theta=10000.0 fallback_1d_theta=500000.0 page_pairs=1 page_theta=256.0 page_mod=2 tok_freq_mode=resample page_span=0
+[PageRope] pairs page/1 tok/63 capacity page=3pages tok=27143tokens
+[PageRope main] mode=page2d head_dim=128 page_pairs=1 page_theta=256.0 tok_theta=10000.0 tok_freq_mode=resample page_mod=2 capacity page=3pages tok=27143tokens
+[DASH] differentiable DASH attention active (entmax router, block_size=32, local_window=128, index_dim=128, main_rope=page2d, idx_rope=page2d, page_bucket=True); first dash layer_idx=0
+[PageRope layer=0 row0] n_pages=15 page_mod=2 folded_pages=[0, 1, 0, 1, 0, 1, 0, 1, 0] prompt(page0)[0-4#5] uniq_coords=4115/4115 p1:img#273 txt#0 ok=False p2:img#273 txt#0 ok=False p3:img#273 txt#0 ok=False p4:img#273 txt#0 ok=False
+FINAL unadapted FAIL None 24.141000000061467

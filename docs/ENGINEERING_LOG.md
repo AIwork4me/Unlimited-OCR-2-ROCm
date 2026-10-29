@@ -156,3 +156,7 @@ SHA-256 and literal UTF-8 bytes, parsed 128 JSON records, and checked the fresh
 run's baseline-manifest hash. Evidence files disable Git text conversion so
 Windows checkout/staging cannot change hashed bytes. Staged blobs are compared
 with the verified local files before publication.
+
+## 2026-10-28 — follow-up SDPA RCA
+
+The separate investigation branch preserves the Phase 1 runtime and validates an images-only A/B/A in a torch-only secondary venv. The causal finding is an incompatible packaged AOTriton runtime/image contract; see [the L4 report](rca/SDPA_ROOT_CAUSE.md), [full matrix](rca/TEST_MATRIX.md), and [independent review](rca/REVIEW.md). Original baseline venv, weights, source and scoped MATH adapter are unchanged. No official newer wheel, driver update or rebuilt upstream correction was used. The diagnostic environment's original images were restored.

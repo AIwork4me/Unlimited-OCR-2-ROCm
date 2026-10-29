@@ -1,0 +1,2 @@
+import pathlib
+p=pathlib.Path('.local/rca/verify_publication.py');text=p.read_text(encoding='utf-8-sig');text=text.replace("refs=json.loads((root/'.local/rca/referenced-files.json').read_text())", "refs=json.loads((root/'.local/rca/referenced-files.json').read_text())\nrefs=sorted(set(refs)|{r['path'] for r in blob_results}|{'eval/rca/gfx1151-rocm7141/SHA256SUMS.txt'})");text=text.replace("publication-verification.json", "publication-verification-final.json");p.with_name('verify_final_publication.py').write_text(text,encoding='utf-8')

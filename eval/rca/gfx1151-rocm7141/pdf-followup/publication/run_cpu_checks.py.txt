@@ -1,0 +1,17 @@
+import json, pathlib, subprocess, sys
+sys.path.insert(0, 'experiments/sdpa_rca')
+from compare_backends import run_case
+root = pathlib.Path.cwd()
+out = root / '.local/github-pdf-export/checks'
+assert not out.exists()
+out.mkdir()
+python = str(pathlib.Path.home()/'.codex/worktrees/phase1-windows-gfx1151/Unlimited-OCR-2-ROCm/.venv-cpu/Scripts/python.exe')
+checks = [('ruff', ['-m','ruff','check','src','scripts','tests','experiments/sdpa_rca']), ('format',['-m','ruff','format','--check','src','scripts','tests','experiments/sdpa_rca']), ('pytest',['-m','pytest']), ('mypy',['-m','mypy','src']), ('build',['-m','build']), ('pip-check',['-m','pip','check'])]
+rows = []
+for name, args in checks:
+    row = run_case([python, *args], out/name, root)
+    row.update(name=name, code_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(), scope='CPU package checks only; docs/evidence publication working tree')
+    rows.append(row)
+    (out/'process-manifest.json').write_text(json.dumps(rows,indent=2)+'\n',encoding='utf-8')
+    print(name, row['exit_code'], flush=True)
+assert all(row['exit_code'] == 0 for row in rows)

@@ -1,0 +1,156 @@
+{
+  "verified_utc": "2026-10-28T08:46:07.714660+00:00",
+  "input_pdf_sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+  "input_pages": 15,
+  "dpi": 300,
+  "route": "Official pdf_to_images reader, then one native Transformers infer_multi with all 15 ordered page images",
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "source_and_weight_inventory_verified_again": true,
+  "package_and_driver_invariants_between_cohorts": true,
+  "unadapted": {
+    "run_id": "eaadf93f-28d4-4bb2-b575-04dce902596e",
+    "status": "FAIL",
+    "wall_seconds": 24.141000000061467,
+    "first_error": {
+      "number": 1,
+      "module": "sam_model",
+      "page": 1,
+      "qkv_shapes": [
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ]
+      ],
+      "qkv_strides": [
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ]
+      ],
+      "dtype": "torch.bfloat16",
+      "mask_shape": [
+        25,
+        12,
+        196,
+        196
+      ],
+      "backend_observed": "EFFICIENT_ATTENTION",
+      "hip_before": 0,
+      "hip_after": 1,
+      "synchronize": "OK"
+    },
+    "DASH_calls": 0
+  },
+  "math": {
+    "run_id": "8c816946-cf2f-4b09-9ebd-7e7fb815c962",
+    "status": "INFERENCE_COMPLETED_NOT_ACCURACY_SCORED",
+    "output_tokens": 13836,
+    "generation": {
+      "finish_reason": "stop",
+      "num_pages_out": 15,
+      "expected_pages": 15,
+      "time": 1276.4088945388794,
+      "prefill_time": 11.959940433502197
+    },
+    "wall_seconds": 1300.984999999986,
+    "vision_completions": {
+      "SAM": 15,
+      "CLIP": 15
+    },
+    "SDPA_calls": 540,
+    "HIP_errors": 0,
+    "native_DASH_calls": 12,
+    "structure": {
+      "raw_page_markers": 15,
+      "content_segments": 15,
+      "terminal_empty_marker": false,
+      "nonempty_content_per_segment": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "raw_sha256": "2fde62d850f3e07cb914c792e818f9378cbea287fb80423ab6beec44130cf1c4",
+    "readable_sha256": "e898b25ffa675e4e8c22c4e041ae53f563d23047159514ec931a45f5d2ef4ad6",
+    "memory": {
+      "process_rss_bytes": 8103555072,
+      "process_peak_rss_bytes": 9560043520,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 78189056000,
+      "system_memory_percent": 41.1,
+      "gpu_allocated_bytes": 6865890304,
+      "gpu_reserved_bytes": 9542041600,
+      "gpu_peak_allocated_bytes": 9298788352,
+      "gpu_peak_reserved_bytes": 9542041600,
+      "gpu_free_total_bytes": [
+        67832827904,
+        83954728960
+      ]
+    }
+  },
+  "order_diagnostic": {
+    "matching_page_indices": 15,
+    "scores": [
+      0.947209653092006,
+      0.8497316636851521,
+      0.9835088416451421,
+      0.9413427561837456,
+      0.9407407407407408,
+      0.829854969932791,
+      0.6771026797559034,
+      0.9632164242942686,
+      0.7340277777777777,
+      0.9503753127606339,
+      0.9687337154768109,
+      0.9366540335679481,
+      0.9942353340115293,
+      0.978349912229374,
+      0.9735525375268048
+    ],
+    "accuracy_scored": false,
+    "accuracy_threshold": null
+  },
+  "causal_scope": "Corroboration on the real full-PDF pipeline of the previously demonstrated exact-stack packaged runtime/image contract defect; this comparison is not a new images-only A/B experiment.",
+  "tracked_tree_clean": true,
+  "tests": "No production implementation changed in this follow-up; no new full CPU-suite claim. These post-run assertions verify the original physical inference records."
+}

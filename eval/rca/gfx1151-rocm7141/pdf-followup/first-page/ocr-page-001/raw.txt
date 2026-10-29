@@ -1,0 +1,11 @@
+<PAGE><BLOCK>header[119, 38, 230, 72]<FORK>Baidu 百度
+<BLOCK>header[268, 46, 303, 71]<FORK>t
+<BLOCK>header[310, 49, 393, 68]<FORK>ERNIE
+<BLOCK>title<LEVEL1>[347, 134, 652, 154]<FORK>Unlimited OCR Works 2
+<BLOCK>text[200, 161, 796, 180]<FORK>Pioneering the OCR-3.0 Era: From Long- to Unlimited-Horizon Parsing
+<BLOCK>text[417, 212, 581, 227]<FORK>Baidu ERNIE Team
+<BLOCK>title<LEVEL2>[448, 274, 551, 291]<FORK>Abstract
+<BLOCK>text[112, 298, 886, 570]<FORK>Unlimited OCR ushers the era of long-horizon parsing, substantially mitigating the growth of working memory as document lengthens. However, as document length scales to hundreds of pages, the visual context grows substantially, sharply increasing the computational cost of each decoding step and limiting the scalability of ultra-long document parsing. Inspired by human book transcription via localized focus without re-scanning preceding pages, we introduce Unlimited OCR 2, a document parsing model that looks only at what it transcribes. Building on Unlimited OCR, we upgrade all the decoder attention modules to Sparse Reference Sliding Window Attention (SR-SWA), bounding active reference tokens to a fixed capacity and thus sustaining constant computational costs across arbitrarily long documents. By combining SR-SWA with Unlimited-Horizon Decoding Paradigm, Unlimited OCR 2 enables document parsing over virtually unlimited lengths without prohibitive memory overhead. At the hundred-page scale, Unlimited OCR 2 achieves $7.0 \times$ and $5.6 \times$ per-step speedups over Full Attention and R-SWA, respectively. Furthermore, it delivers state-of-the-art end-to-end performance on both MPDocBench and MarathonDocBench, our newly proposed benchmark targeting hundred-page document parsing. Ultimately, the capacity for uninterrupted, one-shot document parsing signifies a fundamental paradigm shift into the OCR 3.0 era.
+<BLOCK>image[202, 574, 481, 801]<FORK>
+<BLOCK>image[506, 574, 795, 801]<FORK>
+<BLOCK>image_caption[112, 808, 886, 859]<FORK>Figure 1 | R-SWA vs SR-SWA. R-SWA computes attention over all visual tokens across pages, inducing extreme visual redundancy; SR-SWA sparsely attends to relevant visual regions, aligning machine decoding with human reading intuition.

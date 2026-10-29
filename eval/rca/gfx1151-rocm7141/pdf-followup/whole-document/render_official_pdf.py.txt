@@ -1,0 +1,18 @@
+import ast,hashlib,inspect,json,os,pathlib,tempfile,datetime,uuid
+import fitz
+root=pathlib.Path.cwd();out=root/'.local/pdf-pipeline-rca';readme=out/'upstream/official-README.md';text=readme.read_text(encoding='utf-8-sig')
+blocks=text.split('```python\n')[1:];source=next(b.split('```',1)[0] for b in blocks if 'def pdf_to_images(' in b)
+tree=ast.parse(source);fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='pdf_to_images')
+function_source=ast.get_source_segment(source,fn)+'\n';(out/'upstream/pdf_to_images.py').write_text(function_source,encoding='utf-8')
+ns={'fitz':fitz,'os':os,'tempfile':tempfile};exec(compile(ast.Module(body=[fn],type_ignores=[]),str(readme),'exec'),ns)
+renderroot=out/'rendered';renderroot.mkdir(exist_ok=True);tempfile.tempdir=str(renderroot)
+pdf=pathlib.Path(r'<USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\Unlimited-OCR-2.pdf')
+print('Official pdf_to_images starting',flush=True);paths=ns['pdf_to_images'](str(pdf),dpi=300)
+records=[]
+for i,path in enumerate(paths,1):
+    p=pathlib.Path(path)
+    with fitz.open(p) as image:size=[image[0].rect.width,image[0].rect.height]
+    records.append({'page':i,'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size})
+report={'run_id':str(uuid.uuid4()),'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_url':'https://github.com/baidu/Unlimited-OCR/blob/4d0bebab8714e0f3b0c811cd44bf422ddb49daae/README.md','source_git_blob':'8782f6e14af3fc0b052e2bfc245dd88e33756084','source_readme_sha256':hashlib.sha256(readme.read_bytes()).hexdigest(),'function_sha256':hashlib.sha256(function_source.encode()).hexdigest(),'function_extraction':'AST-selected original pdf_to_images function, unchanged; remaining SGLang client example is not executed','pymupdf':fitz.VersionBind,'dpi':300,'pdf':str(pdf),'pdf_sha256':hashlib.sha256(pdf.read_bytes()).hexdigest(),'page_count':len(paths),'pages':records}
+(out/'render-manifest.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8');assert len(paths)==15
+print('Rendered all',len(paths),'pages',flush=True)

@@ -1,0 +1,66 @@
+[
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "scripts/probe_vision_sdpa.py",
+      "--source",
+      "<USERPROFILE>\\.cache\\unlimited-ocr2-phase1\\models\\models--baidu--Unlimited-OCR-2\\snapshots\\9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+      "--mode",
+      "default",
+      "--output",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\rca\\model-final\\sam-default.json"
+    ],
+    "exit_code": 1,
+    "timed_out": false,
+    "process_run_id": "1e1eba96-536f-4cab-8b76-eaa2ec310526",
+    "utc": "2026-10-28T07:11:14.068188+00:00",
+    "wall_seconds": 7.625,
+    "stdout_sha256": "d23516871ec9a6b39d20392cb6045cc2836858725a59615f9cb53c364f02a555",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "script_sha256": "4c14b90bf6fb11dc43a5f9657864b2083902d2ec85b9f44b048d63a2b62363b9",
+    "git_commit": "42658a9d3071d49581afb74f02829d5f626b24f7"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "scripts/probe_vision_sdpa.py",
+      "--source",
+      "<USERPROFILE>\\.cache\\unlimited-ocr2-phase1\\models\\models--baidu--Unlimited-OCR-2\\snapshots\\9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+      "--mode",
+      "math",
+      "--output",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\rca\\model-final\\sam-math.json"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "a5b4ab20-4f5b-49b3-9655-f7a2a2366002",
+    "utc": "2026-10-28T07:11:21.733676+00:00",
+    "wall_seconds": 8.375,
+    "stdout_sha256": "5f339580d56cd42aa44a4233f9b2c5da73d733b4823e16c8e275a1109428c568",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "script_sha256": "4c14b90bf6fb11dc43a5f9657864b2083902d2ec85b9f44b048d63a2b62363b9",
+    "git_commit": "42658a9d3071d49581afb74f02829d5f626b24f7"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "scripts/smoke_single.py",
+      "--cases",
+      "english",
+      "--cache-dir",
+      "<USERPROFILE>\\.cache\\unlimited-ocr2-phase1\\models",
+      "--offline",
+      "--output",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\rca\\model-final\\ocr"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "process_run_id": "129bb0d3-db2d-4be9-8cd0-2da8b57fb73f",
+    "utc": "2026-10-28T07:11:30.158554+00:00",
+    "wall_seconds": 62.07799999997951,
+    "stdout_sha256": "955c231ec39fb4b6e1600ce3eeabe69a6f9583e4fbf0999c6f5ae4663beed821",
+    "stderr_sha256": "0182bb3f9561c456248e1e950b2bcaddb8dbc7afffc2af4d0acae0430a7268e2",
+    "script_sha256": "0d41a61fb0c5726dde02e8368ebfc55eb563ab8e3633cd17e713bb5778685bb0",
+    "git_commit": "42658a9d3071d49581afb74f02829d5f626b24f7"
+  }
+]

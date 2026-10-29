@@ -1,0 +1,41 @@
+import sys,pathlib,json,ctypes,contextlib,traceback,uuid,datetime,argparse
+root=pathlib.Path.cwd();sys.path.insert(0,str(root/'src'));sys.path.insert(0,str(root/'experiments/sdpa_rca'))
+from reporting import sha256,write_json,reference_attention,numerical_stats,observed_backend,hip_failed
+from unlimited_ocr_2_rocm.doctor import collect_environment,require_stack
+parser=argparse.ArgumentParser();parser.add_argument('--encoder',required=True);parser.add_argument('--backend',required=True);args=parser.parse_args()
+out=root/'.local/pdf-input-check';path=out/(args.encoder+'-actual-input.pt');target=out/(args.encoder+'-'+args.backend+'.json')
+report={'run_id':str(uuid.uuid4()),'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'script_sha256':sha256(__file__),'fixture_sha256':sha256(path),'encoder':args.encoder,'backend_requested':args.backend,'events':[],'status':'FAIL','acceptance':True,'error_clearing':False}
+try:
+    import torch
+    from torch.nn.attention import sdpa_kernel,SDPBackend
+    torch.set_num_threads(4)
+    env=collect_environment();require_stack(env);report['environment']=env
+    hip=ctypes.WinDLL(str(pathlib.Path(sys.prefix)/'Lib/site-packages/_rocm_sdk_core/bin/amdhip64_7.dll'));hip.hipPeekAtLastError.restype=ctypes.c_int
+    fixture=torch.load(path,map_location='cpu',weights_only=True)
+    source=json.loads((out/'capture-report.json').read_text(encoding='utf-8'))['captures'][args.encoder]
+    cpu=[fixture[k] for k in ('q','k','v')];mask=fixture['mask']
+    reference=reference_attention(*cpu,mask,fixture['is_causal'],fixture['scale'])
+    gpu=[]
+    for t,stride in zip(cpu,source['gpu_stride']):
+        d=torch.empty_strided(t.shape,stride,device='cuda',dtype=t.dtype);d.copy_(t);gpu.append(d)
+    mask_gpu=None if mask is None else mask.to('cuda')
+    report['qkv_shapes']=[list(t.shape) for t in gpu];report['qkv_strides']=[list(t.stride()) for t in gpu];report['mask_shape']=source['mask_shape'];report['dtype']=source['dtype']
+    def checkpoint(name):
+        event={'stage':name,'hip_before_sync':hip.hipPeekAtLastError()}
+        try:torch.cuda.synchronize();event['synchronize']='OK'
+        except Exception:event['traceback']=traceback.format_exc()
+        event['hip_after_sync']=hip.hipPeekAtLastError();report['events'].append(event);print(event,flush=True)
+    checkpoint('before_sdpa');assert not hip_failed(report['events'])
+    profile=torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU])
+    with (sdpa_kernel(getattr(SDPBackend,args.backend)) if args.backend!='DEFAULT' else contextlib.nullcontext()),profile:
+        actual=torch.nn.functional.scaled_dot_product_attention(*gpu,attn_mask=mask_gpu,dropout_p=fixture['dropout_p'],is_causal=fixture['is_causal'],scale=fixture['scale'])
+    report['operators']=[e.key for e in profile.key_averages()];report['backend_observed']=observed_backend(report['operators']);checkpoint('after_sdpa')
+    try:downstream=gpu[0].transpose(-1,-2).contiguous();report['downstream_copy']='OK'
+    except Exception:report['downstream_traceback']=traceback.format_exc();print(report['downstream_traceback'],file=sys.stderr,flush=True)
+    checkpoint('after_copy')
+    if not hip_failed(report['events']) and not report.get('downstream_traceback'):
+        report['numerical']=numerical_stats(actual.cpu(),reference,.03,.03)
+        report['status']='PASS' if report['numerical']['failing_elements']==0 and report['numerical']['nonfinite_actual']==0 else 'FAIL'
+except Exception:
+    report['traceback']=traceback.format_exc();print(report['traceback'],file=sys.stderr,flush=True)
+report['exit_code']=0 if report['status']=='PASS' else 1;write_json(target,report);print(args.encoder,args.backend,report['status'],report.get('backend_observed'),report.get('numerical'),flush=True);raise SystemExit(report['exit_code'])

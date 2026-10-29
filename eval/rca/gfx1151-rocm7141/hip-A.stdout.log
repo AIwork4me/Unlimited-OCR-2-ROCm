@@ -1,0 +1,4 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 1, 'synchronize': 'OK', 'hip_after_sync': 1}
+{'stage': 'after_copy', 'hip_before_sync': 1, 'synchronize': 'OK', 'hip_after_sync': 1}
+FAIL requested: DEFAULT observed: UNOBSERVED run: b95f3025-398f-4e59-8a9b-213d7e4390cd numerics: None

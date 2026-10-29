@@ -1,0 +1,60 @@
+{
+  "note": "Actual producer hashes mapped to containing commits, independently of producing HEAD cleanliness; historical reports are unchanged.",
+  "sources": [
+    {
+      "sha256": "0b6e524d2f9e1fbdec0266be365999f9f136111ead7f257a4dbf9aaf2bd40b03",
+      "commit": "42658a9d3071d49581afb74f02829d5f626b24f7",
+      "path": "experiments/sdpa_rca/reporting.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/42658a9d3071d49581afb74f02829d5f626b24f7/experiments/sdpa_rca/reporting.py"
+    },
+    {
+      "sha256": "0d41a61fb0c5726dde02e8368ebfc55eb563ab8e3633cd17e713bb5778685bb0",
+      "commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "path": "scripts/smoke_single.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/302ba8a6a5e4e0940f8e8311547b33e06c341aec/scripts/smoke_single.py"
+    },
+    {
+      "sha256": "24c4b2e398f203561c4aff0a9724b616368b69d8c2d56378c6fa641272e7b338",
+      "commit": "3fa854b9459a03fab7fb95d0df20585f44e1388f",
+      "path": "experiments/sdpa_rca/collect_provenance.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/3fa854b9459a03fab7fb95d0df20585f44e1388f/experiments/sdpa_rca/collect_provenance.py"
+    },
+    {
+      "sha256": "4aaaf1c469eb31ae382affa1aff7e51eac9ba5106c862811455d80e18cf287a9",
+      "commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "path": "experiments/sdpa_rca/collect_provenance.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/302ba8a6a5e4e0940f8e8311547b33e06c341aec/experiments/sdpa_rca/collect_provenance.py"
+    },
+    {
+      "sha256": "4c14b90bf6fb11dc43a5f9657864b2083902d2ec85b9f44b048d63a2b62363b9",
+      "commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "path": "scripts/probe_vision_sdpa.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/302ba8a6a5e4e0940f8e8311547b33e06c341aec/scripts/probe_vision_sdpa.py"
+    },
+    {
+      "sha256": "9673a18c38e48b1a5969d04b50ef691c13a8a6099092150ae5eda2d0380baf13",
+      "commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "path": "experiments/sdpa_rca/repro_sdpa.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/302ba8a6a5e4e0940f8e8311547b33e06c341aec/experiments/sdpa_rca/repro_sdpa.py"
+    },
+    {
+      "sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6",
+      "commit": "7fdadff4cb503f2ac5d4ebaef9dc50021f6b12e6",
+      "path": "experiments/sdpa_rca/repro_sdpa.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/7fdadff4cb503f2ac5d4ebaef9dc50021f6b12e6/experiments/sdpa_rca/repro_sdpa.py"
+    },
+    {
+      "sha256": "eb1ed2c5ca146e78c973495825ee52272aee46f442f71df2ef3fa0332b7ed79c",
+      "commit": "302ba8a6a5e4e0940f8e8311547b33e06c341aec",
+      "path": "experiments/sdpa_rca/reporting.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/302ba8a6a5e4e0940f8e8311547b33e06c341aec/experiments/sdpa_rca/reporting.py"
+    },
+    {
+      "sha256": "f465bd17753bb1dad38bbf84fefb6fb5ceae4bfe027965ebfd92c3d377a46474",
+      "commit": "b84082e48644b1332e4a6129216a074be3d7ec82",
+      "path": "experiments/sdpa_rca/reporting.py",
+      "url": "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/b84082e48644b1332e4a6129216a074be3d7ec82/experiments/sdpa_rca/reporting.py"
+    }
+  ],
+  "unmatched": []
+}

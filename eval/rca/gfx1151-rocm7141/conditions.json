@@ -1,0 +1,384 @@
+[
+  {
+    "name": "min-1x12x196x64",
+    "args": [
+      "--shape",
+      "1",
+      "12",
+      "196",
+      "64"
+    ]
+  },
+  {
+    "name": "min-1x1x196x64",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "196",
+      "64"
+    ]
+  },
+  {
+    "name": "min-1x1x16x64",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "16",
+      "64"
+    ]
+  },
+  {
+    "name": "min-1x1x2x64",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "2",
+      "64"
+    ]
+  },
+  {
+    "name": "min-1x1x1x64",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "1",
+      "64"
+    ]
+  },
+  {
+    "name": "min-1x1x1x32",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "1",
+      "32"
+    ]
+  },
+  {
+    "name": "min-1x1x1x8",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "1",
+      "8"
+    ]
+  },
+  {
+    "name": "min-1x1x1x1",
+    "args": [
+      "--shape",
+      "1",
+      "1",
+      "1",
+      "1"
+    ]
+  },
+  {
+    "name": "bfloat16-bias",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "bfloat16",
+      "--mask",
+      "bias"
+    ]
+  },
+  {
+    "name": "bfloat16-none",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "bfloat16",
+      "--mask",
+      "none"
+    ]
+  },
+  {
+    "name": "bfloat16-bool",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "bfloat16",
+      "--mask",
+      "bool"
+    ]
+  },
+  {
+    "name": "float16-bias",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "float16",
+      "--mask",
+      "bias"
+    ]
+  },
+  {
+    "name": "float16-none",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "float16",
+      "--mask",
+      "none"
+    ]
+  },
+  {
+    "name": "float16-bool",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "float16",
+      "--mask",
+      "bool"
+    ]
+  },
+  {
+    "name": "float32-bias",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "float32",
+      "--mask",
+      "bias"
+    ]
+  },
+  {
+    "name": "float32-none",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "float32",
+      "--mask",
+      "none"
+    ]
+  },
+  {
+    "name": "float32-bool",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--dtype",
+      "float32",
+      "--mask",
+      "bool"
+    ]
+  },
+  {
+    "name": "nomask-DEFAULT",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--mask",
+      "none",
+      "--backend",
+      "DEFAULT"
+    ]
+  },
+  {
+    "name": "nomask-MATH",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--mask",
+      "none",
+      "--backend",
+      "MATH"
+    ]
+  },
+  {
+    "name": "nomask-FLASH_ATTENTION",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--mask",
+      "none",
+      "--backend",
+      "FLASH_ATTENTION"
+    ]
+  },
+  {
+    "name": "nomask-EFFICIENT_ATTENTION",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--mask",
+      "none",
+      "--backend",
+      "EFFICIENT_ATTENTION"
+    ]
+  },
+  {
+    "name": "nomask-CUDNN_ATTENTION",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--mask",
+      "none",
+      "--backend",
+      "CUDNN_ATTENTION"
+    ]
+  },
+  {
+    "name": "order-copy_only",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--operation",
+      "copy_only"
+    ]
+  },
+  {
+    "name": "order-arithmetic",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--operation",
+      "arithmetic"
+    ]
+  },
+  {
+    "name": "order-cast",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--operation",
+      "cast"
+    ]
+  },
+  {
+    "name": "noncontiguous",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--noncontiguous"
+    ]
+  },
+  {
+    "name": "causal",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--mask",
+      "none",
+      "--causal"
+    ]
+  },
+  {
+    "name": "profiler-DEFAULT",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--trace",
+      "profiler",
+      "--backend",
+      "DEFAULT"
+    ]
+  },
+  {
+    "name": "profiler-MATH",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--trace",
+      "profiler",
+      "--backend",
+      "MATH"
+    ]
+  },
+  {
+    "name": "noinstrumentation",
+    "args": [
+      "--shape",
+      "1",
+      "2",
+      "16",
+      "64",
+      "--trace",
+      "none"
+    ]
+  },
+  {
+    "name": "diagnostic-clearing",
+    "args": [
+      "--clear-error-nonacceptance"
+    ]
+  }
+]

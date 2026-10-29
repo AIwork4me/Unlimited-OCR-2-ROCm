@@ -1,0 +1,827 @@
+{
+  "run_id": "eaadf93f-28d4-4bb2-b575-04dce902596e",
+  "utc": "2026-10-28T08:17:54.678746+00:00",
+  "git_commit": "2d5555636869c9b1399738b056e402a37528d94f",
+  "script_sha256": "8023b7aabd3366a810d46226c1c9f385f86fe02d4277489aa85253eb7498ba7e",
+  "mode": "unadapted",
+  "entry": "official model.infer_multi, all PDF pages in ONE request",
+  "status": "FAIL",
+  "events": [
+    {
+      "utc": "2026-10-28T08:17:54.741729+00:00",
+      "elapsed": 0.063,
+      "stage": "official_pdf_reader_complete",
+      "pages": 15,
+      "dpi": 300,
+      "renderer": "1.27.2.2"
+    },
+    {
+      "utc": "2026-10-28T08:18:00.654102+00:00",
+      "elapsed": 5.985,
+      "stage": "model_load_begin"
+    },
+    {
+      "utc": "2026-10-28T08:18:16.637593+00:00",
+      "elapsed": 21.969,
+      "stage": "model_load_complete",
+      "hip_before_sync": 0,
+      "hip_after_sync": 0,
+      "synchronize": "OK",
+      "traceback": null
+    },
+    {
+      "utc": "2026-10-28T08:18:16.638593+00:00",
+      "elapsed": 21.969,
+      "stage": "official_infer_multi_begin",
+      "ordered_page_count": 15,
+      "one_document_request": true,
+      "crop_mode": false,
+      "max_new_tokens": 39321
+    },
+    {
+      "utc": "2026-10-28T08:18:16.654127+00:00",
+      "elapsed": 21.985,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0001.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.673988+00:00",
+      "elapsed": 22.0,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0002.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.688086+00:00",
+      "elapsed": 22.016,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0003.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.707165+00:00",
+      "elapsed": 22.032,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0004.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.723164+00:00",
+      "elapsed": 22.047,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0005.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.741167+00:00",
+      "elapsed": 22.063,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0006.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.757672+00:00",
+      "elapsed": 22.094,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0007.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.774672+00:00",
+      "elapsed": 22.11,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0008.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.792938+00:00",
+      "elapsed": 22.125,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0009.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.809308+00:00",
+      "elapsed": 22.141,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0010.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.827470+00:00",
+      "elapsed": 22.157,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0011.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.846176+00:00",
+      "elapsed": 22.172,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0012.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.864164+00:00",
+      "elapsed": 22.188,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0013.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.883346+00:00",
+      "elapsed": 22.219,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0014.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.901370+00:00",
+      "elapsed": 22.235,
+      "stage": "official_Image_open",
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0015.png",
+      "size": [
+        2481,
+        3508
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:16.917375+00:00",
+      "elapsed": 22.25,
+      "stage": "official_build_inputs_begin",
+      "page_count": 15,
+      "crop_mode": false
+    },
+    {
+      "utc": "2026-10-28T08:18:17.530727+00:00",
+      "elapsed": 22.86,
+      "stage": "official_build_inputs_complete",
+      "prompt_tokens": 4115,
+      "image_tokens": 4095,
+      "pixel_tensor_shapes": [
+        [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        [
+          15,
+          3,
+          1024,
+          1024
+        ]
+      ],
+      "spatial": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:17.530727+00:00",
+      "elapsed": 22.86,
+      "stage": "official_generate_begin",
+      "max_new_tokens": 39321,
+      "max_length": 131072,
+      "page_count_guard": true,
+      "DASH_topm": 16
+    },
+    {
+      "utc": "2026-10-28T08:18:17.576249+00:00",
+      "elapsed": 22.907,
+      "stage": "decoder_prefill_begin",
+      "input_ids_shape": [
+        1,
+        4115
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:18.236583+00:00",
+      "elapsed": 23.563,
+      "stage": "encoder_begin",
+      "encoder": "sam_model",
+      "page": 1,
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-28T08:18:18.760182+00:00",
+      "elapsed": 24.094,
+      "stage": "SDPA",
+      "number": 1,
+      "module": "sam_model",
+      "page": 1,
+      "qkv_shapes": [
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ]
+      ],
+      "qkv_strides": [
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ]
+      ],
+      "dtype": "torch.bfloat16",
+      "mask_shape": [
+        25,
+        12,
+        196,
+        196
+      ],
+      "hip_before": 0,
+      "requested": "DEFAULT",
+      "entry_stack": [
+        "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 703, in forward\n    x = blk(x)\n",
+        "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n",
+        "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n",
+        "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 767, in forward\n    x = self.attn(x)\n",
+        "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n",
+        "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n",
+        "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 836, in forward\n    x = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=attn_bias)\n",
+        "  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 91, in sdpa\n    if use_profile:call['entry_stack']=traceback.format_stack(limit=8)\n"
+      ],
+      "hip_after": 1,
+      "synchronize": "OK",
+      "operators": [
+        "aten.scaled_dot_product_attention.default"
+      ],
+      "profiler_operators": [
+        "aten::scaled_dot_product_attention",
+        "PythonDispatchMode",
+        "aten::pad",
+        "aten::constant_pad_nd",
+        "aten::empty",
+        "aten::fill_",
+        "aten::narrow",
+        "aten::slice",
+        "aten::as_strided",
+        "aten::copy_",
+        "aten::expand",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::transpose",
+        "aten::_efficient_attention_forward"
+      ],
+      "backend_observed": "EFFICIENT_ATTENTION"
+    },
+    {
+      "utc": "2026-10-28T08:18:18.793026+00:00",
+      "elapsed": 24.125,
+      "stage": "SDPA",
+      "number": 2,
+      "module": "sam_model",
+      "page": 1,
+      "qkv_shapes": [
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ],
+        [
+          25,
+          12,
+          196,
+          64
+        ]
+      ],
+      "qkv_strides": [
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ],
+        [
+          150528,
+          12544,
+          64,
+          1
+        ]
+      ],
+      "dtype": "torch.bfloat16",
+      "mask_shape": [
+        25,
+        12,
+        196,
+        196
+      ],
+      "hip_before": 0,
+      "requested": "DEFAULT",
+      "hip_after": 1,
+      "synchronize": "OK",
+      "operators": [
+        "aten.scaled_dot_product_attention.default"
+      ],
+      "backend_observed": "UNOBSERVED"
+    },
+    {
+      "utc": "2026-10-28T08:18:18.794023+00:00",
+      "elapsed": 24.125,
+      "stage": "encoder_exception",
+      "encoder": "sam_model",
+      "page": 1,
+      "traceback": "Traceback (most recent call last):\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 77, in watched\n    result=original(*args,**kwargs);checkpoint(name+'_complete');event('encoder_end',encoder=name,page=index,output_shape=list(result.shape),dtype=str(result.dtype),device=str(result.device));return result\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 703, in forward\n    x = blk(x)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 770, in forward\n    x = window_unpartition(x, self.window_size, pad_hw, (H, W))\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 890, in window_unpartition\n    x = x.permute(0, 1, 3, 2, 4, 5).contiguous().view(B, Hp, Wp, -1)\ntorch.AcceleratorError: CUDA error: invalid argument\nSearch for `hipErrorInvalidValue' in https://rocm.docs.amd.com/projects/HIP/en/latest/index.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing AMD_SERIALIZE_KERNEL=3\nDevice-side assertion tracking was not enabled by user.\n"
+    },
+    {
+      "utc": "2026-10-28T08:18:18.795024+00:00",
+      "elapsed": 24.125,
+      "stage": "pipeline_exception",
+      "traceback": "Traceback (most recent call last):\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 134, in <module>\n    with torch.inference_mode():raw,tokens=native.model.infer_multi(native.tokenizer,image_files=pages,save_results=False,max_new_tokens=39321,eval_mode=True,tps_interval=256)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 1118, in infer_multi\n    res = self.infer(tokenizer, prompt=prompt.replace('<image>', '') if prompt.count('<image>') == 1 else prompt,\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\utils\\_contextlib.py\", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 1087, in infer\n    res = self._uocr_generate(\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 107, in generate\n    result=original_generate(*args,**kwargs);report['generation']={k:v for k,v in result.items() if k not in ('text','token_ids','prompt_token_ids')};write_json(out/'token-ids.json',{'token_ids':result['token_ids'],'prompt_token_ids':result['prompt_token_ids']});event('official_generate_end',**report['generation']);return result\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\utils\\_contextlib.py\", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 1162, in _uocr_generate\n    out = self.model(input_ids=ids, past_key_values=cache, use_cache=True,\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 123, in forward\n    result=original_forward(*args,**kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 765, in forward\n    global_features_1 = sam_model(image_ori_p)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 77, in watched\n    result=original(*args,**kwargs);checkpoint(name+'_complete');event('encoder_end',encoder=name,page=index,output_shape=list(result.shape),dtype=str(result.dtype),device=str(result.device));return result\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 703, in forward\n    x = blk(x)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 770, in forward\n    x = window_unpartition(x, self.window_size, pad_hw, (H, W))\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 890, in window_unpartition\n    x = x.permute(0, 1, 3, 2, 4, 5).contiguous().view(B, Hp, Wp, -1)\ntorch.AcceleratorError: CUDA error: invalid argument\nSearch for `hipErrorInvalidValue' in https://rocm.docs.amd.com/projects/HIP/en/latest/index.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing AMD_SERIALIZE_KERNEL=3\nDevice-side assertion tracking was not enabled by user.\n"
+    }
+  ],
+  "sdpa_calls": 2,
+  "vision_calls": {
+    "sam_model": 1
+  },
+  "first_hip_error": {
+    "utc": "2026-10-28T08:18:18.760182+00:00",
+    "elapsed": 24.094,
+    "stage": "SDPA",
+    "number": 1,
+    "module": "sam_model",
+    "page": 1,
+    "qkv_shapes": [
+      [
+        25,
+        12,
+        196,
+        64
+      ],
+      [
+        25,
+        12,
+        196,
+        64
+      ],
+      [
+        25,
+        12,
+        196,
+        64
+      ]
+    ],
+    "qkv_strides": [
+      [
+        150528,
+        12544,
+        64,
+        1
+      ],
+      [
+        150528,
+        12544,
+        64,
+        1
+      ],
+      [
+        150528,
+        12544,
+        64,
+        1
+      ]
+    ],
+    "dtype": "torch.bfloat16",
+    "mask_shape": [
+      25,
+      12,
+      196,
+      196
+    ],
+    "hip_before": 0,
+    "requested": "DEFAULT",
+    "entry_stack": [
+      "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 703, in forward\n    x = blk(x)\n",
+      "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n",
+      "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n",
+      "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 767, in forward\n    x = self.attn(x)\n",
+      "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n",
+      "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n",
+      "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 836, in forward\n    x = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=attn_bias)\n",
+      "  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 91, in sdpa\n    if use_profile:call['entry_stack']=traceback.format_stack(limit=8)\n"
+    ],
+    "hip_after": 1,
+    "synchronize": "OK",
+    "operators": [
+      "aten.scaled_dot_product_attention.default"
+    ],
+    "profiler_operators": [
+      "aten::scaled_dot_product_attention",
+      "PythonDispatchMode",
+      "aten::pad",
+      "aten::constant_pad_nd",
+      "aten::empty",
+      "aten::fill_",
+      "aten::narrow",
+      "aten::slice",
+      "aten::as_strided",
+      "aten::copy_",
+      "aten::expand",
+      "aten::_scaled_dot_product_efficient_attention",
+      "aten::transpose",
+      "aten::_efficient_attention_forward"
+    ],
+    "backend_observed": "EFFICIENT_ATTENTION"
+  },
+  "production_files_changed": false,
+  "pdf_sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+  "render_run_id": "9e522d3f-faf7-4be1-aea7-b6dc8cf9d4e0",
+  "ordered_pages": [
+    {
+      "page": 1,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0001.png",
+      "sha256": "2ee115ad5b7406a9afd9a924b84efc3d00b02141c6eb338326cde7e03a40e5f5",
+      "bytes": 1507211
+    },
+    {
+      "page": 2,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0002.png",
+      "sha256": "5e894d6c394d9f768dd3181db53cfde1d5b96e40e0a4d6a8d89c7c8f158ea537",
+      "bytes": 297900
+    },
+    {
+      "page": 3,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0003.png",
+      "sha256": "5c25fadbdb1cacbd2153a0e7c6b3667e44d86de26b7f2037b5d56fc79ed899c7",
+      "bytes": 870174
+    },
+    {
+      "page": 4,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0004.png",
+      "sha256": "3e6dde22959ca9f8f722dc4fa7e95b75073df05b809d11365ce83645b4eaf8b4",
+      "bytes": 742538
+    },
+    {
+      "page": 5,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0005.png",
+      "sha256": "ab4cb74090d265cb79ee03b054e346545bf93c437eb7eea8a2e7a535c5158cea",
+      "bytes": 666211
+    },
+    {
+      "page": 6,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0006.png",
+      "sha256": "2254335b5dd0f1914f14b89b29aa844a86c43637b950deb625a1c2c3a513ce09",
+      "bytes": 568112
+    },
+    {
+      "page": 7,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0007.png",
+      "sha256": "918057545929f1af1c1d54514ef57122311e6a04b662eb113480135dd2ab8214",
+      "bytes": 610485
+    },
+    {
+      "page": 8,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0008.png",
+      "sha256": "65c6d4d9cfcf89c1a3e1ed53d3efade336aa8614a64c5dc0e9c418611b4f2a9e",
+      "bytes": 760086
+    },
+    {
+      "page": 9,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0009.png",
+      "sha256": "54e81c9ffabfdb4f8d0d2871a4ae93dc7c30e27abaa64028bcb108bc3de75ef0",
+      "bytes": 684877
+    },
+    {
+      "page": 10,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0010.png",
+      "sha256": "18874cab8dd37e1a3d712393d3f5f21fd624727297e9f1687a0398331a24c1db",
+      "bytes": 759323
+    },
+    {
+      "page": 11,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0011.png",
+      "sha256": "7ed3518e70100c9a92c23b382725dd8b1bfa5ab70ceb3a623e53cd00b70a9e92",
+      "bytes": 710134
+    },
+    {
+      "page": 12,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0012.png",
+      "sha256": "d5e29ecb5448b1bf4b88891b25fa27f9b5fdcec33e29a34a5868111f97e90f6b",
+      "bytes": 774885
+    },
+    {
+      "page": 13,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0013.png",
+      "sha256": "35172c17af379cfe86da1cb62f3fd5d7685b6e8dd5c0ac9dd19935dfc27c42aa",
+      "bytes": 635547
+    },
+    {
+      "page": 14,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0014.png",
+      "sha256": "720f56b48b49cd1527a8ab32db27828b9c59bc6c98e0e220855ca0e45bbd2e0a",
+      "bytes": 719797
+    },
+    {
+      "page": 15,
+      "path": "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\rendered\\pdf_ocr__ql0fiec\\page_0015.png",
+      "sha256": "aa11413717717e6bd59504506ce25316bce28aaf0b2dd066ebeab4607dc60189",
+      "bytes": 594179
+    }
+  ],
+  "page_count": 15,
+  "environment": {
+    "timestamp_utc": "2026-10-28T08:17:56.344672+00:00",
+    "platform": "Windows",
+    "windows_version": "10.0.26200",
+    "python": "3.10.20",
+    "machine": "AMD64",
+    "executable": "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+    "environment_id": "0d19fbb72f6f87cbfcd5ec9666883b1729f09f57b7b1329bbee3e8d43e8a3184",
+    "isolated_environment": true,
+    "installed_packages": {
+      "unlimited-ocr-2-rocm": "0.0.1.dev0",
+      "addict": "2.4.0",
+      "amd-torchvision-device-gfx1151": "0.27.0+rocm7.14.1",
+      "amd-torch-device-gfx1151": "2.12.0+rocm7.14.1",
+      "amd-torch-device-gfx115x": "2.12.0+rocm7.14.1",
+      "certifi": "2026.10.23",
+      "charset-normalizer": "3.5.2",
+      "colorama": "0.4.6",
+      "easydict": "1.13",
+      "einops": "0.8.2",
+      "exceptiongroup": "1.3.1",
+      "filelock": "3.29.1",
+      "fsspec": "2026.4.0",
+      "huggingface-hub": "0.36.0",
+      "idna": "3.20",
+      "iniconfig": "2.3.1",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.4.2",
+      "numpy": "2.2.6",
+      "packaging": "26.3",
+      "pillow": "12.0.0",
+      "pip": "26.2.2",
+      "pluggy": "1.7.0",
+      "psutil": "7.1.2",
+      "pygments": "2.21.0",
+      "pytest": "8.4.2",
+      "pyyaml": "6.0.3",
+      "regex": "2026.9.29",
+      "requests": "2.34.2",
+      "rocm": "7.14.1",
+      "rocm-bootstrap": "0.1.0",
+      "rocm-sdk-core": "7.14.1",
+      "rocm-sdk-device-gfx1151": "7.14.1",
+      "rocm-sdk-libraries": "7.14.1",
+      "safetensors": "0.8.0",
+      "setuptools": "81.0.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.21.4",
+      "tomli": "2.5.0",
+      "torch": "2.12.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "tqdm": "4.70.1",
+      "transformers": "4.52.1",
+      "triton-windows": "3.7.1.post27",
+      "typing-extensions": "4.15.0",
+      "urllib3": "2.8.0",
+      "wheel": "0.48.0"
+    },
+    "packages": {
+      "torch": "2.12.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1"
+    },
+    "environment": {},
+    "hip": "7.14.60850",
+    "rocm": "7.14.1",
+    "cuda_build": null,
+    "gpu_available": true,
+    "gpu": {
+      "name": "AMD Radeon(TM) 8060S Graphics",
+      "arch": "gfx1151",
+      "pytorch_visible_budget_bytes": 83954728960,
+      "properties": "_CudaDeviceProperties(name='AMD Radeon(TM) 8060S Graphics', major=11, minor=5, gcnArchName='gfx1151', total_memory=80065MB, multi_processor_count=20, uuid=30303030-3031-3936-3030-303030303030, pci_bus_id=196, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+      "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+    },
+    "windows_hardware": {
+      "gpu": [
+        {
+          "Name": "GameViewer Virtual Display Adapter",
+          "DriverVersion": "15.6.5.199"
+        },
+        {
+          "Name": "AMD Radeon(TM) 8060S Graphics",
+          "DriverVersion": "32.0.22032.6002"
+        }
+      ],
+      "cpu": {
+        "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+      },
+      "os": {
+        "Caption": "Microsoft Windows 11 \u5bb6\u5ead\u7248 \u4e2d\u6587\u7248",
+        "Version": "10.0.26200",
+        "BuildNumber": "26200",
+        "TotalVisibleMemorySize": 129654596,
+        "FreePhysicalMemory": 86870764
+      },
+      "machine_uuid_sha256": "6c01f2febebede491776762bda2e7f24e19575d076284576b76d53c3296a2fa7"
+    },
+    "memory": {
+      "process_rss_bytes": 499396608,
+      "process_peak_rss_bytes": 499396608,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 88987369472,
+      "system_memory_percent": 33.0,
+      "gpu_allocated_bytes": 0,
+      "gpu_reserved_bytes": 0,
+      "gpu_peak_allocated_bytes": 0,
+      "gpu_peak_reserved_bytes": 0,
+      "gpu_free_total_bytes": [
+        83786756096,
+        83954728960
+      ]
+    }
+  },
+  "hip_library_sha256": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+  "memory_after_load": {
+    "process_rss_bytes": 3536048128,
+    "process_peak_rss_bytes": 9561464832,
+    "system_total_bytes": 132766306304,
+    "system_available_bytes": 82649808896,
+    "system_memory_percent": 37.7,
+    "gpu_allocated_bytes": 6786129920,
+    "gpu_reserved_bytes": 6822035456,
+    "gpu_peak_allocated_bytes": 6786129920,
+    "gpu_peak_reserved_bytes": 6822035456,
+    "gpu_free_total_bytes": [
+      74024316928,
+      83954728960
+    ]
+  },
+  "traceback": "Traceback (most recent call last):\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 134, in <module>\n    with torch.inference_mode():raw,tokens=native.model.infer_multi(native.tokenizer,image_files=pages,save_results=False,max_new_tokens=39321,eval_mode=True,tps_interval=256)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 1118, in infer_multi\n    res = self.infer(tokenizer, prompt=prompt.replace('<image>', '') if prompt.count('<image>') == 1 else prompt,\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\utils\\_contextlib.py\", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 1087, in infer\n    res = self._uocr_generate(\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 107, in generate\n    result=original_generate(*args,**kwargs);report['generation']={k:v for k,v in result.items() if k not in ('text','token_ids','prompt_token_ids')};write_json(out/'token-ids.json',{'token_ids':result['token_ids'],'prompt_token_ids':result['prompt_token_ids']});event('official_generate_end',**report['generation']);return result\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\utils\\_contextlib.py\", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 1162, in _uocr_generate\n    out = self.model(input_ids=ids, past_key_values=cache, use_cache=True,\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 123, in forward\n    result=original_forward(*args,**kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\modeling_unlimitedocr.py\", line 765, in forward\n    global_features_1 = sam_model(image_ori_p)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 77, in watched\n    result=original(*args,**kwargs);checkpoint(name+'_complete');event('encoder_end',encoder=name,page=index,output_shape=list(result.shape),dtype=str(result.dtype),device=str(result.device));return result\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 703, in forward\n    x = blk(x)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 770, in forward\n    x = window_unpartition(x, self.window_size, pad_hw, (H, W))\n  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 890, in window_unpartition\n    x = x.permute(0, 1, 3, 2, 4, 5).contiguous().view(B, Hp, Wp, -1)\ntorch.AcceleratorError: CUDA error: invalid argument\nSearch for `hipErrorInvalidValue' in https://rocm.docs.amd.com/projects/HIP/en/latest/index.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing AMD_SERIALIZE_KERNEL=3\nDevice-side assertion tracking was not enabled by user.\n",
+  "wall_seconds": 24.141000000061467,
+  "native_kernels": [],
+  "production_vision_adapter_events": [],
+  "memory_final": {
+    "process_rss_bytes": 4593131520,
+    "process_peak_rss_bytes": 9561464832,
+    "system_total_bytes": 132766306304,
+    "system_available_bytes": 81584037888,
+    "system_memory_percent": 38.6,
+    "gpu_allocated_bytes": 6865922048,
+    "gpu_reserved_bytes": 7170162688,
+    "gpu_peak_allocated_bytes": 7104397312,
+    "gpu_peak_reserved_bytes": 7170162688,
+    "gpu_free_total_bytes": [
+      72873275392,
+      83954728960
+    ]
+  },
+  "exit_code": 1
+}

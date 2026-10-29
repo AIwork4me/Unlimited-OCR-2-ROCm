@@ -1,0 +1,43 @@
+import json, pathlib, sys, traceback, uuid, datetime
+root=pathlib.Path.cwd();sys.path.insert(0,str(root/'src'));sys.path.insert(0,str(root/'experiments/sdpa_rca'))
+import torch
+import torch.nn.functional as F
+from unlimited_ocr_2_rocm.model import load_model
+from unlimited_ocr_2_rocm.inference import run_native
+from reporting import sha256,write_json
+out=root/'.local/pdf-input-check';page=out/'page-001.png'
+report={'run_id':str(uuid.uuid4()),'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'purpose':'Read-only actual-PDF page diagnostic; production MATH adapter preserved','script_sha256':sha256(__file__),'pdf':json.loads((out/'pdf-metadata.json').read_text(encoding='utf-8')),'page_image_sha256':sha256(page),'captures':{}}
+try:
+    torch.manual_seed(7992)
+    native=load_model(pathlib.Path.home()/'.cache/unlimited-ocr2-phase1/models',offline=True)
+    write_json(out/'model-load.json',native.evidence)
+    original=F.scaled_dot_product_attention
+    def observed(*args,**kwargs):
+        event=native.vision[-1] if native.vision else {}
+        name=event.get('module')
+        if event.get('status')=='ATTEMPTED' and name in ('sam_model','vision_model') and name not in report['captures']:
+            q,k,v=args[:3]
+            mask=args[3] if len(args)>3 else kwargs.get('attn_mask')
+            dropout=args[4] if len(args)>4 else kwargs.get('dropout_p',0.)
+            causal=args[5] if len(args)>5 else kwargs.get('is_causal',False)
+            scale=kwargs.get('scale')
+            assert dropout==0.0
+            assert not torch.backends.cuda.flash_sdp_enabled() and not torch.backends.cuda.mem_efficient_sdp_enabled()
+            fixture={'q':q.detach().cpu(),'k':k.detach().cpu(),'v':v.detach().cpu(),'mask':None if mask is None else mask.detach().cpu(),'dropout_p':dropout,'is_causal':causal,'scale':scale}
+            path=out/(name+'-actual-input.pt');torch.save(fixture,path)
+            report['captures'][name]={'fixture':str(path),'fixture_sha256':sha256(path),'shape':[list(x.shape) for x in (q,k,v)],'gpu_stride':[list(x.stride()) for x in (q,k,v)],'dtype':str(q.dtype),'mask_shape':None if mask is None else list(mask.shape),'mask_dtype':None if mask is None else str(mask.dtype),'dropout_p':dropout,'is_causal':causal,'scale':scale}
+            write_json(out/'capture-report.json',report)
+            print('Captured',name,report['captures'][name],flush=True)
+        return original(*args,**kwargs)
+    F.scaled_dot_product_attention=observed
+    try:
+        result=run_native(native,[page],out/'ocr-page-001',max_new_tokens=4096)
+    finally:
+        F.scaled_dot_product_attention=original
+    report['inference_status']=result['status'];report['native_kernel_count']=result.get('native_kernel_count');report['tokens']=result.get('output_token_count');report['traceback']=result.get('traceback');report['vision_events']=result.get('vision_inputs')
+    report['status']='INFERENCE_ONLY' if result['status']=='INFERENCE_ONLY' and len(report['captures'])==2 else 'FAIL'
+except Exception:
+    report['status']='FAIL';report['traceback']=traceback.format_exc();print(report['traceback'],file=sys.stderr,flush=True)
+write_json(out/'capture-report.json',report)
+print(report['status'],'tokens',report.get('tokens'),'DASH kernels',report.get('native_kernel_count'),flush=True)
+raise SystemExit(0 if report['status']=='INFERENCE_ONLY' else 1)

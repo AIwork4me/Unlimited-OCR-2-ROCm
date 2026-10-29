@@ -1,0 +1,23 @@
+{
+  "reviewer": "fresh-context publication_review subagent",
+  "recorded_by": "root investigator from returned read-only review",
+  "scope": "PDF supplement, documentation and reproduction preparation before final checksum/delivery receipts",
+  "findings": {"Critical": 0, "Important": 0, "Minor": 0},
+  "export_records_verified": 113,
+  "original_text_sources_and_exact_transformations_verified": 112,
+  "inventory_entries_verified": 555,
+  "PDF_bytes": 1515878,
+  "PDF_sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+  "checks": [
+    "Published and retained original digests/sizes and transformations",
+    "Inventory publication bindings and source digests",
+    "Supplement text and PDF bytes scanned for literal user-directory roots and credential patterns",
+    "First unadapted SAM EFFICIENT HIP 0->1",
+    "540 HIP-clean adapted SDPA, 15 SAM/15 CLIP completions, 12 native DASH calls",
+    "13836 generated token IDs, 15 output segments, stop finish reason",
+    "Preparation snippet and both path-configured producer scripts compile",
+    "Current report and evidence links resolve; SHA256SUMS finalization was pending at review"
+  ],
+  "excluded": ["Edits", "GPU/model execution", "New test-suite claims", "PDF metadata parsing in base interpreter"],
+  "assessment": "Ready for publication after checksum/delivery finalization"
+}

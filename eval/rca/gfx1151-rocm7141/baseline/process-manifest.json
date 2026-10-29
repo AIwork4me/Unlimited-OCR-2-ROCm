@@ -1,0 +1,102 @@
+[
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\baseline\\default.json",
+      "--backend",
+      "DEFAULT"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 5.75,
+    "stdout_sha256": "0add4849a818fbeb565c6b89e0214391782a1bdb095a7e627d23f5a7e89b1f38",
+    "stderr_sha256": "186aaffe9295df299131d4f3b197b31fa451cfd61eb43e3fb7f84be5570ce5f8",
+    "case": "default",
+    "run_id": "3b502856-1295-4640-a134-e9498dabb4a8",
+    "status": "FAIL",
+    "backend_observed": "EFFICIENT_ATTENTION",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\baseline\\math.json",
+      "--backend",
+      "MATH"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 5.734000000054948,
+    "stdout_sha256": "4ccbd5629143bfcb015e475ad04258349c272f99edc73136ce1519d8d35b86dd",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "case": "math",
+    "run_id": "582d15ac-d22b-4b8c-8820-023a63a05cb0",
+    "status": "PASS",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\baseline\\flash_attention.json",
+      "--backend",
+      "FLASH_ATTENTION"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 3.0459999999729916,
+    "stdout_sha256": "2d9d0a767150d95bbaf964cc8cac58ecfa427ccebc032930a96025943360c7c4",
+    "stderr_sha256": "0f622df5cb149799c834de74206002162a6397d46e60e770674f4578290c4740",
+    "case": "flash_attention",
+    "run_id": "39e4b43a-9aeb-47a0-8317-f668c1eb809a",
+    "status": "UNSUPPORTED",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\baseline\\efficient_attention.json",
+      "--backend",
+      "EFFICIENT_ATTENTION"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 5.047000000020489,
+    "stdout_sha256": "998b5fc1c2c2319b7e72e85f23eb98ede06ab05aacc78ff6506d3650bec112ac",
+    "stderr_sha256": "186aaffe9295df299131d4f3b197b31fa451cfd61eb43e3fb7f84be5570ce5f8",
+    "case": "efficient_attention",
+    "run_id": "dbb8d293-33c5-4b35-965e-034f5382e05a",
+    "status": "FAIL",
+    "backend_observed": "EFFICIENT_ATTENTION",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\baseline\\cudnn_attention.json",
+      "--backend",
+      "CUDNN_ATTENTION"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 3.155999999959022,
+    "stdout_sha256": "fc4ee8ccbcddd7a4dcecaa12e6e456bde1b877d21e0f18a19774762a87c96dc9",
+    "stderr_sha256": "cf33fbc2d50a41e8b11be58549c3cbff1b7034bc8025da8587a9bede9b8c2a3e",
+    "case": "cudnn_attention",
+    "run_id": "5b50d0c5-cf99-4f2c-89b7-3c4923ff6757",
+    "status": "UNSUPPORTED",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  }
+]

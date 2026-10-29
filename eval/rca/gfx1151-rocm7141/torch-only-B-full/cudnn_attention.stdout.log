@@ -1,0 +1,3 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+UNSUPPORTED requested: CUDNN_ATTENTION observed: UNOBSERVED run: ca9a7b68-4a93-4552-a4fd-0e16d4bdb8ad numerics: None

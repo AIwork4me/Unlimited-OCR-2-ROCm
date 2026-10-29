@@ -1,0 +1,102 @@
+[
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-B-full\\default.json",
+      "--backend",
+      "DEFAULT"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 5.73499999998603,
+    "stdout_sha256": "eca80f3ccbbee55ea247857c7623aa658239538b73087dcbe73cb92fa4020e51",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "case": "default",
+    "run_id": "738b674f-32b1-43f8-8132-c49aeda6db94",
+    "status": "PASS",
+    "backend_observed": "EFFICIENT_ATTENTION",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-B-full\\math.json",
+      "--backend",
+      "MATH"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 6.280999999959022,
+    "stdout_sha256": "96bb350cd85ed27ebd19b33e0218c13c2da2fe59f6423d9fe0a57e5cd2985f5c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "case": "math",
+    "run_id": "f500e26f-9a5e-4c3f-9070-585302362a30",
+    "status": "PASS",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-B-full\\flash_attention.json",
+      "--backend",
+      "FLASH_ATTENTION"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 3.452999999979511,
+    "stdout_sha256": "088e48cfa16292e2546d32ec99681f4c32a3780103cc6731d3372e996f450d41",
+    "stderr_sha256": "0f622df5cb149799c834de74206002162a6397d46e60e770674f4578290c4740",
+    "case": "flash_attention",
+    "run_id": "f47c3282-d2e0-41b6-bf80-39d80cc71081",
+    "status": "UNSUPPORTED",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-B-full\\efficient_attention.json",
+      "--backend",
+      "EFFICIENT_ATTENTION"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 5.907000000006519,
+    "stdout_sha256": "4ed7c75a7b8e9489cbe89464851005de7bfff0baec3547b898e05e116c1b6ba0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "case": "efficient_attention",
+    "run_id": "012c3e6a-fc19-4b91-bab6-1712766e2172",
+    "status": "PASS",
+    "backend_observed": "EFFICIENT_ATTENTION",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\.codex\\v\\s7141\\Scripts\\python.exe",
+      "<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\experiments\\sdpa_rca\\repro_sdpa.py",
+      "--output",
+      ".local\\rca\\torch-only-B-full\\cudnn_attention.json",
+      "--backend",
+      "CUDNN_ATTENTION"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 3.98499999998603,
+    "stdout_sha256": "f27bb1c4452687def9c92a19551f37e57ab6c2680eb993bb8ffd882987270cb7",
+    "stderr_sha256": "cf33fbc2d50a41e8b11be58549c3cbff1b7034bc8025da8587a9bede9b8c2a3e",
+    "case": "cudnn_attention",
+    "run_id": "ca9a7b68-4a93-4552-a4fd-0e16d4bdb8ad",
+    "status": "UNSUPPORTED",
+    "backend_observed": "UNOBSERVED",
+    "fixture_sha256": "73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a",
+    "script_sha256": "b3967da0f9331313a6e6e168387ebf4725bdf4045856433a0543a06783cd9ac6"
+  }
+]

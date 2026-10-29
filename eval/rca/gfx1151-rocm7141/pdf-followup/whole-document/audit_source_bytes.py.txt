@@ -1,0 +1,14 @@
+import pathlib,hashlib,json,ast,datetime
+base=pathlib.Path('.local/pdf-pipeline-rca');observed=base/'upstream/official-README.md';data=observed.read_bytes()
+def git_blob(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+expected='8782f6e14af3fc0b052e2bfc245dd88e33756084'
+candidates=[('unchanged',data),('remove_one_terminal_LF',data[:-1] if data.endswith(b'\n') else data),('exactly_one_terminal_LF',data.rstrip(b'\n')+b'\n')]
+match=next(((label,value) for label,value in candidates if git_blob(value)==expected),None)
+assert match is not None,[(label,len(value),git_blob(value)) for label,value in candidates]
+label,canonical=match;target=base/'upstream/official-README.canonical.md';target.write_bytes(canonical)
+def function(text):
+    source=next(b.split('```',1)[0] for b in text.split('```python\n')[1:] if 'def pdf_to_images(' in b);return next(n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef) and n.name=='pdf_to_images')
+left=function(data.decode('utf-8'));right=function(canonical.decode('utf-8'));same=ast.dump(left,include_attributes=False)==ast.dump(right,include_attributes=False)
+assert same
+fn=base/'upstream/pdf_to_images.py';normalized=fn.read_text(encoding='utf-8').replace('\r\n','\n');report={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'remote_source_git_blob':expected,'observed_snapshot_git_blob':git_blob(data),'observed_snapshot_sha256':hashlib.sha256(data).hexdigest(),'canonical_snapshot_git_blob':git_blob(canonical),'canonical_snapshot_sha256':hashlib.sha256(canonical).hexdigest(),'local_snapshot_difference':label,'canonical_snapshot':str(target),'original_observed_snapshot_preserved':True,'reader_function_AST_identical':same,'manifest_function_sha256_kind':'UTF-8 normalized-LF source used for compilation; not a hash of the CRLF file bytes','function_source_lf_sha256':hashlib.sha256(normalized.encode()).hexdigest(),'saved_function_file_sha256':hashlib.sha256(fn.read_bytes()).hexdigest()}
+(base/'source-byte-audit.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,indent=2))

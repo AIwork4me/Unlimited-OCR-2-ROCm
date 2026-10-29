@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<USERPROFILE>\.codex\worktrees\windows-gfx1151-sdpa-rca\Unlimited-OCR-2-ROCm\experiments\sdpa_rca\repro_sdpa.py", line 194, in execute
+    result = q.to(torch.float8_e4m3fn)
+torch.AcceleratorError: CUDA error: invalid argument
+Search for `hipErrorInvalidValue' in https://rocm.docs.amd.com/projects/HIP/en/latest/index.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing AMD_SERIALIZE_KERNEL=3
+Device-side assertion tracking was not enabled by user.
+

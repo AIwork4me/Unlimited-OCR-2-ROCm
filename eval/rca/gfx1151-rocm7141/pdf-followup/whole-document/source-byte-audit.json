@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-28T08:37:42.470774+00:00",
+  "remote_source_git_blob": "8782f6e14af3fc0b052e2bfc245dd88e33756084",
+  "observed_snapshot_git_blob": "34054be064cc707f00471a5a59bf7cd85d4b42b9",
+  "observed_snapshot_sha256": "7e6409e5b993dc16d81d98aeaa6103fbe1f951ddbd24356e6cd5a0c539d1896b",
+  "canonical_snapshot_git_blob": "8782f6e14af3fc0b052e2bfc245dd88e33756084",
+  "canonical_snapshot_sha256": "43a888efc4069811d0f33d0ca248c2533aa206846d17b73d5b7d5e00029bd71e",
+  "local_snapshot_difference": "remove_one_terminal_LF",
+  "canonical_snapshot": ".local\\pdf-pipeline-rca\\upstream\\official-README.canonical.md",
+  "original_observed_snapshot_preserved": true,
+  "reader_function_AST_identical": true,
+  "manifest_function_sha256_kind": "UTF-8 normalized-LF source used for compilation; not a hash of the CRLF file bytes",
+  "function_source_lf_sha256": "61a853a242535357a400efbb6d4ea22f6cbfdd3082199f988f71c18753d94ee0",
+  "saved_function_file_sha256": "090a0566cb95974fa61cbc618fa69d3897b4d851e9a75286dd05feaaf160a5ac"
+}

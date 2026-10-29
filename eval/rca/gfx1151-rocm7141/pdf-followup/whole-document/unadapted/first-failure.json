@@ -1,0 +1,89 @@
+{
+  "utc": "2026-10-28T08:18:18.760182+00:00",
+  "elapsed": 24.094,
+  "stage": "SDPA",
+  "number": 1,
+  "module": "sam_model",
+  "page": 1,
+  "qkv_shapes": [
+    [
+      25,
+      12,
+      196,
+      64
+    ],
+    [
+      25,
+      12,
+      196,
+      64
+    ],
+    [
+      25,
+      12,
+      196,
+      64
+    ]
+  ],
+  "qkv_strides": [
+    [
+      150528,
+      12544,
+      64,
+      1
+    ],
+    [
+      150528,
+      12544,
+      64,
+      1
+    ],
+    [
+      150528,
+      12544,
+      64,
+      1
+    ]
+  ],
+  "dtype": "torch.bfloat16",
+  "mask_shape": [
+    25,
+    12,
+    196,
+    196
+  ],
+  "hip_before": 0,
+  "requested": "DEFAULT",
+  "entry_stack": [
+    "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 703, in forward\n    x = blk(x)\n",
+    "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n",
+    "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n",
+    "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 767, in forward\n    x = self.attn(x)\n",
+    "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1778, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n",
+    "  File \"<USERPROFILE>\\.codex\\worktrees\\phase1-windows-gfx1151\\Unlimited-OCR-2-ROCm\\.venv\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1789, in _call_impl\n    return forward_call(*args, **kwargs)\n",
+    "  File \"<USERPROFILE>\\AppData\\Local\\Temp\\uocr2-pdf-reviewed-2a6zcf2y\\transformers_modules\\9cf077c4b206e0e2a31879df937b0b0bcba3661c\\deepencoder.py\", line 836, in forward\n    x = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=attn_bias)\n",
+    "  File \"<USERPROFILE>\\.codex\\worktrees\\windows-gfx1151-sdpa-rca\\Unlimited-OCR-2-ROCm\\.local\\pdf-pipeline-rca\\trace_official_native.py\", line 91, in sdpa\n    if use_profile:call['entry_stack']=traceback.format_stack(limit=8)\n"
+  ],
+  "hip_after": 1,
+  "synchronize": "OK",
+  "operators": [
+    "aten.scaled_dot_product_attention.default"
+  ],
+  "profiler_operators": [
+    "aten::scaled_dot_product_attention",
+    "PythonDispatchMode",
+    "aten::pad",
+    "aten::constant_pad_nd",
+    "aten::empty",
+    "aten::fill_",
+    "aten::narrow",
+    "aten::slice",
+    "aten::as_strided",
+    "aten::copy_",
+    "aten::expand",
+    "aten::_scaled_dot_product_efficient_attention",
+    "aten::transpose",
+    "aten::_efficient_attention_forward"
+  ],
+  "backend_observed": "EFFICIENT_ATTENTION"
+}

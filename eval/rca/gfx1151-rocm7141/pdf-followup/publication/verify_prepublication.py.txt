@@ -1,0 +1,54 @@
+import datetime, hashlib, json, os, pathlib, re, shutil, subprocess, sys, urllib.parse
+root = pathlib.Path.cwd()
+out = root / 'eval/rca/gfx1151-rocm7141/pdf-followup'
+def sha(path): return hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
+manifest = json.loads((out / 'export-manifest.json').read_text(encoding='utf-8'))
+for row in manifest['records']:
+    assert sha(out / row['path']) == row['published_sha256'], row['path']
+    if row['source'].startswith('.local/'):
+        assert sha(root / row['source']) == row['original_sha256'], row['source']
+for p in out.rglob('*'):
+    if not p.is_file() or p.suffix == '.pdf': continue
+    text = p.read_bytes().decode('utf-8-sig')
+    assert not re.search(r'(?i)[a-z]:[\\/]+users[\\/]+', text), p
+    assert not re.search(r'(?:github_pat_|gh[pousr]_)[A-Za-z0-9_]{20,}', text), p
+pdf = out / 'input/Unlimited-OCR-2.pdf'
+assert pdf.read_bytes() == pathlib.Path(r'<USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\Unlimited-OCR-2.pdf').read_bytes()
+assert sha(pdf) == '1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444'
+
+# Authoritative new document links; archived historical documents preserve their old local links.
+docs = [root / 'README.md', *sorted((root/'docs/rca').glob('*.md')), out / 'README.md']
+missing = []
+for p in docs:
+    for link in re.findall(r'\]\(([^)]+)\)', p.read_text(encoding='utf-8-sig')):
+        if '://' in link or link.startswith('#'): continue
+        target = (p.parent / urllib.parse.unquote(link.split('#')[0])).resolve()
+        if not target.exists(): missing.append((str(p.relative_to(root)), link))
+assert not missing, missing
+
+# Execute only the documented preparation snippet and official CPU renderer in a separate local sandbox.
+guide = (root/'docs/rca/FULL_PDF_PIPELINE.md').read_text(encoding='utf-8')
+snippet = guide.split("@'\n", 1)[1].split("\n'@ |", 1)[0]
+check = root / '.local/github-pdf-export/replay-check'
+assert not check.exists()
+art = check / 'eval/rca/gfx1151-rocm7141/pdf-followup'
+for rel in ('input/Unlimited-OCR-2.pdf', 'whole-document/upstream/official-README.canonical.md', 'whole-document/render_official_pdf.py.txt', 'whole-document/trace_official_native.py.txt'):
+    target = art / rel; target.parent.mkdir(parents=True, exist_ok=True); shutil.copyfile(out/rel, target)
+prior_argv = sys.argv[:]
+try:
+    os.chdir(check); sys.argv = ['documented-prepare', str(root/'.local/github-pdf-export/unused-model-cache')]
+    exec(compile(snippet, 'FULL_PDF_PIPELINE.md:preparation', 'exec'), {'__name__': '__main__'})
+finally:
+    os.chdir(root); sys.argv = prior_argv
+renderer = pathlib.Path.home()/'.codex/v/pdf7141/Scripts/python.exe'
+run = subprocess.run([str(renderer), '.local/pdf-pipeline-rca/render_official_pdf.py'], cwd=check, capture_output=True, check=False)
+assert run.returncode == 0, run.stderr.decode('utf-8', errors='replace')
+actual = json.loads((check/'.local/pdf-pipeline-rca/render-manifest.json').read_text(encoding='utf-8'))
+original = json.loads((out/'whole-document/render-manifest.json').read_text(encoding='utf-8'))
+assert actual['page_count'] == 15 and actual['pdf_sha256'] == original['pdf_sha256']
+assert [p['sha256'] for p in actual['pages']] == [p['sha256'] for p in original['pages']]
+trace = (check/'.local/pdf-pipeline-rca/trace_official_native.py').read_text(encoding='utf-8')
+assert trace.count('native.model.infer_multi(') == 1 and 'image_files=pages' in trace
+report = {'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'status': 'PASS', 'export_original_published_pairs_verified': len(manifest['records']), 'original_PDF_exact_bytes': True, 'PDF_sha256': sha(pdf), 'source_and_new_report_links_valid': True, 'new_text_privacy_scan': 'PASS', 'documented_preparation_executed': True, 'configured_trace_compiles': True, 'official_CPU_renderer_rerun_exit': run.returncode, 'rendered_pages': 15, 'all_15_PNG_hashes_equal_original_run': True, 'GPU_rerun': 'NOT RUN during publication; original physical process evidence retained', 'archival_documents': 'Historical local reports/scripts may contain historical local links and require configured paths; final guide is authoritative'}
+(root/'.local/github-pdf-export/prepublication-verification.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
+print(json.dumps(report, indent=2))

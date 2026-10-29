@@ -1,0 +1,2 @@
+# Exact original Windows cp310-abi3-win_amd64 renderer wheel, isolated from model venv.
+pymupdf==1.27.2.2 --hash=sha256:09bb53f9486ccb5297030cbc2dbdae845ba1c3c5126e96eb2d16c4f118de0b5b

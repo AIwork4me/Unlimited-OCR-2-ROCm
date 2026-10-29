@@ -1,0 +1,16 @@
+import pathlib,zipfile,json,os,hashlib
+root=pathlib.Path(os.environ['LOCALAPPDATA'])/'pip/Cache/http-v2'; found=[]
+for p in root.rglob('*.body'):
+    if p.stat().st_size<10_000_000: continue
+    try:
+        with zipfile.ZipFile(p) as z:
+            wheel='torch-2.12.0+rocm7.14.1.dist-info/WHEEL'
+            if wheel not in z.namelist(): continue
+            metadata=z.read(wheel).decode()
+            entry={'wheel_tag_metadata':metadata,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'size':p.stat().st_size,'embedded_dlls':{}}
+            for name in ('torch/lib/aotriton_v2.dll','torch/lib/torch_hip.dll'):
+                if name in z.namelist():entry['embedded_dlls'][name]=hashlib.sha256(z.read(name)).hexdigest()
+            found.append(entry)
+    except zipfile.BadZipFile:pass
+pathlib.Path('.local/rca/wheel-body-verification.json').write_text(json.dumps(found,indent=2))
+print(json.dumps(found,indent=2))

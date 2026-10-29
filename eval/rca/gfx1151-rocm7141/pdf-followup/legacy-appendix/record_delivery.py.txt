@@ -1,0 +1,3 @@
+import pathlib
+p=pathlib.Path('docs/rca/PLAN.md');text=p.read_text(encoding='utf-8-sig').replace('- [ ] Task 5:', '- [x] Task 5:');p.write_text(text.rstrip()+'\n',encoding='utf-8')
+p=pathlib.Path('docs/rca/SDPA_ROOT_CAUSE.md');text=p.read_text(encoding='utf-8-sig');text+='\n[GitHub Issue, PR and publication verification](GITHUB_DELIVERY.md).\n';p.write_text(text,encoding='utf-8')

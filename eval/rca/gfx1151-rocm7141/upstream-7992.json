@@ -1,0 +1,30 @@
+{
+  "url": "https://github.com/ROCm/TheRock/issues/7992",
+  "scope": "Reading notes, not local hardware evidence",
+  "reporter_configuration": "gfx1201 / Radeon AI PRO R9700, Windows 10, Python 3.13.15, driver PRO 26.10.36",
+  "failing_torch": [
+    "2.12.0+rocm7.14.1",
+    "2.12.0+rocm10.0.0"
+  ],
+  "reported_passing_nightly": "torch 2.15.0a0+rocm10.1.0a20260908; ROCm core/libraries/device 10.1.0a20260908",
+  "discussion": [
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5591764777",
+      "paraphrase": "AMD maintainer asked for a current-nightly test, mentioning a recently addressed HIP/AOTriton hash-version pairing problem."
+    },
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5592002534",
+      "paraphrase": "Reporter obtained passing default/math/flash/efficient and ordering tests in a clean nightly environment, while noting that both torch and ROCm changed."
+    },
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5665913175",
+      "paraphrase": "Maintainer linked an available torch 2.12 / ROCm 10.2 nightly as a way to hold the major torch version fixed."
+    },
+    {
+      "url": "https://github.com/ROCm/TheRock/issues/7992#issuecomment-5681886576",
+      "paraphrase": "Maintainer closed the issue after the nightly resolution."
+    }
+  ],
+  "local_conclusion": "Lead only: no exact fixed binary or commit is established by this issue. Follow-up references #7315 and ROCm/pytorch #3568 provide more specific source history.",
+  "closed_date": "2026-09-15"
+}

@@ -103,6 +103,8 @@ itself and inspects markup without evaluating it. See [security notes](docs/SECU
 
 ## Evidence and scope
 
+The SDPA investigation now includes an [official Transformers full-PDF trace and reproduction guide](docs/rca/FULL_PDF_PIPELINE.md), the [exact original 15-page PDF test fixture](eval/rca/gfx1151-rocm7141/pdf-followup/input/Unlimited-OCR-2.pdf), and [complete OCR outputs/raw traces](eval/rca/gfx1151-rocm7141/pdf-followup/README.md). With the existing scoped GPU MATH adapter, one native request completes all 15 pages while retaining DASH. OCR accuracy for this paper is unscored; this diagnostic bypasses the CLI's five-image input gate without changing it.
+
 Phase 1 PASS requires A: environment, B: native model/kernels, C: OCR
 correctness, D: native ordered multi-page correctness and E: a second clean
 environment on the same real machine. Unexecuted checks are NOT TESTED.
@@ -122,3 +124,7 @@ See [limitations](docs/LIMITATIONS.md) and [contribution guidance](CONTRIBUTING.
 Wrapper license: MIT. Official model card: MIT; source includes additional
 DeepSeek/Hugging Face Apache-2.0 headers. Model files are downloaded separately.
 See [NOTICE](NOTICE) and the immutable upstream audit for attribution.
+
+## Windows gfx1151 SDPA root-cause evidence
+
+The [standalone SDPA investigation](docs/rca/SDPA_ROOT_CAUSE.md) reaches **L4** with an images-only A/B/A: the exact Windows wheel combines incompatible AOTriton runtime/image families. [Reproduce without OCR weights](experiments/sdpa_rca/README.md), inspect the [test matrix](docs/rca/TEST_MATRIX.md), and verify the [published evidence checksums](eval/rca/gfx1151-rocm7141/SHA256SUMS.txt). The production scoped MATH adapter remains in place.

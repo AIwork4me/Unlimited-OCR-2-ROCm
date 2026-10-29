@@ -1,0 +1,39 @@
+import pathlib,json,shutil,subprocess,hashlib,sys,datetime
+sys.path.insert(0,'experiments/sdpa_rca')
+from reporting import write_json,sha256
+root=pathlib.Path.cwd();private=root/'.local/rca';out=private/'public-source'
+for directory in ('checks-final','review-regression'):
+    for p in (private/directory).rglob('*'):
+        if p.is_file() and p.suffix in ('.json','.log','.txt'):
+            target=out/p.relative_to(private);target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,target)
+for name in ('review-red.stdout.log','review-red.stderr.log','review-cases.json'):
+    shutil.copyfile(private/name,out/name)
+write_json(out/'review-red.json',{'purpose':'Expected failing pre-fix CPU regressions; NON-ACCEPTANCE','command':['python','-m','pytest','tests/unit/test_sdpa_rca_reporting.py','-q'],'observed_exit_code':1,'result':'3 expected failing regressions, 9 passed, 3 torch-optional skips','code_under_test_commit':'7fdadff','regression_definition_containing_commit':'302ba8a','stdout_original_sha256':sha256(private/'review-red.stdout.log'),'stderr_original_sha256':sha256(private/'review-red.stderr.log'),'note':'Definitions were subsequently normalized by Ruff. This record documents the observed pre-fix RED output; it is not a final acceptance result.'})
+p=out/'experiment-manifest.json';data=json.loads(p.read_text())
+follow=[]
+for path in sorted((out/'review-regression').glob('*.json')):
+    d=json.loads(path.read_text())
+    if 'backend_requested' in d:
+        follow.append({'path':path.relative_to(out).as_posix(),**{k:d.get(k) for k in ('run_id','utc','git_commit','script_sha256','reporting_sha256','fixture_sha256','backend_requested','backend_observed','status','acceptance','exit_code','numerical','arguments')},'environment_provenance':'provenance-torch-only-A-restored.json'})
+data['post_review_records']=follow;data['post_review_indexed_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();write_json(p,data)
+commits=subprocess.check_output(['git','rev-list','HEAD'],text=True).splitlines()
+paths=['experiments/sdpa_rca/repro_sdpa.py','experiments/sdpa_rca/reporting.py','experiments/sdpa_rca/collect_provenance.py','scripts/probe_vision_sdpa.py','scripts/smoke_single.py']
+lookup={}
+for commit in commits:
+    for path in paths:
+        r=subprocess.run(['git','show',f'{commit}:{path}'],capture_output=True)
+        if r.returncode==0:lookup.setdefault(hashlib.sha256(r.stdout).hexdigest(),{'commit':commit,'path':path,'url':f'https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/blob/{commit}/{path}'})
+needed=set()
+for p in out.rglob('*.json'):
+    d=json.loads(p.read_text(encoding='utf-8-sig'))
+    def scan(v):
+        if isinstance(v,dict):
+            for k,item in v.items():
+                if k in ('script_sha256','reporting_sha256') and isinstance(item,str):needed.add(item)
+                else:scan(item)
+        elif isinstance(v,list):
+            for item in v:scan(item)
+    scan(d)
+assert not needed-set(lookup)
+write_json(out/'producer-sources.json',{'note':'Actual producer hashes mapped to containing commits, independently of producing HEAD cleanliness; historical reports are unchanged.','sources':[{'sha256':h,**lookup[h]} for h in sorted(needed)],'unmatched':[]})
+print('Historical children:',len(data['records']),'post-review children:',len(follow),'source digests:',len(needed))

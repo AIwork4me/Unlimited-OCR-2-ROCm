@@ -1,0 +1,18 @@
+import sys,pathlib,json,subprocess,os
+sys.path.insert(0,'experiments/sdpa_rca')
+from compare_backends import run_case
+from reporting import write_json
+root=pathlib.Path.cwd();out=root/'.local/rca/checks-final';out.mkdir(exist_ok=True)
+venv=pathlib.Path.home()/'.codex/worktrees/phase1-windows-gfx1151/Unlimited-OCR-2-ROCm'
+cpu=str(venv/'.venv-cpu/Scripts/python.exe');gpu=str(venv/'.venv/Scripts/python.exe')
+checks=[('ruff',[cpu,'-m','ruff','check','src','scripts','tests','experiments/sdpa_rca']),('format',[cpu,'-m','ruff','format','--check','src','scripts','tests','experiments/sdpa_rca']),('pytest-cpu',[cpu,'-m','pytest']),('mypy',[cpu,'-m','mypy','src']),('build',[cpu,'-m','build']),('pip-check',[cpu,'-m','pip','check']),('pytest-physical',[gpu,'-m','pytest'])]
+results=[]
+for name,command in checks:
+    if name=='pytest-physical':
+        os.environ['UOCR_RUN_GPU']='1';os.environ['UOCR_MODEL_CACHE']=str(pathlib.Path.home()/'.cache/unlimited-ocr2-phase1/models')
+    r=run_case(command,out/name,root);r['name']=name;r['git_commit']=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+    if name=='pytest-physical':r['environment_overrides']={k:os.environ[k] for k in ('UOCR_RUN_GPU','UOCR_MODEL_CACHE')}
+    results.append(r);write_json(out/'process-manifest.json',results)
+    print(name,r['exit_code'],flush=True)
+    print((out/(name+'.stdout.log')).read_text(encoding='utf-8')[-550:],flush=True)
+assert all(r['exit_code']==0 for r in results)
