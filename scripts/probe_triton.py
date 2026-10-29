@@ -23,7 +23,7 @@ def probe():
     import triton.language as tl
 
     target = triton.runtime.driver.active.get_current_target()
-    expected = "3.5.0" if sys.platform == "linux" else "3.7.1"
+    expected = "3.7.0" if sys.platform == "linux" else "3.7.1"
     if triton.__version__ != expected or target.backend != "hip" or target.arch != "gfx1151":
         raise RuntimeError(f"Unexpected Triton backend/version: {triton.__version__} / {target}")
 

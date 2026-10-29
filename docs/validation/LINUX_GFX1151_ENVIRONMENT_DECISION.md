@@ -13,8 +13,9 @@ ADAPTATION_MATRIX.md); no gfx1100 claim derives from this host.
 | --- | --- | --- |
 | Use the reviewed Windows candidate wheel on Linux? | **No** | `torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl` is a Windows-only, locally source-built artifact. It must not be installed on Linux and no Linux evidence may cite it. |
 | Upgrade the system ROCm 7.2.1 userland / kernel / drivers? | **No** | Read-only-host constraint; not needed — the officially published Linux `+rocm7.14` wheel bundles its ROCm/HIP runtime and needs only the inbox amdgpu kernel driver, which the matrix supports for this kernel. |
-| PyTorch source | Officially published **`torch-2.14.1+rocm7.14`** cp310 manylinux wheel from `https://download.pytorch.org/whl/rocm7.14` | Independently pinned AMD/PyTorch Linux artifact; wheel SHA-256 pinned below; distinct binary identity from any Windows wheel. |
-| Triton source | **`pytorch-triton-rocm==3.5.0`** (cp310) from the same official index | Official Linux Triton for the rocm7.14 wheel stack; `triton-windows==3.7.1.post27` remains the separate Windows pin. |
+| PyTorch source | Officially published **`torch-2.12.0+rocm7.2`** cp310 manylinux wheel from `https://download.pytorch.org/whl/rocm7.2` | Same torch 2.12.0 line as the Windows candidate (comparable semantics, different binary), first-listed PyTorch in the ROCm 7.14.1 matrix, bundles its own ROCm/HIP runtime so the untouched system stack suffices. |
+| Triton source | **`triton-rocm==3.7.0`** (cp310, module `triton`) from the same official index | Official Linux Triton required by the torch wheel; same 3.7 Triton line as Windows' `triton-windows==3.7.1.post27`. |
+| Rejected alternative | `torch-2.14.1+rocm7.14` (downloaded, SHA-verified, then discarded) | Its `rocm==7.14.*` + `triton-rocm~=3.8.0` dependencies are published only on AMD's own pip index, unreachable from this host; not installable offline-from-PyPI. |
 | Python | CPython **3.10** (venv) | Repository-supported interpreter (`requires-python >=3.10,<3.11`); matches the Windows Phase-1 evidence's interpreter so fixture/CLI behavior is comparable. Deviation from the ROCm 7.14.1 matrix's example list (3.11–3.14) recorded below. |
 | Environment location | `../envs/linux-gfx1151-rocm` venv outside the repository; model cache `../hf-cache` | No global packages touched; no repo-tree pollution; retained short paths per the runtime-cache convention. |
 | Attention/precision policy | **MATH default** for vision SDPA (scoped wrapper), BF16 parameters, eager decoder attention with original DASH Triton enabled | Unchanged reviewed semantics; no AUTO switch; zero silent fallback. |
@@ -24,8 +25,8 @@ ADAPTATION_MATRIX.md); no gfx1100 claim derives from this host.
 
 | Artifact | Identity |
 | --- | --- |
-| `torch-2.14.1+rocm7.14-cp310-cp310-manylinux_2_28_x86_64.whl` | SHA-256 `7e803db5a702e3321ae43d03ea0439c7c422642507df048663a1acc0ec1a7daf` |
-| `pytorch_triton_rocm-3.5.0-cp310-cp310-linux_x86_64.whl` | SHA-256 `f2ea8cb272afcdb8b08a85eb947ed01d0921a56b26aee8648c6d1de1aaf4db08` |
+| `torch-2.12.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl` (6,176,896,129 B, runtime bundled) | SHA-256 `099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6` |
+| `triton_rocm-3.7.0-cp310-cp310-linux_x86_64.whl` (315,212,279 B) | SHA-256 `b7a9e90ceae67668202958f7b180d51421df441dc73ae100b89cf0aa19e0b71e` |
 | model snapshot | `baidu/Unlimited-OCR-2` @ `9cf077c4b206e0e2a31879df937b0b0bcba3661c`, all file/weight SHA-256 per `src/unlimited_ocr_2_rocm/upstream-lock.json` |
 | native deps | `requirements/native.txt` unchanged (transformers 4.52.1, huggingface-hub 0.36.0, tokenizers 0.21.4, …) |
 | full environment freeze | `requirements/linux-cp310.lock.txt` (generated from the installed venv, recorded with the run evidence) |
@@ -38,18 +39,21 @@ contract must all pass on this host; matrix listing alone proves nothing.
 
 ## Known deviations and residual risks (explicit)
 
-1. **ROCm matrix example-list deviation.** AMD's docs-7.14.1 compatibility
-   matrix lists PyTorch 2.12.0/2.11.0/2.10.0 (Python 3.11–3.14) for the
-   framework stack; the officially published Linux `rocm7.14` wheel index
-   offers 2.14.x (cp310–cp314) and 2.15.0 (cp311/312). We pin the officially
-   published 2.14.1 cp310 wheel and re-validate everything physically instead
-   of assuming matrix equivalence. Wheel bytes are the identity, not the
-   version string.
-2. **System ROCm userland (7.2.1) ≠ wheel runtime (7.14).** Only the wheel's
-   bundled runtime is exercised by the venv; system `rocminfo` (7.2.1) is used
-   solely for host enumeration. Any future global upgrade is out of scope.
-3. **Triton line differs across platforms.** Linux uses pytorch-triton-rocm
-   3.5.0; Windows uses triton-windows 3.7.1.post27. DASH kernel identity is
+1. **Wheel-line choice within the matrix.** AMD's docs-7.14.1 compatibility
+   matrix lists PyTorch 2.12.0/2.11.0/2.10.0; we pin the officially published
+   torch 2.12.0+rocm7.2 cp310 wheel (first-listed matrix version, and the same
+   2.12.0 line as the reviewed Windows candidate). The published 7.14-line
+   wheels (2.14.x) are newer than the matrix list and depend on AMD-index-only
+   packages; they were downloaded, hash-verified, and set aside. Wheel bytes
+   are the identity, not the version string; everything is re-validated
+   physically regardless.
+2. **System ROCm userland (7.2.1) vs wheel runtime (7.2).** The wheel bundles
+   its own ROCm/HIP 7.2 libraries; system `rocminfo` (7.2.1) is used solely
+   for host enumeration and matches the same 7.2 generation. Any future global
+   upgrade is out of scope.
+3. **Triton artifacts differ across platforms.** Linux uses triton-rocm 3.7.0;
+   Windows uses triton-windows 3.7.1.post27 (same 3.7 line, separately built
+   and pinned). DASH kernel identity is
    pinned by the frozen upstream source hashes (`dash_attention.py`,
    `sparse_gather_e2e_triton.py` per the upstream lock), which are identical on
    both platforms — kernel *source* parity holds; kernel *compiler/runtime*

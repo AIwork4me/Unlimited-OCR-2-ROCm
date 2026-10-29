@@ -6,9 +6,10 @@
   "scope": {
     "documents": 420,
     "pages": 3135,
-    "archive_locally_verified": "409 documents / 3051 pages",
-    "gated_not_acquired": "11 SlideVQA decks / 84 pages",
-    "denominator_rule": "full 420-document denominator retained; missing gated pages are reported as acquisition-blocked inputs, never silently dropped"
+    "archive_locally_verified": "409 documents / 3051 pages (modelscope archive, prior task)",
+    "local_data_note": "2026-10-29: ../Data/MPDocBench/images holds all 420 document directories with exactly 3,135 page images (665 MiB), and ../Data/SlideVQA/data holds the 12 gated test parquet shards whose SHA-256 all match benchmark-lock.json. The local 420/3135 counts reconcile with the official public release; per-document identity reconciliation of the 11 SlideVQA decks / 84 pages (JPEG serialization parity) is still required before any full-scope run.",
+    "gated_not_acquired": null,
+    "denominator_rule": "full 420-document denominator retained; every page accounted as inferred, failed, or not-yet-acquired"
   },
   "run_binding": [
     "eval/benchmarks/benchmark-lock.json dataset revision + manifest hashes",

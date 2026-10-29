@@ -102,9 +102,9 @@ def linux_valid():
         "platform": "Linux",
         "python": "3.10.20",
         "machine": "x86_64",
-        "packages": {"torch": "2.14.1+rocm7.14"},
-        "hip": "7.14.60850",
-        "rocm": "7.14",
+        "packages": {"torch": "2.12.0+rocm7.2"},
+        "hip": "7.2.53211",
+        "rocm": "7.2",
         "cuda_build": None,
         "gpu_available": True,
         "gpu": {"name": "AMD Radeon Graphics", "arch": "gfx1151"},
@@ -129,8 +129,8 @@ def test_accepts_linux_target_identity_and_full_arch_suffix():
         ("python", "3.12.3"),
         ("machine", "aarch64"),
         ("hip", None),
-        ("hip", "7.2.53211"),
-        ("rocm", "7.2.1"),
+        ("hip", "7.14.60850"),
+        ("rocm", "7.14"),
         ("cuda_build", "13.0"),
         ("gpu_available", False),
     ],
@@ -144,7 +144,7 @@ def test_linux_refuses_wrong_environment(field, bad):
 
 def test_linux_refuses_package_drift():
     report = linux_valid()
-    report["packages"]["torch"] = "2.12.0+rocm7.14.1"
+    report["packages"]["torch"] = "2.14.1+rocm7.14"
     with pytest.raises(RuntimeError):
         require_stack(report)
 

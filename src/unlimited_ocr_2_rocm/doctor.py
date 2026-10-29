@@ -23,15 +23,21 @@ STACK = {
 }
 
 # Primary Linux native profile: officially published AMD/PyTorch manylinux wheel
-# from https://download.pytorch.org/whl/rocm7.14 (torch-2.14.1+rocm7.14,
-# SHA-256 7e803db5a702e3321ae43d03ea0439c7c422642507df048663a1acc0ec1a7daf).
+# from https://download.pytorch.org/whl/rocm7.2 (torch-2.12.0+rocm7.2,
+# SHA-256 099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6).
+# The wheel bundles its ROCm/HIP runtime, so the untouched system userland
+# (7.2.1) and the inbox 6.17 OEM kernel driver are all that is required.
 # This artifact is independently pinned from the reviewed Windows source-built
-# wheel; neither validates the other. torchvision/torchaudio are not part of the
-# native model dependency set on Linux and are intentionally absent.
+# wheel (same 2.12.0 torch line, different platform and binary identity);
+# neither validates the other. The newer +rocm7.14 wheel line was rejected:
+# it depends on rocm==7.14.* / triton-rocm~=3.8.0 pip packages published only
+# on AMD's own index, which is not reachable from this host.
+# torchvision/torchaudio are not part of the native model dependency set on
+# Linux and are intentionally absent.
 LINUX_STACK = {
-    "torch": "2.14.1+rocm7.14",
+    "torch": "2.12.0+rocm7.2",
 }
-LINUX_ROCM = "7.14"
+LINUX_ROCM = "7.2"
 
 
 def environment_identity() -> str:
@@ -105,8 +111,8 @@ def _linux_stack_errors(report: dict[str, Any]) -> list[str]:
     for name, version in LINUX_STACK.items():
         if report.get("packages", {}).get(name) != version:
             errors.append(f"{name} must be {version}")
-    if report.get("rocm") != LINUX_ROCM or not str(report.get("hip", "")).startswith("7.14."):
-        errors.append(f"ROCm {LINUX_ROCM} wheel runtime with HIP 7.14.x required")
+    if report.get("rocm") != LINUX_ROCM or not str(report.get("hip", "")).startswith("7.2."):
+        errors.append(f"ROCm {LINUX_ROCM} wheel runtime with HIP 7.2.x required")
     if report.get("cuda_build") is not None:
         errors.append("NVIDIA CUDA build refused")
     if not report.get("gpu_available"):

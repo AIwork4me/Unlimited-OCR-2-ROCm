@@ -31,9 +31,10 @@ def native_dependency_pins() -> dict[str, str]:
     if sys.platform == "linux":
         return {
             "transformers": "4.52.1",
-            # Officially published AMD/PyTorch Linux Triton for the rocm7.14
-            # wheel stack; a separate artifact from triton-windows.
-            "pytorch-triton-rocm": "3.5.0",
+            # Officially published AMD/PyTorch Linux Triton for the rocm7.2
+            # wheel stack (triton-rocm, module triton); a separate artifact
+            # from triton-windows on the same 3.7 Triton line.
+            "triton-rocm": "3.7.0",
             "huggingface-hub": "0.36.0",
             "tokenizers": "0.21.4",
         }

@@ -78,6 +78,23 @@ dedicated VRAM and must be labeled as shared system memory in all evidence
 use the `HF_ENDPOINT=https://hf-mirror.com` mirror endpoint with unchanged
 revision pinning and SHA-256 verification against `upstream-lock.json`; the
 mirror serves the same git-LFS oids (verified against the lock before use).
+Single-stream throughput to the wheel host is ~1 MB/s; large wheels are
+fetched with parallel HTTP range requests and byte-verified afterwards.
+
+## Local evaluation data (provided on host, not re-downloaded)
+
+`../Data/` (outside the repository; copy completed 2026-10-29):
+
+- `MPDocBench/images/` — **420 document directories / 3,135 page images**
+  (665 MiB): full official public-release scope present locally.
+- `MarathonDocBench/images/` — **100 document directories / 18,272 page
+  images** (11,804,920,079 bytes): full scope present locally; counts exactly
+  reconcile with `benchmark-lock.json` (per-page checksum reconciliation
+  remains a pre-run gate).
+- `SlideVQA/data/test-0000[0-9]-of-00012.parquet` — all 12 gated test shards;
+  **all 12 SHA-256 match `benchmark-lock.json`** (verified). The 11 gated
+  MPDocBench decks also appear pre-serialized inside the 420-doc images tree;
+  JPEG-serialization parity still needs the formal reconciliation pass.
 
 ## Comparison with the AMD ROCm 7.14.1 official matrix
 
@@ -89,7 +106,7 @@ Source: AMD ROCm documentation, version selector `docs-7.14.1`
 | Ubuntu 24.04.4 with **OEM kernel 6.17** (or Ubuntu 26.04 GA) | Ubuntu 24.04.4 + `6.17.0-1033-oem` | ✅ exact |
 | Kernel driver: inbox driver of the supported Ubuntu version | in-tree `amdgpu` of 6.17 OEM | ✅ |
 | Windows 11 25H2 (Windows rows) | n/a (Linux runs are Linux-only evidence) | — |
-| PyTorch listed for 7.14.1: 2.12.0 / 2.11.0 / 2.10.0, Python 3.11–3.14 | pinned wheel `torch-2.14.1+rocm7.14` on CPython 3.10 | ⚠️ recorded deviation, see environment decision |
+| PyTorch listed for 7.14.1: 2.12.0 / 2.11.0 / 2.10.0, Python 3.11–3.14 | pinned wheel `torch-2.12.0+rocm7.2` on CPython 3.10 | ✅ torch version matches; Python 3.10 deviation recorded |
 
 Findings:
 
@@ -97,18 +114,21 @@ Findings:
    (Ubuntu 24.04.4 + OEM kernel 6.17, inbox amdgpu) for the Ryzen AI MAX+ 395
    family. No driver/kernel change is required or was made.
 2. The installed global ROCm userland (7.2.1) is older than the 7.14.x
-   matrix generation. It is not upgraded: the native environment instead uses
-   the officially published `+rocm7.14` wheel stack with its bundled runtime,
-   keeping the global system untouched. `rocminfo` from 7.2.1 already enumerates
-   gfx1151 correctly, which is how the hardware was confirmed.
+   matrix generation. It is not upgraded: the native environment uses the
+   officially published `torch-2.12.0+rocm7.2` wheel, which bundles its own
+   ROCm/HIP runtime, keeping the global system untouched. `rocminfo` from 7.2.1
+   already enumerates gfx1151 correctly, which is how the hardware was
+   confirmed.
 3. The ROCm 7.14.1 matrix lists PyTorch 2.12.0/2.11.0/2.10.0 on Python
-   3.11–3.14; the officially published Linux rocm7.14 wheel index itself
-   provides torch 2.14.x (cp310–cp314) and 2.15.0 (cp311/cp312). The chosen
-   cp310 2.14.1 wheel is an officially published AMD/PyTorch Linux artifact,
-   byte-identity pinned by SHA-256; the deviation from the matrix's example
-   list is recorded explicitly in the environment decision document and is
-   re-validated physically on this host (doctor/BF16/Triton/DASH) rather than
-   assumed from the matrix.
+   3.11–3.14. The pinned Linux wheel is torch **2.12.0+rocm7.2** cp310 — the
+   first-listed matrix PyTorch version on the project-supported CPython 3.10,
+   byte-identity pinned by SHA-256. The published 7.14-line wheels (2.14.x)
+   were also downloaded and hash-verified but set aside: their
+   `rocm==7.14.*`/`triton-rocm~=3.8.0` dependencies exist only on AMD's own
+   pip index, which is unreachable from this host. The residual deviation
+   (CPython 3.10 vs the matrix's 3.11–3.14 example list) is recorded in the
+   environment decision and is re-validated physically on this host
+   (doctor/BF16/Triton/DASH) rather than assumed from the matrix.
 4. gfx1151 (Radeon 8060S) here is RDNA 3.5 and shares the family support row
    with gfx1150/1152/1153; no per-chip difference applies. NPU (aie2p) is out
    of scope for the native Transformers stack.

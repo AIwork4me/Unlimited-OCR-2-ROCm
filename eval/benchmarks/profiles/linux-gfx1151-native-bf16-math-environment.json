@@ -23,16 +23,16 @@
     "python": "3.10",
     "torch": {
       "distribution": "torch",
-      "version": "2.14.1+rocm7.14",
-      "wheel": "torch-2.14.1+rocm7.14-cp310-cp310-manylinux_2_28_x86_64.whl",
-      "sha256": "7e803db5a702e3321ae43d03ea0439c7c422642507df048663a1acc0ec1a7daf",
-      "index": "https://download.pytorch.org/whl/rocm7.14"
+      "version": "2.12.0+rocm7.2",
+      "wheel": "torch-2.12.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl",
+      "sha256": "099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6",
+      "index": "https://download.pytorch.org/whl/rocm7.2"
     },
     "triton": {
-      "distribution": "pytorch-triton-rocm",
-      "version": "3.5.0",
-      "wheel": "pytorch_triton_rocm-3.5.0-cp310-cp310-linux_x86_64.whl",
-      "sha256": "f2ea8cb272afcdb8b08a85eb947ed01d0921a56b26aee8648c6d1de1aaf4db08"
+      "distribution": "triton-rocm",
+      "version": "3.7.0",
+      "wheel": "triton_rocm-3.7.0-cp310-cp310-linux_x86_64.whl",
+      "sha256": "b7a9e90ceae67668202958f7b180d51421df441dc73ae100b89cf0aa19e0b71e"
     },
     "transformers": "4.52.1",
     "huggingface-hub": "0.36.0",
