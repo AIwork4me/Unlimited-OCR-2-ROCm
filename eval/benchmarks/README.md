@@ -5,6 +5,10 @@ image-acquisition fields. `manifests/*.jsonl` contains every official document
 ID and count, ordered page-path and annotation-record hashes. Marathon also
 contains a digest of the ordered remote per-page hashes. These are scope
 inventories, not a claim of downloaded/validated image bytes or completed runs.
+`acquisition/MPDocBench.json` separately records the actual archive verification:
+409 documents / 3,051 pages hashed, with 11 gated decks / 84 pages still absent.
+Its inert producer source is retained; the full local hash index and ZIP remain
+under `.b/`. `archive_page_hashes_sha256` is null for those gated documents.
 
 Generate complete per-page local manifests with `unlimited-ocr2-benchmark
 inventory`; keep those, downloaded datasets, environments and raw full runs

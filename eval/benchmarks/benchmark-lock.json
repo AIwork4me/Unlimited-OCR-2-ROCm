@@ -13,7 +13,9 @@
   },
   "datasets": {
     "MPDocBench": {
+      "archive_verified_pages": 3051,
       "documents": 420,
+      "gated_pages_not_acquired": 84,
       "ground_truth_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
       "ground_truth_size": 34593225,
       "image_archive_bytes": 600152009,
@@ -24,7 +26,7 @@
       "image_repository": "https://modelscope.cn/datasets/zhoubb/MPDocBench",
       "pages": 3135,
       "revision": "4e5aee32280febb7b0844237ba087f837e3c8905",
-      "scope_sha256": "4fb8692dae9f6a741ee410c39fb8593ce5b904fbf765a666655c59efbfedfc7a",
+      "scope_sha256": "785f18884dc586aa836f096dcba7c96c1fd0cc50a6dae9f62aabb0152d4bdcc8",
       "slidevqa": {
         "document_ids": [
           "pptSlides_eng_1e8e2f71",
@@ -59,7 +61,7 @@
           "data/test-00011-of-00012.parquet": "32cd35ab3d4fc61296650fc623f648d6f7067ce77f72ec327dcbff3667f7c03c"
         }
       },
-      "status": "BLOCKED_SLIDEVQA_AND_LOCAL_IMAGE_ACQUISITION"
+      "status": "BLOCKED_84_GATED_SLIDEVQA_PAGES"
     },
     "MarathonDocBench": {
       "documents": 100,

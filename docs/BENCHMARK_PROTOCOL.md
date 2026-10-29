@@ -50,6 +50,15 @@ hashes and the audited downloader hash. Do not execute its mutable
 revision and explicitly pin Pillow's JPEG serialization. Full local image
 verification remains BLOCKED pending acquisition and complete reconciliation.
 
+The archive was subsequently acquired locally, its complete SHA256 verified,
+and **409 documents / 3,051 expected page bytes** hashed from the ZIP. The
+remaining **11 decks / 84 pages** exactly match that gated SlideVQA subset and
+were not acquired. The ZIP uses `<doc>/page_n.jpg` at its root; it must be
+mapped under local `dataset-root/images/` without changing the image bytes.
+Per-document ordered archive page-hash digests are in the scope JSONL; the
+complete local page-hash index stays outside Git. The acquisition receipt and
+inert producer source are under `eval/benchmarks/acquisition/`.
+
 The MPDocBench toolkit is Apache-2.0; ModelScope image-dataset metadata declares
 **CC-BY-NC-SA-4.0**, and the Qwen README restricts documents to research use.
 Marathon annotations/tool references are Apache-2.0, while its source-document

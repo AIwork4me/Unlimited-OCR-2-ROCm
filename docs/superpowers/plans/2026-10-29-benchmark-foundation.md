@@ -32,7 +32,7 @@ The existing inference adapter and all historical evidence stay unchanged.
 - [x] Write failing scorer adapter/fixture tests; import original scorer in a
   separate optional environment; retain actual dependency and CDM blockers.
 - [x] Write protocol, matrix, execution guide and G1–G5 readiness mapping.
-- [ ] Run all six CPU checks, review complete diff, fix findings, create PR and
+- [x] Run all six CPU checks, review complete diff, fix findings, create PR and
   inspect exact-head Windows/Ubuntu CI. Never merge or release.
 
 ## Review focus
@@ -48,3 +48,11 @@ needed. Existing user files were backed up under ignored `.migration/benchmark-s
 and stashed as `benchmark-preserve-user-files` before switching from #5 to main.
 AGENTS.md is restored locally and excluded from this PR. Inline implementation;
 a fresh reviewer checks the complete branch before delivery.
+
+Delivered in PR #7. All six local checks pass (177 tests; five intentional
+skips); the fresh reviewer cleared the import-integrity fix. Implementation
+head `4c71757` passed both OS package jobs and both official-scorer integration
+jobs. Final metadata/evidence commit checks are verified separately at delivery.
+The acquired MPDocBench archive matches its official SHA256: 409 documents /
+3,051 pages hashed; 11 gated SlideVQA decks / 84 pages remain BLOCKED. No GPU
+benchmark, release, merge, wheel rebuild or upstream contact occurred.

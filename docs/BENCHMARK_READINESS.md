@@ -29,7 +29,7 @@ Only IDs/counts/digests, not GT content or images, enter Git.
 | Seven non-formula metric known answers | PASS on local CPU, original implementations | No GPU inference implied |
 | Original converter → matcher → evaluator fixture | PASS, seven perfect metrics; cross-page text/table, heading and page-attributed figure | Broader malformed-content and full-dataset coverage require real runs |
 | FormulaCDM / all-eight Overall | **BLOCKED / null** | `xelatex` absent; TeX/font/PDF closure and Windows POSIX-shell render compatibility unvalidated |
-| MPDocBench GT, complete scope and image source revisions | Frozen, including ModelScope archive SHA256 and gated SlideVQA revision/shards | Local payload acquisition, gated-deck access, JPEG serialization and complete checksum reconciliation |
+| MPDocBench GT, complete scope and image source revisions | Frozen; actual archive verified: **409 documents / 3,051 pages** | **11 gated SlideVQA decks / 84 pages** not acquired; JPEG serialization and full reconciliation pending |
 | Marathon GT, scope and remote page identities | Frozen | 11,805,490,064 image bytes not acquired or physically verified here |
 | Full GPU execution, both datasets | **NOT TESTED** | Adapter limits, all-eight scorer, full data and reviewed quality gates |
 

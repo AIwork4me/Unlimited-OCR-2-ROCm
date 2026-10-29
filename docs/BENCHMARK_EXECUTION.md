@@ -76,6 +76,10 @@ hashes from that revision. MPDocBench GT comes from the pinned Qwen commit,
 and its ModelScope archive revision/hash and gated SlideVQA revision/shards are
 now frozen in the lock. Acquire only those identities. The gated 11-deck subset
 and its JPEG serialization/checksum closure still need reconciliation.
+The inspected archive contains 409 documents / 3,051 pages and has document
+folders at its root: place those folders under the local `images/` directory.
+The other 84 pages belong to the gated 11-deck subset. The archive receipt is
+not a full 420-document readiness PASS.
 Do not execute the upstream downloader against mutable revisions without an
 audit. Never add acquired documents or annotations to Git.
 
