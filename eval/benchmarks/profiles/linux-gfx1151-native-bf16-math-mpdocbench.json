@@ -1,0 +1,26 @@
+{
+  "schema": "uocr2-benchmark-profile/dataset@1",
+  "profile_id": "linux-gfx1151-native-bf16-math-mpdocbench",
+  "environment_profile": "linux-gfx1151-native-bf16-math",
+  "dataset": "MPDocBench (public release, Tongyi-Zhiwen/Qwen-Doc official toolkit)",
+  "scope": {
+    "documents": 420,
+    "pages": 3135,
+    "archive_locally_verified": "409 documents / 3051 pages",
+    "gated_not_acquired": "11 SlideVQA decks / 84 pages",
+    "denominator_rule": "full 420-document denominator retained; missing gated pages are reported as acquisition-blocked inputs, never silently dropped"
+  },
+  "run_binding": [
+    "eval/benchmarks/benchmark-lock.json dataset revision + manifest hashes",
+    "frozen environment receipt from doctor/load manifests",
+    "raw + readable + normalized outputs per document per ledger",
+    "official eight metrics via the frozen scorer snapshot (SCORER_ONLY qualification preserved)"
+  ],
+  "status": "PREPARED_ONLY — no physical full-dataset execution claimed",
+  "prerequisites_not_met": [
+    "physical 1/2/3/5-page native regression PASS on this host",
+    "long-document policy review (docs/LONG_DOCUMENT_READINESS.md)",
+    "complete local image inventory incl. gated decks",
+    "FormulaCDM renderer closure"
+  ]
+}
