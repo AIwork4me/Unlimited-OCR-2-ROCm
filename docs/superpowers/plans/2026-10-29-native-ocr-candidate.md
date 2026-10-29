@@ -22,6 +22,8 @@
 - [x] Stage 2: Run unchanged single-page acceptance plus repeated Unicode recovery, then ordered native 2/3/5-page repeat and table acceptance. Preserve original Phase 1 evidence; stop experimental work if any case fails.
 - [x] Stage 3 (gated): Test default selection, explicit AUTO and invalid selection on CPU before implementing the scoped selector in `compat.py`/`model.py`. Add an experimental observation harness for real SDPA shapes/masks/operators, independent numerical reference and HIP/downstream checkpoints. Execute identical quality acceptance under AUTO.
 - [x] Stage 4 (gated): Run sequential paired MATH/AUTO measurements on the same environment and input hashes, with warmup, five warm samples, synchronized vision and end-to-end times, separate cold load, process/GPU/system memory and native DASH counts. Report median and maximum; five samples do not support reliable p95.
-- [ ] Delivery: run required CPU checks, review complete diff/evidence, document PASS/FAIL/NOT RUN and unsupported conditions, then open a draft experimental PR from current main without merging.
+- [x] Delivery: run required CPU checks, review complete diff/evidence, document PASS/FAIL/NOT RUN and unsupported conditions, then open a draft experimental PR from current main without merging.
 
 Implementation decisions: expose selection as a keyword argument on `load_model` and `wrap_vision_forward`, with MATH defaults; keep detailed tracing in the experiment so ordinary calls avoid profiling overhead. If an actual incompatibility blocks a stage, investigate and make only an evidence-supported minimal correction; do not weaken gates.
+
+Delivery: experimental draft PR #5, https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/pull/5. All four physical stages and the required local CPU checks passed; independent implementation/evidence review is clean. MATH stays the default. No merge, release or wheel redistribution.
