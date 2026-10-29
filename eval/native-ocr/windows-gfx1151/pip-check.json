@@ -1,0 +1,1 @@
+{"command": ["<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe", "-m", "pip", "check"], "prefix": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o", "base_prefix": "<USERPROFILE>\\AppData\\Roaming\\uv\\python\\cpython-3.10.20-windows-x86_64-none", "exit_code": 0, "stdout": "No broken requirements found.\n", "stderr": ""}

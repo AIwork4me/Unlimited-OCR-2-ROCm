@@ -8,9 +8,15 @@ from typing import Any
 
 
 def wrap_vision_forward(
-    forward: Callable[..., Any], name: str, events: list[dict[str, Any]]
+    forward: Callable[..., Any],
+    name: str,
+    events: list[dict[str, Any]],
+    *,
+    backend: str = "math",
 ) -> Callable[..., Any]:
-    """Select correct GPU math SDPA only during one vision forward call."""
+    """Scope vision SDPA selection; AUTO needs separate observed-backend evidence."""
+    if backend not in {"math", "auto"}:
+        raise ValueError("Vision SDPA must be math or auto")
 
     @wraps(forward)
     def scoped(*args: Any, **kwargs: Any) -> Any:
@@ -22,7 +28,7 @@ def wrap_vision_forward(
             raise RuntimeError("Vision compute tensors must remain on the physical GPU")
         event = {
             "module": name,
-            "backend": "GPU MATH SDPA",
+            "backend": "GPU MATH SDPA" if backend == "math" else "AUTO (unobserved selection)",
             "inputs": [
                 {
                     "shape": list(tensor.shape),
@@ -34,7 +40,12 @@ def wrap_vision_forward(
             "status": "ATTEMPTED",
         }
         events.append(event)
-        with sdpa_kernel(SDPBackend.MATH):
+        backends = (
+            SDPBackend.MATH
+            if backend == "math"
+            else [SDPBackend.FLASH_ATTENTION, SDPBackend.EFFICIENT_ATTENTION, SDPBackend.MATH]
+        )
+        with sdpa_kernel(backends):
             result = forward(*args, **kwargs)
             torch.cuda.synchronize()
         event["status"] = "PASS"

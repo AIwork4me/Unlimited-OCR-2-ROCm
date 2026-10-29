@@ -1,0 +1,83 @@
+.FFFFF                                                                   [100%]
+================================== FAILURES ===================================
+________ test_selection_is_scoped_and_restores_caller[math-expected1] _________
+
+fake_torch = ({'enabled': ['caller'], 'synchronizations': 0}, <test_vision_selection.fake_torch.<locals>.Tensor object at 0x00000234E067AAD0>)
+selection = 'math', expected = ['math']
+
+    @pytest.mark.parametrize(
+        ("selection", "expected"),
+        [(None, ["math"]), ("math", ["math"]), ("auto", ["flash", "efficient", "math"])],
+    )
+    def test_selection_is_scoped_and_restores_caller(fake_torch, selection, expected):
+        state, tensor = fake_torch
+        events = []
+    
+        def forward(value):
+            assert state["enabled"] == expected
+            return value
+    
+        kwargs = {} if selection is None else {"backend": selection}
+>       wrapped = wrap_vision_forward(forward, "sam_model", events, **kwargs)
+E       TypeError: wrap_vision_forward() got an unexpected keyword argument 'backend'
+
+tests\unit\test_vision_selection.py:61: TypeError
+________ test_selection_is_scoped_and_restores_caller[auto-expected2] _________
+
+fake_torch = ({'enabled': ['caller'], 'synchronizations': 0}, <test_vision_selection.fake_torch.<locals>.Tensor object at 0x00000234E1F679D0>)
+selection = 'auto', expected = ['flash', 'efficient', 'math']
+
+    @pytest.mark.parametrize(
+        ("selection", "expected"),
+        [(None, ["math"]), ("math", ["math"]), ("auto", ["flash", "efficient", "math"])],
+    )
+    def test_selection_is_scoped_and_restores_caller(fake_torch, selection, expected):
+        state, tensor = fake_torch
+        events = []
+    
+        def forward(value):
+            assert state["enabled"] == expected
+            return value
+    
+        kwargs = {} if selection is None else {"backend": selection}
+>       wrapped = wrap_vision_forward(forward, "sam_model", events, **kwargs)
+E       TypeError: wrap_vision_forward() got an unexpected keyword argument 'backend'
+
+tests\unit\test_vision_selection.py:61: TypeError
+____________________ test_auto_restores_caller_on_failure _____________________
+
+fake_torch = ({'enabled': ['caller'], 'synchronizations': 0}, <test_vision_selection.fake_torch.<locals>.Tensor object at 0x00000234E067B070>)
+
+    def test_auto_restores_caller_on_failure(fake_torch):
+        state, tensor = fake_torch
+    
+        def fail(value):
+            raise RuntimeError("attention failed")
+    
+        with pytest.raises(RuntimeError, match="attention failed"):
+>           wrap_vision_forward(fail, "vision_model", [], backend="auto")(tensor)
+E           TypeError: wrap_vision_forward() got an unexpected keyword argument 'backend'
+
+tests\unit\test_vision_selection.py:75: TypeError
+______________ test_invalid_selection_fails_before_torch_import _______________
+
+    def test_invalid_selection_fails_before_torch_import():
+        with pytest.raises(ValueError, match="math.*auto"):
+>           wrap_vision_forward(lambda value: value, "sam_model", [], backend="flash")
+E           TypeError: wrap_vision_forward() got an unexpected keyword argument 'backend'
+
+tests\unit\test_vision_selection.py:81: TypeError
+_______________________ test_model_default_remains_math _______________________
+
+    def test_model_default_remains_math():
+>       assert inspect.signature(load_model).parameters["vision_sdpa"].default == "math"
+E       KeyError: 'vision_sdpa'
+
+tests\unit\test_vision_selection.py:85: KeyError
+=========================== short test summary info ===========================
+FAILED tests/unit/test_vision_selection.py::test_selection_is_scoped_and_restores_caller[math-expected1]
+FAILED tests/unit/test_vision_selection.py::test_selection_is_scoped_and_restores_caller[auto-expected2]
+FAILED tests/unit/test_vision_selection.py::test_auto_restores_caller_on_failure
+FAILED tests/unit/test_vision_selection.py::test_invalid_selection_fails_before_torch_import
+FAILED tests/unit/test_vision_selection.py::test_model_default_remains_math
+5 failed, 1 passed in 0.08s

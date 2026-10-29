@@ -1,0 +1,694 @@
+{
+  "native_entrypoint": "infer_multi",
+  "inputs": [
+    {
+      "path": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\tests\\fixtures\\page_1.png",
+      "sha256": "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e"
+    },
+    {
+      "path": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\tests\\fixtures\\page_2.png",
+      "sha256": "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625"
+    },
+    {
+      "path": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\tests\\fixtures\\page_3.png",
+      "sha256": "4aab8ecfb402dac49daf070704768e0ceeaab14bec572e07ee6c76310ed538d8"
+    },
+    {
+      "path": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\tests\\fixtures\\page_4.png",
+      "sha256": "fbbedcae51819976300ae30459c9b6e3dffc3c882b7aa2fb41d93e4b8a44d74e"
+    },
+    {
+      "path": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\tests\\fixtures\\page_5.png",
+      "sha256": "530773d30a2907a3644069bf80e3b7aec04f9f20f8c0cd8ccb1ce83ff96bed51"
+    }
+  ],
+  "memory_before": {
+    "process_rss_bytes": 7340466176,
+    "process_peak_rss_bytes": 9468686336,
+    "system_total_bytes": 132766306304,
+    "system_available_bytes": 90125684736,
+    "system_memory_percent": 32.1,
+    "gpu_allocated_bytes": 6865845760,
+    "gpu_reserved_bytes": 9451864064,
+    "gpu_peak_allocated_bytes": 9222443008,
+    "gpu_peak_reserved_bytes": 9451864064,
+    "gpu_free_total_bytes": [
+      68021571584,
+      83954728960
+    ]
+  },
+  "max_new_tokens": 5120,
+  "model": {
+    "status": "PASS",
+    "model_id": "baidu/Unlimited-OCR-2",
+    "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "code_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "source_and_weight_hashes": {
+      "configuration_deepseek_v2.py": "b8470dd616ba8745fce6e27b093aef73a098863cc891b2477dcf9326a36000f7",
+      "dash_attention.py": "960b460acd816df8e561e73dccd5683acb95445eddc723c4f0d6ed1f462b2f77",
+      "model.safetensors.index.json": "dc60a31ecb77eb03e166345d18cbe25bc71d2a19cc6fc089d8a9ac1c7f209671",
+      "special_tokens_map.json": "9e89493d7938e7710c524dbaff613c3648f0a018262417af78505128004e5cb4",
+      "tokenizer.json": "c55c165e32c5a67830362a53e1f548c8930dcc8469efa30ff3252a982799c589",
+      "generation_config.json": "dcd0479f3a12e5e4413d956197f8a4074408e4901834b38c7e036519134e05af",
+      "_sparse_base_impl.py": "86da9c5638704bb9338575040568a97b3e10820bbeb426f51c07e866f3423ccd",
+      "sparse_gather_e2e_triton.py": "58f1bc46093d47b00744970677e66bfbd7485a2d13810f46d13d867ceda13dd4",
+      "modeling_deepseekv2.py": "24a15dfd47578ab24a7a4d4e977dc5d7a23dfef0a2a4c4bf73fcf3e2ce7acaf2",
+      "config.json": "607d130a70d5af5a35329aa237acd68651f45504c62cc7ced981066f4e781126",
+      "sparse_gather_triton.py": "c3de717ffaca40240c665b8d645f15a9d1999feeabaa94beb35caad877c2f0f4",
+      "tokenizer_config.json": "ceba7d221f265cca4c98b5e0a1d48c10107270b7b29c12396610d6d0fd64b126",
+      "modeling_unlimitedocr.py": "f6df813cef23cc28b1daca40fd8cb20740d05a238e7b9dfa2334531fdcf39f1f",
+      "deepencoder.py": "419b63388c1645b9b72c716070cdca36cd0be6047049424dc75941d3a00aaf1f",
+      "packing_patch.py": "e60d842c210c9f1d6cd2ae328cf9127a75f7941a0cea2a8e9abc14662f770c6c",
+      "conversation.py": "ec7b6ce89bcda643de1f43269ffa66a7b2e65dc3ed30e427958f776546b4ba03",
+      "model-00001-of-00002.safetensors": "4c40b740f209fd7682040d4ebf19409208acde5c401ccd2dde426d0f41542f18",
+      "model-00002-of-00002.safetensors": "9490b82fa47f89e5110eb5577f8ab1b6694c12121905dbc086ddb10207a4ba0c"
+    },
+    "source_patch": null,
+    "environment": {
+      "timestamp_utc": "2026-10-29T04:57:12.981838+00:00",
+      "platform": "Windows",
+      "windows_version": "10.0.26200",
+      "python": "3.10.20",
+      "machine": "AMD64",
+      "executable": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "environment_id": "75d43181a970b135ae7949a514870ba3e1604d4f343a8e5091e9dbab4fbb3970",
+      "isolated_environment": true,
+      "installed_packages": {
+        "unlimited-ocr-2-rocm": "0.0.1.dev0",
+        "addict": "2.4.0",
+        "amd-torchvision-device-gfx1151": "0.27.0+rocm7.14.1",
+        "certifi": "2026.10.23",
+        "charset-normalizer": "3.5.2",
+        "colorama": "0.4.6",
+        "easydict": "1.13",
+        "einops": "0.8.2",
+        "filelock": "3.29.1",
+        "fsspec": "2026.4.0",
+        "huggingface-hub": "0.36.0",
+        "idna": "3.20",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.4.2",
+        "numpy": "2.2.6",
+        "packaging": "26.3",
+        "pillow": "12.0.0",
+        "pip": "26.2.2",
+        "psutil": "7.1.2",
+        "pyyaml": "6.0.3",
+        "regex": "2026.9.29",
+        "requests": "2.34.2",
+        "rocm": "7.14.1",
+        "rocm-bootstrap": "0.1.0",
+        "rocm-sdk-core": "7.14.1",
+        "rocm-sdk-device-gfx1151": "7.14.1",
+        "rocm-sdk-libraries": "7.14.1",
+        "safetensors": "0.8.0",
+        "setuptools": "81.0.0",
+        "sympy": "1.14.0",
+        "tokenizers": "0.21.4",
+        "torch": "2.12.0+rocm7.14.1",
+        "torchaudio": "2.11.0+rocm7.14.1",
+        "torchvision": "0.27.0+rocm7.14.1",
+        "tqdm": "4.70.1",
+        "transformers": "4.52.1",
+        "triton-windows": "3.7.1.post27",
+        "typing-extensions": "4.15.0",
+        "urllib3": "2.8.0",
+        "wheel": "0.48.0"
+      },
+      "packages": {
+        "torch": "2.12.0+rocm7.14.1",
+        "torchvision": "0.27.0+rocm7.14.1",
+        "torchaudio": "2.11.0+rocm7.14.1"
+      },
+      "environment": {
+        "TRITON_CACHE_DIR": "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\triton",
+        "HF_HUB_OFFLINE": "1"
+      },
+      "hip": "7.14.60850",
+      "rocm": "7.14.1",
+      "cuda_build": null,
+      "gpu_available": true,
+      "gpu": {
+        "name": "AMD Radeon(TM) 8060S Graphics",
+        "arch": "gfx1151",
+        "pytorch_visible_budget_bytes": 83954728960,
+        "properties": "_CudaDeviceProperties(name='AMD Radeon(TM) 8060S Graphics', major=11, minor=5, gcnArchName='gfx1151', total_memory=80065MB, multi_processor_count=20, uuid=30303030-3031-3936-3030-303030303030, pci_bus_id=196, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+        "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+      },
+      "windows_hardware": {
+        "gpu": [
+          {
+            "Name": "GameViewer Virtual Display Adapter",
+            "DriverVersion": "15.6.5.199"
+          },
+          {
+            "Name": "AMD Radeon(TM) 8060S Graphics",
+            "DriverVersion": "32.0.22032.6002"
+          }
+        ],
+        "cpu": {
+          "Name": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S          "
+        },
+        "os": {
+          "Caption": "Microsoft Windows 11 家庭版 中文版",
+          "Version": "10.0.26200",
+          "BuildNumber": "26200",
+          "TotalVisibleMemorySize": 129654596,
+          "FreePhysicalMemory": 97490920
+        },
+        "machine_uuid_sha256": "6c01f2febebede491776762bda2e7f24e19575d076284576b76d53c3296a2fa7"
+      },
+      "memory": {
+        "process_rss_bytes": 409706496,
+        "process_peak_rss_bytes": 409706496,
+        "system_total_bytes": 132766306304,
+        "system_available_bytes": 99880472576,
+        "system_memory_percent": 24.8,
+        "gpu_allocated_bytes": 0,
+        "gpu_reserved_bytes": 0,
+        "gpu_peak_allocated_bytes": 0,
+        "gpu_peak_reserved_bytes": 0,
+        "gpu_free_total_bytes": [
+          83786756096,
+          83954728960
+        ]
+      }
+    },
+    "native_dependencies": {
+      "transformers": "4.52.1",
+      "triton-windows": "3.7.1.post27",
+      "huggingface-hub": "0.36.0",
+      "tokenizers": "0.21.4"
+    },
+    "wrapper_source_hashes": {
+      "__init__.py": "6e73e42492b9ae3b81897f015d3c0e0c0e280c202f50ee6375a8513d1f013c57",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "_upstream\\__init__.py": "bc4567a25369bdc56080213ecddc5d2e9b147417d0f8e869d38dd9fdd99169c2",
+      "_upstream\\process_unlimitedOCR2.py": "fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782",
+      "cli.py": "2b1b29a7cab324dd365fe675f03dfc71dcef025416011821f47c47b3fcadb876",
+      "compat.py": "57144ea391f327fae43645601bc9a635b108cc69de8f9b1d04e37d7cbfe99432",
+      "config.py": "e90513526bb0f1d86ed9d75387a5730fca3e9d851720d528302fb7c63d6a1f93",
+      "doctor.py": "4900c132dfc539edd9dd729130bd96cc6f39703b718a20b374a78f53a97e3f99",
+      "inference.py": "1a815fd4886eda5628801d51fcc3d150fb8a2ede44ec980be60863cb24e9a85c",
+      "model.py": "885403a2c678d99347dae31ea74e046ddd6b58dc81ca4d2d1c7d826a11dc2ca4",
+      "output.py": "5c278f67e8de45028aa2795842948226ad67c4400b43ecbe4519110f2c207f33",
+      "repro.py": "d0701bc8e8aa0add1ae0cc2aae91812ec3737b57002d61a304f99c944b04904c"
+    },
+    "cold_load_seconds": 8.493630499928258,
+    "parameter_device": "cuda:0",
+    "parameter_dtype": "torch.bfloat16",
+    "memory_before_load": {
+      "process_rss_bytes": 452108288,
+      "process_peak_rss_bytes": 454385664,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 99786452992,
+      "system_memory_percent": 24.8,
+      "gpu_allocated_bytes": 0,
+      "gpu_reserved_bytes": 0,
+      "gpu_peak_allocated_bytes": 0,
+      "gpu_peak_reserved_bytes": 0,
+      "gpu_free_total_bytes": [
+        83786756096,
+        83954728960
+      ]
+    },
+    "memory_after_load": {
+      "process_rss_bytes": 3443322880,
+      "process_peak_rss_bytes": 9468686336,
+      "system_total_bytes": 132766306304,
+      "system_available_bytes": 93977661440,
+      "system_memory_percent": 29.2,
+      "gpu_allocated_bytes": 6786129920,
+      "gpu_reserved_bytes": 6822035456,
+      "gpu_peak_allocated_bytes": 6786129920,
+      "gpu_peak_reserved_bytes": 6822035456,
+      "gpu_free_total_bytes": [
+        74024316928,
+        83954728960
+      ]
+    },
+    "attention_dispatch": "mha_eager with official DASH enabled",
+    "runtime_compatibility": {
+      "vision_sdpa": "GPU MATH, scoped separately to SAM and CLIP forward",
+      "reason": "default SDPA leaves hipErrorInvalidValue and fails numerical reference",
+      "decoder_DASH_and_Triton": "unchanged",
+      "global_attention_settings": "restored after each vision call"
+    }
+  },
+  "output_token_count": 286,
+  "finish_reason": "upstream_tuple_no_finish_field",
+  "raw_sha256": "2f6390b8ff4962a50b2cd17fa93dbb20081b46524b5ea1d2c9ae53759b6403b2",
+  "raw_output": "<PAGE><BLOCK>text[57, 97, 185, 169]<FORK>Page 1\n<BLOCK>text[57, 240, 355, 310]<FORK>Document Atlas\n<BLOCK>text[56, 380, 235, 450]<FORK>Code 101\n<PAGE><BLOCK>text[57, 97, 189, 169]<FORK>Page 2\n<BLOCK>text[57, 238, 380, 310]<FORK>Document Boreal\n<BLOCK>text[56, 380, 238, 450]<FORK>Code 102\n<PAGE><BLOCK>text[57, 97, 189, 169]<FORK>Page 3\n<BLOCK>text[57, 238, 374, 310]<FORK>Document Cedar\n<BLOCK>text[56, 380, 238, 450]<FORK>Code 103\n<PAGE><BLOCK>text[57, 97, 189, 169]<FORK>Page 4\n<BLOCK>text[57, 238, 360, 310]<FORK>Document Delta\n<BLOCK>text[56, 380, 238, 450]<FORK>Code 104\n<PAGE><BLOCK>text[57, 97, 189, 169]<FORK>Page 5\n<BLOCK>text[57, 238, 383, 310]<FORK>Document Ember\n<BLOCK>text[56, 380, 238, 450]<FORK>Code 105",
+  "native_kernels": [
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    },
+    {
+      "name": "triton_gather_attention_e2e",
+      "query_shape": [
+        1,
+        10,
+        1375,
+        128
+      ],
+      "device": "cuda:0",
+      "dtype": "torch.bfloat16",
+      "synchronized": true
+    }
+  ],
+  "native_kernel_count": 12,
+  "correctness": {
+    "status": "PASS",
+    "threshold_max_cer": 0.02,
+    "input_page_count": 5,
+    "raw_page_markers": 5,
+    "content_page_count": 5,
+    "terminal_empty_marker": false,
+    "raw_marker_count_matches_input": true,
+    "page_count_match": true,
+    "no_substantive_preamble": true,
+    "ordered_page_content_match": true,
+    "pages": [
+      {
+        "page": 1,
+        "ground_truth": "Page 1\nDocument Atlas\nCode 101",
+        "normalized_truth": "Page1DocumentAtlasCode101",
+        "normalized_prediction": "Page1DocumentAtlasCode101",
+        "character_error_rate": 0.0,
+        "important_numbers_match": true,
+        "structure_valid": true,
+        "status": "PASS"
+      },
+      {
+        "page": 2,
+        "ground_truth": "Page 2\nDocument Boreal\nCode 102",
+        "normalized_truth": "Page2DocumentBorealCode102",
+        "normalized_prediction": "Page2DocumentBorealCode102",
+        "character_error_rate": 0.0,
+        "important_numbers_match": true,
+        "structure_valid": true,
+        "status": "PASS"
+      },
+      {
+        "page": 3,
+        "ground_truth": "Page 3\nDocument Cedar\nCode 103",
+        "normalized_truth": "Page3DocumentCedarCode103",
+        "normalized_prediction": "Page3DocumentCedarCode103",
+        "character_error_rate": 0.0,
+        "important_numbers_match": true,
+        "structure_valid": true,
+        "status": "PASS"
+      },
+      {
+        "page": 4,
+        "ground_truth": "Page 4\nDocument Delta\nCode 104",
+        "normalized_truth": "Page4DocumentDeltaCode104",
+        "normalized_prediction": "Page4DocumentDeltaCode104",
+        "character_error_rate": 0.0,
+        "important_numbers_match": true,
+        "structure_valid": true,
+        "status": "PASS"
+      },
+      {
+        "page": 5,
+        "ground_truth": "Page 5\nDocument Ember\nCode 105",
+        "normalized_truth": "Page5DocumentEmberCode105",
+        "normalized_prediction": "Page5DocumentEmberCode105",
+        "character_error_rate": 0.0,
+        "important_numbers_match": true,
+        "structure_valid": true,
+        "status": "PASS"
+      }
+    ]
+  },
+  "status": "PASS",
+  "vision_inputs": [
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            1,
+            1024,
+            16,
+            16
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            1,
+            1024,
+            16,
+            16
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            1,
+            1024,
+            16,
+            16
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            1,
+            1024,
+            16,
+            16
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "sam_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "module": "vision_model",
+      "backend": "GPU MATH SDPA",
+      "inputs": [
+        {
+          "shape": [
+            1,
+            3,
+            1024,
+            1024
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        },
+        {
+          "shape": [
+            1,
+            1024,
+            16,
+            16
+          ],
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "synchronized_wall_seconds": 15.2502000000095,
+  "memory_after": {
+    "process_rss_bytes": 7342096384,
+    "process_peak_rss_bytes": 9468686336,
+    "system_total_bytes": 132766306304,
+    "system_available_bytes": 90127425536,
+    "system_memory_percent": 32.1,
+    "gpu_allocated_bytes": 6865845760,
+    "gpu_reserved_bytes": 9451864064,
+    "gpu_peak_allocated_bytes": 9222452224,
+    "gpu_peak_reserved_bytes": 9451864064,
+    "gpu_free_total_bytes": [
+      68021571584,
+      83954728960
+    ]
+  }
+}

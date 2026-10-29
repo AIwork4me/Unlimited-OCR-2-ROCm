@@ -1,0 +1,7 @@
+<PAGE><BLOCK>text[57, 97, 184, 169]<FORK>Page 1
+<BLOCK>text[57, 240, 354, 310]<FORK>Document Atlas
+<BLOCK>text[56, 380, 235, 450]<FORK>Code 101
+<PAGE><BLOCK>text[57, 97, 189, 169]<FORK>Page 2
+<BLOCK>text[57, 240, 379, 310]<FORK>Document Boreal
+<BLOCK>text[56, 380, 238, 450]<FORK>Code 102
+<PAGE>

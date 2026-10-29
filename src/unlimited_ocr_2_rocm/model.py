@@ -56,7 +56,11 @@ def require_native_environment(environment: dict[str, str]) -> None:
                 raise RuntimeError(f"Unreviewed DASH environment override: {name}")
 
 
-def load_model(cache_dir: Path | None = None, offline: bool = False) -> NativeModel:
+def load_model(
+    cache_dir: Path | None = None, offline: bool = False, *, vision_sdpa: str = "math"
+) -> NativeModel:
+    if vision_sdpa not in {"math", "auto"}:
+        raise ValueError("Vision SDPA must be math or auto")
     import torch
 
     require_native_environment(dict(os.environ))
@@ -117,8 +121,13 @@ def load_model(cache_dir: Path | None = None, offline: bool = False) -> NativeMo
         "memory_after_load": memory_snapshot(),
         "attention_dispatch": "mha_eager with official DASH enabled",
         "runtime_compatibility": {
-            "vision_sdpa": "GPU MATH, scoped separately to SAM and CLIP forward",
-            "reason": "default SDPA leaves hipErrorInvalidValue and fails numerical reference",
+            "vision_sdpa": vision_sdpa,
+            "scope": "SAM and CLIP forward only",
+            "reason": (
+                "historical default SDPA fails; MATH is the accepted default"
+                if vision_sdpa == "math"
+                else "experimental AUTO; actual fused execution requires separate evidence"
+            ),
             "decoder_DASH_and_Triton": "unchanged",
             "global_attention_settings": "restored after each vision call",
         },
@@ -126,7 +135,9 @@ def load_model(cache_dir: Path | None = None, offline: bool = False) -> NativeMo
     native = NativeModel(tokenizer, model, evidence)
     for name in ("sam_model", "vision_model"):
         encoder = getattr(model.model, name)
-        encoder.forward = wrap_vision_forward(encoder.forward, name, native.vision)
+        encoder.forward = wrap_vision_forward(
+            encoder.forward, name, native.vision, backend=vision_sdpa
+        )
     prefix = model.__class__.__module__.rsplit(".", 1)[0]
     kernel_module: Any = importlib.import_module(prefix + ".sparse_gather_e2e_triton")
     original = kernel_module.triton_gather_attention_e2e

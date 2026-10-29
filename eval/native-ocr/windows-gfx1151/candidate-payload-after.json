@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "matches_before": true,
+  "sha256": {
+    "torch/lib/torch.dll": "7aa176288e90a2ca4633988497957c446ae485dd00d7cde16754f66cf4a9ece6",
+    "torch/lib/uv.dll": "34070dfc8f6a634a6e4b0ec4eb746e6b429a62516f7dfd35ec68990cfb20f502",
+    "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_fuse.zip": "a39ac97dabc4d0a00a416c765d7fc3860ce853d7886c119820bab67cb86da4ec",
+    "torch/lib/libomp140.x86_64.dll": "9ab1cb787e52b2a36133899c01c1db1f876067d1471cd224ead85f40a8152b99",
+    "torch/lib/torch_cpu.dll": "bb0df531f59268ac4f2060947bfa733c271a3436be567766f5fd706d429a696a",
+    "torch/lib/c10_hip.dll": "d72a2f070dd02b4d976e5f8ced62ef0e8c9306f0a1e6f46d8832007f9f662317",
+    "torch/lib/dl.dll": "d9b32d65d724f8bbc60f9d3cbda81365b6ad1708575f51bd6658a1c6e43e1d58",
+    "torch/lib/torch_hip.dll": "12e3c174c04162593fa00bb969a5d6dcc6db3476613f403fcf7f3021d9b97a38",
+    "torch/lib/aotriton_v2.dll": "941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884",
+    "torch/lib/aotriton.images/amd-gfx115x/flash/attn_fwd.zip": "079e4b9dfbe6bd7a390f422d846ad13d611cdf9347ae8982c4005e655bfb526f",
+    "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_dk_dv.zip": "01bad38f513889da6192280be5b119ef2213bd751e21b0687e241d33c4738df6",
+    "torch/lib/aotriton.images/amd-gfx115x/flash/debug_simulate_encoded_softmax.zip": "e3da8744754348ac3adc6773fc81bab5af109c5c2abf6127bbe1a2bd13132cb6",
+    "torch/lib/c10.dll": "8b626ead2d87e78363f499915baf8b143e09d9a363da2e17cde23c30aa83ca27",
+    "torch/lib/torch_global_deps.dll": "75d5d0b652047a4f6da6aaa3a57556b846fda889b6bf1235f2b038ec3386c822",
+    "torch/lib/liblzma.dll": "710cd7fc72bffd5483167391331d55e9b22ac570709cb41eafbb23115b7c3453",
+    "torch/lib/caffe2_nvrtc.dll": "3646f3ae45cad5346d4c55a56a4c67245d360207985a46eee3452fdab5f63535",
+    "torch/lib/torch_python.dll": "f77d38901fd0612b2be54d64b9f2319709a70578b8b80f891cfdeeb1f23fd58f",
+    "torch/_C.cp310-win_amd64.pyd": "d92b15a1b2f8e0dcf7a00cddc9b08e262430ededc0e92bc9651c92753d092488",
+    "torch/lib/shm.dll": "f379c143406dba0e14369e8b7ad5a6bacbae32a48c7990b48f20defeebe84877",
+    "torch/lib/aotriton.images/amd-gfx115x/__signature__": "875f8cf66d6ae8088d7c66443a447bfe7f7108fb5a0b26fb7c662856b7197eed",
+    "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_preprocess.zip": "a7c1698a4298b92a91319254a29f328b197bdbf37e624187aaba70106749f771",
+    "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_dq.zip": "8d7de57a35296a3953442660115399495b921300a81f157eb62fc3191d7db52f"
+  }
+}

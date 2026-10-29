@@ -1,0 +1,86 @@
+[
+  {
+    "name": "locked-dependencies-retry",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "install",
+      "--no-deps",
+      "--find-links",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.worktrees\\phase1-windows-gfx1151\\.local\\wheels",
+      "--find-links",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\resume\\verified-python-wheels",
+      "-r",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\native-filtered.txt",
+      "--report",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\dependencies-install.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "candidate-install",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "install",
+      "--no-deps",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\out\\wheels\\torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "--report",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\candidate-install.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "triton-hash",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "install",
+      "--no-deps",
+      "--no-index",
+      "--find-links",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.worktrees\\phase1-windows-gfx1151\\.local\\wheels",
+      "--require-hashes",
+      "-r",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\requirements\\triton.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "wrapper-install",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "install",
+      "--no-deps",
+      "--no-build-isolation",
+      "-e",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "pip-check",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "freeze",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "exit_code": 0
+  }
+]

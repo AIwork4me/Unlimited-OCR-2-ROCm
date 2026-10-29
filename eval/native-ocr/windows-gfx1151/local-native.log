@@ -1,0 +1,9 @@
+Processing .\.b\wheels\amd_torchvision_device_gfx1151-0.27.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+Processing .\.b\wheels\rocm_sdk_core-7.14.1-py3-none-win_amd64.whl
+Processing .\.b\wheels\rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl
+Processing .\.b\wheels\rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl
+Processing .\.b\wheels\torchaudio-2.11.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+Processing .\.b\wheels\torchvision-0.27.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+Installing collected packages: torchaudio, rocm-sdk-libraries, rocm-sdk-device-gfx1151, rocm-sdk-core, amd-torchvision-device-gfx1151, torchvision
+
+Successfully installed amd-torchvision-device-gfx1151-0.27.0+rocm7.14.1 rocm-sdk-core-7.14.1 rocm-sdk-device-gfx1151-7.14.1 rocm-sdk-libraries-7.14.1 torchaudio-2.11.0+rocm7.14.1 torchvision-0.27.0+rocm7.14.1

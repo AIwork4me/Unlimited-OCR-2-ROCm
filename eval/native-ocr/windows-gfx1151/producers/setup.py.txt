@@ -1,0 +1,78 @@
+import email
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import zipfile
+
+root = Path.cwd()
+out = root / '.b/m'
+python = root / '.b/o/Scripts/python.exe'
+env = dict(os.environ, PYTHONUTF8='1', PYTHONIOENCODING='utf-8', TMP=str(out/'tmp'), TEMP=str(out/'tmp'), PIP_CACHE_DIR=str(root/'.local/cache/pip'), HF_HUB_OFFLINE='1', TRITON_CACHE_DIR=str(out/'triton'))
+wheel = root / '.b/out/wheels/torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl'
+def digest(p):
+    h=hashlib.sha256()
+    with p.open('rb') as f:
+        for b in iter(lambda:f.read(8*1024*1024), b''): h.update(b)
+    return h.hexdigest()
+assert digest(wheel) == '6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e'
+steps=[]
+def run(name,args):
+    command=[str(python),*map(str,args)]
+    print(name,flush=True)
+    with (out/(name+'.log')).open('w',encoding='utf-8') as log:
+        p=subprocess.run(command,cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT)
+    steps.append(dict(name=name,command=command,exit_code=p.returncode))
+    (out/'setup-steps.json').write_text(json.dumps(steps,indent=2),encoding='utf-8')
+    if p.returncode: raise RuntimeError(name+' failed')
+
+with zipfile.ZipFile(wheel) as z:
+    metadata=email.message_from_bytes(z.read(next(n for n in z.namelist() if n.endswith('.dist-info/METADATA'))))
+    members=set(z.namelist())
+    inventory={n:hashlib.sha256(z.read(n)).hexdigest() for n in members if n.endswith(('.dll','.pyd')) or n.startswith('torch/lib/aotriton.images/')}
+native=[p for p in (root/'.b/wheels').glob('*.whl') if not p.name.startswith(('torch-','amd_torch_device','rocm_sdk_devel'))]
+native_names=set()
+overlaps=[]
+meta=[]
+for p in [wheel,*native]:
+    with zipfile.ZipFile(p) as z:
+        m=email.message_from_bytes(z.read(next(n for n in z.namelist() if n.endswith('.dist-info/METADATA'))))
+        native_names.add(m['Name'].lower().replace('_','-'))
+        overlap=sorted(members.intersection(z.namelist())) if p!=wheel else []
+        assert not overlap, (p,overlap)
+        meta.append(dict(filename=p.name,sha256=digest(p),name=m['Name'],version=m['Version'],requires=m.get_all('Requires-Dist',[]),candidate_overlap=overlap))
+(out/'wheel-metadata.json').write_text(json.dumps(meta,indent=2),encoding='utf-8')
+filtered=[]
+for line in (root/'requirements/windows-cp310.lock.txt').read_text().splitlines():
+    name=line.split('==')[0].lower()
+    if line and name not in native_names and not name.startswith('amd-torch-device-'):
+        filtered.append(line)
+(out/'native-filtered.txt').write_text('\n'.join(filtered)+'\n',encoding='utf-8')
+if not (out/'installer.json').exists(): run('installer',['-m','pip','install','pip==26.2.2','--report',out/'installer.json'])
+if not (out/'native-install.json').exists(): run('local-native',['-m','pip','install','--no-deps',*native,'--report',out/'native-install.json'])
+run('locked-dependencies-retry',['-m','pip','install','--no-deps','--find-links',root/'.worktrees/phase1-windows-gfx1151/.local/wheels','--find-links',root/'.b/resume/verified-python-wheels','-r',out/'native-filtered.txt','--report',out/'dependencies-install.json'])
+run('candidate-install',['-m','pip','install','--no-deps',wheel,'--report',out/'candidate-install.json'])
+run('triton-hash',['-m','pip','install','--no-deps','--no-index','--find-links',root/'.worktrees/phase1-windows-gfx1151/.local/wheels','--require-hashes','-r',root/'requirements/triton.txt'])
+run('wrapper-install',['-m','pip','install','--no-deps','--no-build-isolation','-e',root])
+run('pip-check',['-m','pip','check'])
+site=python.parents[1]/'Lib/site-packages'
+observed={n:digest(site/n) for n in inventory}
+assert observed==inventory
+(out/'candidate-payload.json').write_text(json.dumps(dict(status='PASS',wheel_sha256=digest(wheel),native_and_image_sha256=observed,excluded_overlays=['amd-torch-device-gfx1151','amd-torch-device-gfx115x']),indent=2),encoding='utf-8')
+run('freeze',['-m','pip','freeze'])
+# Copy only the existing verified immutable snapshot, preserving its old location.
+source=Path.home()/'.cache/unlimited-ocr2-phase1/models/models--baidu--Unlimited-OCR-2/snapshots/9cf077c4b206e0e2a31879df937b0b0bcba3661c'
+target=root/'.b/h/models--baidu--Unlimited-OCR-2/snapshots'/source.name
+target.mkdir(parents=True,exist_ok=False)
+lock=json.loads((root/'src/unlimited_ocr_2_rocm/upstream-lock.json').read_text(encoding='utf-8-sig'))
+records=[]
+for name,expected in {**lock['files'],**lock['weights']}.items():
+    assert digest(source/name)==expected
+    shutil.copy2(source/name,target/name)
+    assert digest(target/name)==expected
+    records.append(dict(name=name,sha256=expected,source=str(source/name),destination=str(target/name)))
+(out/'cache-copy.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+print('SETUP PASS',flush=True)

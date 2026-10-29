@@ -1,0 +1,3 @@
+<PAGE><BLOCK>table[41, 118, 959, 468]<FORK><table><tr><td>Item</td><td>Quantity</td><td>Price</td></tr><tr><td>Apples</td><td>3</td><td>12.50</td></tr></table>
+<PAGE><BLOCK>append_table[41, 118, 959, 468]<FORK><table><tr><td>Item</td><td>Quantity</td><td>Price</td></tr><tr><td>Oranges</td><td>5</td><td>8.00</td></tr></table>
+<PAGE>

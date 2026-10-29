@@ -1,0 +1,75 @@
+import json
+from pathlib import Path
+
+root=Path.cwd()
+r=json.loads((root/'.b/m/result.json').read_text(encoding='utf-8'))
+assert r['status']=='PASS'
+e='../../eval/native-ocr/windows-gfx1151'
+lines=['# Native OCR with the verified local Windows ROCm wheel','',
+'Executed 2026-10-29 (Asia/Shanghai) on the physical Ryzen AI MAX+ 395 / Radeon 8060S, Windows gfx1151, driver 32.0.22032.6002. **Stages 1–4: PASS within the tested scope. MATH remains the default.**','',
+'## Exact candidate and environment','',
+'- Artifact: `torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl`, 388,478,127 bytes. Original compatibility address `C:/b/out/wheels/`; physical repository-local destination `.b/out/wheels/`. SHA256:','',
+'  `6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e`','',
+'- Installed into fresh `.b/o`, CPython 3.10.20 x64, using the explicit local artifact and `--no-deps`. PyTorch source identity `60dd50f143fd9b10ac23cde8cdd34be61232b139`; HIP 7.14.60850; ROCm SDK 7.14.1. torchvision 0.27.0+rocm7.14.1, torchaudio 2.11.0+rocm7.14.1, triton-windows 3.7.1.post27, Transformers 4.52.1 and the locked native dependencies are preserved.','',
+'- The historical torch gfx1151/gfx115x overlays are excluded. The source-built candidate is self-contained; the gfx115x overlay would overwrite its seven validated AOTriton image files. Matching SDK/device and torchvision-device packages remain installed. All selected provider wheels were inspected for candidate-file overlap.','',
+'- `aotriton_v2.dll` SHA256 `941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884`. All 15 torch native members, seven AOTriton image members and the SDK HIP DLL match provider-wheel bytes; required actually loaded native modules match the fresh environment. AOTriton runtime pin `7a6963a7265d2cf0fc48c6a63464386134d32483`; image signature `c11b5b886a10a00f925f74133d38b3505e67ccd9`. No rebuild or image overlay was performed.','',
+f'[Wheel metadata/dependencies]({e}/wheel-metadata.json) · [install report]({e}/candidate-install.json) · [installed payload]({e}/candidate-payload.json) · [loaded identity]({e}/identity.observed.json) · [doctor/BF16]({e}/doctor.json) · [package freeze]({e}/freeze.log). The wheel is a locally verified source-built artifact, not an official AMD fix.','',
+'## Stage 1: PASS','',
+'pip check, strict environment doctor, BF16 GPU arithmetic, Triton compile/execute, native sparse-kernel reference and the existing MATH vision regression pass. The byte-identical PR #4 producer runs 27 fresh processes: 21 FUSED_PASS, four MATH_PASS, one CONTROL_PASS and one explicitly optional UNSUPPORTED forced-FLASH additive-mask probe. Numerical thresholds remain BF16 atol/rtol 0.03/0.03, with no failing or nonfinite elements. HIP checkpoints are zero; synchronization and downstream operations succeed.','',
+'The initial dependency-install attempt failed because the default Python index lacked the ROCm metapackage; the retry used the previously verified local metapackage. Both logs are retained. This preparation failure is separate from GPU acceptance. The full model environment includes Triton; the frozen producer records its presence in its legacy `prohibited_imports_loaded` field. The producer and numerical checks were not changed.','',
+f'[27-process summary]({e}/regression/summary.json) · [processes/producer hashes]({e}/regression/processes.json) · [FLASH launch]({e}/regression/flash_launch.stderr.log) · [EFFICIENT launch]({e}/regression/efficient_launch.stderr.log) · [sparse reference]({e}/sparse.json).','',
+'## Stage 2 and Stage 3 correctness: PASS','',
+'Both modes pass all 13 required acceptance requests: five single-page content types, repeated Unicode/space-path recovery, repeated ordered native 2/3/5-page documents and a two-page table. All tested pages have normalized CER 0, exact important numbers, valid required structure and correct content-page count/order. Every request records 12 successful official DASH prefill calls. Raw output, normalized output and page markers remain preserved.','',
+'Model/code revision stays `9cf077c4b206e0e2a31879df937b0b0bcba3661c`; all reviewed source/config/tokenizer/weight hashes are verified before trust_remote_code. Weights were copied from the existing verified cache into `.b/h`, with original and destination hashes recorded. BF16, native infer/infer_multi, DASH/SR-SWA and decoder attention dispatch are unchanged.','',
+'| Case | MATH / AUTO | Max CER MATH / AUTO | Raw PAGE MATH / AUTO | Empty terminal MATH / AUTO |','|---|---|---:|---:|---|']
+q2={q['case']:q for q in r['quality']['stage2']}
+q3={q['case']:q for q in r['quality']['stage3']}
+for case in q2:
+ a,b=q2[case],q3[case]
+ lines.append(f"| {case} | {a['status']} / {b['status']} | {a['max_cer']:.3f} / {b['max_cer']:.3f} | {a['raw_page_markers']} / {b['raw_page_markers']} | {a['terminal_empty_marker']} / {b['terminal_empty_marker']} |")
+lines += ['', 'The pre-existing terminal-marker policy is unchanged: at most one empty trailing PAGE is an end delimiter, separately reported. CER <=0.02, exact-number, page-order and table thresholds were never relaxed. The accepted original Phase 1 evidence remains untouched.','',
+f'[MATH single]({e}/stage2-single/suite.json) · [MATH multi]({e}/stage2-multi/suite.json) · [AUTO single]({e}/stage3-auto-single/suite/suite.json) · [AUTO multi]({e}/stage3-auto-multi/suite/suite.json) · [cache copy/hashes]({e}/cache-copy.json).','',
+'## Actual fused vision execution: PASS','',
+f"Across both diagnostic suites, all {sum(r['observed_fused_counts'].values())} observed vision SDPA calls are fused: {r['observed_fused_counts']['EFFICIENT_ATTENTION']} EFFICIENT_ATTENTION calls in masked SAM and {r['observed_fused_counts']['FLASH_ATTENTION']} FLASH_ATTENTION calls in unmasked CLIP. No observed MATH or unobserved route is counted as fused proof.",'',
+'| Module | Q/K/V shape | Mask | Observed operator |','|---|---|---|---|']
+seen=set()
+for c in r['numerical_layouts']:
+ key=(c['module'],str(c['qkv'][0]['shape']))
+ if key in seen:continue
+ seen.add(key)
+ lines.append(f"| {c['module']} | {c['qkv'][0]['shape']} | {None if c['mask'] is None else c['mask']['shape']} | {c['observed_backend']} |")
+maxmath=max(c['numerical']['full_math_max_abs_error'] for c in r['numerical_layouts'])
+maxcpu=max(s['max_abs_error'] for c in r['numerical_layouts'] for s in c['numerical']['cpu_fp32_slices'])
+lines += ['',f'First occurrences of each layout in each process receive a full-output comparison with MATH and independent CPU FP32 checks on first/middle/last batch/head slices. Maximum absolute differences: {maxmath:.9f} versus MATH and {maxcpu:.9f} versus CPU FP32; all pass the unchanged 0.03/0.03 BF16 tolerance. Subsequent calls of the same signature retain operator, HIP and downstream checks. Every HIP checkpoint is zero and downstream copy/arithmetic is finite. This is representative-layout numerical validation, not an independent CPU reference for every layer/input.','',
+f'[Complete single attention trace]({e}/stage3-auto-single/attention.json) · [complete multi trace]({e}/stage3-auto-multi/attention.json). The original Stage 3 producer bytes are preserved separately as `validate-stage3.py.txt`. Independent review subsequently moved the already-applied fused gate into the tracked harness and added a separate native-inference timer; final benchmark producer bytes/hashes are retained.','',
+'## Stage 4 controlled A/B','',
+'The same candidate environment, physical device/driver, model revision/hash, BF16, input hashes and 1024-token budget per page are used for A=MATH and B=AUTO. AUTO diagnostics above establish actual fused execution. One excluded warmup plus five warm samples per case, sequential MATH then AUTO; no concurrent GPU workload was launched by this mission. Both use identical synchronization and instrumentation. Profilers/numerical-reference tracing are disabled for measurements.','',
+'Native OCR times include the complete native infer/infer_multi call through final GPU synchronization, excluding wrapper output writing/normalization/assessment. The separate wrapper wall field retains those costs. Vision time sums synchronized SAM and CLIP forward calls across the document; preprocessing outside those calls remains in native end-to-end time.','']
+for key,title in [('native_seconds','Native end-to-end OCR'),('vision_seconds','SAM + CLIP vision encoders')]:
+ lines += [f'### {title}', '', '| Case | MATH median / max s | AUTO median / max s | Median speedup |', '|---|---:|---:|---:|']
+ for case in sorted(r['benchmark']['math']):
+  a,b=(r['benchmark'][mode][case][key] for mode in ('math','auto'))
+  lines.append(f"| {case} | {a['median']:.3f} / {a['maximum']:.3f} | {b['median']:.3f} / {b['maximum']:.3f} | {a['median']/b['median']:.3f}x |")
+ lines += ['']
+same=all(c['same_output_tokens'] for c in r['comparison'].values())
+lines += [f'All 100 measured requests and 20 warmups pass quality; maximum per-page CER is 0 and every request records 12 native DASH calls. Output token counts match between modes for all cases: **{same}**. Per-case input hashes, token budgets/counts, all samples, SAM/CLIP components and separate memory readings are in the machine-readable result. Maxima describe only these five samples; no reliable p95 or statistical significance is claimed.','',
+'### Separate model loading','', '| Mode | Native load segment s | Load incl. imports/hash checks s |', '|---|---:|---:|']
+for mode,data in r['cold_loading'].items():lines.append(f"| {mode} | {data['cold_load_seconds']:.3f} | {data['process_load_including_hash_verification_seconds']:.3f} |")
+lines += ['', 'Model load is a fresh-process load, with already-populated disk/model/compiler caches; it is not an uncached storage benchmark. Each case warmup is separately retained.','',
+'### Memory observations','', '| Measurement (GiB) | MATH | AUTO |', '|---|---:|---:|']
+for key,label in [('process_rss_bytes','Maximum sampled process RSS'),('process_peak_rss_bytes','Maximum process peak RSS'),('gpu_peak_allocated_bytes','Maximum request peak GPU allocated'),('gpu_peak_reserved_bytes','Maximum request peak GPU reserved'),('system_available_bytes','Minimum sampled available system RAM')]:
+ lines.append(f"| {label} | {r['memory_summary']['math'][key]/2**30:.3f} | {r['memory_summary']['auto'][key]/2**30:.3f} |")
+lines += ['', 'This APU shares system RAM. GPU allocation/reservation, process RSS and system memory are different overlapping observations, not independent physical pools; do not sum them or label the GPU budget dedicated VRAM. System available memory is sampled, not continuously measured peak system consumption.','',
+f'[Full comparison and samples]({e}/result.json) · [measurement process commands]({e}/benchmark-processes.json) · [MATH raw samples]({e}/benchmark-math/) · [AUTO raw samples]({e}/benchmark-auto/).','',
+'## Regressions, limitations and recommendation','',
+'**FAIL:** no OCR or required fused regression in the executed scope. The retained first dependency installation failure is preparation-only. **UNSUPPORTED:** the explicit additive-mask forced-FLASH probe; AUTO successfully uses EFFICIENT for actual SAM masks. **NOT RUN:** other hardware/OS, other dtypes, backward, broad real-document corpus, serving/concurrency and newly published AMD wheels.','',
+'Serial MATH-then-AUTO measurements can retain thermal/order effects; five samples do not establish a tail distribution or statistical confidence. The numerical reference covers representative actual layouts; OCR acceptance is synthetic and cannot certify arbitrary document fidelity. No fixing source commit is attributed, and no upstream/official AMD release claim is made.','',
+'**Recommendation: retain MATH as the default.** The measured local candidate supports opt-in fused vision evaluation within this scope. Default enablement should wait for a distributable, separately verified wheel plus broader documents, repeated counterbalanced measurements and additional device/driver validation. No default, decoder algorithm, main branch, release or stable tag was changed; no binary wheel is published.','',
+'## Verification and evidence integrity','',
+'Local CPU checks: Ruff, formatting, mypy, package build and pip check PASS; **66 tests PASS, two opt-in GPU pytest markers skipped**. Standalone physical GPU validation above ran separately. Independent implementation review found no remaining Important finding after the fused-gate and timing improvements. Final evidence review is recorded separately.','',
+'The branch starts at current main `966265c81a74a73aa0ae6d9a3fa593b342590eb7`. Runtime/measurement source is identified by the committed `0fa486e` content and exact source hashes; some collection began before that commit existed. Original Stage 2/3 producer bytes are retained alongside current measurement bytes, rather than rewriting historical source identities.','',
+f'[Source hashes]({e}/measurement-source-hashes.json) · [original/published digest mapping]({e}/export-manifest.json) · [SHA256SUMS]({e}/SHA256SUMS.txt). Private originals, fresh environment/cache and every historical environment/log remain under the repository; only user-profile prefixes are redacted in published evidence. No weights or unnecessary binaries are included.']
+path=root/'docs/validation/NATIVE_OCR_CANDIDATE.md'
+path.parent.mkdir(parents=True,exist_ok=True)
+path.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+print(path)

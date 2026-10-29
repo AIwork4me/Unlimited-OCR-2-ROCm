@@ -1,0 +1,358 @@
+"""Opt-in physical candidate-wheel OCR diagnostics and synchronized measurements."""
+
+from __future__ import annotations
+
+import argparse
+import ctypes
+import json
+import shutil
+import subprocess
+import sys
+import time
+from contextlib import nullcontext
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
+
+from unlimited_ocr_2_rocm import cli  # noqa: E402
+from unlimited_ocr_2_rocm.config import file_sha256  # noqa: E402
+from unlimited_ocr_2_rocm.doctor import write_json  # noqa: E402
+from unlimited_ocr_2_rocm.inference import run_native  # noqa: E402
+from unlimited_ocr_2_rocm.model import load_model  # noqa: E402
+
+WHEEL_SHA256 = "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e"
+SOURCE_SHA = "60dd50f143fd9b10ac23cde8cdd34be61232b139"
+FUSED = {"FLASH_ATTENTION", "EFFICIENT_ATTENTION"}
+
+
+def verify_candidate(profile_path: Path) -> dict[str, Any]:
+    import torch
+
+    profile = json.loads(profile_path.read_text(encoding="utf-8"))
+    assert profile["wheel_sha256"] == WHEEL_SHA256
+    assert file_sha256(Path(profile["wheel_path"])) == WHEEL_SHA256
+    assert Path(profile["prefix"]).resolve() == Path(sys.prefix).resolve()
+    assert sys.prefix != sys.base_prefix
+    assert torch.version.git_version == SOURCE_SHA
+    assert torch.version.hip == "7.14.60850"
+    assert torch.cuda.get_device_properties(0).gcnArchName == "gfx1151"
+    site = Path(sys.prefix) / "Lib/site-packages"
+    for name, digest in {**profile["binaries"], **profile["images"]}.items():
+        assert file_sha256(site / name) == digest, name
+    subprocess.run([sys.executable, "-m", "pip", "check"], check=True)
+    return {"status": "PASS", "wheel_sha256": WHEEL_SHA256, "source_sha": SOURCE_SHA}
+
+
+def require_stage2(root: Path) -> None:
+    expected = {
+        "stage2-single": {
+            "english",
+            "chinese",
+            "mixed",
+            "table",
+            "math",
+            "repeat_unicode_recovery",
+        },
+        "stage2-multi": {
+            "pages_2_run_1",
+            "pages_2_run_2",
+            "pages_3_run_1",
+            "pages_3_run_2",
+            "pages_5_run_1",
+            "pages_5_run_2",
+            "table_2_pages",
+        },
+    }
+    for suite, names in expected.items():
+        report = json.loads((root / suite / "suite.json").read_text(encoding="utf-8"))
+        assert report["status"] == "PASS"
+        assert {case["case"] for case in report["cases"]} == names
+        for name in names:
+            case = json.loads((root / suite / name / "manifest.json").read_text(encoding="utf-8"))
+            assert case["status"] == "PASS" and case["native_kernel_count"] >= 12
+            assert all(e["backend"] == "GPU MATH SDPA" for e in case["vision_inputs"])
+
+
+def backend_name(operators: list[str]) -> str:
+    for needle, name in (
+        ("_scaled_dot_product_efficient_attention", "EFFICIENT_ATTENTION"),
+        ("_scaled_dot_product_flash_attention", "FLASH_ATTENTION"),
+        ("_scaled_dot_product_attention_math", "MATH"),
+    ):
+        if any(needle in operator for operator in operators):
+            return name
+    return "UNOBSERVED"
+
+
+def fused_trace_summary(calls: list[dict[str, Any]]) -> dict[str, Any]:
+    passed = bool(calls) and all(
+        call.get("status") == "PASS" and call.get("observed_backend") in FUSED for call in calls
+    )
+    return {
+        "status": "PASS" if passed else "FAIL",
+        "calls": len(calls),
+        "observed_counts": {
+            name: sum(call.get("observed_backend") == name for call in calls)
+            for name in (*sorted(FUSED), "MATH", "UNOBSERVED")
+        },
+        "numerical_layouts": sum(isinstance(call.get("numerical"), dict) for call in calls),
+    }
+
+
+def require_auto_diagnostics(roots: list[Path]) -> None:
+    expected = [
+        {"english", "chinese", "mixed", "table", "math", "repeat_unicode_recovery"},
+        {f"pages_{n}_run_{i}" for n in (2, 3, 5) for i in (1, 2)} | {"table_2_pages"},
+    ]
+    for root, names in zip(roots, expected, strict=True):
+        suite = json.loads((root / "suite/suite.json").read_text(encoding="utf-8"))
+        identity = json.loads((root / "identity.json").read_text(encoding="utf-8"))
+        load = json.loads((root / "load.json").read_text(encoding="utf-8"))
+        calls = json.loads((root / "attention.json").read_text(encoding="utf-8"))
+        assert identity["wheel_sha256"] == WHEEL_SHA256
+        assert load["runtime_compatibility"]["vision_sdpa"] == "auto"
+        assert suite["status"] == "PASS" and {c["case"] for c in suite["cases"]} == names
+        assert all(case["status"] == "PASS" for case in suite["cases"])
+        assert fused_trace_summary(calls)["status"] == "PASS"
+
+
+def numerical_checks(q: Any, k: Any, v: Any, mask: Any, actual: Any) -> dict[str, Any]:
+    """Full MATH comparison plus CPU FP32 reference on three actual batch/head slices."""
+    import torch
+    from torch.nn.attention import SDPBackend, sdpa_kernel
+
+    with sdpa_kernel(SDPBackend.MATH):
+        reference = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=mask)
+    torch.cuda.synchronize()
+    torch.testing.assert_close(actual.float(), reference.float(), atol=0.03, rtol=0.03)
+    result: dict[str, Any] = {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": (actual.float() - reference.float()).abs().max().item(),
+        "full_math_elements": actual.numel(),
+        "cpu_fp32_slices": [],
+    }
+    batch, heads = q.shape[:2]
+    for b, h in sorted({(0, 0), (batch // 2, heads // 2), (batch - 1, heads - 1)}):
+        qc, kc, vc = (tensor[b, h].float().cpu() for tensor in (q, k, v))
+        scores = qc @ kc.T / q.shape[-1] ** 0.5
+        if mask is not None:
+            mc = mask.expand(batch, heads, q.shape[-2], k.shape[-2])[b, h].cpu()
+            if mc.dtype == torch.bool:
+                scores.masked_fill_(~mc, -float("inf"))
+            else:
+                scores += mc.float()
+        expected = scores.softmax(-1).nan_to_num(0.0) @ vc
+        ac = actual[b, h].float().cpu()
+        torch.testing.assert_close(ac, expected, atol=0.03, rtol=0.03)
+        result["cpu_fp32_slices"].append(
+            {
+                "batch": b,
+                "head": h,
+                "elements": ac.numel(),
+                "max_abs_error": (ac - expected).abs().max().item(),
+                "nonfinite": (~torch.isfinite(ac)).sum().item(),
+                "failing_elements": 0,
+            }
+        )
+    return result
+
+
+def instrument(native: Any, trace: bool, output: Path) -> list[dict[str, Any]]:
+    import torch
+    from torch.overrides import TorchFunctionMode
+    from torch.utils._python_dispatch import TorchDispatchMode
+
+    hip = ctypes.WinDLL(
+        str(Path(sys.prefix) / "Lib/site-packages/_rocm_sdk_core/bin/amdhip64_7.dll")
+    )
+    hip.hipPeekAtLastError.restype = ctypes.c_int
+    checked: set[str] = set()
+    all_calls: list[dict[str, Any]] = []
+
+    def checkpoint(label: str) -> dict[str, Any]:
+        before = hip.hipPeekAtLastError()
+        torch.cuda.synchronize()
+        after = hip.hipPeekAtLastError()
+        assert before == after == 0, (label, before, after)
+        return {"stage": label, "hip_before_sync": before, "hip_after_sync": after}
+
+    class Dispatch(TorchDispatchMode):
+        def __init__(self, operators: list[str]):
+            super().__init__()
+            self.operators = operators
+
+        def __torch_dispatch__(self, func, types, args=(), kwargs=None):
+            if "scaled_dot_product" in str(func):
+                self.operators.append(str(func))
+            return func(*args, **(kwargs or {}))
+
+    class Attention(TorchFunctionMode):
+        def __init__(self, module: str):
+            super().__init__()
+            self.module = module
+
+        def __torch_function__(self, func, types, args=(), kwargs=None):
+            kwargs = kwargs or {}
+            if func is not torch.nn.functional.scaled_dot_product_attention:
+                return func(*args, **kwargs)
+            q, k, v = args[:3]
+            mask = kwargs.get("attn_mask", args[3] if len(args) > 3 else None)
+            event: dict[str, Any] = {
+                "module": self.module,
+                "status": "ATTEMPTED",
+                "qkv": [
+                    {
+                        "shape": list(t.shape),
+                        "stride": list(t.stride()),
+                        "dtype": str(t.dtype),
+                        "device": str(t.device),
+                    }
+                    for t in (q, k, v)
+                ],
+                "mask": None
+                if mask is None
+                else {
+                    "shape": list(mask.shape),
+                    "stride": list(mask.stride()),
+                    "dtype": str(mask.dtype),
+                    "device": str(mask.device),
+                },
+                "dropout_p": kwargs.get("dropout_p", 0.0),
+                "is_causal": kwargs.get("is_causal", False),
+                "operators": [],
+                "hip": [],
+            }
+            all_calls.append(event)
+            try:
+                assert event["dropout_p"] == 0 and event["is_causal"] is False
+                event["hip"].append(checkpoint("before_sdpa"))
+                with Dispatch(event["operators"]):
+                    actual = func(*args, **kwargs)
+                event["hip"].append(checkpoint("after_sdpa"))
+                event["observed_backend"] = backend_name(event["operators"])
+                if event["observed_backend"] == "UNOBSERVED":
+                    with torch.profiler.profile(
+                        activities=[torch.profiler.ProfilerActivity.CPU]
+                    ) as p:
+                        func(*args, **kwargs)
+                        torch.cuda.synchronize()
+                    event["profiler_operators"] = [entry.key for entry in p.key_averages()]
+                    event["observed_backend"] = backend_name(event["profiler_operators"])
+                signature = json.dumps([self.module, event["qkv"], event["mask"]], sort_keys=True)
+                if signature not in checked:
+                    event["numerical"] = numerical_checks(q, k, v, mask, actual)
+                    checked.add(signature)
+                else:
+                    event["numerical"] = "same shape/stride/mask signature checked earlier"
+                copied = actual.transpose(-1, -2).contiguous()
+                assert torch.isfinite(copied + 1).all().item()
+                event["hip"].append(checkpoint("after_downstream_copy_arithmetic_reference"))
+                event["status"] = "PASS"
+                return actual
+            finally:
+                write_json(output / "attention.json", all_calls)
+
+    def wrap(forward, name):
+        def measured(*args, **kwargs):
+            checkpoint("before_encoder")
+            start = time.perf_counter()
+            with Attention(name) if trace else nullcontext():
+                result = forward(*args, **kwargs)
+            checkpoint("after_encoder")
+            native.vision[-1]["synchronized_seconds"] = time.perf_counter() - start
+            return result
+
+        return measured
+
+    for name in ("sam_model", "vision_model"):
+        encoder = getattr(native.model.model, name)
+        encoder.forward = wrap(encoder.forward, name)
+    return all_calls
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--identity-profile", type=Path, required=True)
+    parser.add_argument("--stage2-root", type=Path, required=True)
+    parser.add_argument("--cache-dir", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--vision-sdpa", choices=["math", "auto"], required=True)
+    parser.add_argument("--suite", choices=["single", "multi"])
+    parser.add_argument("--trace", action="store_true")
+    parser.add_argument("--samples", type=int, default=5)
+    parser.add_argument("--auto-diagnostics", nargs=2, type=Path, metavar=("SINGLE", "MULTI"))
+    args = parser.parse_args()
+    assert not args.output.exists(), "Preserve prior output; use a fresh directory"
+    args.output.mkdir(parents=True)
+    require_stage2(args.stage2_root)
+    if not args.suite:
+        assert args.auto_diagnostics, "Benchmark requires completed AUTO single/multi diagnostics"
+        require_auto_diagnostics(args.auto_diagnostics)
+    identity = verify_candidate(args.identity_profile)
+    write_json(args.output / "identity.json", identity)
+    load_start = time.perf_counter()
+    native = load_model(args.cache_dir, True, vision_sdpa=args.vision_sdpa)
+    native.evidence["process_load_including_hash_verification_seconds"] = (
+        time.perf_counter() - load_start
+    )
+    trace_calls = instrument(native, args.trace, args.output)
+    write_json(args.output / "load.json", native.evidence)
+    if args.suite:
+        cli.load_model = lambda *a, **kw: native
+        result = cli.smoke(
+            argparse.Namespace(
+                command="smoke-" + args.suite,
+                fixtures=ROOT / "tests/fixtures",
+                output=args.output / "suite",
+                cache_dir=args.cache_dir,
+                offline=True,
+                max_new_tokens=1024,
+                cases=["english", "chinese", "mixed", "table", "math"],
+                pages=[2, 3, 5],
+            )
+        )
+        if args.trace:
+            summary = fused_trace_summary(trace_calls)
+            write_json(args.output / "fused-summary.json", summary)
+            if args.vision_sdpa == "auto" and summary["status"] != "PASS":
+                return 1
+        return result
+    assert not args.trace, "Keep numerical/profiler diagnostics out of measured samples"
+    assert args.samples >= 3
+    truths = json.loads((ROOT / "tests/fixtures/ground_truth.json").read_text(encoding="utf-8"))[
+        "cases"
+    ]
+    cases = {name: [name] for name in ("english", "chinese", "mixed", "table", "math")}
+    cases.update({f"pages_{n}": [f"page_{i}" for i in range(1, n + 1)] for n in (2, 3, 5)})
+    cases["table_2_pages"] = ["table_page_1", "table_page_2"]
+    unicode_dir = args.output / "中文 input"
+    unicode_dir.mkdir()
+    unicode_image = unicode_dir / "page with spaces.png"
+    shutil.copyfile(ROOT / "tests/fixtures/english.png", unicode_image)
+    cases["repeat_unicode_recovery"] = ["english"]
+    for case, keys in cases.items():
+        truth = [truths[key] for key in keys]
+        images = [ROOT / "tests/fixtures" / page["image"] for page in truth]
+        if case == "repeat_unicode_recovery":
+            images = [unicode_image]
+        for sample in range(args.samples + 1):
+            label = "warmup" if sample == 0 else f"sample_{sample}"
+            report = run_native(
+                native,
+                images,
+                args.output / case / label,
+                truth=truth,
+                multi=len(images) > 1,
+                max_new_tokens=1024 * len(images),
+            )
+            print(case, label, report["status"], report.get("native_inference_seconds"), flush=True)
+            if report["status"] != "PASS":
+                return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

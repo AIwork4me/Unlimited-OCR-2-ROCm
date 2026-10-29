@@ -1,0 +1,166 @@
+No broken requirements found.
+[CodeStamp] warmup-window-page-switches-v4 sha256=86da9c563870 mtime=2026-10-29 13:07:01 switches=local_window:1,page_prefill:0 file=<USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\.b\m\tmp\uocr2-reviewed-modules-rcasrvfe\transformers_modules\9cf077c4b206e0e2a31879df937b0b0bcba3661c\_sparse_base_impl.py
+[PageRope] mode=page2d head_dim=128 tok_theta=10000.0 fallback_1d_theta=500000.0 page_pairs=1 page_theta=256.0 page_mod=2 tok_freq_mode=resample page_span=0
+[PageRope] pairs page/1 tok/63 capacity page=3pages tok=27143tokens
+[PageRope main] mode=page2d head_dim=128 page_pairs=1 page_theta=256.0 tok_theta=10000.0 tok_freq_mode=resample page_mod=2 capacity page=3pages tok=27143tokens
+[DASH] differentiable DASH attention active (entmax router, block_size=32, local_window=128, index_dim=128, main_rope=page2d, idx_rope=page2d, page_bucket=True); first dash layer_idx=0
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  5.95it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.15it/s]
+[PageRope layer=0 row0] n_pages=1 page_mod=2 folded_pages=[0, 1] prompt(page0)[0-4#5] uniq_coords=899/899 p1:img#893 txt#0 ok=False
+[PageAwareKL layer=0] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=0 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=1] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=1 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=2] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=2 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=3] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=3 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=4] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=4 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=5] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=5 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=6] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=6 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=7] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=7 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=8] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=8 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=9] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=9 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=10] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=10 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[PageAwareKL layer=11] image_page_mode=marker page_token_id=128827 prompt_page_markers=1 per_page_image_tokens=273 page_markers=1 image_tokens=893 query_pages=1 image_pages=1 page_aware_enabled=True
+[PageAwareKL layer=11 row0] markers@[1] p0:img[2-894#893] pre[1-894#894] txt[none] ok=False
+[DASH] Triton block-sparse path active (S=899, block_size=32, remote_topk=12, local_window=128)
+[debug DeepseekV2Model] indexer_kl_loss_type=NoneType count=0 return_dict=True training=False
+[debug DeepseekV2Model post-set] hasattr=True getattr=None id(out)=3170129939008
+english warmup PASS 21.17002079996746
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+english sample_1 PASS 5.790422700112686
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+english sample_2 PASS 5.496474900050089
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+english sample_3 PASS 5.837191300000995
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+english sample_4 PASS 5.641339599969797
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+english sample_5 PASS 5.2178565999493
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+chinese warmup PASS 5.2928384999977425
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+chinese sample_1 PASS 5.291038200026378
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+chinese sample_2 PASS 5.504191800020635
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+chinese sample_3 PASS 5.492353199981153
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+chinese sample_4 PASS 5.499272000044584
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+chinese sample_5 PASS 5.370580299990252
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+mixed warmup PASS 5.3958637999603525
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+mixed sample_1 PASS 5.459511499968357
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+mixed sample_2 PASS 5.430064699961804
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+mixed sample_3 PASS 5.4341618999606
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+mixed sample_4 PASS 5.383092499920167
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+mixed sample_5 PASS 5.403185199946165
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+table warmup PASS 4.313060199958272
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+table sample_1 PASS 4.232152399956249
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+table sample_2 PASS 4.208243799977936
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+table sample_3 PASS 4.219727499992587
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+table sample_4 PASS 4.190338099957444
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+table sample_5 PASS 4.286106300074607
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+math warmup PASS 4.972321899957024
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+math sample_1 PASS 4.81884139997419
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+math sample_2 PASS 4.774309500004165
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+math sample_3 PASS 4.781313699902967
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+math sample_4 PASS 4.810392900020815
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+math sample_5 PASS 4.779544200049713
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+pages_2 warmup PASS 6.697214699932374
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+pages_2 sample_1 PASS 6.728104799985886
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+pages_2 sample_2 PASS 6.759995600092225
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+pages_2 sample_3 PASS 6.779460599995218
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+pages_2 sample_4 PASS 6.721943699987605
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+pages_2 sample_5 PASS 6.761811399948783
+[ImageMask layer=2] itm ok shape=(1, 827) image_token_id=128815 image_tokens=819/827 (99.0%) image_blocks=26.0/26 (100.0%) empty=False
+pages_3 warmup PASS 10.132297900039703
+[ImageMask layer=2] itm ok shape=(1, 827) image_token_id=128815 image_tokens=819/827 (99.0%) image_blocks=26.0/26 (100.0%) empty=False
+pages_3 sample_1 PASS 10.153623100020923
+[ImageMask layer=2] itm ok shape=(1, 827) image_token_id=128815 image_tokens=819/827 (99.0%) image_blocks=26.0/26 (100.0%) empty=False
+pages_3 sample_2 PASS 10.054481399944052
+[ImageMask layer=2] itm ok shape=(1, 827) image_token_id=128815 image_tokens=819/827 (99.0%) image_blocks=26.0/26 (100.0%) empty=False
+pages_3 sample_3 PASS 9.989295099978335
+[ImageMask layer=2] itm ok shape=(1, 827) image_token_id=128815 image_tokens=819/827 (99.0%) image_blocks=26.0/26 (100.0%) empty=False
+pages_3 sample_4 PASS 10.35502910008654
+[ImageMask layer=2] itm ok shape=(1, 827) image_token_id=128815 image_tokens=819/827 (99.0%) image_blocks=26.0/26 (100.0%) empty=False
+pages_3 sample_5 PASS 10.075155999977142
+[ImageMask layer=2] itm ok shape=(1, 1375) image_token_id=128815 image_tokens=1365/1375 (99.3%) image_blocks=43.0/43 (100.0%) empty=False
+pages_5 warmup PASS 17.741248000063933
+[ImageMask layer=2] itm ok shape=(1, 1375) image_token_id=128815 image_tokens=1365/1375 (99.3%) image_blocks=43.0/43 (100.0%) empty=False
+pages_5 sample_1 PASS 17.711453399970196
+[ImageMask layer=2] itm ok shape=(1, 1375) image_token_id=128815 image_tokens=1365/1375 (99.3%) image_blocks=43.0/43 (100.0%) empty=False
+pages_5 sample_2 PASS 17.694795400020666
+[ImageMask layer=2] itm ok shape=(1, 1375) image_token_id=128815 image_tokens=1365/1375 (99.3%) image_blocks=43.0/43 (100.0%) empty=False
+pages_5 sample_3 PASS 17.81431839999277
+[ImageMask layer=2] itm ok shape=(1, 1375) image_token_id=128815 image_tokens=1365/1375 (99.3%) image_blocks=43.0/43 (100.0%) empty=False
+pages_5 sample_4 PASS 17.564479199936613
+[ImageMask layer=2] itm ok shape=(1, 1375) image_token_id=128815 image_tokens=1365/1375 (99.3%) image_blocks=43.0/43 (100.0%) empty=False
+pages_5 sample_5 PASS 17.68913529999554
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+table_2_pages warmup PASS 5.652267300058156
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+table_2_pages sample_1 PASS 5.623283499968238
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+table_2_pages sample_2 PASS 5.622904200106859
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+table_2_pages sample_3 PASS 5.635660999920219
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+table_2_pages sample_4 PASS 5.638098700088449
+[ImageMask layer=2] itm ok shape=(1, 553) image_token_id=128815 image_tokens=546/553 (98.7%) image_blocks=18.0/18 (100.0%) empty=False
+table_2_pages sample_5 PASS 5.675083200098015
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+repeat_unicode_recovery warmup PASS 5.203623599954881
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+repeat_unicode_recovery sample_1 PASS 5.205350099946372
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+repeat_unicode_recovery sample_2 PASS 5.181764799985103
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+repeat_unicode_recovery sample_3 PASS 5.281241600052454
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+repeat_unicode_recovery sample_4 PASS 5.269319999963045
+[ImageMask layer=2] itm ok shape=(1, 899) image_token_id=128815 image_tokens=893/899 (99.3%) image_blocks=28.0/29 (96.6%) empty=False
+repeat_unicode_recovery sample_5 PASS 5.208711699931882

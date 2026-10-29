@@ -1,0 +1,23 @@
+import json
+import os
+from pathlib import Path
+import subprocess
+from datetime import datetime, timezone
+
+root=Path.cwd()
+out=root/'.b/m'
+assert json.loads((out/'stage3.json').read_text())['status']=='PASS'
+python=root/'.b/o/Scripts/python.exe'
+env=dict(os.environ,PYTHONUTF8='1',PYTHONIOENCODING='utf-8',TEMP=str(out/'tmp'),TMP=str(out/'tmp'),TRITON_CACHE_DIR=str(out/'triton'),HF_HUB_OFFLINE='1')
+records=[]
+for mode in ('math','auto'):
+    name='benchmark-'+mode
+    command=[str(python),'experiments/native_ocr/validate.py','--identity-profile',str(out/'identity.json'),'--stage2-root',str(out),'--cache-dir',str(root/'.b/h'),'--output',str(out/name),'--vision-sdpa',mode,'--samples','5','--auto-diagnostics',str(out/'stage3-auto-single'),str(out/'stage3-auto-multi')]
+    start=datetime.now(timezone.utc).isoformat()
+    print(name,flush=True)
+    with (out/(name+'.log')).open('w',encoding='utf-8') as log:
+        p=subprocess.run(command,cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT)
+    records.append(dict(command=command,start_utc=start,end_utc=datetime.now(timezone.utc).isoformat(),exit_code=p.returncode))
+    (out/'benchmark-processes.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+    if p.returncode: raise RuntimeError(name+' failed')
+print('BENCHMARK COMPLETE',flush=True)

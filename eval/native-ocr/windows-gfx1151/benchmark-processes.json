@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "experiments/native_ocr/validate.py",
+      "--identity-profile",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\identity.json",
+      "--stage2-root",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m",
+      "--cache-dir",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\h",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\benchmark-math",
+      "--vision-sdpa",
+      "math",
+      "--samples",
+      "5",
+      "--auto-diagnostics",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\stage3-auto-single",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\stage3-auto-multi"
+    ],
+    "start_utc": "2026-10-29T05:06:47.721899+00:00",
+    "end_utc": "2026-10-29T05:14:35.155211+00:00",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "experiments/native_ocr/validate.py",
+      "--identity-profile",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\identity.json",
+      "--stage2-root",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m",
+      "--cache-dir",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\h",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\benchmark-auto",
+      "--vision-sdpa",
+      "auto",
+      "--samples",
+      "5",
+      "--auto-diagnostics",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\stage3-auto-single",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\stage3-auto-multi"
+    ],
+    "start_utc": "2026-10-29T05:14:35.156211+00:00",
+    "end_utc": "2026-10-29T05:21:41.702589+00:00",
+    "exit_code": 0
+  }
+]

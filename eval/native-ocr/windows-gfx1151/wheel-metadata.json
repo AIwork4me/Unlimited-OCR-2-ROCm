@@ -1,0 +1,126 @@
+[
+  {
+    "filename": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+    "sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+    "name": "torch",
+    "version": "2.12.0+rocm7.14.1",
+    "requires": [
+      "filelock",
+      "typing-extensions>=4.10.0",
+      "setuptools<82",
+      "sympy>=1.13.3",
+      "networkx>=2.5.1",
+      "jinja2",
+      "fsspec>=0.8.5",
+      "rocm[libraries]==7.14.1",
+      "optree>=0.13.0; extra == \"optree\"",
+      "opt-einsum>=3.3; extra == \"opt-einsum\"",
+      "pyyaml; extra == \"pyyaml\""
+    ],
+    "candidate_overlap": []
+  },
+  {
+    "filename": "amd_torchvision_device_gfx1151-0.27.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+    "sha256": "3b3f99b2edaaaa5d64fa76e9c8f6a515cf9a0b761554818023ee76efd4c0b73d",
+    "name": "amd-torchvision-device-gfx1151",
+    "version": "0.27.0+rocm7.14.1",
+    "requires": [
+      "torchvision == 0.27.0+rocm7.14.1",
+      "rocm-sdk-device-gfx1151 == 7.14.1"
+    ],
+    "candidate_overlap": []
+  },
+  {
+    "filename": "rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+    "sha256": "49eb83cb89d50562944a1f0eaf65f4e21f4557813de53e78d022fee81bbfb6e7",
+    "name": "rocm-sdk-core",
+    "version": "7.14.1",
+    "requires": [],
+    "candidate_overlap": []
+  },
+  {
+    "filename": "rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl",
+    "sha256": "8ea906238b6247ce8230bc7a02ab99d410fbae524e3c1ce57e6457c9229ff79a",
+    "name": "rocm-sdk-device-gfx1151",
+    "version": "7.14.1",
+    "requires": [
+      "rocm-sdk-libraries==7.14.1"
+    ],
+    "candidate_overlap": []
+  },
+  {
+    "filename": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+    "sha256": "f5f639b488e3e78a44bebba786e917a98c4386001a3fa2a27393a9ce97e2a32d",
+    "name": "rocm-sdk-libraries",
+    "version": "7.14.1",
+    "requires": [],
+    "candidate_overlap": []
+  },
+  {
+    "filename": "torchaudio-2.11.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+    "sha256": "956ada280525ce09457e700773912704667d8521b1ad1fe64baa4d314f1cc71b",
+    "name": "torchaudio",
+    "version": "2.11.0+rocm7.14.1",
+    "requires": [],
+    "candidate_overlap": []
+  },
+  {
+    "filename": "torchvision-0.27.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+    "sha256": "9d0addbc8bba4174d56fb90bb68df23edfbb0d68db4f63b3649db6de8ce9225f",
+    "name": "torchvision",
+    "version": "0.27.0+rocm7.14.1",
+    "requires": [
+      "numpy",
+      "torch",
+      "pillow!=8.3.*,>=5.3.0",
+      "gdown>=4.7.3; extra == \"gdown\"",
+      "scipy; extra == \"scipy\"",
+      "rocm-bootstrap",
+      "amd-torchvision-device-gfx1010 == 0.27.0+rocm7.14.1; extra == \"device-gfx1010\"",
+      "amd-torchvision-device-gfx1011 == 0.27.0+rocm7.14.1; extra == \"device-gfx1011\"",
+      "amd-torchvision-device-gfx1012 == 0.27.0+rocm7.14.1; extra == \"device-gfx1012\"",
+      "amd-torchvision-device-gfx1030 == 0.27.0+rocm7.14.1; extra == \"device-gfx1030\"",
+      "amd-torchvision-device-gfx1031 == 0.27.0+rocm7.14.1; extra == \"device-gfx1031\"",
+      "amd-torchvision-device-gfx1032 == 0.27.0+rocm7.14.1; extra == \"device-gfx1032\"",
+      "amd-torchvision-device-gfx1033 == 0.27.0+rocm7.14.1; extra == \"device-gfx1033\"",
+      "amd-torchvision-device-gfx1034 == 0.27.0+rocm7.14.1; extra == \"device-gfx1034\"",
+      "amd-torchvision-device-gfx1035 == 0.27.0+rocm7.14.1; extra == \"device-gfx1035\"",
+      "amd-torchvision-device-gfx1036 == 0.27.0+rocm7.14.1; extra == \"device-gfx1036\"",
+      "amd-torchvision-device-gfx1100 == 0.27.0+rocm7.14.1; extra == \"device-gfx1100\"",
+      "amd-torchvision-device-gfx1101 == 0.27.0+rocm7.14.1; extra == \"device-gfx1101\"",
+      "amd-torchvision-device-gfx1102 == 0.27.0+rocm7.14.1; extra == \"device-gfx1102\"",
+      "amd-torchvision-device-gfx1103 == 0.27.0+rocm7.14.1; extra == \"device-gfx1103\"",
+      "amd-torchvision-device-gfx1150 == 0.27.0+rocm7.14.1; extra == \"device-gfx1150\"",
+      "amd-torchvision-device-gfx1151 == 0.27.0+rocm7.14.1; extra == \"device-gfx1151\"",
+      "amd-torchvision-device-gfx1152 == 0.27.0+rocm7.14.1; extra == \"device-gfx1152\"",
+      "amd-torchvision-device-gfx1153 == 0.27.0+rocm7.14.1; extra == \"device-gfx1153\"",
+      "amd-torchvision-device-gfx1200 == 0.27.0+rocm7.14.1; extra == \"device-gfx1200\"",
+      "amd-torchvision-device-gfx1201 == 0.27.0+rocm7.14.1; extra == \"device-gfx1201\"",
+      "amd-torchvision-device-gfx908 == 0.27.0+rocm7.14.1; extra == \"device-gfx908\"",
+      "amd-torchvision-device-gfx90a == 0.27.0+rocm7.14.1; extra == \"device-gfx90a\"",
+      "amd-torchvision-device-gfx1010 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1011 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1012 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1030 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1031 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1032 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1033 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1034 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1035 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1036 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1100 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1101 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1102 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1103 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1150 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1151 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1152 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1153 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1200 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx1201 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx908 == 0.27.0+rocm7.14.1; extra == \"device-all\"",
+      "amd-torchvision-device-gfx90a == 0.27.0+rocm7.14.1; extra == \"device-all\""
+    ],
+    "candidate_overlap": []
+  }
+]
