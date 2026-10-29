@@ -1,0 +1,5 @@
+rocm==7.14.1
+rocm-sdk-core==7.14.1
+rocm-sdk-libraries==7.14.1
+rocm-sdk-device-gfx1151==7.14.1
+numpy==2.2.6

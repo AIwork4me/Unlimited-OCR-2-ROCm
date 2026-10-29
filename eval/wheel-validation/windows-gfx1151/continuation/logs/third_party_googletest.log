@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\googletest", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "52eb8108c5bdec04579160ae17225d66034bd723"]
+From https://github.com/google/googletest
+ * branch            52eb8108c5bdec04579160ae17225d66034bd723 -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\googletest", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\googletest", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "52eb8108c5bdec04579160ae17225d66034bd723"]
+HEAD is now at 52eb810 Prepare for v1.17.0 (#4757)
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\googletest", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

@@ -1,0 +1,32 @@
+{
+  "method": "resumed incomplete byte ranges with checked Content-Range, TLS verification on, final SHA256 compared to official PyPI JSON",
+  "wheels": [
+    {
+      "package": "cmake",
+      "filename": "cmake-4.0.0-py3-none-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/18/77/9b85ad431b16cc7de1c63b1b023bdaaffe1d128ccc09c23e5931ee1a7100/cmake-4.0.0-py3-none-win_amd64.whl",
+      "size": 36651633,
+      "sha256": "a7ec8b997f75da5310c571f79ce560bc8941013549e47144bfa49025ced79b00",
+      "published_pypi_sha256": "a7ec8b997f75da5310c571f79ce560bc8941013549e47144bfa49025ced79b00",
+      "matches": true
+    },
+    {
+      "package": "numpy",
+      "filename": "numpy-2.1.2-cp310-cp310-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/c2/3d/293cc5927f916a7bc6bf74da8f6defab63d1b13f0959d7e21878ad8a20d8/numpy-2.1.2-cp310-cp310-win_amd64.whl",
+      "size": 12865501,
+      "sha256": "860ec6e63e2c5c2ee5e9121808145c7bf86c96cca9ad396c0bd3e0f2798ccbe2",
+      "published_pypi_sha256": "860ec6e63e2c5c2ee5e9121808145c7bf86c96cca9ad396c0bd3e0f2798ccbe2",
+      "matches": true
+    },
+    {
+      "package": "uv",
+      "filename": "uv-0.13.6-py3-none-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/7c/9d/714523188aea3054644d8e69ae8089aac70325a3cee2d3d05509d4f23398/uv-0.13.6-py3-none-win_amd64.whl",
+      "size": 15334118,
+      "sha256": "7c9bc35ccb65932d8dc10a0669f9c805eaa3c9827ce18ecbecb1bd67944b2cdf",
+      "published_pypi_sha256": "7c9bc35ccb65932d8dc10a0669f9c805eaa3c9827ce18ecbecb1bd67944b2cdf",
+      "matches": true
+    }
+  ]
+}

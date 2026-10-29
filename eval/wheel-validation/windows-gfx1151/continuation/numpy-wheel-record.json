@@ -1,0 +1,24 @@
+{
+  "comment_text": "",
+  "core-metadata": {
+    "sha256": "79e2290b7f820145eabbca008b02c9ec4f29521eb13c506893e1e68aea2dbcfd"
+  },
+  "digests": {
+    "blake2b_256": "c23d293cc5927f916a7bc6bf74da8f6defab63d1b13f0959d7e21878ad8a20d8",
+    "md5": "e4d74f9d188dc3fe7a65adf8c01e98cc",
+    "sha256": "860ec6e63e2c5c2ee5e9121808145c7bf86c96cca9ad396c0bd3e0f2798ccbe2"
+  },
+  "downloads": -1,
+  "filename": "numpy-2.1.2-cp310-cp310-win_amd64.whl",
+  "has_sig": false,
+  "md5_digest": "e4d74f9d188dc3fe7a65adf8c01e98cc",
+  "packagetype": "bdist_wheel",
+  "python_version": "cp310",
+  "requires_python": ">=3.10",
+  "size": 12865501,
+  "upload_time": "2024-10-05T18:31:05",
+  "upload_time_iso_8601": "2024-10-05T18:31:05.524183Z",
+  "url": "https://files.pythonhosted.org/packages/c2/3d/293cc5927f916a7bc6bf74da8f6defab63d1b13f0959d7e21878ad8a20d8/numpy-2.1.2-cp310-cp310-win_amd64.whl",
+  "yanked": false,
+  "yanked_reason": null
+}

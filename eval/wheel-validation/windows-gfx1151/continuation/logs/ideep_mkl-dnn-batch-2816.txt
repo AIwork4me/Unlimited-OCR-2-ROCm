@@ -1,0 +1,6 @@
+error: RPC failed; curl 28 Operation too slow. Less than 1024 bytes/sec transferred the last 15 seconds
+fatal: early EOF
+fatal: index-pack failed
+error: RPC failed; curl 28 Operation too slow. Less than 1024 bytes/sec transferred the last 15 seconds
+fatal: early EOF
+fatal: index-pack failed

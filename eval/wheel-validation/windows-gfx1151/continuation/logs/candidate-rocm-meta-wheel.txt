@@ -1,0 +1,13 @@
+Processing C:\b\resume\verified-python-wheels\rocm-7.14.1.tar.gz
+  File was already downloaded c:\b\resume\verified-python-wheels\rocm-7.14.1.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: rocm
+  Building wheel for rocm (pyproject.toml): started
+  Building wheel for rocm (pyproject.toml): finished with status 'done'
+  Created wheel for rocm: filename=rocm-7.14.1-py3-none-any.whl size=28687 sha256=28f235f1c392f7fe1eea0db77bf7a2acc7e980abd4da09aa7c20575757c63dce
+  Stored in directory: <USERPROFILE>\appdata\local\pip\cache\wheels\f2\36\3b\c12f47c69be602034aa19e1bd789e2fa94910b511cdbf367da
+Successfully built rocm
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: C:\b\be\Scripts\python.exe -m pip install --upgrade pip

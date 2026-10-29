@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pthreadpool", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "4fe0e1e183925bf8cfa6aae24237e724a96479b8"]
+From https://github.com/Maratyszcza/pthreadpool
+ * branch            4fe0e1e183925bf8cfa6aae24237e724a96479b8 -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pthreadpool", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pthreadpool", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "4fe0e1e183925bf8cfa6aae24237e724a96479b8"]
+HEAD is now at 4fe0e1e Fix incorrect thread number used in 2D task with thread
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pthreadpool", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

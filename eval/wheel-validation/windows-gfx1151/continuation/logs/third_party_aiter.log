@@ -1,0 +1,4 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\aiter", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\aiter", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "9a469a608b2c10b7157df573a38d31e5bf4038b4"]
+HEAD is now at 9a469a6 add a compile macro AITER_ASM_DIR (#1862)
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\aiter", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

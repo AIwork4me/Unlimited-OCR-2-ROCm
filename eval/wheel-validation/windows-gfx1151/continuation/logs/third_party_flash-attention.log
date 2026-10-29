@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\flash-attention", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "fec3a6a18460c1b40f097208d4c16fe8964a679d"]
+From https://github.com/Dao-AILab/flash-attention
+ * branch            fec3a6a18460c1b40f097208d4c16fe8964a679d -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\flash-attention", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\flash-attention", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "fec3a6a18460c1b40f097208d4c16fe8964a679d"]
+HEAD is now at fec3a6a [Cute][Flex] Fix kernel hang w/ multiple empty tiles (#2258)
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\flash-attention", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

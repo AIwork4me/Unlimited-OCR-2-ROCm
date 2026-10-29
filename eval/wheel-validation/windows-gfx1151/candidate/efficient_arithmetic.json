@@ -1,0 +1,477 @@
+{
+  "run_id": "de26f795-66d1-4d77-9339-7cb587b87457",
+  "utc": "2026-10-28T23:30:33.220336+00:00",
+  "git_commit": "8e2b4872e12ce57b950ca52108527038367fa219",
+  "script_sha256": "9673a18c38e48b1a5969d04b50ef691c13a8a6099092150ae5eda2d0380baf13",
+  "reporting_sha256": "eb1ed2c5ca146e78c973495825ee52272aee46f442f71df2ef3fa0332b7ed79c",
+  "arguments": {
+    "shape": [
+      1,
+      2,
+      16,
+      64
+    ],
+    "dtype": "bfloat16",
+    "mask": "bias",
+    "backend": "EFFICIENT_ATTENTION",
+    "operation": "arithmetic",
+    "trace": "dispatch",
+    "noncontiguous": false,
+    "causal": false,
+    "scale": null,
+    "seed": 7992,
+    "clear_error_nonacceptance": false,
+    "output": "C:\\b\\candidate\\efficient_arithmetic.json"
+  },
+  "command": [
+    "C:\\uocr\\experiments\\pytorch212_wheel\\candidate_repro.py",
+    "--shape",
+    "1",
+    "2",
+    "16",
+    "64",
+    "--mask",
+    "bias",
+    "--backend",
+    "EFFICIENT_ATTENTION",
+    "--operation",
+    "arithmetic",
+    "--trace",
+    "dispatch",
+    "--seed",
+    "7992",
+    "--output",
+    "C:\\b\\candidate\\efficient_arithmetic.json"
+  ],
+  "acceptance": true,
+  "backend_requested": "EFFICIENT_ATTENTION",
+  "backend_observed": "EFFICIENT_ATTENTION",
+  "events": [
+    {
+      "stage": "before_sdpa",
+      "hip_before_sync": 0,
+      "synchronize": "OK",
+      "hip_after_sync": 0
+    },
+    {
+      "stage": "after_sdpa",
+      "hip_before_sync": 0,
+      "synchronize": "OK",
+      "hip_after_sync": 0
+    },
+    {
+      "stage": "after_arithmetic",
+      "hip_before_sync": 0,
+      "synchronize": "OK",
+      "hip_after_sync": 0
+    }
+  ],
+  "operators": [
+    "aten.expand.default",
+    "aten._scaled_dot_product_efficient_attention.default"
+  ],
+  "status": "PASS",
+  "tolerances": {
+    "atol": 0.03,
+    "rtol": 0.03
+  },
+  "identity_profile_sha256": "2b5c45cb6f799c1bbf342ba61621e6e6499efeffe4177e86c65f8f691d91228c",
+  "candidate_adapter_sha256": "63d1c6f00bd532cf696b3579b47286f21bd4465e19a9ec1d648fa9158d2539aa",
+  "candidate_identity_gate_sha256": "f5ffe79e3923be812592bb709a41a7b2988ea0ed1d8aaf65d6da5a0e2c3f6fd8",
+  "identity_only_ast_changes": [
+    "baseline_expected_versions",
+    "baseline_identity_predicate"
+  ],
+  "candidate_command": [
+    "C:\\uocr\\experiments\\pytorch212_wheel\\candidate_repro.py",
+    "--shape",
+    "1",
+    "2",
+    "16",
+    "64",
+    "--mask",
+    "bias",
+    "--backend",
+    "EFFICIENT_ATTENTION",
+    "--operation",
+    "arithmetic",
+    "--trace",
+    "dispatch",
+    "--seed",
+    "7992",
+    "--output",
+    "C:\\b\\candidate\\efficient_arithmetic.json",
+    "--identity-profile",
+    "C:\\b\\resume\\candidate-identity-profile.json"
+  ],
+  "candidate_identity": {
+    "schema": 1,
+    "prefix": "C:\\b\\new",
+    "isolated_venv": true,
+    "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+    "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+    "aotriton_recipe_pin": "7a6963a7265d2cf0fc48c6a63464386134d32483",
+    "wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+    "installed_wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+    "wheel_hash_recomputed": true,
+    "torch_version": "2.12.0+rocm7.14.1",
+    "imported_git_version": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+    "hip": "7.14.60850",
+    "architecture": "gfx1151",
+    "python_abi": "cp310",
+    "platform": "win_amd64",
+    "import_within_venv": true,
+    "binaries": {
+      "torch/_C.cp310-win_amd64.pyd": "d92b15a1b2f8e0dcf7a00cddc9b08e262430ededc0e92bc9651c92753d092488",
+      "torch/lib/aotriton_v2.dll": "941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884",
+      "torch/lib/c10.dll": "8b626ead2d87e78363f499915baf8b143e09d9a363da2e17cde23c30aa83ca27",
+      "torch/lib/c10_hip.dll": "d72a2f070dd02b4d976e5f8ced62ef0e8c9306f0a1e6f46d8832007f9f662317",
+      "torch/lib/caffe2_nvrtc.dll": "3646f3ae45cad5346d4c55a56a4c67245d360207985a46eee3452fdab5f63535",
+      "torch/lib/dl.dll": "d9b32d65d724f8bbc60f9d3cbda81365b6ad1708575f51bd6658a1c6e43e1d58",
+      "torch/lib/liblzma.dll": "710cd7fc72bffd5483167391331d55e9b22ac570709cb41eafbb23115b7c3453",
+      "torch/lib/libomp140.x86_64.dll": "9ab1cb787e52b2a36133899c01c1db1f876067d1471cd224ead85f40a8152b99",
+      "torch/lib/shm.dll": "f379c143406dba0e14369e8b7ad5a6bacbae32a48c7990b48f20defeebe84877",
+      "torch/lib/torch.dll": "7aa176288e90a2ca4633988497957c446ae485dd00d7cde16754f66cf4a9ece6",
+      "torch/lib/torch_cpu.dll": "bb0df531f59268ac4f2060947bfa733c271a3436be567766f5fd706d429a696a",
+      "torch/lib/torch_global_deps.dll": "75d5d0b652047a4f6da6aaa3a57556b846fda889b6bf1235f2b038ec3386c822",
+      "torch/lib/torch_hip.dll": "12e3c174c04162593fa00bb969a5d6dcc6db3476613f403fcf7f3021d9b97a38",
+      "torch/lib/torch_python.dll": "f77d38901fd0612b2be54d64b9f2319709a70578b8b80f891cfdeeb1f23fd58f",
+      "torch/lib/uv.dll": "34070dfc8f6a634a6e4b0ec4eb746e6b429a62516f7dfd35ec68990cfb20f502",
+      "_rocm_sdk_core/bin/amdhip64_7.dll": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033"
+    },
+    "loaded_binaries": {
+      "_rocm_sdk_core/bin/amdhip64_7.dll": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "torch/lib/aotriton_v2.dll": "941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884",
+      "torch/lib/liblzma.dll": "710cd7fc72bffd5483167391331d55e9b22ac570709cb41eafbb23115b7c3453",
+      "torch/lib/c10.dll": "8b626ead2d87e78363f499915baf8b143e09d9a363da2e17cde23c30aa83ca27",
+      "torch/lib/c10_hip.dll": "d72a2f070dd02b4d976e5f8ced62ef0e8c9306f0a1e6f46d8832007f9f662317",
+      "torch/lib/caffe2_nvrtc.dll": "3646f3ae45cad5346d4c55a56a4c67245d360207985a46eee3452fdab5f63535",
+      "torch/lib/dl.dll": "d9b32d65d724f8bbc60f9d3cbda81365b6ad1708575f51bd6658a1c6e43e1d58",
+      "torch/lib/libomp140.x86_64.dll": "9ab1cb787e52b2a36133899c01c1db1f876067d1471cd224ead85f40a8152b99",
+      "torch/lib/shm.dll": "f379c143406dba0e14369e8b7ad5a6bacbae32a48c7990b48f20defeebe84877",
+      "torch/lib/torch_cpu.dll": "bb0df531f59268ac4f2060947bfa733c271a3436be567766f5fd706d429a696a",
+      "torch/lib/uv.dll": "34070dfc8f6a634a6e4b0ec4eb746e6b429a62516f7dfd35ec68990cfb20f502",
+      "torch/lib/torch.dll": "7aa176288e90a2ca4633988497957c446ae485dd00d7cde16754f66cf4a9ece6",
+      "torch/lib/torch_global_deps.dll": "75d5d0b652047a4f6da6aaa3a57556b846fda889b6bf1235f2b038ec3386c822",
+      "torch/lib/torch_hip.dll": "12e3c174c04162593fa00bb969a5d6dcc6db3476613f403fcf7f3021d9b97a38",
+      "torch/lib/torch_python.dll": "f77d38901fd0612b2be54d64b9f2319709a70578b8b80f891cfdeeb1f23fd58f",
+      "torch/_C.cp310-win_amd64.pyd": "d92b15a1b2f8e0dcf7a00cddc9b08e262430ededc0e92bc9651c92753d092488"
+    },
+    "loaded_binaries_within_venv": true,
+    "loaded_paths": [
+      "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_core\\bin\\amdhip64_7.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\aotriton_v2.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\liblzma.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\c10.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\c10_hip.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\caffe2_nvrtc.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\dl.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\libomp140.x86_64.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\shm.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_cpu.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\uv.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_hip.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_python.dll",
+      "C:\\b\\new\\Lib\\site-packages\\torch\\_C.cp310-win_amd64.pyd"
+    ],
+    "artifact_binaries": {
+      "torch/_C.cp310-win_amd64.pyd": "d92b15a1b2f8e0dcf7a00cddc9b08e262430ededc0e92bc9651c92753d092488",
+      "torch/lib/aotriton_v2.dll": "941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884",
+      "torch/lib/c10.dll": "8b626ead2d87e78363f499915baf8b143e09d9a363da2e17cde23c30aa83ca27",
+      "torch/lib/c10_hip.dll": "d72a2f070dd02b4d976e5f8ced62ef0e8c9306f0a1e6f46d8832007f9f662317",
+      "torch/lib/caffe2_nvrtc.dll": "3646f3ae45cad5346d4c55a56a4c67245d360207985a46eee3452fdab5f63535",
+      "torch/lib/dl.dll": "d9b32d65d724f8bbc60f9d3cbda81365b6ad1708575f51bd6658a1c6e43e1d58",
+      "torch/lib/liblzma.dll": "710cd7fc72bffd5483167391331d55e9b22ac570709cb41eafbb23115b7c3453",
+      "torch/lib/libomp140.x86_64.dll": "9ab1cb787e52b2a36133899c01c1db1f876067d1471cd224ead85f40a8152b99",
+      "torch/lib/shm.dll": "f379c143406dba0e14369e8b7ad5a6bacbae32a48c7990b48f20defeebe84877",
+      "torch/lib/torch.dll": "7aa176288e90a2ca4633988497957c446ae485dd00d7cde16754f66cf4a9ece6",
+      "torch/lib/torch_cpu.dll": "bb0df531f59268ac4f2060947bfa733c271a3436be567766f5fd706d429a696a",
+      "torch/lib/torch_global_deps.dll": "75d5d0b652047a4f6da6aaa3a57556b846fda889b6bf1235f2b038ec3386c822",
+      "torch/lib/torch_hip.dll": "12e3c174c04162593fa00bb969a5d6dcc6db3476613f403fcf7f3021d9b97a38",
+      "torch/lib/torch_python.dll": "f77d38901fd0612b2be54d64b9f2319709a70578b8b80f891cfdeeb1f23fd58f",
+      "torch/lib/uv.dll": "34070dfc8f6a634a6e4b0ec4eb746e6b429a62516f7dfd35ec68990cfb20f502"
+    },
+    "images": {
+      "torch/lib/aotriton.images/amd-gfx115x/__signature__": "875f8cf66d6ae8088d7c66443a447bfe7f7108fb5a0b26fb7c662856b7197eed",
+      "torch/lib/aotriton.images/amd-gfx115x/flash/attn_fwd.zip": "079e4b9dfbe6bd7a390f422d846ad13d611cdf9347ae8982c4005e655bfb526f",
+      "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_dk_dv.zip": "01bad38f513889da6192280be5b119ef2213bd751e21b0687e241d33c4738df6",
+      "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_dq.zip": "8d7de57a35296a3953442660115399495b921300a81f157eb62fc3191d7db52f",
+      "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_fuse.zip": "a39ac97dabc4d0a00a416c765d7fc3860ce853d7886c119820bab67cb86da4ec",
+      "torch/lib/aotriton.images/amd-gfx115x/flash/bwd_preprocess.zip": "a7c1698a4298b92a91319254a29f328b197bdbf37e624187aaba70106749f771",
+      "torch/lib/aotriton.images/amd-gfx115x/flash/debug_simulate_encoded_softmax.zip": "e3da8744754348ac3adc6773fc81bab5af109c5c2abf6127bbe1a2bd13132cb6"
+    },
+    "runtime_header_sha256": "8980170d0f5e8e69863dc0ce42f09fe3a9f3ca31263d3ed68cded0c44427b045",
+    "image_signatures": [
+      {
+        "AOTRITON_GIT_SHA1": "c11b5b886a10a00f925f74133d38b3505e67ccd9",
+        "AOTRITON_GIT_TREESHA1": "25d66e23104aab7a2492d40d1d326499d224dc88",
+        "DB_SHA256": {
+          "primary": {
+            "gfx90a": {
+              "flash": {
+                "attn_fwd": "54c28f0b5e9ee625632e33116660037554bb6d2c244ef518151c06082041884f",
+                "bwd_kernel_dk_dv": "f308b8bcd57b533df949c5ed5db42b8c69e3ec9f73109a680a4b4c437f623e91",
+                "bwd_kernel_dq": "7c21f52ec15ef0f5a61a2ace4d1847d0ff1aaaa1d27b51e315b25fb7ac6277e2",
+                "bwd_kernel_fuse": "3822ddb65e9cfdd72179a4f6355ee41ef4a67c0810ac5f5eaf57264f70f2f1b5"
+              }
+            },
+            "gfx942": {
+              "flash": {
+                "attn_fwd": "30f5c1efff133111f161875817d86aa6ca50f419f6776e1dd08e37c5bb029e8c",
+                "bwd_kernel_dk_dv": "d2a290e57ac2886f8ffc034bfa153eb5fbf7058947e3ce7fda7dd31918261122",
+                "bwd_kernel_dq": "da83488dc3a46c45537af87ad150baf70daaa37b6e0360c7e560020988cbf8b1",
+                "bwd_kernel_fuse": "b3c20f03ae35156956bf1428db6939a871195430b272d13a9e0726cd6c4bf747"
+              }
+            },
+            "gfx950": {
+              "flash": {
+                "attn_fwd": "f69724f78f80bb9eff17b2acba4a169bbf80244f591b277ad977516dcc6de45a",
+                "bwd_kernel_dk_dv": "144064028bf64aca2e0743c60b762b31b30ac52b1bdd338dd556c7f6bf5c26a0",
+                "bwd_kernel_dq": "db36ae3bed8d122ba6a2b5c1de99dc239a28ac2dc9aa0610466507b3f8c5ca48",
+                "bwd_kernel_fuse": "a5d1e56e7af0a60731a23c239b595932064d2ac9c17f53f8ef881e7c2f5b8b4c"
+              }
+            },
+            "gfx1100": {
+              "flash": {
+                "attn_fwd": "9e2062eff2058b0c5a8bb8314fdd6916e05758265f32041592174e7c93ccd8c3",
+                "bwd_kernel_dk_dv": "8d4e59c3ebd067f54e3034dcbb0240f9f051aed7a8b8240832f825465771ac85",
+                "bwd_kernel_dq": "48d6559c53830e66100184b0dc9306879bc4890b940e1b7b737e0397348da9c8",
+                "bwd_kernel_fuse": "0712fdc1ff370692978f58605434dbccb1f00417d7c017db9f2715b2a682c467"
+              }
+            },
+            "gfx1101": {
+              "flash": {}
+            },
+            "gfx1102": {
+              "flash": {}
+            },
+            "gfx1103": {
+              "flash": {}
+            },
+            "gfx1150": {
+              "flash": {
+                "attn_fwd": "febd2cfa61b63c85100bd5d953d8c3244819100d96710caa735f5ed0a17bcbab",
+                "bwd_kernel_dk_dv": "caadbf9c5947c966e3329d455c844d4d195dd78191ff5862173c1f5d093a95c8",
+                "bwd_kernel_dq": "fdaaffd7af7f1d5b3ed1520d69cbb459ad4455061fe5dbbc236feede4935b67c",
+                "bwd_kernel_fuse": "de8d4dc473849a4bee3d8a7c3f9856280c88514f59d0c16edfebd6cdade02d74"
+              }
+            },
+            "gfx1151": {
+              "flash": {
+                "attn_fwd": "74cea78c33396e2f7c23d62fb245e9bab5f955bccd0508624589905f699c3207",
+                "bwd_kernel_dk_dv": "337752cb591b2e9c97a2ecaf264eb30679fa64065e1e860fe224deb5922f4aa3",
+                "bwd_kernel_dq": "29d6a927b9806c5e8a09234e4313a8535d17862f0962b6d5de127e4d9bd4e48b",
+                "bwd_kernel_fuse": "257161bce29a34e142af8b27e92654d7615800f813563d0d5a6ad53b2f2379a3"
+              }
+            },
+            "gfx1152": {
+              "flash": {}
+            },
+            "gfx1153": {
+              "flash": {}
+            },
+            "gfx1201": {
+              "flash": {
+                "attn_fwd": "a11d1435cda69b01eec3e72885d1334396356854216afdeeec5863d244e77dd9",
+                "bwd_kernel_dk_dv": "5ba7c0e10d88feb43f4e7e48b625d96ad1b2fdfb3a3a2411de92dbb12838067f",
+                "bwd_kernel_dq": "94d803f10b94e8ccb85b4beff5dabb083363854ffa895153abdd715b2c18ea4f",
+                "bwd_kernel_fuse": "fd7ec757bb0ec8177f2a70477a510bdbde54f04206fd0f751aef2f33dd6a927a"
+              }
+            },
+            "gfx1200": {
+              "flash": {}
+            },
+            "gfx1250": {
+              "flash": {}
+            }
+          },
+          "secondary": {
+            "flash.op": "706316e3e99136aa8718aff1986e0fba54aa5e1084c3bd8672353e4d973a714f"
+          }
+        },
+        "TRITON_VERSION": "3.8.0+gitaa3cf1a1.aotriton0.14",
+        "FLYC_VERSION": "0.3.1+git421935cc.aotriton0.14.llvm78302f03ff25.p2"
+      }
+    ],
+    "pip_check_exit": 0,
+    "pip_check_command": [
+      "C:\\b\\new\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "pip_check_prefix": "C:\\b\\new",
+    "pip_check_stdout": "No broken requirements found.\n",
+    "pip_check_stderr": "",
+    "packages": {
+      "filelock": "4.1.0",
+      "fsspec": "2026.9.0",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.4",
+      "mpmath": "1.3.0",
+      "networkx": "2.8.8",
+      "numpy": "2.2.6",
+      "pip": "26.0.1",
+      "rocm": "7.14.1",
+      "rocm-sdk-core": "7.14.1",
+      "rocm-sdk-device-gfx1151": "7.14.1",
+      "rocm-sdk-libraries": "7.14.1",
+      "setuptools": "79.0.1",
+      "sympy": "1.13.3",
+      "torch": "2.12.0+rocm7.14.1",
+      "typing_extensions": "4.16.0"
+    },
+    "source_overrides": {},
+    "torch_file": "C:\\b\\new\\lib\\site-packages\\torch\\__init__.py"
+  },
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "windows_build": "10.0.26200",
+    "python": "3.10.20 (main, May 10 2026, 19:31:32) [MSC v.1944 64 bit (AMD64)]",
+    "machine": "AMD64",
+    "torch": "2.12.0+rocm7.14.1",
+    "hip": "7.14.60850",
+    "torch_git": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+    "gpu": "AMD Radeon(TM) 8060S Graphics",
+    "architecture": "gfx1151",
+    "packages": {
+      "filelock": "4.1.0",
+      "fsspec": "2026.9.0",
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.4",
+      "mpmath": "1.3.0",
+      "networkx": "2.8.8",
+      "numpy": "2.2.6",
+      "pip": "26.0.1",
+      "rocm": "7.14.1",
+      "rocm-sdk-core": "7.14.1",
+      "rocm-sdk-device-gfx1151": "7.14.1",
+      "rocm-sdk-libraries": "7.14.1",
+      "setuptools": "79.0.1",
+      "sympy": "1.13.3",
+      "torch": "2.12.0+rocm7.14.1",
+      "typing_extensions": "4.16.0"
+    },
+    "runtime_overrides": {}
+  },
+  "hip_library": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_core\\bin\\amdhip64_7.dll",
+  "fixture_sha256": "a889de7a3cdb612299e6f2e885655f14171566414e9cda06ff3faab686cd5a86",
+  "tensors": [
+    {
+      "shape": [
+        1,
+        2,
+        16,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        2048,
+        1024,
+        64,
+        1
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        16,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        2048,
+        1024,
+        64,
+        1
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        16,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        2048,
+        1024,
+        64,
+        1
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        16,
+        16
+      ],
+      "dtype": "torch.bfloat16",
+      "cpu_stride": [
+        512,
+        256,
+        16,
+        1
+      ]
+    }
+  ],
+  "gpu_strides": [
+    [
+      2048,
+      1024,
+      64,
+      1
+    ],
+    [
+      2048,
+      1024,
+      64,
+      1
+    ],
+    [
+      2048,
+      1024,
+      64,
+      1
+    ],
+    [
+      512,
+      256,
+      16,
+      1
+    ]
+  ],
+  "capabilities": {
+    "flash": false,
+    "efficient": true,
+    "cudnn": false
+  },
+  "downstream_shape": [
+    1,
+    2,
+    16,
+    64
+  ],
+  "numerical": {
+    "atol": 0.03,
+    "rtol": 0.03,
+    "relative_denominator_floor": 1e-06,
+    "max_abs_error_finite": 0.006483316421508789,
+    "mean_abs_error_finite": 0.0005669775418937206,
+    "max_relative_error_finite": 3.409411668777466,
+    "failing_elements": 0,
+    "total_elements": 2048,
+    "failing_percent": 0.0,
+    "nonfinite_actual": 0,
+    "nan_actual": 0,
+    "inf_actual": 0,
+    "nonfinite_reference": 0
+  },
+  "prohibited_imports_loaded": [],
+  "exit_code": 0
+}

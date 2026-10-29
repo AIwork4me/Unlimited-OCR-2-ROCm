@@ -1,0 +1,11 @@
+{
+  "wait_for_component_pid": 17016,
+  "queued_utc": "2026-10-28T15:36:48.897454+00:00",
+  "start_utc": "2026-10-28T15:53:22.838071+00:00",
+  "command_file": "C:/b/resume/build-cached.cmd",
+  "pid": 80540,
+  "exit_code": 1,
+  "end_utc": "2026-10-28T15:54:37.274142+00:00",
+  "stdout": "C:\\b\\resume\\logs\\build-deps-ready.stdout.log",
+  "stderr": "C:\\b\\resume\\logs\\build-deps-ready.stderr.log"
+}

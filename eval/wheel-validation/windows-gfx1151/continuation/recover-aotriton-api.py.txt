@@ -1,0 +1,24 @@
+import pathlib,subprocess,json,base64,hashlib,zlib,concurrent.futures,time
+path='C:/b/dependency-cache/aotriton';pin='7a6963a7265d2cf0fc48c6a63464386134d32483'
+s=subprocess.check_output(['git','-C',path,'rev-list','--objects','--missing=print',pin],text=True)
+oids=[x[1:] for x in s.splitlines() if x.startswith('?')]
+objects=pathlib.Path(subprocess.check_output(['git','-C',path,'rev-parse','--absolute-git-dir'],text=True).strip())/'objects'
+def fetch(oid):
+    for attempt in range(3):
+        q=subprocess.run(['gh','api','repos/ROCm/aotriton/git/blobs/'+oid],capture_output=True,timeout=60)
+        if q.returncode:continue
+        try:d=json.loads(q.stdout);data=base64.b64decode(d['content'])
+        except Exception:continue
+        raw=b'blob '+str(len(data)).encode()+b'\0'+data
+        if hashlib.sha1(raw).hexdigest()!=oid:raise ValueError('Git object hash mismatch')
+        dst=objects/oid[:2]/oid[2:];dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes(zlib.compress(raw))
+        return {'oid':oid,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'git_oid_verified':True}
+    raise RuntimeError('unavailable '+oid)
+records=[]
+with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+    for i,r in enumerate(pool.map(fetch,oids),1):
+        records.append(r)
+        if i%30==0:print('GitHub API verified objects',i,'/',len(oids),flush=True)
+pathlib.Path('C:/b/resume/aotriton-api-object-recovery.json').write_text(json.dumps({'pin':pin,'transport':'authenticated GitHub blob API; every byte stream checked against immutable Git object ID before Git cache import','objects':records},indent=2))
+subprocess.run(['git','-C',path,'checkout','--detach',pin],check=True)
+print('AOTriton exact source cache ready',len(records),flush=True)

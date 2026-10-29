@@ -1,0 +1,11 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\onnx", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "e709452ef2bbc1d113faf678c24e6d3467696e83"]
+From https://github.com/onnx/onnx
+ * branch            e709452ef2bbc1d113faf678c24e6d3467696e83 -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\onnx", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\onnx", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "e709452ef2bbc1d113faf678c24e6d3467696e83"]
+error: RPC failed; curl 56 schannel: server closed abruptly (missing close_notify)
+error: 23 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+fatal: could not fetch a441e05c9d27272174c630ba86f6b889e95c0982 from promisor remote

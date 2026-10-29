@@ -1,0 +1,6 @@
+
+def initialize():
+    import rocm_sdk
+    rocm_sdk.initialize_process(
+        preload_shortnames=['amd_comgr', 'amdhip64', 'hiprtc', 'hipblas', 'hipfft', 'hiprand', 'hipsparse', 'hipsparselt', 'hipsolver', 'hipblaslt', 'miopen', 'hipdnn', 'rocm-openblas'],
+        check_version='7.14.1')

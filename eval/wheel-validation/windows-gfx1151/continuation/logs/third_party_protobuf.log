@@ -1,0 +1,11 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\protobuf", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a"]
+From https://github.com/protocolbuffers/protobuf
+ * branch            d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\protobuf", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\protobuf", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a"]
+error: RPC failed; curl 56 schannel: server closed abruptly (missing close_notify)
+error: 5208 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+fatal: could not fetch 201f851370eb689be2ac75b0c8ecbbb7cce709f5 from promisor remote

@@ -104,3 +104,19 @@ installed SDK. Preserve the original blocked evidence as an earlier attempt.
   error-clearing options) reproduced RED, fixed GREEN, and confirmed by reviewer.
   Tensor/reference/seed/mask/backend AST semantics unchanged outside two identity
   nodes. Candidate GPU execution remains conditional on an actual installed wheel.
+
+
+## Completed continuation
+
+- Recovered exact required source/setup/HIPIFY/install inputs, including Kineto
+  and PSIMD discovered by actual compiler/install diagnostics; no source fix.
+- Official frozen builder completed exit0 with existing SDK7.14.1; wheel SHA256
+  6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e.
+- Exact-path fresh installation and separately reviewed complete native/image
+  identity gate passed. Native-coverage review finding reproduced RED and fixed
+  GREEN; 35 candidate +30 existing gate tests, full CPU121 pass/2 GPU markers skip.
+- Physical candidate27 processes completed:21 FUSED_PASS,4 MATH_PASS,1 CONTROL_PASS,
+ 1 optional UNSUPPORTED. All fixtures/arguments match baseline; valid attn_fwd
+  loads/launches, zero HIP errors, reference correctness and three key repetitions.
+- Independent raw-data review supports FIX_VERIFIED for the tested artifact.
+  Final evidence publication, remote-head integrity and hosted CI follow.

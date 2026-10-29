@@ -1,0 +1,14 @@
+{
+  "start_utc": "2026-10-28T23:03:58.325124+00:00",
+  "command_file": "C:/b/resume/build-cached.cmd",
+  "recovered_dependency": {
+    "path": "third_party/psimd",
+    "sha": "072586a71b55b7f8c584153d223e95687148a900",
+    "materialization": "full checkout; FP16 install dependency include/psimd.h now present"
+  },
+  "pid": 56764,
+  "exit_code": 0,
+  "end_utc": "2026-10-28T23:17:54.180338+00:00",
+  "stdout": "C:\\b\\resume\\logs\\build-after-psimd.stdout.log",
+  "stderr": "C:\\b\\resume\\logs\\build-after-psimd.stderr.log"
+}

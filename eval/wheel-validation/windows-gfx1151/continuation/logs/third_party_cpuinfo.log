@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpuinfo", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "f858c30bcb16f8effd5ff46996f0514539e17abc"]
+From https://github.com/pytorch/cpuinfo
+ * branch            f858c30bcb16f8effd5ff46996f0514539e17abc -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpuinfo", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpuinfo", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "f858c30bcb16f8effd5ff46996f0514539e17abc"]
+HEAD is now at f858c30 Improve unisoc vendor detection, re-enable neon dot on unknown chipsets (#342)
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpuinfo", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

@@ -1,0 +1,8 @@
+{
+  "start_utc": "2026-10-28T15:28:32.1777483Z",
+  "end_utc": "2026-10-28T15:53:22.8400203Z",
+  "exit_code": 1,
+  "command": "cmd.exe /d /c C:\\b\\resume\\build-torch-cpu-component.cmd",
+  "purpose": "Required torch_cpu library component, same configured ROCm wheel build; no GPU acceptance claim",
+  "max_jobs": 8
+}

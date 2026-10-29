@@ -1,0 +1,516 @@
+{
+  "records": [
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 0,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 64,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 128,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 192,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 256,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 320,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 384,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 448,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 512,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 576,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 640,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 704,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 768,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 832,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 896,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 960,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1024,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1088,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1152,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1216,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1280,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1344,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1408,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1472,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1536,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1600,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1664,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1728,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1792,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1856,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1920,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 1984,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2048,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2112,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2176,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2240,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2304,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2368,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2432,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2496,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2560,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2624,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2688,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2752,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2816,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 3
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2880,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 2944,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3008,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3072,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3136,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3200,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3264,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3328,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3392,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3456,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3520,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3584,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3648,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3712,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3776,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3840,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3904,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 3968,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4032,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4096,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4160,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4224,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4288,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4352,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4416,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4480,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4544,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "ideep/mkl-dnn",
+      "offset": 4608,
+      "objects": 52,
+      "exit": 0,
+      "attempts": 1
+    }
+  ],
+  "method": "bounded exact-object Git fetch batches, TLS verified; native Git verifies object identities"
+}

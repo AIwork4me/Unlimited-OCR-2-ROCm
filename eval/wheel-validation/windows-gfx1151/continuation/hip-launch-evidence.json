@@ -1,0 +1,72 @@
+{
+  "flash_launch": {
+    "stderr_sha256": "c5e102a313328bcc215a2b0964a0b9757a78170b08ddca9a97116b57440344db",
+    "module_load_calls": 1,
+    "module_load_successes": 1,
+    "attn_fwd_function_lookup": true,
+    "function_lookup_successes": 1,
+    "launches": [
+      {
+        "function": "000001279167EA30",
+        "grid": [
+          1,
+          2,
+          1
+        ],
+        "block": [
+          128,
+          1,
+          1
+        ]
+      }
+    ],
+    "launch_successes": 1,
+    "driver_kernel_attn_fwd_seen": true,
+    "hip_error_lines": [],
+    "relevant_lines": [
+      ":3:hip_module.cpp           :61  : 1020251500948 us: [pid:5136 tid: 0x72f95]  hipModuleLoadDataEx ( 0000000FE45E9090, 00000127A608D57C ) ",
+      ":3:hip_module.cpp           :62  : 1020251503654 us: [pid:5136 tid: 0x72f95] hipModuleLoadDataEx: Returned hipSuccess : ",
+      ":3:hip_module.cpp           :70  : 1020251503770 us: [pid:5136 tid: 0x72f95]  hipModuleGetFunction ( 0000000FE45E9060, 0000012790DB6700, attn_fwd ) ",
+      ":3:hip_module.cpp           :85  : 1020251503786 us: [pid:5136 tid: 0x72f95] hipModuleGetFunction: Returned hipSuccess : ",
+      ":3:hip_module.cpp           :570 : 1020251503834 us: [pid:5136 tid: 0x72f95]  hipModuleLaunchKernel ( 000001279167EA30, 1, 2, 1, 128, 1, 1, 4096, char array:<null>, 000001278EA5E9A0, char array:<null> ) ",
+      ":3:hip_module.cpp           :605 : 1020251503882 us: [pid:5136 tid: 0x72f95] hipModuleLaunchKernel: Returned hipSuccess : ",
+      ":3:palvirtual.cpp           :2732: 1020251503906 us: [pid:5136 tid: 0xfdfbc] !\tkernel : attn_fwd"
+    ],
+    "valid": true
+  },
+  "efficient_launch": {
+    "stderr_sha256": "6ef7e6cd4bd6c328c4776c9bbfa4eded9c9d196d45c57dbcb9af19139c6e9880",
+    "module_load_calls": 1,
+    "module_load_successes": 1,
+    "attn_fwd_function_lookup": true,
+    "function_lookup_successes": 1,
+    "launches": [
+      {
+        "function": "000001DB1EFDE8F0",
+        "grid": [
+          1,
+          2,
+          1
+        ],
+        "block": [
+          128,
+          1,
+          1
+        ]
+      }
+    ],
+    "launch_successes": 1,
+    "driver_kernel_attn_fwd_seen": true,
+    "hip_error_lines": [],
+    "relevant_lines": [
+      ":3:hip_module.cpp           :61  : 1020261454318 us: [pid:90812 tid: 0x882e8]  hipModuleLoadDataEx ( 0000004046DE9000, 000001DB34505254 ) ",
+      ":3:hip_module.cpp           :62  : 1020261456256 us: [pid:90812 tid: 0x882e8] hipModuleLoadDataEx: Returned hipSuccess : ",
+      ":3:hip_module.cpp           :70  : 1020261456290 us: [pid:90812 tid: 0x882e8]  hipModuleGetFunction ( 0000004046DE8FD0, 000001DB1ECCF730, attn_fwd ) ",
+      ":3:hip_module.cpp           :85  : 1020261456306 us: [pid:90812 tid: 0x882e8] hipModuleGetFunction: Returned hipSuccess : ",
+      ":3:hip_module.cpp           :570 : 1020261456358 us: [pid:90812 tid: 0x882e8]  hipModuleLaunchKernel ( 000001DB1EFDE8F0, 1, 2, 1, 128, 1, 1, 4096, char array:<null>, 000001DB6CBB8D00, char array:<null> ) ",
+      ":3:hip_module.cpp           :605 : 1020261456396 us: [pid:90812 tid: 0x882e8] hipModuleLaunchKernel: Returned hipSuccess : ",
+      ":3:palvirtual.cpp           :2732: 1020261456404 us: [pid:90812 tid: 0x232eb] !\tkernel : attn_fwd"
+    ],
+    "valid": true
+  }
+}

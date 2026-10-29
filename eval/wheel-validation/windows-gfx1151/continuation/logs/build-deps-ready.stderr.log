@@ -1,0 +1,63 @@
+WARNING: Skipping torch as it is not installed.
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+Building wheel torch-2.12.0+rocm7.14.1
+pytorch_extra_install_requirements: rocm[libraries]==7.14.1
+warning: no files found matching 'BUILD.bazel'
+warning: no files found matching 'WORKSPACE'
+warning: no files found matching '.bazelrc'
+warning: no files found matching '.bazelversion'
+warning: no directories found matching 'ios'
+no previously-included directories found matching 'third_party\nccl\pkg\debian'
+no previously-included directories found matching 'third_party\opentelemetry-cpp\third_party\prometheus-cpp\cmake\project-import-*'
+no previously-included directories found matching '**\.gitlab'
+warning: no previously-included files matching '*.o' found anywhere in distribution
+warning: no previously-included files matching '*.obj' found anywhere in distribution
+warning: no previously-included files matching '*.so' found anywhere in distribution
+warning: no previously-included files matching '*.dylib' found anywhere in distribution
+warning: no previously-included files matching '*.a' found anywhere in distribution
+warning: no previously-included files matching '*.pxd' found anywhere in distribution
+warning: no previously-included files matching '*.swp' found anywhere in distribution
+warning: no previously-included files matching '*~' found anywhere in distribution
+warning: no previously-included files matching '.gitlab-ci.yml' found anywhere in distribution
+Building wheel torch-2.12.0+rocm7.14.1
+-- Building version 2.12.0+rocm7.14.1
+cmake --build . --target install --config Release -j 8
+VENV_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime-build/venv
+VENV_SITE C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\Scripts\python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\Scripts\python.exe -m pip install --upgrade pip
+CMAKE_SOURCE_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime
+CMAKE_CURRENT_SOURCE_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime/v3src
+CMAKE_CURRENT_SOURCE_PARENT_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime
+CMAKE_CURRENT_LIST_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime/v3src
+CMAKE_CURRENT_BINARY_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime-build/v3src
+AOTRITON_COMPILER C:/b/pytorch/build/aotriton/src/aotriton_runtime/python/compile.py
+CMAKE_INSTALL_INCLUDEDIR include
+Traceback (most recent call last):
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1636, in <module>
+    main(sys.argv[1:])
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1632, in main
+    args.func(args)
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 901, in do_build
+    _do_build_wheels_core(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 771, in _do_build_wheels_core
+    do_build_pytorch(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1299, in do_build_pytorch
+    run_command(build_command, cwd=pytorch_dir, env=env)
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 228, in run_command
+    subprocess.check_call(args, cwd=str(cwd), env=full_env)
+  File "<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['C:\\b\\be\\Scripts\\python.exe', '-m', 'build', '--wheel', '--no-isolation']' returned non-zero exit status 1.

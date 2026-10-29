@@ -1,0 +1,9 @@
+{
+  "start_utc": "2026-10-28T14:50:16.4263713Z",
+  "end_utc": "2026-10-28T14:50:57.5978023Z",
+  "exit_code": 0,
+  "command": "cmd.exe /d /c C:\\b\\resume\\build-libuv.cmd",
+  "libuv_sha": "be6b81a352d17513c95be153afcb3148f1a451cd",
+  "tag": "v1.47.0",
+  "recipe": "frozen TheRock Windows workflow"
+}

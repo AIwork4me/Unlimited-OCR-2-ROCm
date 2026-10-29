@@ -1,0 +1,28 @@
+Completed range aotriton 0
+Completed range aotriton 10
+Completed range aotriton 20
+Completed range aotriton 30
+Completed range aotriton 40
+Completed range aotriton 50
+Completed range aotriton 60
+Completed range aotriton 70
+Completed range aotriton 80
+Completed range aotriton 90
+Completed range aotriton 100
+Completed range aotriton 110
+Completed range aotriton 120
+Completed range aotriton 130
+Completed range aotriton 140
+Completed range aotriton 150
+Completed range aotriton 160
+Completed range aotriton 170
+Completed range aotriton 180
+Completed range aotriton 190
+Completed range aotriton 200
+Completed range aotriton 210
+Completed range aotriton 220
+Traceback (most recent call last):
+  File "C:\b\resume\finish-aotriton.py", line 32, in <module>
+    h=hashlib.file_digest(dest.open('rb'),'sha256').hexdigest();assert h==r['digests']['sha256'],(pkg,h)
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('aotriton', '9ca4eabffa4210734c26e458f4e8a31d067cfae4dc57fe66ee4310da10cacfbc')

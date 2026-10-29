@@ -1,0 +1,45 @@
+{
+  "utc": "2026-10-28T23:48:34.097213+00:00",
+  "records": [
+    {
+      "name": "fbgemm",
+      "head": "c246916f9e3804eacc3c95058e51cce02ae00fff",
+      "tracked_diff_sha256": "69b62727e35754c7ae54026594831429706dd5f567b8481eb2184b1b7e0df5ad",
+      "diffstat": " external/json                                                     | 2 +-\n fbgemm_gpu/cmake/Hip.cmake                                        | 8 ++++----\n .../src/quantize/ck_extensions/bf16_grouped/bf16_grouped_gemm.hip | 8 ++++----\n .../ck_extensions/bf16_grouped/kernels/bf16_grouped_common.h      | 4 ++--\n .../experimental/gen_ai/src/quantize/ck_extensions/ck_utility.hip | 4 ++--\n .../gen_ai/src/quantize/ck_extensions/fp8_blockwise_gemm.hip      | 4 ++--\n .../ck_extensions/fp8_rowwise/kernels/fp8_rowwise_common.h        | 4 ++--\n .../fp8_rowwise_batched/kernels/fp8_rowwise_batched_common.h      | 4 ++--\n .../fp8_rowwise_grouped/fp8_rowwise_grouped_gemm.hip              | 8 ++++----\n .../fp8_rowwise_grouped/kernels/fp8_rowwise_grouped_common.h      | 4 ++--\n .../kernels/fp8_rowwise_preshuffle_common.h                       | 4 ++--\n .../gen_ai/src/quantize/ck_extensions/fp8_tensorwise_gemm.hip     | 4 ++--\n .../src/quantize/ck_extensions/fused_moe/fused_moe_kernel.hip     | 4 ++--\n 13 files changed, 31 insertions(+), 31 deletions(-)\n",
+      "numstat": "1\t1\texternal/json\n4\t4\tfbgemm_gpu/cmake/Hip.cmake\n4\t4\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/bf16_grouped/bf16_grouped_gemm.hip\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/bf16_grouped/kernels/bf16_grouped_common.h\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/ck_utility.hip\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_blockwise_gemm.hip\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise/kernels/fp8_rowwise_common.h\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_batched/kernels/fp8_rowwise_batched_common.h\n4\t4\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_grouped/fp8_rowwise_grouped_gemm.hip\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_grouped/kernels/fp8_rowwise_grouped_common.h\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_preshuffle/kernels/fp8_rowwise_preshuffle_common.h\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_tensorwise_gemm.hip\n2\t2\tfbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fused_moe/fused_moe_kernel.hip\n",
+      "mode_summary": "",
+      "untracked": "",
+      "classification": "Official frozen HIPIFY preprocessing"
+    },
+    {
+      "name": "fmt",
+      "head": "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+      "tracked_diff_sha256": "bd60f2ad156966936346a34be465a6e9d2df9a7ec3e8811ba2af6ed67117649b",
+      "diffstat": " support/check-commits | 0\n support/mkdocs        | 0\n support/printable.py  | 0\n support/release.py    | 0\n test/fuzzing/build.sh | 0\n 5 files changed, 0 insertions(+), 0 deletions(-)\n",
+      "numstat": "0\t0\tsupport/check-commits\n0\t0\tsupport/mkdocs\n0\t0\tsupport/printable.py\n0\t0\tsupport/release.py\n0\t0\ttest/fuzzing/build.sh\n",
+      "mode_summary": " mode change 100755 => 100644 support/check-commits\n mode change 100755 => 100644 support/mkdocs\n mode change 100755 => 100644 support/printable.py\n mode change 100755 => 100644 support/release.py\n mode change 100755 => 100644 test/fuzzing/build.sh\n",
+      "untracked": "",
+      "classification": "Executable-bit metadata only; contents unchanged"
+    },
+    {
+      "name": "gloo",
+      "head": "3135b0b41b67dde590eef0938a0bf3d6238df5f7",
+      "tracked_diff_sha256": "d772b0adc32209fcff29bd33b3a41031d0d64121b9a4b9eb0c24fffa8add4386",
+      "diffstat": " cmake/Dependencies.cmake | 2 +-\n gloo/cuda.cu             | 2 +-\n 2 files changed, 2 insertions(+), 2 deletions(-)\n",
+      "numstat": "1\t1\tcmake/Dependencies.cmake\n1\t1\tgloo/cuda.cu\n",
+      "mode_summary": "",
+      "untracked": "",
+      "classification": "Official frozen HIPIFY preprocessing"
+    },
+    {
+      "name": "mslk",
+      "head": "3d332d1c0c0ac7765852c97b3979c9ef913e037f",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diffstat": "",
+      "numstat": "",
+      "mode_summary": "",
+      "untracked": "include/mslk/utils/hip/tuning_cache.cuh\ninclude/mslk/utils/tuning_cache_hip.cuh\n",
+      "classification": "Official frozen HIPIFY preprocessing"
+    }
+  ]
+}

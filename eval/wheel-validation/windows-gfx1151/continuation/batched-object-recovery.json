@@ -1,0 +1,775 @@
+{
+  "records": [
+    {
+      "name": "onnx",
+      "offset": 0,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 64,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 128,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 192,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 256,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 320,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 384,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 448,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 512,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 576,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 640,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 704,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 768,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 832,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 896,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 960,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1024,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1088,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1152,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1216,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1280,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1344,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1408,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1472,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "onnx",
+      "offset": 1536,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1600,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1664,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1728,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1792,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1856,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1920,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 1984,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2048,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2112,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "onnx",
+      "offset": 2176,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2240,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2304,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2368,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2432,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2496,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2560,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2624,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2688,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2752,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2816,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 2880,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "onnx",
+      "offset": 2944,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3008,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3072,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3136,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3200,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3264,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3328,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3392,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3456,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3520,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3584,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3648,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3712,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3776,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3840,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3904,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 3968,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4032,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4096,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4160,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4224,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4288,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4352,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4416,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4480,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4544,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4608,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "onnx",
+      "offset": 4672,
+      "objects": 36,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 0,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 64,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 128,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 192,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 256,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 320,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 384,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 448,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 512,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 576,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "protobuf",
+      "offset": 640,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 704,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 768,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 832,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 896,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 960,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1024,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1088,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1152,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1216,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1280,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1344,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1408,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 2
+    },
+    {
+      "name": "protobuf",
+      "offset": 1472,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1536,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1600,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1664,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1728,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1792,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1856,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1920,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 1984,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 2048,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 2112,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 2176,
+      "objects": 64,
+      "exit": 0,
+      "attempts": 1
+    },
+    {
+      "name": "protobuf",
+      "offset": 2240,
+      "objects": 19,
+      "exit": 0,
+      "attempts": 1
+    }
+  ],
+  "method": "bounded exact-object Git fetch batches, TLS verified; native Git verifies object identities"
+}

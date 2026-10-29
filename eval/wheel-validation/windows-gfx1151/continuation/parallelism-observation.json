@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-28T16:02:05.847975+00:00",
+  "MAX_JOBS": 8,
+  "CMAKE_BUILD_PARALLEL_LEVEL": 8,
+  "scope": "Each Ninja invocation; official external-project subbuild may overlap with root Ninja.",
+  "hardware_ram_bytes": 132766306304,
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "observed_CXX_compilers_during_runtime_subbuild": 15,
+  "interpretation": "Eight jobs per Ninja invocation; root and AOTriton CXX builds overlapped with 15 clang-cl compiler processes. HIPCC later also creates driver/compiler child processes; MAX_JOBS is not a system-wide process-count cap."
+}

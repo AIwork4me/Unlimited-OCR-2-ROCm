@@ -1,0 +1,633 @@
+WARNING: Skipping torch as it is not installed.
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+Building wheel torch-2.12.0+rocm7.14.1
+pytorch_extra_install_requirements: rocm[libraries]==7.14.1
+warning: no files found matching 'BUILD.bazel'
+warning: no files found matching 'WORKSPACE'
+warning: no files found matching '.bazelrc'
+warning: no files found matching '.bazelversion'
+warning: no directories found matching 'ios'
+no previously-included directories found matching 'third_party\nccl\pkg\debian'
+no previously-included directories found matching 'third_party\opentelemetry-cpp\third_party\prometheus-cpp\cmake\project-import-*'
+no previously-included directories found matching '**\.gitlab'
+warning: no previously-included files matching '*.o' found anywhere in distribution
+warning: no previously-included files matching '*.obj' found anywhere in distribution
+warning: no previously-included files matching '*.so' found anywhere in distribution
+warning: no previously-included files matching '*.dylib' found anywhere in distribution
+warning: no previously-included files matching '*.a' found anywhere in distribution
+warning: no previously-included files matching '*.pxd' found anywhere in distribution
+warning: no previously-included files matching '*.swp' found anywhere in distribution
+warning: no previously-included files matching '*~' found anywhere in distribution
+warning: no previously-included files matching '.gitlab-ci.yml' found anywhere in distribution
+Building wheel torch-2.12.0+rocm7.14.1
+-- Building version 2.12.0+rocm7.14.1
+cmake -GNinja -DBUILD_PYTHON=True -DBUILD_TEST=False -DCMAKE_INSTALL_PREFIX=C:\b\pytorch\torch -DPython_EXECUTABLE=C:\b\be\Scripts\python.exe -DPython_NumPy_INCLUDE_DIR=C:\b\be\lib\site-packages\numpy\_core\include -DTORCH_BUILD_VERSION=2.12.0+rocm7.14.1 -DUSE_NUMPY=True C:\b\pytorch
+CMake Deprecation Warning at CMakeLists.txt:8 (cmake_policy):
+  The OLD behavior for policy CMP0126 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Warning at CMakeLists.txt:461 (message):
+  TensorPipe cannot be used on Windows.  Set it to OFF
+
+
+CMake Warning at CMakeLists.txt:463 (message):
+  KleidiAI cannot be used on Windows.  Set it to OFF
+
+
+CMake Warning at CMakeLists.txt:475 (message):
+  Libuv is not installed in current conda env.  Set USE_DISTRIBUTED to OFF.
+  Please run command 'conda install -c conda-forge libuv=1.51' to install
+  libuv.
+
+
+CMake Warning at CMakeLists.txt:919 (message):
+  x86_64 or aarch64 required for FBGEMM.  Not compiling with FBGEMM.  Turn
+  this warning off by USE_FBGEMM=OFF.
+
+
+CMake Warning at cmake/Dependencies.cmake:101 (message):
+  Not compiling with XPU.  Could NOT find SYCL.  Suppress this warning with
+  -DUSE_XPU=OFF.
+Call Stack (most recent call first):
+  CMakeLists.txt:947 (include)
+
+
+CMake Warning at cmake/ProtoBuf.cmake:37 (message):
+  Ancient protobuf forces CMake compatibility
+Call Stack (most recent call first):
+  cmake/ProtoBuf.cmake:87 (custom_protobuf_find)
+  cmake/Dependencies.cmake:113 (include)
+  CMakeLists.txt:947 (include)
+
+
+CMake Deprecation Warning at third_party/protobuf/cmake/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning at cmake/Modules/FindOpenBLAS.cmake:78 (message):
+  ldd failed on
+  C:/b/be/Lib/site-packages/_rocm_sdk_devel/lib/host-math/lib/rocm-openblas.lib:
+Call Stack (most recent call first):
+  cmake/Dependencies.cmake:196 (find_package)
+  CMakeLists.txt:947 (include)
+
+
+CMake Deprecation Warning at third_party/pthreadpool/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at third_party/FXdiv/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at third_party/ittapi/CMakeLists.txt:7 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning at cmake/Dependencies.cmake:780 (message):
+  FP16 is only cmake-2.8 compatible
+Call Stack (most recent call first):
+  CMakeLists.txt:947 (include)
+
+
+CMake Deprecation Warning at third_party/FP16/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at third_party/psimd/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning at cmake/Modules/FindOpenMP.cmake:335 (message):
+  Detecting C OpenMP compiler ABI info compiled with the following output:
+
+  Change Dir: 'C:/b/pytorch/build/CMakeFiles/CMakeTmp'
+
+
+
+  Run Build Command(s): C:/b/be/Scripts/ninja.exe -v cmTC_3d5ea
+
+  [1/2] C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe
+  /nologo /DWIN32 /D_WINDOWS /bigobj -Xclang -fopenmp=libomp /Ob0 /Od /RTC1
+  /bigobj -MDd -Z7 /showIncludes
+  /FoCMakeFiles\cmTC_3d5ea.dir\OpenMPTryFlag.c.obj
+  /FdCMakeFiles\cmTC_3d5ea.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.c
+
+  FAILED: [code=1] CMakeFiles/cmTC_3d5ea.dir/OpenMPTryFlag.c.obj 
+
+  C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe /nologo
+  /DWIN32 /D_WINDOWS /bigobj -Xclang -fopenmp=libomp /Ob0 /Od /RTC1 /bigobj
+  -MDd -Z7 /showIncludes /FoCMakeFiles\cmTC_3d5ea.dir\OpenMPTryFlag.c.obj
+  /FdCMakeFiles\cmTC_3d5ea.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.c
+
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.c(8,3): error: use
+  of undeclared identifier 'breaks_on_purpose'
+
+      8 |   breaks_on_purpose
+        |   ^~~~~~~~~~~~~~~~~
+
+  1 error generated.
+
+  ninja: build stopped: subcommand failed.
+
+
+
+Call Stack (most recent call first):
+  cmake/Modules/FindOpenMP.cmake:551 (_OPENMP_GET_FLAGS)
+  cmake/Dependencies.cmake:922 (include)
+  CMakeLists.txt:947 (include)
+
+
+CMake Warning at cmake/Modules/FindOpenMP.cmake:335 (message):
+  Detecting C OpenMP compiler ABI info compiled with the following output:
+
+  Change Dir: 'C:/b/pytorch/build/CMakeFiles/CMakeTmp'
+
+
+
+  Run Build Command(s): C:/b/be/Scripts/ninja.exe -v cmTC_632b6
+
+  [1/2] C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe
+  /nologo /DWIN32 /D_WINDOWS /bigobj -Xclang -fopenmp=libiomp5 /Ob0 /Od /RTC1
+  /bigobj -MDd -Z7 /showIncludes
+  /FoCMakeFiles\cmTC_632b6.dir\OpenMPTryFlag.c.obj
+  /FdCMakeFiles\cmTC_632b6.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.c
+
+  FAILED: [code=1] CMakeFiles/cmTC_632b6.dir/OpenMPTryFlag.c.obj 
+
+  C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe /nologo
+  /DWIN32 /D_WINDOWS /bigobj -Xclang -fopenmp=libiomp5 /Ob0 /Od /RTC1 /bigobj
+  -MDd -Z7 /showIncludes /FoCMakeFiles\cmTC_632b6.dir\OpenMPTryFlag.c.obj
+  /FdCMakeFiles\cmTC_632b6.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.c
+
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.c(8,3): error: use
+  of undeclared identifier 'breaks_on_purpose'
+
+      8 |   breaks_on_purpose
+        |   ^~~~~~~~~~~~~~~~~
+
+  1 error generated.
+
+  ninja: build stopped: subcommand failed.
+
+
+
+Call Stack (most recent call first):
+  cmake/Modules/FindOpenMP.cmake:551 (_OPENMP_GET_FLAGS)
+  cmake/Dependencies.cmake:922 (include)
+  CMakeLists.txt:947 (include)
+
+
+CMake Warning at cmake/Modules/FindOpenMP.cmake:335 (message):
+  Detecting CXX OpenMP compiler ABI info compiled with the following output:
+
+  Change Dir: 'C:/b/pytorch/build/CMakeFiles/CMakeTmp'
+
+
+
+  Run Build Command(s): C:/b/be/Scripts/ninja.exe -v cmTC_730d4
+
+  [1/2] C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe
+  /nologo -TP /DWIN32 /D_WINDOWS /EHsc /Zc:__cplusplus /bigobj /FS /utf-8
+  -DUSE_PTHREADPOOL -Xclang -fopenmp=libomp /Ob0 /Od /RTC1 /bigobj -std:c++20
+  -MDd -Z7 /showIncludes /FoCMakeFiles\cmTC_730d4.dir\OpenMPTryFlag.cpp.obj
+  /FdCMakeFiles\cmTC_730d4.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp
+
+  FAILED: [code=1] CMakeFiles/cmTC_730d4.dir/OpenMPTryFlag.cpp.obj 
+
+  C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe /nologo
+  -TP /DWIN32 /D_WINDOWS /EHsc /Zc:__cplusplus /bigobj /FS /utf-8
+  -DUSE_PTHREADPOOL -Xclang -fopenmp=libomp /Ob0 /Od /RTC1 /bigobj -std:c++20
+  -MDd -Z7 /showIncludes /FoCMakeFiles\cmTC_730d4.dir\OpenMPTryFlag.cpp.obj
+  /FdCMakeFiles\cmTC_730d4.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp
+
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp(8,3): error: use
+  of undeclared identifier 'breaks_on_purpose'
+
+      8 |   breaks_on_purpose
+        |   ^~~~~~~~~~~~~~~~~
+
+  1 error generated.
+
+  ninja: build stopped: subcommand failed.
+
+
+
+Call Stack (most recent call first):
+  cmake/Modules/FindOpenMP.cmake:551 (_OPENMP_GET_FLAGS)
+  cmake/Dependencies.cmake:922 (include)
+  CMakeLists.txt:947 (include)
+
+
+CMake Warning at cmake/Modules/FindOpenMP.cmake:335 (message):
+  Detecting CXX OpenMP compiler ABI info compiled with the following output:
+
+  Change Dir: 'C:/b/pytorch/build/CMakeFiles/CMakeTmp'
+
+
+
+  Run Build Command(s): C:/b/be/Scripts/ninja.exe -v cmTC_18500
+
+  [1/2] C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe
+  /nologo -TP /DWIN32 /D_WINDOWS /EHsc /Zc:__cplusplus /bigobj /FS /utf-8
+  -DUSE_PTHREADPOOL -Xclang -fopenmp=libiomp5 /Ob0 /Od /RTC1 /bigobj
+  -std:c++20 -MDd -Z7 /showIncludes
+  /FoCMakeFiles\cmTC_18500.dir\OpenMPTryFlag.cpp.obj
+  /FdCMakeFiles\cmTC_18500.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp
+
+  FAILED: [code=1] CMakeFiles/cmTC_18500.dir/OpenMPTryFlag.cpp.obj 
+
+  C:\b\be\Lib\site-packages\_rocm_sdk_devel\lib\llvm\bin\clang-cl.exe /nologo
+  -TP /DWIN32 /D_WINDOWS /EHsc /Zc:__cplusplus /bigobj /FS /utf-8
+  -DUSE_PTHREADPOOL -Xclang -fopenmp=libiomp5 /Ob0 /Od /RTC1 /bigobj
+  -std:c++20 -MDd -Z7 /showIncludes
+  /FoCMakeFiles\cmTC_18500.dir\OpenMPTryFlag.cpp.obj
+  /FdCMakeFiles\cmTC_18500.dir\ -c --
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp
+
+  C:\b\pytorch\build\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp(8,3): error: use
+  of undeclared identifier 'breaks_on_purpose'
+
+      8 |   breaks_on_purpose
+        |   ^~~~~~~~~~~~~~~~~
+
+  1 error generated.
+
+  ninja: build stopped: subcommand failed.
+
+
+
+Call Stack (most recent call first):
+  cmake/Modules/FindOpenMP.cmake:551 (_OPENMP_GET_FLAGS)
+  cmake/Dependencies.cmake:922 (include)
+  CMakeLists.txt:947 (include)
+
+
+CMake Warning at cmake/Dependencies.cmake:986 (message):
+  Cannot find NVTX3, find old NVTX instead
+Call Stack (most recent call first):
+  CMakeLists.txt:947 (include)
+
+
+Building PyTorch for GPU arch: gfx1151
+HIP VERSION: 7.14.60850-ca887ee8
+hip VERSION: 7.14.60850
+HIP version: 7.14.60850
+
+***** ROCm version from rocm_version.h ****
+
+ROCM_VERSION_DEV: 7.14.1
+ROCM_VERSION_DEV_MAJOR: 7
+ROCM_VERSION_DEV_MINOR: 14
+ROCM_VERSION_DEV_PATCH: 1
+ROCM_VERSION_DEV_INT:   71401
+HIP_VERSION_MAJOR: 7
+HIP_VERSION_MINOR: 14
+TORCH_HIP_VERSION: 714
+
+***** Library versions from cmake find_package *****
+
+amd_comgr VERSION: 3.3.0
+CMake Warning (dev) at C:/b/be/Lib/site-packages/cmake/data/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake:430 (message):
+  The package name passed to find_package_handle_standard_args() (HIP) does
+  not match the name of the calling package (hip).  This can lead to problems
+  in calling code that expects find_package() result variables (e.g.,
+  `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  C:/b/be/lib/site-packages/_rocm_sdk_devel/cmake/Findhip.cmake:221 (find_package_handle_standard_args)
+  C:/b/be/Lib/site-packages/cmake/data/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)
+  C:/b/be/Lib/site-packages/_rocm_sdk_devel/lib/cmake/rocrand/rocrand-config.cmake:90 (find_dependency)
+  cmake/public/LoadHIP.cmake:88 (find_package)
+  cmake/public/LoadHIP.cmake:199 (find_package_and_print_version)
+  cmake/Dependencies.cmake:994 (include)
+  CMakeLists.txt:947 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+rocrand VERSION: 4.5.0
+hiprand VERSION: 3.4.0
+rocblas VERSION: 5.5.0
+hipblas VERSION: 3.5.0
+miopen VERSION: 3.5.2
+hipfft VERSION: 1.0.24
+hipsparse VERSION: 4.6.0
+rocprim VERSION: 4.5.0
+hipcub VERSION: 4.5.0
+rocthrust VERSION: 4.5.0
+hipsolver VERSION: 3.5.0
+rocsolver VERSION: 3.35.0
+CMake Warning at cmake/public/LoadHIP.cmake:88 (find_package):
+  By not providing "Findrocshmem.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "rocshmem",
+  but CMake did not find one.
+
+  Could not find a package configuration file provided by "rocshmem" with any
+  of the following names:
+
+    rocshmemConfig.cmake
+    rocshmem-config.cmake
+
+  Add the installation prefix of "rocshmem" to CMAKE_PREFIX_PATH or set
+  "rocshmem_DIR" to a directory containing one of the above files.  If
+  "rocshmem" provides a separate development package or SDK, be sure it has
+  been installed.
+Call Stack (most recent call first):
+  cmake/public/LoadHIP.cmake:211 (find_package_and_print_version)
+  cmake/Dependencies.cmake:994 (include)
+  CMakeLists.txt:947 (include)
+
+
+Optional package rocshmem not found
+CMake Warning at cmake/public/LoadHIP.cmake:214 (message):
+  Work around hiprtc cmake failure for cmake >= 4
+Call Stack (most recent call first):
+  cmake/Dependencies.cmake:994 (include)
+  CMakeLists.txt:947 (include)
+
+
+hiprtc VERSION: 7.14.60850
+hipblaslt VERSION: 1.4.1
+CMake Warning at cmake/public/LoadHIP.cmake:88 (find_package):
+  By not providing "Findhipsparselt.cmake" in CMAKE_MODULE_PATH this project
+  has asked CMake to find a package configuration file provided by
+  "hipsparselt", but CMake did not find one.
+
+  Could not find a package configuration file provided by "hipsparselt" with
+  any of the following names:
+
+    hipsparseltConfig.cmake
+    hipsparselt-config.cmake
+
+  Add the installation prefix of "hipsparselt" to CMAKE_PREFIX_PATH or set
+  "hipsparselt_DIR" to a directory containing one of the above files.  If
+  "hipsparselt" provides a separate development package or SDK, be sure it
+  has been installed.
+Call Stack (most recent call first):
+  cmake/public/LoadHIP.cmake:229 (find_package_and_print_version)
+  cmake/Dependencies.cmake:994 (include)
+  CMakeLists.txt:947 (include)
+
+
+Optional package hipsparselt not found
+CMake Warning at cmake/public/LoadHIP.cmake:88 (find_package):
+  By not providing "Findlibhipcxx.cmake" in CMAKE_MODULE_PATH this project
+  has asked CMake to find a package configuration file provided by
+  "libhipcxx", but CMake did not find one.
+
+  Could not find a package configuration file provided by "libhipcxx" with
+  any of the following names:
+
+    libhipcxxConfig.cmake
+    libhipcxx-config.cmake
+
+  Add the installation prefix of "libhipcxx" to CMAKE_PREFIX_PATH or set
+  "libhipcxx_DIR" to a directory containing one of the above files.  If
+  "libhipcxx" provides a separate development package or SDK, be sure it has
+  been installed.
+Call Stack (most recent call first):
+  cmake/public/LoadHIP.cmake:232 (find_package_and_print_version)
+  cmake/Dependencies.cmake:994 (include)
+  CMakeLists.txt:947 (include)
+
+
+Optional package libhipcxx not found
+INFOCompiling with HIP for AMD.
+TORCH_HIP_VERSION=714 is added as a compiler defines
+Generated: C:/b/pytorch/build/third_party/onnx/onnx/onnx_onnx_torch-ml.proto
+Generated: C:/b/pytorch/build/third_party/onnx/onnx/onnx-operators_onnx_torch-ml.proto
+Generated: C:/b/pytorch/build/third_party/onnx/onnx/onnx-data_onnx_torch.proto
+disabling CUDA because NOT USE_CUDA is set
+-- Will build oneDNN UKERNEL
+CMake Warning (dev) at C:/b/be/Lib/site-packages/cmake/data/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake:430 (message):
+  The package name passed to find_package_handle_standard_args() (OpenMP_C)
+  does not match the name of the calling package (OpenMP).  This can lead to
+  problems in calling code that expects find_package() result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/Modules/FindOpenMP.cmake:635 (find_package_handle_standard_args)
+  third_party/ideep/mkl-dnn/cmake/OpenMP.cmake:41 (find_package)
+  third_party/ideep/mkl-dnn/CMakeLists.txt:94 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at C:/b/be/Lib/site-packages/cmake/data/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake:430 (message):
+  The package name passed to find_package_handle_standard_args() (OpenMP_CXX)
+  does not match the name of the calling package (OpenMP).  This can lead to
+  problems in calling code that expects find_package() result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/Modules/FindOpenMP.cmake:635 (find_package_handle_standard_args)
+  third_party/ideep/mkl-dnn/cmake/OpenMP.cmake:41 (find_package)
+  third_party/ideep/mkl-dnn/CMakeLists.txt:94 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Error at third_party/ideep/mkl-dnn/CMakeLists.txt:156 (add_subdirectory):
+  add_subdirectory given source "examples" which is not an existing
+  directory.
+
+
+CMake Error at third_party/ideep/mkl-dnn/CMakeLists.txt:157 (add_subdirectory):
+  add_subdirectory given source "tests" which is not an existing directory.
+
+
+CMake Error: File C:/b/pytorch/c10/hip/impl/hip_cmake_macros.h.in does not exist.
+CMake Error at c10/hip/CMakeLists.txt:14 (configure_file):
+  configure_file Problem configuring file
+
+
+CMake Error at c10/hip/CMakeLists.txt:63 (add_subdirectory):
+  add_subdirectory given source "test" which is not an existing directory.
+
+
+Building PyTorch for GPU arch: gfx1151
+HIP VERSION: 7.14.60850
+hip VERSION: 7.14.60850
+HIP version: 7.14.60850
+
+***** ROCm version from rocm_version.h ****
+
+ROCM_VERSION_DEV: 7.14.1
+ROCM_VERSION_DEV_MAJOR: 7
+ROCM_VERSION_DEV_MINOR: 14
+ROCM_VERSION_DEV_PATCH: 1
+ROCM_VERSION_DEV_INT:   71401
+HIP_VERSION_MAJOR: 7
+HIP_VERSION_MINOR: 14
+TORCH_HIP_VERSION: 714
+
+***** Library versions from cmake find_package *****
+
+amd_comgr VERSION: 3.3.0
+rocrand VERSION: 4.5.0
+hiprand VERSION: 3.4.0
+rocblas VERSION: 5.5.0
+hipblas VERSION: 3.5.0
+miopen VERSION: 3.5.2
+hipfft VERSION: 1.0.24
+hipsparse VERSION: 4.6.0
+rocprim VERSION: 4.5.0
+hipcub VERSION: 4.5.0
+rocthrust VERSION: 4.5.0
+hipsolver VERSION: 3.5.0
+rocsolver VERSION: 3.35.0
+CMake Warning at cmake/public/LoadHIP.cmake:88 (find_package):
+  By not providing "Findrocshmem.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "rocshmem",
+  but CMake did not find one.
+
+  Could not find a package configuration file provided by "rocshmem" with any
+  of the following names:
+
+    rocshmemConfig.cmake
+    rocshmem-config.cmake
+
+  Add the installation prefix of "rocshmem" to CMAKE_PREFIX_PATH or set
+  "rocshmem_DIR" to a directory containing one of the above files.  If
+  "rocshmem" provides a separate development package or SDK, be sure it has
+  been installed.
+Call Stack (most recent call first):
+  cmake/public/LoadHIP.cmake:211 (find_package_and_print_version)
+  aten/CMakeLists.txt:68 (include)
+
+
+Optional package rocshmem not found
+CMake Warning at cmake/public/LoadHIP.cmake:214 (message):
+  Work around hiprtc cmake failure for cmake >= 4
+Call Stack (most recent call first):
+  aten/CMakeLists.txt:68 (include)
+
+
+hiprtc VERSION: 7.14.60850
+hipblaslt VERSION: 1.4.1
+CMake Warning at cmake/public/LoadHIP.cmake:88 (find_package):
+  By not providing "Findhipsparselt.cmake" in CMAKE_MODULE_PATH this project
+  has asked CMake to find a package configuration file provided by
+  "hipsparselt", but CMake did not find one.
+
+  Could not find a package configuration file provided by "hipsparselt" with
+  any of the following names:
+
+    hipsparseltConfig.cmake
+    hipsparselt-config.cmake
+
+  Add the installation prefix of "hipsparselt" to CMAKE_PREFIX_PATH or set
+  "hipsparselt_DIR" to a directory containing one of the above files.  If
+  "hipsparselt" provides a separate development package or SDK, be sure it
+  has been installed.
+Call Stack (most recent call first):
+  cmake/public/LoadHIP.cmake:229 (find_package_and_print_version)
+  aten/CMakeLists.txt:68 (include)
+
+
+Optional package hipsparselt not found
+CMake Warning at cmake/public/LoadHIP.cmake:88 (find_package):
+  By not providing "Findlibhipcxx.cmake" in CMAKE_MODULE_PATH this project
+  has asked CMake to find a package configuration file provided by
+  "libhipcxx", but CMake did not find one.
+
+  Could not find a package configuration file provided by "libhipcxx" with
+  any of the following names:
+
+    libhipcxxConfig.cmake
+    libhipcxx-config.cmake
+
+  Add the installation prefix of "libhipcxx" to CMAKE_PREFIX_PATH or set
+  "libhipcxx_DIR" to a directory containing one of the above files.  If
+  "libhipcxx" provides a separate development package or SDK, be sure it has
+  been installed.
+Call Stack (most recent call first):
+  cmake/public/LoadHIP.cmake:232 (find_package_and_print_version)
+  aten/CMakeLists.txt:68 (include)
+
+
+Optional package libhipcxx not found
+CMake Error at aten/CMakeLists.txt:83 (add_subdirectory):
+  add_subdirectory given source "src/THH" which is not an existing directory.
+
+
+ROCm is enabled.
+CMake Error: File C:/b/pytorch/aten/src/ATen/hip/HIPConfig.h.in does not exist.
+CMake Error at aten/src/ATen/CMakeLists.txt:65 (configure_file):
+  configure_file Problem configuring file
+
+
+   Target system: Windows-10.0.26200
+   Target processor: AMD64
+   Host system: Windows-10.0.26200
+   Host processor: AMD64
+   Detected C compiler: Clang @ C:/b/be/Lib/site-packages/_rocm_sdk_devel/lib/llvm/bin/clang-cl.exe
+   CMake: 4.0.0
+   Make program: C:/b/be/Scripts/ninja.exe
+AT_INSTALL_INCLUDE_DIR include/ATen/core
+core header install: C:/b/pytorch/build/aten/src/ATen/core/aten_interned_strings.h
+core header install: C:/b/pytorch/build/aten/src/ATen/core/TensorBody.h
+INFOcaffe2 ROCM_SOURCE_DIR = 
+INFOUSE_NVSHMEM=OFF USE_ROCM=ON rocshmem_FOUND=0
+CMake Warning at CMakeLists.txt:1351 (message):
+  Generated cmake files are only fully tested if one builds with system glog,
+  gflags, and protobuf.  Other settings may generate files that are not well
+  tested.
+
+
+Traceback (most recent call last):
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1636, in <module>
+    main(sys.argv[1:])
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1632, in main
+    args.func(args)
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 901, in do_build
+    _do_build_wheels_core(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 771, in _do_build_wheels_core
+    do_build_pytorch(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1299, in do_build_pytorch
+    run_command(build_command, cwd=pytorch_dir, env=env)
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 228, in run_command
+    subprocess.check_call(args, cwd=str(cwd), env=full_env)
+  File "<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['C:\\b\\be\\Scripts\\python.exe', '-m', 'build', '--wheel', '--no-isolation']' returned non-zero exit status 1.

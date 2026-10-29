@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\b\\new\\Scripts\\python.exe",
+    "-m",
+    "pip",
+    "check"
+  ],
+  "prefix": "C:\\b\\new",
+  "base_prefix": "<USERPROFILE>\\AppData\\Roaming\\uv\\python\\cpython-3.10.20-windows-x86_64-none",
+  "exit_code": 0,
+  "stdout": "No broken requirements found.\n",
+  "stderr": ""
+}

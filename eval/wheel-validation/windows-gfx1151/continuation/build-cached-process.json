@@ -1,0 +1,14 @@
+{
+  "start_utc": "2026-10-28T15:19:35.3980281Z",
+  "end_utc": "2026-10-28T15:23:32.7588892Z",
+  "exit_code": 1,
+  "command": "cmd.exe /d /c C:\\b\\resume\\build-cached.cmd",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "sdk": "7.14.1",
+  "max_jobs": 8,
+  "verified_image_archive_sha256": "e4bda76fd6857a733cd7b4b3eb9ccb21c0f47b565ce304777a61bbb13d12ad6e",
+  "source_transport": "process-scoped Git insteadOf to verified exact-pin local source caches for xz/aotriton",
+  "triton_source": "submodule update=none; frozen AOTRITON_NOIMAGE_MODE explicitly skips Triton, no Triton compilation",
+  "no_install_rocm": true
+}

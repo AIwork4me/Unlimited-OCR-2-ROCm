@@ -1,0 +1,4 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_copy', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+PASS requested: DEFAULT observed: FLASH_ATTENTION run: 593e63b4-f253-4a42-8651-57185000ed38 numerics: {'atol': 0.03, 'rtol': 0.03, 'relative_denominator_floor': 1e-06, 'max_abs_error_finite': 0.0, 'mean_abs_error_finite': 0.0, 'max_relative_error_finite': 0.0, 'failing_elements': 0, 'total_elements': 1, 'failing_percent': 0.0, 'nonfinite_actual': 0, 'nan_actual': 0, 'inf_actual': 0, 'nonfinite_reference': 0}

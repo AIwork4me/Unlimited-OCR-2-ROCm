@@ -1,0 +1,53 @@
+import subprocess,pathlib,json,datetime,concurrent.futures,configparser,time
+ROOT=pathlib.Path('C:/b/pytorch');OUT=pathlib.Path('C:/b/resume/logs');OUT.mkdir(exist_ok=True)
+# setup.py requires a marker in EVERY declared folder. Native CPU/Windows compile
+# dependencies get full checkouts; excluded targets retain exact pinned markers.
+FULL={'FP16','FXdiv','XNNPACK','cpuinfo','fbgemm','flatbuffers','gloo','ideep','ittapi','mimalloc','nlohmann','onnx','pocketfft','protobuf','pthreadpool','pybind11','sleef','fmt','cpp-httplib','gemmlowp'}
+SOURCES=[]
+for line in subprocess.check_output(['git','-C',str(ROOT),'ls-tree','-r','HEAD'],text=True).splitlines():
+    if line.startswith('160000 '):
+        meta,name=line.split('\t');SOURCES.append((name,meta.split()[2]))
+def run(cmd,log,timeout=240):
+    log.write(('COMMAND '+json.dumps(cmd)+'\n').encode());log.flush()
+    p=subprocess.Popen(cmd,stdout=log,stderr=subprocess.STDOUT)
+    try:return p.wait(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        subprocess.run(['taskkill.exe','/PID',str(p.pid),'/T','/F'],stdout=log,stderr=subprocess.STDOUT)
+        p.wait();return 124
+
+def prepare(item):
+    name,sha=item;path=ROOT/name;label=name.replace('/','_');mode='full' if path.name in FULL else 'setup-marker-only'
+    r={'path':name,'sha':sha,'mode':mode,'start_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commands':[]}
+    cmd=['git','-C',str(path),'-c','core.longpaths=true','-c','http.version=HTTP/1.1','-c','http.lowSpeedLimit=1024','-c','http.lowSpeedTime=20']
+    with (OUT/(label+'.log')).open('wb') as log:
+        if not (path/'.git').exists():
+            r['exit_code']=run(['git','-C',str(ROOT),'submodule','update','--init','--depth','1','--filter=blob:none','--',name],log)
+            if r['exit_code']:return r
+        head=subprocess.run(cmd+['rev-parse','--verify','HEAD'],capture_output=True,text=True)
+        expected=head.returncode==0 and head.stdout.strip()==sha
+        if not expected:
+            r['exit_code']=run(cmd+['fetch','--depth','1','--filter=tree:0','origin',sha],log,120)
+            if r['exit_code']:return r
+        if mode=='setup-marker-only':
+            r['exit_code']=run(cmd+['config','core.sparseCheckout','true'],log)
+            info=subprocess.check_output(cmd+['rev-parse','--git-path','info'],text=True).strip();info=pathlib.Path(info)
+            if not info.is_absolute():info=path/info
+            info.mkdir(parents=True,exist_ok=True)
+            (info/'sparse-checkout').write_text('/CMakeLists.txt\n/Makefile\n/setup.py\n/LICENSE\n/LICENSE.md\n/LICENSE.txt\n')
+        else:
+            run(cmd+['config','core.sparseCheckout','false'],log)
+        r['exit_code']=run(cmd+['checkout','--detach',sha],log,300)
+        if r['exit_code']:return r
+        # read-tree updates sparse selection even when HEAD already equalled the pin.
+        r['exit_code']=run(cmd+['read-tree','-mu','HEAD'],log,300)
+        r['actual_head']=subprocess.check_output(cmd+['rev-parse','HEAD'],text=True).strip()
+        r['status']=subprocess.check_output(cmd+['status','--porcelain'],text=True).strip()
+        r['end_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    return r
+records=[]
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+    for r in pool.map(prepare,SOURCES):
+        records.append(r)
+        pathlib.Path('C:/b/resume/required-source-recovery.json').write_text(json.dumps({'frozen_torch_sha':'60dd50f143fd9b10ac23cde8cdd34be61232b139','records':records,'method':'commit-only filtered fetch, exact detached checkout, full native sources vs setup-marker sparse checkout; TLS verification retained'},indent=2))
+        print(r['path'],r.get('mode'),r.get('exit_code'),flush=True)
+if any(r.get('exit_code') for r in records):raise SystemExit(1)

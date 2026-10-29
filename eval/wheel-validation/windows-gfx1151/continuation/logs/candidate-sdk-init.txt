@@ -1,0 +1,1 @@
+ERROR running init: rocm_sdk_devel module for the ROCm SDK development package is not installed. This can typically be obtained by installing `rocm[devel]` from your package manager

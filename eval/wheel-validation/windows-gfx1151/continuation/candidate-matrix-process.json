@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:/b/qa/Scripts/python.exe",
+    "C:/uocr/experiments/pytorch212_wheel/validate_wheel.py",
+    "--python",
+    "C:/b/new/Scripts/python.exe",
+    "--output",
+    "C:\\b\\candidate",
+    "--identity-profile",
+    "C:/b/resume/candidate-identity-profile.json"
+  ],
+  "start_utc": "2026-10-28T23:27:29.148457+00:00",
+  "physical_gpu": "Windows Radeon 8060S / gfx1151",
+  "acceptance": "Unchanged frozen experiment, candidate identity adapter only",
+  "pid": 25444,
+  "exit_code": 0,
+  "end_utc": "2026-10-28T23:31:20.507224+00:00"
+}

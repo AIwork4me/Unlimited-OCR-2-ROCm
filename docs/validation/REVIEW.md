@@ -1,54 +1,36 @@
-# Separate read-only validation review
+# Independent review of the completed wheel validation
 
-A separate reviewer audited the scripts and original physical baseline evidence,
-then reviewed the completed reports and published-byte candidates. The reviewer
-did not modify files or send GitHub messages.
+The read-only reviewer independently checked the real wheel, all ZIP CRCs and
+12,100 unique members, 15 binary hashes, seven official image files, source/ABI/HIP
+identities and successful official build exit. The actual candidate profile and
+all 16 core loaded native identities match the installed artifact.
 
-## Findings and fixes
+Review found and closed three candidate-gate issues: stale/unbound pip-check
+evidence, abbreviated error-clearing flags and incomplete CPU/Python/C10 native
+coverage. Failing regression cases preceded fixes. The current focused gate
+suite is **35 candidate + 30 existing tests**; final CPU suite is **121 passed,
+two opt-in GPU markers skipped**. No numerical/fixture AST semantics changed.
+Signed-URL log redaction findings were also reproduced, fixed and reviewed.
 
-1. **P2:** UNSUPPORTED was returned before HIP checkpoints were inspected. A dirty
-   unsupported report could hide a GPU error. A CPU test reproduced the finding;
-   classification now checks recorded HIP failures first. RED→GREEN logs retained.
-2. **P2:** the optional vision/additive-mask FLASH capability probe could prevent
-   an otherwise complete matrix from reaching FIX_VERIFIED. Only that explicitly
-   named clean UNSUPPORTED probe is excluded by `acceptance_statuses`; unsupported
-   required FLASH/EFFICIENT routes still block acceptance. CPU tests pin both cases.
-3. A separate publication check found inherited Git newline normalization would
-   change some evidence bytes and a generic `build/` ignore excluded build logs.
-   Nothing had been pushed. A path-specific `-text -whitespace` attribute and
-   explicit addition of the text-only evidence build directory fixed publication.
-   The final review checked actual Git blobs, not only working files.
+For GPU acceptance, the reviewer recalculated all 27 raw reports and confirmed
+21 FUSED_PASS, four MATH_PASS, one CONTROL_PASS and the named optional
+UNSUPPORTED result. Fixtures/arguments match baseline, each required group has
+three runs, all numerical/nonfinite and HIP checks pass, and both logs show
+actual attn_fwd load/lookup/nonnull launch/PAL execution. Producer hashes match
+commit `3e641d97af952d3fa70a3fbec223d6faed41b047`. Checkout-context versus producer-byte
+binding is accurately disclosed in [build provenance](BUILD_PROVENANCE.md).
 
-## Final audit result
+**No actionable acceptance findings remain. FIX_VERIFIED is supported for the
+tested local Windows gfx1151 BF16 forward artifact.**
 
-**No remaining actionable finding. BUILD_BLOCKED is supported.**
+Publication review independently verified all **710 checksum paths**, the
+checksum file and **709 export records** against Git index blob bytes. Eight
+gzip files have mtime=0 and match their uncompressed ledger hashes. All 174
+unchanged initial files and four archived metadata blobs match the frozen
+publication; only the three superseded root metadata files changed. Producer
+blobs, the published profile and all 33 supplemental loaded/provider identities
+match. No privacy residue or broken local report links were found. Handoff.md
+agrees with measured results and scope.
 
-At evidence commit `bc42ebcc6120d056374b8777e323b45330a2cbc4`, the reviewer verified:
-
-- All **177 SHA256SUMS entries**, including **43 build-evidence files**, exist in
-  Git and have exactly the published digests.
-- All **176 export records** match original staging and published Git bytes/counts.
-- The three frozen RCA helpers and AOTriton recipe digest match immutable sources.
-- **30 focused CPU tests** pass and both classifier findings are fixed.
-- Baseline classification independently recomputes to **21 FAIL, 4 MATH_PASS,
-  1 CONTROL_PASS, 1 UNSUPPORTED**; missing fused numerics never become a pass.
-- Dispatch, frozen tolerances, fixture digests and loaded DLL/wheel-byte hashes
-  agree with the reports. No acceptance error clearing or payload substitution.
-- SDK recovery, final CUTLASS exit 128, initial actual builder exit 1, 11/37
-  source readiness and absence of a candidate/CMake cache are distinguished.
-- The OCR CPU package build is not presented as a PyTorch wheel build.
-- Every checked local report link resolves; this review file resolves the one
-  link that was pending while the final audit ran.
-
-The full local check suite separately records **86 passed, 2 intentionally skipped
-GPU pytest markers**, Ruff/format/mypy success, OCR package build success and
-pip-check success in QA, baseline and build environments. The 27 standalone
-physical GPU runs were executed separately from these CPU checks.
-
-## Limits
-
-No candidate artifact, fused GPU acceptance or old/new artifact comparison exists.
-Several historical cached wheels have no independently advertised upstream digest;
-the exact original torch wheel matches the immutable RCA's body hash. Hosted CI
-was pending at review time and must be verified on the final pushed PR head.
-The final GitHub publication verification occurs after this report commit.
+Remote head/evidence integrity and hosted CI are checked after push. Hosted CPU
+CI is not GPU acceptance. Scope exclusions are recorded in the decision report.

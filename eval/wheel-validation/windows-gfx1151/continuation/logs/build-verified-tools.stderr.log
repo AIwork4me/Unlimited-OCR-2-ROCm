@@ -1,0 +1,22 @@
+WARNING: Skipping torch as it is not installed.
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out. (read timeout=60.0)")': /packages/5b/10/9b8fe9ac004847490cc7b54896124c01ce2d87d95dc60aabd0b8591addff/ninja-1.11.1.4-py3-none-win_amd64.whl
+WARNING: Connection interrupted while downloading.
+WARNING: Attempting to resume incomplete download (32 kB/296 kB, attempt 1)
+WARNING: Connection interrupted while downloading.
+WARNING: Attempting to resume incomplete download (1.8 MB/1.8 MB, attempt 1)
+Traceback (most recent call last):
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1636, in <module>
+    main(sys.argv[1:])
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1632, in main
+    args.func(args)
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 901, in do_build
+    _do_build_wheels_core(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 771, in _do_build_wheels_core
+    do_build_pytorch(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1248, in do_build_pytorch
+    run_command(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 228, in run_command
+    subprocess.check_call(args, cwd=str(cwd), env=full_env)
+  File "<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['C:\\b\\be\\Scripts\\python.exe', '-m', 'pip', 'install', '-r', 'C:\\b\\pytorch\\requirements.txt']' returned non-zero exit status 4294967295.

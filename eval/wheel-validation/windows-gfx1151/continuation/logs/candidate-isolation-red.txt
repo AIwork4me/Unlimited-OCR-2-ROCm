@@ -1,0 +1,70 @@
+...............FF....                                                    [100%]
+================================== FAILURES ===================================
+________________ test_candidate_rejects_drift[prefix-C:/other] ________________
+
+field = 'prefix', bad = 'C:/other'
+
+    @pytest.mark.parametrize(
+        "field,bad",
+        [
+            ("imported_git_version", "0" * 40),
+            ("wheel_sha256", "0" * 64),
+            ("installed_wheel_sha256", "0" * 64),
+            ("hip", "7.15.0"),
+            ("architecture", "gfx1100"),
+            ("python_abi", "cp313"),
+            ("platform", "linux_x86_64"),
+            ("import_within_venv", False),
+            ("loaded_binaries_within_venv", False),
+            ("wheel_hash_recomputed", False),
+            ("source_overrides", {"AOTRITON_INSTALLED_PREFIX": "custom"}),
+            ("pip_check_exit", 1),
+            ("runtime_header_sha256", "0" * 64),
+            ("image_signatures", []),
+            ("prefix", "C:/other"),
+            ("isolated_venv", False),
+        ],
+    )
+    def test_candidate_rejects_drift(field, bad):
+        p, r = facts()
+        r[field] = bad
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:85: Failed
+______________ test_candidate_rejects_drift[isolated_venv-False] ______________
+
+field = 'isolated_venv', bad = False
+
+    @pytest.mark.parametrize(
+        "field,bad",
+        [
+            ("imported_git_version", "0" * 40),
+            ("wheel_sha256", "0" * 64),
+            ("installed_wheel_sha256", "0" * 64),
+            ("hip", "7.15.0"),
+            ("architecture", "gfx1100"),
+            ("python_abi", "cp313"),
+            ("platform", "linux_x86_64"),
+            ("import_within_venv", False),
+            ("loaded_binaries_within_venv", False),
+            ("wheel_hash_recomputed", False),
+            ("source_overrides", {"AOTRITON_INSTALLED_PREFIX": "custom"}),
+            ("pip_check_exit", 1),
+            ("runtime_header_sha256", "0" * 64),
+            ("image_signatures", []),
+            ("prefix", "C:/other"),
+            ("isolated_venv", False),
+        ],
+    )
+    def test_candidate_rejects_drift(field, bad):
+        p, r = facts()
+        r[field] = bad
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:85: Failed
+=========================== short test summary info ===========================
+FAILED tests/unit/test_candidate_identity.py::test_candidate_rejects_drift[prefix-C:/other]
+FAILED tests/unit/test_candidate_identity.py::test_candidate_rejects_drift[isolated_venv-False]
+2 failed, 19 passed in 0.09s

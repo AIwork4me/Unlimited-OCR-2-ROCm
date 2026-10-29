@@ -1,0 +1,110 @@
+import collections
+import hashlib
+import json
+import re
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+sys.path.insert(0, 'C:/uocr/experiments/pytorch212_wheel')
+import candidate_identity
+import compare_results
+
+root = Path('C:/b/resume')
+base = Path('C:/uocr/eval/wheel-validation/windows-gfx1151/baseline')
+candidate = Path('C:/b/candidate')
+profile_path = root/'candidate-identity-profile.json'
+profile = compare_results.read_report(profile_path)
+profile_sha = hashlib.sha256(profile_path.read_bytes()).hexdigest()
+producer_commit = subprocess.check_output(['git','-C','C:/uocr','rev-parse','HEAD'],text=True).strip()
+producer_hashes = {}
+for name in ['repro_sdpa.py','reporting.py','collect_provenance.py','validate_wheel.py','candidate_repro.py','candidate_identity.py']:
+    content = subprocess.check_output(['git','-C','C:/uocr','show',producer_commit+':experiments/pytorch212_wheel/'+name])
+    producer_hashes[name] = hashlib.sha256(content).hexdigest()
+    assert producer_hashes[name] == hashlib.sha256((Path('C:/uocr/experiments/pytorch212_wheel')/name).read_bytes()).hexdigest(), name
+
+manifests = [compare_results.read_report(d/'processes.json') for d in [base,candidate]]
+names = [[p['case'] for p in m['processes']] for m in manifests]
+assert names[0] == names[1] and len(names[0]) == len(set(names[0])) == 27
+rows = []
+reports = []
+for left, right in zip(*[m['processes'] for m in manifests], strict=True):
+    b = compare_results.read_report(base/left['report'])
+    c = compare_results.read_report(candidate/right['report'])
+    candidate_identity.validate_identity(profile,c['candidate_identity'])
+    before = compare_results.classify_case(b,left['exit_code'])
+    after = compare_results.classify_case(c,right['exit_code'])
+    fixture = c.get('fixture_sha256')
+    same_fixture = bool(re.fullmatch('[0-9a-f]{64}',fixture or '') and fixture == b.get('fixture_sha256'))
+    args_match = {k:v for k,v in b['arguments'].items() if k!='output'} == {k:v for k,v in c['arguments'].items() if k!='output'}
+    source_match = (c['script_sha256']==producer_hashes['repro_sdpa.py'] and c['reporting_sha256']==producer_hashes['reporting.py']
+                    and c['candidate_adapter_sha256']==producer_hashes['candidate_repro.py']
+                    and c['candidate_identity_gate_sha256']==producer_hashes['candidate_identity.py']
+                    and c['identity_profile_sha256']==profile_sha)
+    row = {'case':right['case'],'baseline_status':before,'candidate_status':after,
+           'requested':c['backend_requested'],'baseline_observed':b['backend_observed'],'candidate_observed':c['backend_observed'],
+           'fixture_sha256':fixture,'fixture_match':same_fixture,'arguments_match_except_output':args_match,
+           'producer_and_profile_hashes_match':source_match,'candidate_run_id':c['run_id'],
+           'candidate_numerical':c.get('numerical'),'baseline_numerical':b.get('numerical'),
+           'candidate_hip_events':c.get('events'),'candidate_process_exit':right['exit_code'],
+           'run_git_context':c.get('git_commit')}
+    rows.append(row)
+    reports.append(c)
+
+launches = {}
+for name in ['flash_launch','efficient_launch']:
+    path = candidate/(name+'.stderr.log')
+    text = re.sub(r'\x1b\[[0-9;]*m','',path.read_text(encoding='utf-8'))
+    lines = text.splitlines()
+    calls = []
+    for line in lines:
+        m = re.search(r'hipModuleLaunchKernel \(\s*([0-9A-Fa-f]+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),',line)
+        if m:
+            calls.append({'function':m[1],'grid':list(map(int,m.group(2,3,4))),'block':list(map(int,m.group(5,6,7)))})
+    entry = {'stderr_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
+             'module_load_calls':len(re.findall(r'hipModuleLoadData(?:Ex)? \(',text)),
+             'module_load_successes':len(re.findall(r'hipModuleLoadData(?:Ex)?: Returned hipSuccess',text)),
+             'attn_fwd_function_lookup':bool(re.search(r'hipModuleGetFunction \([^\n]*, attn_fwd \)',text)),
+             'function_lookup_successes':text.count('hipModuleGetFunction: Returned hipSuccess'),
+             'launches':calls,'launch_successes':text.count('hipModuleLaunchKernel: Returned hipSuccess'),
+             'driver_kernel_attn_fwd_seen':bool(re.search(r'kernel\s*:\s*attn_fwd',text)),
+             'hip_error_lines':[l for l in lines if 'hipError' in l],
+             'relevant_lines':[l for l in lines if any(t in l for t in ['hipModuleLoadData','hipModuleGetFunction','hipModuleLaunchKernel','kernel : attn_fwd'])]}
+    entry['valid'] = bool(entry['module_load_calls']>=1 and entry['module_load_successes']==entry['module_load_calls']
+                          and entry['attn_fwd_function_lookup'] and entry['function_lookup_successes']>=1
+                          and calls and entry['launch_successes']==len(calls) and entry['driver_kernel_attn_fwd_seen']
+                          and not entry['hip_error_lines'] and all(int(c['function'],16)>0 and all(x>0 for x in c['grid']+c['block']) for c in calls))
+    launches[name] = entry
+
+repetitions = {}
+for name in ['scalar_default','scalar_flash','small_flash','small_efficient','vision_default','vision_efficient']:
+    selected = [r for r in rows if r['case'] in [name+'_'+str(i) for i in [1,2,3]]]
+    repetitions[name] = {'processes':len(selected),'independent_run_ids':len({r['candidate_run_id'] for r in selected}),
+                         'same_fixture':len({r['fixture_sha256'] for r in selected})==1,
+                         'all_fused_pass':len(selected)==3 and all(r['candidate_status']=='FUSED_PASS' for r in selected)}
+checks = {'all_27_cases_paired':len(rows)==27,'all_fixtures_identical':all(r['fixture_match'] for r in rows),
+          'all_arguments_identical_except_output':all(r['arguments_match_except_output'] for r in rows),
+          'all_producer_and_profile_hashes_match_committed_files':all(r['producer_and_profile_hashes_match'] for r in rows),
+          'all_run_ids_unique':len({r['candidate_run_id'] for r in rows})==27,
+          'three_fresh_process_repetitions':all(r['processes']==r['independent_run_ids']==3 and r['same_fixture'] and r['all_fused_pass'] for r in repetitions.values()),
+          'required_fused_routes_preserved':all(r['candidate_status']=='FUSED_PASS' and r['candidate_observed']==r['baseline_observed'] for r in rows if r['baseline_status']=='FAIL'),
+          'all_hip_checkpoints_clean':all(e.get('hip_before_sync')==e.get('hip_after_sync')==0 and e.get('synchronize')=='OK' for c in reports for e in c.get('events',[])),
+          'valid_flash_and_efficient_kernel_loads_and_launches':all(r['valid'] for r in launches.values()),
+          'same_physical_driver':any(d['DriverVersion']=='32.0.22032.6002' and '8060S' in d['Name'] for d in compare_results.read_report(root/'final-hardware.json')['gpu'])}
+statuses = compare_results.acceptance_statuses([{'case':r['case'],'status':r['candidate_status']} for r in rows])
+decision = compare_results.decide(True,True,True,statuses,matrix_complete=all(checks.values()))
+result = {'utc':datetime.now(timezone.utc).isoformat(),'decision':decision,'checks':checks,
+          'baseline_counts':dict(collections.Counter(r['baseline_status'] for r in rows)),
+          'candidate_counts':dict(collections.Counter(r['candidate_status'] for r in rows)),
+          'wheel_sha256':profile['wheel_sha256'],'identity_profile_sha256':profile_sha,
+          'producer_binding_commit':producer_commit,'producer_file_sha256':producer_hashes,
+          'producer_binding_note':'Run git_commit is checkout context. Reviewed diagnostic edits were pending commit during measurement; all process producer hashes match the committed blobs listed here.',
+          'repetitions':repetitions,'cases':rows}
+(root/'hip-launch-evidence.json').write_text(json.dumps(launches,indent=2)+'\n',encoding='utf-8')
+(root/'paired-matrix-analysis.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+print(decision,result['baseline_counts'],result['candidate_counts'])
+print(json.dumps(checks,indent=2))
+for row in rows:
+    if row['candidate_numerical']:
+        print(row['case'],row['candidate_observed'],row['candidate_numerical']['max_abs_error_finite'])

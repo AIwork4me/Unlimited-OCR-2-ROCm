@@ -1,0 +1,24 @@
+{
+  "comment_text": null,
+  "core-metadata": {
+    "sha256": "73bd6a96091246366774d7470928b870c152562de739875988ad9eb744688455"
+  },
+  "digests": {
+    "blake2b_256": "7c9d714523188aea3054644d8e69ae8089aac70325a3cee2d3d05509d4f23398",
+    "md5": "aed044b6c629233af7bc1ecf39e3ecbd",
+    "sha256": "7c9bc35ccb65932d8dc10a0669f9c805eaa3c9827ce18ecbecb1bd67944b2cdf"
+  },
+  "downloads": -1,
+  "filename": "uv-0.13.6-py3-none-win_amd64.whl",
+  "has_sig": false,
+  "md5_digest": "aed044b6c629233af7bc1ecf39e3ecbd",
+  "packagetype": "bdist_wheel",
+  "python_version": "py3",
+  "requires_python": ">=3.8",
+  "size": 15334118,
+  "upload_time": "2026-10-27T00:45:52",
+  "upload_time_iso_8601": "2026-10-27T00:45:52.086199Z",
+  "url": "https://files.pythonhosted.org/packages/7c/9d/714523188aea3054644d8e69ae8089aac70325a3cee2d3d05509d4f23398/uv-0.13.6-py3-none-win_amd64.whl",
+  "yanked": false,
+  "yanked_reason": null
+}

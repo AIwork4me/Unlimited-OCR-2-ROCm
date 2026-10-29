@@ -1,0 +1,117 @@
+.................FF....FFF                                               [100%]
+================================== FAILURES ===================================
+___________ test_candidate_rejects_drift[pip_check_prefix-C:/b/qa] ____________
+
+field = 'pip_check_prefix', bad = 'C:/b/qa'
+
+    @pytest.mark.parametrize(
+        "field,bad",
+        [
+            ("imported_git_version", "0" * 40),
+            ("wheel_sha256", "0" * 64),
+            ("installed_wheel_sha256", "0" * 64),
+            ("hip", "7.15.0"),
+            ("architecture", "gfx1100"),
+            ("python_abi", "cp313"),
+            ("platform", "linux_x86_64"),
+            ("import_within_venv", False),
+            ("loaded_binaries_within_venv", False),
+            ("wheel_hash_recomputed", False),
+            ("source_overrides", {"AOTRITON_INSTALLED_PREFIX": "custom"}),
+            ("pip_check_exit", 1),
+            ("runtime_header_sha256", "0" * 64),
+            ("image_signatures", []),
+            ("prefix", "C:/other"),
+            ("isolated_venv", False),
+            ("pip_check_prefix", "C:/b/qa"),
+            ("pip_check_command", ["C:/b/qa/Scripts/python.exe", "-m", "pip", "check"]),
+        ],
+    )
+    def test_candidate_rejects_drift(field, bad):
+        p, r = facts()
+        r[field] = bad
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:90: Failed
+____________ test_candidate_rejects_drift[pip_check_command-bad17] ____________
+
+field = 'pip_check_command'
+bad = ['C:/b/qa/Scripts/python.exe', '-m', 'pip', 'check']
+
+    @pytest.mark.parametrize(
+        "field,bad",
+        [
+            ("imported_git_version", "0" * 40),
+            ("wheel_sha256", "0" * 64),
+            ("installed_wheel_sha256", "0" * 64),
+            ("hip", "7.15.0"),
+            ("architecture", "gfx1100"),
+            ("python_abi", "cp313"),
+            ("platform", "linux_x86_64"),
+            ("import_within_venv", False),
+            ("loaded_binaries_within_venv", False),
+            ("wheel_hash_recomputed", False),
+            ("source_overrides", {"AOTRITON_INSTALLED_PREFIX": "custom"}),
+            ("pip_check_exit", 1),
+            ("runtime_header_sha256", "0" * 64),
+            ("image_signatures", []),
+            ("prefix", "C:/other"),
+            ("isolated_venv", False),
+            ("pip_check_prefix", "C:/b/qa"),
+            ("pip_check_command", ["C:/b/qa/Scripts/python.exe", "-m", "pip", "check"]),
+        ],
+    )
+    def test_candidate_rejects_drift(field, bad):
+        p, r = facts()
+        r[field] = bad
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:90: Failed
+_ test_abbreviated_error_clearing_is_rejected_after_parsing[--clear-error-nonacceptance] _
+
+flag = '--clear-error-nonacceptance'
+
+    @pytest.mark.parametrize("flag", ["--clear-error-nonacceptance", "--clear-error", "--clear-error-nonacceptanc"])
+    def test_abbreviated_error_clearing_is_rejected_after_parsing(flag):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--clear-error-nonacceptance", action="store_true")
+        with pytest.raises(ValueError):
+>           identity.validate_acceptance_arguments(parser.parse_args([flag]))
+E           AttributeError: module 'candidate_identity' has no attribute 'validate_acceptance_arguments'
+
+tests\unit\test_candidate_identity.py:144: AttributeError
+__ test_abbreviated_error_clearing_is_rejected_after_parsing[--clear-error] ___
+
+flag = '--clear-error'
+
+    @pytest.mark.parametrize("flag", ["--clear-error-nonacceptance", "--clear-error", "--clear-error-nonacceptanc"])
+    def test_abbreviated_error_clearing_is_rejected_after_parsing(flag):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--clear-error-nonacceptance", action="store_true")
+        with pytest.raises(ValueError):
+>           identity.validate_acceptance_arguments(parser.parse_args([flag]))
+E           AttributeError: module 'candidate_identity' has no attribute 'validate_acceptance_arguments'
+
+tests\unit\test_candidate_identity.py:144: AttributeError
+_ test_abbreviated_error_clearing_is_rejected_after_parsing[--clear-error-nonacceptanc] _
+
+flag = '--clear-error-nonacceptanc'
+
+    @pytest.mark.parametrize("flag", ["--clear-error-nonacceptance", "--clear-error", "--clear-error-nonacceptanc"])
+    def test_abbreviated_error_clearing_is_rejected_after_parsing(flag):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--clear-error-nonacceptance", action="store_true")
+        with pytest.raises(ValueError):
+>           identity.validate_acceptance_arguments(parser.parse_args([flag]))
+E           AttributeError: module 'candidate_identity' has no attribute 'validate_acceptance_arguments'
+
+tests\unit\test_candidate_identity.py:144: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/unit/test_candidate_identity.py::test_candidate_rejects_drift[pip_check_prefix-C:/b/qa]
+FAILED tests/unit/test_candidate_identity.py::test_candidate_rejects_drift[pip_check_command-bad17]
+FAILED tests/unit/test_candidate_identity.py::test_abbreviated_error_clearing_is_rejected_after_parsing[--clear-error-nonacceptance]
+FAILED tests/unit/test_candidate_identity.py::test_abbreviated_error_clearing_is_rejected_after_parsing[--clear-error]
+FAILED tests/unit/test_candidate_identity.py::test_abbreviated_error_clearing_is_rejected_after_parsing[--clear-error-nonacceptanc]
+5 failed, 21 passed in 0.10s

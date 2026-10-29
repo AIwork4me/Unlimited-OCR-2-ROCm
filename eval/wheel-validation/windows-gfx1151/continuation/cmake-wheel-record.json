@@ -1,0 +1,24 @@
+{
+  "comment_text": null,
+  "core-metadata": {
+    "sha256": "4f1481a9bb268a0efe77be8835d8f50e70ca783635f3180021d8c6bcc1f381ce"
+  },
+  "digests": {
+    "blake2b_256": "18779b85ad431b16cc7de1c63b1b023bdaaffe1d128ccc09c23e5931ee1a7100",
+    "md5": "ac0778b9ba191c980dfb78d4e81f3f05",
+    "sha256": "a7ec8b997f75da5310c571f79ce560bc8941013549e47144bfa49025ced79b00"
+  },
+  "downloads": -1,
+  "filename": "cmake-4.0.0-py3-none-win_amd64.whl",
+  "has_sig": false,
+  "md5_digest": "ac0778b9ba191c980dfb78d4e81f3f05",
+  "packagetype": "bdist_wheel",
+  "python_version": "py3",
+  "requires_python": ">=3.7",
+  "size": 36651633,
+  "upload_time": "2025-03-27T23:49:24",
+  "upload_time_iso_8601": "2025-03-27T23:49:24.171465Z",
+  "url": "https://files.pythonhosted.org/packages/18/77/9b85ad431b16cc7de1c63b1b023bdaaffe1d128ccc09c23e5931ee1a7100/cmake-4.0.0-py3-none-win_amd64.whl",
+  "yanked": false,
+  "yanked_reason": null
+}

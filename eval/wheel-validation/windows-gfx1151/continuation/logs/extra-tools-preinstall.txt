@@ -1,0 +1,6 @@
+Processing C:\b\resume\verified-python-wheels\networkx-2.8.8-py3-none-any.whl
+Processing C:\b\resume\verified-python-wheels\sympy-1.13.3-py3-none-any.whl
+Processing C:\b\resume\verified-python-wheels\lintrunner-0.12.11-py3-none-win_amd64.whl
+Installing collected packages: sympy, networkx, lintrunner
+
+Successfully installed lintrunner-0.12.11 networkx-2.8.8 sympy-1.13.3

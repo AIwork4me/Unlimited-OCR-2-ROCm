@@ -1,0 +1,6 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\fmt", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f"]
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.

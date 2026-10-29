@@ -1,125 +1,113 @@
-# Build provenance and blocker
+# Frozen Windows source-wheel build provenance
 
-## Frozen sources
+The official build completed with exit **0**. The initial CUTLASS/transport-blocked
+attempt is preserved at commit `bc75cfe8b57091ce8b396ef10bb6ec1a9f938dc6` and in
+[the initial-attempt snapshot](../../eval/wheel-validation/windows-gfx1151/attempts/initial-blocked/). Its earlier
+BUILD_BLOCKED decision does not describe the completed continuation.
 
-| Component | Identity |
-|---|---|
-| Evidence base, latest main fetched at start | `966265c81a74a73aa0ae6d9a3fa593b342590eb7` |
+## Sources and preparation
+
+| Input | Frozen identity |
+| --- | --- |
 | ROCm/pytorch release/2.12 | `60dd50f143fd9b10ac23cde8cdd34be61232b139` |
-| Source version.txt | `2.12.0` |
-| ROCm/TheRock main observed/fetched at mission start | `6d34c9b6f3e752b8f718b0c81f3070df77ce3283` |
-| TheRock main at later provenance collection | `df8b1b59ccfcc5e861ba410aa3761e38cf2dd22b` |
-| AOTriton runtime source pin / 0.14.50tp tag | `7a6963a7265d2cf0fc48c6a63464386134d32483` |
-| AOTriton image version | `0.14.50tp` |
-| Declared gfx115x image archive SHA-256 | `e4bda76fd6857a733cd7b4b3eb9ccb21c0f47b565ce304777a61bbb13d12ad6e` |
-| aotriton.cmake SHA-256 | `0e29ceff849e1a0129586f81fbb3f9cba8326d64c54730bb8950149b4d1ce71b` |
+| TheRock recipe | `6d34c9b6f3e752b8f718b0c81f3070df77ce3283` |
+| AOTriton runtime 0.14.50tp | `7a6963a7265d2cf0fc48c6a63464386134d32483` |
+| AOTriton official image source signature | `c11b5b886a10a00f925f74133d38b3505e67ccd9` |
+| xz v5.8.1 | `a522a226545730551f7e7c2685fab27cf567746c` |
+| dlfcn-win32 v1.4.2 | `3b52e651f385df00045dd8966407fd9de57fc94b` |
+| Windows libuv v1.47.0 | `be6b81a352d17513c95be153afcb3148f1a451cd` |
 
-The source checkouts were new network clones, detached at those immutable SHAs.
-TheRock main advanced during preparation; the attempted recipe stayed frozen at
-the initially observed SHA. The later observation is retained, not silently
-substituted into the first attempt. The PyTorch branch remained at the recorded
-head at source collection. [Raw source provenance](../../eval/wheel-validation/windows-gfx1151/provenance/source-provenance.json).
+All 37 root gitlinks and three setup/native nested pins match. Native Git object
+fetch batches and authenticated GitHub blob transfers recovered the immutable
+objects. A child-scoped existing proxy supplied reliable transport; TLS
+verification remained enabled. Local exact-source caches changed transport only.
+SDK 7.14.1 core/devel/libraries/device-gfx1151 were reused without repeated SDK
+downloads. [Source recovery](../../eval/wheel-validation/windows-gfx1151/continuation/source-ready-before-build.json)
+and [complete pin/graph discussion](SOURCE_RECOVERY.md) record the details.
 
-[The immutable Windows CMake recipe](https://github.com/ROCm/pytorch/blob/60dd50f143fd9b10ac23cde8cdd34be61232b139/cmake/External/aotriton.cmake)
-selects a source-built AOTriton runtime on Windows with precompiled GPU images.
-The image archive above is **declared, not downloaded/installed/validated here**.
-No `PYTORCH_AOTRITON_COMMIT`, `PYTORCH_AOTRITON_BASE_URL`,
-`AOTRITON_INSTALLED_PREFIX` or `AOTRITON_INSTALL_FROM_SOURCE` override was inherited.
-No custom AOTriton binary or repaired image payload was used.
+Required inputs extend beyond compiled kernels: setup checks every submodule's
+markers; oneDNN configuration traverses test/example CMake files; official HIPIFY
+reads MSLK utils; profiler headers require Kineto's ActivityType.h even with
+USE_KINETO=OFF; FP16 installation requires PSIMD's psimd.h. Those source trees
+were expanded at their existing pins. No handwritten source fix was applied.
 
-All 37 top-level gitlink pins are preserved in the evidence, including the
-blocking CUTLASS pin `da5e086dab31d63815acafdac9a9c5893b1c69e2`.
-Only 11 top-level gitlinks were verified at their expected heads in the final
-readiness snapshot; recursive readiness was not established. This is not a clean,
-buildable checkout. dlfcn-win32 v1.4.2 and xz v5.8.1 remote tag resolutions are
-preserved, but neither dependency was compiled. xz's peeled commit is
-`a522a226545730551f7e7c2685fab27cf567746c`.
+Official HIPIFY preprocessing was left uncommitted, preserving PyTorch HEAD.
+The final root tracked diff is byte-identical to the captured prebuild HIPIFY
+diff. Submodule preprocessing identities are recorded separately; fmt's five
+support-script differences are executable-bit metadata only, with unchanged
+contents. Optional CUDA/Android/test trees outside this graph retain marker
+checkouts. AOTRITON_NOIMAGE_MODE builds the runtime from source and explicitly
+skips Triton; official release images are a separate pinned recipe input.
 
-## Toolchain and SDK
+## Actual builder and configuration
 
-CPython **3.10.20 x64**, MSVC tools **14.44.35207** / compiler **19.44.35229**,
-VS Build Tools **17.14.41**, Windows SDK **10.0.26100.0**, Ninja **1.13.2**,
-CMake **4.4.4**, PowerShell **7.6.5** were observed. The developer command prompt
-was probed in a child process. `cl /Bv` prints the version and its expected
-missing-input diagnostic; this was not a compilation test.
-
-The exact **7.14.1** family was installed in `C:/b/be`: `rocm`, `rocm-sdk-core`,
-`rocm-sdk-devel`, `rocm-sdk-libraries`, `rocm-sdk-device-gfx1151`. `rocm_sdk init`
-expanded the development contents and exited zero; `pip check` passed.
-The SDK clang reports **23.0.0git**, upstream `f30ae3e6b680ad23dcf522e668c6d4c5c90838d0`
-with packaged patch identity `1efe4605317a40d2170d33617075bd5675d0d558`.
-No alternate SDK was attempted. A **candidate HIP build version does not exist**;
-the baseline runtime reports HIP **7.14.60850**.
-
-Development wheel: `rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl`, 655,227,267 bytes,
-SHA-256 `cf05e6cdc9dc9a1ba291c76e6777b3d58767a49e34c1223f4475c740401c7532`.
-The final download's S3 multipart ETag matches the server's recorded ETag, and
-all ZIP-member CRCs passed. This authenticates transport consistency with that
-HTTPS object; it is not an independently signed upstream checksum.
-Explicit local wheel paths prevented pip from downloading the same SDK again.
-[SDK package report](../../eval/wheel-validation/windows-gfx1151/build/sdk-local-install.json),
-[SDK verification](../../eval/wheel-validation/windows-gfx1151/build/sdk-archive-verification.json).
-
-The current TheRock README documents Python 3.11+ prerequisites. The mandated
-3.10 interpreter successfully ran the current CLI help and SDK initialization;
-full source-build compatibility with 3.10 remains unestablished.
-
-## Actual official build attempt
-
-The current CLI `build --help` was inspected. First invocation:
-
-```powershell
-$env:MAX_JOBS='8'
-$env:CMAKE_BUILD_PARALLEL_LEVEL='8'
-C:/b/be/Scripts/python.exe C:/b/therock/external-builds/pytorch/build_prod_wheels.py build `
-  --install-rocm --index-url https://repo.amd.com/rocm/whl-multi-arch/ `
-  --rocm-sdk-version '==7.14.1' --no-pre --rocm-extras device-gfx1151 `
-  --pytorch-rocm-arch gfx1151 --pytorch-dir C:/b/pytorch `
-  --pytorch-git-ref release/2.12 --no-build-triton --no-build-pytorch-audio `
-  --no-build-pytorch-vision --no-build-apex --enable-pytorch-flash-attention `
-  --output-dir C:/b/out/wheels
+```text
+C:/b/be/Scripts/python.exe C:/b/therock/external-builds/pytorch/build_prod_wheels.py build --no-install-rocm --index-url https://repo.amd.com/rocm/whl-multi-arch/ --rocm-sdk-version ==7.14.1 --no-pre --rocm-extras device-gfx1151 --pytorch-rocm-arch gfx1151 --pytorch-dir C:/b/pytorch --pytorch-git-ref release/2.12 --no-build-triton --no-build-pytorch-audio --no-build-pytorch-vision --no-build-apex --enable-pytorch-flash-attention --output-dir C:/b/out/wheels
 ```
 
-The checkout HEAD was the immutable PyTorch SHA; `--pytorch-git-ref` describes
-release version naming and does not perform a branch checkout. Only gfx1151 was
-requested. FLASH and EFFICIENT would be set ON by this recipe; **no CMake cache
-was generated, so neither flag was actually configured or built**.
+The child uses vcvars64, `MAX_JOBS=8`, `CMAKE_BUILD_PARALLEL_LEVEL=8` and the
+frozen workflow's locally built libuv. Each Ninja invocation is capped at eight;
+the nested AOTriton CXX build overlapped with root compilation, with 15 CXX
+compiler processes observed. This is not a system-wide eight-process cap.
 
-Start **2026-10-28 12:28:37 UTC**, end **12:31:51 UTC**, process exit **1**.
-It failed during pip's SDK development-wheel transfer with ReadTimeoutError,
-before compiler configuration. [Raw log](../../eval/wheel-validation/windows-gfx1151/build/build-attempt.txt),
-[timestamps/exit](../../eval/wheel-validation/windows-gfx1151/build/build-attempt.json).
-The SDK failure was subsequently recovered using bounded byte-range downloads,
-verified concatenation and explicit local installs; it is not the remaining blocker.
+Actual CMake configuration: USE_ROCM=ON, USE_CUDA=OFF,
+USE_FLASH_ATTENTION=ON, USE_MEM_EFF_ATTENTION=ON, distributed/Gloo ON, tests OFF.
+CK SDPA and FBGEMM are automatically disabled by the unmodified platform/arch
+guards. All **269 generated HIP compile recipes** use only `gfx1151`;
+the attention command defines both fused feature macros.
+CPython 3.10.20 x64, CMake 4.0.0, Ninja 1.13.2 and SDK clang-cl 23 were used;
+MSVC compiler file version is `19.44.35229.0`, Windows SDK 10.0.26100.0.
+The initial preflight CMake version is historical; the official build's pinned
+requirements selected 4.0.0. No prohibited AOTriton source/binary override was set.
 
-## Remaining source-preparation blocker
+## Failures and successful completion
 
-Full recursive fetches stalled; shallow retries exposed incomplete submodule
-checkouts. Exact pinned fetches repaired VMA, aiter, composable_kernel and
-cudnn_frontend. Fetching CUTLASS then failed with an RPC disconnect, early EOF
-and invalid index-pack output. An explicit pinned retry using process-scoped
-HTTP/1.1 and OpenSSL retained certificate validation and exited **128** with an
-unexpected TLS EOF, **13:03:34–13:03:44 UTC**.
+Earlier truncated Git/Python/image transfers were preparation failures, not
+AOTriton regressions. Rejected image reconstructions never entered a candidate;
+only the full archive digest
+`e4bda76fd6857a733cd7b4b3eb9ccb21c0f47b565ce304777a61bbb13d12ad6e`
+was accepted, then all seven extracted image files were independently checked.
 
-The last retry had a 120-second ceiling but failed before that ceiling. Earlier
-stalled preparation/download processes were terminated; their incomplete logs
-are labeled as such. No security policy, global Git configuration or registry
-setting was changed. No compiler or PyTorch source fix was attempted.
-[Retry command and exit](../../eval/wheel-validation/windows-gfx1151/build/submodule-pinned-retry.json),
-[raw TLS failure](../../eval/wheel-validation/windows-gfx1151/build/submodule-pinned-retry.txt),
-[readiness snapshot](../../eval/wheel-validation/windows-gfx1151/provenance/source-readiness.json).
+The first compiler diagnostic was missing `ActivityType.h` from sparse Kineto,
+classified INCOMPLETE_SOURCE_MATERIALIZATION and recovered at pinned
+`b2103f78d13fde4937af010c0ef8e24313568bc5`. After compilation/linking succeeded,
+the first install failure was missing PSIMD `include/psimd.h`, recovered at
+`072586a71b55b7f8c584153d223e95687148a900`. No actual compiler/linker source
+defect remained. The resumed frozen builder reused the objects, installed,
+produced the wheel, installed it in its own environment and reported
+`Builds all completed`, exit 0.
 
-## Candidate artifact
+[Main compile stdout](../../eval/wheel-validation/windows-gfx1151/continuation/logs/build-after-kineto.stdout.log.gz) ·
+[Main compile stderr](../../eval/wheel-validation/windows-gfx1151/continuation/logs/build-after-kineto.stderr.log) ·
+[Successful retry stdout](../../eval/wheel-validation/windows-gfx1151/continuation/logs/build-after-psimd.stdout.log.gz) ·
+[Successful retry stderr](../../eval/wheel-validation/windows-gfx1151/continuation/logs/build-after-psimd.stderr.log.gz) ·
+[Final process record](../../eval/wheel-validation/windows-gfx1151/continuation/build-after-psimd-process.json) ·
+[Final CMake/source/tool facts](../../eval/wheel-validation/windows-gfx1151/continuation/final-build-provenance.json).
+Large logs use deterministic gzip; hashes of original, sanitized-uncompressed
+and published compressed bytes are preserved in the export ledger.
 
-**None.** No candidate filename, size, ABI/platform tag, wheel hash, dependency
-manifest, loaded binaries, image signatures or GPU result exists. `C:/b/out`
-contains no wheel and no PyTorch CMake cache exists. The OCR project's separate
-CPU package build is not a PyTorch wheel build. No candidate install was attempted.
+## Installed artifact and measurement binding
 
-Smallest next action: complete `git submodule update --init --recursive` at the
-recorded immutable pins using a working GitHub transfer path, verify the clean
-source tree, then rerun the frozen official builder in an MSVC developer shell.
-Use the already installed SDK with `--no-install-rocm` to avoid unnecessary SDK
-reinstallation. Preserve the exact SHA and bounded parallelism, inspect the wheel,
-install by explicit path in `C:/b/new`, and run the unchanged matrix before any
-claim that fused SDPA is fixed.
+Wheel SHA-256: `6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e`; 388,478,127 bytes.
+The dist wheel and copied output wheel agree. The exact local output path was
+installed with `--no-index` into fresh C:/b/new, with SDK 7.14.1/NumPy 2.2.6
+constraints and no historical audio/vision packages. pip check succeeds.
+
+The reviewed profile binds all 15 native torch members, including torch_cpu,
+torch_python, C10 and _C.pyd, plus the exact SDK HIP DLL. Each process rehashes
+artifact and installed bytes, verifies loaded paths/hashes and complete images,
+and runs a fresh pip check. Supplemental inspection verifies 33 loaded stack
+modules against provider wheels; HIP runtime/driver APIs both return 71460850.
+
+Run `git_commit` records checkout context. Reviewed diagnostic edits were pending
+commit during measurement. Every process/manifest producer hash was subsequently
+checked against committed blobs at `3e641d97af952d3fa70a3fbec223d6faed41b047`; the
+paired analysis records that binding. The final delivery preserves those exact
+producer bytes. This workspace context is distinct from the independently
+verified built/imported PyTorch source SHA.
+
+[Built wheel inventory](../../eval/wheel-validation/windows-gfx1151/continuation/built-wheel-inspection.json) ·
+[Identity profile](../../eval/wheel-validation/windows-gfx1151/continuation/candidate-identity-profile.json) ·
+[Observed profile](../../eval/wheel-validation/windows-gfx1151/continuation/candidate-identity-profile.observed.json) ·
+[Explicit installation report](../../eval/wheel-validation/windows-gfx1151/continuation/candidate-torch-install.json) ·
+[Loaded native/provider hashes](../../eval/wheel-validation/windows-gfx1151/continuation/installed-native-runtime.json).

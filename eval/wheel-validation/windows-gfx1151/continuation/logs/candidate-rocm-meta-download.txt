@@ -1,0 +1,14 @@
+Looking in indexes: https://repo.amd.com/rocm/whl-multi-arch/
+Collecting rocm==7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/rocm-7.14.1.tar.gz (24 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Saved c:\b\resume\verified-python-wheels\rocm-7.14.1.tar.gz
+Successfully downloaded rocm
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: C:\b\be\Scripts\python.exe -m pip install --upgrade pip

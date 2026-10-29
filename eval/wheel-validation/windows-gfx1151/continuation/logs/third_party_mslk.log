@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\mslk", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "3d332d1c0c0ac7765852c97b3979c9ef913e037f"]
+From https://github.com/meta-pytorch/MSLK
+ * branch            3d332d1c0c0ac7765852c97b3979c9ef913e037f -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\mslk", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\mslk", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "3d332d1c0c0ac7765852c97b3979c9ef913e037f"]
+fatal: unable to access 'https://github.com/meta-pytorch/MSLK.git/': schannel: failed to receive handshake, SSL/TLS connection failed
+fatal: could not fetch 7c487c741f0c3d9234068d604a9bcf008a66928b from promisor remote

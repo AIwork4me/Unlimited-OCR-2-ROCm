@@ -1,67 +1,80 @@
-# Physical Windows gfx1151 matrix
+# Physical Windows gfx1151 paired matrix
 
-The original wheel was tested on the physical Radeon 8060S. Each row represents
-fresh CPython 3.10.20 x64 processes, unchanged seed 7992, BF16 inputs and independent
-CPU FP32 reference arithmetic. No image/DLL substitutions or acceptance error
-clearing were performed. [Raw reports and process manifest](../../eval/wheel-validation/windows-gfx1151/baseline/).
+**FIX_VERIFIED** for this local source-built BF16 forward artifact. Both matrices
+contain 27 fresh Python processes. The original producer/reference bytes, seed
+7992, tensor shapes, masks and thresholds are unchanged. Every case's fixture
+hash and arguments except output path match exactly; no error clearing was used.
 
-| Condition | Requested | Actually observed | Repetitions | Original result |
-|---|---|---|---:|---|
-| [1,1,1,1], no mask | DEFAULT | FLASH_ATTENTION | 3 | FAIL, first HIP error after SDPA |
-| [1,1,1,1], no mask | FLASH | FLASH_ATTENTION | 3 | FAIL, first HIP error after SDPA |
-| [1,2,16,64], no mask | FLASH | FLASH_ATTENTION | 3 | FAIL, first HIP error after SDPA |
-| [1,2,16,64], additive bias | EFFICIENT | EFFICIENT_ATTENTION | 3 | FAIL, first HIP error after SDPA |
-| [54,12,196,64], [54,12,196,196] bias | DEFAULT | EFFICIENT_ATTENTION | 3 | FAIL, first HIP error after SDPA |
-| Same vision condition | EFFICIENT | EFFICIENT_ATTENTION | 3 | FAIL, first HIP error after SDPA |
-| Scalar/no mask | MATH | MATH, CPU operator profiler | 1 | MATH_PASS |
-| Small/no mask | MATH | MATH, CPU operator profiler | 1 | MATH_PASS |
-| Small/additive bias | MATH | MATH, CPU operator profiler | 1 | MATH_PASS |
-| Vision/additive bias | MATH | MATH, CPU operator profiler | 1 | MATH_PASS |
-| Small/additive bias, downstream arithmetic | EFFICIENT | EFFICIENT_ATTENTION | 1 | FAIL |
-| Vision copy-only control | MATH requested; no SDPA executed | UNOBSERVED, expected | 1 | CONTROL_PASS |
-| Vision/additive bias capability probe | FLASH | UNOBSERVED | 1 | UNSUPPORTED, exit 2 |
-| Small/no mask, AMD_LOG_LEVEL=4 | FLASH | FLASH_ATTENTION | 1 | FAIL, null-function/zero-block launch |
-| Small/additive bias, AMD_LOG_LEVEL=4 | EFFICIENT | EFFICIENT_ATTENTION | 1 | FAIL, null-function/zero-block launch |
+| Condition | Repetitions | Observed candidate backend | Baseline | Candidate |
+| --- | ---: | --- | --- | --- |
+| Scalar, no mask; DEFAULT | 3 | FLASH_ATTENTION | FAIL | FUSED_PASS |
+| Scalar, no mask; FLASH | 3 | FLASH_ATTENTION | FAIL | FUSED_PASS |
+| [1,2,16,64], no mask; FLASH | 3 | FLASH_ATTENTION | FAIL | FUSED_PASS |
+| [1,2,16,64], bias; EFFICIENT | 3 | EFFICIENT_ATTENTION | FAIL | FUSED_PASS |
+| [54,12,196,64], bias; DEFAULT | 3 | EFFICIENT_ATTENTION | FAIL | FUSED_PASS |
+| Vision, bias; EFFICIENT | 3 | EFFICIENT_ATTENTION | FAIL | FUSED_PASS |
+| Scalar; MATH | 1 | MATH | MATH_PASS | MATH_PASS |
+| Small/no mask; MATH | 1 | MATH | MATH_PASS | MATH_PASS |
+| Small/bias; MATH | 1 | MATH | MATH_PASS | MATH_PASS |
+| Vision/bias; MATH | 1 | MATH | MATH_PASS | MATH_PASS |
+| Small/bias, downstream arithmetic | 1 | EFFICIENT_ATTENTION | FAIL | FUSED_PASS |
+| Vision copy-only control | 1 | UNOBSERVED | CONTROL_PASS | CONTROL_PASS |
+| Vision/bias; optional FLASH probe | 1 | UNOBSERVED | UNSUPPORTED | UNSUPPORTED |
+| FLASH with AMD_LOG_LEVEL=4 | 1 | FLASH_ATTENTION | FAIL | FUSED_PASS |
+| EFFICIENT with AMD_LOG_LEVEL=4 | 1 | EFFICIENT_ATTENTION | FAIL | FUSED_PASS |
 
-Total: **27 processes: 21 FAIL, 4 MATH_PASS, 1 CONTROL_PASS, 1 UNSUPPORTED**.
-The historical RED is reproduced, so BASELINE_DRIFT is not indicated.
+Totals: baseline **21 FAIL / 4 MATH_PASS / 1 CONTROL_PASS / 1 UNSUPPORTED**;
+candidate **21 FUSED_PASS / 4 MATH_PASS / 1 CONTROL_PASS / 1 UNSUPPORTED**.
+The named optional additive-mask FLASH probe alone may be UNSUPPORTED. Copy-only
+executes no SDPA; its UNOBSERVED backend is intentional. Explicit MATH controls
+observe the MATH operator through CPU operator profiling while tensors execute
+on the GPU; they are not used as fused proof.
 
-## Numerical observations
+## Numerical comparison
 
-BF16 uses the original combined criterion `abs(actual-reference) <=
-0.03 + 0.03*abs(reference)`. FP16 (0.005/0.005) and FP32 (0.0001/0.0001)
-thresholds remain frozen in the producer; those GPU dtype matrices were not run.
+The independent CPU FP32 reference uses the original combined BF16 criterion
+`abs(actual-reference) <= 0.03 + 0.03*abs(reference)`. All 25 measured candidate
+SDPA results have zero failing and zero nonfinite elements. Baseline fused
+numerics remain unmeasured after the original HIP fault.
 
-| MATH condition | Max absolute error | Failing/nonfinite elements |
-|---|---:|---|
-| Scalar | 0 | 0 / 0 |
-| Small/no mask | 0.003715038299560547 | 0 / 0 |
-| Small/bias | 0.006483316421508789 | 0 / 0 |
-| Vision/bias | 0.0038219690322875977 | 0 / 0 |
+| Fixture | Baseline MATH max abs error | Candidate fused max abs error |
+| --- | ---: | ---: |
+| Scalar | 0.0 | 0.0 |
+| Small/no mask | 0.003715038299560547 | 0.00450444221496582 |
+| Small/bias | 0.006483316421508789 | 0.006483316421508789 |
+| Vision/bias | 0.0038219690322875977 | 0.0038219690322875977 |
 
-Fused numerical results are **unmeasured**, because the reproducer detects HIP
-error 1 first and does not copy corrupt output to CPU for acceptance. Subsequent
-PyTorch operations can consume the HIP error; the earlier failure remains recorded
-and decisive. Synchronization alone returned normally in these failing cases and
-does not prove a valid attention output. The scalar contiguous copy can be a no-op.
+All candidate MATH controls also pass. The six key condition groups have three
+independent processes each; all 27 run IDs are unique. All process-level native,
+profile and frozen producer hashes validate. The driver remains 32.0.22032.6002.
 
-## Dispatch and launch evidence
+| Fixture | SHA-256, identical baseline/candidate |
+| --- | --- |
+| Scalar | `2327964b3cd3acf123400cd57647979abe1aad5fe049f1da631c4dac7fa865d1` |
+| Small/no mask | `e39ed68c0b8e26c1949d4c05c1ff75479a43910b027ac06d1472da1251aae8c0` |
+| Small/bias | `a889de7a3cdb612299e6f2e885655f14171566414e9cda06ff3faab686cd5a86` |
+| Vision/bias | `73a7c931fe5a66837703701cbc3c7076f188c0537e52f3aa941bae072782808a` |
 
-TorchDispatchMode records `aten._scaled_dot_product_flash_attention.default` or
-`aten._scaled_dot_product_efficient_attention.default`. The separate MATH cases
-use CPU operator profiling to observe `aten::_scaled_dot_product_attention_math`;
-they still execute tensor operations on the GPU. Neither capability flags nor
-the mere public SDPA call are treated as dispatch evidence.
+## Actual dispatch and GPU launches
 
-Both [FLASH](../../eval/wheel-validation/windows-gfx1151/baseline/flash_launch.stderr.log)
-and [EFFICIENT](../../eval/wheel-validation/windows-gfx1151/baseline/efficient_launch.stderr.log)
-logs contain zero `hipModuleLoadData[Ex]` calls, followed by a null-function launch
-with block dimensions `(0,0,0)` returning `hipErrorInvalidValue`. These observations
-do not identify a successfully launched attention kernel. No GPU kernel symbol
-is inferred from CPU profiling.
+Dispatch records identify the FLASH or EFFICIENT aten operator for every fused
+row, including DEFAULT routes. Required forced routes never become MATH.
+Both candidate launch logs show `hipModuleLoadDataEx -> hipSuccess`,
+`hipModuleGetFunction(..., attn_fwd) -> hipSuccess`, then a nonnull function
+launched with grid `(1,2,1)`, block `(128,1,1)`, `hipSuccess` and PAL
+`kernel : attn_fwd`. All before/after-SDPA and downstream HIP checks are zero;
+synchronization, copies and arithmetic complete.
 
-## Candidate
+The baseline logs instead show no successful module loading and null-function,
+zero-block launches returning hipErrorInvalidValue. Neither capability flags,
+public SDPA calls nor synchronization alone are accepted as launch proof.
 
-No candidate GPU result exists unless a separate source-wheel build, install and
-provenance gate succeeds. The original RED and source pin changes cannot establish
-candidate behavior. See the [decision report](PYTORCH_212_CURRENT_WHEEL.md).
+[Paired per-case analysis](../../eval/wheel-validation/windows-gfx1151/comparison.json) ·
+[Candidate raw process reports/logs](../../eval/wheel-validation/windows-gfx1151/candidate/) ·
+[Baseline immutable reports/logs](../../eval/wheel-validation/windows-gfx1151/baseline/) ·
+[Parsed launch evidence](../../eval/wheel-validation/windows-gfx1151/continuation/hip-launch-evidence.json) ·
+[FLASH raw log](../../eval/wheel-validation/windows-gfx1151/candidate/flash_launch.stderr.log) ·
+[EFFICIENT raw log](../../eval/wheel-validation/windows-gfx1151/candidate/efficient_launch.stderr.log).
+
+FP16/FP32 GPU matrices, backward passes, other hardware and full OCR inference
+were not run. Their original thresholds/code remain unchanged.

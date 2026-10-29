@@ -1,0 +1,38 @@
+{
+  "utc": "2026-10-28T22:20:25.640036+00:00",
+  "sources": [
+    {
+      "name": "aotriton",
+      "actual_build_source_path": "C:/b/pytorch/build/aotriton/src/aotriton_runtime",
+      "expected": "7a6963a7265d2cf0fc48c6a63464386134d32483",
+      "actual": "7a6963a7265d2cf0fc48c6a63464386134d32483",
+      "matches": true,
+      "status": ""
+    },
+    {
+      "name": "xz",
+      "actual_build_source_path": "C:/b/pytorch/build/xz/src/xz_external",
+      "expected": "a522a226545730551f7e7c2685fab27cf567746c",
+      "actual": "a522a226545730551f7e7c2685fab27cf567746c",
+      "matches": true,
+      "status": ""
+    },
+    {
+      "name": "dlfcn-win32",
+      "actual_build_source_path": "C:/b/pytorch/build/dlfcn-win32/src/dlfcn-win32_external",
+      "expected": "3b52e651f385df00045dd8966407fd9de57fc94b",
+      "actual": "3b52e651f385df00045dd8966407fd9de57fc94b",
+      "matches": true,
+      "status": ""
+    },
+    {
+      "name": "libuv",
+      "actual_build_source_path": "C:/b/libuv",
+      "expected": "be6b81a352d17513c95be153afcb3148f1a451cd",
+      "actual": "be6b81a352d17513c95be153afcb3148f1a451cd",
+      "matches": true,
+      "status": ""
+    }
+  ],
+  "all_match": true
+}

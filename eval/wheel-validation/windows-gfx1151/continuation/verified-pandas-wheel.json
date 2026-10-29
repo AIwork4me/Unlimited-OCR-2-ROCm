@@ -1,0 +1,14 @@
+{
+  "method": "resumed incomplete byte ranges with checked Content-Range, TLS verification on, final SHA256 compared to official PyPI JSON",
+  "wheels": [
+    {
+      "package": "pandas",
+      "filename": "pandas-2.3.3-cp310-cp310-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/85/72/530900610650f54a35a19476eca5104f38555afccda1aa11a92ee14cb21d/pandas-2.3.3-cp310-cp310-win_amd64.whl",
+      "size": 11346086,
+      "sha256": "503cf027cf9940d2ceaa1a93cfb5f8c8c7e6e90720a2850378f0b3f3b1e06826",
+      "published_pypi_sha256": "503cf027cf9940d2ceaa1a93cfb5f8c8c7e6e90720a2850378f0b3f3b1e06826",
+      "matches": true
+    }
+  ]
+}

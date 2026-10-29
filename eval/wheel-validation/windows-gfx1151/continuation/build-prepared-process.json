@@ -1,0 +1,13 @@
+{
+  "start_utc": "2026-10-28T14:51:34.1543249Z",
+  "end_utc": "2026-10-28T15:01:15.7963306Z",
+  "exit_code": 1,
+  "command": "cmd.exe /d /c C:\\b\\resume\\build-prepared.cmd",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "sdk": "7.14.1",
+  "max_jobs": 8,
+  "libuv_sha": "be6b81a352d17513c95be153afcb3148f1a451cd",
+  "hipify": "official frozen helper, no local commit",
+  "no_install_rocm": true
+}

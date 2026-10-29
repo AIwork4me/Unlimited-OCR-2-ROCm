@@ -1,0 +1,12 @@
+{
+  "parts": [
+    17,
+    60,
+    160,
+    197
+  ],
+  "rejected_sha256": "9ca4eabffa4210734c26e458f4e8a31d067cfae4dc57fe66ee4310da10cacfbc",
+  "expected_sha256": "e4bda76fd6857a733cd7b4b3eb9ccb21c0f47b565ce304777a61bbb13d12ad6e",
+  "accepted": false,
+  "cause": "zero-body curl failures can leave prior output bytes; helper now removes per-request temporary files before each request"
+}

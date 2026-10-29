@@ -1,0 +1,22 @@
+{
+  "run_id": "f4c38a0f-b456-4391-8d42-f19d4d5ed5aa",
+  "utc": "2026-10-28T13:10:28.849554+00:00",
+  "decision": "BUILD_BLOCKED",
+  "build_status": "BLOCKED_BEFORE_COMPILER_CONFIGURATION",
+  "official_build_process_exit": 1,
+  "sdk_timeout_recovered": true,
+  "final_source_fetch_exit": 128,
+  "blocker": "Pinned CUTLASS GitHub fetch early EOF / TLS unexpected EOF; incomplete recursive source checkout (11/37 top-level gitlinks ready).",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "aotriton_source_pin": "7a6963a7265d2cf0fc48c6a63464386134d32483",
+  "aotriton_image_version_declared": "0.14.50tp",
+  "rocm_sdk_installed": "7.14.1",
+  "candidate_wheel_sha256": null,
+  "candidate_gpu_tests": "NOT_RUN",
+  "SOURCE_BUILT_WHEEL_VERIFIED": false,
+  "OFFICIAL_PUBLISHED_WHEEL_VERIFIED": false,
+  "historical_official_wheel_physically_tested": "RED_REPRODUCED",
+  "next_action": "Complete exact pinned recursive source dependencies over a working GitHub transfer path, verify clean source, rerun official build with installed SDK in child MSVC developer shell.",
+  "next_upstream_repository_conditional": "ROCm/TheRock packaged-wheel regression gate only after FIX_VERIFIED; no upstream source-fix ownership inferred."
+}
