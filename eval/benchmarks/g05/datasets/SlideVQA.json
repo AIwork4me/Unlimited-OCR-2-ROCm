@@ -1,0 +1,41 @@
+{
+  "authenticated": true,
+  "credentials_in_receipt": false,
+  "dataset": "SlideVQA",
+  "expected_decks": 11,
+  "expected_pages": 84,
+  "independent_verification": "All shard bytes reread against pinned hashes; all output JPEGs reread against serialization hashes",
+  "official_downloader_sha256": "8cb011d1350db47ad42a8dfc50939b1bd1093890e84834ce4cbf92d3f9f03382",
+  "page_hash_index": "SlideVQA-page-index.json",
+  "page_hash_index_sha256": "58c4272457939da8b757f0febabce72dc4b8549b24d7c723553ae44054cadaea",
+  "producer_sha256": "7503d84ce555c20ec209f03b5d0f010ae0394ca751a752f6d58059b5c520b8cb",
+  "revision": "e780ea258d734958befbfaed19fa059584642ca8",
+  "schema": 1,
+  "serialization": "datasets.Image.decode_example then PIL.Image.save to .jpg with defaults",
+  "serialization_versions": {
+    "Pillow": "10.4.0",
+    "datasets": "5.1.0",
+    "pyarrow": "25.0.1"
+  },
+  "signed_urls_in_receipt": false,
+  "source_constraint_receipt": "SlideVQA-attempt-1.json",
+  "source_constraint_receipt_sha256": "aa52ca4a31ebb5d678bdb74d3e318984cae00a63b074ebb164e6fc476f5e09e4",
+  "status": "VERIFIED",
+  "test_shard_sha256": {
+    "data/test-00000-of-00012.parquet": "d4a56e03d915c969080250e84d24eaf4eea56af3965c81496e2464d3832708a4",
+    "data/test-00001-of-00012.parquet": "1fd65418b36865697d83628863ff8d4ff4311f4f7b0b0292c198bed22c200f10",
+    "data/test-00002-of-00012.parquet": "b9fe3da8b6df79d51fa67025f18cd2d3b400d40f5c74db1cb7892535c92fa828",
+    "data/test-00003-of-00012.parquet": "e13af33fd53a43477690db6e0ced05e5c05e47e667095bfe3275b3a69f315f4c",
+    "data/test-00004-of-00012.parquet": "3a31c7c188d91bb9f730ab7b1af0933f3306fc0bf33489c2e311eb70a5f68cae",
+    "data/test-00005-of-00012.parquet": "b430fff03af458ccabc303fcea403c0562f9f06884672c1a112ed04ee8258648",
+    "data/test-00006-of-00012.parquet": "ae8a06a58d65ced6357367cd35b85c4fd279548eea67ef26a285e29fb3d36dbc",
+    "data/test-00007-of-00012.parquet": "2024fcb4e71cd9d7b36385a484fb000d9d1598603406e9300fdc84f771ed9367",
+    "data/test-00008-of-00012.parquet": "6d432a0fd605a9031d77dc860732c59ed56c76114d256c8db8717433dda34b9b",
+    "data/test-00009-of-00012.parquet": "00ac117cbf540862c987195f3784e5fc3c69c76e2dff49e408736b966de09823",
+    "data/test-00010-of-00012.parquet": "331094c177635a955fc583450582c7b7a316dcfb20cf16918e9476f9e17b6d7f",
+    "data/test-00011-of-00012.parquet": "32cd35ab3d4fc61296650fc623f648d6f7067ce77f72ec327dcbff3667f7c03c"
+  },
+  "verified_decks": 11,
+  "verified_pages": 84,
+  "verified_shards": 12
+}

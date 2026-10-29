@@ -1,0 +1,20 @@
+[
+    {
+        "gt": [
+            1,
+            2
+        ],
+        "pred": [
+            1,
+            2
+        ],
+        "img_id": "synthetic.pdf",
+        "edit": 0.0,
+        "image_name": "synthetic.pdf",
+        "upper_len": 2,
+        "metric": {
+            "Edit_dist": 0.0
+        },
+        "Edit_num": 0
+    }
+]

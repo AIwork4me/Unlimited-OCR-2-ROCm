@@ -1,0 +1,12 @@
+{
+  "authenticated": true,
+  "credentials_in_receipt": false,
+  "dataset": "SlideVQA",
+  "http_status": 206,
+  "prefix_bytes_read": 4,
+  "recorded_utc": "2026-10-29T11:49:31.641454+00:00",
+  "revision": "e780ea258d734958befbfaed19fa059584642ca8",
+  "schema": 1,
+  "signed_urls_in_receipt": false,
+  "status": "ACCESS_VERIFIED"
+}

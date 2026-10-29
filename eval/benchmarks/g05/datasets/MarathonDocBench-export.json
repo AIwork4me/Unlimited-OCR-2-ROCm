@@ -1,0 +1,11 @@
+{
+  "payload_in_git": false,
+  "public_index": "MarathonDocBench-page-index.json",
+  "public_index_sha256": "62f1ba97d87a9f2bb3726921349e5d95a145b9614dc744239621aab780093563",
+  "receipt": "MarathonDocBench.json",
+  "receipt_sha256": "961ddaca50692277843b29f5037f1f851a67d387176521c8c536992f51a311b1",
+  "schema": 1,
+  "source_index": ".b/g05-data/marathon-independent-page-index.json",
+  "status": "PASS",
+  "supersedes_metadata_only_readiness": true
+}

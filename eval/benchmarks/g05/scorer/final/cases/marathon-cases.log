@@ -1,0 +1,191 @@
+{
+  "exact": {
+    "status": "PASS",
+    "original_result": {
+      "recall": 1.0,
+      "precision": 1.0,
+      "F1_score": 1.0
+    },
+    "rendered_both": true,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      }
+    },
+    "error_observed": false,
+    "timed_out": false,
+    "timeout_renderer_started": false,
+    "returncode": 0,
+    "active_processes_after_cleanup": [],
+    "elapsed_seconds": 23.777625225999998,
+    "timeout_seconds": 120,
+    "startup_timeout_seconds": 120,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/marathon",
+      "--output",
+      "<repo>/.b/g05-scorer/runs-cleanup/marathon-cases/exact",
+      "--case",
+      "exact",
+      "--profile",
+      "marathon"
+    ]
+  },
+  "mismatch": {
+    "status": "PASS",
+    "original_result": {
+      "recall": 0.4,
+      "precision": 0.4,
+      "F1_score": 0.4
+    },
+    "rendered_both": true,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          110,
+          41
+        ]
+      }
+    },
+    "error_observed": false,
+    "timed_out": false,
+    "timeout_renderer_started": false,
+    "returncode": 0,
+    "active_processes_after_cleanup": [],
+    "elapsed_seconds": 22.954473503000003,
+    "timeout_seconds": 120,
+    "startup_timeout_seconds": 120,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/marathon",
+      "--output",
+      "<repo>/.b/g05-scorer/runs-cleanup/marathon-cases/mismatch",
+      "--case",
+      "mismatch",
+      "--profile",
+      "marathon"
+    ]
+  },
+  "error": {
+    "status": "EXPECTED_RENDER_ERROR",
+    "original_result": {
+      "recall": 0,
+      "precision": 0,
+      "F1_score": 0
+    },
+    "rendered_both": false,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": false,
+        "valid_boxes": 0,
+        "png_valid": true,
+        "image_size": [
+          26,
+          26
+        ]
+      }
+    },
+    "error_observed": true,
+    "timed_out": false,
+    "timeout_renderer_started": false,
+    "returncode": 0,
+    "active_processes_after_cleanup": [],
+    "elapsed_seconds": 26.27632482200002,
+    "timeout_seconds": 120,
+    "startup_timeout_seconds": 120,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/marathon",
+      "--output",
+      "<repo>/.b/g05-scorer/runs-cleanup/marathon-cases/error",
+      "--case",
+      "error",
+      "--profile",
+      "marathon"
+    ]
+  },
+  "timeout": {
+    "status": "EXPECTED_TIMEOUT",
+    "original_result": null,
+    "rendered_both": false,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": false,
+        "valid_boxes": 0,
+        "png_valid": false
+      }
+    },
+    "error_observed": false,
+    "timed_out": true,
+    "timeout_renderer_started": true,
+    "returncode": -9,
+    "active_processes_after_cleanup": [],
+    "elapsed_seconds": 20.14983522899999,
+    "timeout_seconds": 0.05,
+    "startup_timeout_seconds": 120,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/marathon",
+      "--output",
+      "<repo>/.b/g05-scorer/runs-cleanup/marathon-cases/timeout",
+      "--case",
+      "timeout",
+      "--profile",
+      "marathon"
+    ]
+  }
+}
+MEASUREMENT_JSON: {"elapsed_seconds": 93.40316562500001, "maximum_child_process_rss_kib": 210660, "child_user_seconds": 26.497588, "child_system_seconds": 24.38003, "exit_code": 0}

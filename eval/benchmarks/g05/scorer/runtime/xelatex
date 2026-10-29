@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/xetex -fmt=<repo>/.b/g05-scorer/fmts/xelatex.fmt "$@"

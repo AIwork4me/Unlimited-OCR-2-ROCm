@@ -1,0 +1,10 @@
+{
+    "synthetic.pdf": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "gt_count": 1,
+        "pred_count": 1,
+        "matched_count": 1
+    }
+}

@@ -1,0 +1,40 @@
+METRIC_REGISTRY:  ['TEDS', 'BLEU', 'METEOR', 'Edit_dist', 'CDM', 'CDM_plain', 'HeadTEDS', 'FigureF1', 'Relation_F1']
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/PIL/Image.py:1056: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "<repo>/src/unlimited_ocr_2_rocm/benchmark/worker.py", line 291, in <module>
+    raise SystemExit(main())
+  File "<repo>/src/unlimited_ocr_2_rocm/benchmark/worker.py", line 243, in main
+    report = selftest(output, save_name)
+  File "<repo>/src/unlimited_ocr_2_rocm/benchmark/worker.py", line 187, in selftest
+    pipeline = pipeline_fixture(output, save_name)
+  File "<repo>/src/unlimited_ocr_2_rocm/benchmark/worker.py", line 36, in pipeline_fixture
+    from dataset.end2end_dataset import End2EndDataset
+  File "<repo>/.b/g05-scorer/runs/qwen-pipeline/worker/verified-source/dataset/__init__.py", line 3, in <module>
+    from .detection_dataset import *
+  File "<repo>/.b/g05-scorer/runs/qwen-pipeline/worker/verified-source/dataset/detection_dataset.py", line 1, in <module>
+    from mmeval import COCODetection
+  File "<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/mmeval/__init__.py", line 9, in <module>
+    from .metrics import *
+  File "<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/mmeval/metrics/__init__.py", line 7, in <module>
+    from .average_precision import AveragePrecision
+  File "<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/mmeval/metrics/average_precision.py", line 8, in <module>
+    from mmeval.metrics.utils import MultiLabelMixin, format_data
+  File "<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/mmeval/metrics/utils/__init__.py", line 3, in <module>
+    from .bbox_overlaps_rotated import (calculate_bboxes_area_rotated,
+  File "<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/mmeval/metrics/utils/bbox_overlaps_rotated.py", line 2, in <module>
+    import cv2
+  File "<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/cv2/__init__.py", line 181, in <module>
+    bootstrap()
+  File "<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/cv2/__init__.py", line 153, in bootstrap
+    native_module = importlib.import_module("cv2")
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: libGL.so.1: cannot open shared object file: No such file or directory
+MEASUREMENT_JSON: {"elapsed_seconds": 50.15335670000013, "maximum_child_process_rss_kib": 214884, "child_user_seconds": 6.491217, "child_system_seconds": 7.156128, "exit_code": 1}

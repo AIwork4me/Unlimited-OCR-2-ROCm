@@ -1,0 +1,177 @@
+[
+  {
+    "page_info": {
+      "image_path": "synthetic.pdf",
+      "images_list": [
+        "images/synthetic/page_1.png",
+        "images/synthetic/page_2.png"
+      ],
+      "width": [
+        1000,
+        1000
+      ],
+      "height": [
+        1000,
+        1000
+      ],
+      "page_attribute": {
+        "language": "english",
+        "data_source": "authored_synthetic"
+      }
+    },
+    "layout_dets": [
+      {
+        "anno_id": 1,
+        "category_type": "title",
+        "text": "Heading",
+        "order": 1,
+        "page_id": 1,
+        "poly": [
+          0,
+          0,
+          100,
+          0,
+          100,
+          100,
+          0,
+          100
+        ],
+        "ignore": false,
+        "attribute": {}
+      },
+      {
+        "anno_id": 2,
+        "category_type": "text_block",
+        "text": "Alpha",
+        "order": 2,
+        "page_id": 1,
+        "poly": [
+          0,
+          100,
+          100,
+          100,
+          100,
+          200,
+          0,
+          200
+        ],
+        "ignore": false,
+        "attribute": {}
+      },
+      {
+        "anno_id": 3,
+        "category_type": "table",
+        "html": "<table><tr><td>A</td></tr></table>",
+        "merged_html": "<table><tr><td>A</td></tr><tr><td>B</td></tr></table>",
+        "order": 3,
+        "page_id": 1,
+        "poly": [
+          0,
+          200,
+          100,
+          200,
+          100,
+          300,
+          0,
+          300
+        ],
+        "ignore": false,
+        "attribute": {}
+      },
+      {
+        "anno_id": 4,
+        "category_type": "text_block",
+        "text": "Beta",
+        "order": 4,
+        "page_id": 2,
+        "poly": [
+          0,
+          0,
+          100,
+          0,
+          100,
+          100,
+          0,
+          100
+        ],
+        "ignore": false,
+        "attribute": {}
+      },
+      {
+        "anno_id": 5,
+        "category_type": "table",
+        "html": "<table><tr><td>B</td></tr></table>",
+        "order": 5,
+        "page_id": 2,
+        "poly": [
+          0,
+          200,
+          100,
+          200,
+          100,
+          300,
+          0,
+          300
+        ],
+        "ignore": false,
+        "attribute": {}
+      },
+      {
+        "anno_id": 6,
+        "category_type": "figure",
+        "order": 6,
+        "page_id": 2,
+        "poly": [
+          100,
+          100,
+          200,
+          100,
+          200,
+          200,
+          100,
+          200
+        ],
+        "ignore": false,
+        "attribute": {}
+      },
+      {
+        "anno_id": 7,
+        "category_type": "equation_isolated",
+        "latex": "x+y=z",
+        "order": 7,
+        "page_id": 2,
+        "poly": [
+          300,
+          300,
+          500,
+          300,
+          500,
+          400,
+          300,
+          400
+        ],
+        "ignore": false,
+        "attribute": {}
+      }
+    ],
+    "extra": {
+      "relation": [
+        {
+          "relation_type": "parent_son",
+          "source_anno_id": "root",
+          "target_anno_id": 1
+        },
+        {
+          "relation_type": "truncated",
+          "source_anno_id": 2,
+          "target_anno_id": 4
+        },
+        {
+          "relation_type": "truncated",
+          "source_anno_id": 3,
+          "target_anno_id": 5
+        }
+      ]
+    }
+  }
+]

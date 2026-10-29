@@ -1,0 +1,37 @@
+{
+  "elapsed_seconds": 22.252761534,
+  "returncode": 0,
+  "outer_timeout_seconds": 90,
+  "outer_timed_out": false,
+  "renderer_observed": {
+    "pid": 2877,
+    "process_group": 2673,
+    "executable": "/usr/bin/xetex",
+    "command": [
+      "/usr/bin/xetex",
+      "-fmt=<repo>/.b/g05-scorer/fmts/xelatex.fmt",
+      "-interaction=nonstopmode",
+      "-output-directory=<repo>/.b/g05-scorer/native-timeout/qwen/temp_dir_pred_timeout",
+      "<repo>/.b/g05-scorer/native-timeout/qwen/temp_dir_pred_timeout/repo__b_g05-scorer_native-timeout_qwen_pred_timeout.tex"
+    ],
+    "elapsed_seconds": 19.13610648300005
+  },
+  "original_result": {
+    "recall": 0.2,
+    "precision": 1.0,
+    "F1_score": 0.333
+  },
+  "survivors_before_cleanup": [],
+  "command": [
+    "<repo>/.b/g05-scorer/venv/bin/python",
+    "scripts/g05_scorer_closure.py",
+    "--source",
+    ".b/g05-scorer/source/qwen",
+    "--profile",
+    "qwen",
+    "--output",
+    "<repo>/.b/g05-scorer/native-timeout/qwen",
+    "--case",
+    "timeout"
+  ]
+}

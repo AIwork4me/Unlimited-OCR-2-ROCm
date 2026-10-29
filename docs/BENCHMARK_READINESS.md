@@ -1,5 +1,8 @@
 # Benchmark readiness and audit
 
+Subsequent G0.5/G1 work is recorded in [the closure matrix](G05_G1_CLOSURE.md).
+The infrastructure-only audit below remains its original dated record.
+
 Date: 2026-10-29 (Asia/Shanghai). This is the first, infrastructure-only task
 under [issue #6](https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/issues/6).
 No full GPU benchmark was executed. Existing evidence was read, not rewritten.

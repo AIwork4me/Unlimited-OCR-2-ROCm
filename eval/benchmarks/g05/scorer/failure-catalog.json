@@ -1,0 +1,97 @@
+{
+  "qualification": "Scorer/runtime controls only; preserve original failures separately from model quality.",
+  "items": [
+    {
+      "id": "LEGACY_IMPORT_CACHE",
+      "stage": "source preflight",
+      "observed": "Strict source gate refused historical __pycache__ in the old scorer directory.",
+      "status": "RESOLVED",
+      "action": "Preserved old directories; copied only individually hash-verified locked files into clean .b/g05-scorer/source snapshots.",
+      "receipt": "runtime/source-verification.json"
+    },
+    {
+      "id": "STALE_NODE_APT_DEPENDENCY",
+      "stage": "runtime provisioning",
+      "observed": "Initial cached Ubuntu metadata referenced libc-ares2_1.18.1-1ubuntu0.22.04.3_amd64.deb; archive download returned HTTP 404.",
+      "status": "RESOLVED",
+      "action": "Used exact official Node 16.13.1 archive, verified against the recorded official SHASUMS256 list; no scorer package/version changes.",
+      "receipt": "runtime/inventory.json"
+    },
+    {
+      "id": "TEX_FILE_LOOKUP",
+      "stage": "runtime provisioning",
+      "observed": "Local TeX tree traversal was slow before a database-only search was configured.",
+      "status": "RESOLVED",
+      "action": "Generated local ls-R and configured process TEXMFHOME with !! and explicit TEXMFDBS. Real template compilation and PDF-to-PNG succeeded.",
+      "receipt": "runtime/inventory.json"
+    },
+    {
+      "id": "OPENCV_LIBGL",
+      "stage": "first Qwen full pipeline",
+      "observed": "ImportError: libGL.so.1: cannot open shared object file: No such file or directory",
+      "status": "RESOLVED",
+      "action": "ldd isolated missing libGL. Extracted libgl1/libglx0/libglvnd0 locally, then cv2 import and both full pipelines passed. No driver installation or global library configuration.",
+      "receipt": "preliminary/qwen-pipeline.log",
+      "diagnostic": "runtime/opencv-ldd-first.txt"
+    },
+    {
+      "id": "MISSING_RESOURCE_CLI",
+      "stage": "measurement wrapper",
+      "observed": "/usr/bin/time was absent before the first measured run.",
+      "status": "RESOLVED",
+      "action": "Used a fresh Python wrapper with exactly one child invocation and Linux RUSAGE_CHILDREN.ru_maxrss; final logs include measurements.",
+      "receipt": "summary.json"
+    },
+    {
+      "id": "BRACE_ERROR_FIXTURE",
+      "stage": "first Qwen negative controls",
+      "observed": "The malformed fraction produced valid rendered prediction artifacts with original CDM score 0; it was correctly rejected as an expected rendering error.",
+      "status": "RESOLVED_FIXTURE_ASSUMPTION",
+      "action": "Kept complete original result and generated TeX; replaced the error input with an unsupported control sequence and required valid ground truth and failed prediction plus original TeX error. Exact/mismatch thresholds unchanged.",
+      "receipt": "preliminary/qwen-cases/cases.json"
+    },
+    {
+      "id": "BUFFERED_TEX_LOG",
+      "stage": "first timeout control",
+      "observed": "Fixed 20-second deadline caught a real prediction renderer with a zero-byte buffered log, so log-text-based proof failed.",
+      "status": "RESOLVED_PROOF",
+      "action": "Observe the actual same-group prediction xetex process through /proc, then start a deliberate 0.05-second renderer deadline. Do not count startup expiry as rendering-timeout proof.",
+      "receipt": "preliminary/qwen-cases/cases.json"
+    },
+    {
+      "id": "INTERRUPTED_GROUP_CLEANUP",
+      "stage": "independent harness review",
+      "observed": "Initial harness only killed descendants in its TimeoutExpired branch.",
+      "status": "RESOLVED",
+      "action": "finally cleanup kills whole group, reaps leader and verifies no active descendants. Linux regression covers a remaining descendant after leader exit; final controls all record no active survivors.",
+      "receipt": "runtime/cleanup-test.json"
+    },
+    {
+      "id": "NATIVE_TIMER_NOT_EXERCISED",
+      "stage": "additional native timeout diagnostics",
+      "observed": "Unconstrained colored loop returned naturally with F1=0.333; recursive macro candidate returned naturally with F1=0. Neither reached the native 30-second Timer.",
+      "status": "NOT_EXERCISED",
+      "action": "Retain both complete diagnostics; claim only the separately verified outer renderer-deadline control. Native Timer handling remains unvalidated.",
+      "receipts": [
+        "diagnostics/native-timeout/native-result.json",
+        "diagnostics/native-timeout-recursive/native-result.json"
+      ]
+    },
+    {
+      "id": "RETAINED_RENDERER_WARNINGS",
+      "stage": "real CDM rendering",
+      "observed": "ImageMagick warned about missing delegates.xml; Pillow warned about palette transparency. One additional native diagnostic had an ICC/grayscale warning.",
+      "status": "RETAINED_WARNING",
+      "action": "No warnings hidden. Positive controls require verified nonwhite PNGs and nonempty boxes, and score 1.0/0.4 as declared.",
+      "receipt": "final/cases/qwen-cases/exact.log"
+    },
+    {
+      "id": "PUBLICATION_MAX_PATH",
+      "stage": "integration build round 2",
+      "observed": "sdist extraction failed on Windows MAX_PATH for an exported derived diagnostic log filename.",
+      "status": "PUBLICATION_PATHS_SHORTENED",
+      "action": "Moved public-only artifact paths longer than 100 repo-relative characters into short artifacts/<id> names; logical/raw path mapping and both hashes preserved. Original raw evaluator files unchanged. Fresh full build verification is tracked by the integration receipt.",
+      "raw_log": ".b/g05-integration/round-2/build.stderr.log"
+    }
+  ]
+}

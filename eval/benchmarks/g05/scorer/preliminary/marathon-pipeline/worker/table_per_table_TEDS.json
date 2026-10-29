@@ -1,0 +1,10 @@
+{
+    "a.pdf_1": {
+        "TEDS": 1.0,
+        "TEDS_structure_only": 1.0
+    },
+    "b.pdf_1": {
+        "TEDS": 0.0,
+        "TEDS_structure_only": 0.0
+    }
+}

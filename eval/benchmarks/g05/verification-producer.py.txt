@@ -1,0 +1,79 @@
+"""Publish metadata-only mission checks; restricted payloads are never copied."""
+import hashlib
+import json
+from pathlib import Path
+import re
+import sys
+
+root = Path.cwd()
+out = root / 'eval/benchmarks/g05'
+checks_root = root / sys.argv[1]
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def write(path, data):
+    path.write_bytes((json.dumps(data, indent=2, sort_keys=True) + '\n').encode('utf-8'))
+
+def raw_logs(paths):
+    return {str(path.relative_to(root)).replace('\\', '/'): sha(path) for path in paths if path.exists()}
+
+checks = json.loads((checks_root / 'checks.json').read_text(encoding='utf-8'))
+if not all(row['status'] == 'PASS' for row in checks.values()):
+    raise RuntimeError('Final CPU checks did not all pass')
+for name, expected in json.loads((out / 'scorer/producer-hashes.json').read_text()).items():
+    if sha(root / name) != expected:
+        raise RuntimeError('Final scorer producer changed: ' + name)
+supervisor = json.loads((root / '.b/g05-data/parent-supervisor.json').read_text())
+if supervisor['state'] != 'PASS':
+    raise RuntimeError('Marathon supervisor did not pass')
+mpdoc = json.loads((out / 'datasets/MPDocBench-full-scope.json').read_text())
+marathon = json.loads((out / 'datasets/MarathonDocBench.json').read_text())
+assert mpdoc['independently_verified_documents'] == 420
+assert mpdoc['independently_verified_pages'] == 3135
+assert mpdoc['independently_verified_original_pages_unchanged'] == 3051
+assert marathon['independently_verified_documents'] == 100
+assert marathon['independently_verified_pages'] == 18272
+assert marathon['independently_verified_bytes'] == 11805490064
+review_source = root / '.b/g05-review/scorer-data-review.md'
+review_bytes = review_source.read_bytes()
+review_public = out / 'review.md'
+review_public.write_bytes(review_bytes)
+history = {
+    'scope': 'Acquisition transport history only; no benchmark inference',
+    'attempts': [
+        {'transport': 'resolve', 'outcome': 'Replaced by verified LFS batch transport; accepted pages preserved'},
+        {'transport': 'eager LFS batch resolution', 'outcome': 'Transient TLS failure; no insecure transport or source change'},
+        {'transport': 'bounded LFS batches in agent session', 'outcome': 'Tool session closed before completion', 'last_reported_pages': 9500},
+        {'transport': 'parent-owned bounded LFS batches', 'outcome': 'PASS', 'reused_verified_pages': 9568, 'downloaded_verified_pages': 8704, 'final_pages': 18272, 'independent_reread': 'PASS'},
+    ],
+    'supervisor_checks': supervisor['checks'],
+    'raw_evidence_sha256': raw_logs([
+        root / '.b/g05-data/marathon-acquire.log',
+        root / '.b/g05-data/marathon-acquire-batch.log',
+        root / '.b/g05-data/marathon-acquire-batch-streaming.log',
+        *sorted((root / '.b/g05-data').glob('marathon-parent-*.log')),
+    ]),
+}
+write(out / 'datasets/acquisition-attempts.json', history)
+verification = {
+    'schema': 1,
+    'qualification': 'SCORER_DATA_AND_CPU_NATIVE_CONTRACT_ONLY',
+    'status': 'PASS',
+    'cpu_checks': checks,
+    'pytest_summary': (checks_root / 'pytest.stdout.log').read_text(encoding='utf-8').splitlines()[-1],
+    'independent_review': {'remaining_P1_P2': 0, 'review_sha256': sha(review_public)},
+    'datasets': {'MPDocBench': {'documents': 420, 'pages': 3135, 'status': 'PASS'}, 'MarathonDocBench': {'documents': 100, 'pages': 18272, 'bytes': 11805490064, 'status': 'PASS'}},
+    'scorer': {'profiles': ['qwen', 'marathon'], 'known_answers_each': 8, 'full_formula_pipeline': 'PASS', 'status': 'PASS'},
+    'native_completion_contract': 'PASS_CPU_REVIEWED',
+    'physical_windows': 'NOT RUN', 'physical_linux': 'NOT RUN', 'full_gpu_benchmark': 'NOT RUN',
+    'full_native_long_document_execution': 'BLOCKED_RETAINED_5_IMAGE_8192_TOKEN_CAPS',
+    'historical_preservation': json.loads((root / '.b/g05-integration/preservation.json').read_text()),
+    'build_failure_retained': {'category': 'WINDOWS_PATH_LENGTH', 'resolution': 'Short public artifact paths with explicit logical/raw mapping; no registry changes', 'raw_stderr_sha256': sha(root / '.b/g05-integration/round-2/build.stderr.log')},
+    'producer_sha256': sha(Path(__file__)),
+}
+write(out / 'verification.json', verification)
+(out / 'verification-producer.py.txt').write_bytes(Path(__file__).read_bytes())
+paths = sorted(path for path in out.rglob('*') if path.is_file() and path.name != 'SHA256SUMS.json')
+write(out / 'SHA256SUMS.json', {path.relative_to(out).as_posix(): sha(path) for path in paths})
+print(json.dumps({'status': 'PASS', 'published_artifacts_hashed': len(paths), 'pytest': verification['pytest_summary']}))

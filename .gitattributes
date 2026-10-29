@@ -12,3 +12,7 @@ eval/rca/** -text -whitespace
 eval/wheel-validation/** -text -whitespace
 eval/benchmarks/scorer/** -text -whitespace
 eval/benchmarks/g05/** -text -whitespace
+eval/benchmarks/g05/datasets/*-page-index.json linguist-generated=true
+eval/benchmarks/g05/scorer/artifacts/** linguist-generated=true
+eval/benchmarks/g05/scorer/final/** linguist-generated=true
+eval/benchmarks/g05/scorer/preliminary/** linguist-generated=true

@@ -1,0 +1,53 @@
+{
+  "dataset": {
+    "ground_truth": {
+      "data_path": "<repo>/.b/g05-scorer/runs/marathon-pipeline/ground-truth.json"
+    },
+    "match_method": "quick_match",
+    "prediction": {
+      "data_path": "<repo>/.b/g05-scorer/runs/marathon-pipeline/predictions"
+    }
+  },
+  "metrics": {
+    "display_formula": {
+      "metric": [
+        "CDM"
+      ]
+    },
+    "figure": {
+      "metric": [
+        "FigureF1"
+      ]
+    },
+    "head": {
+      "metric": [
+        "HeadTEDS"
+      ]
+    },
+    "merged_table": {
+      "metric": [
+        "TEDS"
+      ]
+    },
+    "merged_text_block": {
+      "metric": [
+        "Edit_dist"
+      ]
+    },
+    "reading_order": {
+      "metric": [
+        "Edit_dist"
+      ]
+    },
+    "table": {
+      "metric": [
+        "TEDS"
+      ]
+    },
+    "text_block": {
+      "metric": [
+        "Edit_dist"
+      ]
+    }
+  }
+}
