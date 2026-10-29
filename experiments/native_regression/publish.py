@@ -10,7 +10,7 @@ import json
 import re
 import subprocess
 import tarfile
-from pathlib import Path
+from pathlib import Path, PurePath
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -20,13 +20,15 @@ def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def sanitize(data: bytes, root: Path = ROOT, home: Path | None = None) -> bytes:
+def sanitize(data: bytes, root: PurePath = ROOT, home: PurePath | None = None) -> bytes:
     text = data.decode("utf-8")
     replacements = [(str(root), "<REPO>"), (str(home or Path.home()), "<USERPROFILE>")]
     replacements += [("C:\\uocr", "<REPO>"), ("C:\\b", "<REPO>/.b")]
     for original, label in replacements:
+        forward = original.replace("\\", "/")
+        backslash = forward.replace("/", "\\")
         for variant in sorted(
-            {original, original.replace("\\", "/"), original.replace("\\", "\\\\")},
+            {forward, backslash, backslash.replace("\\", "\\\\")},
             key=len,
             reverse=True,
         ):

@@ -1,14 +1,15 @@
 import io
 import tarfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 import pytest
 
 from experiments.native_regression.publish import archive_bytes, evidence_files, sanitize, sensitive
 
 
-def test_sanitization_handles_windows_json_paths_without_changing_native_text():
-    root = Path("C:/Users/operator/project")
+@pytest.mark.parametrize("path_type", [Path, PurePosixPath])
+def test_sanitization_handles_windows_json_paths_without_changing_native_text(path_type):
+    root = path_type("C:/Users/operator/project")
     data = b'{"path":"C:\\\\Users\\\\operator\\\\project/file","text":"x+y=z"}'
     result = sanitize(data, root=root, home=Path("C:/Users/operator"))
     assert b"x+y=z" in result
