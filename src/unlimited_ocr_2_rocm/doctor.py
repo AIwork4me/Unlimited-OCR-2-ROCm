@@ -32,12 +32,14 @@ STACK = {
 # neither validates the other. The newer +rocm7.14 wheel line was rejected:
 # it depends on rocm==7.14.* / triton-rocm~=3.8.0 pip packages published only
 # on AMD's own index, which is not reachable from this host.
-# torchvision/torchaudio are not part of the native model dependency set on
-# Linux and are intentionally absent.
+# torchvision is required by the frozen upstream modeling import chain
+# (same 0.27.0 version as the Windows trio); torchaudio is not imported by
+# the model path and stays absent on Linux.
 LINUX_STACK = {
     "torch": "2.12.0+rocm7.2",
+    "torchvision": "0.27.0+rocm7.2",
 }
-LINUX_ROCM = "7.2"
+LINUX_ROCM = "7.2.1"
 
 
 def environment_identity() -> str:
@@ -111,8 +113,8 @@ def _linux_stack_errors(report: dict[str, Any]) -> list[str]:
     for name, version in LINUX_STACK.items():
         if report.get("packages", {}).get(name) != version:
             errors.append(f"{name} must be {version}")
-    if report.get("rocm") != LINUX_ROCM or not str(report.get("hip", "")).startswith("7.2."):
-        errors.append(f"ROCm {LINUX_ROCM} wheel runtime with HIP 7.2.x required")
+    if report.get("rocm") != LINUX_ROCM or report.get("hip") != "7.2.53211":
+        errors.append("ROCm 7.2.1 wheel runtime with HIP build 7.2.53211 required")
     if report.get("cuda_build") is not None:
         errors.append("NVIDIA CUDA build refused")
     if not report.get("gpu_available"):
@@ -120,6 +122,8 @@ def _linux_stack_errors(report: dict[str, Any]) -> list[str]:
     gpu = report.get("gpu", {})
     if str(gpu.get("arch", "")).split(":")[0] != "gfx1151":
         errors.append("physical gfx1151 required")
+    if "8060S" not in str(gpu.get("name", "")):
+        errors.append("Radeon 8060S required")
     return errors
 
 

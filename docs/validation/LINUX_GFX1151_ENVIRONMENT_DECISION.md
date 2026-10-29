@@ -19,7 +19,8 @@ ADAPTATION_MATRIX.md); no gfx1100 claim derives from this host.
 | Python | CPython **3.10** (venv) | Repository-supported interpreter (`requires-python >=3.10,<3.11`); matches the Windows Phase-1 evidence's interpreter so fixture/CLI behavior is comparable. Deviation from the ROCm 7.14.1 matrix's example list (3.11–3.14) recorded below. |
 | Environment location | `../envs/linux-gfx1151-rocm` venv outside the repository; model cache `../hf-cache` | No global packages touched; no repo-tree pollution; retained short paths per the runtime-cache convention. |
 | Attention/precision policy | **MATH default** for vision SDPA (scoped wrapper), BF16 parameters, eager decoder attention with original DASH Triton enabled | Unchanged reviewed semantics; no AUTO switch; zero silent fallback. |
-| torchvision / torchaudio | Not installed on the Linux native profile | Not in the native model dependency set (`requirements/native.txt`); avoids unverified extra GPU components. |
+| torchvision | **`torchvision==0.27.0+rocm7.2`** installed (--no-deps, SHA-pinned) | The frozen upstream modeling import chain hard-requires torchvision (discovered on first physical load); same 0.27.0 version as the Windows trio. |
+| torchaudio | Not installed on the Linux native profile | Not imported anywhere in the model path; avoids an unverified extra GPU component. |
 
 ## Pinned identities
 

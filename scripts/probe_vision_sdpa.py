@@ -24,9 +24,17 @@ def probe(source, mode):
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
-    hip = ctypes.WinDLL(
-        str(Path(sys.prefix) / "Lib/site-packages/_rocm_sdk_core/bin/amdhip64_7.dll")
-    )
+    if sys.platform == "linux":
+        candidates = sorted(
+            (Path(sys.prefix) / "lib/python3.10/site-packages/torch/lib").glob("libamdhip64.so*")
+        )
+        if not candidates:
+            raise RuntimeError("bundled libamdhip64 not found under torch/lib")
+        hip = ctypes.CDLL(str(candidates[0]))
+    else:
+        hip = ctypes.WinDLL(
+            str(Path(sys.prefix) / "Lib/site-packages/_rocm_sdk_core/bin/amdhip64_7.dll")
+        )
     hip.hipPeekAtLastError.restype = ctypes.c_int
     block = (
         module.Block(

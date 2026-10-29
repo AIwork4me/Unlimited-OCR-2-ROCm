@@ -5,9 +5,7 @@ from unlimited_ocr_2_rocm.model import native_dependency_pins, require_model_dep
 
 def test_model_refuses_incompatible_triton_or_transformers():
     correct = dict(native_dependency_pins())
-    assert any(
-        name in correct for name in ("triton-windows", "triton-rocm", "pytorch-triton-rocm")
-    )
+    assert any(name in correct for name in ("triton-windows", "triton-rocm", "pytorch-triton-rocm"))
     require_model_dependencies(correct)
     for package in correct:
         changed = dict(correct, **{package: "0.0.0"})

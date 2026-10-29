@@ -102,12 +102,12 @@ def linux_valid():
         "platform": "Linux",
         "python": "3.10.20",
         "machine": "x86_64",
-        "packages": {"torch": "2.12.0+rocm7.2"},
+        "packages": {"torch": "2.12.0+rocm7.2", "torchvision": "0.27.0+rocm7.2"},
         "hip": "7.2.53211",
-        "rocm": "7.2",
+        "rocm": "7.2.1",
         "cuda_build": None,
         "gpu_available": True,
-        "gpu": {"name": "AMD Radeon Graphics", "arch": "gfx1151"},
+        "gpu": {"name": "AMD Radeon 8060S", "arch": "gfx1151"},
         "linux_hardware": {
             "cpu_model_name": "AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S",
             "product_name": "HP ZBook Ultra G1a 14 inch Mobile Workstation PC",
@@ -130,7 +130,8 @@ def test_accepts_linux_target_identity_and_full_arch_suffix():
         ("machine", "aarch64"),
         ("hip", None),
         ("hip", "7.14.60850"),
-        ("rocm", "7.14"),
+        ("rocm", "7.14.1"),
+        ("rocm", "7.2"),
         ("cuda_build", "13.0"),
         ("gpu_available", False),
     ],
@@ -152,9 +153,10 @@ def test_linux_refuses_package_drift():
 @pytest.mark.parametrize(
     "gpu",
     [
-        {"name": "AMD Radeon Graphics", "arch": "gfx1100"},
-        {"name": "AMD Radeon Graphics", "arch": ""},
-        {"name": "AMD Radeon Graphics", "arch": "gfx1150"},
+        {"name": "AMD Radeon 8060S", "arch": "gfx1100"},
+        {"name": "AMD Radeon 8060S", "arch": ""},
+        {"name": "AMD Radeon 8060S", "arch": "gfx1150"},
+        {"name": "AMD Radeon Graphics", "arch": "gfx1151"},
     ],
 )
 def test_linux_refuses_wrong_device(gpu):
