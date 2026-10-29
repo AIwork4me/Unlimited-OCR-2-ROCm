@@ -65,6 +65,15 @@ def write_json(path: Path, data: Any) -> None:
     path.write_bytes((json.dumps(data, indent=2, sort_keys=True) + "\n").encode("utf-8"))
 
 
+def evidence_files(directory: Path, *, top_level: bool = False) -> list[Path]:
+    paths = directory.iterdir() if top_level else directory.rglob("*")
+    return sorted(
+        path
+        for path in paths
+        if path.is_file() and path.suffix in {".json", ".jsonl", ".txt", ".log", ".md", ".png"}
+    )
+
+
 def publish(output: Path) -> dict[str, Any]:
     if not output.resolve().is_relative_to(ROOT) or output.exists():
         raise ValueError("Use a fresh publication path inside the repository")
@@ -105,9 +114,9 @@ def publish(output: Path) -> dict[str, Any]:
     for prefix, directory in roots.items():
         if not directory.is_dir():
             raise ValueError("Missing evidence root: " + prefix)
-        for path in sorted(directory.rglob("*")):
-            if path.is_file() and path.suffix in {".json", ".jsonl", ".txt", ".log", ".md", ".png"}:
-                sources[prefix + "/" + path.relative_to(directory).as_posix()] = path
+        # Review receipts are flat; nested pytest caches are not publication evidence.
+        for path in evidence_files(directory, top_level=prefix == "review"):
+            sources[prefix + "/" + path.relative_to(directory).as_posix()] = path
     members: dict[str, bytes] = {}
     entries = []
     for name, source in sorted(sources.items()):

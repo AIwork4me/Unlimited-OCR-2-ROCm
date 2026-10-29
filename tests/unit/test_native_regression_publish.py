@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from experiments.native_regression.publish import archive_bytes, sanitize, sensitive
+from experiments.native_regression.publish import archive_bytes, evidence_files, sanitize, sensitive
 
 
 def test_sanitization_handles_windows_json_paths_without_changing_native_text():
@@ -29,3 +29,11 @@ def test_archive_rejects_path_escape_and_flags_credential_like_values():
     with pytest.raises(ValueError, match="relative"):
         archive_bytes({"../outside": b"data"})
     assert sensitive(b"hf_" + b"X" * 30) == ["token_value"]
+
+
+def test_review_publication_excludes_nested_test_workspaces(tmp_path):
+    (tmp_path / "review.json").write_text("{}", encoding="utf-8")
+    workspace = tmp_path / "physical-analysis-pytest"
+    workspace.mkdir()
+    (workspace / "private-test-result.json").write_text("{}", encoding="utf-8")
+    assert [p.name for p in evidence_files(tmp_path, top_level=True)] == ["review.json"]
