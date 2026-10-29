@@ -1,0 +1,62 @@
+[
+    {
+        "gt_idx": [
+            0
+        ],
+        "gt": "Heading",
+        "pred_idx": [
+            0
+        ],
+        "pred": "# Heading",
+        "edit": 0.0,
+        "gt_category_type": "title",
+        "gt_position": [
+            1
+        ],
+        "pred_position": 0,
+        "pred_category_type": "text_block",
+        "gt_attribute": [
+            {}
+        ],
+        "img_id": "synthetic.pdf",
+        "norm_gt": "Heading",
+        "norm_pred": "Heading",
+        "image_name": "synthetic.pdf",
+        "upper_len": 7,
+        "metric": {
+            "Edit_dist": 0.0
+        },
+        "Edit_num": 0
+    },
+    {
+        "gt_idx": [
+            1
+        ],
+        "gt": "AlphaBeta",
+        "pred_idx": [
+            1
+        ],
+        "pred": "AlphaBeta",
+        "edit": 0.0,
+        "gt_category_type": "text_block",
+        "gt_position": [
+            2
+        ],
+        "pred_position": 9,
+        "pred_category_type": "text_block",
+        "gt_attribute": [
+            {
+                "text_merge_cross_pages": "2"
+            }
+        ],
+        "img_id": "synthetic.pdf",
+        "norm_gt": "AlphaBeta",
+        "norm_pred": "AlphaBeta",
+        "image_name": "synthetic.pdf",
+        "upper_len": 9,
+        "metric": {
+            "Edit_dist": 0.0
+        },
+        "Edit_num": 0
+    }
+]

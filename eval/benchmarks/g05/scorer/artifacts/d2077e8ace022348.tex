@@ -1,0 +1,28 @@
+
+\documentclass[12pt]{article}
+\usepackage[landscape]{geometry}
+\usepackage{geometry}
+\geometry{a5paper,scale=0.98}
+\pagestyle{empty}
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\setCJKmainfont{Source Han Sans SC}
+\setCJKsansfont{Source Han Sans SC}
+\setCJKmonofont{Source Han Sans SC}
+\xeCJKsetup{CJKmath=true}
+\begin{document}
+\makeatletter
+\renewcommand*{\@textcolor}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+\makeatother
+\begin{displaymath}
+\color[RGB]{0,0,15}{\frac{1}{}
+\end{displaymath}
+\end{document}

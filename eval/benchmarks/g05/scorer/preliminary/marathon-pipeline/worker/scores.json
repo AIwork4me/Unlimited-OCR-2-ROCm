@@ -1,0 +1,14 @@
+{
+  "metrics": {
+    "FigureF1": 100.0,
+    "FormulaCDM": 100.0,
+    "HeadingTEDS": 100.0,
+    "ReadOrderEdit": 100.0,
+    "T-TableTEDS": 100.0,
+    "T-TextEdit": 100.0,
+    "TableTEDS": 100.0,
+    "TextEdit": 100.0
+  },
+  "overall": 100.0,
+  "qualification": "SCORER_ONLY; review coverage and failure catalog"
+}

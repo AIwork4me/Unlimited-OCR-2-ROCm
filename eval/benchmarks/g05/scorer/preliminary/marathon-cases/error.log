@@ -1,0 +1,36 @@
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/PIL/Image.py:1056: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+\frac{1}{ 
+
+ParseError: KaTeX parse error: Expected '}', got 'EOF' at position 10: \frac{1}{ ̲
+    at new ParseError (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/ParseError.js:29:16)
+    at Parser.expect (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:78:15)
+    at Parser.parseGroup (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:725:14)
+    at Parser.parseArguments (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:613:28)
+    at Parser.parseFunction (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:554:29)
+    at Parser.parseImplicitGroup (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:527:21)
+    at Parser.parseAtom (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:306:21)
+    at Parser.parseExpression (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:151:25)
+    at Parser.parseInput (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:118:27)
+    at Parser.parse (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:109:22) {
+  position: 10
+}
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+\frac{1}{ 
+
+ParseError: KaTeX parse error: Expected '}', got 'EOF' at position 10: \frac{1}{ ̲
+    at new ParseError (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/ParseError.js:29:16)
+    at Parser.expect (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:78:15)
+    at Parser.parseGroup (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:725:14)
+    at Parser.parseArguments (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:613:28)
+    at Parser.parseFunction (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:554:29)
+    at Parser.parseImplicitGroup (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:527:21)
+    at Parser.parseAtom (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:306:21)
+    at Parser.parseExpression (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:151:25)
+    at Parser.parseInput (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:118:27)
+    at Parser.parse (<repo>/.b/g05-scorer/source/marathon/metrics/cdm/modules/tokenize_latex/third_party/katex/src/Parser.js:109:22) {
+  position: 10
+}
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+METRIC_REGISTRY:  ['TEDS', 'BLEU', 'METEOR', 'Edit_dist', 'CDM', 'CDM_plain', 'HeadTEDS', 'FigureF1', 'Relation_F1']

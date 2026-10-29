@@ -1,0 +1,182 @@
+{
+  "exact": {
+    "status": "PASS",
+    "original_result": {
+      "recall": 1.0,
+      "precision": 1.0,
+      "F1_score": 1.0
+    },
+    "rendered_both": true,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      }
+    },
+    "error_observed": false,
+    "timed_out": false,
+    "timeout_renderer_started": false,
+    "returncode": 0,
+    "elapsed_seconds": 25.480485627000007,
+    "timeout_seconds": 120,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/qwen",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/qwen-cases/exact",
+      "--case",
+      "exact",
+      "--profile",
+      "qwen"
+    ]
+  },
+  "mismatch": {
+    "status": "PASS",
+    "original_result": {
+      "recall": 0.4,
+      "precision": 0.4,
+      "F1_score": 0.4
+    },
+    "rendered_both": true,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          110,
+          41
+        ]
+      }
+    },
+    "error_observed": false,
+    "timed_out": false,
+    "timeout_renderer_started": false,
+    "returncode": 0,
+    "elapsed_seconds": 24.17568809999989,
+    "timeout_seconds": 120,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/qwen",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/qwen-cases/mismatch",
+      "--case",
+      "mismatch",
+      "--profile",
+      "qwen"
+    ]
+  },
+  "error": {
+    "status": "FAIL",
+    "original_result": {
+      "recall": 0.0,
+      "precision": 0.0,
+      "F1_score": 0.0
+    },
+    "rendered_both": true,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": true,
+        "valid_boxes": 1,
+        "png_valid": true,
+        "image_size": [
+          32,
+          53
+        ]
+      }
+    },
+    "error_observed": false,
+    "timed_out": false,
+    "timeout_renderer_started": false,
+    "returncode": 0,
+    "elapsed_seconds": 26.53246728299996,
+    "timeout_seconds": 120,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/qwen",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/qwen-cases/error",
+      "--case",
+      "error",
+      "--profile",
+      "qwen"
+    ]
+  },
+  "timeout": {
+    "status": "FAIL",
+    "original_result": null,
+    "rendered_both": false,
+    "artifacts": {
+      "gt": {
+        "rendered": true,
+        "valid_boxes": 5,
+        "png_valid": true,
+        "image_size": [
+          117,
+          41
+        ]
+      },
+      "pred": {
+        "rendered": false,
+        "valid_boxes": 0,
+        "png_valid": false
+      }
+    },
+    "error_observed": false,
+    "timed_out": true,
+    "timeout_renderer_started": false,
+    "returncode": -9,
+    "elapsed_seconds": 20.17770507599994,
+    "timeout_seconds": 20,
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "<repo>/scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/qwen",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/qwen-cases/timeout",
+      "--case",
+      "timeout",
+      "--profile",
+      "qwen"
+    ]
+  }
+}

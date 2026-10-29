@@ -1,0 +1,13 @@
+{
+  "pid": 2877,
+  "process_group": 2673,
+  "executable": "/usr/bin/xetex",
+  "command": [
+    "/usr/bin/xetex",
+    "-fmt=<repo>/.b/g05-scorer/fmts/xelatex.fmt",
+    "-interaction=nonstopmode",
+    "-output-directory=<repo>/.b/g05-scorer/native-timeout/qwen/temp_dir_pred_timeout",
+    "<repo>/.b/g05-scorer/native-timeout/qwen/temp_dir_pred_timeout/repo__b_g05-scorer_native-timeout_qwen_pred_timeout.tex"
+  ],
+  "elapsed_seconds": 19.13610648300005
+}

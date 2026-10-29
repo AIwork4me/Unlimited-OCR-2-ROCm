@@ -1,0 +1,24 @@
+{
+  "authenticated_probe_performed": false,
+  "checks": {
+    "windows_process_token_environment": false,
+    "windows_standard_active_or_legacy_token_file": false,
+    "windows_stored_tokens_file": false,
+    "windows_user_scoped_configured_token_file": false,
+    "windows_user_scoped_token_environment": false,
+    "wsl_default_user_standard_token_file": false,
+    "wsl_root_standard_token_file": false
+  },
+  "credentials_copied": false,
+  "credentials_in_receipt": false,
+  "credentials_read": false,
+  "dataset": "SlideVQA",
+  "explanation": "User confirmed account approval and standard login readiness; repeated supported local discovery found no readable active token. Account approval is distinct from a credential available to this process. No gate bypass or payload substitution attempted.",
+  "original_gate_receipt": "SlideVQA-attempt-1.json",
+  "original_gate_receipt_sha256": "aa52ca4a31ebb5d678bdb74d3e318984cae00a63b074ebb164e6fc476f5e09e4",
+  "recorded_utc": "2026-10-29T11:47:42.990452+00:00",
+  "revision": "e780ea258d734958befbfaed19fa059584642ca8",
+  "schema": 1,
+  "status": "BLOCKED_LOCAL_CREDENTIAL_NOT_DISCOVERABLE",
+  "user_confirmed_account_access": true
+}

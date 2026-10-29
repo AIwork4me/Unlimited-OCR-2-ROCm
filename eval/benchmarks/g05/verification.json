@@ -1,0 +1,139 @@
+{
+  "build_failure_retained": {
+    "category": "WINDOWS_PATH_LENGTH",
+    "raw_stderr_sha256": "490ff42fd92559b015a67b6b5d69996d629e431316006b2a474d00794cd326bc",
+    "resolution": "Short public artifact paths with explicit logical/raw mapping; no registry changes"
+  },
+  "cpu_checks": {
+    "build": {
+      "command": [
+        "python",
+        "-m",
+        "build",
+        "--outdir",
+        ".b/g05-integration/final/dist"
+      ],
+      "exit_code": 0,
+      "seconds": 14.63077130005695,
+      "status": "PASS",
+      "stderr_sha256": "e06196cdafefab81f4a8cb1a71a04f85dbaa5d476437922b1e2cb04d6b2d6fc7",
+      "stdout_sha256": "3881bf8586be1cd82c3fa094ff542e51a151158745810835f5c897c72bd2bf96"
+    },
+    "format": {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.12543689995072782,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7df18b42c43329c0833da621f67724dca7a56dfff20a450ae0336efb05e24f06"
+    },
+    "mypy": {
+      "command": [
+        "python",
+        "-m",
+        "mypy",
+        "src"
+      ],
+      "exit_code": 0,
+      "seconds": 0.37692730012349784,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "63da153bcdac04b2cc982479df4378f21b20029f9acb87ad908fb4d5befe6a43"
+    },
+    "pip-check": {
+      "command": [
+        "python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.7698690998367965,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    },
+    "pytest": {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        ".b/g05-integration/final/pytest-temp"
+      ],
+      "exit_code": 0,
+      "seconds": 19.023748599924147,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "d38efec58e13c6c6450a0002ddbd2610e4907cec3732c57be0a4e83ca819c2fa"
+    },
+    "ruff": {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.11153910006396472,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    }
+  },
+  "datasets": {
+    "MPDocBench": {
+      "documents": 420,
+      "pages": 3135,
+      "status": "PASS"
+    },
+    "MarathonDocBench": {
+      "bytes": 11805490064,
+      "documents": 100,
+      "pages": 18272,
+      "status": "PASS"
+    }
+  },
+  "full_gpu_benchmark": "NOT RUN",
+  "full_native_long_document_execution": "BLOCKED_RETAINED_5_IMAGE_8192_TOKEN_CAPS",
+  "historical_preservation": {
+    "historical_gpu_evidence_diff": "EMPTY",
+    "model_lock_sha256": "ffd730234a34504a78f5df5eb025d8341695abd51ce9025caaddeebf45e687de",
+    "original_benchmark_evidence_files": 18,
+    "scorer_lock_sha256": "39f3dc09a9f9aa917f3ecf5f0deea690a7d1ed91ffb4e8e70803aac9e8dd7e08"
+  },
+  "independent_review": {
+    "remaining_P1_P2": 0,
+    "review_sha256": "1c9d32a8e1028bece8419f0d97974fb15bfee2a73e7de7b1c5bdcc8e319bfff9"
+  },
+  "native_completion_contract": "PASS_CPU_REVIEWED",
+  "physical_linux": "NOT RUN",
+  "physical_windows": "NOT RUN",
+  "producer_sha256": "acb3411612c32f57d14a9087d701d75c7edec87af67ab09aaa8cb60ce4a28453",
+  "pytest_summary": "237 passed, 7 skipped in 18.51s",
+  "qualification": "SCORER_DATA_AND_CPU_NATIVE_CONTRACT_ONLY",
+  "schema": 1,
+  "scorer": {
+    "full_formula_pipeline": "PASS",
+    "known_answers_each": 8,
+    "profiles": [
+      "qwen",
+      "marathon"
+    ],
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

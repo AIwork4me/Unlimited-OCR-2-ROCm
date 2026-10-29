@@ -1,0 +1,31 @@
+[
+    {
+        "gt_idx": [
+            0
+        ],
+        "gt": "<table><tr><td>A</td></tr><tr><td>B</td></tr></table>",
+        "norm_gt": "<html><body><table border=\"1\" ><tr><td>A</td></tr><tr><td>B</td></tr></table></body></html>",
+        "gt_category_type": "table",
+        "gt_position": [
+            3
+        ],
+        "gt_attribute": [
+            {
+                "table_merge_cross_pages": "2"
+            }
+        ],
+        "pred_idx": [
+            0
+        ],
+        "pred": "<table><tr><td>A</td></tr><tr><td>B</td></tr></table>",
+        "norm_pred": "<html><body><table border=\"1\" ><tr><td>A</td></tr><tr><td>B</td></tr></table></body></html>",
+        "pred_category_type": "",
+        "pred_position": "",
+        "edit": 0.0,
+        "img_id": "synthetic.pdf",
+        "metric": {
+            "TEDS": 1.0,
+            "TEDS_structure_only": 1.0
+        }
+    }
+]

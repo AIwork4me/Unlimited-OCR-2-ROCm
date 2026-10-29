@@ -1,0 +1,5 @@
+{
+  "recall": 0.4,
+  "precision": 0.4,
+  "F1_score": 0.4
+}
