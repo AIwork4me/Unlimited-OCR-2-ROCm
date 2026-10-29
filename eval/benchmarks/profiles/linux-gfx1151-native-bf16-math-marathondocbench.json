@@ -1,0 +1,26 @@
+{
+  "schema": "uocr2-benchmark-profile/dataset@1",
+  "profile_id": "linux-gfx1151-native-bf16-math-marathondocbench",
+  "environment_profile": "linux-gfx1151-native-bf16-math",
+  "dataset": "MarathonDocBench (baidu/MarathonDocBench)",
+  "scope": {
+    "documents": 100,
+    "pages": 18272,
+    "image_payload_bytes_remote": 11805490064,
+    "local_data_note": "2026-10-29: ../Data/MarathonDocBench/images holds all 100 document directories with exactly 18,272 page images (11,804,920,079 bytes on disk vs 11,805,490,064 remote payload bytes). Document/page counts reconcile with benchmark-lock.json; per-page checksum verification against the frozen per-page identities is still required before any full-scope run.",
+    "image_payload_locally_acquired": "complete: 100/100 documents, 18272/18272 pages present locally",
+    "denominator_rule": "full 100-document denominator retained; every page accounted as inferred, failed, or not-yet-acquired"
+  },
+  "run_binding": [
+    "eval/benchmarks/benchmark-lock.json dataset revision + per-page remote identities",
+    "frozen environment receipt from doctor/load manifests",
+    "original Marathon patch applied to the official scorer snapshot",
+    "SIGALRM-based descendant timeout requires a POSIX host (this Linux profile satisfies it; the Windows scorer fork path recorded a known fork failure)"
+  ],
+  "status": "PREPARED_ONLY — no physical full-dataset execution claimed",
+  "prerequisites_not_met": [
+    "11.8 GB image payload acquisition and checksum verification on this host",
+    "physical long-document validation 15/30/50/100 pages with explicit stop conditions (docs/LONG_DOCUMENT_READINESS.md)",
+    "one-request multi-page semantics proof; independent per-page processing is a separate, non-equivalent experiment and must be labeled as such"
+  ]
+}
