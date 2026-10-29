@@ -24,8 +24,10 @@ GPU validation. Local snapshots retain check URLs and timestamps.
 
 PR #8 is source/CPU-review ready for its narrow completion/failure-evidence
 change. Its existing independent review reports zero unresolved P1/P2 findings;
-this review confirms its stack and inherited producer bindings. G1 physical
-acceptance remains a separate gate. Native stop still cannot establish semantic
+this review confirms its stack and inherited producer bindings. The separate
+[physical report](G1_PHYSICAL_WINDOWS_REGRESSION.md) now records PASS for all
+13 original-wheel MATH before/after pairs at 1/2/3/5 pages, including native
+raw/ID equality and disclosed failure controls. Native stop cannot establish semantic
 completeness, and the five-page, 8192-new-token and 16-million-pixel limits remain.
 
 PR #9 is source/scorer/dataset-byte-identity ready for its stated closure scope,
@@ -79,8 +81,9 @@ torch native members. Their metadata records torch `2.12.0+rocm7.14.1`,
 torchvision `0.27.0+rocm7.14.1`, torchaudio `2.11.0+rocm7.14.1`, transformers
 `4.52.1` and triton-windows `3.7.1.post27`. `.b/old` also matches the original
 torch native members but lacks transformers/Triton metadata. These are retained
-file identities; interpreter/loader/device acceptance requires the physical
-owner's fresh doctor and runs. No retained environment was modified.
+file identities. The subsequent physical preflight and both arms used
+`.venv-repro`, verified all 15 loaded original native members and the physical
+gfx1151 BF16 device. No retained environment was modified.
 
 Use the same explicitly identified environment and wheel for both sides of a
 MATH implementation comparison. Candidate MATH results cannot be described as
@@ -91,3 +94,27 @@ working directories remain the primary repository root.
 Local audit details are in `.b/g1-physical/integration/audit.json`, with separate
 PR snapshots, Git publication/binding checks, wheel/member hashes and retained
 environment metadata. Raw installation origins stay local.
+
+## Final scoped readiness
+
+The original read-only review above remains distinct from later physical
+execution. PR #7 is technically ready for its benchmark infrastructure scope;
+PR #8 is technically ready for its completion contract with the measured
+original-wheel 1/2/3/5-page regression; PR #9 is technically ready for the
+official scorer and complete dataset acquisition scope on that unchanged stack.
+Formal GitHub approval and the maintainer's merge decision remain outstanding.
+Draft #5 remains unchanged and is outside this readiness finding.
+
+A final API reread at 2026-10-29 14:28 UTC confirmed all four listed heads
+unchanged, both exact stack edges and all eight Windows/Ubuntu CPU/scorer checks
+successful on each of PRs #7–#9. Its independent receipt is
+`integration/final-pr-snapshots.json` in the G1 archive. Local CPU verification
+also passes Ruff check/format, mypy, build and pip check, with pytest **269
+passed / 7 skipped**. The skips explicitly cover opt-in GPU/torch checks in the
+CPU environment; they do not replace the separate physical evidence.
+
+The G1 evidence adds diagnostics, tests and reports without changing production
+model/wrapper/configuration code. Length remains length; page-guard stop is
+explicitly insufficient for OCR completeness. Above-five-page execution, full
+420/100 inference, Linux GPU operation and external hard-kill/OOM recovery remain
+NOT RUN. Dataset acquisition and hash closure do not change those statuses.
