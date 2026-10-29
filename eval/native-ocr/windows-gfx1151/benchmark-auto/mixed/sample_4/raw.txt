@@ -1,0 +1,4 @@
+<PAGE><BLOCK>text[56, 95, 380, 167]<FORK>Mixed 中英文测试
+<BLOCK>text[55, 238, 396, 308]<FORK>Windows 原生推理
+<BLOCK>text[55, 379, 335, 451]<FORK>订单 Order 395
+<BLOCK>text[55, 521, 393, 594]<FORK>金额 Total 8060.50

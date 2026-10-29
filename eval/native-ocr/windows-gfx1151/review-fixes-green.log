@@ -1,0 +1,5 @@
+ss..................................................................     [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\gpu\test_physical_device.py:16: physical GPU opt-in required
+SKIPPED [1] tests\gpu\test_physical_device.py:23: physical GPU opt-in required
+66 passed, 2 skipped in 0.39s

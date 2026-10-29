@@ -1,0 +1,144 @@
+[
+  {
+    "name": "doctor",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "scripts/doctor_windows.py",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\doctor.json"
+    ],
+    "start_utc": "2026-10-29T04:52:17.444427+00:00",
+    "end_utc": "2026-10-29T04:52:26.780409+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "triton",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "scripts/probe_triton.py",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\triton.json"
+    ],
+    "start_utc": "2026-10-29T04:52:26.780409+00:00",
+    "end_utc": "2026-10-29T04:52:36.525685+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "pip-check-record",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "-c",
+      "import json,subprocess,sys; p=subprocess.run([sys.executable,\"-m\",\"pip\",\"check\"],capture_output=True,text=True); print(json.dumps(dict(command=[sys.executable,\"-m\",\"pip\",\"check\"],prefix=sys.prefix,base_prefix=sys.base_prefix,exit_code=p.returncode,stdout=p.stdout,stderr=p.stderr)));sys.exit(p.returncode)"
+    ],
+    "start_utc": "2026-10-29T04:52:36.526204+00:00",
+    "end_utc": "2026-10-29T04:52:37.175584+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "identity",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.worktrees\\pytorch212-validation\\experiments\\pytorch212_wheel\\prepare_candidate_profile.py",
+      "--wheel",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\out\\wheels\\torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "--sdk-core-wheel",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\wheels\\rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+      "--install-report",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\candidate-install.json",
+      "--pip-check-record",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\pip-check.json",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\identity.json"
+    ],
+    "start_utc": "2026-10-29T04:52:37.184138+00:00",
+    "end_utc": "2026-10-29T04:52:43.887954+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "fused-regression",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.worktrees\\pytorch212-validation\\experiments\\pytorch212_wheel\\validate_wheel.py",
+      "--python",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "--identity-profile",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\identity.json",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\regression"
+    ],
+    "start_utc": "2026-10-29T04:52:43.888960+00:00",
+    "end_utc": "2026-10-29T04:55:46.608888+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "regression-summary",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.worktrees\\pytorch212-validation\\experiments\\pytorch212_wheel\\compare_results.py",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\regression"
+    ],
+    "start_utc": "2026-10-29T04:55:46.609889+00:00",
+    "end_utc": "2026-10-29T04:55:46.884536+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "sparse",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "scripts/probe_sparse.py",
+      "--source",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\h\\models--baidu--Unlimited-OCR-2\\snapshots\\9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\sparse.json"
+    ],
+    "start_utc": "2026-10-29T04:55:46.899074+00:00",
+    "end_utc": "2026-10-29T04:55:55.944724+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "vision-math",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "scripts/probe_vision_sdpa.py",
+      "--source",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\h\\models--baidu--Unlimited-OCR-2\\snapshots\\9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+      "--mode",
+      "math",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\vision-math.json"
+    ],
+    "start_utc": "2026-10-29T04:55:55.944724+00:00",
+    "end_utc": "2026-10-29T04:56:03.822947+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "stage2-single",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "scripts/smoke_single.py",
+      "--cache-dir",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\h",
+      "--offline",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\stage2-single"
+    ],
+    "start_utc": "2026-10-29T04:56:03.823484+00:00",
+    "end_utc": "2026-10-29T04:57:11.339802+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "stage2-multi",
+    "command": [
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\o\\Scripts\\python.exe",
+      "scripts/smoke_multi.py",
+      "--cache-dir",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\h",
+      "--offline",
+      "--output",
+      "<USERPROFILE>\\Desktop\\Unlimited-OCR-2-ROCm\\.b\\m\\stage2-multi"
+    ],
+    "start_utc": "2026-10-29T04:57:11.339802+00:00",
+    "end_utc": "2026-10-29T04:58:43.313793+00:00",
+    "exit_code": 0
+  }
+]

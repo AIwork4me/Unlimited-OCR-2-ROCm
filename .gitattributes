@@ -1,9 +1,1 @@
-* text=auto
-*.py text eol=lf
-*.json text eol=lf
-*.md text eol=lf
-*.txt text eol=lf
-*.ps1 text eol=lf
-*.yml text eol=lf
-*.png binary
-eval/results/** -text -whitespace
+/eval/native-ocr/** -text -whitespace

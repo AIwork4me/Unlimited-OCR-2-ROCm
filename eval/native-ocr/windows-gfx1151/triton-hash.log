@@ -1,0 +1,2 @@
+Looking in links: <USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\.worktrees\phase1-windows-gfx1151\.local\wheels
+Requirement already satisfied: triton-windows==3.7.1.post27 in .\.b\o\lib\site-packages (from -r <USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\requirements\triton.txt (line 1)) (3.7.1.post27)

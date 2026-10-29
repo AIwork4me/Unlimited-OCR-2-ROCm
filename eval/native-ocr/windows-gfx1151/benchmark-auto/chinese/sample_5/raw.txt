@@ -1,0 +1,4 @@
+<PAGE><BLOCK>text[56, 95, 294, 167]<FORK>中文识别测试
+<BLOCK>text[56, 237, 368, 308]<FORK>人工智能读取文档
+<BLOCK>text[56, 380, 317, 450]<FORK>订单编号 2026
+<BLOCK>text[56, 522, 322, 592]<FORK>合计 123.45 元

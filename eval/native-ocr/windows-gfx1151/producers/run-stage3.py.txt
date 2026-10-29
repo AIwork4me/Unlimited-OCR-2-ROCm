@@ -1,0 +1,25 @@
+import json
+import os
+from pathlib import Path
+import subprocess
+from datetime import datetime, timezone
+
+root=Path.cwd()
+out=root/'.b/m'
+python=root/'.b/o/Scripts/python.exe'
+env=dict(os.environ,PYTHONUTF8='1',PYTHONIOENCODING='utf-8',TEMP=str(out/'tmp'),TMP=str(out/'tmp'),TRITON_CACHE_DIR=str(out/'triton'),HF_HUB_OFFLINE='1')
+records=[]
+for suite in ('single','multi'):
+    name='stage3-auto-'+suite
+    command=[str(python),'experiments/native_ocr/validate.py','--identity-profile',str(out/'identity.json'),'--stage2-root',str(out),'--cache-dir',str(root/'.b/h'),'--output',str(out/name),'--vision-sdpa','auto','--suite',suite,'--trace']
+    start=datetime.now(timezone.utc).isoformat()
+    print(name,flush=True)
+    with (out/(name+'.log')).open('w',encoding='utf-8') as log:
+        p=subprocess.run(command,cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT)
+    records.append(dict(command=command,start_utc=start,end_utc=datetime.now(timezone.utc).isoformat(),exit_code=p.returncode))
+    (out/'stage3-processes.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+    if p.returncode: raise RuntimeError(name+' failed')
+    calls=json.loads((out/name/'attention.json').read_text(encoding='utf-8'))
+    assert calls and all(c['status']=='PASS' and c['observed_backend'] in {'FLASH_ATTENTION','EFFICIENT_ATTENTION'} for c in calls)
+(out/'stage3.json').write_text(json.dumps(dict(status='PASS',all_attention_calls_observed_fused=True),indent=2),encoding='utf-8')
+print('STAGE3 PASS',flush=True)

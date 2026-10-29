@@ -1,0 +1,43 @@
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+from datetime import datetime, timezone
+
+root=Path.cwd()
+out=root/'.b/m'
+python=root/'.b/o/Scripts/python.exe'
+frozen=root/'.worktrees/pytorch212-validation/experiments/pytorch212_wheel'
+env=dict(os.environ,PYTHONUTF8='1',PYTHONIOENCODING='utf-8',TEMP=str(out/'tmp'),TMP=str(out/'tmp'),TRITON_CACHE_DIR=str(out/'triton'),HF_HUB_OFFLINE='1')
+records=[]
+def run(name,args):
+    command=[str(python),*map(str,args)]
+    print(name,flush=True)
+    start=datetime.now(timezone.utc).isoformat()
+    with (out/(name+'.log')).open('w',encoding='utf-8') as log:
+        p=subprocess.run(command,cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT)
+    records.append(dict(name=name,command=command,start_utc=start,end_utc=datetime.now(timezone.utc).isoformat(),exit_code=p.returncode))
+    (out/'stage1-2-processes.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+    if p.returncode: raise RuntimeError(name+' failed')
+
+run('doctor',['scripts/doctor_windows.py','--output',out/'doctor.json'])
+run('triton',['scripts/probe_triton.py','--output',out/'triton.json'])
+code='import json,subprocess,sys; p=subprocess.run([sys.executable,"-m","pip","check"],capture_output=True,text=True); print(json.dumps(dict(command=[sys.executable,"-m","pip","check"],prefix=sys.prefix,base_prefix=sys.base_prefix,exit_code=p.returncode,stdout=p.stdout,stderr=p.stderr)));sys.exit(p.returncode)'
+run('pip-check-record',['-c',code])
+(out/'pip-check.json').write_text((out/'pip-check-record.log').read_text(),encoding='utf-8')
+run('identity',[frozen/'prepare_candidate_profile.py','--wheel',root/'.b/out/wheels/torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl','--sdk-core-wheel',root/'.b/wheels/rocm_sdk_core-7.14.1-py3-none-win_amd64.whl','--install-report',out/'candidate-install.json','--pip-check-record',out/'pip-check.json','--output',out/'identity.json'])
+run('fused-regression',[frozen/'validate_wheel.py','--python',python,'--identity-profile',out/'identity.json','--output',out/'regression'])
+run('regression-summary',[frozen/'compare_results.py',out/'regression'])
+statuses={case['case']:case['status'] for case in json.loads((out/'regression/summary.json').read_text())['cases']}
+assert len(statuses)==27,statuses
+assert all(v in {'FUSED_PASS','MATH_PASS','CONTROL_PASS'} or (k=='vision_flash_unsupported' and v=='UNSUPPORTED') for k,v in statuses.items()),statuses
+(out/'stage1.json').write_text(json.dumps(dict(status='PASS',regression=statuses),indent=2),encoding='utf-8')
+snapshot=root/'.b/h/models--baidu--Unlimited-OCR-2/snapshots/9cf077c4b206e0e2a31879df937b0b0bcba3661c'
+run('sparse',['scripts/probe_sparse.py','--source',snapshot,'--output',out/'sparse.json'])
+run('vision-math',['scripts/probe_vision_sdpa.py','--source',snapshot,'--mode','math','--output',out/'vision-math.json'])
+run('stage2-single',['scripts/smoke_single.py','--cache-dir',root/'.b/h','--offline','--output',out/'stage2-single'])
+run('stage2-multi',['scripts/smoke_multi.py','--cache-dir',root/'.b/h','--offline','--output',out/'stage2-multi'])
+assert all(json.loads((out/n/'suite.json').read_text(encoding='utf-8'))['status']=='PASS' for n in ('stage2-single','stage2-multi'))
+(out/'stage2.json').write_text(json.dumps(dict(status='PASS',single_cases=6,multi_cases=7),indent=2),encoding='utf-8')
+print('STAGE 2 PASS',flush=True)

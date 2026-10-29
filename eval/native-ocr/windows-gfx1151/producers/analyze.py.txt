@@ -1,0 +1,71 @@
+import collections
+import hashlib
+import json
+from pathlib import Path
+import statistics
+import sys
+
+root=Path.cwd()
+out=root/'.b/m'
+sys.path.insert(0,str(root/'src'))
+from unlimited_ocr_2_rocm.config import file_sha256
+from unlimited_ocr_2_rocm.doctor import write_json
+
+def read(p): return json.loads(p.read_text(encoding='utf-8'))
+def stat(v):return dict(samples=v,median=statistics.median(v),minimum=min(v),maximum=max(v),n=len(v))
+def metric(reports,key):return stat([r[key] for r in reports])
+
+processes=read(out/'benchmark-processes.json')
+assert len(processes)==2 and all(p['exit_code']==0 for p in processes)
+result=dict(status='PASS',wheel_sha256=read(out/'identity.json')['wheel_sha256'],measurement_source_commit='0fa486e',stage1=read(out/'stage1.json'),stage2=read(out/'stage2.json'),stage3=read(out/'stage3.json'),benchmark={},limitations=['One Windows gfx1151 device/driver; BF16 forward only.','Synthetic fixtures only; no broad document corpus.','Serial MATH then AUTO order; thermal/order bias not eliminated.','Five warm samples per case; maximum is descriptive, not reliable p95.','No backward, other dtypes/hardware/OS, or newly published AMD wheel validation.'])
+quality={}
+for stage,names in {'stage2':['stage2-single','stage2-multi'],'stage3':['stage3-auto-single/suite','stage3-auto-multi/suite']}.items():
+    quality[stage]=[]
+    for name in names:
+        for p in sorted((out/name).glob('*/manifest.json')):
+            r=read(p)
+            assert r['status']=='PASS'
+            quality[stage].append(dict(case=p.parent.name,status=r['status'],max_cer=max(x['character_error_rate'] for x in r['correctness']['pages']),kernel_count=r['native_kernel_count'],raw_page_markers=r['correctness']['raw_page_markers'],content_pages=r['correctness']['content_page_count'],terminal_empty_marker=r['correctness']['terminal_empty_marker'],output_tokens=r['output_token_count'],wall_seconds=r['synchronized_wall_seconds']))
+    assert len(quality[stage])==13
+result['quality']=quality
+calls=[c for name in ('stage3-auto-single','stage3-auto-multi') for c in read(out/name/'attention.json')]
+assert all(c['status']=='PASS' and c['observed_backend'] in {'FLASH_ATTENTION','EFFICIENT_ATTENTION'} for c in calls)
+result['observed_fused_counts']=dict(collections.Counter(c['observed_backend'] for c in calls))
+result['numerical_layouts']=[dict(module=c['module'],qkv=c['qkv'],mask=c['mask'],observed_backend=c['observed_backend'],numerical=c['numerical']) for c in calls if isinstance(c.get('numerical'),dict)]
+assert all(e['hip_before_sync']==e['hip_after_sync']==0 for c in calls for e in c['hip'])
+loads={mode:read(out/f'benchmark-{mode}'/'load.json') for mode in ('math','auto')}
+left,right=loads.values()
+for key in ('model_revision','source_and_weight_hashes','parameter_device','parameter_dtype','native_dependencies','wrapper_source_hashes'):
+    assert left[key]==right[key],key
+for key in ('packages','gpu'):
+    assert left['environment'][key]==right['environment'][key],key
+for key in ('machine_uuid_sha256','gpu','cpu'):
+    assert left['environment']['windows_hardware'][key]==right['environment']['windows_hardware'][key],key
+result['cold_loading']={mode:{k:loads[mode][k] for k in ('cold_load_seconds','process_load_including_hash_verification_seconds')} for mode in loads}
+expected={'english','chinese','mixed','table','math','pages_2','pages_3','pages_5','table_2_pages','repeat_unicode_recovery'}
+for mode in ('math','auto'):
+    base=out/f'benchmark-{mode}'
+    reports={}
+    for case in sorted(expected):
+        warmup=read(base/case/'warmup/manifest.json')
+        assert warmup['status']=='PASS'
+        samples=[read(p) for p in sorted((base/case).glob('sample_*/manifest.json'))]
+        assert len(samples)==5 and all(r['status']=='PASS' for r in samples)
+        assert all(r['native_kernel_count']==12 and r['correctness']['status']=='PASS' for r in samples)
+        assert all(0<=r['native_inference_seconds']<=r['synchronized_wall_seconds'] for r in samples)
+        for r in samples:
+            assert all(e['status']=='PASS' and e['synchronized_seconds']>0 for e in r['vision_inputs'])
+            assert [i['sha256'] for i in r['inputs']]==[i['sha256'] for i in warmup['inputs']]
+            assert r['max_new_tokens']==warmup['max_new_tokens']
+        reports[case]=dict(status='PASS',native_seconds=metric(samples,'native_inference_seconds'),wrapper_wall_seconds=metric(samples,'synchronized_wall_seconds'),vision_seconds=stat([sum(e['synchronized_seconds'] for e in r['vision_inputs']) for r in samples]),sam_seconds=stat([sum(e['synchronized_seconds'] for e in r['vision_inputs'] if e['module']=='sam_model') for r in samples]),clip_seconds=stat([sum(e['synchronized_seconds'] for e in r['vision_inputs'] if e['module']=='vision_model') for r in samples]),max_cer=max(x['character_error_rate'] for r in samples for x in r['correctness']['pages']),output_tokens=sorted(set(r['output_token_count'] for r in samples)),native_kernel_counts=sorted(set(r['native_kernel_count'] for r in samples)),input_sha256=[i['sha256'] for i in samples[0]['inputs']],max_new_tokens=samples[0]['max_new_tokens'],memory={key:[r['memory_after'][key] for r in samples] for key in ('process_rss_bytes','process_peak_rss_bytes','gpu_peak_allocated_bytes','gpu_peak_reserved_bytes','system_available_bytes')},warmup_native_seconds=warmup['native_inference_seconds'])
+    result['benchmark'][mode]=reports
+comparison={}
+for case in sorted(expected):
+    a,b=(result['benchmark'][mode][case] for mode in ('math','auto'))
+    for key in ('input_sha256','max_new_tokens'):assert a[key]==b[key]
+    comparison[case]={key+'_median_speedup':a[key]['median']/b[key]['median'] for key in ('native_seconds','vision_seconds')}
+    comparison[case]['same_output_tokens']=a['output_tokens']==b['output_tokens']
+result['comparison']=comparison
+result['memory_summary']={mode:{key:(min if key=='system_available_bytes' else max)(v for c in result['benchmark'][mode].values() for v in c['memory'][key]) for key in ('process_rss_bytes','process_peak_rss_bytes','gpu_peak_allocated_bytes','gpu_peak_reserved_bytes','system_available_bytes')} for mode in ('math','auto')}
+write_json(out/'result.json',result)
+print(json.dumps({k:result[k] for k in ('comparison','cold_loading','memory_summary')},indent=2))

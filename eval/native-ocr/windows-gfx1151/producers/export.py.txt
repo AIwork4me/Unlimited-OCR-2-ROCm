@@ -1,0 +1,31 @@
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+root=Path.cwd()
+sys.path.insert(0,str(root/'src'))
+from unlimited_ocr_2_rocm.doctor import sanitize
+
+source=root/'.b/m'
+dest=root/'eval/native-ocr/windows-gfx1151'
+assert not dest.exists(), 'Preserve earlier exports'
+dest.mkdir(parents=True)
+folders=['regression','stage2-single','stage2-multi','stage3-auto-single','stage3-auto-multi','benchmark-math','benchmark-auto']
+files=[p for p in source.iterdir() if p.is_file() and p.suffix in {'.json','.log','.txt','.py'}]
+files += [p for folder in folders for p in (source/folder).rglob('*') if p.is_file() and p.suffix in {'.json','.log','.txt','.md'}]
+manifest=[]
+for p in sorted(files):
+    relative=p.relative_to(source)
+    if p.suffix=='.py':relative=Path('producers')/(p.name+'.txt')
+    target=dest/relative
+    target.parent.mkdir(parents=True,exist_ok=True)
+    raw=p.read_bytes()
+    text=raw.decode('utf-8-sig')
+    published=sanitize(text).encode('utf-8')
+    target.write_bytes(published)
+    manifest.append(dict(source='.b/m/'+p.relative_to(source).as_posix(),published=relative.as_posix(),original_sha256=hashlib.sha256(raw).hexdigest(),published_sha256=hashlib.sha256(published).hexdigest(),bytes=len(published)))
+(dest/'export-manifest.json').write_text(json.dumps(dict(redaction='User-profile prefixes only; original files retained under ignored .b/m. No weights, images, environments or binary wheels exported.',files=manifest),indent=2),encoding='utf-8')
+checksums=''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(dest).as_posix()+'\n' for p in sorted(dest.rglob('*')) if p.is_file())
+(dest/'SHA256SUMS.txt').write_text(checksums,encoding='utf-8')
+print('Published',len(manifest),'evidence files,',sum(m['bytes'] for m in manifest),'bytes')

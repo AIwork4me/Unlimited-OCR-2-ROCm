@@ -1,0 +1,6 @@
+{
+  "src/unlimited_ocr_2_rocm/compat.py": "43a51e9f77a6775830415d9e500e8a0254053f9e6291e5fa631e711a83b4452c",
+  "src/unlimited_ocr_2_rocm/model.py": "ebb30ee18ac3e42171c520274d57c1a85f5f417dca64c35c92b37408a3f30a51",
+  "src/unlimited_ocr_2_rocm/inference.py": "7fab9d0e4e732b39005bee4dcdaf600922bf58e3b02125253919f33232104b7c",
+  "experiments/native_ocr/validate.py": "b5a88658d9b9c20765962a91982598e3b4aec78ea4b0d395d5773d0d50d6a8b8"
+}

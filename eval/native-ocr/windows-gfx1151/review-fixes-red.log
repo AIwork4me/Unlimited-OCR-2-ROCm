@@ -1,0 +1,15 @@
+
+=================================== ERRORS ====================================
+___________ ERROR collecting tests/unit/test_experimental_trace.py ____________
+ImportError while importing test module '<USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\tests\unit\test_experimental_trace.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests\unit\test_experimental_trace.py:3: in <module>
+    from experiments.native_ocr.validate import fused_trace_summary
+E   ImportError: cannot import name 'fused_trace_summary' from 'experiments.native_ocr.validate' (<USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\experiments\native_ocr\validate.py)
+=========================== short test summary info ===========================
+ERROR tests/unit/test_experimental_trace.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.23s

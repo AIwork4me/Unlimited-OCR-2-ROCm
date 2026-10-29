@@ -1,0 +1,39 @@
+addict==2.4.0
+amd-torchvision-device-gfx1151 @ file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm/.b/wheels/amd_torchvision_device_gfx1151-0.27.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl#sha256=3b3f99b2edaaaa5d64fa76e9c8f6a515cf9a0b761554818023ee76efd4c0b73d
+certifi==2026.10.23
+charset-normalizer==3.5.2
+colorama==0.4.6
+easydict==1.13
+einops==0.8.2
+filelock==3.29.1
+fsspec==2026.4.0
+huggingface-hub==0.36.0
+idna==3.20
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+mpmath==1.3.0
+networkx==3.4.2
+numpy==2.2.6
+packaging==26.3
+pillow==12.0.0
+psutil==7.1.2
+PyYAML==6.0.3
+regex==2026.9.29
+requests==2.34.2
+rocm==7.14.1
+rocm-bootstrap==0.1.0
+rocm-sdk-core @ file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm/.b/wheels/rocm_sdk_core-7.14.1-py3-none-win_amd64.whl#sha256=49eb83cb89d50562944a1f0eaf65f4e21f4557813de53e78d022fee81bbfb6e7
+rocm-sdk-device-gfx1151 @ file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm/.b/wheels/rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl#sha256=8ea906238b6247ce8230bc7a02ab99d410fbae524e3c1ce57e6457c9229ff79a
+rocm-sdk-libraries @ file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm/.b/wheels/rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl#sha256=f5f639b488e3e78a44bebba786e917a98c4386001a3fa2a27393a9ce97e2a32d
+safetensors==0.8.0
+sympy==1.14.0
+tokenizers==0.21.4
+torch @ file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm/.b/out/wheels/torch-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl#sha256=6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e
+torchaudio @ file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm/.b/wheels/torchaudio-2.11.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl#sha256=956ada280525ce09457e700773912704667d8521b1ad1fe64baa4d314f1cc71b
+torchvision @ file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm/.b/wheels/torchvision-0.27.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl#sha256=9d0addbc8bba4174d56fb90bb68df23edfbb0d68db4f63b3649db6de8ce9225f
+tqdm==4.70.1
+transformers==4.52.1
+triton-windows==3.7.1.post27
+typing_extensions==4.15.0
+-e git+https://github.com/AIwork4me/Unlimited-OCR-2-ROCm.git@966265c81a74a73aa0ae6d9a3fa593b342590eb7#egg=unlimited_ocr_2_rocm
+urllib3==2.8.0

@@ -1,0 +1,13 @@
+Obtaining file:///<USERPROFILE>/Desktop/Unlimited-OCR-2-ROCm
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: unlimited-ocr-2-rocm
+  Building editable for unlimited-ocr-2-rocm (pyproject.toml): started
+  Building editable for unlimited-ocr-2-rocm (pyproject.toml): finished with status 'done'
+  Created wheel for unlimited-ocr-2-rocm: filename=unlimited_ocr_2_rocm-0.0.1.dev0-0.editable-py3-none-any.whl size=6771 sha256=92b073c35ed15ed5681d389deb3517fd7f37dd197addc11888c2935df59c275d
+  Stored in directory: <USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm\.b\m\tmp\pip-ephem-wheel-cache-rg_3pfme\wheels\ae\43\ed\8b772a54e9f47729a4197796d9dfc29e41dc8034271da24f9c
+Successfully built unlimited-ocr-2-rocm
+Installing collected packages: unlimited-ocr-2-rocm
+Successfully installed unlimited-ocr-2-rocm-0.0.1.dev0

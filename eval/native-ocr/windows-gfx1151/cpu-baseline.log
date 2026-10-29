@@ -1,0 +1,20 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.7.0
+rootdir: <USERPROFILE>\Desktop\Unlimited-OCR-2-ROCm
+configfile: pyproject.toml
+testpaths: tests
+collected 58 items
+
+tests\gpu\test_physical_device.py ss                                     [  3%]
+tests\unit\test_cli.py .....                                             [ 12%]
+tests\unit\test_config.py ...                                            [ 17%]
+tests\unit\test_doctor.py ..................                             [ 48%]
+tests\unit\test_inference.py ......                                      [ 58%]
+tests\unit\test_native_versions.py ..                                    [ 62%]
+tests\unit\test_output.py ...........                                    [ 81%]
+tests\unit\test_repro.py ...........                                     [100%]
+
+=========================== short test summary info ===========================
+SKIPPED [1] tests\gpu\test_physical_device.py:16: physical GPU opt-in required
+SKIPPED [1] tests\gpu\test_physical_device.py:23: physical GPU opt-in required
+======================== 56 passed, 2 skipped in 0.43s ========================

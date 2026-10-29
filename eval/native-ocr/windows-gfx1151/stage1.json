@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "regression": {
+    "scalar_default_1": "FUSED_PASS",
+    "scalar_default_2": "FUSED_PASS",
+    "scalar_default_3": "FUSED_PASS",
+    "scalar_flash_1": "FUSED_PASS",
+    "scalar_flash_2": "FUSED_PASS",
+    "scalar_flash_3": "FUSED_PASS",
+    "small_flash_1": "FUSED_PASS",
+    "small_flash_2": "FUSED_PASS",
+    "small_flash_3": "FUSED_PASS",
+    "small_efficient_1": "FUSED_PASS",
+    "small_efficient_2": "FUSED_PASS",
+    "small_efficient_3": "FUSED_PASS",
+    "vision_default_1": "FUSED_PASS",
+    "vision_default_2": "FUSED_PASS",
+    "vision_default_3": "FUSED_PASS",
+    "vision_efficient_1": "FUSED_PASS",
+    "vision_efficient_2": "FUSED_PASS",
+    "vision_efficient_3": "FUSED_PASS",
+    "scalar_math": "MATH_PASS",
+    "small_math": "MATH_PASS",
+    "small_bias_math": "MATH_PASS",
+    "vision_math": "MATH_PASS",
+    "efficient_arithmetic": "FUSED_PASS",
+    "copy_only": "CONTROL_PASS",
+    "vision_flash_unsupported": "UNSUPPORTED",
+    "flash_launch": "FUSED_PASS",
+    "efficient_launch": "FUSED_PASS"
+  }
+}
