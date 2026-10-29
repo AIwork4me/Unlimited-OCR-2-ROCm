@@ -1,0 +1,132 @@
+{
+  "english": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "stop",
+      "after": "stop"
+    }
+  },
+  "chinese": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "stop",
+      "after": "stop"
+    }
+  },
+  "mixed": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "stop",
+      "after": "stop"
+    }
+  },
+  "table": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "stop",
+      "after": "stop"
+    }
+  },
+  "math": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "stop",
+      "after": "stop"
+    }
+  },
+  "repeat_unicode_recovery": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "stop",
+      "after": "stop"
+    }
+  },
+  "pages_2_run_1": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "upstream_tuple_no_finish_field",
+      "after": "stop"
+    }
+  },
+  "pages_2_run_2": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "upstream_tuple_no_finish_field",
+      "after": "stop"
+    }
+  },
+  "pages_3_run_1": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "upstream_tuple_no_finish_field",
+      "after": "stop"
+    }
+  },
+  "pages_3_run_2": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "upstream_tuple_no_finish_field",
+      "after": "stop"
+    }
+  },
+  "pages_5_run_1": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "upstream_tuple_no_finish_field",
+      "after": "stop"
+    }
+  },
+  "pages_5_run_2": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "upstream_tuple_no_finish_field",
+      "after": "stop"
+    }
+  },
+  "table_2_pages": {
+    "status": "PASS",
+    "differences": [],
+    "ground_truth_pass": true,
+    "timing_comparison": "recorded, no tolerance gate",
+    "wrapper_reported_finish": {
+      "before": "upstream_tuple_no_finish_field",
+      "after": "stop"
+    }
+  }
+}
