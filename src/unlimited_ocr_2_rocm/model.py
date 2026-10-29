@@ -26,13 +26,27 @@ class NativeModel:
     vision: list[dict[str, Any]] = field(default_factory=list)
 
 
-def require_model_dependencies(versions: dict[str, str]) -> None:
-    expected = {
+def native_dependency_pins() -> dict[str, str]:
+    """Pinned native dependency distributions for the active platform."""
+    if sys.platform == "linux":
+        return {
+            "transformers": "4.52.1",
+            # Officially published AMD/PyTorch Linux Triton for the rocm7.14
+            # wheel stack; a separate artifact from triton-windows.
+            "pytorch-triton-rocm": "3.5.0",
+            "huggingface-hub": "0.36.0",
+            "tokenizers": "0.21.4",
+        }
+    return {
         "transformers": "4.52.1",
         "triton-windows": "3.7.1.post27",
         "huggingface-hub": "0.36.0",
         "tokenizers": "0.21.4",
     }
+
+
+def require_model_dependencies(versions: dict[str, str]) -> None:
+    expected = native_dependency_pins()
     for name, version in expected.items():
         if versions.get(name) != version:
             raise RuntimeError(f"Native model requires {name}=={version}")
@@ -62,7 +76,7 @@ def load_model(cache_dir: Path | None = None, offline: bool = False) -> NativeMo
     require_native_environment(dict(os.environ))
     environment = collect_environment()
     require_stack(environment)
-    names = ("transformers", "triton-windows", "huggingface-hub", "tokenizers")
+    names = tuple(native_dependency_pins())
     versions = {name: importlib.metadata.version(name) for name in names}
     require_model_dependencies(versions)
     if "transformers" in sys.modules:

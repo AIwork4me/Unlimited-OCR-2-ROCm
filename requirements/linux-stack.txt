@@ -1,0 +1,7 @@
+# Primary Linux native gfx1151 stack — independently pinned from the Windows
+# source-built wheel. Officially published AMD/PyTorch manylinux artifact from
+# https://download.pytorch.org/whl/rocm7.14 (install with that --index-url).
+# torch-2.14.1+rocm7.14-cp310-cp310-manylinux_2_28_x86_64.whl
+#   SHA-256 7e803db5a702e3321ae43d03ea0439c7c422642507df048663a1acc0ec1a7daf
+# torchvision/torchaudio are not required by the native model path on Linux.
+torch==2.14.1+rocm7.14

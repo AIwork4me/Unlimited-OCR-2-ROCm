@@ -13,7 +13,7 @@ pytestmark = [
 ]
 
 
-def test_exact_windows_stack_and_real_bf16():
+def test_exact_platform_stack_and_real_bf16():
     from unlimited_ocr_2_rocm.doctor import bf16_probe, collect_environment, require_stack
 
     require_stack(collect_environment())

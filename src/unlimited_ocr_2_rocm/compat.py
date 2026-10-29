@@ -1,4 +1,4 @@
-"""Narrow, disclosed compatibility changes for the verified Windows stack."""
+"""Narrow, disclosed compatibility changes for the verified native stacks."""
 
 from __future__ import annotations
 
