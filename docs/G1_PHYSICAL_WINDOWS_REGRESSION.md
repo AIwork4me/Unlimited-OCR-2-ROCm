@@ -18,7 +18,7 @@ experimental AUTO/fused execution, SGLang serving or a full dataset benchmark.
 | External hard-kill recovery / OOM envelope | NOT RUN | Controlled in-process cancellation and ledger replay do not establish these separate physical failure paths. |
 | 15/30/50/100-page physical requests | NOT RUN | Production five-image/8192-token/pixel caps remain unchanged; a separate reviewed resource policy is required. |
 | Full MPDocBench / Marathon quality runs | NOT RUN | 0/420 and 0/100 benchmark documents inferred here. |
-| Local CPU checks | PASS | Ruff check/format, mypy, build and pip check; pytest: 269 passed, 7 explicitly skipped GPU/torch checks in the isolated CPU environment. |
+| Local CPU checks | PASS | Ruff check/format, mypy, build and pip check; final pytest: 271 passed, 7 explicitly skipped GPU/torch checks in the isolated CPU environment. |
 | Final PR #7/#8/#9 Windows/Ubuntu CI | PASS | Each unchanged head has eight successful CPU/scorer checks; exact snapshots are retained in the archive. These are CPU CI results. |
 
 ## Identity and comparison method
@@ -86,6 +86,14 @@ comparison, fresh committed analyzer receipt, ledger replay and independent
 reviews. Original private raw artifacts remain under `.b/g1/` and
 `.b/g1-physical/`; no historical evidence is rewritten. Restricted benchmark
 images, source GT, credentials, weights and wheels are excluded.
+
+The [independent publication review](../eval/g1/PUBLICATION_REVIEW.md) verifies
+all 505 source bindings, 489 members and 71 exact raw-text copies, including
+deterministic reproduction and Git blob equality. The archive retains its
+original 269-test CPU snapshot and committed publisher identity. Two later
+publisher regression cases raise the final CPU result to 271 passed / 7 skipped;
+the separate [final validation receipt](../eval/g1/VALIDATION.json) binds those
+source hashes without rewriting the sealed archive.
 
 Five-page GPU allocator peaks are 9,222,452,224 bytes allocated and
 11,284,774,912 reserved in both arms (8.589 / 10.510 GiB). These are APU shared

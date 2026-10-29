@@ -109,9 +109,11 @@ A final API reread at 2026-10-29 14:28 UTC confirmed all four listed heads
 unchanged, both exact stack edges and all eight Windows/Ubuntu CPU/scorer checks
 successful on each of PRs #7–#9. Its independent receipt is
 `integration/final-pr-snapshots.json` in the G1 archive. Local CPU verification
-also passes Ruff check/format, mypy, build and pip check, with pytest **269
+also passes Ruff check/format, mypy, build and pip check, with final pytest **271
 passed / 7 skipped**. The skips explicitly cover opt-in GPU/torch checks in the
 CPU environment; they do not replace the separate physical evidence.
+The sealed archive's earlier 269-test snapshot is retained; the later publisher
+tests and final result are bound in `eval/g1/VALIDATION.json`.
 
 The G1 evidence adds diagnostics, tests and reports without changing production
 model/wrapper/configuration code. Length remains length; page-guard stop is

@@ -16,19 +16,19 @@ observer to retain native fields discarded by the original tuple interface.
 Baseline helper bytes must match the current helpers. Preserve outputs before
 validation; compare IDs and raw bytes exactly, with no score tolerance changes.
 
-- [ ] Freeze repository/worktree/wheel/evidence identities and inspect PR ancestry.
-- [ ] Physical original-wheel device/dependency/BF16 preflight.
-- [ ] Review and CPU-test the diagnostic harness before model execution.
-- [ ] Execute 1/2/3/5-page normal acceptance before/after on scoped MATH.
-- [ ] Capture page-guard branches, actual native finish, IDs, kernel/DLL identities,
+- [x] Freeze repository/worktree/wheel/evidence identities and inspect PR ancestry.
+- [x] Physical original-wheel device/dependency/BF16 preflight.
+- [x] Review and CPU-test the diagnostic harness before model execution.
+- [x] Execute 1/2/3/5-page normal acceptance before/after on scoped MATH.
+- [x] Capture page-guard branches, actual native finish, IDs, kernel/DLL identities,
   measured allocated/reserved/RSS and complete failures.
-- [ ] Execute bounded length/context/page-guard controls and a controlled real
+- [x] Execute bounded length/context/page-guard controls and a controlled real
   decoder interruption followed by retry; no invented partial result.
-- [ ] Replay captured raw into atomic ledger failure cases, clearly labeling
+- [x] Replay captured raw into atomic ledger failure cases, clearly labeling
   synthetic malformed/missing-page derivatives.
-- [ ] Independently review results and a separately reviewable 5/15/30/50/100-page
+- [x] Independently review results and a separately reviewable 5/15/30/50/100-page
   resource strategy; retain existing production limits.
-- [ ] Reconcile sanitized publication with raw and Git bytes; rerun appropriate
+- [x] Reconcile sanitized publication with raw and Git bytes; rerun appropriate
   CPU checks and confirm Windows/Ubuntu CI and per-PR merge readiness.
 
 **Evidence roots:** ignored `.b/g1-physical/` and short runtime `.b/g1/`; new
