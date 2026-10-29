@@ -19,6 +19,7 @@ classifiers = [
 
 [project.scripts]
 unlimited-ocr2-rocm = "unlimited_ocr_2_rocm.cli:main"
+unlimited-ocr2-benchmark = "unlimited_ocr_2_rocm.benchmark.cli:main"
 
 [project.urls]
 Repository = "https://github.com/AIwork4me/Unlimited-OCR-2-ROCm"
