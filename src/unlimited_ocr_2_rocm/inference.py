@@ -90,6 +90,7 @@ def run_native(
                     "prefill_seconds": result["prefill_time"],
                 }
         torch.cuda.synchronize()
+        report["native_inference_seconds"] = time.perf_counter() - start
         preserve_raw(output / "raw.txt", raw)
         preserve_raw(output / "readable.md", convert_readable(raw))
         (output / "normalized.txt").write_text(normalize(raw), encoding="utf-8")

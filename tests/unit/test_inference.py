@@ -113,6 +113,7 @@ def test_unsafe_heading_keeps_raw_and_failure_manifest(tmp_path, monkeypatch):
     image = Path(__file__).resolve().parents[1] / "fixtures" / "english.png"
     report = inference.run_native(native, [image], output)
     assert (output / "raw.txt").read_bytes() == raw.encode("utf-8")
+    assert 0 <= report["native_inference_seconds"] <= report["synchronized_wall_seconds"]
     assert report["status"] == "FAIL"
     saved = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
     assert "heading" in saved["traceback"]
