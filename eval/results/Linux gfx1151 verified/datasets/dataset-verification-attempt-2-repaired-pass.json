@@ -1,0 +1,75 @@
+{
+ "benchmark_lock_sha256": "39f3dc09a9f9aa917f3ecf5f0deea690a7d1ed91ffb4e8e70803aac9e8dd7e08",
+ "data_root": "/home/amd/Desktop/UnlimitedOCR/Data",
+ "datasets": [
+  {
+   "dataset": "MPDocBench",
+   "dataset_revision": "4e5aee32280febb7b0844237ba087f837e3c8905",
+   "decode_checked": true,
+   "document_digests": {
+    "mismatched": [],
+    "ok": 420,
+    "page_digest_skipped": []
+   },
+   "expected_bytes_total": 688382455,
+   "expected_documents": 420,
+   "expected_pages": 3135,
+   "extra": [],
+   "manifest_row_mismatches": [],
+   "mismatched": [],
+   "mismatched_bytes_delta": 0,
+   "missing": [],
+   "page_index_digest": "24d8f234e25ac0209bd7a8c503644d39c2dca427a91f8810cbc25a327e79185d",
+   "page_index_source": "eval/benchmarks/g05/datasets/MPDocBench-page-index.json",
+   "read_only": true,
+   "schema": 1,
+   "scope_sha256": "785f18884dc586aa836f096dcba7c96c1fd0cc50a6dae9f62aabb0152d4bdcc8",
+   "status": "PASS",
+   "symlink_violations": [],
+   "verification_seconds": 1.537,
+   "verified_bytes": 688382455,
+   "verified_documents": 420,
+   "verified_pages": 3135
+  },
+  {
+   "dataset": "MarathonDocBench",
+   "dataset_revision": "fa05fccbe82ee6ec628006a1d58bb153954c3ee3",
+   "decode_checked": true,
+   "document_digests": {
+    "mismatched": [],
+    "ok": 100,
+    "page_digest_skipped": []
+   },
+   "expected_bytes_total": 11805490064,
+   "expected_documents": 100,
+   "expected_pages": 18272,
+   "extra": [],
+   "manifest_row_mismatches": [],
+   "mismatched": [],
+   "mismatched_bytes_delta": 0,
+   "missing": [],
+   "page_index_digest": "e48a2b213f0ccdbe48e8e670da450b6ba49528dfa9c6adb04b69cb5f3bcfdc14",
+   "page_index_source": "eval/benchmarks/g05/datasets/MarathonDocBench-page-index.json",
+   "read_only": true,
+   "schema": 1,
+   "scope_sha256": "2515b579828e787c6cc928421abd6c693086d64084ba26a459f82ccf21a9fe76",
+   "status": "PASS",
+   "symlink_violations": [],
+   "verification_seconds": 35.407,
+   "verified_bytes": 11805490064,
+   "verified_documents": 100,
+   "verified_pages": 18272
+  }
+ ],
+ "host": {
+  "hostname": "amd-HP-ZBook-Ultra",
+  "machine": "x86_64",
+  "python": "3.12.3",
+  "release": "6.17.0-1033-oem",
+  "system": "Linux"
+ },
+ "producer_sha256": "903989b97f8b5683bba8310136a2eace6ed64eef7dd0054c22119121c15934db",
+ "schema": 1,
+ "status": "PASS",
+ "verification_seconds_total": 36.959
+}

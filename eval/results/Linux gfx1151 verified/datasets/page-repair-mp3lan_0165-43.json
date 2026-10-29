@@ -1,0 +1,35 @@
+{
+ "schema": 1,
+ "event": "authorized_single_page_repair",
+ "utc_time": "2026-10-29T23:39:58Z",
+ "host": "hp-zbook-ultra-g1a-linux",
+ "dataset": "MarathonDocBench",
+ "dataset_revision": "fa05fccbe82ee6ec628006a1d58bb153954c3ee3",
+ "page": "images/mp3lan_0165/page_43.png",
+ "document": "mp3lan_0165",
+ "page_position": 43,
+ "failed_receipt": "eval/results/Linux gfx1151 verified/datasets/dataset-verification-attempt-1-blocked.json",
+ "new_receipt": "eval/results/Linux gfx1151 verified/datasets/dataset-verification-attempt-2-repaired-pass.json",
+ "failure": {
+  "expected_bytes": 1225345,
+  "actual_bytes": 655360,
+  "expected_sha256": "580555a9046093d3f40d1246ce837726a810f317d15cb4a05e50956b4a9e485c",
+  "actual_sha256": "4ae261c4ea34deaeeae3e1f6c5febd0abfb839a816eb3ebc503aae56f7250d80",
+  "decode_error": "OSError: image file is truncated",
+  "root_cause": "transfer truncation at exactly 640 KiB (655360 bytes); the only page of 18272 whose bytes differed from the frozen index; explains the full 569985-byte gap recorded in the Linux preflight (11805490064 expected - 11804920079 local = 569985)"
+ },
+ "repair": {
+  "source_url": "https://hf-mirror.com/datasets/baidu/MarathonDocBench/resolve/fa05fccbe82ee6ec628006a1d58bb153954c3ee3/images/mp3lan_0165/page_43.png",
+  "source_note": "Hugging Face LFS object mirrored via hf-mirror.com; huggingface.co is not reachable from this host",
+  "gates_applied": [
+   "size == 1225345",
+   "sha256 == 580555a9046093d3f40d1246ce837726a810f317d15cb4a05e50956b4a9e485c (frozen page index)",
+   "PIL decode succeeds (1191x1684 RGB)"
+  ],
+  "replaced_bytes_sha256": "580555a9046093d3f40d1246ce837726a810f317d15cb4a05e50956b4a9e485c",
+  "truncated_original_backup": "/home/amd/Desktop/UnlimitedOCR/d0-evidence/mp3lan_0165_page_43.png.truncated-655360",
+  "backup_sha256": "4ae261c4ea34deaeeae3e1f6c5febd0abfb839a816eb3ebc503aae56f7250d80",
+  "full_reverification": "scripts/verify_linux_datasets.py rerun over both datasets after replacement: MPDocBench PASS 3135/3135, MarathonDocBench PASS 18272/18272"
+ },
+ "read_only_note": "No other file under Data/ was touched; the verifier itself never writes inside the data root"
+}
