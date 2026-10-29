@@ -56,7 +56,9 @@ path, and Linux hardware/provenance commands with explicit loader prerequisites.
 Model weights, tokenizer, BF16, DASH/SR-SWA behavior and MATH defaults are unchanged.
 
 The native draft is [PR #8](https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/pull/8),
-based on PR #7. The scorer/data branch stacks on that native change because the
+based on PR #7. The scorer/data draft is
+[PR #9](https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/pull/9), stacked on that
+native change because the
 CPU worker imports the shared ledger; recorded wrapper producer hashes are thus
 present in its ancestry. Neither PR is merged automatically. Historical GPU
 evidence and original benchmark/model locks remain unchanged.
