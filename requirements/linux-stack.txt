@@ -1,0 +1,18 @@
+# Primary Linux native gfx1151 stack — independently pinned from the Windows
+# source-built wheel. Officially published AMD/PyTorch manylinux artifacts from
+# https://download.pytorch.org/whl/rocm7.2 (install with that --index-url or
+# --find-links plus verified local wheel files).
+# torch-2.12.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl (6,176,896,129 B,
+# bundles its ROCm/HIP runtime)
+#   SHA-256 099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6
+# triton_rocm-3.7.0-cp310-cp310-linux_x86_64.whl (315,212,279 B)
+#   SHA-256 b7a9e90ceae67668202958f7b180d51421df441dc73ae100b89cf0aa19e0b71e
+# torchvision-0.27.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl (3,588,425 B;
+# required by the frozen upstream modeling import chain, same 0.27.0 as Windows)
+#   SHA-256 7c871ca2c0fc8d0f04cc3cfce1757e3ff6a151ab95d48bd670a380517c8c9c46
+# The newer +rocm7.14 wheel line was investigated and rejected: it requires
+# rocm==7.14.* and triton-rocm~=3.8.0 pip packages available only from AMD's
+# own package index, which is unreachable from this host. torchaudio is not
+# imported by the native model path on Linux.
+torch==2.12.0+rocm7.2
+torchvision==0.27.0+rocm7.2

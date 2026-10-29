@@ -1,0 +1,7 @@
+{
+  "environment_id": "1fdf943f2cd306d1a8a7b0302afc214393863acc81f7b04c10463818371e5d9a",
+  "run_id": "linux-gfx1151-native-20261029",
+  "created_new": true,
+  "created_utc": "2026-10-29T15:47:27.047836+00:00",
+  "executable": "<USERPROFILE>/Desktop/UnlimitedOCR/Unlimited-OCR-2-ROCm/../envs/linux-gfx1151-rocm/bin/python"
+}

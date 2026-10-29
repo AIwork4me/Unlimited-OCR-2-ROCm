@@ -1,0 +1,27 @@
+{
+  "schema": "uocr2-benchmark-profile/dataset@1",
+  "profile_id": "linux-gfx1151-native-bf16-math-mpdocbench",
+  "environment_profile": "linux-gfx1151-native-bf16-math",
+  "dataset": "MPDocBench (public release, Tongyi-Zhiwen/Qwen-Doc official toolkit)",
+  "scope": {
+    "documents": 420,
+    "pages": 3135,
+    "archive_locally_verified": "409 documents / 3051 pages (modelscope archive, prior task)",
+    "local_data_note": "2026-10-29: ../Data/MPDocBench/images holds all 420 document directories with exactly 3,135 page images (665 MiB), and ../Data/SlideVQA/data holds the 12 gated test parquet shards whose SHA-256 all match benchmark-lock.json. The local 420/3135 counts reconcile with the official public release; per-document identity reconciliation of the 11 SlideVQA decks / 84 pages (JPEG serialization parity) is still required before any full-scope run.",
+    "gated_not_acquired": null,
+    "denominator_rule": "full 420-document denominator retained; every page accounted as inferred, failed, or not-yet-acquired"
+  },
+  "run_binding": [
+    "eval/benchmarks/benchmark-lock.json dataset revision + manifest hashes",
+    "frozen environment receipt from doctor/load manifests",
+    "raw + readable + normalized outputs per document per ledger",
+    "official eight metrics via the frozen scorer snapshot (SCORER_ONLY qualification preserved)"
+  ],
+  "status": "PREPARED_ONLY — no physical full-dataset execution claimed",
+  "prerequisites_not_met": [
+    "physical 1/2/3/5-page native regression PASS on this host",
+    "long-document policy review (docs/LONG_DOCUMENT_READINESS.md)",
+    "complete local image inventory incl. gated decks",
+    "FormulaCDM renderer closure"
+  ]
+}
