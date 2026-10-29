@@ -7,6 +7,12 @@ import traceback
 from pathlib import Path
 from typing import Any
 
+from .completion import (
+    completion_metadata,
+    diagnostic_evidence,
+    infer_document,
+    require_complete_pages,
+)
 from .config import file_sha256
 from .doctor import memory_snapshot, write_json
 from .model import NativeModel
@@ -49,7 +55,12 @@ def run_native(
                 raise ValueError("Phase 1 fixture limit: 16 million pixels per page")
             image.verify()
     report: dict[str, Any] = {
-        "native_entrypoint": "infer_multi" if multi else "infer",
+        "native_entrypoint": "infer",
+        "native_mode": "infer_multi_equivalent_base" if multi else "single_auto_crop",
+        "completion_interpretation": (
+            "Native EOS/length only; stop may be forced by the official page guard. "
+            "Valid page structure does not prove semantic content completeness."
+        ),
         "inputs": [{"path": str(path), "sha256": file_sha256(path)} for path in images],
         "memory_before": memory_snapshot(),
         "max_new_tokens": max_new_tokens,
@@ -62,36 +73,39 @@ def run_native(
     start = time.perf_counter()
     try:
         with torch.inference_mode():
-            if multi:
-                raw, tokens = native.model.infer_multi(
-                    native.tokenizer,
-                    image_files=[str(path) for path in images],
-                    save_results=False,
-                    max_new_tokens=max_new_tokens,
-                    eval_mode=True,
-                )
-                finish = "length" if tokens >= max_new_tokens else "upstream_tuple_no_finish_field"
-            else:
-                result = native.model.infer(
-                    native.tokenizer,
-                    image_file=str(images[0]),
-                    save_results=False,
-                    eval_mode=True,
-                    return_dict=True,
-                    max_new_tokens=max_new_tokens,
-                )
-                raw, tokens, finish = (
-                    result["text"],
-                    len(result["token_ids"]),
-                    result["finish_reason"],
-                )
-                report["upstream_timing"] = {
-                    "generation_seconds": result["time"],
-                    "prefill_seconds": result["prefill_time"],
-                }
+            result = infer_document(
+                native.model,
+                native.tokenizer,
+                [str(path) for path in images],
+                multi=multi,
+                max_new_tokens=max_new_tokens,
+            )
+        # Persist all available native evidence before metadata or Markdown
+        # validation. Failure must not erase returned model text/finish fields.
+        report["native_generation"], malformed_evidence = diagnostic_evidence(result)
+        if malformed_evidence:
+            report["native_generation_diagnostic"] = True
+        if isinstance(result, dict):
+            report["finish_reason"] = diagnostic_evidence(result.get("finish_reason"))[0]
+            raw = result.get("text")
+            if isinstance(raw, str):
+                preserve_raw(output / "raw.txt", raw)
+                report["raw_output"] = raw
+                report["raw_sha256"] = file_sha256(output / "raw.txt")
         torch.cuda.synchronize()
-        preserve_raw(output / "raw.txt", raw)
-        preserve_raw(output / "readable.md", convert_readable(raw))
+        # Convert only after retaining raw; metadata validation below remains
+        # independent of any best-effort readable representation.
+        if isinstance(result, dict) and isinstance(result.get("text"), str):
+            raw = result["text"]
+            preserve_raw(output / "readable.md", convert_readable(raw))
+        metadata = completion_metadata(
+            result, expected_pages=len(images), max_new_tokens=max_new_tokens
+        )
+        raw, tokens, finish = result["text"], metadata["output_tokens"], metadata["finish_reason"]
+        report["upstream_timing"] = {
+            "generation_seconds": result["time"],
+            "prefill_seconds": result["prefill_time"],
+        }
         (output / "normalized.txt").write_text(normalize(raw), encoding="utf-8")
         kernels = native.kernels[previous_kernels:]
         report.update(
@@ -99,27 +113,35 @@ def run_native(
             finish_reason=finish,
             raw_sha256=file_sha256(output / "raw.txt"),
             raw_output=raw,
-            native_kernels=kernels,
-            native_kernel_count=len(kernels),
         )
         if len(kernels) < 12:
             raise RuntimeError("No successful native DASH kernel recorded for every decoder layer")
         if not raw.strip() or finish == "length":
-            raise RuntimeError("Empty or token-budget-truncated OCR output")
+            raise RuntimeError("Empty or native length-truncated OCR output")
+        require_complete_pages(raw, len(images), max_chars=1_000_000)
         if truth is not None:
             report["correctness"] = assess(raw, truth)
             report["status"] = report["correctness"]["status"]
         else:
             report["status"] = "INFERENCE_ONLY"
+    except KeyboardInterrupt:
+        report["status"] = "FAIL"
+        report["error"] = "INTERRUPTED"
+        report["traceback"] = traceback.format_exc()
+        raise
     except Exception:
         report["status"] = "FAIL"
         report["traceback"] = traceback.format_exc()
     finally:
+        kernels = native.kernels[previous_kernels:]
+        report["native_kernels"] = kernels
+        report["native_kernel_count"] = len(kernels)
         report["vision_inputs"] = getattr(native, "vision", [])[previous_vision:]
         report["synchronized_wall_seconds"] = time.perf_counter() - start
         try:
             report["memory_after"] = memory_snapshot()
         except Exception:
             report["memory_after_error"] = traceback.format_exc()
-        write_json(output / "manifest.json", report)
+        # Malformed native/diagnostic values must never break the FAIL manifest.
+        write_json(output / "manifest.json", diagnostic_evidence(report)[0])
     return report
