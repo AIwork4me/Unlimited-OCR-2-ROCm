@@ -1,0 +1,647 @@
+{
+  "version": "1",
+  "pip_version": "26.0.1",
+  "install": [
+    {
+      "download_info": {
+        "url": "file:///C:/b/resume/verified-python-wheels/sympy-1.13.3-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=54612cf55a62755ee71824ce692986f23c88ffa77207b30c1368eda4a7060f73",
+          "hashes": {
+            "sha256": "54612cf55a62755ee71824ce692986f23c88ffa77207b30c1368eda4a7060f73"
+          }
+        }
+      },
+      "is_direct": true,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "sympy",
+        "version": "1.13.3",
+        "summary": "Computer algebra system (CAS) in Python",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "Math",
+          "CAS"
+        ],
+        "home_page": "https://sympy.org",
+        "author": "SymPy development team",
+        "author_email": "sympy@googlegroups.com",
+        "license": "BSD",
+        "license_file": [
+          "LICENSE",
+          "AUTHORS"
+        ],
+        "classifier": [
+          "License :: OSI Approved :: BSD License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Topic :: Scientific/Engineering",
+          "Topic :: Scientific/Engineering :: Mathematics",
+          "Topic :: Scientific/Engineering :: Physics",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy"
+        ],
+        "requires_dist": [
+          "mpmath <1.4,>=1.1.0",
+          "pytest >=7.1.0 ; extra == 'dev'",
+          "hypothesis >=6.70.0 ; extra == 'dev'"
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Source, https://github.com/sympy/sympy"
+        ],
+        "provides_extra": [
+          "dev"
+        ],
+        "description": "# SymPy\n\n[![pypi version](https://img.shields.io/pypi/v/sympy.svg)](https://pypi.python.org/pypi/sympy)\n[![Join the chat at https://gitter.im/sympy/sympy](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sympy/sympy?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Zenodo Badge](https://zenodo.org/badge/18918/sympy/sympy.svg)](https://zenodo.org/badge/latestdoi/18918/sympy/sympy)\n[![Downloads](https://pepy.tech/badge/sympy/month)](https://pepy.tech/project/sympy)\n[![GitHub Issues](https://img.shields.io/badge/issue_tracking-github-blue.svg)](https://github.com/sympy/sympy/issues)\n[![Git Tutorial](https://img.shields.io/badge/PR-Welcome-%23FF8300.svg?)](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project)\n[![Powered by NumFocus](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://numfocus.org)\n[![Commits since last release](https://img.shields.io/github/commits-since/sympy/sympy/latest.svg?longCache=true&style=flat-square&logo=git&logoColor=fff)](https://github.com/sympy/sympy/releases)\n\n[![SymPy Banner](https://github.com/sympy/sympy/raw/master/banner.svg)](https://sympy.org/)\n\n\nSee the [AUTHORS](AUTHORS) file for the list of authors.\n\nAnd many more people helped on the SymPy mailing list, reported bugs,\nhelped organize SymPy's participation in the Google Summer of Code, the\nGoogle Highly Open Participation Contest, Google Code-In, wrote and\nblogged about SymPy...\n\nLicense: New BSD License (see the [LICENSE](LICENSE) file for details) covers all\nfiles in the sympy repository unless stated otherwise.\n\nOur mailing list is at\n<https://groups.google.com/forum/?fromgroups#!forum/sympy>.\n\nWe have a community chat at [Gitter](https://gitter.im/sympy/sympy). Feel\nfree to ask us anything there. We have a very welcoming and helpful\ncommunity.\n\n## Download\n\nThe recommended installation method is through Anaconda,\n<https://www.anaconda.com/products/distribution>\n\nYou can also get the latest version of SymPy from\n<https://pypi.python.org/pypi/sympy/>\n\nTo get the git version do\n\n    $ git clone https://github.com/sympy/sympy.git\n\nFor other options (tarballs, debs, etc.), see\n<https://docs.sympy.org/dev/install.html>.\n\n## Documentation and Usage\n\nFor in-depth instructions on installation and building the\ndocumentation, see the [SymPy Documentation Style Guide](https://docs.sympy.org/dev/documentation-style-guide.html).\n\nEverything is at:\n\n<https://docs.sympy.org/>\n\nYou can generate everything at the above site in your local copy of\nSymPy by:\n\n    $ cd doc\n    $ make html\n\nThen the docs will be in <span class=\"title-ref\">\\_build/html</span>. If\nyou don't want to read that, here is a short usage:\n\nFrom this directory, start Python and:\n\n``` python\n>>> from sympy import Symbol, cos\n>>> x = Symbol('x')\n>>> e = 1/cos(x)\n>>> print(e.series(x, 0, 10))\n1 + x**2/2 + 5*x**4/24 + 61*x**6/720 + 277*x**8/8064 + O(x**10)\n```\n\nSymPy also comes with a console that is a simple wrapper around the\nclassic python console (or IPython when available) that loads the SymPy\nnamespace and executes some common commands for you.\n\nTo start it, issue:\n\n    $ bin/isympy\n\nfrom this directory, if SymPy is not installed or simply:\n\n    $ isympy\n\nif SymPy is installed.\n\n## Installation\n\nTo install SymPy using PyPI, run the following command:\n\n    $ pip install sympy\n\nTo install SymPy using Anaconda, run the following command:\n\n    $ conda install -c anaconda sympy\n\nTo install SymPy from GitHub source, first clone SymPy using `git`:\n\n    $ git clone https://github.com/sympy/sympy.git\n\nThen, in the `sympy` repository that you cloned, simply run:\n\n    $ pip install .\n\nSee <https://docs.sympy.org/dev/install.html> for more information.\n\n## Contributing\n\nWe welcome contributions from anyone, even if you are new to open\nsource. Please read our [Introduction to Contributing](https://docs.sympy.org/dev/contributing/introduction-to-contributing.html)\npage and the [SymPy Documentation Style Guide](https://docs.sympy.org/dev/documentation-style-guide.html). If you\nare new and looking for some way to contribute, a good place to start is\nto look at the issues tagged [Easy to Fix](https://github.com/sympy/sympy/issues?q=is%3Aopen+is%3Aissue+label%3A%22Easy+to+Fix%22).\n\nPlease note that all participants in this project are expected to follow\nour Code of Conduct. By participating in this project you agree to abide\nby its terms. See [CODE\\_OF\\_CONDUCT.md](CODE_OF_CONDUCT.md).\n\n## Tests\n\nTo execute all tests, run:\n\n    $./setup.py test\n\nin the current directory.\n\nFor the more fine-grained running of tests or doctests, use `bin/test`\nor respectively `bin/doctest`. The master branch is automatically tested\nby GitHub Actions.\n\nTo test pull requests, use\n[sympy-bot](https://github.com/sympy/sympy-bot).\n\n## Regenerate Experimental <span class=\"title-ref\">LaTeX</span> Parser/Lexer\n\nThe parser and lexer were generated with the [ANTLR4](http://antlr4.org)\ntoolchain in `sympy/parsing/latex/_antlr` and checked into the repo.\nPresently, most users should not need to regenerate these files, but\nif you plan to work on this feature, you will need the `antlr4`\ncommand-line tool (and you must ensure that it is in your `PATH`).\nOne way to get it is:\n\n    $ conda install -c conda-forge antlr=4.11.1\n\nAlternatively, follow the instructions on the ANTLR website and download\nthe `antlr-4.11.1-complete.jar`. Then export the `CLASSPATH` as instructed\nand instead of creating `antlr4` as an alias, make it an executable file\nwith the following contents:\n``` bash\n#!/bin/bash\njava -jar /usr/local/lib/antlr-4.11.1-complete.jar \"$@\"\n```\n\nAfter making changes to `sympy/parsing/latex/LaTeX.g4`, run:\n\n    $ ./setup.py antlr\n\n## Clean\n\nTo clean everything (thus getting the same tree as in the repository):\n\n    $ git clean -Xdf\n\nwhich will clear everything ignored by `.gitignore`, and:\n\n    $ git clean -df\n\nto clear all untracked files. You can revert the most recent changes in\ngit with:\n\n    $ git reset --hard\n\nWARNING: The above commands will all clear changes you may have made,\nand you will lose them forever. Be sure to check things with `git\nstatus`, `git diff`, `git clean -Xn`, and `git clean -n` before doing any\nof those.\n\n## Bugs\n\nOur issue tracker is at <https://github.com/sympy/sympy/issues>. Please\nreport any bugs that you find. Or, even better, fork the repository on\nGitHub and create a pull request. We welcome all changes, big or small,\nand we will help you make the pull request if you are new to git (just\nask on our mailing list or Gitter Channel). If you further have any queries, you can find answers\non Stack Overflow using the [sympy](https://stackoverflow.com/questions/tagged/sympy) tag.\n\n## Brief History\n\nSymPy was started by Ondřej Čertík in 2005, he wrote some code during\nthe summer, then he wrote some more code during summer 2006. In February\n2007, Fabian Pedregosa joined the project and helped fix many things,\ncontributed documentation, and made it alive again. 5 students (Mateusz\nPaprocki, Brian Jorgensen, Jason Gedge, Robert Schwarz, and Chris Wu)\nimproved SymPy incredibly during summer 2007 as part of the Google\nSummer of Code. Pearu Peterson joined the development during the summer\n2007 and he has made SymPy much more competitive by rewriting the core\nfrom scratch, which has made it from 10x to 100x faster. Jurjen N.E. Bos\nhas contributed pretty-printing and other patches. Fredrik Johansson has\nwritten mpmath and contributed a lot of patches.\n\nSymPy has participated in every Google Summer of Code since 2007. You\ncan see <https://github.com/sympy/sympy/wiki#google-summer-of-code> for\nfull details. Each year has improved SymPy by bounds. Most of SymPy's\ndevelopment has come from Google Summer of Code students.\n\nIn 2011, Ondřej Čertík stepped down as lead developer, with Aaron\nMeurer, who also started as a Google Summer of Code student, taking his\nplace. Ondřej Čertík is still active in the community but is too busy\nwith work and family to play a lead development role.\n\nSince then, a lot more people have joined the development and some\npeople have also left. You can see the full list in doc/src/aboutus.rst,\nor online at:\n\n<https://docs.sympy.org/dev/aboutus.html#sympy-development-team>\n\nThe git history goes back to 2007 when development moved from svn to hg.\nTo see the history before that point, look at\n<https://github.com/sympy/sympy-old>.\n\nYou can use git to see the biggest developers. The command:\n\n    $ git shortlog -ns\n\nwill show each developer, sorted by commits to the project. The command:\n\n    $ git shortlog -ns --since=\"1 year\"\n\nwill show the top developers from the last year.\n\n## Citation\n\nTo cite SymPy in publications use\n\n> Meurer A, Smith CP, Paprocki M, Čertík O, Kirpichev SB, Rocklin M,\n> Kumar A, Ivanov S, Moore JK, Singh S, Rathnayake T, Vig S, Granger BE,\n> Muller RP, Bonazzi F, Gupta H, Vats S, Johansson F, Pedregosa F, Curry\n> MJ, Terrel AR, Roučka Š, Saboo A, Fernando I, Kulal S, Cimrman R,\n> Scopatz A. (2017) SymPy: symbolic computing in Python. *PeerJ Computer\n> Science* 3:e103 <https://doi.org/10.7717/peerj-cs.103>\n\nA BibTeX entry for LaTeX users is\n\n``` bibtex\n@article{10.7717/peerj-cs.103,\n title = {SymPy: symbolic computing in Python},\n author = {Meurer, Aaron and Smith, Christopher P. and Paprocki, Mateusz and \\v{C}ert\\'{i}k, Ond\\v{r}ej and Kirpichev, Sergey B. and Rocklin, Matthew and Kumar, Amit and Ivanov, Sergiu and Moore, Jason K. and Singh, Sartaj and Rathnayake, Thilina and Vig, Sean and Granger, Brian E. and Muller, Richard P. and Bonazzi, Francesco and Gupta, Harsh and Vats, Shivam and Johansson, Fredrik and Pedregosa, Fabian and Curry, Matthew J. and Terrel, Andy R. and Rou\\v{c}ka, \\v{S}t\\v{e}p\\'{a}n and Saboo, Ashutosh and Fernando, Isuru and Kulal, Sumith and Cimrman, Robert and Scopatz, Anthony},\n year = 2017,\n month = Jan,\n keywords = {Python, Computer algebra system, Symbolics},\n abstract = {\n            SymPy is an open-source computer algebra system written in pure Python. It is built with a focus on extensibility and ease of use, through both interactive and programmatic applications. These characteristics have led SymPy to become a popular symbolic library for the scientific Python ecosystem. This paper presents the architecture of SymPy, a description of its features, and a discussion of select submodules. The supplementary material provides additional examples and further outlines details of the architecture and features of SymPy.\n         },\n volume = 3,\n pages = {e103},\n journal = {PeerJ Computer Science},\n issn = {2376-5992},\n url = {https://doi.org/10.7717/peerj-cs.103},\n doi = {10.7717/peerj-cs.103}\n}\n```\n\nSymPy is BSD licensed, so you are free to use it whatever you like, be\nit academic, commercial, creating forks or derivatives, as long as you\ncopy the BSD statement if you redistribute it (see the LICENSE file for\ndetails). That said, although not required by the SymPy license, if it\nis convenient for you, please cite SymPy when using it in your work and\nalso consider contributing all your changes back, so that we can\nincorporate it and all of us will benefit in the end.\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "file:///C:/b/resume/verified-python-wheels/networkx-2.8.8-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=e435dfa75b1d7195c7b8378c3859f0445cd88c6b0375c181ed66823a9ceb7524",
+          "hashes": {
+            "sha256": "e435dfa75b1d7195c7b8378c3859f0445cd88c6b0375c181ed66823a9ceb7524"
+          }
+        }
+      },
+      "is_direct": true,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "networkx",
+        "version": "2.8.8",
+        "platform": [
+          "Linux",
+          "Mac OSX",
+          "Windows",
+          "Unix"
+        ],
+        "summary": "Python package for creating and manipulating graphs and networks",
+        "keywords": [
+          "Networks",
+          "Graph Theory",
+          "Mathematics",
+          "network",
+          "graph",
+          "discrete mathematics",
+          "math"
+        ],
+        "home_page": "https://networkx.org/",
+        "author": "Aric Hagberg",
+        "author_email": "hagberg@lanl.gov",
+        "maintainer": "NetworkX Developers",
+        "maintainer_email": "networkx-discuss@googlegroups.com",
+        "license_file": [
+          "LICENSE.txt"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Science/Research",
+          "License :: OSI Approved :: BSD License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3 :: Only",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Topic :: Scientific/Engineering :: Bio-Informatics",
+          "Topic :: Scientific/Engineering :: Information Analysis",
+          "Topic :: Scientific/Engineering :: Mathematics",
+          "Topic :: Scientific/Engineering :: Physics"
+        ],
+        "requires_dist": [
+          "numpy (>=1.19) ; extra == 'default'",
+          "scipy (>=1.8) ; extra == 'default'",
+          "matplotlib (>=3.4) ; extra == 'default'",
+          "pandas (>=1.3) ; extra == 'default'",
+          "pre-commit (>=2.20) ; extra == 'developer'",
+          "mypy (>=0.982) ; extra == 'developer'",
+          "sphinx (>=5.2) ; extra == 'doc'",
+          "pydata-sphinx-theme (>=0.11) ; extra == 'doc'",
+          "sphinx-gallery (>=0.11) ; extra == 'doc'",
+          "numpydoc (>=1.5) ; extra == 'doc'",
+          "pillow (>=9.2) ; extra == 'doc'",
+          "nb2plots (>=0.6) ; extra == 'doc'",
+          "texext (>=0.6.6) ; extra == 'doc'",
+          "lxml (>=4.6) ; extra == 'extra'",
+          "pygraphviz (>=1.9) ; extra == 'extra'",
+          "pydot (>=1.4.2) ; extra == 'extra'",
+          "sympy (>=1.10) ; extra == 'extra'",
+          "pytest (>=7.2) ; extra == 'test'",
+          "pytest-cov (>=4.0) ; extra == 'test'",
+          "codecov (>=2.1) ; extra == 'test'"
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Bug Tracker, https://github.com/networkx/networkx/issues",
+          "Documentation, https://networkx.org/documentation/stable/",
+          "Source Code, https://github.com/networkx/networkx"
+        ],
+        "provides_extra": [
+          "default",
+          "developer",
+          "doc",
+          "extra",
+          "test"
+        ],
+        "description": "NetworkX\n========\n\n.. image:: https://github.com/networkx/networkx/workflows/test/badge.svg?tag=networkx-2.8.8\n  :target: https://github.com/networkx/networkx/actions?query=branch%3Anetworkx-2.8.8\n\n.. image:: https://codecov.io/gh/networkx/networkx/branch/main/graph/badge.svg\n   :target: https://app.codecov.io/gh/networkx/networkx/branch/main\n   \n.. image:: https://img.shields.io/github/labels/networkx/networkx/Good%20First%20Issue?color=green&label=Contribute%20&style=flat-square\n   :target: https://github.com/networkx/networkx/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22\n   \n\nNetworkX is a Python package for the creation, manipulation,\nand study of the structure, dynamics, and functions\nof complex networks.\n\n- **Website (including documentation):** https://networkx.org\n- **Mailing list:** https://groups.google.com/forum/#!forum/networkx-discuss\n- **Source:** https://github.com/networkx/networkx\n- **Bug reports:** https://github.com/networkx/networkx/issues\n- **Report a security vulnerability:** https://tidelift.com/security\n- **Tutorial:** https://networkx.org/documentation/latest/tutorial.html\n- **GitHub Discussions:** https://github.com/networkx/networkx/discussions\n\nSimple example\n--------------\n\nFind the shortest path between two nodes in an undirected graph:\n\n.. code:: pycon\n\n    >>> import networkx as nx\n    >>> G = nx.Graph()\n    >>> G.add_edge(\"A\", \"B\", weight=4)\n    >>> G.add_edge(\"B\", \"D\", weight=2)\n    >>> G.add_edge(\"A\", \"C\", weight=3)\n    >>> G.add_edge(\"C\", \"D\", weight=4)\n    >>> nx.shortest_path(G, \"A\", \"D\", weight=\"weight\")\n    ['A', 'B', 'D']\n\nInstall\n-------\n\nInstall the latest version of NetworkX::\n\n    $ pip install networkx\n\nInstall with all optional dependencies::\n\n    $ pip install networkx[all]\n\nFor additional details, please see `INSTALL.rst`.\n\nBugs\n----\n\nPlease report any bugs that you find `here <https://github.com/networkx/networkx/issues>`_.\nOr, even better, fork the repository on `GitHub <https://github.com/networkx/networkx>`_\nand create a pull request (PR). We welcome all changes, big or small, and we\nwill help you make the PR if you are new to `git` (just ask on the issue and/or\nsee `CONTRIBUTING.rst`).\n\nLicense\n-------\n\nReleased under the 3-Clause BSD license (see `LICENSE.txt`)::\n\n   Copyright (C) 2004-2022 NetworkX Developers\n   Aric Hagberg <hagberg@lanl.gov>\n   Dan Schult <dschult@colgate.edu>\n   Pieter Swart <swart@lanl.gov>\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+          "hashes": {
+            "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "mpmath",
+        "version": "1.3.0",
+        "summary": "Python library for arbitrary-precision floating-point arithmetic",
+        "home_page": "http://mpmath.org/",
+        "author": "Fredrik Johansson",
+        "author_email": "fredrik.johansson@gmail.com",
+        "license": "BSD",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "License :: OSI Approved :: BSD License",
+          "Topic :: Scientific/Engineering :: Mathematics",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2",
+          "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.5",
+          "Programming Language :: Python :: 3.6",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy"
+        ],
+        "requires_dist": [
+          "pytest (>=4.6) ; extra == 'develop'",
+          "pycodestyle ; extra == 'develop'",
+          "pytest-cov ; extra == 'develop'",
+          "codecov ; extra == 'develop'",
+          "wheel ; extra == 'develop'",
+          "sphinx ; extra == 'docs'",
+          "gmpy2 (>=2.1.0a4) ; (platform_python_implementation != \"PyPy\") and extra == 'gmpy'",
+          "pytest (>=4.6) ; extra == 'tests'"
+        ],
+        "project_url": [
+          "Source, https://github.com/fredrik-johansson/mpmath",
+          "Tracker, https://github.com/fredrik-johansson/mpmath/issues",
+          "Documentation, http://mpmath.org/doc/current/"
+        ],
+        "provides_extra": [
+          "develop",
+          "docs",
+          "gmpy",
+          "tests"
+        ],
+        "description": "mpmath\n======\n\n|pypi version| |Build status| |Code coverage status| |Zenodo Badge|\n\n.. |pypi version| image:: https://img.shields.io/pypi/v/mpmath.svg\n   :target: https://pypi.python.org/pypi/mpmath\n.. |Build status| image:: https://github.com/fredrik-johansson/mpmath/workflows/test/badge.svg\n   :target: https://github.com/fredrik-johansson/mpmath/actions?workflow=test\n.. |Code coverage status| image:: https://codecov.io/gh/fredrik-johansson/mpmath/branch/master/graph/badge.svg\n   :target: https://codecov.io/gh/fredrik-johansson/mpmath\n.. |Zenodo Badge| image:: https://zenodo.org/badge/2934512.svg\n   :target: https://zenodo.org/badge/latestdoi/2934512\n\nA Python library for arbitrary-precision floating-point arithmetic.\n\nWebsite: http://mpmath.org/\nMain author: Fredrik Johansson <fredrik.johansson@gmail.com>\n\nMpmath is free software released under the New BSD License (see the\nLICENSE file for details)\n\n0. History and credits\n----------------------\n\nThe following people (among others) have contributed major patches\nor new features to mpmath:\n\n* Pearu Peterson <pearu.peterson@gmail.com>\n* Mario Pernici <mario.pernici@mi.infn.it>\n* Ondrej Certik <ondrej@certik.cz>\n* Vinzent Steinberg <vinzent.steinberg@gmail.cm>\n* Nimish Telang <ntelang@gmail.com>\n* Mike Taschuk <mtaschuk@ece.ualberta.ca>\n* Case Van Horsen <casevh@gmail.com>\n* Jorn Baayen <jorn.baayen@gmail.com>\n* Chris Smith <smichr@gmail.com>\n* Juan Arias de Reyna <arias@us.es>\n* Ioannis Tziakos <itziakos@gmail.com>\n* Aaron Meurer <asmeurer@gmail.com>\n* Stefan Krastanov <krastanov.stefan@gmail.com>\n* Ken Allen <ken.allen@sbcglobal.net>\n* Timo Hartmann <thartmann15@gmail.com>\n* Sergey B Kirpichev <skirpichev@gmail.com>\n* Kris Kuhlman <kristopher.kuhlman@gmail.com>\n* Paul Masson <paulmasson@analyticphysics.com>\n* Michael Kagalenko <michael.kagalenko@gmail.com>\n* Jonathan Warner <warnerjon12@gmail.com>\n* Max Gaukler <max.gaukler@fau.de>\n* Guillermo Navas-Palencia <g.navas.palencia@gmail.com>\n* Nike Dattani <nike@hpqc.org>\n\nNumerous other people have contributed by reporting bugs,\nrequesting new features, or suggesting improvements to the\ndocumentation.\n\nFor a detailed changelog, including individual contributions,\nsee the CHANGES file.\n\nFredrik's work on mpmath during summer 2008 was sponsored by Google\nas part of the Google Summer of Code program.\n\nFredrik's work on mpmath during summer 2009 was sponsored by the\nAmerican Institute of Mathematics under the support of the National Science\nFoundation Grant No. 0757627 (FRG: L-functions and Modular Forms).\n\nAny opinions, findings, and conclusions or recommendations expressed in this\nmaterial are those of the author(s) and do not necessarily reflect the\nviews of the sponsors.\n\nCredit also goes to:\n\n* The authors of the GMP library and the Python wrapper\n  gmpy, enabling mpmath to become much faster at\n  high precision\n* The authors of MPFR, pari/gp, MPFUN, and other arbitrary-\n  precision libraries, whose documentation has been helpful\n  for implementing many of the algorithms in mpmath\n* Wikipedia contributors; Abramowitz & Stegun; Gradshteyn & Ryzhik;\n  Wolfram Research for MathWorld and the Wolfram Functions site.\n  These are the main references used for special functions\n  implementations.\n* George Brandl for developing the Sphinx documentation tool\n  used to build mpmath's documentation\n\nRelease history:\n\n* Version 1.3.0 released on March 7, 2023\n* Version 1.2.0 released on February 1, 2021\n* Version 1.1.0 released on December 11, 2018\n* Version 1.0.0 released on September 27, 2017\n* Version 0.19 released on June 10, 2014\n* Version 0.18 released on December 31, 2013\n* Version 0.17 released on February 1, 2011\n* Version 0.16 released on September 24, 2010\n* Version 0.15 released on June 6, 2010\n* Version 0.14 released on February 5, 2010\n* Version 0.13 released on August 13, 2009\n* Version 0.12 released on June 9, 2009\n* Version 0.11 released on January 26, 2009\n* Version 0.10 released on October 15, 2008\n* Version 0.9 released on August 23, 2008\n* Version 0.8 released on April 20, 2008\n* Version 0.7 released on March 12, 2008\n* Version 0.6 released on January 13, 2008\n* Version 0.5 released on November 24, 2007\n* Version 0.4 released on November 3, 2007\n* Version 0.3 released on October 5, 2007\n* Version 0.2 released on October 2, 2007\n* Version 0.1 released on September 27, 2007\n\n1. Download & installation\n--------------------------\n\nMpmath requires Python 2.7 or 3.5 (or later versions). It has been tested\nwith CPython 2.7, 3.5 through 3.7 and for PyPy.\n\nThe latest release of mpmath can be downloaded from the mpmath\nwebsite and from https://github.com/fredrik-johansson/mpmath/releases\n\nIt should also be available in the Python Package Index at\nhttps://pypi.python.org/pypi/mpmath\n\nTo install latest release of Mpmath with pip, simply run\n\n``pip install mpmath``\n\nOr unpack the mpmath archive and run\n\n``python setup.py install``\n\nMpmath can also be installed using\n\n``python -m easy_install mpmath``\n\nThe latest development code is available from\nhttps://github.com/fredrik-johansson/mpmath\n\nSee the main documentation for more detailed instructions.\n\n2. Running tests\n----------------\n\nThe unit tests in mpmath/tests/ can be run via the script\nruntests.py, but it is recommended to run them with py.test\n(https://pytest.org/), especially\nto generate more useful reports in case there are failures.\n\nYou may also want to check out the demo scripts in the demo\ndirectory.\n\nThe master branch is automatically tested by Travis CI.\n\n3. Documentation\n----------------\n\nDocumentation in reStructuredText format is available in the\ndoc directory included with the source package. These files\nare human-readable, but can be compiled to prettier HTML using\nthe build.py script (requires Sphinx, http://sphinx.pocoo.org/).\n\nSee setup.txt in the documentation for more information.\n\nThe most recent documentation is also available in HTML format:\n\nhttp://mpmath.org/doc/current/\n\n4. Known problems\n-----------------\n\nMpmath is a work in progress. Major issues include:\n\n* Some functions may return incorrect values when given extremely\n  large arguments or arguments very close to singularities.\n\n* Directed rounding works for arithmetic operations. It is implemented\n  heuristically for other operations, and their results may be off by one\n  or two units in the last place (even if otherwise accurate).\n\n* Some IEEE 754 features are not available. Inifinities and NaN are\n  partially supported; denormal rounding is currently not available\n  at all.\n\n* The interface for switching precision and rounding is not finalized.\n  The current method is not threadsafe.\n\n5. Help and bug reports\n-----------------------\n\nGeneral questions and comments can be sent to the mpmath mailinglist,\nmpmath@googlegroups.com\n\nYou can also report bugs and send patches to the mpmath issue tracker,\nhttps://github.com/fredrik-johansson/mpmath/issues\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/ee/86/032133892a5de43b5a98200b01aadcad68cc255e274a762f08b8a76d2912/filelock-4.1.0-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=2ce9818e3e2d8f284c1a964414447ef148d42a5fd5e2a477a7118e574b293ec1",
+          "hashes": {
+            "sha256": "2ce9818e3e2d8f284c1a964414447ef148d42a5fd5e2a477a7118e574b293ec1"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "filelock",
+        "version": "4.1.0",
+        "summary": "A platform independent file lock.",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "application",
+          "cache",
+          "directory",
+          "log",
+          "user"
+        ],
+        "maintainer_email": "Bernát Gábor <gaborjbernat@gmail.com>",
+        "license_expression": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: 3.15",
+          "Topic :: Internet",
+          "Topic :: Software Development :: Libraries",
+          "Topic :: System"
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Documentation, https://py-filelock.readthedocs.io",
+          "Homepage, https://github.com/tox-dev/py-filelock",
+          "Source, https://github.com/tox-dev/py-filelock",
+          "Tracker, https://github.com/tox-dev/py-filelock/issues"
+        ],
+        "description": "# filelock\n\n[![PyPI](https://img.shields.io/pypi/v/filelock)](https://pypi.org/project/filelock/)\n[![Supported Python versions](https://img.shields.io/pypi/pyversions/filelock.svg)](https://pypi.org/project/filelock/)\n[![Documentation status](https://readthedocs.org/projects/py-filelock/badge/?version=latest)](https://py-filelock.readthedocs.io/en/latest/?badge=latest)\n[![Downloads](https://static.pepy.tech/badge/filelock/month)](https://pepy.tech/project/filelock)\n[![check](https://github.com/tox-dev/py-filelock/actions/workflows/check.yaml/badge.svg)](https://github.com/tox-dev/py-filelock/actions/workflows/check.yaml)\n\nFor more information checkout the [official documentation](https://py-filelock.readthedocs.io/en/latest/index.html).\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+          "hashes": {
+            "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "typing_extensions",
+        "version": "4.16.0",
+        "summary": "Backported and Experimental Type Hints for Python 3.9+",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "annotations",
+          "backport",
+          "checker",
+          "checking",
+          "function",
+          "hinting",
+          "hints",
+          "type",
+          "typechecking",
+          "typehinting",
+          "typehints",
+          "typing"
+        ],
+        "author_email": "\"Guido van Rossum, Jukka Lehtosalo, Łukasz Langa, Michael Lee\" <levkivskyi@gmail.com>",
+        "license_expression": "PSF-2.0",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Console",
+          "Intended Audience :: Developers",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: 3.15",
+          "Topic :: Software Development"
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "Bug Tracker, https://github.com/python/typing_extensions/issues",
+          "Changes, https://github.com/python/typing_extensions/blob/main/CHANGELOG.md",
+          "Documentation, https://typing-extensions.readthedocs.io/",
+          "Home, https://github.com/python/typing_extensions",
+          "Q & A, https://github.com/python/typing/discussions",
+          "Repository, https://github.com/python/typing_extensions"
+        ],
+        "description": "# Typing Extensions\n\n[![Chat at https://gitter.im/python/typing](https://badges.gitter.im/python/typing.svg)](https://gitter.im/python/typing)\n\n[Documentation](https://typing-extensions.readthedocs.io/en/latest/#) –\n[PyPI](https://pypi.org/project/typing-extensions/)\n\n## Overview\n\nThe `typing_extensions` module serves two related purposes:\n\n- Enable use of new type system features on older Python versions. For example,\n  `typing.TypeGuard` is new in Python 3.10, but `typing_extensions` allows\n  users on previous Python versions to use it too.\n- Enable experimentation with new type system PEPs before they are accepted and\n  added to the `typing` module.\n\n`typing_extensions` is treated specially by static type checkers such as\nmypy and pyright. Objects defined in `typing_extensions` are treated the same\nway as equivalent forms in `typing`.\n\n`typing_extensions` uses\n[Semantic Versioning](https://semver.org/). The\nmajor version will be incremented only for backwards-incompatible changes.\nTherefore, it's safe to depend\non `typing_extensions` like this: `typing_extensions ~=x.y`,\nwhere `x.y` is the first version that includes all features you need.\n[This](https://packaging.python.org/en/latest/specifications/version-specifiers/#compatible-release)\nis equivalent to `typing_extensions >=x.y, <(x+1)`. Do not depend on `~= x.y.z`\nunless you really know what you're doing; that defeats the purpose of\nsemantic versioning.\n\n## Included items\n\nSee [the documentation](https://typing-extensions.readthedocs.io/en/latest/#) for a\ncomplete listing of module contents.\n\n## Contributing\n\nSee [CONTRIBUTING.md](https://github.com/python/typing_extensions/blob/main/CONTRIBUTING.md)\nfor how to contribute to `typing_extensions`.\n\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+          "hashes": {
+            "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "Jinja2",
+        "version": "3.1.6",
+        "summary": "A very fast and expressive template engine.",
+        "description_content_type": "text/markdown",
+        "maintainer_email": "Pallets <contact@palletsprojects.com>",
+        "license_file": [
+          "LICENSE.txt"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Web Environment",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: BSD License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+          "Topic :: Text Processing :: Markup :: HTML",
+          "Typing :: Typed"
+        ],
+        "requires_dist": [
+          "MarkupSafe>=2.0",
+          "Babel>=2.7 ; extra == \"i18n\""
+        ],
+        "requires_python": ">=3.7",
+        "project_url": [
+          "Changes, https://jinja.palletsprojects.com/changes/",
+          "Chat, https://discord.gg/pallets",
+          "Documentation, https://jinja.palletsprojects.com/",
+          "Donate, https://palletsprojects.com/donate",
+          "Source, https://github.com/pallets/jinja/"
+        ],
+        "provides_extra": [
+          "i18n"
+        ],
+        "description": "# Jinja\n\nJinja is a fast, expressive, extensible templating engine. Special\nplaceholders in the template allow writing code similar to Python\nsyntax. Then the template is passed data to render the final document.\n\nIt includes:\n\n-   Template inheritance and inclusion.\n-   Define and import macros within templates.\n-   HTML templates can use autoescaping to prevent XSS from untrusted\n    user input.\n-   A sandboxed environment can safely render untrusted templates.\n-   AsyncIO support for generating templates and calling async\n    functions.\n-   I18N support with Babel.\n-   Templates are compiled to optimized Python code just-in-time and\n    cached, or can be compiled ahead-of-time.\n-   Exceptions point to the correct line in templates to make debugging\n    easier.\n-   Extensible filters, tests, functions, and even syntax.\n\nJinja's philosophy is that while application logic belongs in Python if\npossible, it shouldn't make the template designer's job difficult by\nrestricting functionality too much.\n\n\n## In A Nutshell\n\n```jinja\n{% extends \"base.html\" %}\n{% block title %}Members{% endblock %}\n{% block content %}\n  <ul>\n  {% for user in users %}\n    <li><a href=\"{{ user.url }}\">{{ user.username }}</a></li>\n  {% endfor %}\n  </ul>\n{% endblock %}\n```\n\n## Donate\n\nThe Pallets organization develops and supports Jinja and other popular\npackages. In order to grow the community of contributors and users, and\nallow the maintainers to devote more time to the projects, [please\ndonate today][].\n\n[please donate today]: https://palletsprojects.com/donate\n\n## Contributing\n\nSee our [detailed contributing documentation][contrib] for many ways to\ncontribute, including reporting issues, requesting features, asking or answering\nquestions, and making PRs.\n\n[contrib]: https://palletsprojects.com/contributing/\n\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/6c/c0/a98505f18594f1bce828bb159cec0fcf9860562f1a2c85913409fc8f3d9e/fsspec-2026.9.0-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f",
+          "hashes": {
+            "sha256": "8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "fsspec",
+        "version": "2026.9.0",
+        "summary": "File-system specification",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "file"
+        ],
+        "maintainer_email": "Martin Durant <mdurant@anaconda.com>",
+        "license_expression": "BSD-3-Clause",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 4 - Beta",
+          "Intended Audience :: Developers",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14"
+        ],
+        "requires_dist": [
+          "adlfs; extra == 'abfs'",
+          "adlfs; extra == 'adl'",
+          "pyarrow>=1; extra == 'arrow'",
+          "dask; extra == 'dask'",
+          "distributed; extra == 'dask'",
+          "pre-commit; extra == 'dev'",
+          "ruff>=0.5; extra == 'dev'",
+          "numpydoc; extra == 'doc'",
+          "sphinx; extra == 'doc'",
+          "sphinx-design; extra == 'doc'",
+          "sphinx-rtd-theme; extra == 'doc'",
+          "yarl; extra == 'doc'",
+          "dropbox; extra == 'dropbox'",
+          "dropboxdrivefs; extra == 'dropbox'",
+          "requests; extra == 'dropbox'",
+          "adlfs; extra == 'full'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'full'",
+          "dask; extra == 'full'",
+          "distributed; extra == 'full'",
+          "dropbox; extra == 'full'",
+          "dropboxdrivefs; extra == 'full'",
+          "fusepy; extra == 'full'",
+          "gcsfs>=2026.4.0; extra == 'full'",
+          "libarchive-c; extra == 'full'",
+          "ocifs; extra == 'full'",
+          "panel; extra == 'full'",
+          "paramiko; extra == 'full'",
+          "pyarrow>=1; extra == 'full'",
+          "pygit2; extra == 'full'",
+          "requests; extra == 'full'",
+          "s3fs>=2026.6.0; extra == 'full'",
+          "smbprotocol; extra == 'full'",
+          "tqdm; extra == 'full'",
+          "fusepy; extra == 'fuse'",
+          "gcsfs>=2026.4.0; extra == 'gcs'",
+          "pygit2; extra == 'git'",
+          "requests; extra == 'github'",
+          "gcsfs>=2026.4.0; extra == 'gs'",
+          "panel; extra == 'gui'",
+          "pyarrow>=1; extra == 'hdfs'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'http'",
+          "libarchive-c; extra == 'libarchive'",
+          "ocifs; extra == 'oci'",
+          "s3fs>=2026.6.0; extra == 's3'",
+          "paramiko; extra == 'sftp'",
+          "smbprotocol; extra == 'smb'",
+          "paramiko; extra == 'ssh'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'test'",
+          "numpy; extra == 'test'",
+          "pytest; extra == 'test'",
+          "pytest-asyncio!=0.22.0; extra == 'test'",
+          "pytest-benchmark; extra == 'test'",
+          "pytest-cov; extra == 'test'",
+          "pytest-mock; extra == 'test'",
+          "pytest-recording; extra == 'test'",
+          "pytest-rerunfailures; extra == 'test'",
+          "requests; extra == 'test'",
+          "aiobotocore<3.0.0,>=2.5.4; extra == 'test-downstream'",
+          "dask[dataframe,test]; extra == 'test-downstream'",
+          "moto[server]<5,>4; extra == 'test-downstream'",
+          "pytest-timeout; extra == 'test-downstream'",
+          "xarray; extra == 'test-downstream'",
+          "zarr; extra == 'test-downstream'",
+          "adlfs; extra == 'test-full'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'test-full'",
+          "backports-zstd; (python_version < '3.14') and extra == 'test-full'",
+          "cloudpickle; extra == 'test-full'",
+          "dask; extra == 'test-full'",
+          "distributed; extra == 'test-full'",
+          "dropbox; extra == 'test-full'",
+          "dropboxdrivefs; extra == 'test-full'",
+          "fastparquet; extra == 'test-full'",
+          "fusepy; extra == 'test-full'",
+          "gcsfs>=2026.4.0; extra == 'test-full'",
+          "jinja2; extra == 'test-full'",
+          "kerchunk; extra == 'test-full'",
+          "libarchive-c; extra == 'test-full'",
+          "lz4; extra == 'test-full'",
+          "notebook; extra == 'test-full'",
+          "numpy; extra == 'test-full'",
+          "ocifs; extra == 'test-full'",
+          "pandas<3.0.0; extra == 'test-full'",
+          "panel; extra == 'test-full'",
+          "paramiko; extra == 'test-full'",
+          "pyarrow>=1; extra == 'test-full'",
+          "pyftpdlib; extra == 'test-full'",
+          "pygit2; extra == 'test-full'",
+          "pytest; extra == 'test-full'",
+          "pytest-asyncio!=0.22.0; extra == 'test-full'",
+          "pytest-benchmark; extra == 'test-full'",
+          "pytest-cov; extra == 'test-full'",
+          "pytest-mock; extra == 'test-full'",
+          "pytest-recording; extra == 'test-full'",
+          "pytest-rerunfailures; extra == 'test-full'",
+          "python-snappy; extra == 'test-full'",
+          "requests; extra == 'test-full'",
+          "s3fs>=2026.6.0; extra == 'test-full'",
+          "smbprotocol; extra == 'test-full'",
+          "tqdm; extra == 'test-full'",
+          "urllib3; extra == 'test-full'",
+          "zarr<3.2.0; extra == 'test-full'",
+          "zstandard; (python_version < '3.14') and extra == 'test-full'",
+          "tqdm; extra == 'tqdm'"
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Changelog, https://filesystem-spec.readthedocs.io/en/latest/changelog.html",
+          "Documentation, https://filesystem-spec.readthedocs.io/en/latest/",
+          "Homepage, https://github.com/fsspec/filesystem_spec"
+        ],
+        "provides_extra": [
+          "abfs",
+          "adl",
+          "arrow",
+          "dask",
+          "dev",
+          "doc",
+          "dropbox",
+          "entrypoints",
+          "full",
+          "fuse",
+          "gcs",
+          "git",
+          "github",
+          "gs",
+          "gui",
+          "hdfs",
+          "http",
+          "libarchive",
+          "oci",
+          "s3",
+          "sftp",
+          "smb",
+          "ssh",
+          "test",
+          "test-downstream",
+          "test-full",
+          "tqdm"
+        ],
+        "description": "# filesystem_spec\n\n[![PyPI version](https://badge.fury.io/py/fsspec.svg)](https://pypi.python.org/pypi/fsspec/)\n[![Anaconda-Server Badge](https://anaconda.org/conda-forge/fsspec/badges/version.svg)](https://anaconda.org/conda-forge/fsspec)\n![Build](https://github.com/fsspec/filesystem_spec/workflows/CI/badge.svg)\n[![Docs](https://readthedocs.org/projects/filesystem-spec/badge/?version=latest)](https://filesystem-spec.readthedocs.io/en/latest/?badge=latest)\n\nA specification for pythonic filesystems.\n\n## Install\n\n```bash\npip install fsspec\n```\n\nwould install the base fsspec. Various optionally supported features might require specification of custom\nextra require, e.g. `pip install fsspec[ssh]` will install dependencies for `ssh` backends support.\nUse `pip install fsspec[full]` for installation of all known extra dependencies.\n\nUp-to-date package also provided through conda-forge distribution:\n\n```bash\nconda install -c conda-forge fsspec\n```\n\n\n## Purpose\n\nTo produce a template or specification for a file-system interface, that specific implementations should follow,\nso that applications making use of them can rely on a common behaviour and not have to worry about the specific\ninternal implementation decisions with any given backend. Many such implementations are included in this package,\nor in sister projects such as `s3fs` and `gcsfs`.\n\nIn addition, if this is well-designed, then additional functionality, such as a key-value store or FUSE\nmounting of the file-system implementation may be available for all implementations \"for free\".\n\n## Documentation\n\nPlease refer to [RTD](https://filesystem-spec.readthedocs.io/en/latest/?badge=latest)\n\n## Develop\n\nfsspec uses GitHub Actions for CI. Environment files can be found\nin the \"ci/\" directory. Note that the main environment is called \"py38\",\nbut it is expected that the version of python installed be adjustable at\nCI runtime. For local use, pick a version suitable for you.\n\n```bash\n# For a new environment (mamba / conda).\nmamba create -n fsspec -c conda-forge  python=3.10 -y\nconda activate fsspec\n\n# Standard dev install with docs and tests.\npip install -e \".[dev,doc,test]\"\n\n# Full tests except for downstream\npip install s3fs\npip uninstall s3fs\npip install -e .[dev,doc,test_full]\npip install s3fs --no-deps\npytest -v\n\n# Downstream tests.\nsh install_s3fs.sh\n# Windows powershell.\ninstall_s3fs.sh\n```\n\n### Testing\n\nTests can be run in the dev environment, if activated, via ``pytest fsspec``.\n\nThe full fsspec suite requires a system-level docker, docker-compose, and fuse\ninstallation. If only making changes to one backend implementation, it is\nnot generally necessary to run all tests locally.\n\nIt is expected that contributors ensure that any change to fsspec does not\ncause issues or regressions for either other fsspec-related packages such\nas gcsfs and s3fs, nor for downstream users of fsspec. The \"downstream\" CI\nrun and corresponding environment file run a set of tests from the dask\ntest suite, and very minimal tests against pandas and zarr from the\ntest_downstream.py module in this repo.\n\n### Code Formatting\n\nfsspec uses [Black](https://black.readthedocs.io/en/stable) to ensure\na consistent code format throughout the project.\nRun ``black fsspec`` from the root of the filesystem_spec repository to\nauto-format your code. Additionally, many editors have plugins that will apply\n``black`` as you edit files. ``black`` is included in the ``tox`` environments.\n\nOptionally, you may wish to setup [pre-commit hooks](https://pre-commit.com) to\nautomatically run ``black`` when you make a git commit.\nRun ``pre-commit install --install-hooks`` from the root of the\nfilesystem_spec repository to setup pre-commit hooks. ``black`` will now be run\nbefore you commit, reformatting any changed files. You can format without\ncommitting via ``pre-commit run`` or skip these checks with ``git commit\n--no-verify``.\n\n## Support\n\nWork on this repository is supported in part by:\n\n\"Anaconda, Inc. - Advancing AI through open source.\"\n\n<a href=\"https://anaconda.com/\"><img src=\"https://camo.githubusercontent.com/b8555ef2222598ed37ce38ac86955febbd25de7619931bb7dd3c58432181d3b6/68747470733a2f2f626565776172652e6f72672f636f6d6d756e6974792f6d656d626572732f616e61636f6e64612f616e61636f6e64612d6c617267652e706e67\" alt=\"anaconda logo\" width=\"40%\"/></a>\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/50/50/394a1c61c9b9972cb4f76875c332af7109bd39bdad09d3a0ec5327a339dc/markupsafe-3.0.4-cp310-cp310-win_amd64.whl",
+        "archive_info": {
+          "hash": "sha256=5c22873ad1f0532ba40fa1727f3c0fc1bbbaab6d373d4cbe3f0dc74b2e2521c7",
+          "hashes": {
+            "sha256": "5c22873ad1f0532ba40fa1727f3c0fc1bbbaab6d373d4cbe3f0dc74b2e2521c7"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "MarkupSafe",
+        "version": "3.0.4",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "Safely add untrusted strings to HTML/XML markup.",
+        "description_content_type": "text/markdown",
+        "maintainer_email": "Pallets <contact@palletsprojects.com>",
+        "license_expression": "BSD-3-Clause",
+        "license_file": [
+          "LICENSE.txt"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Web Environment",
+          "Intended Audience :: Developers",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+          "Topic :: Text Processing :: Markup :: HTML",
+          "Typing :: Typed"
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "Donate, https://palletsprojects.com/donate",
+          "Documentation, https://markupsafe.palletsprojects.com/",
+          "Changes, https://markupsafe.palletsprojects.com/page/changes/",
+          "Source, https://github.com/pallets/markupsafe/",
+          "Chat, https://discord.gg/pallets"
+        ],
+        "description": "<div align=\"center\"><img src=\"https://raw.githubusercontent.com/pallets/markupsafe/refs/heads/stable/docs/_static/markupsafe-name.svg\" alt=\"\" height=\"150\"></div>\r\n\r\n# MarkupSafe\r\n\r\nMarkupSafe implements a text object that escapes characters so it is\r\nsafe to use in HTML and XML. Characters that have special meanings are\r\nreplaced so that they display as the actual characters. This mitigates\r\ninjection attacks, meaning untrusted user input can safely be displayed\r\non a page.\r\n\r\n\r\n## Examples\r\n\r\n```pycon\r\n>>> from markupsafe import Markup, escape\r\n\r\n>>> # escape replaces special characters and wraps in Markup\r\n>>> escape(\"<script>alert(document.cookie);</script>\")\r\nMarkup('&lt;script&gt;alert(document.cookie);&lt;/script&gt;')\r\n\r\n>>> # wrap in Markup to mark text \"safe\" and prevent escaping\r\n>>> Markup(\"<strong>Hello</strong>\")\r\nMarkup('<strong>hello</strong>')\r\n\r\n>>> escape(Markup(\"<strong>Hello</strong>\"))\r\nMarkup('<strong>hello</strong>')\r\n\r\n>>> # Markup is a str subclass\r\n>>> # methods and operators escape their arguments\r\n>>> template = Markup(\"Hello <em>{name}</em>\")\r\n>>> template.format(name='\"World\"')\r\nMarkup('Hello <em>&#34;World&#34;</em>')\r\n```\r\n\r\n## Donate\r\n\r\nThe Pallets organization develops and supports MarkupSafe and other\r\npopular packages. In order to grow the community of contributors and\r\nusers, and allow the maintainers to devote more time to the projects,\r\n[please donate today][].\r\n\r\n[please donate today]: https://palletsprojects.com/donate\r\n\r\n## Contributing\r\n\r\nSee our [detailed contributing documentation][contrib] for many ways to\r\ncontribute, including reporting issues, requesting features, asking or answering\r\nquestions, and making PRs.\r\n\r\n[contrib]: https://palletsprojects.com/contributing/\r\n"
+      }
+    }
+  ],
+  "environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.10.20",
+    "os_name": "nt",
+    "platform_machine": "AMD64",
+    "platform_release": "10",
+    "platform_system": "Windows",
+    "platform_version": "10.0.26200",
+    "python_full_version": "3.10.20",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.10",
+    "sys_platform": "win32"
+  }
+}

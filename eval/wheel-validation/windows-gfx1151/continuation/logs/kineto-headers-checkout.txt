@@ -1,0 +1,6 @@
+error: unknown option `no-cone'
+usage: git sparse-checkout add [--skip-checks] (--stdin | <patterns>)
+
+    --skip-checks         skip some sanity checks on the given paths that might give false positives
+    --[no-]stdin          read patterns from standard in
+

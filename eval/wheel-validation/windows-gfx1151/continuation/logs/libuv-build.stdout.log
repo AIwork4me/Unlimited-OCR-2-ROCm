@@ -1,0 +1,501 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.41
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+-- Building for: Visual Studio 17 2022
+-- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.26200.
+-- The C compiler identification is MSVC 19.44.35229.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test UV_LINT_W4
+-- Performing Test UV_LINT_W4 - Success
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC - Success
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC - Success
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC - Success
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC - Success
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC - Success
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC - Success
+-- Performing Test UV_LINT_NO_HIDES_LOCAL
+-- Performing Test UV_LINT_NO_HIDES_LOCAL - Success
+-- Performing Test UV_LINT_NO_HIDES_PARAM
+-- Performing Test UV_LINT_NO_HIDES_PARAM - Success
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL - Success
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC - Success
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC - Success
+-- Performing Test UV_LINT_WALL
+-- Performing Test UV_LINT_WALL - Success
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER - Failed
+-- Performing Test UV_LINT_STRICT_PROTOTYPES
+-- Performing Test UV_LINT_STRICT_PROTOTYPES - Failed
+-- Performing Test UV_LINT_EXTRA
+-- Performing Test UV_LINT_EXTRA - Failed
+-- Performing Test UV_LINT_UTF8_MSVC
+-- Performing Test UV_LINT_UTF8_MSVC - Success
+-- Performing Test UV_F_STRICT_ALIASING
+-- Performing Test UV_F_STRICT_ALIASING - Failed
+-- summary of build options:
+    Install prefix:  C:/Program Files (x86)/libuv
+    Target system:   Windows
+    Compiler:
+      C compiler:    C:/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe (MSVC)
+      CFLAGS:         /DWIN32 /D_WINDOWS
+
+-- Configuring done (28.6s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/b/libuv/build
+适用于 .NET Framework MSBuild 版本 17.14.60+43b635718
+
+  1>Checking Build System
+  Building Custom Rule C:/b/libuv/CMakeLists.txt
+  fs-poll.c
+  Building Custom Rule C:/b/libuv/CMakeLists.txt
+  fs-poll.c
+  idna.c
+  idna.c
+  inet.c
+  inet.c
+C:\b\libuv\src\fs-poll.c(200,23): warning C4244: “函数”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\fs-poll.c(200,23): warning C4244: “函数”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\fs-poll.c(203,30): warning C4244: “=”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(80,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(114,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(118,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(126,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(129,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(132,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(208,17): warning C4244: “=”: 从“unsigned int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(228,9): warning C4245: “=”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(394,53): warning C4244: “=”: 从“int”转换到“uint16_t”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(398,21): warning C4244: “=”: 从“int32_t”转换到“uint16_t”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(500,19): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(502,24): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(507,24): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\idna.c(515,24): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\fs-poll.c(203,30): warning C4244: “=”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(80,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(114,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(118,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(126,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(129,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(132,12): warning C4245: “return”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(208,17): warning C4244: “=”: 从“unsigned int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(228,9): warning C4245: “=”: 从“int”转换到“unsigned int”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(394,53): warning C4244: “=”: 从“int”转换到“uint16_t”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(398,21): warning C4244: “=”: 从“int32_t”转换到“uint16_t”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(500,19): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(502,24): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(507,24): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\idna.c(515,24): warning C4244: “=”: 从“int32_t”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\inet.c(160,15): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\inet.c(193,13): warning C4244: “=”: 从“unsigned int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\inet.c(187,34): warning C4244: “初始化”: 从“__int64”转换到“unsigned int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\inet.c(283,22): warning C4244: “初始化”: 从“__int64”转换到“const int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\inet.c(160,15): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\inet.c(193,13): warning C4244: “=”: 从“unsigned int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\inet.c(187,34): warning C4244: “初始化”: 从“__int64”转换到“unsigned int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\inet.c(283,22): warning C4244: “初始化”: 从“__int64”转换到“const int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  random.c
+  random.c
+  strscpy.c
+  strscpy.c
+  strtok.c
+  strtok.c
+  thread-common.c
+  thread-common.c
+  threadpool.c
+  threadpool.c
+  timer.c
+  timer.c
+  uv-common.c
+  uv-common.c
+C:\b\libuv\src\uv-common.c(170,14): warning C4245: “return”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\uv-common.c(178,14): warning C4245: “return”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\uv-common.c(257,26): warning C4244: “函数”: 从“int”转换到“u_short”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\uv-common.c(272,27): warning C4244: “函数”: 从“int”转换到“u_short”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\uv-common.c(718,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\uv-common.c(170,14): warning C4245: “return”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\uv-common.c(178,14): warning C4245: “return”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\uv-common.c(257,26): warning C4244: “函数”: 从“int”转换到“u_short”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\uv-common.c(272,27): warning C4244: “函数”: 从“int”转换到“u_short”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\uv-common.c(718,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  uv-data-getter-setters.c
+  uv-data-getter-setters.c
+  version.c
+  version.c
+  async.c
+  async.c
+  core.c
+  core.c
+C:\b\libuv\src\win\core.c(470,17): warning C4244: “=”: 从“uint64_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\core.c(564,17): warning C4244: “=”: 从“uint64_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+  detect-wakeup.c
+C:\b\libuv\src\win\core.c(470,17): warning C4244: “=”: 从“uint64_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\core.c(564,17): warning C4244: “=”: 从“uint64_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  detect-wakeup.c
+  dl.c
+  dl.c
+  error.c
+  error.c
+  fs.c
+  fs.c
+C:\b\libuv\src\win\fs.c(109,20): warning C4244: “+=”: 从“double”转换到“long”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(109,20): warning C4244: “+=”: 从“double”转换到“long”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(261,20): warning C4267: “=”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(261,20): warning C4267: “=”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(1281,7): warning C4245: “=”: 从“int”转换到“DWORD”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(1281,7): warning C4245: “=”: 从“int”转换到“DWORD”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(1590,35): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(1590,35): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2103,47): warning C4267: “函数”: 从“size_t”转换到“unsigned int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2149,5): warning C4245: “=”: 从“int”转换到“DWORD”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2103,47): warning C4267: “函数”: 从“size_t”转换到“unsigned int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2149,5): warning C4245: “=”: 从“int”转换到“DWORD”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2253,3): warning C4244: “初始化”: 从“double”转换到“int64_t”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2254,3): warning C4244: “初始化”: 从“double”转换到“int64_t”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2373,16): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2253,3): warning C4244: “初始化”: 从“double”转换到“int64_t”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2254,3): warning C4244: “初始化”: 从“double”转换到“int64_t”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2373,16): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2430,64): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2431,62): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2459,59): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2430,64): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2431,62): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2459,59): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2460,57): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2460,57): warning C4267: “=”: 从“size_t”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2473,31): warning C4244: “=”: 从“int”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2473,31): warning C4244: “=”: 从“int”转换到“USHORT”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2735,28): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2735,28): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2884,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2889,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2896,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2929,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2962,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2884,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2889,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2974,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2896,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2977,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2989,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2993,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2929,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3007,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3010,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3024,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3027,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3038,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2962,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3041,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3053,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2974,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2977,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3057,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3070,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3072,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(2989,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(2993,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3089,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3007,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3010,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3102,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3024,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3027,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3038,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3113,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3041,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3053,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3057,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3116,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3070,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3128,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3072,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3132,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3144,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3147,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3089,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3102,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3165,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3168,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3113,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3116,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3180,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3183,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3128,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3190,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3132,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3144,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3202,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3205,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3147,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3216,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3165,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3168,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3180,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3219,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3183,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3190,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3230,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3202,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3205,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3233,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3216,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3219,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3240,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3252,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3230,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3233,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3255,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3240,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3262,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3252,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3255,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3269,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3262,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3278,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3269,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3302,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3278,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3306,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3302,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3306,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3316,32): warning C4267: “=”: 从“size_t”转换到“ULONG”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3317,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3316,32): warning C4267: “=”: 从“size_t”转换到“ULONG”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3317,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3332,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3336,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3332,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3336,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3348,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3348,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3352,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3352,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3361,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3361,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3373,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3373,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3378,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3378,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3388,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3388,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3399,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3404,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3399,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3418,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3421,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(3404,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3418,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(3421,3): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  fs-event.c
+  fs-event.c
+C:\b\libuv\src\win\fs-event.c(205,49): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs-event.c(473,59): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs-event.c(205,49): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs-event.c(473,59): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  getaddrinfo.c
+  getaddrinfo.c
+C:\b\libuv\src\win\getaddrinfo.c(137,26): warning C4244: “=”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(181,38): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(268,14): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(276,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(362,40): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(137,26): warning C4244: “=”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(181,38): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(268,14): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(276,15): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\getaddrinfo.c(362,40): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+  正在生成代码...
+  正在生成代码...
+C:\b\libuv\src\win\fs.c(1048,1): warning C4701: 使用了可能未初始化的局部变量“original_position” [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(843,1): warning C4701: 使用了可能未初始化的局部变量“original_position” [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\fs.c(843,1): warning C4701: 使用了可能未初始化的局部变量“original_position” [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\fs.c(1048,1): warning C4701: 使用了可能未初始化的局部变量“original_position” [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\core.c(470,1): warning C4701: 使用了可能未初始化的局部变量“user_timeout” [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\core.c(564,1): warning C4701: 使用了可能未初始化的局部变量“user_timeout” [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\core.c(470,1): warning C4701: 使用了可能未初始化的局部变量“user_timeout” [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\core.c(564,1): warning C4701: 使用了可能未初始化的局部变量“user_timeout” [C:\b\libuv\build\uv_a.vcxproj]
+  正在编译...
+  getnameinfo.c
+  正在编译...
+  getnameinfo.c
+C:\b\libuv\src\win\getnameinfo.c(62,38): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\getnameinfo.c(69,41): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\getnameinfo.c(62,38): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\getnameinfo.c(69,41): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+  handle.c
+  handle.c
+  loop-watcher.c
+  loop-watcher.c
+  pipe.c
+  pipe.c
+C:\b\libuv\src\win\pipe.c(1307,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\pipe.c(1326,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\pipe.c(1307,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\pipe.c(1326,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\pipe.c(2427,49): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\pipe.c(2427,49): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+  thread.c
+  thread.c
+C:\b\libuv\src\win\thread.c(207,25): warning C4334: “<<”: 32 位移位的结果被隐式转换为 64 位(是否希望进行 64 位移位?) [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\thread.c(208,25): warning C4334: “<<”: 32 位移位的结果被隐式转换为 64 位(是否希望进行 64 位移位?) [C:\b\libuv\build\uv.vcxproj]
+  poll.c
+C:\b\libuv\src\win\thread.c(207,25): warning C4334: “<<”: 32 位移位的结果被隐式转换为 64 位(是否希望进行 64 位移位?) [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\thread.c(208,25): warning C4334: “<<”: 32 位移位的结果被隐式转换为 64 位(是否希望进行 64 位移位?) [C:\b\libuv\build\uv_a.vcxproj]
+  poll.c
+C:\b\libuv\src\win\poll.c(495,20): warning C4244: “=”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  process.c
+C:\b\libuv\src\win\poll.c(495,20): warning C4244: “=”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+  process.c
+C:\b\libuv\src\win\process.c(534,14): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\process.c(614,13): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\process.c(683,16): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\process.c(722,41): warning C4267: “函数”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\process.c(758,41): warning C4267: “函数”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\process.c(534,14): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\process.c(614,13): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\process.c(683,16): warning C4244: “return”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\process.c(722,41): warning C4267: “函数”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\process.c(758,41): warning C4267: “函数”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  process-stdio.c
+  process-stdio.c
+  signal.c
+  signal.c
+C:\b\libuv\src\win\signal.c(212,9): warning C4189: “r”: 局部变量已初始化但不引用 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\signal.c(212,9): warning C4189: “r”: 局部变量已初始化但不引用 [C:\b\libuv\build\uv_a.vcxproj]
+  snprintf.c
+  snprintf.c
+  stream.c
+  stream.c
+  tcp.c
+  tcp.c
+C:\b\libuv\src\win\tcp.c(354,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tcp.c(373,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tcp.c(354,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tcp.c(373,55): warning C4244: “函数”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+  tty.c
+  tty.c
+C:\b\libuv\src\win\tty.c(975,41): warning C4244: “初始化”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1116,5): warning C4244: “=”: 从“UINT”转换到“WORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1356,54): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1356,63): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1357,52): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1357,61): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1453,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1462,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1472,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1477,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1564,61): warning C4244: “=”: 从“int”转换到“SHORT”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(1886,40): warning C4244: “=”: 从“unsigned int”转换到“unsigned short”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(2213,10): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(975,41): warning C4244: “初始化”: 从“ULONG_PTR”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1116,5): warning C4244: “=”: 从“UINT”转换到“WORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1356,54): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1356,63): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1357,52): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1357,61): warning C4244: “函数”: 从“int”转换到“unsigned char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1453,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1462,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1472,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1477,22): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1564,61): warning C4244: “=”: 从“int”转换到“SHORT”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(1886,40): warning C4244: “=”: 从“unsigned int”转换到“unsigned short”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(2213,10): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+  udp.c
+  udp.c
+  util.c
+  util.c
+C:\b\libuv\src\win\util.c(119,54): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(362,12): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(119,54): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(362,12): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(761,17): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(802,32): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(761,17): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(802,32): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(989,22): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1037,13): warning C4244: “=”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(989,22): warning C4267: “函数”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1037,13): warning C4244: “=”: 从“ssize_t”转换到“int”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1131,39): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1138,43): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1146,14): warning C4245: “=”: 从“int”转换到“unsigned long”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1147,14): warning C4245: “=”: 从“int”转换到“unsigned long”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1131,39): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1138,43): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1196,41): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1146,14): warning C4245: “=”: 从“int”转换到“unsigned long”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1147,14): warning C4245: “=”: 从“int”转换到“unsigned long”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1196,41): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1271,16): warning C4267: “=”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1271,16): warning C4267: “=”: 从“size_t”转换到“DWORD”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1372,38): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1372,38): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1542,34): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1557,32): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1542,34): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1557,32): warning C4245: “函数”: 从“int”转换到“size_t”，有符号/无符号不匹配 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1602,34): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\util.c(1602,34): warning C4244: “=”: 从“int”转换到“char”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1661,30): warning C4267: “函数”: 从“size_t”转换到“ULONG”，可能丢失数据 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\util.c(1661,30): warning C4267: “函数”: 从“size_t”转换到“ULONG”，可能丢失数据 [C:\b\libuv\build\uv.vcxproj]
+  winapi.c
+  winapi.c
+  winsock.c
+  winsock.c
+  正在生成代码...
+  正在生成代码...
+C:\b\libuv\src\win\winsock.c(518,1): warning C4701: 使用了可能未初始化的局部变量“iosb” [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\winsock.c(518,1): warning C4701: 使用了可能未初始化的局部变量“iosb” [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\tty.c(2386,1): warning C4702: 无法访问的代码 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\tty.c(2386,1): warning C4702: 无法访问的代码 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\process-stdio.c(260,1): warning C4701: 使用了可能未初始化的局部变量“fdopt” [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\process-stdio.c(260,1): warning C4701: 使用了可能未初始化的局部变量“fdopt” [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\thread.c(421,1): warning C4702: 无法访问的代码 [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\thread.c(421,1): warning C4702: 无法访问的代码 [C:\b\libuv\build\uv.vcxproj]
+C:\b\libuv\src\win\pipe.c(821,1): warning C4701: 使用了可能未初始化的局部变量“duplex_flags” [C:\b\libuv\build\uv_a.vcxproj]
+C:\b\libuv\src\win\pipe.c(821,1): warning C4701: 使用了可能未初始化的局部变量“duplex_flags” [C:\b\libuv\build\uv.vcxproj]
+    正在创建库 C:/b/libuv/build/Release/uv.lib 和对象 C:/b/libuv/build/Release/uv.exp
+  uv_a.vcxproj -> C:\b\libuv\build\Release\libuv.lib
+  uv.vcxproj -> C:\b\libuv\build\Release\uv.dll
+  Building Custom Rule C:/b/libuv/CMakeLists.txt
+-- Installing: C:\b\libuv-install/include
+-- Installing: C:\b\libuv-install/include/uv
+-- Installing: C:\b\libuv-install/include/uv/aix.h
+-- Installing: C:\b\libuv-install/include/uv/bsd.h
+-- Installing: C:\b\libuv-install/include/uv/darwin.h
+-- Installing: C:\b\libuv-install/include/uv/errno.h
+-- Installing: C:\b\libuv-install/include/uv/linux.h
+-- Installing: C:\b\libuv-install/include/uv/os390.h
+-- Installing: C:\b\libuv-install/include/uv/posix.h
+-- Installing: C:\b\libuv-install/include/uv/sunos.h
+-- Installing: C:\b\libuv-install/include/uv/threadpool.h
+-- Installing: C:\b\libuv-install/include/uv/tree.h
+-- Installing: C:\b\libuv-install/include/uv/unix.h
+-- Installing: C:\b\libuv-install/include/uv/version.h
+-- Installing: C:\b\libuv-install/include/uv/win.h
+-- Installing: C:\b\libuv-install/include/uv.h
+-- Installing: C:\b\libuv-install/share/doc/libuv/LICENSE
+-- Installing: C:\b\libuv-install/share/doc/libuv/LICENSE-extra
+-- Installing: C:\b\libuv-install/lib/pkgconfig/libuv-static.pc
+-- Installing: C:\b\libuv-install/lib/libuv.lib
+-- Installing: C:\b\libuv-install/lib/cmake/libuv/libuvConfig.cmake
+-- Installing: C:\b\libuv-install/lib/cmake/libuv/libuvConfig-release.cmake
+-- Installing: C:\b\libuv-install/lib/pkgconfig/libuv.pc
+-- Installing: C:\b\libuv-install/lib/uv.lib
+-- Installing: C:\b\libuv-install/bin/uv.dll

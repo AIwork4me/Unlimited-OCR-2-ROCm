@@ -1,0 +1,12 @@
+Looking in indexes: https://repo.amd.com/rocm/whl-multi-arch/
+Looking in links: c:\b\wheels
+Collecting rocm==7.14.1 (from rocm[devel,device-gfx1151,libraries]==7.14.1)
+  Downloading rocm-7.14.1.tar.gz (24 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting rocm-sdk-core==7.14.1 (from rocm==7.14.1->rocm[devel,device-gfx1151,libraries]==7.14.1)
+  Downloading rocm_sdk_core-7.14.1-py3-none-win_amd64.whl (758.7 MB)

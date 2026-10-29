@@ -1,0 +1,24 @@
+{
+  "comment_text": null,
+  "core-metadata": {
+    "sha256": "243674e606b51e70e5858596c7bfc9b58875d531d56577927c0a9944693f6c2f"
+  },
+  "digests": {
+    "blake2b_256": "8572530900610650f54a35a19476eca5104f38555afccda1aa11a92ee14cb21d",
+    "md5": "bc8258d9913597a3ec18465f5bb37c6f",
+    "sha256": "503cf027cf9940d2ceaa1a93cfb5f8c8c7e6e90720a2850378f0b3f3b1e06826"
+  },
+  "downloads": -1,
+  "filename": "pandas-2.3.3-cp310-cp310-win_amd64.whl",
+  "has_sig": false,
+  "md5_digest": "bc8258d9913597a3ec18465f5bb37c6f",
+  "packagetype": "bdist_wheel",
+  "python_version": "cp310",
+  "requires_python": ">=3.9",
+  "size": 11346086,
+  "upload_time": "2025-09-29T23:18:18",
+  "upload_time_iso_8601": "2025-09-29T23:18:18.505871Z",
+  "url": "https://files.pythonhosted.org/packages/85/72/530900610650f54a35a19476eca5104f38555afccda1aa11a92ee14cb21d/pandas-2.3.3-cp310-cp310-win_amd64.whl",
+  "yanked": false,
+  "yanked_reason": null
+}

@@ -1,0 +1,170 @@
+curl: (28) Operation timed out after 30002 milliseconds with 990984 out of 1048576 bytes received
+complete 1 / 625 34
+complete 9 / 625 34
+complete 17 / 625 34
+curl: (28) Operation timed out after 30007 milliseconds with 163840 out of 1048576 bytes received
+complete 25 / 625 64
+complete 33 / 625 64
+complete 41 / 625 64
+curl: (28) Operation timed out after 30013 milliseconds with 486268 out of 1048576 bytes received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 55 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '57671680-58720255', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\55.headers', '-o', 'C:\\b\\sdk-parts1m\\55', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 49 / 625 101
+complete 57 / 625 101
+complete 65 / 625 101
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 67 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '70254592-71303167', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\67.headers', '-o', 'C:\\b\\sdk-parts1m\\67', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 73 / 625 121
+complete 81 / 625 121
+complete 89 / 625 121
+complete 97 / 625 125
+complete 105 / 625 125
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 106 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '111149056-112197631', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\106.headers', '-o', 'C:\\b\\sdk-parts1m\\106', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 112 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '117440512-118489087', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\112.headers', '-o', 'C:\\b\\sdk-parts1m\\112', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 122 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '127926272-128974847', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\122.headers', '-o', 'C:\\b\\sdk-parts1m\\122', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 113 / 625 157
+curl: (28) Operation timed out after 30006 milliseconds with 510839 out of 1048576 bytes received
+complete 121 / 625 171
+complete 129 / 625 171
+curl: (28) Operation timed out after 30009 milliseconds with 541480 out of 1048576 bytes received
+complete 137 / 625 180
+curl: (28) Operation timed out after 30010 milliseconds with 787552 out of 1048576 bytes received
+curl: (28) Operation timed out after 30011 milliseconds with 540672 out of 1048576 bytes received
+complete 145 / 625 209
+complete 153 / 625 225
+complete 161 / 625 225
+complete 169 / 625 225
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 172 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '180355072-181403647', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\172.headers', '-o', 'C:\\b\\sdk-parts1m\\172', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 177 / 625 238
+complete 185 / 625 238
+curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+retry 186 0 CalledProcessError(35, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '195035136-196083711', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\186.headers', '-o', 'C:\\b\\sdk-parts1m\\186', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30014 milliseconds with 1034568 out of 1048576 bytes received
+curl: (28) Operation timed out after 30012 milliseconds with 1031230 out of 1048576 bytes received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 197 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '206569472-207618047', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\197.headers', '-o', 'C:\\b\\sdk-parts1m\\197', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 198 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '207618048-208666623', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\198.headers', '-o', 'C:\\b\\sdk-parts1m\\198', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30004 milliseconds with 534144 out of 1048576 bytes received
+retry 187 0 CalledProcessError(28, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '196083712-197132287', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\187.headers', '-o', 'C:\\b\\sdk-parts1m\\187', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30001 milliseconds with 389240 out of 1048576 bytes received
+curl: (28) Operation timed out after 30004 milliseconds with 620354 out of 1048576 bytes received
+complete 193 / 625 300
+complete 201 / 625 312
+complete 209 / 625 312
+complete 217 / 625 312
+complete 225 / 625 312
+curl: (28) Connection timed out after 30012 milliseconds
+complete 233 / 625 330
+complete 241 / 625 330
+complete 249 / 625 334
+complete 257 / 625 342
+curl: (28) Operation timed out after 30000 milliseconds with 779252 out of 1048576 bytes received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 283 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '296747008-297795583', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\283.headers', '-o', 'C:\\b\\sdk-parts1m\\283', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 265 / 625 376
+complete 273 / 625 376
+complete 281 / 625 376
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 293 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '307232768-308281343', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\293.headers', '-o', 'C:\\b\\sdk-parts1m\\293', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30012 milliseconds with 713385 out of 1048576 bytes received
+complete 289 / 625 404
+complete 297 / 625 412
+complete 305 / 625 412
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 312 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '327155712-328204287', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\312.headers', '-o', 'C:\\b\\sdk-parts1m\\312', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30005 milliseconds with 831827 out of 1048576 bytes received
+curl: (28) Operation timed out after 30005 milliseconds with 801185 out of 1048576 bytes received
+curl: (28) Operation timed out after 30002 milliseconds with 981804 out of 1048576 bytes received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 309 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '324009984-325058559', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\309.headers', '-o', 'C:\\b\\sdk-parts1m\\309', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30015 milliseconds with 113334 out of 1048576 bytes received
+curl: (28) Operation timed out after 30010 milliseconds with 1027209 out of 1048576 bytes received
+curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+retry 341 0 CalledProcessError(35, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '357564416-358612991', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\341.headers', '-o', 'C:\\b\\sdk-parts1m\\341', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 313 / 625 481
+complete 321 / 625 481
+complete 329 / 625 481
+complete 337 / 625 481
+complete 345 / 625 484
+curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+retry 355 0 CalledProcessError(35, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '372244480-373293055', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\355.headers', '-o', 'C:\\b\\sdk-parts1m\\355', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 348 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '364904448-365953023', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\348.headers', '-o', 'C:\\b\\sdk-parts1m\\348', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30002 milliseconds with 762857 out of 1048576 bytes received
+complete 353 / 625 525
+complete 361 / 625 525
+complete 369 / 625 525
+complete 377 / 625 535
+complete 385 / 625 552
+curl: (28) Operation timed out after 30001 milliseconds with 65536 out of 1048576 bytes received
+complete 393 / 625 561
+complete 401 / 625 570
+complete 409 / 625 570
+curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+retry 411 0 CalledProcessError(35, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '430964736-432013311', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\411.headers', '-o', 'C:\\b\\sdk-parts1m\\411', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+retry 415 0 CalledProcessError(35, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '435159040-436207615', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\415.headers', '-o', 'C:\\b\\sdk-parts1m\\415', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 422 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '442499072-443547647', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\422.headers', '-o', 'C:\\b\\sdk-parts1m\\422', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30006 milliseconds with 868352 out of 1048576 bytes received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 425 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '445644800-446693375', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\425.headers', '-o', 'C:\\b\\sdk-parts1m\\425', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 417 / 625 607
+complete 425 / 625 610
+complete 433 / 625 619
+complete 441 / 625 619
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 446 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '467664896-468713471', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\446.headers', '-o', 'C:\\b\\sdk-parts1m\\446', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30002 milliseconds with 342905 out of 1048576 bytes received
+curl: (28) Operation timed out after 30002 milliseconds with 260283 out of 1048576 bytes received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 474 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '497025024-498073599', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\474.headers', '-o', 'C:\\b\\sdk-parts1m\\474', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 486 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '509607936-510656511', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\486.headers', '-o', 'C:\\b\\sdk-parts1m\\486', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 449 / 625 678
+complete 457 / 625 678
+complete 465 / 625 678
+complete 473 / 625 678
+complete 481 / 625 678
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 492 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '515899392-516947967', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\492.headers', '-o', 'C:\\b\\sdk-parts1m\\492', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 486 1 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '509607936-510656511', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\486.headers', '-o', 'C:\\b\\sdk-parts1m\\486', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 495 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '519045120-520093695', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\495.headers', '-o', 'C:\\b\\sdk-parts1m\\495', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 489 / 625 695
+complete 497 / 625 702
+curl: (28) Operation timed out after 30015 milliseconds with 785273 out of 1048576 bytes received
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 506 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '530579456-531628031', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\506.headers', '-o', 'C:\\b\\sdk-parts1m\\506', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 505 / 625 717
+complete 513 / 625 728
+complete 521 / 625 728
+complete 529 / 625 728
+curl: (28) Operation timed out after 30003 milliseconds with 0 out of 1048576 bytes received
+curl: (28) Operation timed out after 30009 milliseconds with 719252 out of 1048576 bytes received
+curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+retry 549 0 CalledProcessError(35, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '575668224-576716799', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\549.headers', '-o', 'C:\\b\\sdk-parts1m\\549', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+curl: (28) Operation timed out after 30013 milliseconds with 155443 out of 1048576 bytes received
+complete 537 / 625 758
+complete 545 / 625 760
+complete 553 / 625 760
+complete 561 / 625 760
+complete 569 / 625 764
+curl: (56) schannel: server closed abruptly (missing close_notify)
+retry 576 0 CalledProcessError(56, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '603979776-605028351', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\576.headers', '-o', 'C:\\b\\sdk-parts1m\\576', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 577 / 625 795
+complete 585 / 625 795
+complete 593 / 625 795
+curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+retry 600 0 CalledProcessError(35, ['curl.exe', '--fail', '--silent', '--show-error', '--range', '629145600-630194175', '--max-time', '30', '--retry', '1', '-D', 'C:\\b\\sdk-parts1m\\600.headers', '-o', 'C:\\b\\sdk-parts1m\\600', 'https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl?download=1'])
+complete 601 / 625 810
+complete 609 / 625 810
+complete 617 / 625 810
+complete 625 / 625 815
+cf05e6cdc9dc9a1ba291c76e6777b3d58767a49e34c1223f4475c740401c7532

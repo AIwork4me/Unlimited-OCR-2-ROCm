@@ -1,0 +1,4 @@
+{'stage': 'before_sdpa', 'hip_before_sync': 0, 'synchronize': 'OK', 'hip_after_sync': 0}
+{'stage': 'after_sdpa', 'hip_before_sync': 1, 'synchronize': 'OK', 'hip_after_sync': 1}
+{'stage': 'after_copy', 'hip_before_sync': 1, 'synchronize': 'OK', 'hip_after_sync': 1}
+FAIL requested: FLASH_ATTENTION observed: FLASH_ATTENTION run: 30387ccf-e7a2-4ed9-9aae-6c11e7e1e920 numerics: None

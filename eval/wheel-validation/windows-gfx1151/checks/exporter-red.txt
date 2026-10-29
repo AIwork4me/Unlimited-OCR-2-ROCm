@@ -1,0 +1,30 @@
+..........................F                                              [100%]
+================================== FAILURES ===================================
+__________ test_sanitization_handles_case_slashes_and_json_escaping ___________
+
+    def test_sanitization_handles_case_slashes_and_json_escaping():
+        from importlib.util import module_from_spec, spec_from_file_location
+    
+        spec = spec_from_file_location("wheel_export", SCRIPT.with_name("export_evidence.py"))
+        assert spec and spec.loader
+        module = module_from_spec(spec)
+>       spec.loader.exec_module(module)
+
+tests\unit\test_wheel_validation.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<frozen importlib._bootstrap_external>:879: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1016: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x0000022796B1ECB0>
+path = 'C:\\uocr\\experiments\\pytorch212_wheel\\export_evidence.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: 'C:\\uocr\\experiments\\pytorch212_wheel\\export_evidence.py'
+
+<frozen importlib._bootstrap_external>:1073: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/unit/test_wheel_validation.py::test_sanitization_handles_case_slashes_and_json_escaping
+1 failed, 26 passed in 0.09s

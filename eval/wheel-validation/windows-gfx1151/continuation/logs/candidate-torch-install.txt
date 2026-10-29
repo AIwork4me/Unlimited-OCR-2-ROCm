@@ -1,0 +1,15 @@
+Processing C:\b\out\wheels\torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+Requirement already satisfied: filelock in c:\b\new\lib\site-packages (from torch==2.12.0+rocm7.14.1) (4.1.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in c:\b\new\lib\site-packages (from torch==2.12.0+rocm7.14.1) (4.16.0)
+Requirement already satisfied: setuptools<82 in c:\b\new\lib\site-packages (from torch==2.12.0+rocm7.14.1) (79.0.1)
+Requirement already satisfied: sympy>=1.13.3 in c:\b\new\lib\site-packages (from torch==2.12.0+rocm7.14.1) (1.13.3)
+Requirement already satisfied: networkx>=2.5.1 in c:\b\new\lib\site-packages (from torch==2.12.0+rocm7.14.1) (2.8.8)
+Requirement already satisfied: jinja2 in c:\b\new\lib\site-packages (from torch==2.12.0+rocm7.14.1) (3.1.6)
+Requirement already satisfied: fsspec>=0.8.5 in c:\b\new\lib\site-packages (from torch==2.12.0+rocm7.14.1) (2026.9.0)
+Requirement already satisfied: rocm==7.14.1 in c:\b\new\lib\site-packages (from rocm[libraries]==7.14.1->torch==2.12.0+rocm7.14.1) (7.14.1)
+Requirement already satisfied: rocm-sdk-core==7.14.1 in c:\b\new\lib\site-packages (from rocm==7.14.1->rocm[libraries]==7.14.1->torch==2.12.0+rocm7.14.1) (7.14.1)
+Requirement already satisfied: rocm-sdk-libraries==7.14.1 in c:\b\new\lib\site-packages (from rocm[libraries]==7.14.1->torch==2.12.0+rocm7.14.1) (7.14.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\b\new\lib\site-packages (from sympy>=1.13.3->torch==2.12.0+rocm7.14.1) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\b\new\lib\site-packages (from jinja2->torch==2.12.0+rocm7.14.1) (3.0.4)
+Installing collected packages: torch
+Successfully installed torch-2.12.0+rocm7.14.1

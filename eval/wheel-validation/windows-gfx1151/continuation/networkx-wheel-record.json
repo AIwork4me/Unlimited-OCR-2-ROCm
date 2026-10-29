@@ -1,0 +1,24 @@
+{
+  "comment_text": "",
+  "core-metadata": {
+    "sha256": "bb3b006f83fe51c39a26148a56bb20621eb4503c89239157bde23c49931fa642"
+  },
+  "digests": {
+    "blake2b_256": "4231d2f89f1ae42718f8c8a9e440ebe38d7d5fe1e0d9eb9178ce779e365b3ab0",
+    "md5": "8412aaa15a46914d765cc9b58cbf05ef",
+    "sha256": "e435dfa75b1d7195c7b8378c3859f0445cd88c6b0375c181ed66823a9ceb7524"
+  },
+  "downloads": -1,
+  "filename": "networkx-2.8.8-py3-none-any.whl",
+  "has_sig": false,
+  "md5_digest": "8412aaa15a46914d765cc9b58cbf05ef",
+  "packagetype": "bdist_wheel",
+  "python_version": "py3",
+  "requires_python": ">=3.8",
+  "size": 2025192,
+  "upload_time": "2022-11-01T20:31:49",
+  "upload_time_iso_8601": "2022-11-01T20:31:49.035702Z",
+  "url": "https://files.pythonhosted.org/packages/42/31/d2f89f1ae42718f8c8a9e440ebe38d7d5fe1e0d9eb9178ce779e365b3ab0/networkx-2.8.8-py3-none-any.whl",
+  "yanked": false,
+  "yanked_reason": null
+}

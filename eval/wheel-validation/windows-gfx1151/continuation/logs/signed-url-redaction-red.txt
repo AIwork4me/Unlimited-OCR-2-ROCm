@@ -1,0 +1,32 @@
+..........................F...                                           [100%]
+================================== FAILURES ===================================
+__________ test_sanitization_handles_case_slashes_and_json_escaping ___________
+
+    def test_sanitization_handles_case_slashes_and_json_escaping():
+        from importlib.util import module_from_spec, spec_from_file_location
+    
+        spec = spec_from_file_location("wheel_export", SCRIPT.with_name("export_evidence.py"))
+        assert spec and spec.loader
+        module = module_from_spec(spec)
+        spec.loader.exec_module(module)
+        home = "C:/Users/Example"
+        for text in ("c:/users/example/x", "C:\\Users\\Example\\x", r"C:\\Users\\Example\\x"):
+            result = module.sanitize_text(text, home)
+            assert "example" not in result.lower()
+            assert "<USERPROFILE>" in result
+        payload = json.dumps({"path": "C:\\Users\\Example\\x"})
+        assert json.loads(module.sanitize_text(payload, home))["path"] == "<USERPROFILE>\\x"
+        signed = "https://release-assets.githubusercontent.com/a/file?<SIGNED_QUERY_REDACTED>"
+>       assert module.sanitize_text(signed, home) == (
+            "https://release-assets.githubusercontent.com/a/file?<SIGNED_QUERY_REDACTED>"
+        )
+E       AssertionError: assert 'https://rele...et&jwt=secret' == 'https://rele...ERY_REDACTED>'
+E         
+E         Skipping 42 identical leading characters in diff, use -v to show
+E         - om/a/file?<SIGNED_QUERY_REDACTED>
+E         + om/a/file?se=soon&sig=secret&jwt=secret
+
+tests\unit\test_wheel_validation.py:203: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/unit/test_wheel_validation.py::test_sanitization_handles_case_slashes_and_json_escaping
+1 failed, 29 passed in 0.12s

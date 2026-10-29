@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pybind11", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8"]
+From https://github.com/pybind/pybind11
+ * branch            f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8 -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pybind11", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pybind11", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8"]
+HEAD is now at f5fbe86 chore: bump to 3.0.1 (#5810)
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\pybind11", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

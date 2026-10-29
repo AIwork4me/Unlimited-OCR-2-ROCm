@@ -1,0 +1,288 @@
+{
+  "run_id": "ef5c67a7-2e09-4600-8eb4-ba0c75a69b77",
+  "utc": "2026-10-28T14:04:48.630029+00:00",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "root_status": "",
+  "top_level": [
+    {
+      "path": "android/libs/fbjni",
+      "expected": "7e1e1fe3858c63c251c637ae41a20de425dde96f",
+      "actual": "7e1e1fe3858c63c251c637ae41a20de425dde96f",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/FP16",
+      "expected": "4dfe081cf6bcd15db339cf2680b9281b8451eeb3",
+      "actual": "4dfe081cf6bcd15db339cf2680b9281b8451eeb3",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/FXdiv",
+      "expected": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "actual": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/NNPACK",
+      "expected": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+      "actual": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/NVTX",
+      "expected": "3ebbc93ded7285963bff932c678fa367eb393ba6",
+      "actual": "3ebbc93ded7285963bff932c678fa367eb393ba6",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/VulkanMemoryAllocator",
+      "expected": "1d8f600fd424278486eade7ed3e877c99f0846b1",
+      "actual": "1d8f600fd424278486eade7ed3e877c99f0846b1",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/XNNPACK",
+      "expected": "51a0103656eff6fc9bfd39a4597923c4b542c883",
+      "actual": "51a0103656eff6fc9bfd39a4597923c4b542c883",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/aiter",
+      "expected": "9a469a608b2c10b7157df573a38d31e5bf4038b4",
+      "actual": "9a469a608b2c10b7157df573a38d31e5bf4038b4",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/benchmark",
+      "expected": "299e5928955cc62af9968370293b916f5130916f",
+      "actual": "299e5928955cc62af9968370293b916f5130916f",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/composable_kernel",
+      "expected": "cd9e41c4eae94f11e7d6e39751e8e13f46653030",
+      "actual": "cd9e41c4eae94f11e7d6e39751e8e13f46653030",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/cpp-httplib",
+      "expected": "4d7c9a788de136071ccf0dd4e96239151e2adadb",
+      "actual": "4d7c9a788de136071ccf0dd4e96239151e2adadb",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/cpuinfo",
+      "expected": "f858c30bcb16f8effd5ff46996f0514539e17abc",
+      "actual": "f858c30bcb16f8effd5ff46996f0514539e17abc",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/cudnn_frontend",
+      "expected": "a91f0e04dcea10515f0f776fc5a89535e316a9c8",
+      "actual": "a91f0e04dcea10515f0f776fc5a89535e316a9c8",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/cutlass",
+      "expected": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+      "actual": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/fbgemm",
+      "expected": "c246916f9e3804eacc3c95058e51cce02ae00fff",
+      "actual": "c246916f9e3804eacc3c95058e51cce02ae00fff",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/flash-attention",
+      "expected": "fec3a6a18460c1b40f097208d4c16fe8964a679d",
+      "actual": "fec3a6a18460c1b40f097208d4c16fe8964a679d",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/flatbuffers",
+      "expected": "a2cd1ea3b6d3fee220106b5fed3f7ce8da9eb757",
+      "actual": "a2cd1ea3b6d3fee220106b5fed3f7ce8da9eb757",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/fmt",
+      "expected": "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+      "actual": "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/gemmlowp/gemmlowp",
+      "expected": "3fb5c176c17c765a3492cd2f0321b0dab712f350",
+      "actual": "3fb5c176c17c765a3492cd2f0321b0dab712f350",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/gloo",
+      "expected": "3135b0b41b67dde590eef0938a0bf3d6238df5f7",
+      "actual": "3135b0b41b67dde590eef0938a0bf3d6238df5f7",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/googletest",
+      "expected": "52eb8108c5bdec04579160ae17225d66034bd723",
+      "actual": "52eb8108c5bdec04579160ae17225d66034bd723",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/ideep",
+      "expected": "e539e0f9774e2018f0d56fe865da66581f692e3d",
+      "actual": "e539e0f9774e2018f0d56fe865da66581f692e3d",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/ittapi",
+      "expected": "0c57540822deb5dae43bef6c1cc9b3be4772a033",
+      "actual": "0c57540822deb5dae43bef6c1cc9b3be4772a033",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/kineto",
+      "expected": "b2103f78d13fde4937af010c0ef8e24313568bc5",
+      "actual": "b2103f78d13fde4937af010c0ef8e24313568bc5",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/kleidiai",
+      "expected": "d7770c89632329a9914ef1a90289917597639cbe",
+      "actual": "d7770c89632329a9914ef1a90289917597639cbe",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/mimalloc",
+      "expected": "048d969a1c5ee2fb89c226298f41ea38445546ef",
+      "actual": "048d969a1c5ee2fb89c226298f41ea38445546ef",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/mslk",
+      "expected": "3d332d1c0c0ac7765852c97b3979c9ef913e037f",
+      "actual": "3d332d1c0c0ac7765852c97b3979c9ef913e037f",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/nlohmann",
+      "expected": "55f93686c01528224f448c19128836e7df245f72",
+      "actual": "55f93686c01528224f448c19128836e7df245f72",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/onnx",
+      "expected": "e709452ef2bbc1d113faf678c24e6d3467696e83",
+      "actual": "e709452ef2bbc1d113faf678c24e6d3467696e83",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/pocketfft",
+      "expected": "0fa0ef591e38c2758e3184c6c23e497b9f732ffa",
+      "actual": "0fa0ef591e38c2758e3184c6c23e497b9f732ffa",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/protobuf",
+      "expected": "d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a",
+      "actual": "d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/psimd",
+      "expected": "072586a71b55b7f8c584153d223e95687148a900",
+      "actual": "072586a71b55b7f8c584153d223e95687148a900",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/pthreadpool",
+      "expected": "4fe0e1e183925bf8cfa6aae24237e724a96479b8",
+      "actual": "4fe0e1e183925bf8cfa6aae24237e724a96479b8",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/pybind11",
+      "expected": "f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8",
+      "actual": "f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/python-peachpy",
+      "expected": "f45429b087dd7d5bc78bb40dc7cf06425c252d67",
+      "actual": "f45429b087dd7d5bc78bb40dc7cf06425c252d67",
+      "matches": true,
+      "sparse": true
+    },
+    {
+      "path": "third_party/sleef",
+      "expected": "5a1d179df9cf652951b59010a2d2075372d67f68",
+      "actual": "5a1d179df9cf652951b59010a2d2075372d67f68",
+      "matches": true,
+      "sparse": false
+    },
+    {
+      "path": "third_party/tensorpipe",
+      "expected": "2b4cd91092d335a697416b2a3cb398283246849d",
+      "actual": "2b4cd91092d335a697416b2a3cb398283246849d",
+      "matches": true,
+      "sparse": true
+    }
+  ],
+  "compiled_nested": [
+    {
+      "path": "third_party/fbgemm/external/asmjit",
+      "expected": "a3199e8857792cd10b7589ff5d58343d2c9008ea",
+      "actual": "a3199e8857792cd10b7589ff5d58343d2c9008ea",
+      "matches": true
+    },
+    {
+      "path": "third_party/fbgemm/external/cpuinfo",
+      "expected": "161a9ec374884f4b3e85725cb22e05f9458fdc93",
+      "actual": "161a9ec374884f4b3e85725cb22e05f9458fdc93",
+      "matches": true
+    },
+    {
+      "path": "third_party/ideep/mkl-dnn",
+      "expected": "03c022d3ffdcee958cfacbe720048e725fdf644c",
+      "actual": "03c022d3ffdcee958cfacbe720048e725fdf644c",
+      "matches": true
+    }
+  ],
+  "unused_nested_not_materialized": "CUDA-only FBGEMM GPU deps and excluded test components; no Windows ROCm build source depends on them"
+}

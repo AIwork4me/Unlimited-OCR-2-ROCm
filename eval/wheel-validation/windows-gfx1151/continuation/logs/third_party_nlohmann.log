@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\nlohmann", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "55f93686c01528224f448c19128836e7df245f72"]
+From https://github.com/nlohmann/json
+ * branch            55f93686c01528224f448c19128836e7df245f72 -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\nlohmann", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\nlohmann", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "55f93686c01528224f448c19128836e7df245f72"]
+HEAD is now at 55f9368 Merge branch 'release/3.12.0'
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\nlohmann", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

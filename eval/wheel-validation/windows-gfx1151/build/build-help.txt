@@ -1,0 +1,114 @@
+usage: build_prod_wheels.py build [-h] [--index-url INDEX_URL]
+                                  [--find-links FIND_LINKS]
+                                  [--pip-cache-dir PIP_CACHE_DIR]
+                                  [--rocm-sdk-version ROCM_SDK_VERSION]
+                                  [--pre | --no-pre]
+                                  [--rocm-extras ROCM_EXTRAS]
+                                  [--install-rocm | --no-install-rocm]
+                                  --output-dir OUTPUT_DIR
+                                  [--use-ccache | --use-sccache]
+                                  [--sccache-no-wrap]
+                                  [--root-checkout-dir ROOT_CHECKOUT_DIR]
+                                  [--pytorch-dir PYTORCH_DIR]
+                                  [--pytorch-git-ref PYTORCH_GIT_REF]
+                                  [--pytorch-audio-dir PYTORCH_AUDIO_DIR]
+                                  [--pytorch-vision-dir PYTORCH_VISION_DIR]
+                                  [--triton-dir TRITON_DIR]
+                                  [--apex-dir APEX_DIR]
+                                  [--pytorch-rocm-arch PYTORCH_ROCM_ARCH]
+                                  [--pytorch-build-number PYTORCH_BUILD_NUMBER]
+                                  [--build-triton | --no-build-triton]
+                                  [--build-pytorch-audio | --no-build-pytorch-audio]
+                                  [--build-pytorch-vision | --no-build-pytorch-vision]
+                                  [--build-apex | --no-build-apex]
+                                  [--enable-pytorch-flash-attention | --no-enable-pytorch-flash-attention]
+                                  [--version-suffix VERSION_SUFFIX]
+                                  [--release-type {ci,dev,dev-bkc,nightly,nightly-bkc,prerelease}]
+                                  [--clean | --no-clean]
+
+options:
+  -h, --help            show this help message and exit
+  --index-url INDEX_URL
+                        Base URL of the Python Package Index.
+  --find-links FIND_LINKS
+                        URL or path for pip --find-links (flat package index).
+  --pip-cache-dir PIP_CACHE_DIR
+                        Pip cache dir
+  --rocm-sdk-version ROCM_SDK_VERSION
+                        rocm-sdk version to match (with comparison prefix)
+  --pre, --no-pre       Include pre-release packages (default True) (default:
+                        True)
+  --rocm-extras ROCM_EXTRAS
+                        Comma-separated additional extras for rocm package
+                        install (e.g. 'device-gfx942,device-gfx943'). Added
+                        alongside the base 'libraries,devel' extras.
+  --install-rocm, --no-install-rocm
+                        Install rocm-sdk before building
+  --output-dir OUTPUT_DIR
+                        Directory to copy built wheels to
+  --use-ccache          Use ccache as the compiler launcher
+  --use-sccache         Use sccache as the compiler launcher. Sets the CMake
+                        C/C++ launchers and (on Linux) HIP_CLANG_LAUNCHER so
+                        hipcc routes its clang invocations -- including the
+                        HIP device passes -- through sccache, caching host and
+                        device code. Requires hipcc with HIP_CLANG_LAUNCHER
+                        support (ROCm 7.13+).
+  --sccache-no-wrap     With --use-sccache: set only the CMake C/C++ launchers
+                        and skip HIP_CLANG_LAUNCHER (caches host C/C++ but not
+                        HIP device code). Use when hipcc lacks
+                        HIP_CLANG_LAUNCHER support.
+  --root-checkout-dir ROOT_CHECKOUT_DIR
+                        Root directory containing PyTorch source checkouts
+                        named pytorch, pytorch_audio, pytorch_vision, triton,
+                        and apex. Explicit --pytorch-dir, --pytorch-audio-dir,
+                        --pytorch-vision-dir, --triton-dir, and --apex-dir
+                        arguments override this.
+  --pytorch-dir PYTORCH_DIR
+                        PyTorch source directory
+  --pytorch-git-ref PYTORCH_GIT_REF
+                        PyTorch source ref; release/* refs strip
+                        torch/torchaudio/torchvision's legacy a0 suffix
+  --pytorch-audio-dir PYTORCH_AUDIO_DIR
+                        pytorch_audio source directory
+  --pytorch-vision-dir PYTORCH_VISION_DIR
+                        pytorch_vision source directory
+  --triton-dir TRITON_DIR
+                        pinned triton directory
+  --apex-dir APEX_DIR   apex source directory
+  --pytorch-rocm-arch PYTORCH_ROCM_ARCH
+                        Comma-separated gfx arches to build pytorch for (e.g.
+                        'gfx942' or 'gfx942,gfx1201'). May also be supplied
+                        via the PYTORCH_ROCM_ARCH environment variable. Falls
+                        back to `rocm-sdk targets` when unset (legacy; see
+                        TODO on get_rocm_sdk_targets).
+  --pytorch-build-number PYTORCH_BUILD_NUMBER
+                        Build number to append to version
+  --build-triton, --no-build-triton
+                        Enable building of triton (requires --triton-dir)
+  --build-pytorch-audio, --no-build-pytorch-audio
+                        Enable building of torch audio (requires --pytorch-
+                        audio-dir)
+  --build-pytorch-vision, --no-build-pytorch-vision
+                        Enable building of torch vision (requires --pytorch-
+                        vision-dir)
+  --build-apex, --no-build-apex
+                        Enable building of apex (requires --apex-dir)
+  --enable-pytorch-flash-attention, --no-enable-pytorch-flash-attention
+                        Enable building of torch flash attention (sets
+                        USE_FLASH_ATTENTION and USE_MEM_EFF_ATTENTION).
+                        Defaults to enabled if supported
+  --version-suffix VERSION_SUFFIX
+                        Explicit PyTorch version suffix (e.g.
+                        `+rocm7.10.0a20251124`). Typically computed with
+                        build_tools/github_actions/determine_version.py. If
+                        omitted it will be derived from the installed rocm
+                        package
+  --release-type {ci,dev,dev-bkc,nightly,nightly-bkc,prerelease}
+                        Release type of the build. For `dev` and `dev-bkc`
+                        builds the torch wheel version is tagged with the
+                        8-char torch source commit in the local segment, e.g.
+                        `2.12.0a0+git1a2b3c4d.rocm7.10.0` (torch wheel only).
+                        The default is non-appending so other callers (CI,
+                        nightly, prerelease) keep their plain
+                        `<base>+<suffix>` versions.
+  --clean, --no-clean   Clean build directories before building

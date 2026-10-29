@@ -1,0 +1,52 @@
+Collecting filelock (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 1))
+  Using cached filelock-4.1.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting iniconfig (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 2))
+  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 3))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 4))
+  Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Requirement already satisfied: numpy in c:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 5)) (2.2.6)
+Requirement already satisfied: setuptools in c:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 6)) (79.0.1)
+Collecting wheel (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 7))
+  Using cached wheel-0.48.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting pybind11 (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 8))
+  Downloading pybind11-3.1.0-py3-none-any.whl.metadata (10 kB)
+Collecting pandas (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 9))
+  Downloading pandas-2.3.3-cp310-cp310-win_amd64.whl.metadata (19 kB)
+Collecting pyyaml (from -r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 10))
+  Using cached pyyaml-6.0.3-cp310-cp310-win_amd64.whl.metadata (2.4 kB)
+Collecting python-dateutil>=2.8.2 (from pandas->-r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 9))
+  Downloading python_dateutil-3.0.0-py2.py3-none-any.whl.metadata (8.2 kB)
+Collecting pytz>=2020.1 (from pandas->-r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 9))
+  Downloading pytz-2026.5-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->-r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 9))
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting six>=1.6 (from python-dateutil>=2.8.2->pandas->-r C:\b\pytorch\build\aotriton\src\aotriton_runtime\requirements.txt (line 9))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Using cached filelock-4.1.0-py3-none-any.whl (133 kB)
+Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+Using cached wheel-0.48.0-py3-none-any.whl (33 kB)
+Downloading pybind11-3.1.0-py3-none-any.whl (319 kB)
+Downloading pandas-2.3.3-cp310-cp310-win_amd64.whl (11.3 MB)
+   ------                                   1.9/11.3 MB 4.8 kB/s  0:32:25
+WARNING: Attempting to resume incomplete download (1.9 MB/11.3 MB, attempt 1)
+Resuming download pandas-2.3.3-cp310-cp310-win_amd64.whl (1.9 MB/11.3 MB)
+   ----------                               2.9/11.3 MB 7.7 kB/s  0:18:11
+WARNING: Attempting to resume incomplete download (2.9 MB/11.3 MB, attempt 2)
+Resuming download pandas-2.3.3-cp310-cp310-win_amd64.whl (2.9 MB/11.3 MB)
+   ---------------------------------------- 11.3/11.3 MB 35.5 kB/s  0:03:06
+Using cached pyyaml-6.0.3-cp310-cp310-win_amd64.whl (158 kB)
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out. (read timeout=20.0)")': /packages/5a/17/cebee01d1c0c1441174cf0456ddc91b280d79acb65340c05e41d77866ee8/python_dateutil-3.0.0-py2.py3-none-any.whl
+Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+Downloading pytz-2026.5-py2.py3-none-any.whl (506 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: pytz, tzdata, six, pyyaml, pybind11, pluggy, packaging, iniconfig, filelock, wheel, python-dateutil, pandas
+
+Successfully installed filelock-4.1.0 iniconfig-2.3.1 packaging-26.3 pandas-2.3.3 pluggy-1.7.0 pybind11-3.1.0 python-dateutil-3.0.0 pytz-2026.5 pyyaml-6.0.3 six-1.17.0 tzdata-2026.6 wheel-0.48.0
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\Scripts\python.exe -m pip install --upgrade pip

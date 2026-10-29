@@ -1,0 +1,3 @@
+Looking in indexes: https://repo.amd.com/rocm/whl-multi-arch/
+Collecting torch[device-gfx1151]==2.12.0+rocm7.14.1
+  Downloading https://repo.amd.com/rocm/whl-multi-arch/torch-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl (114.5 MB)

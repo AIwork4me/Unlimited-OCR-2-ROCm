@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\ideep", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "e539e0f9774e2018f0d56fe865da66581f692e3d"]
+From https://github.com/intel/ideep
+ * branch            e539e0f9774e2018f0d56fe865da66581f692e3d -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\ideep", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\ideep", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "e539e0f9774e2018f0d56fe865da66581f692e3d"]
+HEAD is now at e539e0f Update oneDNN to v3.11.2
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\ideep", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

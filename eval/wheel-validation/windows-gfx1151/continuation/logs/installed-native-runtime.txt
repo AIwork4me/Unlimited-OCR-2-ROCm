@@ -1,0 +1,1 @@
+Verified loaded torch/SDK native modules: 33 {'hipRuntimeGetVersion': {'return_code': 0, 'version_integer': 71460850}, 'hipDriverGetVersion': {'return_code': 0, 'version_integer': 71460850}}

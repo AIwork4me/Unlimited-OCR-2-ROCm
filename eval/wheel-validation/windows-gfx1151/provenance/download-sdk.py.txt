@@ -1,0 +1,30 @@
+from pathlib import Path
+import concurrent.futures, urllib.request, time, hashlib, json, subprocess
+url='https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl'
+size=655227267
+parts=Path('C:/b/sdk-parts1m');parts.mkdir(exist_ok=True)
+chunk=1024*1024
+start=time.time()
+def fetch(i):
+    lo=i*chunk;hi=min(size,lo+chunk)-1;p=parts/str(i)
+    if p.exists() and p.stat().st_size==hi-lo+1:return i
+    for attempt in range(3):
+        try:
+            header=parts/(str(i)+'.headers')
+            subprocess.run(['curl.exe','--fail','--silent','--show-error','--range',f'{lo}-{hi}','--max-time','30','--retry','1','-D',str(header),'-o',str(p),url+'?download=1'],check=True)
+            if f'Content-Range: bytes {lo}-{hi}/{size}'.lower() not in header.read_text().lower():raise ValueError('wrong Content-Range')
+            if p.stat().st_size!=hi-lo+1:raise ValueError('short read')
+            return i
+        except Exception as e:
+            print('retry',i,attempt,repr(e),flush=True);time.sleep(2)
+    raise RuntimeError(f'failed part {i}')
+count=(size+chunk-1)//chunk
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as ex:
+    for n,i in enumerate(ex.map(fetch,range(count))):
+        if n%8==0:print('complete',n+1,'/',count,round(time.time()-start),flush=True)
+out=Path('C:/b/wheels/rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl')
+with out.open('wb') as f:
+    for i in range(count):f.write((parts/str(i)).read_bytes())
+h=hashlib.file_digest(out.open('rb'),'sha256').hexdigest()
+Path('C:/b/raw/sdk-download.json').write_text(json.dumps({'url':url,'size':size,'sha256':h,'elapsed_seconds':time.time()-start,'transport':'8 parallel HTTP byte-range requests; each Content-Range/size checked; unchanged concatenated bytes'},indent=2))
+print(h,flush=True)

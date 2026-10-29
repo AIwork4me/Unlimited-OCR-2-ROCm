@@ -1,0 +1,362 @@
+:3:os.cpp                   :65  : 1020244910092 us: [pid:5136 tid: 0x72f95] Loading lib: C:\b\new\lib\site-packages\_rocm_sdk_core\bin\amd_comgr.dll
+:3:comgrctx.cpp             :89  : 1020244910586 us: [pid:5136 tid: 0x72f95] Loaded COMGR library version 3.3.
+:3:runtime.cpp              :70  : 1020244910735 us: [pid:5136 tid: 0x72f95] ROCclr version: ca887ee8
+:3:hip_context.cpp          :42  : 1020244910745 us: [pid:5136 tid: 0x72f95] HIP Version: 7.14.60850, Direct Dispatch: 0
+:3:os_win32.cpp             :742 : 1020244910756 us: [pid:5136 tid: 0x72f95] Runtime Library Path: C:\b\new\lib\site-packages\_rocm_sdk_core\bin\amdhip64_7.dll
+:3:hip_device_runtime.cpp   :710 : 1020244960396 us: [pid:5136 tid: 0x72f95] [32m hipGetDeviceCount ( 0000000FE45EDD14 ) [0m
+:3:hip_device_runtime.cpp   :712 : 1020244960451 us: [pid:5136 tid: 0x72f95] hipGetDeviceCount: Returned hipSuccess : 
+:3:hip_device.cpp           :705 : 1020244960498 us: [pid:5136 tid: 0x72f95] [32m hipGetDevicePropertiesR0600 ( 00000127911B4618, 0 ) [0m
+:3:hip_device.cpp           :707 : 1020244960507 us: [pid:5136 tid: 0x72f95] hipGetDevicePropertiesR0600: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :710 : 1020244960539 us: [pid:5136 tid: 0x72f95] [32m hipGetDeviceCount ( 0000000FE45ED9A8 ) [0m
+:3:hip_device_runtime.cpp   :712 : 1020244960543 us: [pid:5136 tid: 0x72f95] hipGetDeviceCount: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :710 : 1020244960635 us: [pid:5136 tid: 0x72f95] [32m hipGetDeviceCount ( 0000000FE45EDD24 ) [0m
+:3:hip_device_runtime.cpp   :712 : 1020244960638 us: [pid:5136 tid: 0x72f95] hipGetDeviceCount: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020244960660 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDC7C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020244960670 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_context.cpp          :336 : 1020244960737 us: [pid:5136 tid: 0x72f95] [32m hipDevicePrimaryCtxGetState ( 0, 0000000FE45EDC74, 0000000FE45EDC70 ) [0m
+:3:hip_context.cpp          :350 : 1020244960743 us: [pid:5136 tid: 0x72f95] hipDevicePrimaryCtxGetState: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020244960749 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDC9C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020244960753 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_context.cpp          :336 : 1020244960758 us: [pid:5136 tid: 0x72f95] [32m hipDevicePrimaryCtxGetState ( 0, 0000000FE45EDC94, 0000000FE45EDC90 ) [0m
+:3:hip_context.cpp          :350 : 1020244960761 us: [pid:5136 tid: 0x72f95] hipDevicePrimaryCtxGetState: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020244960801 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDCAC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020244960805 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_context.cpp          :336 : 1020244960810 us: [pid:5136 tid: 0x72f95] [32m hipDevicePrimaryCtxGetState ( 0, 0000000FE45EDCA4, 0000000FE45EDCA0 ) [0m
+:3:hip_context.cpp          :350 : 1020244960813 us: [pid:5136 tid: 0x72f95] hipDevicePrimaryCtxGetState: Returned hipSuccess : 
+:3:hip_device.cpp           :705 : 1020244961824 us: [pid:5136 tid: 0x72f95] [32m hipGetDevicePropertiesR0600 ( 0000000FE45ED8D8, 0 ) [0m
+:3:hip_device.cpp           :707 : 1020244961833 us: [pid:5136 tid: 0x72f95] hipGetDevicePropertiesR0600: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020248953525 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDD4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020248953620 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020248953643 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF04 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020248953651 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020248953666 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECD24 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020248953794 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020248953809 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECACC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020248953815 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_stream.cpp           :319 : 1020248953863 us: [pid:5136 tid: 0x72f95] [32m hipDeviceGetStreamPriorityRange ( 0000000FE45EC9A8, 0000000FE45EC9D8 ) [0m
+:3:hip_stream.cpp           :327 : 1020248953872 us: [pid:5136 tid: 0x72f95] hipDeviceGetStreamPriorityRange: Returned hipSuccess : 
+:3:hip_error.cpp            :22  : 1020248953948 us: [pid:5136 tid: 0x72f95] [32m hipGetLastError (  ) [0m
+:3:hip_device_runtime.cpp   :694 : 1020248953959 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EC0DC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020248953965 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_graph.cpp            :1157: 1020248954007 us: [pid:5136 tid: 0x72f95] [32m hipStreamIsCapturing ( char array:<null>, 0000000FE45EC1E4 ) [0m
+:3:hip_graph.cpp            :1158: 1020248954019 us: [pid:5136 tid: 0x72f95] hipStreamIsCapturing: Returned hipSuccess : 
+:3:hip_memory.cpp           :845 : 1020248954056 us: [pid:5136 tid: 0x72f95] [32m hipMalloc ( 0000000FE45EC458, 2097152 ) [0m
+:1:paldevice.cpp            :1106: 1020248964543 us: [pid:5136 tid: 0x72f95] Couldn't register debug state from the loader!
+:4:palmemory.cpp            :198 : 1020248965904 us: [pid:5136 tid: 0x72f95] Alloc: 400000 bytes, ptr[200600000-200a00000], obj[200600000-200a00000]
+:4:palmemory.cpp            :198 : 1020248980778 us: [pid:5136 tid: 0x72f95] Alloc: 408000 bytes, ptr[200a00000-200e08000], obj[200a00000-201000000]
+:4:palmemory.cpp            :198 : 1020248983616 us: [pid:5136 tid: 0x72f95] Alloc: 408000 bytes, ptr[201000000-201408000], obj[201000000-201600000]
+:4:palmemory.cpp            :198 : 1020248985216 us: [pid:5136 tid: 0x72f95] Alloc: 408000 bytes, ptr[201600000-201a08000], obj[201600000-201c00000]
+:4:palmemory.cpp            :198 : 1020248991526 us: [pid:5136 tid: 0x72f95] Alloc: 100 bytes, ptr[201c00000-201c00100], obj[201c00000-205c00000]
+:4:palmemory.cpp            :198 : 1020249232934 us: [pid:5136 tid: 0x72f95] Alloc: 3000 bytes, ptr[1000000000-1000003000], obj[1000000000-1004000000]
+:4:palmemory.cpp            :198 : 1020249233677 us: [pid:5136 tid: 0x72f95] Alloc: 3000 bytes, ptr[200031000-200034000], obj[200031000-200034000]
+:1:devprogram.cpp           :1357: 1020249234264 us: [pid:5136 tid: 0x72f95] warning: argument unused during compilation: '-cl-kernel-arg-info' [-Wunused-command-line-argument]
+warning: argument unused during compilation: '-Xclang -no-disable-free' [-Wunused-command-line-argument]
+
+:4:palmemory.cpp            :428 : 1020249234311 us: [pid:5136 tid: 0x72f95] Free-:     3000 bytes, VM[ 200031000,  200034000]
+:4:palmemory.cpp            :198 : 1020249477512 us: [pid:5136 tid: 0x72f95] Alloc: d000 bytes, ptr[1000010000-100001d000], obj[1000000000-1004000000]
+:4:palmemory.cpp            :198 : 1020249479566 us: [pid:5136 tid: 0x72f95] Alloc: d000 bytes, ptr[200190000-20019d000], obj[200190000-20019d000]
+:4:palmemory.cpp            :428 : 1020249480003 us: [pid:5136 tid: 0x72f95] Free-:     d000 bytes, VM[ 200190000,  20019d000]
+:4:palmemory.cpp            :198 : 1020249480052 us: [pid:5136 tid: 0x72f95] Alloc: 100000 bytes, ptr[201d00000-201e00000], obj[201c00000-205c00000]
+:4:palmemory.cpp            :198 : 1020249480064 us: [pid:5136 tid: 0x72f95] Alloc: 100000 bytes, ptr[201e00000-201f00000], obj[201c00000-205c00000]
+:1:paldevice.cpp            :1174: 1020249480155 us: [pid:5136 tid: 0x72f95] KMD failed to setup the trap handler
+:4:palmemory.cpp            :198 : 1020249480165 us: [pid:5136 tid: 0x72f95] Alloc: 200000 bytes, ptr[1000200000-1000400000], obj[1000000000-1004000000]
+:3:hip_memory.cpp           :847 : 1020249480197 us: [pid:5136 tid: 0x72f95] hipMalloc: Returned hipSuccess : 0000001000200000: duration: 526141 us
+:3:hip_device_runtime.cpp   :694 : 1020249480426 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECD30 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249480443 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249480456 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF10 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249480464 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249480524 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEB4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249480532 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249480542 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249480550 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_context.cpp          :336 : 1020249480566 us: [pid:5136 tid: 0x72f95] [32m hipDevicePrimaryCtxGetState ( 0, 0000000FE45ECF44, 0000000FE45ECF40 ) [0m
+:3:hip_context.cpp          :350 : 1020249480574 us: [pid:5136 tid: 0x72f95] hipDevicePrimaryCtxGetState: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249480582 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEAC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249480590 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_graph.cpp            :1157: 1020249480606 us: [pid:5136 tid: 0x72f95] [32m hipStreamIsCapturing ( char array:<null>, 0000000FE45ED030 ) [0m
+:3:hip_graph.cpp            :1158: 1020249480616 us: [pid:5136 tid: 0x72f95] hipStreamIsCapturing: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249480625 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEAC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249480632 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_memory.cpp           :895 : 1020249480694 us: [pid:5136 tid: 0x72f95] [32m hipMemcpyWithStream ( 0000001000200000, 000002BF3E020000, 4096, hipMemcpyHostToDevice, char array:<null> ) [0m
+:4:palmemory.cpp            :198 : 1020249497427 us: [pid:5136 tid: 0xfdfbc] Alloc: 408000 bytes, ptr[205e00000-206208000], obj[205e00000-206400000]
+:4:palmemory.cpp            :198 : 1020249500039 us: [pid:5136 tid: 0xfdfbc] Alloc: 408000 bytes, ptr[206400000-206808000], obj[206400000-206a00000]
+:4:palmemory.cpp            :198 : 1020249502128 us: [pid:5136 tid: 0xfdfbc] Alloc: 408000 bytes, ptr[206a00000-206e08000], obj[206a00000-207000000]
+:4:palmemory.cpp            :198 : 1020249502948 us: [pid:5136 tid: 0xfdfbc] Alloc: 100 bytes, ptr[201c01000-201c01100], obj[201c00000-205c00000]
+:4:palmemory.cpp            :198 : 1020249503076 us: [pid:5136 tid: 0xfdfbc] Alloc: 100000 bytes, ptr[201f00000-202000000], obj[201c00000-205c00000]
+:4:palmemory.cpp            :198 : 1020249503087 us: [pid:5136 tid: 0xfdfbc] Alloc: 100000 bytes, ptr[202000000-202100000], obj[201c00000-205c00000]
+:3:hip_memory.cpp           :912 : 1020249503401 us: [pid:5136 tid: 0x72f95] hipMemcpyWithStream: Returned hipSuccess : : duration: 22707 us
+:3:hip_device_runtime.cpp   :694 : 1020249503444 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECE50 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503452 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503516 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDD4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503520 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503547 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF04 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503551 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503556 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECD24 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503565 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503575 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECACC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503579 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503609 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECD30 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503612 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503617 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF10 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503620 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503643 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEB4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503646 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503650 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503653 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_context.cpp          :336 : 1020249503662 us: [pid:5136 tid: 0x72f95] [32m hipDevicePrimaryCtxGetState ( 0, 0000000FE45ECF44, 0000000FE45ECF40 ) [0m
+:3:hip_context.cpp          :350 : 1020249503666 us: [pid:5136 tid: 0x72f95] hipDevicePrimaryCtxGetState: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249503671 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEAC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503674 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_graph.cpp            :1157: 1020249503683 us: [pid:5136 tid: 0x72f95] [32m hipStreamIsCapturing ( char array:<null>, 0000000FE45ED030 ) [0m
+:3:hip_graph.cpp            :1158: 1020249503688 us: [pid:5136 tid: 0x72f95] hipStreamIsCapturing: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249503693 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEAC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503696 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_memory.cpp           :895 : 1020249503706 us: [pid:5136 tid: 0x72f95] [32m hipMemcpyWithStream ( 0000001000201000, 000002BF3E021000, 4096, hipMemcpyHostToDevice, char array:<null> ) [0m
+:3:hip_memory.cpp           :912 : 1020249503870 us: [pid:5136 tid: 0x72f95] hipMemcpyWithStream: Returned hipSuccess : : duration: 164 us
+:3:hip_device_runtime.cpp   :694 : 1020249503880 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECE50 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503889 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503902 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDD4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503910 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503920 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF04 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503928 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503937 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECD24 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503945 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503953 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECACC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503961 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249503973 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECD30 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249503981 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249504065 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF10 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504076 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249504089 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEB4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504098 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249504107 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECF4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504115 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_context.cpp          :336 : 1020249504127 us: [pid:5136 tid: 0x72f95] [32m hipDevicePrimaryCtxGetState ( 0, 0000000FE45ECF44, 0000000FE45ECF40 ) [0m
+:3:hip_context.cpp          :350 : 1020249504135 us: [pid:5136 tid: 0x72f95] hipDevicePrimaryCtxGetState: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249504143 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEAC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504152 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_graph.cpp            :1157: 1020249504161 us: [pid:5136 tid: 0x72f95] [32m hipStreamIsCapturing ( char array:<null>, 0000000FE45ED030 ) [0m
+:3:hip_graph.cpp            :1158: 1020249504169 us: [pid:5136 tid: 0x72f95] hipStreamIsCapturing: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249504178 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECEAC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504187 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_memory.cpp           :895 : 1020249504200 us: [pid:5136 tid: 0x72f95] [32m hipMemcpyWithStream ( 0000001000202000, 000002BF3E022000, 4096, hipMemcpyHostToDevice, char array:<null> ) [0m
+:3:hip_memory.cpp           :912 : 1020249504338 us: [pid:5136 tid: 0x72f95] hipMemcpyWithStream: Returned hipSuccess : : duration: 138 us
+:3:hip_device_runtime.cpp   :694 : 1020249504348 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ECE50 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504356 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_error.cpp            :29  : 1020249504546 us: [pid:5136 tid: 0x72f95] [32m hipPeekAtLastError (  ) [0m
+:3:hip_error.cpp            :31  : 1020249504554 us: [pid:5136 tid: 0x72f95] hipPeekAtLastError: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249504657 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EC38C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504666 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249504682 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDA84 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504691 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :678 : 1020249504736 us: [pid:5136 tid: 0x72f95] [32m hipDeviceSynchronize (  ) [0m
+:4:commandqueue.cpp         :238 : 1020249504755 us: [pid:5136 tid: 0x72f95] All commands finished for host queue : 0000012790B16E00
+:3:hip_device_runtime.cpp   :682 : 1020249504768 us: [pid:5136 tid: 0x72f95] hipDeviceSynchronize: Returned hipSuccess : : duration: 32 us
+:3:hip_device_runtime.cpp   :694 : 1020249504780 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDAE4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249504788 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_error.cpp            :29  : 1020249504797 us: [pid:5136 tid: 0x72f95] [32m hipPeekAtLastError (  ) [0m
+:3:hip_error.cpp            :31  : 1020249504804 us: [pid:5136 tid: 0x72f95] hipPeekAtLastError: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249505221 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDCFC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505236 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249505253 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDD4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505259 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_stream.cpp           :807 : 1020249505293 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45EDD8C ) [0m
+:3:hip_stream.cpp           :819 : 1020249505300 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_device.cpp           :705 : 1020249505310 us: [pid:5136 tid: 0x72f95] [32m hipGetDevicePropertiesR0600 ( 0000000FE45ED6D0, 0 ) [0m
+:3:hip_device.cpp           :707 : 1020249505316 us: [pid:5136 tid: 0x72f95] hipGetDevicePropertiesR0600: Returned hipSuccess : 
+:3:hip_stream.cpp           :807 : 1020249505327 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45EDDAC ) [0m
+:3:hip_stream.cpp           :819 : 1020249505332 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249505337 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDD3C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505342 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249505353 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDE5C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505358 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249505363 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDE5C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505369 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249505388 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDD2C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505393 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_stream.cpp           :807 : 1020249505399 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45EDD6C ) [0m
+:3:hip_stream.cpp           :819 : 1020249505403 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_stream.cpp           :807 : 1020249505409 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45EDD8C ) [0m
+:3:hip_stream.cpp           :819 : 1020249505413 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249505659 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDB5C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505666 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_stream.cpp           :807 : 1020249505672 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45EDB9C ) [0m
+:3:hip_stream.cpp           :819 : 1020249505676 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_stream.cpp           :807 : 1020249505682 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45EDBBC ) [0m
+:3:hip_stream.cpp           :819 : 1020249505686 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020249505692 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDB4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505696 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249505701 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDC6C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505706 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020249505712 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDC6C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020249505716 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492460 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EAF94 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492518 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492607 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EA664 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492617 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492638 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9C5C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492648 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_stream.cpp           :807 : 1020251492666 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45E9C9C ) [0m
+:3:hip_stream.cpp           :819 : 1020251492676 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020251492703 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9284 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492712 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492723 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E90A4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492732 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492745 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E8E4C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492754 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492788 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E90B0 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492797 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492807 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9290 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492816 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492836 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E94CC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492845 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492855 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E931C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492864 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492875 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E90EC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492883 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492898 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9300 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492907 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492916 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E94B0 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492925 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492934 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E94CC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492943 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492952 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E931C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492961 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251492970 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E90EC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251492979 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493000 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9300 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493010 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493019 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E94B0 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493028 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493099 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9634 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493108 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493117 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9484 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493126 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493136 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E927C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493144 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493157 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9490 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493165 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493175 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9640 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493183 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493192 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9634 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493201 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493210 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9484 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493219 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493228 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E927C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493237 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493246 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9490 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493254 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251493263 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9640 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251493272 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_stream.cpp           :807 : 1020251493295 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45E969C ) [0m
+:3:hip_stream.cpp           :819 : 1020251493317 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_stream.cpp           :807 : 1020251493377 us: [pid:5136 tid: 0x72f95] [32m hipStreamGetDevice ( char array:<null>, 0000000FE45E9324 ) [0m
+:3:hip_stream.cpp           :819 : 1020251493385 us: [pid:5136 tid: 0x72f95] hipStreamGetDevice: Returned hipSuccess : 
+:3:hip_module.cpp           :61  : 1020251500948 us: [pid:5136 tid: 0x72f95] [32m hipModuleLoadDataEx ( 0000000FE45E9090, 00000127A608D57C ) [0m
+:4:palmemory.cpp            :198 : 1020251501680 us: [pid:5136 tid: 0x72f95] Alloc: 5000 bytes, ptr[1000008000-100000d000], obj[1000000000-1004000000]
+:4:palmemory.cpp            :198 : 1020251503016 us: [pid:5136 tid: 0x72f95] Alloc: 5000 bytes, ptr[200034000-200039000], obj[200034000-200039000]
+:4:palmemory.cpp            :428 : 1020251503543 us: [pid:5136 tid: 0x72f95] Free-:     5000 bytes, VM[ 200034000,  200039000]
+:3:hip_module.cpp           :62  : 1020251503654 us: [pid:5136 tid: 0x72f95] hipModuleLoadDataEx: Returned hipSuccess : 
+:3:hip_module.cpp           :70  : 1020251503770 us: [pid:5136 tid: 0x72f95] [32m hipModuleGetFunction ( 0000000FE45E9060, 0000012790DB6700, attn_fwd ) [0m
+:3:hip_module.cpp           :85  : 1020251503786 us: [pid:5136 tid: 0x72f95] hipModuleGetFunction: Returned hipSuccess : 
+:3:hip_module.cpp           :570 : 1020251503834 us: [pid:5136 tid: 0x72f95] [32m hipModuleLaunchKernel ( 000001279167EA30, 1, 2, 1, 128, 1, 1, 4096, char array:<null>, 000001278EA5E9A0, char array:<null> ) [0m
+:3:hip_module.cpp           :605 : 1020251503882 us: [pid:5136 tid: 0x72f95] hipModuleLaunchKernel: Returned hipSuccess : 
+:3:palvirtual.cpp           :2732: 1020251503906 us: [pid:5136 tid: 0xfdfbc] !	kernel : attn_fwd
+
+:3:hip_device_runtime.cpp   :694 : 1020251503925 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9D34 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251503936 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:device/pal/palvirtual.hpp:734 : 1020251503937 us: [pid:5136 tid: 0xfdfbc]  = ptr:[0000001000200000-0000001000400000] size:[67108864] heap[1]
+:3:hip_device_runtime.cpp   :694 : 1020251503946 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9B84 ) [0m
+:3:device/pal/palvirtual.hpp:734 : 1020251503952 us: [pid:5136 tid: 0xfdfbc]  = ptr:[0000001000200000-0000001000400000] size:[67108864] heap[1]
+:3:hip_device_runtime.cpp   :706 : 1020251503959 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:device/pal/palvirtual.hpp:734 : 1020251503965 us: [pid:5136 tid: 0xfdfbc]  = ptr:[0000001000200000-0000001000400000] size:[67108864] heap[1]
+:3:hip_device_runtime.cpp   :694 : 1020251503974 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E997C ) [0m
+:3:device/pal/palvirtual.hpp:734 : 1020251503978 us: [pid:5136 tid: 0xfdfbc]  = ptr:[0000001000200000-0000001000400000] size:[67108864] heap[1]
+:3:hip_device_runtime.cpp   :706 : 1020251503985 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:device/pal/palvirtual.hpp:734 : 1020251503991 us: [pid:5136 tid: 0xfdfbc]  = ptr:[0000001000200000-0000001000400000] size:[67108864] heap[1]
+:3:hip_device_runtime.cpp   :694 : 1020251504001 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9B90 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251504010 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251504019 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45E9D40 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251504027 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251504037 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EA670 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251504046 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251504063 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EAFA0 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251504071 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_error.cpp            :29  : 1020251504313 us: [pid:5136 tid: 0x72f95] [32m hipPeekAtLastError (  ) [0m
+:3:hip_error.cpp            :31  : 1020251504323 us: [pid:5136 tid: 0x72f95] hipPeekAtLastError: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020251504394 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EC38C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251504488 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251504548 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDA84 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251504573 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :678 : 1020251504604 us: [pid:5136 tid: 0x72f95] [32m hipDeviceSynchronize (  ) [0m
+:4:commandqueue.cpp         :238 : 1020251506356 us: [pid:5136 tid: 0x72f95] All commands finished for host queue : 0000012790B16E00
+:3:hip_device_runtime.cpp   :682 : 1020251506453 us: [pid:5136 tid: 0x72f95] hipDeviceSynchronize: Returned hipSuccess : : duration: 1849 us
+:3:hip_device_runtime.cpp   :694 : 1020251506495 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDAE4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506507 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_error.cpp            :29  : 1020251506522 us: [pid:5136 tid: 0x72f95] [32m hipPeekAtLastError (  ) [0m
+:3:hip_error.cpp            :31  : 1020251506546 us: [pid:5136 tid: 0x72f95] hipPeekAtLastError: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020251506734 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EE494 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506754 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251506816 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED5C4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506827 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251506837 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED414 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506845 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251506855 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED20C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506864 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251506887 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED420 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506895 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251506903 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED5D0 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506911 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251506948 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED7C4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506957 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251506981 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED1DC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251506989 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_module.cpp           :891 : 1020251507048 us: [pid:5136 tid: 0x72f95] [32m hipLaunchKernel ( 00007FFD2EAEE480, {2,1,1}, {128,1,1}, 0000000FE45ED5C0, 0, char array:<null> ) [0m
+:3:hip_fatbin.cpp           :495 : 1020251574285 us: [pid:5136 tid: 0x72f95] Forcing SPIRV: false
+:4:palmemory.cpp            :198 : 1020251602587 us: [pid:5136 tid: 0x72f95] Alloc: 40d000 bytes, ptr[1004000000-100440d000], obj[1004000000-1004410000]
+:4:palmemory.cpp            :198 : 1020251605134 us: [pid:5136 tid: 0x72f95] Alloc: 40d000 bytes, ptr[207000000-20740d000], obj[207000000-20740d000]
+:4:palmemory.cpp            :428 : 1020251609984 us: [pid:5136 tid: 0x72f95] Free-:   40d000 bytes, VM[ 207000000,  20740d000]
+:3:hip_module.cpp           :893 : 1020251610053 us: [pid:5136 tid: 0x72f95] hipLaunchKernel: Returned hipSuccess : : duration: 103005 us
+:3:palvirtual.cpp           :2732: 1020251610067 us: [pid:5136 tid: 0xfdfbc] !	kernel : _ZN2at6native32elementwise_kernel_manual_unrollILi128ELi8EZNS0_22gpu_kernel_impl_nocastIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE10_clEvEUlN3c108BFloat16EE_EEvS4_RKT_EUlibE_EEviT1_
+
+:3:hip_error.cpp            :22  : 1020251610069 us: [pid:5136 tid: 0x72f95] [32m hipGetLastError (  ) [0m
+:3:hip_error.cpp            :22  : 1020251610107 us: [pid:5136 tid: 0x72f95] [32m hipGetLastError (  ) [0m
+:3:hip_device_runtime.cpp   :694 : 1020251610126 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED760 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251610137 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251610263 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EE4A0 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251610273 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_error.cpp            :29  : 1020251610348 us: [pid:5136 tid: 0x72f95] [32m hipPeekAtLastError (  ) [0m
+:3:hip_error.cpp            :31  : 1020251610354 us: [pid:5136 tid: 0x72f95] hipPeekAtLastError: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020251610455 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EC38C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251610461 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251610476 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDA84 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251610481 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :678 : 1020251610498 us: [pid:5136 tid: 0x72f95] [32m hipDeviceSynchronize (  ) [0m
+:4:commandqueue.cpp         :238 : 1020251610914 us: [pid:5136 tid: 0x72f95] All commands finished for host queue : 0000012790B16E00
+:3:hip_device_runtime.cpp   :682 : 1020251610927 us: [pid:5136 tid: 0x72f95] hipDeviceSynchronize: Returned hipSuccess : : duration: 429 us
+:3:hip_device_runtime.cpp   :694 : 1020251610942 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45EDAE4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251610951 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_error.cpp            :29  : 1020251610960 us: [pid:5136 tid: 0x72f95] [32m hipPeekAtLastError (  ) [0m
+:3:hip_error.cpp            :31  : 1020251610965 us: [pid:5136 tid: 0x72f95] hipPeekAtLastError: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020251611176 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED2C4 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251611183 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_device_runtime.cpp   :694 : 1020251611189 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED35C ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251611195 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_context.cpp          :336 : 1020251611208 us: [pid:5136 tid: 0x72f95] [32m hipDevicePrimaryCtxGetState ( 0, 0000000FE45ED354, 0000000FE45ED350 ) [0m
+:3:hip_context.cpp          :350 : 1020251611215 us: [pid:5136 tid: 0x72f95] hipDevicePrimaryCtxGetState: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020251611221 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED2BC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251611227 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_graph.cpp            :1157: 1020251611239 us: [pid:5136 tid: 0x72f95] [32m hipStreamIsCapturing ( char array:<null>, 0000000FE45ED440 ) [0m
+:3:hip_graph.cpp            :1158: 1020251611247 us: [pid:5136 tid: 0x72f95] hipStreamIsCapturing: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :694 : 1020251611254 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED2BC ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251611259 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:3:hip_memory.cpp           :895 : 1020251611277 us: [pid:5136 tid: 0x72f95] [32m hipMemcpyWithStream ( 000002BF3E023000, 0000001000203000, 4096, hipMemcpyDeviceToHost, char array:<null> ) [0m
+:4:palmemory.cpp            :198 : 1020251611329 us: [pid:5136 tid: 0xfdfbc] Alloc: 400000 bytes, ptr[207000000-207400000], obj[207000000-20740d000]
+:3:hip_memory.cpp           :912 : 1020251611679 us: [pid:5136 tid: 0x72f95] hipMemcpyWithStream: Returned hipSuccess : : duration: 402 us
+:3:hip_device_runtime.cpp   :694 : 1020251611690 us: [pid:5136 tid: 0x72f95] [32m hipGetDevice ( 0000000FE45ED260 ) [0m
+:3:hip_device_runtime.cpp   :706 : 1020251611698 us: [pid:5136 tid: 0x72f95] hipGetDevice: Returned hipSuccess : 0
+:4:palmemory.cpp            :428 : 1020252213867 us: [pid:5136 tid: 0x72f95] Free-:   410000 bytes, VM[1004000000, 1004410000]
+:3:hip_module.cpp           :34  : 1020252339700 us: [pid:5136 tid: 0x72f95] [32m hipModuleUnload ( 0000012790DB6700 ) [0m
+:4:palmemory.cpp            :428 : 1020252339798 us: [pid:5136 tid: 0x72f95] Free-:  4000000 bytes, VM[1000000000, 1004000000]
+:3:hip_module.cpp           :39  : 1020252339952 us: [pid:5136 tid: 0x72f95] hipModuleUnload: Returned hipSuccess : 
+:3:runtime.cpp              :114 : 1020252381515 us: [pid:5136 tid: 0x72f95] Begin runtime teardown

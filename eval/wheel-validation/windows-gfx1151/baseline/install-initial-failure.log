@@ -1,0 +1,46 @@
+Looking in indexes: https://repo.amd.com/rocm/whl-multi-arch/
+Collecting torch[device-gfx1151]==2.12.0+rocm7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/torch-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl (114.5 MB)
+Collecting torchvision[device-gfx1151]==0.27.0+rocm7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/torchvision-0.27.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl (900 kB)
+Collecting torchaudio==2.11.0+rocm7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/torchaudio-2.11.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl (336 kB)
+Collecting sympy>=1.13.3
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Collecting fsspec>=0.8.5
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/fsspec-2026.4.0-py3-none-any.whl (203 kB)
+Collecting networkx>=2.5.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/networkx-3.4.2-py3-none-any.whl (1.7 MB)
+Collecting jinja2
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/jinja2-3.1.6-py3-none-any.whl (134 kB)
+Collecting typing-extensions>=4.10.0
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Collecting rocm-bootstrap
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/rocm_bootstrap-0.1.0-py3-none-any.whl (27 kB)
+Collecting rocm[libraries]==7.14.1
+  Using cached rocm-7.14.1-py3-none-any.whl
+Requirement already satisfied: setuptools<82 in c:\b\old\lib\site-packages (from torch[device-gfx1151]==2.12.0+rocm7.14.1) (79.0.1)
+Collecting filelock
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/filelock-3.29.1-py3-none-any.whl (40 kB)
+Collecting amd-torch-device-gfx1151==2.12.0+rocm7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/amd_torch_device_gfx1151-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl (50.1 MB)
+Collecting amd-torch-device-gfx115x==2.12.0+rocm7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/amd_torch_device_gfx115x-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl (187.8 MB)
+Collecting pillow!=8.3.*,>=5.3.0
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/pillow-12.2.0-cp310-cp310-win_amd64.whl (7.1 MB)
+Collecting numpy
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/numpy-2.2.6-cp310-cp310-win_amd64.whl (12.9 MB)
+Collecting amd-torchvision-device-gfx1151==0.27.0+rocm7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/amd_torchvision_device_gfx1151-0.27.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl (137 kB)
+Collecting rocm-sdk-device-gfx1151==7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl (138.4 MB)
+Collecting rocm-sdk-core==7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_core-7.14.1-py3-none-win_amd64.whl (758.7 MB)
+Collecting rocm-sdk-libraries==7.14.1
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl (115.9 MB)
+Collecting mpmath<1.4,>=1.1.0
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/mpmath-1.3.0-py3-none-any.whl (536 kB)
+Collecting MarkupSafe>=2.0
+  Using cached https://repo.amd.com/rocm/whl-multi-arch/markupsafe-3.0.3-cp310-cp310-win_amd64.whl (15 kB)
+ERROR: Could not install packages due to an OSError: [Errno 2] No such file or directory: '<USERPROFILE>\\appdata\\local\\pip\\cache\\wheels\\49\\97\\b8\\a3cee1135f9f7c8cfa5d8e6b03db61372ab8696faf8582e504\\rocm-7.14.1-py3-none-any.whl'
+

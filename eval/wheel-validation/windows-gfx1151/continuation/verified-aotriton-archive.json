@@ -1,0 +1,18 @@
+{
+  "filename": "aotriton-0.14.50tp-images-amd-gfx115x.tar.gz",
+  "size": 231642586,
+  "url": "https://github.com/ROCm/aotriton/releases/download/0.14.50tp/aotriton-0.14.50tp-images-amd-gfx115x.tar.gz",
+  "sha256": "e4bda76fd6857a733cd7b4b3eb9ccb21c0f47b565ce304777a61bbb13d12ad6e",
+  "expected_sha256": "e4bda76fd6857a733cd7b4b3eb9ccb21c0f47b565ce304777a61bbb13d12ad6e",
+  "repaired_ranges": [
+    {
+      "iteration": 0,
+      "replaced_parts": [
+        64,
+        65
+      ],
+      "prior_rejected_sha256": "0378ce54882fa90d9ad999549fa0b4cd4b41d957a8358a85d4304370964e1740"
+    }
+  ],
+  "accepted": true
+}

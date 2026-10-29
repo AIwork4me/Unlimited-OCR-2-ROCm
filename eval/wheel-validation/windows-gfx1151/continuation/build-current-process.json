@@ -1,0 +1,10 @@
+{
+  "start_utc": "2026-10-28T14:04:48.6586053Z",
+  "end_utc": "2026-10-28T14:10:31.1249272Z",
+  "exit_code": 1,
+  "command": "cmd.exe /d /c C:\\b\\resume\\build-current.cmd",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "sdk": "7.14.1",
+  "max_jobs": 8
+}

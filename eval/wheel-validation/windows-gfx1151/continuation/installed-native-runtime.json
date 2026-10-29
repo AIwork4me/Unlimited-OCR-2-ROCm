@@ -1,0 +1,311 @@
+{
+  "utc": "2026-10-28T23:44:10.083829+00:00",
+  "python_executable": "C:\\b\\new\\Scripts\\python.exe",
+  "prefix": "C:\\b\\new",
+  "torch_file": "C:\\b\\new\\lib\\site-packages\\torch\\__init__.py",
+  "torch_extension_file": "C:\\b\\new\\lib\\site-packages\\torch\\_C.cp310-win_amd64.pyd",
+  "torch_version": "2.12.0+rocm7.14.1",
+  "torch_git_version": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "torch_hip_version": "7.14.60850",
+  "architecture": "gfx1151",
+  "hip_api_versions": {
+    "hipRuntimeGetVersion": {
+      "return_code": 0,
+      "version_integer": 71460850
+    },
+    "hipDriverGetVersion": {
+      "return_code": 0,
+      "version_integer": 71460850
+    }
+  },
+  "loaded_torch_and_sdk_binaries": [
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_core\\bin\\amd_comgr.dll",
+      "relative_path": "_rocm_sdk_core/bin/amd_comgr.dll",
+      "sha256": "1064ca0d2ee3688e564021c6e3b4119a5e35f724c1e5dcc9eb1577f477ee7ec8",
+      "expected_member_sha256": "1064ca0d2ee3688e564021c6e3b4119a5e35f724c1e5dcc9eb1577f477ee7ec8",
+      "wheel_provider": "rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_core\\bin\\amdhip64_7.dll",
+      "relative_path": "_rocm_sdk_core/bin/amdhip64_7.dll",
+      "sha256": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "expected_member_sha256": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "wheel_provider": "rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_core\\bin\\hiprtc0714.dll",
+      "relative_path": "_rocm_sdk_core/bin/hiprtc0714.dll",
+      "sha256": "c6159dd12714eed42c1d851e49a425404c1a34ba27cd2a8e721b0fe3db4fd86e",
+      "expected_member_sha256": "c6159dd12714eed42c1d851e49a425404c1a34ba27cd2a8e721b0fe3db4fd86e",
+      "wheel_provider": "rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_core\\bin\\rocm-openblas.dll",
+      "relative_path": "_rocm_sdk_core/bin/rocm-openblas.dll",
+      "sha256": "88f7631d9f7c49cfbf710551a7fa69bef2fd54052007532a518d7ba3699534c0",
+      "expected_member_sha256": "88f7631d9f7c49cfbf710551a7fa69bef2fd54052007532a518d7ba3699534c0",
+      "wheel_provider": "rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_core\\bin\\rocm_kpack.dll",
+      "relative_path": "_rocm_sdk_core/bin/rocm_kpack.dll",
+      "sha256": "97b59ca4e7b5edfcda72d66c5b6643f557168b3c60091cf5c6fe9bb226597bf1",
+      "expected_member_sha256": "97b59ca4e7b5edfcda72d66c5b6643f557168b3c60091cf5c6fe9bb226597bf1",
+      "wheel_provider": "rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\MIOpen.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/MIOpen.dll",
+      "sha256": "e97891df7ea0ba2b6eda703bd69499521dc9a38300fe626f412b5544dec647bc",
+      "expected_member_sha256": "e97891df7ea0ba2b6eda703bd69499521dc9a38300fe626f412b5544dec647bc",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\hipblas.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/hipblas.dll",
+      "sha256": "a2b58f20529f768b22bcde18b0cdbc7ae58b112b9bd1171bdd23197c4fafd27c",
+      "expected_member_sha256": "a2b58f20529f768b22bcde18b0cdbc7ae58b112b9bd1171bdd23197c4fafd27c",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\hipdnn_backend.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/hipdnn_backend.dll",
+      "sha256": "d115a4355b2c601be236025c3cbd530540c689e27d0742b34ddb62fc7063835f",
+      "expected_member_sha256": "d115a4355b2c601be236025c3cbd530540c689e27d0742b34ddb62fc7063835f",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\hipfft.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/hipfft.dll",
+      "sha256": "33396b88f67c280cbd5c6462742c1aec154fa8583676835e10bc67317f367e95",
+      "expected_member_sha256": "33396b88f67c280cbd5c6462742c1aec154fa8583676835e10bc67317f367e95",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\hiprand.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/hiprand.dll",
+      "sha256": "0b321daec320b7e05799dec80f61925b00f028d13b3dd0b2676e099c018ef12e",
+      "expected_member_sha256": "0b321daec320b7e05799dec80f61925b00f028d13b3dd0b2676e099c018ef12e",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\hipsolver.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/hipsolver.dll",
+      "sha256": "9c7bfa0b0200253b5a1c54b652d799b33c7aea50002719be16a7a0e01baf58d4",
+      "expected_member_sha256": "9c7bfa0b0200253b5a1c54b652d799b33c7aea50002719be16a7a0e01baf58d4",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\hipsparse.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/hipsparse.dll",
+      "sha256": "14a4c66dc83bca56db81913056b9455ec15fbdc44201702dff5d42cfa4b8f55e",
+      "expected_member_sha256": "14a4c66dc83bca56db81913056b9455ec15fbdc44201702dff5d42cfa4b8f55e",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\libhipblaslt.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/libhipblaslt.dll",
+      "sha256": "59bc43d0dab754f4a3c04ab101792219106cde200af9cb92bc981bfc02f8df50",
+      "expected_member_sha256": "59bc43d0dab754f4a3c04ab101792219106cde200af9cb92bc981bfc02f8df50",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\rocblas.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/rocblas.dll",
+      "sha256": "5a912880e711154594d95e9ce2c944e30966265c2e2334c6382e5634c8f52a33",
+      "expected_member_sha256": "5a912880e711154594d95e9ce2c944e30966265c2e2334c6382e5634c8f52a33",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\rocfft.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/rocfft.dll",
+      "sha256": "5106e0e5f47c0a7564330326a5e4042a07f5b2291f1c9a3f9ae1374707b95eba",
+      "expected_member_sha256": "5106e0e5f47c0a7564330326a5e4042a07f5b2291f1c9a3f9ae1374707b95eba",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\rocrand.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/rocrand.dll",
+      "sha256": "9988b2741ca45f4f6c9a57e09031bde863fddb4f627ab43a86ee9ff7d81a2206",
+      "expected_member_sha256": "9988b2741ca45f4f6c9a57e09031bde863fddb4f627ab43a86ee9ff7d81a2206",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\rocsolver.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/rocsolver.dll",
+      "sha256": "a9214eea663e1eba965baa6a9f8a69ce11570b41eda15961e02e39b439f9d464",
+      "expected_member_sha256": "a9214eea663e1eba965baa6a9f8a69ce11570b41eda15961e02e39b439f9d464",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\_rocm_sdk_libraries\\bin\\rocsparse.dll",
+      "relative_path": "_rocm_sdk_libraries/bin/rocsparse.dll",
+      "sha256": "b3f4b821e7742768ae740d8b7d1a6736f06c89f286c3f3471df1a33ae18e49a2",
+      "expected_member_sha256": "b3f4b821e7742768ae740d8b7d1a6736f06c89f286c3f3471df1a33ae18e49a2",
+      "wheel_provider": "rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\_C.cp310-win_amd64.pyd",
+      "relative_path": "torch/_C.cp310-win_amd64.pyd",
+      "sha256": "d92b15a1b2f8e0dcf7a00cddc9b08e262430ededc0e92bc9651c92753d092488",
+      "expected_member_sha256": "d92b15a1b2f8e0dcf7a00cddc9b08e262430ededc0e92bc9651c92753d092488",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\aotriton_v2.dll",
+      "relative_path": "torch/lib/aotriton_v2.dll",
+      "sha256": "941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884",
+      "expected_member_sha256": "941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\c10.dll",
+      "relative_path": "torch/lib/c10.dll",
+      "sha256": "8b626ead2d87e78363f499915baf8b143e09d9a363da2e17cde23c30aa83ca27",
+      "expected_member_sha256": "8b626ead2d87e78363f499915baf8b143e09d9a363da2e17cde23c30aa83ca27",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\c10_hip.dll",
+      "relative_path": "torch/lib/c10_hip.dll",
+      "sha256": "d72a2f070dd02b4d976e5f8ced62ef0e8c9306f0a1e6f46d8832007f9f662317",
+      "expected_member_sha256": "d72a2f070dd02b4d976e5f8ced62ef0e8c9306f0a1e6f46d8832007f9f662317",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\caffe2_nvrtc.dll",
+      "relative_path": "torch/lib/caffe2_nvrtc.dll",
+      "sha256": "3646f3ae45cad5346d4c55a56a4c67245d360207985a46eee3452fdab5f63535",
+      "expected_member_sha256": "3646f3ae45cad5346d4c55a56a4c67245d360207985a46eee3452fdab5f63535",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\dl.dll",
+      "relative_path": "torch/lib/dl.dll",
+      "sha256": "d9b32d65d724f8bbc60f9d3cbda81365b6ad1708575f51bd6658a1c6e43e1d58",
+      "expected_member_sha256": "d9b32d65d724f8bbc60f9d3cbda81365b6ad1708575f51bd6658a1c6e43e1d58",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\liblzma.dll",
+      "relative_path": "torch/lib/liblzma.dll",
+      "sha256": "710cd7fc72bffd5483167391331d55e9b22ac570709cb41eafbb23115b7c3453",
+      "expected_member_sha256": "710cd7fc72bffd5483167391331d55e9b22ac570709cb41eafbb23115b7c3453",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\libomp140.x86_64.dll",
+      "relative_path": "torch/lib/libomp140.x86_64.dll",
+      "sha256": "9ab1cb787e52b2a36133899c01c1db1f876067d1471cd224ead85f40a8152b99",
+      "expected_member_sha256": "9ab1cb787e52b2a36133899c01c1db1f876067d1471cd224ead85f40a8152b99",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\shm.dll",
+      "relative_path": "torch/lib/shm.dll",
+      "sha256": "f379c143406dba0e14369e8b7ad5a6bacbae32a48c7990b48f20defeebe84877",
+      "expected_member_sha256": "f379c143406dba0e14369e8b7ad5a6bacbae32a48c7990b48f20defeebe84877",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch.dll",
+      "relative_path": "torch/lib/torch.dll",
+      "sha256": "7aa176288e90a2ca4633988497957c446ae485dd00d7cde16754f66cf4a9ece6",
+      "expected_member_sha256": "7aa176288e90a2ca4633988497957c446ae485dd00d7cde16754f66cf4a9ece6",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_cpu.dll",
+      "relative_path": "torch/lib/torch_cpu.dll",
+      "sha256": "bb0df531f59268ac4f2060947bfa733c271a3436be567766f5fd706d429a696a",
+      "expected_member_sha256": "bb0df531f59268ac4f2060947bfa733c271a3436be567766f5fd706d429a696a",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll",
+      "relative_path": "torch/lib/torch_global_deps.dll",
+      "sha256": "75d5d0b652047a4f6da6aaa3a57556b846fda889b6bf1235f2b038ec3386c822",
+      "expected_member_sha256": "75d5d0b652047a4f6da6aaa3a57556b846fda889b6bf1235f2b038ec3386c822",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_hip.dll",
+      "relative_path": "torch/lib/torch_hip.dll",
+      "sha256": "12e3c174c04162593fa00bb969a5d6dcc6db3476613f403fcf7f3021d9b97a38",
+      "expected_member_sha256": "12e3c174c04162593fa00bb969a5d6dcc6db3476613f403fcf7f3021d9b97a38",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\torch_python.dll",
+      "relative_path": "torch/lib/torch_python.dll",
+      "sha256": "f77d38901fd0612b2be54d64b9f2319709a70578b8b80f891cfdeeb1f23fd58f",
+      "expected_member_sha256": "f77d38901fd0612b2be54d64b9f2319709a70578b8b80f891cfdeeb1f23fd58f",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    },
+    {
+      "path": "C:\\b\\new\\Lib\\site-packages\\torch\\lib\\uv.dll",
+      "relative_path": "torch/lib/uv.dll",
+      "sha256": "34070dfc8f6a634a6e4b0ec4eb746e6b429a62516f7dfd35ec68990cfb20f502",
+      "expected_member_sha256": "34070dfc8f6a634a6e4b0ec4eb746e6b429a62516f7dfd35ec68990cfb20f502",
+      "wheel_provider": "torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "matches_wheel": true
+    }
+  ],
+  "all_loaded_stack_bytes_match_provider_wheels": true,
+  "claim_scope": "Supplemental runtime identity process; numerical acceptance is the separate unchanged 27-process matrix.",
+  "provider_wheels": [
+    {
+      "path": "C:\\b\\out\\wheels\\torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+      "size": 388478127,
+      "sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e"
+    },
+    {
+      "path": "C:\\b\\wheels\\rocm_sdk_core-7.14.1-py3-none-win_amd64.whl",
+      "size": 758745858,
+      "sha256": "49eb83cb89d50562944a1f0eaf65f4e21f4557813de53e78d022fee81bbfb6e7"
+    },
+    {
+      "path": "C:\\b\\wheels\\rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl",
+      "size": 115912267,
+      "sha256": "f5f639b488e3e78a44bebba786e917a98c4386001a3fa2a27393a9ce97e2a32d"
+    },
+    {
+      "path": "C:\\b\\wheels\\rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl",
+      "size": 138414354,
+      "sha256": "8ea906238b6247ce8230bc7a02ab99d410fbae524e3c1ce57e6457c9229ff79a"
+    }
+  ]
+}

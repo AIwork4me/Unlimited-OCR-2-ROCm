@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-28T15:39:53.102540+00:00",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "cache_sha256": "4829a7c40ba3fb2fa90f660732f9b34f7b622665db384a39c236bc80871ef19e",
+  "cache_values": {
+    "USE_ROCM": "ON",
+    "USE_CUDA": "OFF",
+    "USE_FLASH_ATTENTION": "ON",
+    "USE_MEM_EFF_ATTENTION": "ON",
+    "USE_ROCM_CK_SDPA": "OFF",
+    "USE_DISTRIBUTED": "ON",
+    "USE_GLOO": "ON",
+    "USE_FBGEMM": "OFF",
+    "CMAKE_CXX_COMPILER": "C:/b/be/Lib/site-packages/_rocm_sdk_devel/lib/llvm/bin/clang-cl.exe",
+    "CMAKE_BUILD_TYPE": "Release",
+    "HIP_VERSION": "7.14.60850-ca887ee8"
+  },
+  "candidate_status": "NOT_BUILT",
+  "interpretation": "Successful PyTorch configuration; ongoing compilation, not a successful wheel build or GPU result."
+}

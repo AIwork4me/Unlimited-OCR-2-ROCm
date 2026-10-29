@@ -1,0 +1,22 @@
+import json,hashlib,zipfile,sys
+from pathlib import Path
+import torch
+r=json.loads(Path('C:/b/raw/baseline-provenance.json').read_text())
+modules={Path(m['path']).name.lower():m for m in r['loaded_modules']}
+rows=[]
+for p in sorted(Path('C:/b/wheels').glob('*.whl')):
+    with zipfile.ZipFile(p) as z:
+        metadata=next((n for n in z.namelist() if n.endswith('.dist-info/METADATA')),None)
+        wheel=next(n for n in z.namelist() if n.endswith('.dist-info/WHEEL'))
+        entry={'filename':p.name,'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'wheel_metadata':z.read(wheel).decode(),'package_metadata':z.read(metadata).decode() if metadata else None,'runtime_files':[]}
+        for n in z.namelist():
+            name=n.split('/')[-1].lower()
+            if name in modules:
+                digest=hashlib.sha256(z.read(n)).hexdigest()
+                entry['runtime_files'].append({'member':n,'sha256':digest,'loaded_path':modules[name]['path'],'loaded_sha256':modules[name]['sha256'],'matches_loaded':digest==modules[name]['sha256']})
+        rows.append(entry)
+Path('C:/b/raw/baseline-wheel-manifest.json').write_text(json.dumps({'wheels':rows,'torch_file':torch.__file__,'python_executable':sys.executable,'python_prefix':sys.prefix,'hip':torch.version.hip,'rocm':getattr(torch.version,'rocm',None),'git_version':torch.version.git_version},indent=2))
+print('torch:',torch.__file__)
+print('loaded matches:',[(m['member'],m['matches_loaded']) for r in rows for m in r['runtime_files']])
+print('header:',r['runtime_header']['parsed'])
+print('images:',[s['signature'] for s in r['image_signatures']])

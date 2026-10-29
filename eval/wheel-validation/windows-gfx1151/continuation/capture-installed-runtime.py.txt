@@ -1,0 +1,53 @@
+import ctypes
+import hashlib
+import json
+import sys
+import zipfile
+from datetime import datetime, timezone
+from pathlib import Path
+
+sys.path.insert(0,'C:/uocr/experiments/pytorch212_wheel')
+import collect_provenance
+import torch
+
+root=Path('C:/b/resume')
+site=Path(sys.prefix)/'Lib/site-packages'
+profile=json.loads((root/'candidate-identity-profile.json').read_text(encoding='utf-8'))
+props=torch.cuda.get_device_properties(0)
+modules=[Path(p).resolve() for p in collect_provenance.loaded_modules()]
+selected={p.relative_to(site).as_posix():p for p in modules if p.is_relative_to(site) and (p.relative_to(site).parts[0]=='torch' or 'rocm' in p.relative_to(site).parts[0].lower())}
+paths=[Path(profile['wheel_path']),*[Path('C:/b/wheels')/n for n in ['rocm_sdk_core-7.14.1-py3-none-win_amd64.whl','rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl','rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl']]]
+expected={};providers={}
+for path in paths:
+    with zipfile.ZipFile(path) as z:
+        for name in z.namelist():
+            if name.casefold() in {n.casefold() for n in selected}:
+                expected[name.casefold()]=hashlib.sha256(z.read(name)).hexdigest()
+                providers[name.casefold()]=path.name
+rows=[]
+for name,path in sorted(selected.items()):
+    value=hashlib.sha256(path.read_bytes()).hexdigest()
+    rows.append({'path':str(path),'relative_path':name,'sha256':value,'expected_member_sha256':expected.get(name.casefold()),
+                 'wheel_provider':providers.get(name.casefold()),'matches_wheel':value==expected.get(name.casefold())})
+hip_path=site/'_rocm_sdk_core/bin/amdhip64_7.dll'
+hip=ctypes.WinDLL(str(hip_path))
+versions={}
+for name in ['hipRuntimeGetVersion','hipDriverGetVersion']:
+    f=getattr(hip,name); f.argtypes=[ctypes.POINTER(ctypes.c_int)]; f.restype=ctypes.c_int
+    value=ctypes.c_int(); result=f(ctypes.byref(value))
+    versions[name]={'return_code':result,'version_integer':value.value}
+r={'utc':datetime.now(timezone.utc).isoformat(),'python_executable':sys.executable,'prefix':sys.prefix,
+   'torch_file':torch.__file__,'torch_extension_file':torch._C.__file__,'torch_version':str(torch.__version__),
+   'torch_git_version':torch.version.git_version,'torch_hip_version':torch.version.hip,'architecture':props.gcnArchName,
+   'hip_api_versions':versions,'loaded_torch_and_sdk_binaries':rows,'all_loaded_stack_bytes_match_provider_wheels':all(x['matches_wheel'] for x in rows),
+   'claim_scope':'Supplemental runtime identity process; numerical acceptance is the separate unchanged 27-process matrix.'}
+r['provider_wheels']=[]
+for path in paths:
+    h=hashlib.sha256()
+    with path.open('rb') as f:
+        for b in iter(lambda:f.read(1048576),b''):h.update(b)
+    r['provider_wheels'].append({'path':str(path),'size':path.stat().st_size,'sha256':h.hexdigest()})
+assert r['all_loaded_stack_bytes_match_provider_wheels']
+assert all(x['return_code']==0 for x in versions.values())
+(root/'installed-native-runtime.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf-8')
+print('Verified loaded torch/SDK native modules:',len(rows),versions)

@@ -1,0 +1,8 @@
+Looking in indexes: https://repo.amd.com/rocm/whl-multi-arch/
+Processing C:\b\wheels\rocm_sdk_core-7.14.1-py3-none-win_amd64.whl
+Processing C:\b\wheels\rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl
+Processing C:\b\wheels\rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl
+Processing C:\b\wheels\rocm_sdk_devel-7.14.1-py3-none-win_amd64.whl
+Installing collected packages: rocm-sdk-libraries, rocm-sdk-devel, rocm-sdk-core, rocm-sdk-device-gfx1151
+
+Successfully installed rocm-sdk-core-7.14.1 rocm-sdk-devel-7.14.1 rocm-sdk-device-gfx1151-7.14.1 rocm-sdk-libraries-7.14.1

@@ -1,0 +1,21 @@
+C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py:101: UserWarning: Memory efficient kernel not used because: (Triggered internally at C:/b/pytorch/aten/src/ATen/native/transformers/hip/sdp_utils.cpp:1051.)
+  and props.gcnArchName == "gfx1151"
+C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py:101: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at C:/b/pytorch/aten/src\ATen/native/transformers/sdp_utils_cpp.h:552.)
+  and props.gcnArchName == "gfx1151"
+C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py:101: UserWarning: Flash attention kernel not used because: (Triggered internally at C:/b/pytorch/aten/src/ATen/native/transformers/hip/sdp_utils.cpp:1053.)
+  and props.gcnArchName == "gfx1151"
+C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py:101: UserWarning: Flash Attention does not support non-null attn_mask. (Triggered internally at C:/b/pytorch/aten/src\ATen/native/transformers/sdp_utils_cpp.h:262.)
+  and props.gcnArchName == "gfx1151"
+C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py:101: UserWarning: cuDNN attention kernel not used because: (Triggered internally at C:/b/pytorch/aten/src/ATen/native/transformers/hip/sdp_utils.cpp:1055.)
+  and props.gcnArchName == "gfx1151"
+C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py:101: UserWarning: Torch was not compiled with cuDNN attention. (Triggered internally at C:/b/pytorch/aten/src/ATen/native/transformers/hip/sdp_utils.cpp:801.)
+  and props.gcnArchName == "gfx1151"
+Traceback (most recent call last):
+  File "C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py", line 163, in main
+    trace = profiler
+  File "C:\uocr\experiments\pytorch212_wheel\candidate_repro.py", line 162, in candidate_execute
+    execute(args, report)
+  File "C:\uocr\experiments\pytorch212_wheel\repro_sdpa.py", line 101, in execute
+    and props.gcnArchName == "gfx1151"
+RuntimeError: No available kernel. Aborting execution.
+

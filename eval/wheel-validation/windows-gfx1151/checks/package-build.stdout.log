@@ -1,0 +1,229 @@
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools==81.0.0
+  - wheel==0.48.0
+* Getting build dependencies for sdist...
+running egg_info
+writing src\unlimited_ocr_2_rocm.egg-info\PKG-INFO
+writing dependency_links to src\unlimited_ocr_2_rocm.egg-info\dependency_links.txt
+writing entry points to src\unlimited_ocr_2_rocm.egg-info\entry_points.txt
+writing top-level names to src\unlimited_ocr_2_rocm.egg-info\top_level.txt
+reading manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing src\unlimited_ocr_2_rocm.egg-info\PKG-INFO
+writing dependency_links to src\unlimited_ocr_2_rocm.egg-info\dependency_links.txt
+writing entry points to src\unlimited_ocr_2_rocm.egg-info\entry_points.txt
+writing top-level names to src\unlimited_ocr_2_rocm.egg-info\top_level.txt
+reading manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+running check
+creating unlimited_ocr_2_rocm-0.0.1.dev0
+creating unlimited_ocr_2_rocm-0.0.1.dev0\docs
+creating unlimited_ocr_2_rocm-0.0.1.dev0\docs\superpowers\plans
+creating unlimited_ocr_2_rocm-0.0.1.dev0\docs\superpowers\specs
+creating unlimited_ocr_2_rocm-0.0.1.dev0\docs\validation
+creating unlimited_ocr_2_rocm-0.0.1.dev0\requirements
+creating unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+creating unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+creating unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm.egg-info
+creating unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm\_upstream
+creating unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+creating unlimited_ocr_2_rocm-0.0.1.dev0\tests\gpu
+creating unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying files to unlimited_ocr_2_rocm-0.0.1.dev0...
+copying AGENTS.md -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying CHANGELOG.md -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying CONTRIBUTING.md -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying LICENSE -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying MANIFEST.in -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying NOTICE -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying README.md -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying README.zh-CN.md -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying SECURITY.md -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying pyproject.toml -> unlimited_ocr_2_rocm-0.0.1.dev0
+copying docs\CODE_REVIEW.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\ENGINEERING_LOG.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\FINAL_REPORT.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\LIMITATIONS.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\MERGE_READINESS.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\REPRODUCIBILITY.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\ROCM_TRITON_RCA.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\SECURITY.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\UPSTREAM_AUDIT.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\UPSTREAM_PROPOSAL.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\VALIDATION.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\WINDOWS_COMPATIBILITY.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs
+copying docs\superpowers\plans\2026-10-28-phase1.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs\superpowers\plans
+copying docs\superpowers\specs\2026-10-28-phase1-design.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs\superpowers\specs
+copying docs\validation\BUILD_PROVENANCE.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs\validation
+copying docs\validation\GPU_TEST_MATRIX.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs\validation
+copying docs\validation\NEXT_UPSTREAM_PR.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs\validation
+copying docs\validation\PLAN.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs\validation
+copying docs\validation\PYTORCH_212_CURRENT_WHEEL.md -> unlimited_ocr_2_rocm-0.0.1.dev0\docs\validation
+copying requirements\dev.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\requirements
+copying requirements\native.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\requirements
+copying requirements\stack.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\requirements
+copying requirements\triton.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\requirements
+copying requirements\windows-cp310.lock.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\requirements
+copying scripts\doctor_windows.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\make_fixtures.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\probe_sparse.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\probe_triton.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\probe_vision_sdpa.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\record_environment.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\reproduce_windows.ps1 -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\setup_windows_rocm7141.ps1 -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\smoke_multi.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying scripts\smoke_single.py -> unlimited_ocr_2_rocm-0.0.1.dev0\scripts
+copying src\unlimited_ocr_2_rocm\__init__.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\__main__.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\cli.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\compat.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\config.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\doctor.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\inference.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\model.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\output.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\py.typed -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\repro.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\upstream-lock.json -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm.egg-info\PKG-INFO -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm.egg-info
+copying src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm.egg-info
+copying src\unlimited_ocr_2_rocm.egg-info\dependency_links.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm.egg-info
+copying src\unlimited_ocr_2_rocm.egg-info\entry_points.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm.egg-info
+copying src\unlimited_ocr_2_rocm.egg-info\top_level.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm.egg-info
+copying src\unlimited_ocr_2_rocm\_upstream\LICENSE-Baidu.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm\_upstream
+copying src\unlimited_ocr_2_rocm\_upstream\__init__.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm\_upstream
+copying src\unlimited_ocr_2_rocm\_upstream\process_unlimitedOCR2.py -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm\_upstream
+copying tests\fixtures\chinese.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\english.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\ground_truth.json -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\math.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\mixed.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\page_1.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\page_2.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\page_3.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\page_4.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\page_5.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\table.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\table_page_1.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\fixtures\table_page_2.png -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\fixtures
+copying tests\gpu\test_physical_device.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\gpu
+copying tests\unit\test_cli.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying tests\unit\test_config.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying tests\unit\test_doctor.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying tests\unit\test_inference.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying tests\unit\test_native_versions.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying tests\unit\test_output.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying tests\unit\test_repro.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying tests\unit\test_wheel_validation.py -> unlimited_ocr_2_rocm-0.0.1.dev0\tests\unit
+copying src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt -> unlimited_ocr_2_rocm-0.0.1.dev0\src\unlimited_ocr_2_rocm.egg-info
+Writing unlimited_ocr_2_rocm-0.0.1.dev0\setup.cfg
+Creating tar archive
+removing 'unlimited_ocr_2_rocm-0.0.1.dev0' (and everything under it)
+* Building wheel from sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools==81.0.0
+  - wheel==0.48.0
+* Getting build dependencies for wheel...
+running egg_info
+writing src\unlimited_ocr_2_rocm.egg-info\PKG-INFO
+writing dependency_links to src\unlimited_ocr_2_rocm.egg-info\dependency_links.txt
+writing entry points to src\unlimited_ocr_2_rocm.egg-info\entry_points.txt
+writing top-level names to src\unlimited_ocr_2_rocm.egg-info\top_level.txt
+reading manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\cli.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\compat.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\config.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\doctor.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\inference.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\model.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\output.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\repro.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\__init__.py -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\__main__.py -> build\lib\unlimited_ocr_2_rocm
+creating build\lib\unlimited_ocr_2_rocm\_upstream
+copying src\unlimited_ocr_2_rocm\_upstream\process_unlimitedOCR2.py -> build\lib\unlimited_ocr_2_rocm\_upstream
+copying src\unlimited_ocr_2_rocm\_upstream\__init__.py -> build\lib\unlimited_ocr_2_rocm\_upstream
+running egg_info
+writing src\unlimited_ocr_2_rocm.egg-info\PKG-INFO
+writing dependency_links to src\unlimited_ocr_2_rocm.egg-info\dependency_links.txt
+writing entry points to src\unlimited_ocr_2_rocm.egg-info\entry_points.txt
+writing top-level names to src\unlimited_ocr_2_rocm.egg-info\top_level.txt
+reading manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'src\unlimited_ocr_2_rocm.egg-info\SOURCES.txt'
+copying src\unlimited_ocr_2_rocm\py.typed -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\upstream-lock.json -> build\lib\unlimited_ocr_2_rocm
+copying src\unlimited_ocr_2_rocm\_upstream\LICENSE-Baidu.txt -> build\lib\unlimited_ocr_2_rocm\_upstream
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\cli.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\compat.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\config.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\doctor.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\inference.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\model.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\output.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\py.typed -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\repro.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\upstream-lock.json -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+creating build\bdist.win-amd64\wheel\unlimited_ocr_2_rocm\_upstream
+copying build\lib\unlimited_ocr_2_rocm\_upstream\LICENSE-Baidu.txt -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm\_upstream
+copying build\lib\unlimited_ocr_2_rocm\_upstream\process_unlimitedOCR2.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm\_upstream
+copying build\lib\unlimited_ocr_2_rocm\_upstream\__init__.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm\_upstream
+copying build\lib\unlimited_ocr_2_rocm\__init__.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+copying build\lib\unlimited_ocr_2_rocm\__main__.py -> build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm
+running install_egg_info
+Copying src\unlimited_ocr_2_rocm.egg-info to build\bdist.win-amd64\wheel\.\unlimited_ocr_2_rocm-0.0.1.dev0-py3.10.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\unlimited_ocr_2_rocm-0.0.1.dev0.dist-info\WHEEL
+creating 'C:\\uocr\\dist\\.tmp-horubv5h\\unlimited_ocr_2_rocm-0.0.1.dev0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'unlimited_ocr_2_rocm/__init__.py'
+adding 'unlimited_ocr_2_rocm/__main__.py'
+adding 'unlimited_ocr_2_rocm/cli.py'
+adding 'unlimited_ocr_2_rocm/compat.py'
+adding 'unlimited_ocr_2_rocm/config.py'
+adding 'unlimited_ocr_2_rocm/doctor.py'
+adding 'unlimited_ocr_2_rocm/inference.py'
+adding 'unlimited_ocr_2_rocm/model.py'
+adding 'unlimited_ocr_2_rocm/output.py'
+adding 'unlimited_ocr_2_rocm/py.typed'
+adding 'unlimited_ocr_2_rocm/repro.py'
+adding 'unlimited_ocr_2_rocm/upstream-lock.json'
+adding 'unlimited_ocr_2_rocm/_upstream/LICENSE-Baidu.txt'
+adding 'unlimited_ocr_2_rocm/_upstream/__init__.py'
+adding 'unlimited_ocr_2_rocm/_upstream/process_unlimitedOCR2.py'
+adding 'unlimited_ocr_2_rocm-0.0.1.dev0.dist-info/licenses/LICENSE'
+adding 'unlimited_ocr_2_rocm-0.0.1.dev0.dist-info/licenses/NOTICE'
+adding 'unlimited_ocr_2_rocm-0.0.1.dev0.dist-info/METADATA'
+adding 'unlimited_ocr_2_rocm-0.0.1.dev0.dist-info/WHEEL'
+adding 'unlimited_ocr_2_rocm-0.0.1.dev0.dist-info/entry_points.txt'
+adding 'unlimited_ocr_2_rocm-0.0.1.dev0.dist-info/top_level.txt'
+adding 'unlimited_ocr_2_rocm-0.0.1.dev0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built unlimited_ocr_2_rocm-0.0.1.dev0.tar.gz and unlimited_ocr_2_rocm-0.0.1.dev0-py3-none-any.whl

@@ -1,0 +1,25 @@
+import subprocess,concurrent.futures,pathlib,json,datetime
+jobs=[]
+for name,pin in [('onnx','e709452ef2bbc1d113faf678c24e6d3467696e83'),('protobuf','d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a')]:
+    path='C:/b/pytorch/third_party/'+name
+    data=subprocess.check_output(['git','-C',path,'rev-list','--objects','--missing=print',pin],text=True)
+    missing=[line[1:] for line in data.splitlines() if line.startswith('?')]
+    print(name,'missing',len(missing),flush=True)
+    for offset in range(0,len(missing),64):jobs.append((name,path,offset,missing[offset:offset+64]))
+def fetch(item):
+    name,path,offset,oids=item
+    cmd=['git','-C',path,'-c','http.version=HTTP/1.1','-c','fetch.negotiationAlgorithm=noop','-c','http.lowSpeedLimit=1024','-c','http.lowSpeedTime=15','fetch','origin','--no-tags','--no-write-fetch-head','--recurse-submodules=no','--filter=blob:none','--stdin']
+    output=pathlib.Path(f'C:/b/resume/logs/{name}-batch-{offset}.txt')
+    for attempt in range(3):
+        with output.open('ab') as log:
+            r=subprocess.run(cmd,input=('\n'.join(oids)+'\n').encode(),stdout=log,stderr=subprocess.STDOUT,timeout=60)
+        if r.returncode==0:return {'name':name,'offset':offset,'objects':len(oids),'exit':0,'attempts':attempt+1}
+    return {'name':name,'offset':offset,'objects':len(oids),'exit':r.returncode,'attempts':3}
+records=[]
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+    for i,r in enumerate(pool.map(fetch,jobs),1):
+        records.append(r)
+        pathlib.Path('C:/b/resume/batched-object-recovery.json').write_text(json.dumps({'records':records,'method':'bounded exact-object Git fetch batches, TLS verified; native Git verifies object identities'},indent=2))
+        if i%10==0 or r['exit']:print('batches',i,'/',len(jobs),'latest',r,flush=True)
+for name,pin in [('onnx','e709452ef2bbc1d113faf678c24e6d3467696e83'),('protobuf','d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a')]:
+    r=subprocess.run(['git','-C','C:/b/pytorch/third_party/'+name,'checkout','--detach',pin]);print(name,'checkout',r.returncode,flush=True)

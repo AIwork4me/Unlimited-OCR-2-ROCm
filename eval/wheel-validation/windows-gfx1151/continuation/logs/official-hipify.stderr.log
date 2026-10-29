@@ -1,0 +1,14 @@
+Successfully preprocessed all matching files.
+Error: Source file C:\b\pytorch\third_party\mslk\include\mslk\utils\hip\tuning_cache.cuh does not exist
+Traceback (most recent call last):
+  File "C:\b\therock\external-builds\pytorch\pytorch_torch_repo.py", line 83, in <module>
+    main(sys.argv[1:])
+  File "C:\b\therock\external-builds\pytorch\pytorch_torch_repo.py", line 79, in main
+    args.func(args)
+  File "C:\b\therock\external-builds\pytorch\repo_management.py", line 151, in do_hipify
+    run_command([sys.executable, build_amd_path], cwd=repo_dir)
+  File "C:\b\therock\external-builds\pytorch\repo_management.py", line 44, in run_command
+    subprocess.check_call(
+  File "<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['C:\\b\\be\\Scripts\\python.exe', 'C:\\b\\pytorch\\tools\\amd_build\\build_amd.py']' returned non-zero exit status 1.

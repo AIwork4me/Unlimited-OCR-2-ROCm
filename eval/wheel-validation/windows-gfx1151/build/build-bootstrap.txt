@@ -1,0 +1,7 @@
+Collecting packaging
+  Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Installing collected packages: packaging
+Successfully installed packaging-26.3
+
+[notice] A new release of pip is available: 23.0.1 -> 26.2.2
+[notice] To update, run: C:\b\be\Scripts\python.exe -m pip install --upgrade pip

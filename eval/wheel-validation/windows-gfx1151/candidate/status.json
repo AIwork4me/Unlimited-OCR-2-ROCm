@@ -1,0 +1,8 @@
+{
+  "status": "NOT_BUILT",
+  "installation": "NOT_ATTEMPTED",
+  "gpu_tests": "NOT_RUN",
+  "wheel_sha256": null,
+  "candidate_binaries": null,
+  "claim": "No candidate artifact or runtime evidence exists."
+}

@@ -1,0 +1,62 @@
+{
+  "run_id": "dc3575af-57b2-4a25-ae4e-f1d7236785a7",
+  "utc": "2026-10-28T23:48:34.137885+00:00",
+  "decision": "FIX_VERIFIED",
+  "build_status": "SOURCE_WHEEL_BUILT_OFFICIAL_FROZEN_RECIPE",
+  "official_build_process_exit": 0,
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "aotriton_source_pin": "7a6963a7265d2cf0fc48c6a63464386134d32483",
+  "aotriton_image_version": "0.14.50tp",
+  "aotriton_image_source_sha": "c11b5b886a10a00f925f74133d38b3505e67ccd9",
+  "rocm_sdk_installed": "7.14.1",
+  "hip_runtime_version_integer": 71460850,
+  "architecture": "gfx1151",
+  "python_abi": "cp310",
+  "platform": "win_amd64",
+  "candidate_wheel_path": "C:\\b\\out\\wheels\\torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+  "candidate_wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "candidate_wheel_size": 388478127,
+  "candidate_gpu_tests": "27_FRESH_PROCESSES_COMPLETE",
+  "SOURCE_BUILT_WHEEL_VERIFIED": true,
+  "OFFICIAL_PUBLISHED_WHEEL_VERIFIED": false,
+  "baseline_counts": {
+    "FAIL": 21,
+    "MATH_PASS": 4,
+    "CONTROL_PASS": 1,
+    "UNSUPPORTED": 1
+  },
+  "candidate_counts": {
+    "FUSED_PASS": 21,
+    "MATH_PASS": 4,
+    "CONTROL_PASS": 1,
+    "UNSUPPORTED": 1
+  },
+  "checks": {
+    "all_27_cases_paired": true,
+    "all_fixtures_identical": true,
+    "all_arguments_identical_except_output": true,
+    "all_producer_and_profile_hashes_match_committed_files": true,
+    "all_run_ids_unique": true,
+    "three_fresh_process_repetitions": true,
+    "required_fused_routes_preserved": true,
+    "all_hip_checkpoints_clean": true,
+    "valid_flash_and_efficient_kernel_loads_and_launches": true,
+    "same_physical_driver": true
+  },
+  "identity_profile_sha256": "2b5c45cb6f799c1bbf342ba61621e6e6499efeffe4177e86c65f8f691d91228c",
+  "producer_binding_commit": "3e641d97af952d3fa70a3fbec223d6faed41b047",
+  "numerical_reference": "Unchanged independent CPU FP32 reference, seed7992, BF16 atol0.03/rtol0.03",
+  "hip_launch_evidence": "Both FLASH and EFFICIENT load attn_fwd and launch nonnull functions with positive grid/block, hipSuccess, PAL execution; no HIP errors",
+  "review": "Independent read-only review confirmed artifact identity, all27 raw reports, fixtures, repeated runs, numerical/HIP/launch evidence and producer-byte binding; no actionable findings.",
+  "scope": "Local source-built wheel; physical Windows Radeon8060S/gfx1151, driver32.0.22032.6002, BF16 forward matrix only.",
+  "unmeasured": [
+    "Newly published AMD candidate wheel",
+    "FP16/FP32 GPU matrices",
+    "Backward passes",
+    "Other hardware/operating systems",
+    "Full production OCR model pipeline",
+    "Single fixing commit attribution"
+  ],
+  "next_upstream_repository_conditional": "ROCm/TheRock packaged-wheel regression gate recommendation; no upstream Issue/PR created."
+}

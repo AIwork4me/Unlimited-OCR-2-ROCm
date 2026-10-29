@@ -1,0 +1,11 @@
+Processing c:\b\resume\verified-python-wheels\pip-26.0.1-py3-none-any.whl
+Processing c:\b\resume\verified-python-wheels\numpy-2.2.6-cp310-cp310-win_amd64.whl
+Processing c:\b\wheels\rocm_sdk_core-7.14.1-py3-none-win_amd64.whl
+Processing c:\b\wheels\rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl
+Processing c:\b\wheels\rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl
+Installing collected packages: rocm-sdk-libraries, rocm-sdk-device-gfx1151, rocm-sdk-core, pip, numpy
+  Attempting uninstall: pip
+    Found existing installation: pip 23.0.1
+    Uninstalling pip-23.0.1:
+      Successfully uninstalled pip-23.0.1
+Successfully installed numpy-2.2.6 pip-26.0.1 rocm-sdk-core-7.14.1 rocm-sdk-device-gfx1151-7.14.1 rocm-sdk-libraries-7.14.1

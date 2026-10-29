@@ -1,0 +1,2 @@
+retry 5 0 URLError
+retry 4 0 ValueError

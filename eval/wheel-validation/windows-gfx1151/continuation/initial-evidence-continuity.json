@@ -1,0 +1,12 @@
+{
+  "frozen_publication_commit": "bc75cfe8b57091ce8b396ef10bb6ec1a9f938dc6",
+  "initial_checksum_paths": 177,
+  "unchanged_initial_paths_verified": 174,
+  "only_replaced_initial_paths": [
+    "decision.json",
+    "comparison.json",
+    "export-manifest.json"
+  ],
+  "baseline_raw_files_unchanged": true,
+  "initial_root_metadata_preserved_under": "attempts/initial-blocked"
+}

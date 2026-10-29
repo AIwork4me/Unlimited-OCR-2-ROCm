@@ -1,0 +1,14 @@
+{
+  "start_utc": "2026-10-28T15:55:48.630750+00:00",
+  "command_file": "C:/b/resume/build-cached.cmd",
+  "recovered_dependency": {
+    "path": "third_party/kineto",
+    "sha": "b2103f78d13fde4937af010c0ef8e24313568bc5",
+    "materialization": "full checkout; unconditionally included ActivityType.h now present"
+  },
+  "pid": 58228,
+  "exit_code": 1,
+  "end_utc": "2026-10-28T23:00:40.012191+00:00",
+  "stdout": "C:\\b\\resume\\logs\\build-after-kineto.stdout.log",
+  "stderr": "C:\\b\\resume\\logs\\build-after-kineto.stderr.log"
+}

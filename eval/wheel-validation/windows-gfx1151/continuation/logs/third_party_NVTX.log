@@ -1,0 +1,4 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\NVTX", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\NVTX", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "3ebbc93ded7285963bff932c678fa367eb393ba6"]
+HEAD is now at 3ebbc93 Publish NVTX version 3.3.0 to release-v3 branch
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\NVTX", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

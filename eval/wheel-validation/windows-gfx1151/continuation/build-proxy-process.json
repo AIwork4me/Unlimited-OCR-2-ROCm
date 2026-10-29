@@ -1,0 +1,11 @@
+{
+  "start_utc": "2026-10-28T14:10:33.1079035Z",
+  "end_utc": "2026-10-28T14:19:50.3274957Z",
+  "exit_code": 1,
+  "command": "cmd.exe /d /c C:\\b\\resume\\build-current-proxy.cmd",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "sdk": "7.14.1",
+  "max_jobs": 8,
+  "proxy": "existing local http://127.0.0.1:7897, process scoped; TLS verification retained"
+}

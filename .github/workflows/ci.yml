@@ -15,9 +15,11 @@ jobs:
           python-version: '3.10'
       - run: python -m pip install -r requirements/dev.txt
       - run: python -m pip install --no-deps -e .
-      - run: python -m ruff check src scripts tests experiments/sdpa_rca
-      - run: python -m ruff format --check src scripts tests experiments/sdpa_rca
-      - run: python -m mypy src
+      - run: python -m ruff check src scripts tests experiments/sdpa_rca experiments/pytorch212_wheel
+      - run: python -m ruff format --check src scripts tests experiments/sdpa_rca experiments/pytorch212_wheel
+      - run: python -m mypy src experiments/pytorch212_wheel/compare_results.py experiments/pytorch212_wheel/collect_build_provenance.py experiments/pytorch212_wheel/validate_wheel.py experiments/pytorch212_wheel/export_evidence.py experiments/pytorch212_wheel/candidate_identity.py experiments/pytorch212_wheel/candidate_repro.py experiments/pytorch212_wheel/prepare_candidate_profile.py
+      # These frozen RCA helpers describe Windows ctypes APIs on either CI host.
+      - run: python -m mypy --platform win32 --allow-untyped-defs --follow-imports skip experiments/sdpa_rca/collect_provenance.py experiments/sdpa_rca/compare_backends.py experiments/sdpa_rca/export_evidence.py experiments/sdpa_rca/reporting.py
       - run: python -m pytest
       - run: python -m build
       - run: python -m pip install --no-index --no-deps --force-reinstall --find-links dist unlimited-ocr-2-rocm

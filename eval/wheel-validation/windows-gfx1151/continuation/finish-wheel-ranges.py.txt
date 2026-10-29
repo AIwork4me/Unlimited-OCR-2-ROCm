@@ -1,0 +1,36 @@
+from pathlib import Path
+import subprocess,json,hashlib,concurrent.futures,time
+jobs=[];records=[]
+for pkg in ['cmake','numpy','uv']:
+    rec=Path('C:/b/resume/'+pkg+'-wheel-record.json')
+    if not rec.exists():continue
+    r=json.loads(rec.read_text());parts=Path('C:/b/resume/'+pkg+'-parts');parts.mkdir(exist_ok=True)
+    for i in range((r['size']+1048575)//1048576):jobs.append((pkg,r,parts,i))
+def finish(job):
+    pkg,r,parts,i=job;size=r['size'];base=i*1048576;end=min(size,base+1048576)-1;p=parts/str(i)
+    if not p.exists():p.write_bytes(b'')
+    attempts=0
+    while p.stat().st_size<end-base+1:
+        lo=base+p.stat().st_size;hi=min(end,lo+262143);tmp=parts/(str(i)+'.resume');hdr=parts/(str(i)+'.headers')
+        tmp.unlink(missing_ok=True);hdr.unlink(missing_ok=True)
+        q=subprocess.run(['curl.exe','--noproxy','*','--fail','--silent','--show-error','--range',f'{lo}-{hi}','--max-time','15','-D',str(hdr),'-o',str(tmp),r['url']],capture_output=True)
+        data=tmp.read_bytes() if tmp.exists() else b'';header=hdr.read_text(errors='replace').lower() if hdr.exists() else ''
+        if data and len(data)<=hi-lo+1 and f'content-range: bytes {lo}-{hi}/{size}' in header:
+            with p.open('ab') as f:f.write(data)
+            attempts=0
+        else:
+            attempts+=1
+            if attempts>=4:raise RuntimeError(f'{pkg} part{i} stalled at {lo}: '+q.stderr.decode(errors='replace'))
+    return pkg,i
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+    for pkg,i in pool.map(finish,jobs):
+        if i%10==0:print('Completed range',pkg,i,flush=True)
+for pkg in ['cmake','numpy','uv']:
+    r=json.loads(Path('C:/b/resume/'+pkg+'-wheel-record.json').read_text());parts=Path('C:/b/resume/'+pkg+'-parts')
+    dest=Path('C:/b/resume/verified-python-wheels')/r['filename'];dest.parent.mkdir(exist_ok=True)
+    with dest.open('wb') as f:
+        for i in range((r['size']+1048575)//1048576):f.write((parts/str(i)).read_bytes())
+    h=hashlib.file_digest(dest.open('rb'),'sha256').hexdigest();assert h==r['digests']['sha256'],(pkg,h)
+    records.append({'package':pkg,'filename':r['filename'],'url':r['url'],'size':dest.stat().st_size,'sha256':h,'published_pypi_sha256':r['digests']['sha256'],'matches':True})
+    print('Verified',pkg,h,flush=True)
+Path('C:/b/resume/verified-build-tool-wheels.json').write_text(json.dumps({'method':'resumed incomplete byte ranges with checked Content-Range, TLS verification on, final SHA256 compared to official PyPI JSON','wheels':records},indent=2))

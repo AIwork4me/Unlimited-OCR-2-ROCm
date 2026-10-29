@@ -1,0 +1,24 @@
+{
+  "records": [
+    {
+      "path": "third_party/aiter",
+      "sha": "9a469a608b2c10b7157df573a38d31e5bf4038b4",
+      "exit_code": 0
+    },
+    {
+      "path": "third_party/composable_kernel",
+      "sha": "cd9e41c4eae94f11e7d6e39751e8e13f46653030",
+      "exit_code": 0
+    },
+    {
+      "path": "third_party/cudnn_frontend",
+      "sha": "a91f0e04dcea10515f0f776fc5a89535e316a9c8",
+      "exit_code": 0
+    },
+    {
+      "path": "third_party/cutlass",
+      "sha": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+      "exit_code": 128
+    }
+  ]
+}

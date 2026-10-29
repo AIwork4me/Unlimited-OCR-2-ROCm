@@ -1,0 +1,74 @@
+{
+  "commands": [
+    {
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests",
+        "experiments/pytorch212_wheel"
+      ],
+      "start_utc": "2026-10-28T23:33:50.505034+00:00",
+      "exit_code": 0,
+      "log": "C:\\b\\resume\\logs\\final-cpu-qa-0.txt"
+    },
+    {
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "scripts",
+        "tests",
+        "experiments/pytorch212_wheel"
+      ],
+      "start_utc": "2026-10-28T23:33:50.662871+00:00",
+      "exit_code": 0,
+      "log": "C:\\b\\resume\\logs\\final-cpu-qa-1.txt"
+    },
+    {
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "mypy",
+        "src",
+        "experiments/pytorch212_wheel/compare_results.py",
+        "experiments/pytorch212_wheel/collect_build_provenance.py",
+        "experiments/pytorch212_wheel/validate_wheel.py",
+        "experiments/pytorch212_wheel/export_evidence.py",
+        "experiments/pytorch212_wheel/candidate_identity.py",
+        "experiments/pytorch212_wheel/candidate_repro.py",
+        "experiments/pytorch212_wheel/prepare_candidate_profile.py"
+      ],
+      "start_utc": "2026-10-28T23:33:50.802355+00:00",
+      "exit_code": 0,
+      "log": "C:\\b\\resume\\logs\\final-cpu-qa-2.txt"
+    },
+    {
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "pytest"
+      ],
+      "start_utc": "2026-10-28T23:33:51.272673+00:00",
+      "exit_code": 0,
+      "log": "C:\\b\\resume\\logs\\final-cpu-qa-3.txt"
+    },
+    {
+      "command": [
+        "C:/b/qa/Scripts/python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "start_utc": "2026-10-28T23:33:52.690515+00:00",
+      "exit_code": 0,
+      "log": "C:\\b\\resume\\logs\\final-cpu-qa-4.txt"
+    }
+  ]
+}

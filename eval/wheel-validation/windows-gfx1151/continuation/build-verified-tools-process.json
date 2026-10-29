@@ -1,0 +1,12 @@
+{
+  "start_utc": "2026-10-28T14:29:20.9463968Z",
+  "end_utc": "2026-10-28T14:38:29.9132450Z",
+  "exit_code": 1,
+  "command": "cmd.exe /d /c C:\\b\\resume\\build-verified-tools.cmd",
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "sdk": "7.14.1",
+  "max_jobs": 8,
+  "network": "local trusted proxy for metadata/GitHub; direct PyPI CDN; TLS verified",
+  "preinstalled_wheels": "Exact requirement versions, hashes independently verified against PyPI"
+}

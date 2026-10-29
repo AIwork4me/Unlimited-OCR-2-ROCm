@@ -1,0 +1,18 @@
+third_party/aiter 9a469a608b2c10b7157df573a38d31e5bf4038b4
+From https://github.com/ROCm/aiter
+ * branch            9a469a608b2c10b7157df573a38d31e5bf4038b4 -> FETCH_HEAD
+HEAD is now at 9a469a6 add a compile macro AITER_ASM_DIR (#1862)
+third_party/composable_kernel cd9e41c4eae94f11e7d6e39751e8e13f46653030
+From https://github.com/ROCm/composable_kernel
+ * branch            cd9e41c4eae94f11e7d6e39751e8e13f46653030 -> FETCH_HEAD
+HEAD is now at cd9e41c feat(ck): add gfx90c build support (cherry-pick rocm-libraries#9333) (#3756)
+third_party/cudnn_frontend a91f0e04dcea10515f0f776fc5a89535e316a9c8
+From https://github.com/NVIDIA/cudnn-frontend
+ * branch            a91f0e04dcea10515f0f776fc5a89535e316a9c8 -> FETCH_HEAD
+HEAD is now at a91f0e0 # cuDNN Frontend v1.22.1 Release Notes (#218)
+third_party/cutlass da5e086dab31d63815acafdac9a9c5893b1c69e2
+error: RPC failed; curl 56 schannel: server closed abruptly (missing close_notify)
+error: 1340 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output

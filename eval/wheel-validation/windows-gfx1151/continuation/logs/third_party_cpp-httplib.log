@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpp-httplib", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "4d7c9a788de136071ccf0dd4e96239151e2adadb"]
+From https://github.com/yhirose/cpp-httplib
+ * branch            4d7c9a788de136071ccf0dd4e96239151e2adadb -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpp-httplib", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpp-httplib", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "4d7c9a788de136071ccf0dd4e96239151e2adadb"]
+HEAD is now at 4d7c9a7 Release v0.37.2
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\cpp-httplib", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

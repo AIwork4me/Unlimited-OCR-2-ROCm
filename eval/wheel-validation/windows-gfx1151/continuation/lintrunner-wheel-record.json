@@ -1,0 +1,24 @@
+{
+  "comment_text": null,
+  "core-metadata": {
+    "sha256": "51a21b1ce6892147f69508c952ac223874697d914cd0cdf30677fe337ea52753"
+  },
+  "digests": {
+    "blake2b_256": "4a2eaa26412b693521cdc5e7ee657fdcd39727fe26b6ab698ca0bd31e8effcf6",
+    "md5": "38e0b6ee1248a3ab3d6fd4bf2ffa1f6f",
+    "sha256": "4e7bfa9372db4af76723533d56187b34e64f38a3bfb6f0aa9a54c5c00e92d85f"
+  },
+  "downloads": -1,
+  "filename": "lintrunner-0.12.11-py3-none-win_amd64.whl",
+  "has_sig": false,
+  "md5_digest": "38e0b6ee1248a3ab3d6fd4bf2ffa1f6f",
+  "packagetype": "bdist_wheel",
+  "python_version": "py3",
+  "requires_python": ">=3.6",
+  "size": 1748343,
+  "upload_time": "2026-01-07T05:01:02",
+  "upload_time_iso_8601": "2026-01-07T05:01:02.402142Z",
+  "url": "https://files.pythonhosted.org/packages/4a/2e/aa26412b693521cdc5e7ee657fdcd39727fe26b6ab698ca0bd31e8effcf6/lintrunner-0.12.11-py3-none-win_amd64.whl",
+  "yanked": false,
+  "yanked_reason": null
+}

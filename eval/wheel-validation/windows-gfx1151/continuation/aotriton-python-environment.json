@@ -1,0 +1,14 @@
+{
+  "interpreter": "C:/b/pytorch/build/aotriton/src/aotriton_runtime-build/venv/Scripts/python.exe",
+  "requirements": "C:/b/pytorch/build/aotriton/src/aotriton_runtime/requirements.txt",
+  "pip_check": {
+    "exit_code": 0,
+    "stdout": "No broken requirements found.\n",
+    "stderr": ""
+  },
+  "freeze": {
+    "exit_code": 0,
+    "stdout": "aotriton @ file:///C:/b/pytorch/build/aotriton/src/aotriton_runtime\nfilelock==4.1.0\niniconfig==2.3.1\nnumpy @ file:///C:/b/resume/verified-python-wheels/numpy-2.2.6-cp310-cp310-win_amd64.whl\npackaging==26.3\npandas==2.3.3\npluggy==1.7.0\npybind11==3.1.0\npython-dateutil==3.0.0\npytz==2026.5\nPyYAML==6.0.3\nsix==1.17.0\ntzdata==2026.6\n",
+    "stderr": ""
+  }
+}

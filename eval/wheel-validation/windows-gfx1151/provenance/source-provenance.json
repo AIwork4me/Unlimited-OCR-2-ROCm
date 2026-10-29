@@ -1,0 +1,28 @@
+{
+  "run_id": "2082c33f-f736-4b5f-9035-35e3a369acf9",
+  "utc": "2026-10-28T12:37:40.193727+00:00",
+  "sources": {
+    "pytorch": {
+      "head": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+      "remote": "https://github.com/ROCm/pytorch.git",
+      "branch_observed": "release/2.12",
+      "status": "M android/libs/fbjni\n M third_party/FP16\n M third_party/FXdiv\n M third_party/NNPACK\n M third_party/benchmark",
+      "remote_head_at_collection": "60dd50f143fd9b10ac23cde8cdd34be61232b139\trefs/heads/release/2.12"
+    },
+    "therock": {
+      "head": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+      "remote": "https://github.com/ROCm/TheRock.git",
+      "branch_observed": "main",
+      "status": "",
+      "remote_head_at_collection": "df8b1b59ccfcc5e861ba410aa3761e38cf2dd22b\trefs/heads/main"
+    }
+  },
+  "torch_source_version": "2.12.0",
+  "aotriton_version": "0.14.50tp",
+  "aotriton_source_pin": "7a6963a7265d2cf0fc48c6a63464386134d32483",
+  "gfx115x_image_sha256_declared": "e4bda76fd6857a733cd7b4b3eb9ccb21c0f47b565ce304777a61bbb13d12ad6e",
+  "gfx115x_image_url": "https://github.com/ROCm/aotriton/releases/download/0.14.50tp/aotriton-0.14.50tp-images-amd-gfx115x.tar.gz",
+  "aotriton_recipe_sha256": "0e29ceff849e1a0129586f81fbb3f9cba8326d64c54730bb8950149b4d1ce71b",
+  "source_overrides": {},
+  "claim_limit": "Source declarations only; downloaded/compiled/installed identities require separate evidence."
+}

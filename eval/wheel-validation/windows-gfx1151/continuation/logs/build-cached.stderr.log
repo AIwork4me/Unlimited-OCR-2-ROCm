@@ -1,0 +1,105 @@
+WARNING: Skipping torch as it is not installed.
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+Building wheel torch-2.12.0+rocm7.14.1
+pytorch_extra_install_requirements: rocm[libraries]==7.14.1
+warning: no files found matching 'BUILD.bazel'
+warning: no files found matching 'WORKSPACE'
+warning: no files found matching '.bazelrc'
+warning: no files found matching '.bazelversion'
+warning: no directories found matching 'ios'
+no previously-included directories found matching 'third_party\nccl\pkg\debian'
+no previously-included directories found matching 'third_party\opentelemetry-cpp\third_party\prometheus-cpp\cmake\project-import-*'
+no previously-included directories found matching '**\.gitlab'
+warning: no previously-included files matching '*.o' found anywhere in distribution
+warning: no previously-included files matching '*.obj' found anywhere in distribution
+warning: no previously-included files matching '*.so' found anywhere in distribution
+warning: no previously-included files matching '*.dylib' found anywhere in distribution
+warning: no previously-included files matching '*.a' found anywhere in distribution
+warning: no previously-included files matching '*.pxd' found anywhere in distribution
+warning: no previously-included files matching '*.swp' found anywhere in distribution
+warning: no previously-included files matching '*~' found anywhere in distribution
+warning: no previously-included files matching '.gitlab-ci.yml' found anywhere in distribution
+Building wheel torch-2.12.0+rocm7.14.1
+-- Building version 2.12.0+rocm7.14.1
+cmake --build . --target install --config Release -j 8
+Cloning into 'aotriton_runtime'...
+HEAD is now at 7a6963a cmake: install the main venv's Triton from the altwheel .venvs.default
+Submodule 'third_party/triton' (https://github.com/ROCmSoftwarePlatform/triton.git) registered for path 'third_party/triton'
+Skipping submodule 'third_party/triton'
+VENV_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime-build/venv
+VENV_SITE C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1017)'))': /simple/filelock/
+ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, please update the hashes. Otherwise, examine the package contents carefully; someone may have tampered with them.
+    numpy from https://files.pythonhosted.org/packages/a3/dd/4b822569d6b96c39d1215dbae0582fd99954dcbcf0c1a13c61783feaca3f/numpy-2.2.6-cp310-cp310-win_amd64.whl (from -r C:/b/pytorch/build/aotriton/src/aotriton_runtime/requirements.txt (line 5)):
+        Expected sha256 f0fd6321b839904e15c46e0d257fdd101dd7f530fe03fd6359c1ea63738703f3
+             Got        0627265a71499c6dce065222601e2c12384853b104e6e08aa67245a0c8a06389
+
+
+[notice] A new release of pip is available: 23.0.1 -> 26.2.2
+[notice] To update, run: C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\Scripts\python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 23.0.1 -> 26.2.2
+[notice] To update, run: C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\Scripts\python.exe -m pip install --upgrade pip
+CMAKE_SOURCE_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime
+CMAKE_CURRENT_SOURCE_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime/v3src
+CMAKE_CURRENT_SOURCE_PARENT_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime
+CMAKE_CURRENT_LIST_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime/v3src
+CMAKE_CURRENT_BINARY_DIR C:/b/pytorch/build/aotriton/src/aotriton_runtime-build/v3src
+AOTRITON_COMPILER C:/b/pytorch/build/aotriton/src/aotriton_runtime/python/compile.py
+Traceback (most recent call last):
+  File "<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\generate.py", line 5, in <module>
+    from .codegen import (
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\codegen\__init__.py", line 4, in <module>
+    from .root import RootGenerator
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\codegen\root.py", line 10, in <module>
+    from .kernel import KernelShimGenerator
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\codegen\kernel.py", line 7, in <module>
+    from ..template_instantiation.ir import (
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\template_instantiation\__init__.py", line 22, in <module>
+    from .tune_facade import tune    # ati.tune.* namespace (decorators/tune + specs/tune)
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\template_instantiation\tune_facade.py", line 21, in <module>
+    from .decorators.tune import schema, configs, binning, fallback
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\template_instantiation\decorators\__init__.py", line 28, in <module>
+    from .derive import derives, overrides, eq, ne, lt, gt, le, ge
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\template_instantiation\decorators\derive.py", line 9, in <module>
+    from ..ir import Override, VarRef, ValueFn
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\template_instantiation\ir\__init__.py", line 4, in <module>
+    from . import typed_choice
+  File "C:\b\pytorch\build\aotriton\src\aotriton_runtime-build\venv\lib\site-packages\aotriton\template_instantiation\ir\typed_choice.py", line 6, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+CMake Error at v3src/CMakeLists.txt:186 (execute_process):
+  execute_process failed command indexes:
+
+    1: "Child return code: 1"
+
+
+
+Traceback (most recent call last):
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1636, in <module>
+    main(sys.argv[1:])
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1632, in main
+    args.func(args)
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 901, in do_build
+    _do_build_wheels_core(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 771, in _do_build_wheels_core
+    do_build_pytorch(
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 1299, in do_build_pytorch
+    run_command(build_command, cwd=pytorch_dir, env=env)
+  File "C:\b\therock\external-builds\pytorch\build_prod_wheels.py", line 228, in run_command
+    subprocess.check_call(args, cwd=str(cwd), env=full_env)
+  File "<USERPROFILE>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['C:\\b\\be\\Scripts\\python.exe', '-m', 'build', '--wheel', '--no-isolation']' returned non-zero exit status 1.

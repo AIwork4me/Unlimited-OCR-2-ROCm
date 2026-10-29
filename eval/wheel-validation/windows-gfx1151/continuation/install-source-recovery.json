@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-28T23:05:26.618835+00:00",
+  "first_install_failure": {
+    "source_path": "third_party/psimd/include/psimd.h",
+    "caller": "confu-deps/FP16/cmake_install.cmake:57",
+    "classification": "INCOMPLETE_INSTALL_SOURCE_MATERIALIZATION",
+    "compiler_or_linker_defect": false,
+    "aotriton_regression_evidence": false,
+    "pin": "072586a71b55b7f8c584153d223e95687148a900",
+    "recovered_header_sha256": "8e3f25e347b01e13db322f1af88876ea59c1f40c7515cae640af1e74ba14411e"
+  },
+  "missing_literal_third_party_paths_after_recovery": [],
+  "limitation": "Literal path scan only; successful official install remains required.",
+  "official_retry": "build-after-psimd-process.json"
+}

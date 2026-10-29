@@ -1,0 +1,7 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\benchmark", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "fetch", "--depth", "1", "--filter=tree:0", "origin", "299e5928955cc62af9968370293b916f5130916f"]
+From https://github.com/google/benchmark
+ * branch            299e5928955cc62af9968370293b916f5130916f -> FETCH_HEAD
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\benchmark", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\benchmark", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "299e5928955cc62af9968370293b916f5130916f"]
+HEAD is now at 299e592 bump to v1.9.3 to prepare a release
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\benchmark", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

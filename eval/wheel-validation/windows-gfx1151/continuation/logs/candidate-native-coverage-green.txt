@@ -1,0 +1,10 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\uocr
+configfile: pyproject.toml
+collected 35 items
+
+tests\unit\test_candidate_identity.py .................................. [ 97%]
+.                                                                        [100%]
+
+============================= 35 passed in 0.11s ==============================

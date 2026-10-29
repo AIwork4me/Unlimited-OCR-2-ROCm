@@ -1,0 +1,584 @@
+{
+  "utc": "2026-10-28T23:40:33.906772+00:00",
+  "status": "BUILD_SUCCEEDED",
+  "official_builder_exit": 0,
+  "source_sha": "60dd50f143fd9b10ac23cde8cdd34be61232b139",
+  "therock_sha": "6d34c9b6f3e752b8f718b0c81f3070df77ce3283",
+  "sdk_version": "7.14.1",
+  "sdk_installation_policy": "Reused installed SDK with --no-install-rocm; no repeated SDK downloads",
+  "source_pins": [
+    {
+      "path": "android/libs/fbjni",
+      "expected": "7e1e1fe3858c63c251c637ae41a20de425dde96f",
+      "actual": "7e1e1fe3858c63c251c637ae41a20de425dde96f",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/FP16",
+      "expected": "4dfe081cf6bcd15db339cf2680b9281b8451eeb3",
+      "actual": "4dfe081cf6bcd15db339cf2680b9281b8451eeb3",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/FXdiv",
+      "expected": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "actual": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/NNPACK",
+      "expected": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+      "actual": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/NVTX",
+      "expected": "3ebbc93ded7285963bff932c678fa367eb393ba6",
+      "actual": "3ebbc93ded7285963bff932c678fa367eb393ba6",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/VulkanMemoryAllocator",
+      "expected": "1d8f600fd424278486eade7ed3e877c99f0846b1",
+      "actual": "1d8f600fd424278486eade7ed3e877c99f0846b1",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/XNNPACK",
+      "expected": "51a0103656eff6fc9bfd39a4597923c4b542c883",
+      "actual": "51a0103656eff6fc9bfd39a4597923c4b542c883",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/aiter",
+      "expected": "9a469a608b2c10b7157df573a38d31e5bf4038b4",
+      "actual": "9a469a608b2c10b7157df573a38d31e5bf4038b4",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/benchmark",
+      "expected": "299e5928955cc62af9968370293b916f5130916f",
+      "actual": "299e5928955cc62af9968370293b916f5130916f",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/composable_kernel",
+      "expected": "cd9e41c4eae94f11e7d6e39751e8e13f46653030",
+      "actual": "cd9e41c4eae94f11e7d6e39751e8e13f46653030",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/cpp-httplib",
+      "expected": "4d7c9a788de136071ccf0dd4e96239151e2adadb",
+      "actual": "4d7c9a788de136071ccf0dd4e96239151e2adadb",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/cpuinfo",
+      "expected": "f858c30bcb16f8effd5ff46996f0514539e17abc",
+      "actual": "f858c30bcb16f8effd5ff46996f0514539e17abc",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/cudnn_frontend",
+      "expected": "a91f0e04dcea10515f0f776fc5a89535e316a9c8",
+      "actual": "a91f0e04dcea10515f0f776fc5a89535e316a9c8",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/cutlass",
+      "expected": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+      "actual": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/fbgemm",
+      "expected": "c246916f9e3804eacc3c95058e51cce02ae00fff",
+      "actual": "c246916f9e3804eacc3c95058e51cce02ae00fff",
+      "matches": true,
+      "sparse": false,
+      "status": "M external/json\n M fbgemm_gpu/cmake/Hip.cmake\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/bf16_grouped/bf16_grouped_gemm.hip\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/bf16_grouped/kernels/bf16_grouped_common.h\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/ck_utility.hip\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_blockwise_gemm.hip\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise/kernels/fp8_rowwise_common.h\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_batched/kernels/fp8_rowwise_batched_common.h\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_grouped/fp8_rowwise_grouped_gemm.hip\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_grouped/kernels/fp8_rowwise_grouped_common.h\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_rowwise_preshuffle/kernels/fp8_rowwise_preshuffle_common.h\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fp8_tensorwise_gemm.hip\n M fbgemm_gpu/experimental/gen_ai/src/quantize/ck_extensions/fused_moe/fused_moe_kernel.hip"
+    },
+    {
+      "path": "third_party/flash-attention",
+      "expected": "fec3a6a18460c1b40f097208d4c16fe8964a679d",
+      "actual": "fec3a6a18460c1b40f097208d4c16fe8964a679d",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/flatbuffers",
+      "expected": "a2cd1ea3b6d3fee220106b5fed3f7ce8da9eb757",
+      "actual": "a2cd1ea3b6d3fee220106b5fed3f7ce8da9eb757",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/fmt",
+      "expected": "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+      "actual": "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+      "matches": true,
+      "sparse": false,
+      "status": "M support/check-commits\n M support/mkdocs\n M support/printable.py\n M support/release.py\n M test/fuzzing/build.sh"
+    },
+    {
+      "path": "third_party/gemmlowp/gemmlowp",
+      "expected": "3fb5c176c17c765a3492cd2f0321b0dab712f350",
+      "actual": "3fb5c176c17c765a3492cd2f0321b0dab712f350",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/gloo",
+      "expected": "3135b0b41b67dde590eef0938a0bf3d6238df5f7",
+      "actual": "3135b0b41b67dde590eef0938a0bf3d6238df5f7",
+      "matches": true,
+      "sparse": false,
+      "status": "M cmake/Dependencies.cmake\n M gloo/cuda.cu"
+    },
+    {
+      "path": "third_party/googletest",
+      "expected": "52eb8108c5bdec04579160ae17225d66034bd723",
+      "actual": "52eb8108c5bdec04579160ae17225d66034bd723",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/ideep",
+      "expected": "e539e0f9774e2018f0d56fe865da66581f692e3d",
+      "actual": "e539e0f9774e2018f0d56fe865da66581f692e3d",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/ittapi",
+      "expected": "0c57540822deb5dae43bef6c1cc9b3be4772a033",
+      "actual": "0c57540822deb5dae43bef6c1cc9b3be4772a033",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/kineto",
+      "expected": "b2103f78d13fde4937af010c0ef8e24313568bc5",
+      "actual": "b2103f78d13fde4937af010c0ef8e24313568bc5",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/kleidiai",
+      "expected": "d7770c89632329a9914ef1a90289917597639cbe",
+      "actual": "d7770c89632329a9914ef1a90289917597639cbe",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/mimalloc",
+      "expected": "048d969a1c5ee2fb89c226298f41ea38445546ef",
+      "actual": "048d969a1c5ee2fb89c226298f41ea38445546ef",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/mslk",
+      "expected": "3d332d1c0c0ac7765852c97b3979c9ef913e037f",
+      "actual": "3d332d1c0c0ac7765852c97b3979c9ef913e037f",
+      "matches": true,
+      "sparse": true,
+      "status": "?? include/mslk/utils/hip/\n?? include/mslk/utils/tuning_cache_hip.cuh"
+    },
+    {
+      "path": "third_party/nlohmann",
+      "expected": "55f93686c01528224f448c19128836e7df245f72",
+      "actual": "55f93686c01528224f448c19128836e7df245f72",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/onnx",
+      "expected": "e709452ef2bbc1d113faf678c24e6d3467696e83",
+      "actual": "e709452ef2bbc1d113faf678c24e6d3467696e83",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/pocketfft",
+      "expected": "0fa0ef591e38c2758e3184c6c23e497b9f732ffa",
+      "actual": "0fa0ef591e38c2758e3184c6c23e497b9f732ffa",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/protobuf",
+      "expected": "d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a",
+      "actual": "d1eca4e4b421cd2997495c4b4e65cea6be4e9b8a",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/psimd",
+      "expected": "072586a71b55b7f8c584153d223e95687148a900",
+      "actual": "072586a71b55b7f8c584153d223e95687148a900",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/pthreadpool",
+      "expected": "4fe0e1e183925bf8cfa6aae24237e724a96479b8",
+      "actual": "4fe0e1e183925bf8cfa6aae24237e724a96479b8",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/pybind11",
+      "expected": "f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8",
+      "actual": "f5fbe867d2d26e4a0a9177a51f6e568868ad3dc8",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/python-peachpy",
+      "expected": "f45429b087dd7d5bc78bb40dc7cf06425c252d67",
+      "actual": "f45429b087dd7d5bc78bb40dc7cf06425c252d67",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/sleef",
+      "expected": "5a1d179df9cf652951b59010a2d2075372d67f68",
+      "actual": "5a1d179df9cf652951b59010a2d2075372d67f68",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/tensorpipe",
+      "expected": "2b4cd91092d335a697416b2a3cb398283246849d",
+      "actual": "2b4cd91092d335a697416b2a3cb398283246849d",
+      "matches": true,
+      "sparse": true,
+      "status": ""
+    },
+    {
+      "path": "third_party/fbgemm/external/asmjit",
+      "expected": "a3199e8857792cd10b7589ff5d58343d2c9008ea",
+      "actual": "a3199e8857792cd10b7589ff5d58343d2c9008ea",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/fbgemm/external/cpuinfo",
+      "expected": "161a9ec374884f4b3e85725cb22e05f9458fdc93",
+      "actual": "161a9ec374884f4b3e85725cb22e05f9458fdc93",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    },
+    {
+      "path": "third_party/ideep/mkl-dnn",
+      "expected": "03c022d3ffdcee958cfacbe720048e725fdf644c",
+      "actual": "03c022d3ffdcee958cfacbe720048e725fdf644c",
+      "matches": true,
+      "sparse": false,
+      "status": ""
+    }
+  ],
+  "all_40_source_pins_match": true,
+  "cmake_features": {
+    "USE_ROCM": "ON",
+    "USE_CUDA": "OFF",
+    "USE_FLASH_ATTENTION": "ON",
+    "USE_MEM_EFF_ATTENTION": "ON",
+    "USE_ROCM_CK_SDPA": "OFF",
+    "USE_DISTRIBUTED": "ON",
+    "USE_GLOO": "ON",
+    "USE_KINETO": "OFF",
+    "USE_FBGEMM": "OFF",
+    "BUILD_TEST": "False",
+    "CMAKE_CXX_COMPILER": "C:/b/be/Lib/site-packages/_rocm_sdk_devel/lib/llvm/bin/clang-cl.exe",
+    "CMAKE_BUILD_TYPE": "Release",
+    "HIP_VERSION": "7.14.60850-ca887ee8"
+  },
+  "cmake_cache_sha256": "4829a7c40ba3fb2fa90f660732f9b34f7b622665db384a39c236bc80871ef19e",
+  "generated_hip_recipe_count": 269,
+  "generated_hip_offload_architectures": [
+    "gfx1151"
+  ],
+  "tracked_preprocessing_diff_sha256": "95e480d9acbff421b8686a8e56e02e966abb14f2a7e6281c34b4887d531f28f4",
+  "prebuild_hipify_diff_sha256": "95e480d9acbff421b8686a8e56e02e966abb14f2a7e6281c34b4887d531f28f4",
+  "tracked_diff_unchanged_since_official_hipify": true,
+  "source_worktree_status": "M third_party/mslk\n M tools/autograd/templates/python_variable_methods.cpp\n M torch/csrc/CudaIPCTypes.cpp\n M torch/csrc/CudaIPCTypes.h\n M torch/csrc/Module.cpp\n M torch/csrc/Storage.cpp\n M torch/csrc/StorageMethods.cpp\n M torch/csrc/StorageSharing.cpp\n M torch/csrc/api/include/torch/nn/pimpl.h\n M torch/csrc/autograd/functions/comm.cpp\n M torch/csrc/autograd/functions/comm.h\n M torch/csrc/cuda/CUDAPluggableAllocator.cpp\n M torch/csrc/cuda/CUDAPluggableAllocator.h\n M torch/csrc/cuda/Event.cpp\n M torch/csrc/cuda/Event.h\n M torch/csrc/cuda/GdsFile.cpp\n M torch/csrc/cuda/Graph.cpp\n M torch/csrc/cuda/GreenContext.cpp\n M torch/csrc/cuda/MemPool.cpp\n M torch/csrc/cuda/Module.cpp\n M torch/csrc/cuda/Stream.cpp\n M torch/csrc/cuda/Stream.h\n M torch/csrc/cuda/comm.cpp\n M torch/csrc/cuda/comm.h\n M torch/csrc/cuda/device_set.h\n M torch/csrc/cuda/memory_snapshot.cpp\n M torch/csrc/cuda/nccl.cpp\n M torch/csrc/cuda/nccl.h\n M torch/csrc/cuda/python_nccl.cpp\n M torch/csrc/cuda/shared/cudart.cpp\n M torch/csrc/cuda/shared/cudnn.cpp\n M torch/csrc/cuda/shared/cusparselt.cpp\n M torch/csrc/cuda/shared/nvtx.cpp\n M torch/csrc/cuda/shim_common.cpp\n M torch/csrc/cuda/utils.h\n M torch/csrc/distributed/c10d/FlightRecorderCuda.cpp\n M torch/csrc/distributed/c10d/NCCLUtils.cpp\n M torch/csrc/distributed/c10d/NCCLUtils.hpp\n M torch/csrc/distributed/c10d/NanCheck.cu\n M torch/csrc/distributed/c10d/ProcessGroupGlooCuda.cpp\n M torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp\n M torch/csrc/distributed/c10d/ProcessGroupNCCL.hpp\n M torch/csrc/distributed/c10d/ProcessGroupUCC.cpp\n M torch/csrc/distributed/c10d/ProcessGroupUCC.hpp\n M torch/csrc/distributed/c10d/cuda/AsyncMM.cu\n M torch/csrc/distributed/c10d/cuda/CUDAEventCache.cpp\n M torch/csrc/distributed/c10d/cuda/CUDAEventCache.hpp\n M torch/csrc/distributed/c10d/cuda/StreamBlock.cu\n M torch/csrc/distributed/c10d/cuda/cutlass/gemm/kernel/persistent_async_input_scheduler.cuh\n M torch/csrc/distributed/c10d/cuda/utils.cpp\n M torch/csrc/distributed/c10d/init.cpp\n M torch/csrc/distributed/c10d/quantization/quantization_gpu.cu\n M torch/csrc/distributed/c10d/reducer_cuda.cpp\n M torch/csrc/distributed/c10d/symm_mem/CUDASymmetricMemory-inl.cuh\n M torch/csrc/distributed/c10d/symm_mem/CUDASymmetricMemory.cu\n M torch/csrc/distributed/c10d/symm_mem/CUDASymmetricMemory.hpp\n M torch/csrc/distributed/c10d/symm_mem/CUDASymmetricMemoryOps.cu\n M torch/csrc/distributed/c10d/symm_mem/CUDASymmetricMemoryTypes.hpp\n M torch/csrc/distributed/c10d/symm_mem/CUDASymmetricMemoryUtils.cpp\n M torch/csrc/distributed/c10d/symm_mem/CudaDMAConnectivity.cpp\n M torch/csrc/distributed/c10d/symm_mem/NCCLSymmetricMemory.cu\n M torch/csrc/distributed/c10d/symm_mem/NVSHMEMSymmetricMemory.cpp\n M torch/csrc/distributed/c10d/symm_mem/intra_node_comm.cu\n M torch/csrc/distributed/c10d/symm_mem/intra_node_comm.hpp\n M torch/csrc/distributed/c10d/symm_mem/macros.hpp\n M torch/csrc/distributed/c10d/symm_mem/nccl_dev_cap.hpp\n M torch/csrc/distributed/c10d/symm_mem/nccl_devcomm_manager.hpp\n M torch/csrc/distributed/c10d/symm_mem/nccl_extension.cu\n M torch/csrc/distributed/c10d/symm_mem/nvshmem_extension.cu\n M torch/csrc/distributed/c10d/symm_mem/nvshmem_extension.hpp\n M torch/csrc/distributed/c10d/symm_mem/nvshmem_team_manager.hpp\n M torch/csrc/distributed/c10d/symm_mem/ops/nccl_reduce_scatter_offset.cu\n M torch/csrc/distributed/rpc/request_callback_impl.cpp\n M torch/csrc/distributed/rpc/request_callback_no_python.cpp\n M torch/csrc/distributed/rpc/tensorpipe_cuda.cpp\n M torch/csrc/distributed/rpc/utils.cpp\n M torch/csrc/dynamo/compiled_autograd.h\n M torch/csrc/dynamo/guards.cpp\n M torch/csrc/inductor/aoti_eager/kernel_holder.cpp\n M torch/csrc/inductor/aoti_package/pybind.cpp\n M torch/csrc/inductor/aoti_runner/model_container_runner_cuda.h\n M torch/csrc/inductor/aoti_runner/pybind.cpp\n M torch/csrc/inductor/aoti_runtime/device_utils.h\n M torch/csrc/inductor/aoti_runtime/interface.h\n M torch/csrc/inductor/aoti_runtime/model_base.h\n M torch/csrc/inductor/aoti_runtime/model_container.h\n M torch/csrc/inductor/aoti_runtime/utils_cuda.h\n M torch/csrc/inductor/aoti_torch/c/shim.h\n M torch/csrc/inductor/aoti_torch/shim_cuda.cpp\n M torch/csrc/inductor/cpp_wrapper/cuda.h\n M torch/csrc/inductor/inductor_ops_gpu.cpp\n M torch/csrc/inductor/resize_storage_bytes.cpp\n M torch/csrc/inductor/static_launcher/cuda.cpp\n M torch/csrc/inductor/static_launcher/cuda.h\n M torch/csrc/inductor/static_launcher/xpu.cpp\n M torch/csrc/jit/codegen/fuser/cuda/fused_kernel.cpp\n M torch/csrc/jit/codegen/fuser/cuda/fused_kernel.h\n M torch/csrc/jit/codegen/fuser/fused_kernel.h\n M torch/csrc/jit/cuda/cuda.h\n M torch/csrc/jit/passes/frozen_conv_add_relu_fusion.cpp\n M torch/csrc/jit/passes/frozen_conv_add_relu_fusion_cuda.cpp\n M torch/csrc/jit/runtime/register_ops_utils.cpp\n M torch/csrc/jit/tensorexpr/cuda_codegen.cpp\n M torch/csrc/jit/tensorexpr/cuda_codegen.h\n M torch/csrc/jit/tensorexpr/tensorexpr_init.cpp\n M torch/csrc/profiler/collection.cpp\n M torch/csrc/profiler/stubs/base.h\n M torch/csrc/profiler/stubs/cuda.cpp\n M torch/csrc/stable/c/shim.h\n M torch/csrc/stable/macros.h\n M torch/csrc/utils/cuda_enabled.h\n M torch/csrc/utils/tensor_numpy.cpp\n M torch/headeronly/core/TensorAccessor.h\n M torch/headeronly/macros/Export.h\n M torch/headeronly/macros/Macros.h\n M torch/headeronly/util/BFloat16.h\n M torch/headeronly/util/Deprecated.h\n M torch/headeronly/util/Exception.h\n M torch/headeronly/util/Half.h\n M torch/headeronly/util/complex.h\n M torch/nativert/executor/AOTInductorDelegateExecutor.h\n M torch/nativert/executor/OpKernel.cpp\n M torch/nativert/executor/triton/CudaTritonKernelManager.cpp\n M torch/nativert/kernels/C10Kernel.cpp\n?? aten/src/ATen/hip/ATenHIPGeneral.h\n?? aten/src/ATen/hip/ApplyGridUtils.cuh\n?? aten/src/ATen/hip/AsmUtils.cuh\n?? aten/src/ATen/hip/Atomic.cuh\n?? aten/src/ATen/hip/CachingHostAllocator.cpp\n?? aten/src/ATen/hip/CachingHostAllocator.h\n?? aten/src/ATen/hip/CuSparseHandlePool.cpp\n?? aten/src/ATen/hip/CublasHandlePool.cpp\n?? aten/src/ATen/hip/DeviceUtils.cuh\n?? aten/src/ATen/hip/EmptyTensor.cpp\n?? aten/src/ATen/hip/EmptyTensor.h\n?? aten/src/ATen/hip/Exceptions.cpp\n?? aten/src/ATen/hip/Exceptions.h\n?? aten/src/ATen/hip/HIPApplyUtils.cuh\n?? aten/src/ATen/hip/HIPBlas.cpp\n?? aten/src/ATen/hip/HIPBlas.h\n?? aten/src/ATen/hip/HIPConfig.h.in\n?? aten/src/ATen/hip/HIPContext.cpp\n?? aten/src/ATen/hip/HIPContext.h\n?? aten/src/ATen/hip/HIPContextLight.h\n?? aten/src/ATen/hip/HIPDataType.h\n?? aten/src/ATen/hip/HIPDevice.h\n?? aten/src/ATen/hip/HIPEvent.h\n?? aten/src/ATen/hip/HIPGeneratorImpl.cpp\n?? aten/src/ATen/hip/HIPGeneratorImpl.h\n?? aten/src/ATen/hip/HIPGraph.cpp\n?? aten/src/ATen/hip/HIPGraph.h\n?? aten/src/ATen/hip/HIPGraph.hip\n?? aten/src/ATen/hip/HIPGraphsUtils.cuh\n?? aten/src/ATen/hip/HIPGreenContext.cpp\n?? aten/src/ATen/hip/HIPGreenContext.h\n?? aten/src/ATen/hip/HIPSparse.h\n?? aten/src/ATen/hip/HIPSparseBlas.cpp\n?? aten/src/ATen/hip/HIPSparseBlas.h\n?? aten/src/ATen/hip/HIPSparseDescriptors.cpp\n?? aten/src/ATen/hip/HIPSparseDescriptors.h\n?? aten/src/ATen/hip/HIPTensorMethods.cuh\n?? aten/src/ATen/hip/HIPUtils.h\n?? aten/src/ATen/hip/MemPool.cpp\n?? aten/src/ATen/hip/MemPool.h\n?? aten/src/ATen/hip/NumericLimits.cuh\n?? aten/src/ATen/hip/PeerToPeerAccess.cpp\n?? aten/src/ATen/hip/PeerToPeerAccess.h\n?? aten/src/ATen/hip/PhiloxCudaState.h\n?? aten/src/ATen/hip/PhiloxUtils.cuh\n?? aten/src/ATen/hip/PinnedMemoryAllocator.h\n?? aten/src/ATen/hip/ScanUtils.cuh\n?? aten/src/ATen/hip/Sleep.h\n?? aten/src/ATen/hip/Sleep.hip\n?? aten/src/ATen/hip/StatelessPhilox4x32.cuh\n?? aten/src/ATen/hip/ThrustAllocator.h\n?? aten/src/ATen/hip/cub-RadixSortKeys.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-f16-8.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-int32-1.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-int32-2.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-int32-4.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-int64-1.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-int64-2.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-int64-4.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-scalars.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-uint16-8.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-uint32-8.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs-uint64-8.hip\n?? aten/src/ATen/hip/cub-RadixSortPairs.cuh\n?? aten/src/ATen/hip/cub.cuh\n?? aten/src/ATen/hip/cub.h\n?? aten/src/ATen/hip/cub.hip\n?? aten/src/ATen/hip/cub_definitions.cuh\n?? aten/src/ATen/hip/detail/\n?? aten/src/ATen/hip/jiterator.h\n?? aten/src/ATen/hip/jiterator.hip\n?? aten/src/ATen/hip/jiterator_impl.h\n?? aten/src/ATen/hip/llvm_basic.cpp\n?? aten/src/ATen/hip/llvm_complex.cpp\n?? aten/src/ATen/hip/llvm_jit_strings.h\n?? aten/src/ATen/hip/nvrtc_stub/\n?? aten/src/ATen/hip/tunable/\n?? aten/src/ATen/native/cudnn/hip/\n?? aten/src/ATen/native/hip/AbsKernel.hip\n?? aten/src/ATen/native/hip/Activation.cpp\n?? aten/src/ATen/native/hip/Activation.h\n?? aten/src/ATen/native/hip/ActivationEluKernel.hip\n?? aten/src/ATen/native/hip/ActivationGeluKernel.hip\n?? aten/src/ATen/native/hip/ActivationGluKernel.hip\n?? aten/src/ATen/native/hip/ActivationHardshrinkKernel.hip\n?? aten/src/ATen/native/hip/ActivationHardsigmoidKernel.hip\n?? aten/src/ATen/native/hip/ActivationHardswishKernel.hip\n?? aten/src/ATen/native/hip/ActivationHardtanhKernel.hip\n?? aten/src/ATen/native/hip/ActivationLeakyReluKernel.hip\n?? aten/src/ATen/native/hip/ActivationLogSigmoidKernel.hip\n?? aten/src/ATen/native/hip/ActivationMishKernel.hip\n?? aten/src/ATen/native/hip/ActivationPreluKernel.hip\n?? aten/src/ATen/native/hip/ActivationSiluKernel.hip\n?? aten/src/ATen/native/hip/ActivationSoftplusKernel.hip\n?? aten/src/ATen/native/hip/ActivationSoftshrinkKernel.hip\n?? aten/src/ATen/native/hip/ActivationThresholdKernel.hip\n?? aten/src/ATen/native/hip/AdaptiveAveragePooling.hip\n?? aten/src/ATen/native/hip/AdaptiveAveragePooling3d.hip\n?? aten/src/ATen/native/hip/AdaptiveMaxPooling2d.hip\n?? aten/src/ATen/native/hip/AdaptiveMaxPooling3d.hip\n?? aten/src/ATen/native/hip/AmpKernels.hip\n?? aten/src/ATen/native/hip/AveragePool2d.hip\n?? aten/src/ATen/native/hip/AveragePool3d.hip\n?? aten/src/ATen/native/hip/BatchLinearAlgebraEig.hip\n?? aten/src/ATen/native/hip/BinaryBitwiseOpsKernels.hip\n?? aten/src/ATen/native/hip/BinaryDivFloorKernel.hip\n?? aten/src/ATen/native/hip/BinaryDivTrueKernel.hip\n?? aten/src/ATen/native/hip/BinaryDivTruncKernel.hip\n?? aten/src/ATen/native/hip/BinaryGeometricKernels.hip\n?? aten/src/ATen/native/hip/BinaryInternal.h\n?? aten/src/ATen/native/hip/BinaryLogicalOpsKernels.hip\n?? aten/src/ATen/native/hip/BinaryMiscBackwardOpsKernels.hip\n?? aten/src/ATen/native/hip/BinaryMiscOpsKernels.hip\n?? aten/src/ATen/native/hip/BinaryMulKernel.hip\n?? aten/src/ATen/native/hip/BinaryRemainderKernel.hip\n?? aten/src/ATen/native/hip/BinaryShiftOpsKernels.hip\n?? aten/src/ATen/native/hip/Blas.cpp\n?? aten/src/ATen/native/hip/Bucketization.hip\n?? aten/src/ATen/native/hip/Col2Im.hip\n?? aten/src/ATen/native/hip/CompareEQKernel.hip\n?? aten/src/ATen/native/hip/CompareKernels.hip\n?? aten/src/ATen/native/hip/ComplexKernel.hip\n?? aten/src/ATen/native/hip/CompositeRandomAccessor.h\n?? aten/src/ATen/native/hip/ConvolutionMM2d.hip\n?? aten/src/ATen/native/hip/Copy.h\n?? aten/src/ATen/native/hip/Copy.hip\n?? aten/src/ATen/native/hip/CopysignKernel.hip\n?? aten/src/ATen/native/hip/CrossKernel.hip\n?? aten/src/ATen/native/hip/CuFFTPlanCache.h\n?? aten/src/ATen/native/hip/CuFFTUtils.h\n?? aten/src/ATen/native/hip/CumminmaxKernel.hip\n?? aten/src/ATen/native/hip/CumprodKernel.hip\n?? aten/src/ATen/native/hip/CumsumKernel.hip\n?? aten/src/ATen/native/hip/DepthwiseConv2d.hip\n?? aten/src/ATen/native/hip/DepthwiseConv3d.hip\n?? aten/src/ATen/native/hip/DeviceAddCmulCdiv.cuh\n?? aten/src/ATen/native/hip/DeviceSqrt.cuh\n?? aten/src/ATen/native/hip/DilatedMaxPool2d.hip\n?? aten/src/ATen/native/hip/DilatedMaxPool3d.hip\n?? aten/src/ATen/native/hip/DistanceKernel.hip\n?? aten/src/ATen/native/hip/DistributionBernoulli.hip\n?? aten/src/ATen/native/hip/DistributionCauchyKernel.hip\n?? aten/src/ATen/native/hip/DistributionExponentialKernel.hip\n?? aten/src/ATen/native/hip/DistributionGeometricKernel.hip\n?? aten/src/ATen/native/hip/DistributionLogNormalKernel.hip\n?? aten/src/ATen/native/hip/DistributionNormal.hip\n?? aten/src/ATen/native/hip/DistributionRandomKernel.hip\n?? aten/src/ATen/native/hip/DistributionTemplates.h\n?? aten/src/ATen/native/hip/DistributionUniform.hip\n?? aten/src/ATen/native/hip/Distributions.cpp\n?? aten/src/ATen/native/hip/Distributions.h\n?? aten/src/ATen/native/hip/Distributions.hip\n?? aten/src/ATen/native/hip/Dropout.hip\n?? aten/src/ATen/native/hip/Embedding.hip\n?? aten/src/ATen/native/hip/EmbeddingBackwardKernel.cuh\n?? aten/src/ATen/native/hip/EmbeddingBackwardKernel.hip\n?? aten/src/ATen/native/hip/EmbeddingBag.hip\n?? aten/src/ATen/native/hip/Equal.cpp\n?? aten/src/ATen/native/hip/FillKernel.hip\n?? aten/src/ATen/native/hip/FlattenIndicesKernel.hip\n?? aten/src/ATen/native/hip/ForeachBinaryOpList.hip\n?? aten/src/ATen/native/hip/ForeachBinaryOpScalar.hip\n?? aten/src/ATen/native/hip/ForeachBinaryOpScalarList.hip\n?? aten/src/ATen/native/hip/ForeachBinaryOpScalarTensor.hip\n?? aten/src/ATen/native/hip/ForeachFunctors.cuh\n?? aten/src/ATen/native/hip/ForeachMinMaxFunctors.cuh\n?? aten/src/ATen/native/hip/ForeachPointwiseOp.hip\n?? aten/src/ATen/native/hip/ForeachReduceOp.hip\n?? aten/src/ATen/native/hip/ForeachTernaryOp.hip\n?? aten/src/ATen/native/hip/ForeachUnaryOp.hip\n?? aten/src/ATen/native/hip/FractionalMaxPool2d.hip\n?? aten/src/ATen/native/hip/FractionalMaxPool3d.hip\n?? aten/src/ATen/native/hip/FunctionOfAMatrixUtilsKernel.hip\n?? aten/src/ATen/native/hip/FusedAdagradKernel.hip\n?? aten/src/ATen/native/hip/FusedAdamKernel.hip\n?? aten/src/ATen/native/hip/FusedAdamWKernel.hip\n?? aten/src/ATen/native/hip/FusedSgdKernel.hip\n?? aten/src/ATen/native/hip/GcdLcmKernel.hip\n?? aten/src/ATen/native/hip/GridSampler.cpp\n?? aten/src/ATen/native/hip/GridSampler.cuh\n?? aten/src/ATen/native/hip/GridSampler.h\n?? aten/src/ATen/native/hip/GridSampler.hip\n?? aten/src/ATen/native/hip/GroupMM.h\n?? aten/src/ATen/native/hip/GroupMM.hip\n?? aten/src/ATen/native/hip/GroupMMCommon.cuh\n?? aten/src/ATen/native/hip/GroupedBlas.cpp\n?? aten/src/ATen/native/hip/HIPJitLoops.cuh\n?? aten/src/ATen/native/hip/HIPLoops.cuh\n?? aten/src/ATen/native/hip/HIPScalar.hip\n?? aten/src/ATen/native/hip/IGammaKernel.hip\n?? aten/src/ATen/native/hip/Im2Col.hip\n?? aten/src/ATen/native/hip/IndexKernel.cpp\n?? aten/src/ATen/native/hip/IndexKernel.h\n?? aten/src/ATen/native/hip/IndexKernel.hip\n?? aten/src/ATen/native/hip/IndexKernelUtils.h\n?? aten/src/ATen/native/hip/IndexKernelUtils.hip\n?? aten/src/ATen/native/hip/Indexing.hip\n?? aten/src/ATen/native/hip/JitLoops.cuh\n?? aten/src/ATen/native/hip/KernelUtils.cuh\n?? aten/src/ATen/native/hip/LaunchUtils.h\n?? aten/src/ATen/native/hip/Lerp.hip\n?? aten/src/ATen/native/hip/LinearAlgebra.hip\n?? aten/src/ATen/native/hip/LinearAlgebraStubs.cpp\n?? aten/src/ATen/native/hip/LogAddExpKernel.hip\n?? aten/src/ATen/native/hip/LogcumsumexpKernel.hip\n?? aten/src/ATen/native/hip/Loops.cuh\n?? aten/src/ATen/native/hip/Loss.hip\n?? aten/src/ATen/native/hip/LossCTC.hip\n?? aten/src/ATen/native/hip/Math.cuh\n?? aten/src/ATen/native/hip/MaxMinElementwiseKernel.hip\n?? aten/src/ATen/native/hip/MaxUnpooling.hip\n?? aten/src/ATen/native/hip/MemoryAccess.cuh\n?? aten/src/ATen/native/hip/MiscUtils.h\n?? aten/src/ATen/native/hip/MixedDtypesLinear.hip\n?? aten/src/ATen/native/hip/MultiLabelMarginCriterion.hip\n?? aten/src/ATen/native/hip/MultiMarginLoss.hip\n?? aten/src/ATen/native/hip/MultiTensorApply.cuh\n?? aten/src/ATen/native/hip/MultinomialKernel.hip\n?? aten/src/ATen/native/hip/NLLLoss2d.hip\n?? aten/src/ATen/native/hip/NaiveConvolutionTranspose2d.hip\n?? aten/src/ATen/native/hip/NaiveConvolutionTranspose3d.hip\n?? aten/src/ATen/native/hip/NaiveDilatedConvolution.hip\n?? aten/src/ATen/native/hip/Nonzero.hip\n?? aten/src/ATen/native/hip/Normalization.cuh\n?? aten/src/ATen/native/hip/Normalization.hip\n?? aten/src/ATen/native/hip/PersistentSoftmax.cuh\n?? aten/src/ATen/native/hip/PhiloxDistribution.hip\n?? aten/src/ATen/native/hip/PhiloxKeySplit.hip\n?? aten/src/ATen/native/hip/PointwiseOpsKernel.hip\n?? aten/src/ATen/native/hip/Pow.cuh\n?? aten/src/ATen/native/hip/PowKernel.hip\n?? aten/src/ATen/native/hip/RNN.hip\n?? aten/src/ATen/native/hip/Randperm.cuh\n?? aten/src/ATen/native/hip/Randperm.hip\n?? aten/src/ATen/native/hip/RangeFactories.hip\n?? aten/src/ATen/native/hip/RecordStream.hip\n?? aten/src/ATen/native/hip/Reduce.cuh\n?? aten/src/ATen/native/hip/Reduce.hip\n?? aten/src/ATen/native/hip/ReduceAMinMaxKernel.hip\n?? aten/src/ATen/native/hip/ReduceArgMaxKernel.hip\n?? aten/src/ATen/native/hip/ReduceArgMinKernel.hip\n?? aten/src/ATen/native/hip/ReduceLogicKernel.hip\n?? aten/src/ATen/native/hip/ReduceMaxValuesKernel.hip\n?? aten/src/ATen/native/hip/ReduceMinValuesKernel.hip\n?? aten/src/ATen/native/hip/ReduceMomentKernel.hip\n?? aten/src/ATen/native/hip/ReduceNormKernel.hip\n?? aten/src/ATen/native/hip/ReduceOps.cpp\n?? aten/src/ATen/native/hip/ReduceOps.h\n?? aten/src/ATen/native/hip/ReduceSumProdKernel.hip\n?? aten/src/ATen/native/hip/ReflectionPad.hip\n?? aten/src/ATen/native/hip/RenormKernel.hip\n?? aten/src/ATen/native/hip/Repeat.hip\n?? aten/src/ATen/native/hip/ReplicationPadding.hip\n?? aten/src/ATen/native/hip/Resize.cpp\n?? aten/src/ATen/native/hip/Resize.h\n?? aten/src/ATen/native/hip/RowwiseScaledMM.h\n?? aten/src/ATen/native/hip/RowwiseScaledMM.hip\n?? aten/src/ATen/native/hip/RreluWithNoise.hip\n?? aten/src/ATen/native/hip/ScaledBlas.cpp\n?? aten/src/ATen/native/hip/ScaledGroupMM.h\n?? aten/src/ATen/native/hip/ScaledGroupMM.hip\n?? aten/src/ATen/native/hip/ScanKernels.cpp\n?? aten/src/ATen/native/hip/ScanKernels.h\n?? aten/src/ATen/native/hip/ScanUtils.cuh\n?? aten/src/ATen/native/hip/ScatterGatherKernel.hip\n?? aten/src/ATen/native/hip/SegmentReduce.hip\n?? aten/src/ATen/native/hip/Shape.hip\n?? aten/src/ATen/native/hip/SoftMax.hip\n?? aten/src/ATen/native/hip/Sort.cpp\n?? aten/src/ATen/native/hip/Sort.h\n?? aten/src/ATen/native/hip/Sort.hip\n?? aten/src/ATen/native/hip/SortImpl.hip\n?? aten/src/ATen/native/hip/SortStable.h\n?? aten/src/ATen/native/hip/SortStable.hip\n?? aten/src/ATen/native/hip/SortUtils.cuh\n?? aten/src/ATen/native/hip/Sorting.cpp\n?? aten/src/ATen/native/hip/Sorting.h\n?? aten/src/ATen/native/hip/Sorting.hip\n?? aten/src/ATen/native/hip/SortingCommon.cuh\n?? aten/src/ATen/native/hip/SortingRadixSelect.cuh\n?? aten/src/ATen/native/hip/SparseBinaryOpIntersectionKernel.hip\n?? aten/src/ATen/native/hip/SparseMM.hip\n?? aten/src/ATen/native/hip/SpectralOps.cpp\n?? aten/src/ATen/native/hip/SpectralOps.hip\n?? aten/src/ATen/native/hip/StepKernel.hip\n?? aten/src/ATen/native/hip/SummaryOps.hip\n?? aten/src/ATen/native/hip/TensorCompare.cpp\n?? aten/src/ATen/native/hip/TensorCompare.hip\n?? aten/src/ATen/native/hip/TensorFactories.hip\n?? aten/src/ATen/native/hip/TensorModeKernel.cpp\n?? aten/src/ATen/native/hip/TensorModeKernel.cuh\n?? aten/src/ATen/native/hip/TensorModeKernel.h\n?? aten/src/ATen/native/hip/TensorModeKernel.hip\n?? aten/src/ATen/native/hip/TensorShape.hip\n?? aten/src/ATen/native/hip/TensorShapeHIP.cpp\n?? aten/src/ATen/native/hip/TensorTopK.cpp\n?? aten/src/ATen/native/hip/TensorTopK.h\n?? aten/src/ATen/native/hip/TensorTopK.hip\n?? aten/src/ATen/native/hip/TensorTransformations.hip\n?? aten/src/ATen/native/hip/TriangularOps.hip\n?? aten/src/ATen/native/hip/UnaryComplexKernels.hip\n?? aten/src/ATen/native/hip/UnaryFractionKernels.hip\n?? aten/src/ATen/native/hip/UnaryGammaKernels.hip\n?? aten/src/ATen/native/hip/UnaryGeometricAcosKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricAcoshKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricAsinKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricAsinhKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricAtanKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricAtanhKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricCosKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricCoshKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricSinKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricSinhKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricTanKernel.hip\n?? aten/src/ATen/native/hip/UnaryGeometricTanhKernel.hip\n?? aten/src/ATen/native/hip/UnaryLogKernels.hip\n?? aten/src/ATen/native/hip/UnaryOpsKernel.hip\n?? aten/src/ATen/native/hip/UnarySignKernels.hip\n?? aten/src/ATen/native/hip/UnarySpecialOpsKernel.hip\n?? aten/src/ATen/native/hip/UnfoldBackwardKernel.hip\n?? aten/src/ATen/native/hip/Unique.hip\n?? aten/src/ATen/native/hip/UniqueCub.cuh\n?? aten/src/ATen/native/hip/UniqueCub.hip\n?? aten/src/ATen/native/hip/UpSample.cuh\n?? aten/src/ATen/native/hip/UpSampleBicubic2d.hip\n?? aten/src/ATen/native/hip/UpSampleBilinear2d.hip\n?? aten/src/ATen/native/hip/UpSampleLinear1d.hip\n?? aten/src/ATen/native/hip/UpSampleNearest1d.hip\n?? aten/src/ATen/native/hip/UpSampleNearest2d.hip\n?? aten/src/ATen/native/hip/UpSampleNearest3d.hip\n?? aten/src/ATen/native/hip/UpSampleTrilinear3d.hip\n?? aten/src/ATen/native/hip/ValidateCompressedIndicesKernel.hip\n?? aten/src/ATen/native/hip/WeightNorm.hip\n?? aten/src/ATen/native/hip/ZetaKernel.hip\n?? aten/src/ATen/native/hip/airy_ai.hip\n?? aten/src/ATen/native/hip/bessel_j0.hip\n?? aten/src/ATen/native/hip/bessel_j1.hip\n?? aten/src/ATen/native/hip/bessel_y0.hip\n?? aten/src/ATen/native/hip/bessel_y1.hip\n?? aten/src/ATen/native/hip/block_reduce.cuh\n?? aten/src/ATen/native/hip/chebyshev_polynomial_t.hip\n?? aten/src/ATen/native/hip/chebyshev_polynomial_u.hip\n?? aten/src/ATen/native/hip/chebyshev_polynomial_v.hip\n?? aten/src/ATen/native/hip/chebyshev_polynomial_w.hip\n?? aten/src/ATen/native/hip/cuBlasCommonArgs.h\n?? aten/src/ATen/native/hip/cutlass_common.cuh\n?? aten/src/ATen/native/hip/cutlass_extensions/\n?? aten/src/ATen/native/hip/fused_adagrad_impl.cuh\n?? aten/src/ATen/native/hip/fused_adagrad_impl.hip\n?? aten/src/ATen/native/hip/fused_adagrad_utils.cuh\n?? aten/src/ATen/native/hip/fused_adam_amsgrad_impl.cuh\n?? aten/src/ATen/native/hip/fused_adam_amsgrad_impl.hip\n?? aten/src/ATen/native/hip/fused_adam_impl.cuh\n?? aten/src/ATen/native/hip/fused_adam_impl.hip\n?? aten/src/ATen/native/hip/fused_adam_utils.cuh\n?? aten/src/ATen/native/hip/fused_adamw_amsgrad_impl.cuh\n?? aten/src/ATen/native/hip/fused_adamw_amsgrad_impl.hip\n?? aten/src/ATen/native/hip/fused_adamw_impl.cuh\n?? aten/src/ATen/native/hip/fused_adamw_impl.hip\n?? aten/src/ATen/native/hip/group_norm_kernel.hip\n?? aten/src/ATen/native/hip/hermite_polynomial_h.hip\n?? aten/src/ATen/native/hip/hermite_polynomial_he.hip\n?? aten/src/ATen/native/hip/im2col.cuh\n?? aten/src/ATen/native/hip/int4mm.hip\n?? aten/src/ATen/native/hip/int8mm.hip\n?? aten/src/ATen/native/hip/jit_utils.cpp\n?? aten/src/ATen/native/hip/jit_utils.h\n?? aten/src/ATen/native/hip/laguerre_polynomial_l.hip\n?? aten/src/ATen/native/hip/layer_norm_kernel.hip\n?? aten/src/ATen/native/hip/legendre_polynomial_p.hip\n?? aten/src/ATen/native/hip/linalg/\n?? aten/src/ATen/native/hip/modified_bessel_i0.hip\n?? aten/src/ATen/native/hip/modified_bessel_i1.hip\n?? aten/src/ATen/native/hip/modified_bessel_k0.hip\n?? aten/src/ATen/native/hip/modified_bessel_k1.hip\n?? aten/src/ATen/native/hip/reduction_template.cuh\n?? aten/src/ATen/native/hip/scaled_modified_bessel_k0.hip\n?? aten/src/ATen/native/hip/scaled_modified_bessel_k1.hip\n?? aten/src/ATen/native/hip/shifted_chebyshev_polynomial_t.hip\n?? aten/src/ATen/native/hip/shifted_chebyshev_polynomial_u.hip\n?? aten/src/ATen/native/hip/shifted_chebyshev_polynomial_v.hip\n?? aten/src/ATen/native/hip/shifted_chebyshev_polynomial_w.hip\n?? aten/src/ATen/native/hip/spherical_bessel_j0.hip\n?? aten/src/ATen/native/hip/thread_constants.h\n?? aten/src/ATen/native/hip/vol2col.cuh\n?? aten/src/ATen/native/nested/hip/\n?? aten/src/ATen/native/quantized/cudnn/hip/\n?? aten/src/ATen/native/quantized/hip/\n?? aten/src/ATen/native/sparse/hip/\n?? aten/src/ATen/native/transformers/hip/attention.hip\n?? aten/src/ATen/native/transformers/hip/attention_backward.hip\n?? aten/src/ATen/native/transformers/hip/mem_eff_attention/\n?? aten/src/ATen/native/transformers/hip/sdp_utils.cpp\n?? aten/src/ATen/native/transformers/hip/sdp_utils.h\n?? aten/src/ATen/test/hip/\n?? aten/src/ATen/test/test_install/hip/\n?? aten/src/THH/\n?? binaries/hip/\n?? c10/hip/HIPAlgorithm.h\n?? c10/hip/HIPAllocatorConfig.cpp\n?? c10/hip/HIPAllocatorConfig.h\n?? c10/hip/HIPCachingAllocator.cpp\n?? c10/hip/HIPCachingAllocator.h\n?? c10/hip/HIPDeviceAssertion.h\n?? c10/hip/HIPDeviceAssertionHost.cpp\n?? c10/hip/HIPDeviceAssertionHost.h\n?? c10/hip/HIPEvent.h\n?? c10/hip/HIPException.cpp\n?? c10/hip/HIPException.h\n?? c10/hip/HIPFunctions.cpp\n?? c10/hip/HIPFunctions.h\n?? c10/hip/HIPGraphsC10Utils.h\n?? c10/hip/HIPGuard.h\n?? c10/hip/HIPMacros.h\n?? c10/hip/HIPMallocAsyncAllocator.cpp\n?? c10/hip/HIPMathCompat.h\n?? c10/hip/HIPMiscFunctions.cpp\n?? c10/hip/HIPMiscFunctions.h\n?? c10/hip/HIPStream.cpp\n?? c10/hip/HIPStream.h\n?? c10/hip/PeerToPeerAccess.cpp\n?? c10/hip/PeerToPeerAccess.h\n?? c10/hip/driver_api.cpp\n?? c10/hip/driver_api.h\n?? c10/hip/impl/\n?? c10/hip/test/\n?? caffe2/core/hip/\n?? caffe2/serialize/hip/\n?? caffe2/utils/hip/\n?? caffe2/utils/threadpool/hip/\n?? test/cpp/c10d/example/hip/\n?? test/cpp/c10d/hip/\n?? torch/lib/aotriton.images/",
+  "source_modification_policy": "Only official frozen HIPIFY/build generation; no speculative handwritten source patch",
+  "wheel_path": "C:\\b\\out\\wheels\\torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl",
+  "wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "wheel_size": 388478127,
+  "tool_versions": {
+    "python": {
+      "command": [
+        "C:/b/be/Scripts/python.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.10.20\n",
+      "stderr": ""
+    },
+    "cmake": {
+      "command": [
+        "C:/b/be/Scripts/cmake.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cmake version 4.0.0\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+      "stderr": ""
+    },
+    "ninja": {
+      "command": [
+        "C:/b/be/Scripts/ninja.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "1.13.2.git.kitware.jobserver-pipe-1\n",
+      "stderr": ""
+    },
+    "clang-cl": {
+      "command": [
+        "C:/b/be/Lib/site-packages/_rocm_sdk_devel/lib/llvm/bin/clang-cl.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "AMD clang version 23.0.0git (https://github.com/ROCm/llvm-project.git f30ae3e6b680ad23dcf522e668c6d4c5c90838d0+PATCHED:1efe4605317a40d2170d33617075bd5675d0d558)\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: C:\\b\\be\\Lib\\site-packages\\_rocm_sdk_devel\\lib\\llvm\\bin\n",
+      "stderr": ""
+    }
+  },
+  "build_environment_packages": [
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "build",
+      "version": "1.3.0"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "version": "8.3.3"
+    },
+    {
+      "name": "cmake",
+      "version": "4.0.0"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.3.1"
+    },
+    {
+      "name": "expecttest",
+      "version": "0.3.0"
+    },
+    {
+      "name": "filelock",
+      "version": "3.20.3"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.2.0"
+    },
+    {
+      "name": "hypothesis",
+      "version": "6.56.4"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "importlib_metadata",
+      "version": "9.0.1"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "lintrunner",
+      "version": "0.12.11"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0"
+    },
+    {
+      "name": "networkx",
+      "version": "2.8.8"
+    },
+    {
+      "name": "ninja",
+      "version": "1.13.2"
+    },
+    {
+      "name": "numpy",
+      "version": "2.1.2"
+    },
+    {
+      "name": "optree",
+      "version": "0.13.0"
+    },
+    {
+      "name": "packaging",
+      "version": "25.0"
+    },
+    {
+      "name": "pip",
+      "version": "26.0.1"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2"
+    },
+    {
+      "name": "pyproject_hooks",
+      "version": "1.3.3"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "requests",
+      "version": "2.32.5"
+    },
+    {
+      "name": "rocm",
+      "version": "7.14.1"
+    },
+    {
+      "name": "rocm-sdk-core",
+      "version": "7.14.1"
+    },
+    {
+      "name": "rocm-sdk-devel",
+      "version": "7.14.1"
+    },
+    {
+      "name": "rocm-sdk-device-gfx1151",
+      "version": "7.14.1"
+    },
+    {
+      "name": "rocm-sdk-libraries",
+      "version": "7.14.1"
+    },
+    {
+      "name": "setuptools",
+      "version": "79.0.1"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "sortedcontainers",
+      "version": "2.4.0"
+    },
+    {
+      "name": "spin",
+      "version": "0.17"
+    },
+    {
+      "name": "sympy",
+      "version": "1.13.3"
+    },
+    {
+      "name": "tomli",
+      "version": "2.5.0"
+    },
+    {
+      "name": "torch",
+      "version": "2.12.0+rocm7.14.1"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.15.0"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0"
+    },
+    {
+      "name": "uv",
+      "version": "0.13.6"
+    },
+    {
+      "name": "wheel",
+      "version": "0.46.3"
+    },
+    {
+      "name": "zipp",
+      "version": "4.1.2"
+    }
+  ],
+  "source_override_environment": {},
+  "build_process_record": "build-after-psimd-process.json",
+  "first_compiler_diagnostic_record": "first-compiler-diagnostic.json",
+  "first_install_input_failure_record": "install-source-recovery.json"
+}

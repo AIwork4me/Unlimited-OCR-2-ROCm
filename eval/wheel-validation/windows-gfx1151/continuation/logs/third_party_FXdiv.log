@@ -1,0 +1,4 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\FXdiv", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "false"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\FXdiv", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "b408327ac2a15ec3e43352421954f5b1967701d1"]
+HEAD is now at b408327 Disable _udiv64 and _udiv128 intrinsics on clang-cl and icpc
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\FXdiv", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

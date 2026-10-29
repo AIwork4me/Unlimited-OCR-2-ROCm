@@ -1,0 +1,136 @@
+"""Run the unmodified historical reproducer, one fresh process per condition."""
+
+import argparse
+import hashlib
+import json
+import os
+import subprocess
+import uuid
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parent
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--python", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--identity-profile", type=Path)
+    args = parser.parse_args()
+    args.output.mkdir(parents=True, exist_ok=True)
+    conditions = [
+        ("scalar_default", [1, 1, 1, 1], "none", "DEFAULT"),
+        ("scalar_flash", [1, 1, 1, 1], "none", "FLASH_ATTENTION"),
+        ("small_flash", [1, 2, 16, 64], "none", "FLASH_ATTENTION"),
+        ("small_efficient", [1, 2, 16, 64], "bias", "EFFICIENT_ATTENTION"),
+        ("vision_default", [54, 12, 196, 64], "bias", "DEFAULT"),
+        ("vision_efficient", [54, 12, 196, 64], "bias", "EFFICIENT_ATTENTION"),
+    ]
+    cases = []
+    for name, shape, mask, backend in conditions:
+        for repeat in range(1, 4):
+            cases.append((f"{name}_{repeat}", shape, mask, backend, "copy", "dispatch", False))
+    for name, shape, mask in (
+        ("scalar_math", [1, 1, 1, 1], "none"),
+        ("small_math", [1, 2, 16, 64], "none"),
+        ("small_bias_math", [1, 2, 16, 64], "bias"),
+        ("vision_math", [54, 12, 196, 64], "bias"),
+    ):
+        cases.append((name, shape, mask, "MATH", "copy", "profiler", False))
+    cases.extend(
+        [
+            (
+                "efficient_arithmetic",
+                [1, 2, 16, 64],
+                "bias",
+                "EFFICIENT_ATTENTION",
+                "arithmetic",
+                "dispatch",
+                False,
+            ),
+            ("copy_only", [54, 12, 196, 64], "bias", "MATH", "copy_only", "dispatch", False),
+            (
+                "vision_flash_unsupported",
+                [54, 12, 196, 64],
+                "bias",
+                "FLASH_ATTENTION",
+                "copy",
+                "dispatch",
+                False,
+            ),
+            ("flash_launch", [1, 2, 16, 64], "none", "FLASH_ATTENTION", "copy", "dispatch", True),
+            (
+                "efficient_launch",
+                [1, 2, 16, 64],
+                "bias",
+                "EFFICIENT_ATTENTION",
+                "copy",
+                "dispatch",
+                True,
+            ),
+        ]
+    )
+    manifest: dict[str, Any] = {"run_id": str(uuid.uuid4()), "processes": [], "scripts": {}}
+    producers = ["repro_sdpa.py", "reporting.py", "validate_wheel.py"]
+    if args.identity_profile:
+        producers += ["candidate_repro.py", "candidate_identity.py"]
+        manifest["identity_profile_sha256"] = hashlib.sha256(
+            args.identity_profile.read_bytes()
+        ).hexdigest()
+    for name in producers:
+        manifest["scripts"][name] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+    for name, shape, mask, backend, operation, trace, launch_log in cases:
+        report = args.output / f"{name}.json"
+        command = [
+            str(args.python),
+            str(ROOT / ("candidate_repro.py" if args.identity_profile else "repro_sdpa.py")),
+            "--shape",
+            *map(str, shape),
+            "--mask",
+            mask,
+            "--backend",
+            backend,
+            "--operation",
+            operation,
+            "--trace",
+            trace,
+            "--seed",
+            "7992",
+            "--output",
+            str(report),
+        ]
+        if args.identity_profile:
+            command += ["--identity-profile", str(args.identity_profile)]
+        env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1")
+        if launch_log:
+            env["AMD_LOG_LEVEL"] = "4"
+        record = {
+            "case": name,
+            "command": command,
+            "start_utc": datetime.now(timezone.utc).isoformat(),
+            "report": report.name,
+            "environment_overrides": {"AMD_LOG_LEVEL": "4"} if launch_log else {},
+        }
+        with (
+            (args.output / f"{name}.stdout.log").open("wb") as out,
+            (args.output / f"{name}.stderr.log").open("wb") as err,
+        ):
+            try:
+                result = subprocess.run(
+                    command, env=env, stdout=out, stderr=err, timeout=300, check=False
+                )
+                record["exit_code"] = result.returncode
+            except subprocess.TimeoutExpired:
+                record.update(exit_code=124, timeout_seconds=300)
+        record["end_utc"] = datetime.now(timezone.utc).isoformat()
+        manifest["processes"].append(record)
+        (args.output / "processes.json").write_text(
+            json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+        )
+        print(name, record["exit_code"], flush=True)
+
+
+if __name__ == "__main__":
+    main()

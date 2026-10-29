@@ -1,0 +1,4 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\NNPACK", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\NNPACK", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "c07e3a0400713d546e0dea2d5466dd22ea389c73"]
+HEAD is now at c07e3a0 Add support for CMAKE_OSX_ARCHITECTURES
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\NNPACK", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

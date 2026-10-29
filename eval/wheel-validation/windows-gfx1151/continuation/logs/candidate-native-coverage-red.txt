@@ -1,0 +1,147 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\uocr
+configfile: pyproject.toml
+collected 34 items / 27 deselected / 7 selected
+
+tests\unit\test_candidate_identity.py FFFFFFF                            [100%]
+
+================================== FAILURES ===================================
+____ test_foreign_loaded_core_binary_is_rejected[torch/lib/torch_cpu.dll] _____
+
+member = 'torch/lib/torch_cpu.dll'
+
+    @pytest.mark.parametrize(
+        "member",
+        [
+            "torch/lib/torch_cpu.dll",
+            "torch/lib/torch_python.dll",
+            "torch/lib/c10.dll",
+            "torch/lib/c10_hip.dll",
+            "torch/_C.cp310-win_amd64.pyd",
+        ],
+    )
+    def test_foreign_loaded_core_binary_is_rejected(member):
+        p, r = facts()
+        value = r["loaded_binaries"].pop(member)
+        r["loaded_binaries"]["foreign/" + member.split("/")[-1]] = value
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:92: Failed
+___ test_foreign_loaded_core_binary_is_rejected[torch/lib/torch_python.dll] ___
+
+member = 'torch/lib/torch_python.dll'
+
+    @pytest.mark.parametrize(
+        "member",
+        [
+            "torch/lib/torch_cpu.dll",
+            "torch/lib/torch_python.dll",
+            "torch/lib/c10.dll",
+            "torch/lib/c10_hip.dll",
+            "torch/_C.cp310-win_amd64.pyd",
+        ],
+    )
+    def test_foreign_loaded_core_binary_is_rejected(member):
+        p, r = facts()
+        value = r["loaded_binaries"].pop(member)
+        r["loaded_binaries"]["foreign/" + member.split("/")[-1]] = value
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:92: Failed
+_______ test_foreign_loaded_core_binary_is_rejected[torch/lib/c10.dll] ________
+
+member = 'torch/lib/c10.dll'
+
+    @pytest.mark.parametrize(
+        "member",
+        [
+            "torch/lib/torch_cpu.dll",
+            "torch/lib/torch_python.dll",
+            "torch/lib/c10.dll",
+            "torch/lib/c10_hip.dll",
+            "torch/_C.cp310-win_amd64.pyd",
+        ],
+    )
+    def test_foreign_loaded_core_binary_is_rejected(member):
+        p, r = facts()
+        value = r["loaded_binaries"].pop(member)
+        r["loaded_binaries"]["foreign/" + member.split("/")[-1]] = value
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:92: Failed
+_____ test_foreign_loaded_core_binary_is_rejected[torch/lib/c10_hip.dll] ______
+
+member = 'torch/lib/c10_hip.dll'
+
+    @pytest.mark.parametrize(
+        "member",
+        [
+            "torch/lib/torch_cpu.dll",
+            "torch/lib/torch_python.dll",
+            "torch/lib/c10.dll",
+            "torch/lib/c10_hip.dll",
+            "torch/_C.cp310-win_amd64.pyd",
+        ],
+    )
+    def test_foreign_loaded_core_binary_is_rejected(member):
+        p, r = facts()
+        value = r["loaded_binaries"].pop(member)
+        r["loaded_binaries"]["foreign/" + member.split("/")[-1]] = value
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:92: Failed
+__ test_foreign_loaded_core_binary_is_rejected[torch/_C.cp310-win_amd64.pyd] __
+
+member = 'torch/_C.cp310-win_amd64.pyd'
+
+    @pytest.mark.parametrize(
+        "member",
+        [
+            "torch/lib/torch_cpu.dll",
+            "torch/lib/torch_python.dll",
+            "torch/lib/c10.dll",
+            "torch/lib/c10_hip.dll",
+            "torch/_C.cp310-win_amd64.pyd",
+        ],
+    )
+    def test_foreign_loaded_core_binary_is_rejected(member):
+        p, r = facts()
+        value = r["loaded_binaries"].pop(member)
+        r["loaded_binaries"]["foreign/" + member.split("/")[-1]] = value
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:92: Failed
+____________ test_required_cpu_reference_binary_cannot_be_omitted _____________
+
+    def test_required_cpu_reference_binary_cannot_be_omitted():
+        p, r = facts()
+        for inventory in (p["binaries"], r["binaries"], r["loaded_binaries"]):
+            inventory.pop("torch/lib/torch_cpu.dll")
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:100: Failed
+__________________ test_core_binary_must_actually_be_loaded ___________________
+
+    def test_core_binary_must_actually_be_loaded():
+        p, r = facts()
+        r["loaded_binaries"].pop("torch/lib/torch_cpu.dll")
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\unit\test_candidate_identity.py:107: Failed
+=========================== short test summary info ===========================
+FAILED tests/unit/test_candidate_identity.py::test_foreign_loaded_core_binary_is_rejected[torch/lib/torch_cpu.dll]
+FAILED tests/unit/test_candidate_identity.py::test_foreign_loaded_core_binary_is_rejected[torch/lib/torch_python.dll]
+FAILED tests/unit/test_candidate_identity.py::test_foreign_loaded_core_binary_is_rejected[torch/lib/c10.dll]
+FAILED tests/unit/test_candidate_identity.py::test_foreign_loaded_core_binary_is_rejected[torch/lib/c10_hip.dll]
+FAILED tests/unit/test_candidate_identity.py::test_foreign_loaded_core_binary_is_rejected[torch/_C.cp310-win_amd64.pyd]
+FAILED tests/unit/test_candidate_identity.py::test_required_cpu_reference_binary_cannot_be_omitted
+FAILED tests/unit/test_candidate_identity.py::test_core_binary_must_actually_be_loaded
+====================== 7 failed, 27 deselected in 0.16s =======================

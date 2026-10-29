@@ -1,0 +1,47 @@
+{
+  "run_id": "ba90aeeb-557c-4156-a954-8e5ca681188f",
+  "utc": "2026-10-28T12:37:28.7107716Z",
+  "os": {
+    "build": "26200",
+    "version": "10.0.26200",
+    "caption": "Microsoft Windows 11 家庭版 中文版"
+  },
+  "cpu": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S",
+  "gpu": [
+    {
+      "Name": "GameViewer Virtual Display Adapter",
+      "DriverVersion": "15.6.5.199",
+      "DriverDate": "2026-02-28T08:00:00+08:00"
+    },
+    {
+      "Name": "AMD Radeon(TM) 8060S Graphics",
+      "DriverVersion": "32.0.22032.6002",
+      "DriverDate": "2025-12-15T08:00:00+08:00"
+    }
+  ],
+  "ram_bytes": 132766306304,
+  "free_ram_kib": 101564320,
+  "disk_bytes": 990617341952,
+  "free_disk_bytes": 422856482816,
+  "python": {
+    "version": "3.10.20 (main, May 10 2026, 19:31:32) [MSC v.1944 64 bit (AMD64)]",
+    "abi": "cp310",
+    "bits": 64,
+    "platform": "win32"
+  },
+  "powershell": "7.6.5",
+  "git": "git version 2.56.0.windows.2",
+  "cmake": "cmake version 4.4.4",
+  "ninja": "1.13.2",
+  "vs_path": "C:\\BuildTools",
+  "msvc": [
+    "14.44.35207"
+  ],
+  "windows_sdk": [
+    "10.0.26100.0"
+  ],
+  "short_path_writable": true,
+  "inherited_overrides": {},
+  "gpu_architecture": "PENDING HIP runtime probe; WMI alone does not establish gfx1151",
+  "rocm_devel": "PENDING isolated SDK installation; global inference packages are not build prerequisites"
+}

@@ -1,0 +1,4 @@
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\psimd", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "config", "core.sparseCheckout", "true"]
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\psimd", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "checkout", "--detach", "072586a71b55b7f8c584153d223e95687148a900"]
+HEAD is now at 072586a Fix psimd_qfma_f32 for FMA-enabled x86 processors
+COMMAND ["git", "-C", "C:\\b\\pytorch\\third_party\\psimd", "-c", "core.longpaths=true", "-c", "http.version=HTTP/1.1", "-c", "http.lowSpeedLimit=1024", "-c", "http.lowSpeedTime=20", "read-tree", "-mu", "HEAD"]

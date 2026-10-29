@@ -1,0 +1,6 @@
+Processing C:\b\resume\verified-python-wheels\cmake-4.0.0-py3-none-win_amd64.whl
+Processing C:\b\resume\verified-python-wheels\numpy-2.1.2-cp310-cp310-win_amd64.whl
+Processing C:\b\resume\verified-python-wheels\uv-0.13.6-py3-none-win_amd64.whl
+Installing collected packages: uv, numpy, cmake
+
+Successfully installed cmake-4.0.0 numpy-2.1.2 uv-0.13.6

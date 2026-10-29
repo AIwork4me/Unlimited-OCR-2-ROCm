@@ -1,0 +1,23 @@
+{
+  "method": "resumed incomplete byte ranges with checked Content-Range, TLS verification on, final SHA256 compared to official PyPI JSON",
+  "wheels": [
+    {
+      "package": "networkx",
+      "filename": "networkx-2.8.8-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/42/31/d2f89f1ae42718f8c8a9e440ebe38d7d5fe1e0d9eb9178ce779e365b3ab0/networkx-2.8.8-py3-none-any.whl",
+      "size": 2025192,
+      "sha256": "e435dfa75b1d7195c7b8378c3859f0445cd88c6b0375c181ed66823a9ceb7524",
+      "published_pypi_sha256": "e435dfa75b1d7195c7b8378c3859f0445cd88c6b0375c181ed66823a9ceb7524",
+      "matches": true
+    },
+    {
+      "package": "sympy",
+      "filename": "sympy-1.13.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/99/ff/c87e0622b1dadea79d2fb0b25ade9ed98954c9033722eb707053d310d4f3/sympy-1.13.3-py3-none-any.whl",
+      "size": 6189483,
+      "sha256": "54612cf55a62755ee71824ce692986f23c88ffa77207b30c1368eda4a7060f73",
+      "published_pypi_sha256": "54612cf55a62755ee71824ce692986f23c88ffa77207b30c1368eda4a7060f73",
+      "matches": true
+    }
+  ]
+}

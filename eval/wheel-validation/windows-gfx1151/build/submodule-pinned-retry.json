@@ -1,0 +1,30 @@
+{
+  "records": [
+    {
+      "path": "third_party/cutlass",
+      "sha": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+      "command": [
+        "git",
+        "-C",
+        "C:\\b\\pytorch\\third_party\\cutlass",
+        "-c",
+        "http.version=HTTP/1.1",
+        "-c",
+        "http.sslBackend=openssl",
+        "-c",
+        "http.lowSpeedLimit=1024",
+        "-c",
+        "http.lowSpeedTime=20",
+        "fetch",
+        "--depth",
+        "1",
+        "origin",
+        "da5e086dab31d63815acafdac9a9c5893b1c69e2"
+      ],
+      "start_utc": "2026-10-28T13:03:34.542263+00:00",
+      "timeout_seconds": 120,
+      "exit_code": 128,
+      "end_utc": "2026-10-28T13:03:44.467373+00:00"
+    }
+  ]
+}

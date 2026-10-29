@@ -1,0 +1,26 @@
+{
+  "traces": [
+    {
+      "case": "flash_launch",
+      "raw_file": "flash_launch.stderr.log",
+      "raw_sha256": "3a98e44dbbe3dd2e2ff2edf3c8307c13078c22fdb4c7a7aca5baffddee7e3c9d",
+      "module_load_call_count": 0,
+      "launch_lines": [
+        ":3:hip_module.cpp           :570 : 981183094354 us: [pid:90276 tid: 0x8c3ff] \u001b[32m hipModuleLaunchKernel ( char array:<null>, 1, 2, 1, 0, 0, 0, 0, char array:<null>, 000001E16C57C9D0, char array:<null> ) \u001b[0m",
+        ":3:hip_module.cpp           :596 : 981183094373 us: [pid:90276 tid: 0x8c3ff] hipModuleLaunchKernel: Returned hipErrorInvalidValue : "
+      ],
+      "claim_limit": "Log observations; no kernel symbol inferred from capability flags or CPU profiler"
+    },
+    {
+      "case": "efficient_launch",
+      "raw_file": "efficient_launch.stderr.log",
+      "raw_sha256": "a79c2edc3ed1137fe958c977eb360813be5cecdac0ef9d1bfb7eec587c824c00",
+      "module_load_call_count": 0,
+      "launch_lines": [
+        ":3:hip_module.cpp           :570 : 981186751072 us: [pid:63912 tid: 0xbc087] \u001b[32m hipModuleLaunchKernel ( char array:<null>, 1, 2, 1, 0, 0, 0, 0, char array:<null>, 00000236B972BDF0, char array:<null> ) \u001b[0m",
+        ":3:hip_module.cpp           :596 : 981186751085 us: [pid:63912 tid: 0xbc087] hipModuleLaunchKernel: Returned hipErrorInvalidValue : "
+      ],
+      "claim_limit": "Log observations; no kernel symbol inferred from capability flags or CPU profiler"
+    }
+  ]
+}

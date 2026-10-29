@@ -1,0 +1,64 @@
+import concurrent.futures
+import datetime
+import hashlib
+import json
+import os
+import re
+import subprocess
+from pathlib import Path
+
+root = Path('C:/b/resume')
+expected = json.loads((root/'source-ready-before-build.json').read_text(encoding='utf-8'))
+def git(path,*args):
+    return subprocess.check_output(['git','-C',path,*args],text=True).strip()
+def pin(entry):
+    path='C:/b/pytorch/'+entry['path']
+    head=git(path,'rev-parse','HEAD')
+    sparse=subprocess.run(['git','-C',path,'config','--bool','core.sparseCheckout'],capture_output=True,text=True).stdout.strip()=='true'
+    return {'path':entry['path'],'expected':entry['expected'],'actual':head,'matches':head==entry['expected'],
+            'sparse':sparse,'status':git(path,'status','--porcelain')}
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+    pins=list(pool.map(pin,expected['top_level']+expected['compiled_nested']))
+assert all(e['matches'] for e in pins)
+cache=Path('C:/b/pytorch/build/CMakeCache.txt')
+(root/'cmake-cache-final.txt').write_bytes(cache.read_bytes())
+text=cache.read_text(encoding='utf-8')
+keys=['USE_ROCM','USE_CUDA','USE_FLASH_ATTENTION','USE_MEM_EFF_ATTENTION','USE_ROCM_CK_SDPA',
+      'USE_DISTRIBUTED','USE_GLOO','USE_KINETO','USE_FBGEMM','BUILD_TEST','CMAKE_CXX_COMPILER','CMAKE_BUILD_TYPE','HIP_VERSION']
+values={k:m.group(1).rstrip('\r') for k in keys if (m:=re.search(r'^'+re.escape(k)+r':[^=]*=(.*)$',text,re.M))}
+archs=set(); recipes=0
+for path in Path('C:/b/pytorch/build').rglob('*.obj.cmake'):
+    found=re.findall(r'--offload-arch=([\w:]+)',path.read_text(encoding='utf-8'))
+    if found:recipes+=1;archs.update(found)
+assert archs=={'gfx1151'}
+patch=subprocess.check_output(['git','-C','C:/b/pytorch','diff','--binary'])
+before=(root/'hipify-tracked-diff.private.patch').read_bytes()
+build=json.loads((root/'build-after-psimd-process.json').read_text(encoding='utf-8'))
+assert build['exit_code']==0
+wheel=json.loads((root/'built-wheel-inspection.json').read_text(encoding='utf-8'))
+versions={}
+for name,command in [('python',['C:/b/be/Scripts/python.exe','--version']),('cmake',['C:/b/be/Scripts/cmake.exe','--version']),
+                     ('ninja',['C:/b/be/Scripts/ninja.exe','--version']),('clang-cl',['C:/b/be/Lib/site-packages/_rocm_sdk_devel/lib/llvm/bin/clang-cl.exe','--version'])]:
+    p=subprocess.run(command,capture_output=True,text=True)
+    versions[name]={'command':command,'exit_code':p.returncode,'stdout':p.stdout,'stderr':p.stderr}
+packages=subprocess.check_output(['C:/b/be/Scripts/python.exe','-m','pip','list','--format=json'],text=True)
+r={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'BUILD_SUCCEEDED','official_builder_exit':0,
+   'source_sha':git('C:/b/pytorch','rev-parse','HEAD'),'therock_sha':git('C:/b/therock','rev-parse','HEAD'),
+   'sdk_version':'7.14.1','sdk_installation_policy':'Reused installed SDK with --no-install-rocm; no repeated SDK downloads',
+   'source_pins':pins,'all_40_source_pins_match':True,'cmake_features':values,'cmake_cache_sha256':hashlib.sha256(cache.read_bytes()).hexdigest(),
+   'generated_hip_recipe_count':recipes,'generated_hip_offload_architectures':sorted(archs),
+   'tracked_preprocessing_diff_sha256':hashlib.sha256(patch).hexdigest(),
+   'prebuild_hipify_diff_sha256':hashlib.sha256(before).hexdigest(),'tracked_diff_unchanged_since_official_hipify':patch==before,
+   'source_worktree_status':git('C:/b/pytorch','status','--porcelain'),
+   'source_modification_policy':'Only official frozen HIPIFY/build generation; no speculative handwritten source patch',
+   'wheel_path':wheel['wheel_path'],'wheel_sha256':wheel['wheel_sha256'],'wheel_size':wheel['wheel_size'],
+   'tool_versions':versions,'build_environment_packages':json.loads(packages),
+   'source_override_environment':{k:os.environ[k] for k in ['PYTORCH_AOTRITON_COMMIT','PYTORCH_AOTRITON_BASE_URL','AOTRITON_INSTALLED_PREFIX','AOTRITON_INSTALL_FROM_SOURCE'] if k in os.environ},
+   'build_process_record':'build-after-psimd-process.json','first_compiler_diagnostic_record':'first-compiler-diagnostic.json',
+   'first_install_input_failure_record':'install-source-recovery.json'}
+assert r['source_sha']=='60dd50f143fd9b10ac23cde8cdd34be61232b139'
+assert r['therock_sha']=='6d34c9b6f3e752b8f718b0c81f3070df77ce3283'
+(root/'final-build-provenance.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf-8')
+print('Build success, exact source pins:',len(pins),'HIP recipes:',recipes,'architectures:',sorted(archs))
+print('Tracked diff unchanged after HIPIFY:',r['tracked_diff_unchanged_since_official_hipify'])
+print('Submodule worktree changes:',[(x['path'],x['status'][:150]) for x in pins if x['status']])

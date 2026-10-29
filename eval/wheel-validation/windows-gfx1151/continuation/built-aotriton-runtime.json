@@ -1,0 +1,69 @@
+{
+  "utc": "2026-10-28T16:09:53.102958+00:00",
+  "source_sha": "7a6963a7265d2cf0fc48c6a63464386134d32483",
+  "runtime_build_status": "AOTRITON_SHARED_LIBRARY_LINKED_AND_INSTALLED",
+  "torch_wheel_status": "NOT_BUILT",
+  "gpu_status": "NOT_TESTED",
+  "files": [
+    {
+      "path": "lib/aotriton_v2.dll",
+      "size": 2127360,
+      "sha256": "941bf05354b8c7239006c519a90d27d8494adbe743e0f6d5d8552095e4b27884"
+    },
+    {
+      "path": "lib/liblzma.dll",
+      "size": 195584,
+      "sha256": "710cd7fc72bffd5483167391331d55e9b22ac570709cb41eafbb23115b7c3453"
+    },
+    {
+      "path": "lib/dl.dll",
+      "size": 16896,
+      "sha256": "d9b32d65d724f8bbc60f9d3cbda81365b6ad1708575f51bd6658a1c6e43e1d58"
+    },
+    {
+      "path": "lib/uv.dll",
+      "size": 210944,
+      "sha256": "34070dfc8f6a634a6e4b0ec4eb746e6b429a62516f7dfd35ec68990cfb20f502"
+    },
+    {
+      "path": "include/aotriton/config.h",
+      "size": 1027,
+      "sha256": "c7b1517752d05aa0bf7d0abaa57b2c4e4a260cabd58d8d3129ee174dd0f00395"
+    },
+    {
+      "path": "lib/aotriton.images/amd-gfx115x/__signature__",
+      "size": 3807,
+      "sha256": "875f8cf66d6ae8088d7c66443a447bfe7f7108fb5a0b26fb7c662856b7197eed"
+    },
+    {
+      "path": "lib/aotriton.images/amd-gfx115x/flash/attn_fwd.zip",
+      "size": 50649286,
+      "sha256": "079e4b9dfbe6bd7a390f422d846ad13d611cdf9347ae8982c4005e655bfb526f"
+    },
+    {
+      "path": "lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_dk_dv.zip",
+      "size": 36686278,
+      "sha256": "01bad38f513889da6192280be5b119ef2213bd751e21b0687e241d33c4738df6"
+    },
+    {
+      "path": "lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_dq.zip",
+      "size": 47515214,
+      "sha256": "8d7de57a35296a3953442660115399495b921300a81f157eb62fc3191d7db52f"
+    },
+    {
+      "path": "lib/aotriton.images/amd-gfx115x/flash/bwd_kernel_fuse.zip",
+      "size": 96199278,
+      "sha256": "a39ac97dabc4d0a00a416c765d7fc3860ce853d7886c119820bab67cb86da4ec"
+    },
+    {
+      "path": "lib/aotriton.images/amd-gfx115x/flash/bwd_preprocess.zip",
+      "size": 744374,
+      "sha256": "a7c1698a4298b92a91319254a29f328b197bdbf37e624187aaba70106749f771"
+    },
+    {
+      "path": "lib/aotriton.images/amd-gfx115x/flash/debug_simulate_encoded_softmax.zip",
+      "size": 13022,
+      "sha256": "e3da8744754348ac3adc6773fc81bab5af109c5c2abf6127bbe1a2bd13132cb6"
+    }
+  ]
+}

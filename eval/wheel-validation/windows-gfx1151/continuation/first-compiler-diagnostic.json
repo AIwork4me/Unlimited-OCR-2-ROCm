@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-28T15:56:12.436406+00:00",
+  "first_actual_compiler_diagnostic": {
+    "target": "torch_cpu",
+    "source": "torch/csrc/autograd/profiler_kineto.cpp",
+    "header": "torch/csrc/profiler/kineto_shim.h:15",
+    "message": "fatal error: 'ActivityType.h' file not found",
+    "classification": "INCOMPLETE_SOURCE_MATERIALIZATION",
+    "aotriton_regression_evidence": false,
+    "source_modification_applied": false,
+    "unchanged_kineto_commit": "b2103f78d13fde4937af010c0ef8e24313568bc5",
+    "recovery": "Full pinned Kineto checkout after exact-object fetch; unconditional header now exists",
+    "recovered_header_sha256": "407a02d11f56d43806672e2629dd43e89f3b94bd153fde7daabe37f720403b00"
+  },
+  "logs": [
+    "logs/torch-cpu-component.stdout.log",
+    "logs/build-deps-ready.stdout.log"
+  ],
+  "official_retry": "build-after-kineto-process.json"
+}
