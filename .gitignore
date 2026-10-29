@@ -1,4 +1,5 @@
 .venv*/
+/.b/
 .local/
 .upstream/
 .superpowers/
