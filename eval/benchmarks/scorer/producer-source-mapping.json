@@ -1,0 +1,126 @@
+[
+  {
+    "git_blob": "46ad7a8e3dd2d5889cc2761e4195cca241d474aa",
+    "git_revision": "596440d",
+    "git_sha256": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+    "normalization": "exact",
+    "observed_sha256": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/__init__.py",
+    "profile": "qwen"
+  },
+  {
+    "git_blob": "7b9daeae107cdd0feeb7d5d2c1d324a78876cb91",
+    "git_revision": "596440d",
+    "git_sha256": "4130868fb65a6c7191487ce7eb364facd6e6d40c5ccf6955ed9ecc85352727cc",
+    "normalization": "exact",
+    "observed_sha256": "4130868fb65a6c7191487ce7eb364facd6e6d40c5ccf6955ed9ecc85352727cc",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/cli.py",
+    "profile": "qwen"
+  },
+  {
+    "git_blob": "2752ab1237c35eb95008c923c747abbc9b3c7502",
+    "git_revision": "596440d",
+    "git_sha256": "dacf08f02383bd330c6dca14d2780a2354b20f758e5a7137fc609aa5ffdea0cb",
+    "normalization": "CRLF-to-LF",
+    "observed_sha256": "7d2d39fa75c21ae3d83e5e9a995a0e86843b7d11452d2f530a973b94752e60a9",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/ledger.py",
+    "profile": "qwen"
+  },
+  {
+    "git_blob": "e6816bc2d2d493f446a6cfbeaed7171bf3df557e",
+    "git_revision": "596440d",
+    "git_sha256": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+    "normalization": "exact",
+    "observed_sha256": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/manifest.py",
+    "profile": "qwen"
+  },
+  {
+    "git_blob": "7634011e099e498e311f8664474823526c4bfceb",
+    "git_revision": "596440d",
+    "git_sha256": "1886e9c201134eef666ac098350aa28efd8155fc025675396e2861d6f4730b6f",
+    "normalization": "exact",
+    "observed_sha256": "1886e9c201134eef666ac098350aa28efd8155fc025675396e2861d6f4730b6f",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/scorer.py",
+    "profile": "qwen"
+  },
+  {
+    "git_blob": "c31a6f0381e7200a1193ff563144244dd55ee1a0",
+    "git_revision": "596440d",
+    "git_sha256": "0f90c0927b605b4d29f655097c211cc20dbc40ff17cbb159e7f59917ea978d56",
+    "normalization": "CRLF-to-LF",
+    "observed_sha256": "093bb68660150d20b912cef8575c5a85aa2b384bc7e124bdd4046baec6cc2dd9",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/worker.py",
+    "profile": "qwen"
+  },
+  {
+    "git_revision": "596440d",
+    "git_sha256": "4ecd6708437fa1e10de87578b66d826f3afcebc3930f0a41161fdc4bfad0e58c",
+    "normalization": "CRLF-to-LF where required; original receipt preserved",
+    "observed_sha256": "f3ce60fae6161b389304325a2c6c331902d507b772515b6041fa37468fc80ed3",
+    "path": "eval/benchmarks/benchmark-lock.json",
+    "profile": "qwen"
+  },
+  {
+    "git_blob": "46ad7a8e3dd2d5889cc2761e4195cca241d474aa",
+    "git_revision": "596440d",
+    "git_sha256": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+    "normalization": "exact",
+    "observed_sha256": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/__init__.py",
+    "profile": "marathon"
+  },
+  {
+    "git_blob": "7b9daeae107cdd0feeb7d5d2c1d324a78876cb91",
+    "git_revision": "596440d",
+    "git_sha256": "4130868fb65a6c7191487ce7eb364facd6e6d40c5ccf6955ed9ecc85352727cc",
+    "normalization": "exact",
+    "observed_sha256": "4130868fb65a6c7191487ce7eb364facd6e6d40c5ccf6955ed9ecc85352727cc",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/cli.py",
+    "profile": "marathon"
+  },
+  {
+    "git_blob": "2752ab1237c35eb95008c923c747abbc9b3c7502",
+    "git_revision": "596440d",
+    "git_sha256": "dacf08f02383bd330c6dca14d2780a2354b20f758e5a7137fc609aa5ffdea0cb",
+    "normalization": "CRLF-to-LF",
+    "observed_sha256": "7d2d39fa75c21ae3d83e5e9a995a0e86843b7d11452d2f530a973b94752e60a9",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/ledger.py",
+    "profile": "marathon"
+  },
+  {
+    "git_blob": "e6816bc2d2d493f446a6cfbeaed7171bf3df557e",
+    "git_revision": "596440d",
+    "git_sha256": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+    "normalization": "exact",
+    "observed_sha256": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/manifest.py",
+    "profile": "marathon"
+  },
+  {
+    "git_blob": "7634011e099e498e311f8664474823526c4bfceb",
+    "git_revision": "596440d",
+    "git_sha256": "1886e9c201134eef666ac098350aa28efd8155fc025675396e2861d6f4730b6f",
+    "normalization": "exact",
+    "observed_sha256": "1886e9c201134eef666ac098350aa28efd8155fc025675396e2861d6f4730b6f",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/scorer.py",
+    "profile": "marathon"
+  },
+  {
+    "git_blob": "c31a6f0381e7200a1193ff563144244dd55ee1a0",
+    "git_revision": "596440d",
+    "git_sha256": "0f90c0927b605b4d29f655097c211cc20dbc40ff17cbb159e7f59917ea978d56",
+    "normalization": "CRLF-to-LF",
+    "observed_sha256": "093bb68660150d20b912cef8575c5a85aa2b384bc7e124bdd4046baec6cc2dd9",
+    "path": "src/unlimited_ocr_2_rocm/benchmark/worker.py",
+    "profile": "marathon"
+  },
+  {
+    "git_revision": "596440d",
+    "git_sha256": "4ecd6708437fa1e10de87578b66d826f3afcebc3930f0a41161fdc4bfad0e58c",
+    "normalization": "CRLF-to-LF where required; original receipt preserved",
+    "observed_sha256": "f3ce60fae6161b389304325a2c6c331902d507b772515b6041fa37468fc80ed3",
+    "path": "eval/benchmarks/benchmark-lock.json",
+    "profile": "marathon"
+  }
+]

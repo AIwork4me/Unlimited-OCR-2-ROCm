@@ -9,12 +9,13 @@ import hashlib
 import io
 import json
 import os
+import signal
 import subprocess
 import sys
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from typing import Any
+from typing import IO, Any
 
 from .ledger import Run, json_bytes, write_bytes
 from .manifest import DENOMINATORS, file_hash, inventory, local_path, validate_manifest
@@ -23,6 +24,34 @@ from .scorer import check_sources
 
 def read(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def run_process(
+    command: list[str], stdout: IO[bytes], stderr: IO[bytes], timeout: float, env: dict[str, str]
+) -> subprocess.CompletedProcess[bytes]:
+    process = subprocess.Popen(
+        command,
+        stdout=stdout,
+        stderr=stderr,
+        env=env,
+        start_new_session=os.name != "nt",
+        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0) if os.name == "nt" else 0,
+    )
+    try:
+        code = process.wait(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        if sys.platform == "win32":
+            subprocess.run(
+                ["taskkill", "/PID", str(process.pid), "/T", "/F"],
+                stdout=stderr,
+                stderr=stderr,
+                check=False,
+            )
+        else:
+            os.killpg(process.pid, signal.SIGKILL)
+        process.wait()
+        raise
+    return subprocess.CompletedProcess(command, code)
 
 
 def fetch_scorer(source: Path, lock: dict[str, Any], profile: str) -> None:
@@ -96,14 +125,18 @@ def score(args: argparse.Namespace) -> int:
                 "--predictions",
                 str(args.predictions.resolve()),
             ]
-        env = {**os.environ, "PYTHONUTF8": "1", "HF_HUB_OFFLINE": "1", "HF_DATASETS_OFFLINE": "1"}
+        env = {
+            **os.environ,
+            "PYTHONUTF8": "1",
+            "HF_HUB_OFFLINE": "1",
+            "HF_DATASETS_OFFLINE": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+        }
         with (
             (args.output / "stdout.log").open("xb") as stdout,
             (args.output / "stderr.log").open("xb") as stderr,
         ):
-            proc = subprocess.run(
-                command, stdout=stdout, stderr=stderr, timeout=args.timeout, env=env, check=False
-            )
+            proc = run_process(command, stdout, stderr, args.timeout, env)
         report.update(
             exit_code=proc.returncode, scorer_lock_sha256=file_hash(args.lock), profile=args.profile
         )

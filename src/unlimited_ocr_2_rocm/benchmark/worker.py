@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Any
 
 from .ledger import json_bytes, write_bytes
-from .manifest import file_hash
+from .manifest import file_hash, local_path
 from .scorer import (
     METRICS,
     aggregate,
@@ -226,7 +226,15 @@ def main() -> int:
     check_dependencies(
         environment()["packages"], requirements.read_text(encoding="utf-8").splitlines()
     )
-    sys.path.insert(0, str(args.source.resolve()))
+    snapshot = output / "verified-source"
+    snapshot.mkdir()
+    for relative in profile["files"]:
+        target = local_path(snapshot, relative)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        write_bytes(target, local_path(args.source, relative).read_bytes())
+    check_sources(snapshot, profile)
+    sys.dont_write_bytecode = True
+    sys.path.insert(0, str(snapshot))
     # Import registers original classes. Never invoke pdf_validation.py's CLI.
     import metrics  # noqa: F401
 

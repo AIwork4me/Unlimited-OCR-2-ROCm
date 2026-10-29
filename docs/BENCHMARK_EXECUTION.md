@@ -73,8 +73,9 @@ Acquire frozen GT and images only under `.b/benchmark-data/<dataset>/`.
 Marathon uses HF dataset revision
 `fa05fccbe82ee6ec628006a1d58bb153954c3ee3`, not `main`; verify all LFS object
 hashes from that revision. MPDocBench GT comes from the pinned Qwen commit,
-but its ModelScope archive/SlideVQA image-release identity and payload checksum
-are unresolved. Resolve those in a reviewed lock amendment before acceptance.
+and its ModelScope archive revision/hash and gated SlideVQA revision/shards are
+now frozen in the lock. Acquire only those identities. The gated 11-deck subset
+and its JPEG serialization/checksum closure still need reconciliation.
 Do not execute the upstream downloader against mutable revisions without an
 audit. Never add acquired documents or annotations to Git.
 

@@ -23,15 +23,15 @@ The existing inference adapter and all historical evidence stay unchanged.
 
 ## Tasks
 
-- [ ] Audit all current validation/RCA/wheel reports and draft #5; freeze source
+- [x] Audit all current validation/RCA/wheel reports and draft #5; freeze source
   identities, GT hashes and metadata-only complete document inventories.
-- [ ] Write failing manifest tests (ordering, duplicates, traversal, wrong counts,
+- [x] Write failing manifest tests (ordering, duplicates, traversal, wrong counts,
   corrupt/missing bytes); implement inventory and validation.
-- [ ] Write failing ledger tests (all states, retries, interruption, tampering,
+- [x] Write failing ledger tests (all states, retries, interruption, tampering,
   cross-dataset collision, config drift); implement atomic attempts and reports.
-- [ ] Write failing scorer adapter/fixture tests; import original scorer in a
+- [x] Write failing scorer adapter/fixture tests; import original scorer in a
   separate optional environment; retain actual dependency and CDM blockers.
-- [ ] Write protocol, matrix, execution guide and G1–G5 readiness mapping.
+- [x] Write protocol, matrix, execution guide and G1–G5 readiness mapping.
 - [ ] Run all six CPU checks, review complete diff, fix findings, create PR and
   inspect exact-head Windows/Ubuntu CI. Never merge or release.
 

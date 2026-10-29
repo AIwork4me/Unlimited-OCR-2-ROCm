@@ -82,6 +82,21 @@ def test_dependency_gate_rejects_drift_and_gpu_environment():
         check_dependencies({"numpy": "1.26.4", "torch": "2.12.0"}, ["numpy==1.26.4"])
 
 
+@pytest.mark.parametrize(
+    "relative", ["__pycache__/original.cpython-310.pyc", "original.pyd", "original.so"]
+)
+def test_source_gate_rejects_unverified_import_artifacts(tmp_path, relative):
+    source = tmp_path / "source"
+    source.mkdir()
+    script = source / "original.py"
+    script.write_text("VALUE = 'verified'", encoding="utf-8")
+    payload = source / relative
+    payload.parent.mkdir(parents=True, exist_ok=True)
+    payload.write_bytes(b"unreviewed executable artifact")
+    with pytest.raises(ValueError, match="unlocked"):
+        check_sources(source, {"files": {"original.py": file_hash(script)}})
+
+
 def test_committed_dataset_scopes_reconcile_full_denominators():
     from pathlib import Path
 

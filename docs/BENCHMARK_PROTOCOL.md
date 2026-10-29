@@ -3,7 +3,7 @@
 Scope: [issue #6](https://github.com/AIwork4me/Unlimited-OCR-2-ROCm/issues/6),
 P0 infrastructure only. **No full GPU dataset run or quality/performance claim.**
 The protocol rules and source/annotation identities below are frozen. The
-MPDocBench image release and CDM environment remain explicit acquisition gates;
+local MPDocBench/SlideVQA image payloads and CDM environment remain acquisition gates;
 this is not a claim that the complete execution supply chain is ready.
 
 ## Sources and dataset identity
@@ -39,14 +39,19 @@ generated locally from the frozen GT, using its explicit ordered `images_list`.
 Marathon's immutable HF metadata lists all 18,272 PNG objects with LFS SHA256;
 their total payload is **11,805,490,064 bytes**. Those published hashes describe
 remote objects; local image acquisition/byte verification is **NOT RUN**.
-MPDocBench's official README points at the ModelScope `zhoubb/MPDocBench`
-archive plus a SlideVQA subset downloader. Archive payload, immutable image
-release revision and archive SHA256 have **not** been acquired/verified here.
-Their lock fields remain null and readiness is **BLOCKED**, never a guessed
-checksum or a substitute HF mirror. Record archive/SlideVQA provenance and all
-page checksums in a reviewed lock amendment before a full accepted run.
+MPDocBench's official ModelScope image repository is frozen at
+`48428421ee985717fbda3a6521165aaedfc42077`. Its 600,152,009-byte archive has
+published SHA256 `f9a4c05d586b11a749e60ce13565090fdfbf8f4387fd35e5511a4a1a3d682d22`.
+The separate official subset downloader references 11 SlideVQA decks. Freeze
+`NTT-hil-insight/SlideVQA` at `e780ea258d734958befbfaed19fa059584642ca8`;
+its access is **gated**. The lock records all required deck IDs, test-shard
+hashes and the audited downloader hash. Do not execute its mutable
+`load_dataset` call: an authorized acquisition must use the frozen data
+revision and explicitly pin Pillow's JPEG serialization. Full local image
+verification remains BLOCKED pending acquisition and complete reconciliation.
 
-The MPDocBench toolkit is Apache-2.0; the source PDFs/images are research-only.
+The MPDocBench toolkit is Apache-2.0; ModelScope image-dataset metadata declares
+**CC-BY-NC-SA-4.0**, and the Qwen README restricts documents to research use.
 Marathon annotations/tool references are Apache-2.0, while its source-document
 redistribution is explicitly not granted. Baidu code is MIT; preserve its
 notice and existing third-party notices. Downloaded scorer copies retain the
@@ -91,6 +96,10 @@ TEDS_structure_only are auxiliary metrics, not replacements for these eight.
 ## Scorer environment and profiles
 
 Use a separate CPython **3.10** CPU environment, never the OCR venv.
+Before import, reject unlisted source/bytecode/native import artifacts and
+materialize only the locked files into a fresh verified source copy for each
+scorer process. Disable bytecode writes in it and its child processes; a hash
+check of `.py` alone does not prove that Python loaded those bytes.
 [`requirements/benchmark-scorer.lock.txt`](../requirements/benchmark-scorer.lock.txt)
 pins the tested transitive Python closure;
 [`benchmark-scorer.txt`](../requirements/benchmark-scorer.txt) identifies the

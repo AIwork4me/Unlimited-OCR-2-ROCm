@@ -10,3 +10,4 @@
 eval/results/** -text -whitespace
 eval/rca/** -text -whitespace
 eval/wheel-validation/** -text -whitespace
+eval/benchmarks/scorer/** -text -whitespace

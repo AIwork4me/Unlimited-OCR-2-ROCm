@@ -64,6 +64,14 @@ def check_sources(source: Path, lock: dict[str, Any]) -> None:
         if not path.is_file() or file_hash(path) != sha:
             raise ValueError(f"Official scorer hash mismatch: {relative}")
     for path in source.rglob("*"):
+        if path.name == "__pycache__" or path.suffix.lower() in {
+            ".pyc",
+            ".pyo",
+            ".pyd",
+            ".so",
+            ".dll",
+        }:
+            raise ValueError(f"Refusing unlocked import artifact: {path.name}")
         if (
             path.suffix in {".py", ".js"}
             and path.relative_to(source).as_posix() not in lock["files"]

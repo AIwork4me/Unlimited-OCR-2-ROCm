@@ -1,11 +1,16 @@
 import hashlib
 import io
 import json
+import os
+import subprocess
+import sys
+import time
 import urllib.error
 
+import pytest
 from test_benchmark_ledger import complete, make_run
 
-from unlimited_ocr_2_rocm.benchmark.cli import fetch_scorer, main
+from unlimited_ocr_2_rocm.benchmark.cli import fetch_scorer, main, run_process
 
 
 def test_cli_reports_all_documents_and_artifact_hashes(tmp_path):
@@ -51,3 +56,26 @@ def test_source_download_retries_transport_and_verifies_bytes(tmp_path, monkeypa
     }
     fetch_scorer(source, lock, "qwen")
     assert (source / "fixture.py").read_bytes() == data
+
+
+def test_timeout_preserves_logs_and_stops_descendant_process(tmp_path):
+    marker = tmp_path / "leaked-child"
+    child = tmp_path / "child.py"
+    child.write_text(
+        "import time,pathlib\ntime.sleep(2)\npathlib.Path("
+        + repr(str(marker))
+        + ").write_text('leaked')\ntime.sleep(20)\n"
+    )
+    parent = (
+        "import subprocess,sys,time; subprocess.Popen([sys.executable, sys.argv[1]]); "
+        "print('started',flush=True); time.sleep(20)"
+    )
+    stdout_path = tmp_path / "stdout"
+    with stdout_path.open("wb") as stdout, (tmp_path / "stderr").open("wb") as stderr:
+        with pytest.raises(subprocess.TimeoutExpired):
+            run_process(
+                [sys.executable, "-c", parent, str(child)], stdout, stderr, 1, dict(os.environ)
+            )
+    time.sleep(2)
+    assert b"started" in stdout_path.read_bytes()
+    assert not marker.exists()
