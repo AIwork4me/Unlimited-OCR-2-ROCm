@@ -1,0 +1,117 @@
+{
+ "claim_limit": "Small predeclared MPDocBench subset; NOT full MPDocBench accuracy, NOT leaderboard parity, NOT full dataset completion",
+ "config": {
+  "budget_new_tokens": 16384,
+  "budget_policy_repo_path": "eval/experiments/p2a-token-budget/policy.json",
+  "budget_policy_sha256": "5e7eec56c047d51205638bf6b833547bc9740cbfb0374c93f035556e688fa635",
+  "claim_limit": "Four frozen P2-A documents only; NOT full MPDocBench accuracy, NOT leaderboard parity; production defaults unchanged",
+  "control_evidence": "P2-B ledger run 6e1ae22e (ngram=35/window=1024 @8192) and the immutable ngram=0 P1.5/P2-A evidence; never rewritten",
+  "documents": [
+   "handwritten_chn_1ae487be",
+   "newspaper_chn_eb87830d",
+   "newspaper_eng_ed12985c",
+   "paper_chn_3567e55d"
+  ],
+  "experiment": "P2C_COMBINED_NGRAM_BUDGET",
+  "label": "EXPERIMENTAL_NGRAM_BUDGET_COMBINED",
+  "ngram_window": 1024,
+  "no_repeat_ngram_size": 35,
+  "policy_repo_path": "eval/experiments/p2c-combined/policy.json",
+  "policy_sha256": "2068efad7e7e2e037202107027f35c483ae51fbc007099580ecae0fd7bc12397",
+  "schema": 1,
+  "timeout_seconds_per_document": 7200,
+  "unchanged": {
+   "crop_policy": "crop_mode=False (infer_multi)",
+   "decoder": "official eager + DASH Triton, 12 routers",
+   "max_pages_per_request": 5,
+   "max_pixels_per_page": 16000000,
+   "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+   "native_page_guard": "enabled (expected_pages from prompt; max_page_tokens=20000)",
+   "prompt": "official default document prompt",
+   "sampling": "greedy temperature=0",
+   "vision_sdpa": "MATH (SAM/CLIP scoped)"
+  }
+ },
+ "counts": {
+  "FAIL": 0,
+  "NOT_RUN": 416,
+  "OOM": 0,
+  "PASS": 2,
+  "TIMEOUT": 0,
+  "TRUNCATED": 2
+ },
+ "dataset": "MPDocBench",
+ "documents": [
+  {
+   "attempt_wall_seconds": 756.812,
+   "attempts": 1,
+   "doc_id": "handwritten_chn_1ae487be",
+   "finish_reason": "stop",
+   "output_tokens": 10043,
+   "pages": 5,
+   "reason": "",
+   "state": "PASS"
+  },
+  {
+   "attempt_wall_seconds": 1586.847,
+   "attempts": 1,
+   "doc_id": "newspaper_chn_eb87830d",
+   "finish_reason": "length",
+   "output_tokens": 16384,
+   "pages": 5,
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "state": "TRUNCATED"
+  },
+  {
+   "attempt_wall_seconds": 1552.143,
+   "attempts": 1,
+   "doc_id": "newspaper_eng_ed12985c",
+   "finish_reason": "length",
+   "output_tokens": 16384,
+   "pages": 4,
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "state": "TRUNCATED"
+  },
+  {
+   "attempt_wall_seconds": 647.138,
+   "attempts": 1,
+   "doc_id": "paper_chn_3567e55d",
+   "finish_reason": "stop",
+   "output_tokens": 8202,
+   "pages": 5,
+   "reason": "",
+   "state": "PASS"
+  }
+ ],
+ "environment": {
+  "gpu": {
+   "arch": null,
+   "name": null
+  },
+  "packages": {
+   "huggingface-hub": "0.36.0",
+   "tokenizers": "0.21.4",
+   "torch": "2.12.0+rocm7.2",
+   "transformers": "4.52.1",
+   "triton-rocm": "3.7.0"
+  },
+  "platform": "linux",
+  "python": "3.10.20"
+ },
+ "expected_documents": 420,
+ "label": "REAL_DATA_INTEGRATION_ONLY",
+ "run_id": "140f8c20df349659b3c9e4dde9d9b6cf816ace567e644836f4735e1306f1d721",
+ "schema": 1,
+ "selection_documents": [
+  "handwritten_chn_1ae487be",
+  "newspaper_chn_eb87830d",
+  "newspaper_eng_ed12985c",
+  "paper_chn_3567e55d"
+ ],
+ "selection_sha256": "2068efad7e7e2e037202107027f35c483ae51fbc007099580ecae0fd7bc12397",
+ "status": "PARTIAL",
+ "worker_identity": {
+  "script": "scripts/run_p2c_combined.py",
+  "supervision": "subprocess"
+ }
+}
