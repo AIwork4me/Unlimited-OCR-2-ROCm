@@ -1,0 +1,34 @@
+{
+ "schema": 2,
+ "label": "SANITIZED_GT_IDENTITY_RECEIPT",
+ "dataset": "MPDocBench",
+ "experiment": "P2B_NGRAM_SUPPRESSION_RCA",
+ "run_id": "6e1ae22ef79370b6ad75c965bacc476e649c669d97228fabc80e69257d90471b",
+ "policy_sha256": "0095b0c47da9a693d6bef70305a4385b986ea79aac129d628a500dac0ef8e1f5",
+ "ground_truth_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
+ "slice_sha256": "5f2211f8337e3cf5133b8bdcb67bcae4633dc11a67874e0f5e035a544e4289ba",
+ "claim_limit": "Four frozen P2-A documents only; NOT full MPDocBench accuracy, NOT leaderboard placement.",
+ "note": "Identity receipt only. The raw annotation slice for these documents was removed from the published tree (P0 publication remediation); it is verifiable by rebuilding the slice from the licensed dataset and comparing against slice_sha256.",
+ "documents": {
+  "handwritten_chn_1ae487be": {
+   "pages": 5,
+   "layout_dets": 243,
+   "relation_edges": 238
+  },
+  "newspaper_chn_eb87830d": {
+   "pages": 5,
+   "layout_dets": 375,
+   "relation_edges": 397
+  },
+  "newspaper_eng_ed12985c": {
+   "pages": 4,
+   "layout_dets": 371,
+   "relation_edges": 386
+  },
+  "paper_chn_3567e55d": {
+   "pages": 5,
+   "layout_dets": 133,
+   "relation_edges": 125
+  }
+ }
+}
