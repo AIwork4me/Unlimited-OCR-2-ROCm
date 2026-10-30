@@ -1,0 +1,258 @@
+{
+ "schema": 1,
+ "experiment": "P2B_NGRAM_SUPPRESSION_RCA",
+ "run_id": "6e1ae22ef79370b6ad75c965bacc476e649c669d97228fabc80e69257d90471b",
+ "policy_sha256": "0095b0c47da9a693d6bef70305a4385b986ea79aac129d628a500dac0ef8e1f5",
+ "config": {
+  "budget_new_tokens": 8192,
+  "claim_limit": "Four frozen P2-A documents only; NOT full MPDocBench accuracy, NOT leaderboard parity; production defaults unchanged",
+  "control_evidence": "Immutable ngram=0 evidence: eval/results/Linux gfx1151 verified/mpdoc-sample-p15/ (P1.5 ledger) and the P2-A per-budget receipts; controls are never re-run or rewritten for this experiment",
+  "documents": [
+   "handwritten_chn_1ae487be",
+   "newspaper_chn_eb87830d",
+   "newspaper_eng_ed12985c",
+   "paper_chn_3567e55d"
+  ],
+  "experiment": "P2B_NGRAM_SUPPRESSION_RCA",
+  "label": "EXPERIMENTAL_NGRAM_ONLY",
+  "ngram_window": 1024,
+  "no_repeat_ngram_size": 35,
+  "policy_repo_path": "eval/experiments/p2b-ngram-suppression/policy.json",
+  "policy_sha256": "0095b0c47da9a693d6bef70305a4385b986ea79aac129d628a500dac0ef8e1f5",
+  "schema": 1,
+  "timeout_seconds_per_document": 7200,
+  "unchanged": {
+   "crop_policy": "crop_mode=False (infer_multi)",
+   "decoder": "official eager + DASH Triton, 12 routers",
+   "max_pages_per_request": 5,
+   "max_pixels_per_page": 16000000,
+   "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+   "native_page_guard": "enabled (expected_pages from prompt; max_page_tokens=20000)",
+   "prompt": "official default document prompt",
+   "sampling": "greedy temperature=0",
+   "vision_sdpa": "MATH (SAM/CLIP scoped)"
+  }
+ },
+ "documents": {
+  "handwritten_chn_1ae487be": {
+   "state": "TRUNCATED",
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "output_tokens": 8192,
+   "finish_reason": "length",
+   "pages_emitted": 4,
+   "pages_expected": 5,
+   "wall_seconds": 572.288,
+   "gpu_peak_allocated_gib": 8.546,
+   "gpu_peak_reserved_gib": 8.775,
+   "host_peak_rss_gib": 2.449,
+   "decode_tokens_per_second": 14.6,
+   "prefill_seconds": 4.70822548866272,
+   "ngram_replay": {
+    "guard": {
+     "emitted_markers": 4,
+     "expected_pages": 5,
+     "forced_mismatches": [],
+     "forced_steps": 0,
+     "marker_overshoot": 0
+    },
+    "ngram": {
+     "first_ban_step": 5421,
+     "max_ban_size": 1,
+     "mean_ban_size": 1.0,
+     "size": 35,
+     "steps_with_ban": 2,
+     "window": 1024
+    },
+    "repeated_tail": {},
+    "steps": 8192,
+    "verdict": {
+     "forced_marker_corner_detected": false,
+     "notes": ""
+    }
+   },
+   "control8192_first_divergence_char": 11488,
+   "control8192_raw_chars": 17304,
+   "experiment_raw_chars": 17313
+  },
+  "newspaper_chn_eb87830d": {
+   "state": "TRUNCATED",
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "output_tokens": 8192,
+   "finish_reason": "length",
+   "pages_emitted": 2,
+   "pages_expected": 5,
+   "wall_seconds": 565.158,
+   "gpu_peak_allocated_gib": 8.546,
+   "gpu_peak_reserved_gib": 8.773,
+   "host_peak_rss_gib": 2.474,
+   "decode_tokens_per_second": 14.8,
+   "prefill_seconds": 4.6918418407440186,
+   "ngram_replay": {
+    "guard": {
+     "emitted_markers": 2,
+     "expected_pages": 5,
+     "forced_mismatches": [],
+     "forced_steps": 0,
+     "marker_overshoot": 0
+    },
+    "ngram": {
+     "first_ban_step": 711,
+     "max_ban_size": 1,
+     "mean_ban_size": 1.0,
+     "size": 35,
+     "steps_with_ban": 11,
+     "window": 1024
+    },
+    "repeated_tail": {},
+    "steps": 8192,
+    "verdict": {
+     "forced_marker_corner_detected": false,
+     "notes": ""
+    }
+   },
+   "control8192_first_divergence_char": 1192,
+   "control8192_raw_chars": 8673,
+   "experiment_raw_chars": 14593
+  },
+  "newspaper_eng_ed12985c": {
+   "state": "TRUNCATED",
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "output_tokens": 8192,
+   "finish_reason": "length",
+   "pages_emitted": 3,
+   "pages_expected": 4,
+   "wall_seconds": 555.629,
+   "gpu_peak_allocated_gib": 8.538,
+   "gpu_peak_reserved_gib": 8.762,
+   "host_peak_rss_gib": 2.467,
+   "decode_tokens_per_second": 15.1,
+   "prefill_seconds": 4.125750780105591,
+   "ngram_replay": {
+    "guard": {
+     "emitted_markers": 3,
+     "expected_pages": 4,
+     "forced_mismatches": [],
+     "forced_steps": 0,
+     "marker_overshoot": 0
+    },
+    "ngram": {
+     "first_ban_step": 6324,
+     "max_ban_size": 2,
+     "mean_ban_size": 1.133,
+     "size": 35,
+     "steps_with_ban": 15,
+     "window": 1024
+    },
+    "repeated_tail": {
+     "count": 4,
+     "cycle_len": 9,
+     "onset_index": 8156
+    },
+    "steps": 8192,
+    "verdict": {
+     "forced_marker_corner_detected": false,
+     "notes": ""
+    }
+   },
+   "control8192_first_divergence_char": 24653,
+   "control8192_raw_chars": 28483,
+   "experiment_raw_chars": 30522
+  },
+  "paper_chn_3567e55d": {
+   "state": "TRUNCATED",
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "output_tokens": 8192,
+   "finish_reason": "length",
+   "pages_emitted": 5,
+   "pages_expected": 5,
+   "wall_seconds": 570.039,
+   "gpu_peak_allocated_gib": 8.546,
+   "gpu_peak_reserved_gib": 8.777,
+   "host_peak_rss_gib": 2.468,
+   "decode_tokens_per_second": 14.7,
+   "prefill_seconds": 4.699930429458618,
+   "ngram_replay": {
+    "guard": {
+     "emitted_markers": 5,
+     "expected_pages": 5,
+     "forced_mismatches": [],
+     "forced_steps": 0,
+     "marker_overshoot": 0
+    },
+    "ngram": {
+     "first_ban_step": 6434,
+     "max_ban_size": 1,
+     "mean_ban_size": 1.0,
+     "size": 35,
+     "steps_with_ban": 1,
+     "window": 1024
+    },
+    "repeated_tail": {},
+    "steps": 8192,
+    "verdict": {
+     "forced_marker_corner_detected": false,
+     "notes": ""
+    }
+   },
+   "control8192_first_divergence_char": 14024,
+   "control8192_raw_chars": 16886,
+   "experiment_raw_chars": 16909
+  }
+ },
+ "official_scorer_comparison": {
+  "mode": "truncation_content_diagnostic exports, same 4-document GT slice, identical per-metric populations (verified)",
+  "control": "ngram=0 P1.5 @8192 diagnostic exports (immutable)",
+  "experiment": "ngram=35/window=1024 @8192 diagnostic exports (ledger run 6e1ae22ef79370b6ad75c965bacc476e649c669d97228fabc80e69257d90471b)",
+  "metrics": {
+   "TextEdit": {
+    "control": 53.94,
+    "experiment": 59.85
+   },
+   "T-TextEdit": {
+    "control": 45.3,
+    "experiment": 50.92
+   },
+   "TableTEDS": {
+    "control": 46.97,
+    "experiment": 46.97
+   },
+   "T-TableTEDS": {
+    "control": null,
+    "experiment": null,
+    "note": "null by rule: no merged tables in subset"
+   },
+   "FormulaCDM": {
+    "control": 90.64,
+    "experiment": 91.35
+   },
+   "ReadOrderEdit": {
+    "control": 51.38,
+    "experiment": 59.17
+   },
+   "FigureF1": {
+    "control": 58.33,
+    "experiment": 67.6
+   },
+   "HeadingTEDS": {
+    "control": 29.07,
+    "experiment": 31.65
+   }
+  },
+  "overall": null,
+  "overall_note": "Overall null by rule: T-TableTEDS has no sample in this subset; never aggregate metrics across different document subsets"
+ },
+ "conclusion": {
+  "loops_broken": true,
+  "page_coverage": {
+   "newspaper_chn_eb87830d": "1/5 -> 2/5",
+   "newspaper_eng_ed12985c": "2/4 -> 3/4",
+   "paper_chn_3567e55d": "5/5 -> 5/5",
+   "handwritten_chn_1ae487be": "4/5 -> 4/5"
+  },
+  "termination": "all four still finish_reason=length at 8192 — the binding constraint is the output-budget class, not repetition",
+  "side_effects": "outputs byte-identical to ngram=0 controls until the first replayed ban step in every document; bans engaged 1-15 steps of 8192 (max ban size 2)",
+  "forced_marker_corner": "0 occurrences across all four documents (guard-consistent)",
+  "memory": "GPU peak allocated 8.55 GiB / reserved 8.77 GiB / host RSS 2.65-2.7 GiB — identical envelope to ngram=0; suppression adds no measurable cost",
+  "fifteen_page_decision": "P5 gates 2-5 unmet (budget class unchanged); 15-page Native stays BLOCKED; suppression gate (gate 1) is now PASSED with physical evidence"
+ }
+}

@@ -20,6 +20,64 @@ from .model import NativeModel
 from .output import assess, convert_readable, normalize, preserve_raw
 
 PRODUCTION_MAX_NEW_TOKENS = 8192
+#: Pinned digest of the frozen P2-B policy (eval/experiments/p2b-ngram-suppression/
+#: policy.json). The gate compares the presented file against this digest, so a
+#: locally forged schema-1 policy cannot authorize suppression
+#: (docs/reviews/POLICY_IDENTITY_AUDIT.md hardening requirement).
+EXPECTED_NGRAM_POLICY_SHA256 = "0095b0c47da9a693d6bef70305a4385b986ea79aac129d628a500dac0ef8e1f5"
+#: Pinned digest of the frozen P2-C combined policy (eval/experiments/p2c-combined/
+#: policy.json) — same suppression identity (35/1024, generated ids only) at the
+#: raised budgets it lists. Same fail-closed rule: only these two digests
+#: authorize suppression, ever.
+EXPECTED_P2C_POLICY_SHA256 = "2068efad7e7e2e037202107027f35c483ae51fbc007099580ecae0fd7bc12397"
+#: digest -> required experiment name; the gate enforces both together.
+_AUTHORIZED_NGRAM_POLICIES: dict[str, str] = {
+    EXPECTED_NGRAM_POLICY_SHA256: "P2B_NGRAM_SUPPRESSION_RCA",
+    EXPECTED_P2C_POLICY_SHA256: "P2C_COMBINED_NGRAM_BUDGET",
+}
+
+
+def validate_ngram(ngram_size: int, ngram_window: int, policy_path: Path | None) -> None:
+    """No-repeat n-gram suppression is opt-in via the frozen policies only.
+
+    The window must be passed explicitly and positively: the frozen model
+    silently coerces a non-positive window to 100 (modeling_unlimitedocr.py
+    infer()), which is NOT the official 1024 (docs/rca/NGRAM35_SOURCE_AUDIT.md).
+    """
+    if ngram_size == 0 and ngram_window == 0:
+        return
+    if policy_path is None:
+        raise ValueError(
+            "no_repeat_ngram suppression requires the frozen experimental "
+            "n-gram policy (production default is suppression off)"
+        )
+    if ngram_size <= 0 or ngram_window <= 0:
+        raise ValueError(
+            "Repetition suppression requires an explicit positive ngram_size and "
+            "ngram_window from the frozen policy (a non-positive window would be "
+            "silently coerced to 100 by the frozen model, not the official 1024)"
+        )
+    try:
+        policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        raise ValueError(f"Unreadable experimental n-gram policy: {error}") from error
+    experiment = _AUTHORIZED_NGRAM_POLICIES.get(file_sha256(policy_path))
+    if experiment is None:
+        raise ValueError(
+            "Experimental n-gram policy digest is not one of the pinned frozen identities"
+        )
+    sizes = policy.get("ngram_sizes") if isinstance(policy, dict) else None
+    if (
+        policy.get("schema") != 1
+        or policy.get("experiment") != experiment
+        or not isinstance(sizes, list)
+        or ngram_size not in sizes
+        or policy.get("ngram_window") != ngram_window
+    ):
+        raise ValueError(
+            f"Requested n-gram configuration {ngram_size}/{ngram_window} is not "
+            "authorized by the frozen policy"
+        )
 
 
 def validate_budget(max_new_tokens: int, policy_path: Path | None = None) -> None:
@@ -63,12 +121,16 @@ def run_native(
     truth: list[dict[str, Any]] | None = None,
     max_new_tokens: int = 1024,
     budget_policy: Path | None = None,
+    no_repeat_ngram_size: int = 0,
+    ngram_window: int = 0,
+    ngram_policy: Path | None = None,
 ) -> dict[str, Any]:
     import torch
     from PIL import Image
 
     images = validate_inputs(images, multi)
     validate_budget(max_new_tokens, budget_policy)
+    validate_ngram(no_repeat_ngram_size, ngram_window, ngram_policy)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Use a fresh output directory to preserve earlier evidence")
     output.mkdir(parents=True, exist_ok=True)
@@ -91,6 +153,11 @@ def run_native(
     }
     if budget_policy is not None:
         report["experimental_budget_policy_sha256"] = file_sha256(budget_policy)
+    if no_repeat_ngram_size > 0 and ngram_policy is not None:
+        # validate_ngram already refused suppression without the policy.
+        report["no_repeat_ngram_size"] = no_repeat_ngram_size
+        report["ngram_window"] = ngram_window
+        report["experimental_ngram_policy_sha256"] = file_sha256(ngram_policy)
     previous_kernels = len(native.kernels)
     previous_vision = len(getattr(native, "vision", []))
     torch.cuda.reset_peak_memory_stats()
@@ -104,6 +171,8 @@ def run_native(
                 [str(path) for path in images],
                 multi=multi,
                 max_new_tokens=max_new_tokens,
+                no_repeat_ngram_size=no_repeat_ngram_size,
+                ngram_window=ngram_window,
             )
         # Persist all available native evidence before metadata or Markdown
         # validation. Failure must not erase returned model text/finish fields.

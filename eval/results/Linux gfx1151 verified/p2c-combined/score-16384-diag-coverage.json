@@ -1,0 +1,138 @@
+{
+  "expected_documents": 4,
+  "tasks": {
+    "display_formula": {
+      "documents_with_samples": 2,
+      "documents_without_samples": [
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf"
+      ],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 97,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 8
+      },
+      "sample_count": 105
+    },
+    "figure": {
+      "documents_with_samples": 4,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 1,
+        "newspaper_chn_eb87830d.pdf": 1,
+        "newspaper_eng_ed12985c.pdf": 1,
+        "paper_chn_3567e55d.pdf": 1
+      },
+      "sample_count": 4
+    },
+    "head": {
+      "documents_with_samples": 4,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 1,
+        "newspaper_chn_eb87830d.pdf": 1,
+        "newspaper_eng_ed12985c.pdf": 1,
+        "paper_chn_3567e55d.pdf": 1
+      },
+      "sample_count": 4
+    },
+    "merged_table": {
+      "documents_with_samples": 0,
+      "documents_without_samples": [
+        "handwritten_chn_1ae487be.pdf",
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf",
+        "paper_chn_3567e55d.pdf"
+      ],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 0
+      },
+      "sample_count": 0
+    },
+    "merged_text_block": {
+      "documents_with_samples": 3,
+      "documents_without_samples": [
+        "handwritten_chn_1ae487be.pdf"
+      ],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 39,
+        "newspaper_eng_ed12985c.pdf": 23,
+        "paper_chn_3567e55d.pdf": 10
+      },
+      "sample_count": 72
+    },
+    "reading_order": {
+      "documents_with_samples": 4,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 1,
+        "newspaper_chn_eb87830d.pdf": 1,
+        "newspaper_eng_ed12985c.pdf": 1,
+        "paper_chn_3567e55d.pdf": 1
+      },
+      "sample_count": 4
+    },
+    "table": {
+      "documents_with_samples": 2,
+      "documents_without_samples": [
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf"
+      ],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 3,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 3
+      },
+      "sample_count": 6
+    },
+    "table_relation": {
+      "documents_with_samples": 0,
+      "documents_without_samples": [
+        "handwritten_chn_1ae487be.pdf",
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf",
+        "paper_chn_3567e55d.pdf"
+      ],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 0
+      },
+      "sample_count": 0
+    },
+    "text_block": {
+      "documents_with_samples": 4,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 127,
+        "newspaper_chn_eb87830d.pdf": 297,
+        "newspaper_eng_ed12985c.pdf": 287,
+        "paper_chn_3567e55d.pdf": 82
+      },
+      "sample_count": 793
+    },
+    "text_relation": {
+      "documents_with_samples": 0,
+      "documents_without_samples": [
+        "handwritten_chn_1ae487be.pdf",
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf",
+        "paper_chn_3567e55d.pdf"
+      ],
+      "per_document_samples": {
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 0
+      },
+      "sample_count": 0
+    }
+  }
+}

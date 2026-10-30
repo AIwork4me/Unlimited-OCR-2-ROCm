@@ -3,6 +3,12 @@
 .upstream/
 .superpowers/
 .b/
+# P0 publication containment: scorer GT slices carry licensed annotation bytes.
+# Publish identity receipts (*-gt-slice-receipt.json) instead — see
+# scripts/publication_gate.py and src/unlimited_ocr_2_rocm/publication.py.
+eval/results/**/*gt-slice.json
+eval/results/**/*gt-slice-*.json
+!eval/results/**/*gt-slice-receipt.json
 __pycache__/
 *.py[cod]
 *.egg-info/
