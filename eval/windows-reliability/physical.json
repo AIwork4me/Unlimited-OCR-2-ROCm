@@ -1,0 +1,166 @@
+{
+  "scope": "Windows original-wheel 2-page synthetic external fault and process recovery",
+  "source_commit": "c01dbd8fd5af256565fc5a13fd56e9cbd2471e93",
+  "base_source_commit": "82951c73b28bf735f5655e6f5c3306cd170a21c2",
+  "original_wheel_sha256": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+  "real_documents": "BLOCKED_DATA",
+  "strict_ordered_golden_restart_gate": "FAIL",
+  "functional_recovery": "PASS: all six requests correct, HIP-zero, native stop and 12 DASH calls",
+  "same_invocation_cold_control_hash_match": true,
+  "interpretation": "Cold first-request difference reproduces without preceding kill. Low-level numerical cause unproven. Informational matched-context agreement does not retroactively pass the rejected ordered-golden campaign.",
+  "fault_tests": {
+    "external_kill": {
+      "test_outcome": "PASS",
+      "qualified": true,
+      "worker_exit_code": 1,
+      "checkpoint": {
+        "completed_decoder_forwards": 3,
+        "hip_zero": true,
+        "native_result_returned": false
+      },
+      "active_owned_processes_after": 0,
+      "seconds_total": 42.06253120000474,
+      "producer_commit": "c01dbd8fd5af256565fc5a13fd56e9cbd2471e93",
+      "producer_sha256": "56d577a12a600926fac9dd408f7d908c31d8f3bfee4e430df568fe9be62b8905"
+    },
+    "hard_timeout": {
+      "test_outcome": "PASS",
+      "qualified": true,
+      "worker_exit_code": 1,
+      "checkpoint": {
+        "completed_decoder_forwards": 3,
+        "hip_zero": true,
+        "native_result_returned": false
+      },
+      "active_owned_processes_after": 0,
+      "seconds_total": 30.251232499955222,
+      "producer_commit": "c01dbd8fd5af256565fc5a13fd56e9cbd2471e93",
+      "producer_sha256": "56d577a12a600926fac9dd408f7d908c31d8f3bfee4e430df568fe9be62b8905"
+    }
+  },
+  "groups": {
+    "after_external_kill": {
+      "process_state": "FAIL",
+      "requests": [
+        {
+          "invocation": 0,
+          "worker_status": "PASS",
+          "physical_contract": "PASS",
+          "correctness": "PASS",
+          "raw_sha256": "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+          "raw_exact_ordered_golden": false,
+          "output_ids_exact_ordered_golden": false,
+          "prompt_ids_exact_ordered_golden": true,
+          "token_count": 116,
+          "finish": "stop",
+          "bbox_mask_equal": true,
+          "max_bbox_coordinate_delta": 1,
+          "hip_zero": true,
+          "dash_calls": 12
+        },
+        {
+          "invocation": 1,
+          "worker_status": "PASS",
+          "physical_contract": "PASS",
+          "correctness": "PASS",
+          "raw_sha256": "c08e7f728ea1e46dc20c2958bf6d3ac857902542935e257a0b64525b7d7b2a8e",
+          "raw_exact_ordered_golden": true,
+          "output_ids_exact_ordered_golden": true,
+          "prompt_ids_exact_ordered_golden": true,
+          "token_count": 116,
+          "finish": "stop",
+          "bbox_mask_equal": true,
+          "max_bbox_coordinate_delta": 0,
+          "hip_zero": true,
+          "dash_calls": 12
+        }
+      ]
+    },
+    "no_kill_cold_control": {
+      "process_state": "FAIL",
+      "requests": [
+        {
+          "invocation": 0,
+          "worker_status": "PASS",
+          "physical_contract": "PASS",
+          "correctness": "PASS",
+          "raw_sha256": "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+          "raw_exact_ordered_golden": false,
+          "output_ids_exact_ordered_golden": false,
+          "prompt_ids_exact_ordered_golden": true,
+          "token_count": 116,
+          "finish": "stop",
+          "bbox_mask_equal": true,
+          "max_bbox_coordinate_delta": 1,
+          "hip_zero": true,
+          "dash_calls": 12
+        },
+        {
+          "invocation": 1,
+          "worker_status": "PASS",
+          "physical_contract": "PASS",
+          "correctness": "PASS",
+          "raw_sha256": "c08e7f728ea1e46dc20c2958bf6d3ac857902542935e257a0b64525b7d7b2a8e",
+          "raw_exact_ordered_golden": true,
+          "output_ids_exact_ordered_golden": true,
+          "prompt_ids_exact_ordered_golden": true,
+          "token_count": 116,
+          "finish": "stop",
+          "bbox_mask_equal": true,
+          "max_bbox_coordinate_delta": 0,
+          "hip_zero": true,
+          "dash_calls": 12
+        }
+      ]
+    },
+    "after_hard_timeout": {
+      "process_state": "FAIL",
+      "requests": [
+        {
+          "invocation": 0,
+          "worker_status": "PASS",
+          "physical_contract": "PASS",
+          "correctness": "PASS",
+          "raw_sha256": "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+          "raw_exact_ordered_golden": false,
+          "output_ids_exact_ordered_golden": false,
+          "prompt_ids_exact_ordered_golden": true,
+          "token_count": 116,
+          "finish": "stop",
+          "bbox_mask_equal": true,
+          "max_bbox_coordinate_delta": 1,
+          "hip_zero": true,
+          "dash_calls": 12
+        },
+        {
+          "invocation": 1,
+          "worker_status": "PASS",
+          "physical_contract": "PASS",
+          "correctness": "PASS",
+          "raw_sha256": "c08e7f728ea1e46dc20c2958bf6d3ac857902542935e257a0b64525b7d7b2a8e",
+          "raw_exact_ordered_golden": true,
+          "output_ids_exact_ordered_golden": true,
+          "prompt_ids_exact_ordered_golden": true,
+          "token_count": 116,
+          "finish": "stop",
+          "bbox_mask_equal": true,
+          "max_bbox_coordinate_delta": 0,
+          "hip_zero": true,
+          "dash_calls": 12
+        }
+      ]
+    }
+  },
+  "initial_failed_campaign_ledger": {
+    "status": "PARTIAL",
+    "expected_documents": 2,
+    "counts": {
+      "PASS": 0,
+      "FAIL": 1,
+      "TIMEOUT": 0,
+      "OOM": 0,
+      "TRUNCATED": 0,
+      "NOT_RUN": 1
+    }
+  }
+}

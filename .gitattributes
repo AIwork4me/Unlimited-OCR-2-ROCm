@@ -17,3 +17,4 @@ eval/benchmarks/g05/scorer/artifacts/** linguist-generated=true
 eval/benchmarks/g05/scorer/final/** linguist-generated=true
 eval/benchmarks/g05/scorer/preliminary/** linguist-generated=true
 eval/g1/** -text -whitespace
+eval/windows-reliability/** -text -whitespace
