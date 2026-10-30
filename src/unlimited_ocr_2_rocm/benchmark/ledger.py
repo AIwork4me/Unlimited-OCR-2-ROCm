@@ -203,18 +203,57 @@ class Run:
     def todo(self) -> list[str]:
         return [row["doc_id"] for row in self.summary()["documents"] if row["state"] != "PASS"]
 
-    def export(self, output: Path) -> None:
-        """Official per-document Markdown format; failures are explicit empty files."""
+    def export(
+        self,
+        output: Path,
+        *,
+        include: set[str] | None = None,
+        include_truncated: bool = False,
+    ) -> None:
+        """Official per-document Markdown format; failures are explicit empty files.
+
+        ``include`` restricts the scorer inventory to selected documents while
+        accounting.json still covers the whole frozen manifest. With
+        ``include_truncated`` the export is explicitly diagnostic: TRUNCATED
+        attempts contribute their converted partial Markdown so the official
+        scorer can measure truncation content; that mode never feeds the
+        strict failure-inclusive accounting.
+        """
         summary = self.summary()
         staging = output.with_name("." + output.name + "-" + uuid.uuid4().hex)
         staging.mkdir(parents=True)
         for row in summary["documents"]:
+            if include is not None and row["doc_id"] not in include:
+                continue
             data = b""
             if row["state"] == "PASS":
                 source = self._document(row["doc_id"]) / row["attempt"] / "prediction.md"
                 data = source.read_bytes()
+            elif include_truncated and row["state"] == "TRUNCATED":
+                # Diagnostic representation of partial model bytes; raw itself
+                # stays untouched and the empty-file strict export stays default.
+                raw = (self._document(row["doc_id"]) / row["attempt"] / "raw.txt").read_text(
+                    encoding="utf-8"
+                )
+                data = str(convert(raw)).encode("utf-8")
             write_bytes(staging / self.documents[row["doc_id"]]["scorer_name"], data)
-        write_bytes(staging / "accounting.json", json_bytes(summary))
+        accounting = {
+            **summary,
+            "export": {
+                "mode": "truncation_content_diagnostic" if include_truncated else "strict",
+                "documents_exported": len(include)
+                if include is not None
+                else len(summary["documents"]),
+                "truncated_documents_as_predictions": sorted(
+                    row["doc_id"]
+                    for row in summary["documents"]
+                    if row["state"] == "TRUNCATED" and (include is None or row["doc_id"] in include)
+                )
+                if include_truncated
+                else [],
+            },
+        }
+        write_bytes(staging / "accounting.json", json_bytes(accounting))
         if output.exists():
             raise FileExistsError(output)
         staging.rename(output)
