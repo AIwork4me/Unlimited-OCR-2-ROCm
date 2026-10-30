@@ -12,10 +12,10 @@ order.**
 | Gate | newspaper_chn_eb87830d | newspaper_eng_ed12985c |
 | --- | --- | --- |
 | Completes all expected pages | **FAIL** — 3/5 at 16384, page yield ~0 from 12288→16384 | PARTIAL — 4/4 pages emitted at 16384, finish_reason=length cuts the last page's content |
-| Long/short repetition controlled | PASS — no cycle at 16384 (was 86.7 % loop at ngram=0) | PASS — no cycle at 16384 (was 93.1 % loop at ngram=0) |
+| Long/short repetition controlled | PASS — no cycle at 16384 (ngram=0: 86.7–93.1 % of output in one loop) | PASS — no cycle at 16384 (ngram=0: ~27.5 % of output in a 552× repeat) |
 | Text/layout quality acceptable | conditional — every landed page scores, diagnostic ReadOrder 79.17 at stage level | conditional — same |
 | No forced-PAGE inconsistency | PASS — 0 mismatches, 0 overshoot, all 8 attempts | PASS |
-| Memory/time admissible | PASS — 8.55/8.77 GiB peak, ≤ 2.51 GiB RSS, ≤ 1 540 s/doc | PASS |
+| Memory/time admissible | PASS — 8.55/8.77 GiB peak, ≤ 2.548 GiB RSS, ≤ 1 587 s/doc-attempt | PASS |
 
 **Newspaper page-completion gate: FAILED at the maximum tested budget
 (16384).** newspaper_chn needs more than 16 384 tokens to reach page 4 of 5;

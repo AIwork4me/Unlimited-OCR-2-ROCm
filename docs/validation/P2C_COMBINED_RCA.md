@@ -46,24 +46,28 @@ P1.5/P2-A evidence and P2-B run 6e1ae22e — untouched, never re-run.**
 
 - **No sustained repetition cycle remains at either stage**: repeated-tail
   analysis finds only nascent 2–4-token cycles at the 12288 cap edge, and
-  **nothing at 16384** (`{}` for both newspapers). The ngram=0 controls had
-  86.7–93.1 % of output inside a hard loop; the P2-B@8192 run broke the
-  loops; P2-C holds them broken across 12 288 and 16 384 tokens.
+  **nothing at 16384** (`{}` for both newspapers). Under ngram=0 the loops
+  were hard: newspaper_chn sat 86.7–93.1 % of output inside one cycle
+  (8192→16384), newspaper_eng ~27.5 % (a 552× repeat); the P2-B@8192 run
+  broke both; P2-C holds them broken across 12 288 and 16 384 tokens.
 - Ban engagement stays rare and small: first bans at the replayed steps
-  (711 / 6324 / 5421 / 6434 — deterministic prefixes), 19–30 banning steps
-  per 12–16 k tokens, max ban size 2, mean ≈ 1.
+  (711 / 6324 / 5421 / 6434 — deterministic prefixes). Newspapers engage
+  19–30 banning steps per 12–16 k tokens; the controls only 1–2. Max ban
+  size 2, mean ≈ 1.
 - **0 forced-marker mismatches and 0 marker overshoots in all 8 attempts**
   (guard↔ban consistency verified per step by the replay detector).
 
 ## Resource envelope
 
-Identical to every previous stage of this stack: GPU peak 8.546 GiB
-allocated / 8.77 GiB reserved at both budgets (vision-prefill dominated —
-the output budget moves nothing), host RSS ≤ 2.51 GiB, prefill ≈ 4.1–4.7 s,
-decode 12.6–13.9 tok/s, wall 745–1 540 s per document. No TIMEOUT, no OOM,
-no crash, one attempt per document per stage.
+GPU peak 8.546 GiB allocated / 8.77 GiB reserved at both budgets
+(vision-prefill dominated — the output budget moves nothing). Host RSS
+≤ 2.548 GiB (chn@16384), prefill 4.14–4.79 s, wall 635–1 587 s per
+document attempt. Decode slows as the KV cache grows: 14.6–15.1 tok/s at
+the 8192 stage, 12.0–13.9 at 12288, **10.4–13.5 at 16384** (newspapers
+10.4/10.6) — a sequence-length trend the L1 timeout must budget for. No
+TIMEOUT, no OOM, no crash, one attempt per document per stage.
 
-## Official scorer (same 4-doc GT slice, identical per-metric populations;
+## Official scorer (same 4-doc GT slice; per-metric populations as per stage coverage — they differ across budgets, so cross-stage deltas are diagnostic only;
 Overall null by rule: T-TableTEDS has no sample)
 
 | Metric (diagnostic) | ngram=0 @8192 | P2-B @8192 | **P2-C @12288** | **P2-C @16384** |

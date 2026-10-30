@@ -39,7 +39,7 @@ against its base `feat/p2a-token-budget` @ ec38e30):
 No image content, no raw token arrays, no OCR output files, no private host
 information in any other PR #24 file. Other `ground-truth.json` files already
 tracked in the repo (`eval/benchmarks/g05/scorer/{preliminary,final}/…`,
-1,817 B each) are synthetic scorer self-test fixtures, not dataset content;
+3,315 B each) are synthetic scorer self-test fixtures, not dataset content;
 they are hash-pinned in the publication whitelist.
 
 ## 2. Commits and refs containing the content
@@ -81,8 +81,11 @@ No other commit in any branch ever touched the file
 
 - **Structural detector** (`src/unlimited_ocr_2_rocm/publication.py`): flags
   any annotation-shaped export (list of rows with `page_info`+`layout_dets`),
-  any binary image under the published trees, any Unix user home-directory
-  path (a slash-home or slash-Users prefix followed by a username). Not a filename blocklist — it fires on any future slice regardless of
+  any image-suffixed file (extension-based), any Unix user home-directory
+  path (a slash-home or slash-Users prefix followed by a username). Scope:
+  the tree scan covers `eval/`; the hook scans staged files; other trees
+  (e.g. `tests/fixtures/`) are outside the gate's published-evidence scope
+  by design. Not a filename blocklist — it fires on any future slice regardless of
   name or location.
 - **Whitelist, hash-pinned with reasons**: 4 synthetic scorer fixtures + 16
   historical files that predate the gate (GitHub-Actions
