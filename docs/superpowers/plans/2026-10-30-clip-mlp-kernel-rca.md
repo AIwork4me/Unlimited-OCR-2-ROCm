@@ -19,7 +19,7 @@ without changing production or historical evidence. KEEP EXPERIMENTAL.
 - [x] Adaptively predeclare narrow graph-transform controls after observing
   actual graphs; preserve schemas and tensor layout/dtype. Record unsupported
   profiling/kernel visibility explicitly. Identify no mechanism by assumption.
-- [ ] Independent reviewer reruns the minimal reproducer on the original wheel;
+- [x] Independent reviewer reruns the minimal reproducer on the original wheel;
   sanitized numerical/graph evidence, updated separate P2/P3 gates, CPU checks,
   and a small draft follow-up PR based on PR #22. No merge or base rewrites.
 
@@ -34,3 +34,6 @@ No weights edited, production optimization switch/default MATH change,
 historical relaxation, real documents, new bbox acceptance threshold, or
 120-request measured P2 campaign. Commands run from the primary root; all
 downloads/caches/evidence stay in-repository. Original 10067ee remains intact.
+
+Publication: unchanged RCA draft PR #22; minimal follow-up draft PR #25.
+Final CPU validation: 310 passed / 7 skipped, all six checks PASS.
