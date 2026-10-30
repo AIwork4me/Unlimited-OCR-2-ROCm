@@ -6,6 +6,8 @@ actual worker process and records the outcome in the append-only ledger.
 
 import hashlib
 import json
+import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -252,3 +254,75 @@ def test_sanitize_tree_refuses_local_paths_and_drops_ids():
         assert "Private local path" in str(error)
     else:
         raise AssertionError("local paths must be refused")
+
+
+def _process_alive(pid: int) -> bool:
+    """Portable existence probe used only by the termination tests."""
+    if sys.platform == "win32":
+        # Returncode 0 means the process existed (the probe force-terminated
+        # it); 128 means not found. The same user owns both processes.
+        probe = subprocess.run(
+            ["taskkill", "/PID", str(pid), "/F"], check=False, capture_output=True
+        )
+        return probe.returncode == 0
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
+def test_termination_kills_worker_descendants_not_only_the_worker(tmp_path):
+    """A supervision timeout must not leave orphaned descendants behind."""
+    from unlimited_ocr_2_rocm.benchmark import runner as benchmark_runner
+
+    log = tmp_path / "tree.log"
+    script = (
+        "import subprocess, sys, time\n"
+        "grandchild = subprocess.Popen("
+        "[sys.executable, '-c', 'import time; time.sleep(300)'])\n"
+        "print(grandchild.pid, flush=True)\n"
+        "time.sleep(300)\n"
+    )
+    with log.open("xb") as sink:
+        worker = subprocess.Popen(
+            [sys.executable, "-c", script],
+            stdout=sink,
+            stderr=subprocess.STDOUT,
+            start_new_session=os.name != "nt",
+        )
+        try:
+            grandchild_pid = None
+            for _ in range(100):  # up to ~10 s for the descendant announcement
+                if log.stat().st_size:
+                    announced = log.read_text(encoding="utf-8").splitlines()[0]
+                    if announced.strip().isdigit():
+                        grandchild_pid = int(announced)
+                        break
+                time.sleep(0.1)
+            assert grandchild_pid is not None, "worker never announced its descendant"
+            assert benchmark_runner.terminate_process_tree(worker) == "TERMINATED"
+            deadline = time.time() + 30
+            while time.time() < deadline and _process_alive(grandchild_pid):
+                time.sleep(0.2)
+        finally:
+            if worker.poll() is None:
+                benchmark_runner.terminate_process_tree(worker)
+    assert not _process_alive(grandchild_pid), "descendant outlived supervised termination"
+
+
+def test_termination_tolerates_worker_that_exited_before_the_kill():
+    """The kill races a worker that already exited; reaping must still confirm."""
+    from unlimited_ocr_2_rocm.benchmark import runner as benchmark_runner
+
+    worker = subprocess.Popen(
+        [sys.executable, "-c", "pass"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        start_new_session=os.name != "nt",
+    )
+    worker.wait()  # exited but not yet reaped: the signal targets a dead group
+    assert benchmark_runner.terminate_process_tree(worker) == "TERMINATED"
+    assert worker.returncode == 0

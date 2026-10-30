@@ -16,7 +16,7 @@ import sys
 import tempfile
 import time
 from pathlib import Path
-from typing import Any
+from typing import IO, Any
 
 from .ledger import Run, json_bytes, write_bytes
 from .manifest import file_hash, local_path
@@ -114,6 +114,51 @@ def classify_report(report: dict[str, Any]) -> tuple[str, str]:
     return "FAIL", f"NATIVE: {detail}"[:200]
 
 
+#: Wall-clock bound for confirming a terminated worker is actually gone.
+TERMINATION_GRACE_SECONDS = 10.0
+
+
+def terminate_process_tree(
+    process: subprocess.Popen[bytes],
+    *,
+    grace_seconds: float = TERMINATION_GRACE_SECONDS,
+    taskkill_log: IO[bytes] | None = None,
+) -> str:
+    """Force-terminate a supervised worker together with its descendants.
+
+    POSIX: the worker was started in its own session, so one signal to its
+    process group reaches the worker and every descendant that did not detach.
+    Windows: ``taskkill /T /F`` walks and force-terminates the whole child
+    tree. Returns ``"TERMINATED"`` once the worker itself is confirmed reaped,
+    or ``"TERMINATION_INCOMPLETE"`` when it outlives the grace window —
+    callers must treat that as failed cleanup, never as success. Descendants
+    that detached themselves from the group or tree are outside this reach.
+    """
+    try:
+        if sys.platform == "win32":
+            killed = subprocess.run(
+                ["taskkill", "/PID", str(process.pid), "/T", "/F"],
+                stdout=taskkill_log,
+                stderr=taskkill_log,
+                check=False,
+                capture_output=taskkill_log is None,
+            )
+            if killed.returncode != 0 and process.poll() is None:
+                # taskkill refused while the worker still lives: direct
+                # termination so the attempt cannot outlive supervision.
+                process.kill()
+        else:
+            # The worker leads its own process group (start_new_session=True).
+            os.killpg(process.pid, signal.SIGKILL)
+    except ProcessLookupError:
+        pass  # The worker exited between the timeout and the kill signal.
+    try:
+        process.wait(timeout=grace_seconds)
+    except subprocess.TimeoutExpired:
+        return "TERMINATION_INCOMPLETE"
+    return "TERMINATED"
+
+
 def supervise_worker(
     command: list[str],
     *,
@@ -136,15 +181,9 @@ def supervise_worker(
             try:
                 code = process.wait(timeout=timeout_seconds)
             except subprocess.TimeoutExpired:
-                if os.name == "nt":
-                    subprocess.run(
-                        ["taskkill", "/PID", str(process.pid), "/T", "/F"],
-                        check=False,
-                        capture_output=True,
-                    )
-                else:
-                    os.killpg(process.pid, signal.SIGKILL)
-                process.wait()
+                cleanup = terminate_process_tree(process)
+                if cleanup != "TERMINATED":
+                    return None, f"WORKER_TIMEOUT_{cleanup}"
                 return None, "WORKER_TIMEOUT"
         if result_path.is_file():
             try:

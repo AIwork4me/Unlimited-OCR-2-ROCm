@@ -9,7 +9,6 @@ import hashlib
 import io
 import json
 import os
-import signal
 import subprocess
 import sys
 import urllib.request
@@ -19,6 +18,7 @@ from typing import IO, Any
 
 from .ledger import Run, json_bytes, write_bytes
 from .manifest import DENOMINATORS, file_hash, inventory, local_path, validate_manifest
+from .runner import terminate_process_tree
 from .scorer import check_sources
 
 
@@ -40,16 +40,8 @@ def run_process(
     try:
         code = process.wait(timeout=timeout)
     except subprocess.TimeoutExpired:
-        if sys.platform == "win32":
-            subprocess.run(
-                ["taskkill", "/PID", str(process.pid), "/T", "/F"],
-                stdout=stderr,
-                stderr=stderr,
-                check=False,
-            )
-        else:
-            os.killpg(process.pid, signal.SIGKILL)
-        process.wait()
+        if terminate_process_tree(process, taskkill_log=stderr) != "TERMINATED":
+            stderr.write(b"supervision: worker outlived the termination grace window\n")
         raise
     return subprocess.CompletedProcess(command, code)
 

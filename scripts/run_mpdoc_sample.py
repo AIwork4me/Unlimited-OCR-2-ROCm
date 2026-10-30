@@ -236,7 +236,9 @@ def self_test_outcome(
         time.sleep(args.timeout_seconds + 60)
         return None
     if mode == "crash":
-        os.kill(os.getpid(), signal.SIGKILL)
+        # Die like an externally killed worker: SIGKILL on POSIX; on Windows
+        # os.kill maps any non-CTRL signal number to TerminateProcess.
+        os.kill(os.getpid(), 0x1 if sys.platform == "win32" else signal.SIGKILL)
         return None
     if mode == "oom":
         raise RuntimeError("torch.OutOfMemoryError: HIP out of memory on allocation of 8192 MiB")
