@@ -248,6 +248,8 @@ def worker_outcome_to_finish(
         "synchronized_wall_seconds": report.get("synchronized_wall_seconds"),
         "raw_sha256": report.get("raw_sha256"),
     }
+    if isinstance(report.get("experiment"), dict):
+        metadata["experiment"] = report["experiment"]
     return state, reason, metadata
 
 
