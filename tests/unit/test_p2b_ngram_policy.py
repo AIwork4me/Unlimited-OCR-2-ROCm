@@ -1,5 +1,6 @@
 """P2-B opt-in n-gram policy gates and replay diagnostics (CPU only)."""
 
+import argparse
 import importlib.util
 import json
 from pathlib import Path
@@ -81,6 +82,23 @@ def test_driver_policy_binding_and_admission(tmp_path):
     wrong.write_text(json.dumps({"schema": 1, "experiment": "SOMETHING_ELSE"}), "utf-8")
     with pytest.raises(ValueError, match="Not the frozen P2-B"):
         driver.load_policy(wrong)
+
+
+def test_driver_prepare_validates_the_user_ngram_size_not_the_policys(tmp_path):
+    """Independent-review finding 1: prepare must gate the --ngram-size value."""
+    driver = load_module("run_p2b_ngram", "scripts/run_p2b_ngram.py")
+    args = argparse.Namespace(
+        policy=POLICY_PATH,
+        ngram_size=36,
+        budget=8192,
+        ground_truth=tmp_path / "gt.json",
+        dataset_root=tmp_path,
+        lock=tmp_path / "lock.json",
+        output=tmp_path / "out",
+    )
+    # Refused at the gate before any dataset file is touched.
+    with pytest.raises(ValueError, match="not authorized"):
+        driver.prepare_command(args)
 
 
 def test_replay_ban_algorithm_matches_the_frozen_model_semantics():

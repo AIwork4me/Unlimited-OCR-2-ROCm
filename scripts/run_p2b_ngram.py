@@ -71,7 +71,7 @@ def admission_report(policy: dict, pages: int, budget: int) -> dict:
 
 def prepare_command(args: argparse.Namespace) -> int:
     policy = load_policy(args.policy)
-    validate_ngram(policy["ngram_sizes"][0], policy["ngram_window"], args.policy)
+    validate_ngram(args.ngram_size, policy["ngram_window"], args.policy)
     if args.budget not in policy["budgets_new_tokens"]:
         raise ValueError(f"Budget {args.budget} is not authorized by the frozen policy")
     lock = json.loads(args.lock.read_text("utf-8"))

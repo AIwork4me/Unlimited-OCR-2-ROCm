@@ -20,6 +20,9 @@ import argparse
 import json
 from pathlib import Path
 
+#: Token identities of the frozen checkpoint config.json (revision 9cf077c):
+#: sparse_attention_config.page_token_id = 128827, eos_token_id = 1. The
+#: official server caps per-page output at 20000 tokens.
 DEFAULT_PAGE_TOKEN_ID = 128827
 DEFAULT_EOS_ID = 1
 DEFAULT_MAX_PAGE_TOKENS = 20000
@@ -48,7 +51,14 @@ def guard_decision(
     eos_id: int,
     max_page_tokens: int,
 ) -> tuple[str, int | None]:
-    """One step of the native page guard; returns (kind, forced-or-banned id)."""
+    """One step of the native page guard; returns (kind, forced-or-banned id).
+
+    ``expected_pages <= 0`` no-ops exactly like the frozen guard
+    (modeling_unlimitedocr.py:585-586): a prompt with no page marker is left
+    alone entirely.
+    """
+    if expected_pages <= 0:
+        return "none", None
     n = len(history)
     if n > state["scanned"]:
         tail = history[state["scanned"] : n]
@@ -119,7 +129,9 @@ def replay(
                 "step": step,
                 "forced": target,
                 "emitted": token,
-                "token_was_banned": token in banned if target == page_token_id else None,
+                # The §7-corner causal signal: was the FORCED token n-gram-banned
+                # (making the row all--inf and argmax tie-break arbitrary)?
+                "forced_token_was_banned": target in banned,
             }
             forced_steps.append(entry)
             if token != target:
