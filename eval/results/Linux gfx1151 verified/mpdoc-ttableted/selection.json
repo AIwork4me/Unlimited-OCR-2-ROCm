@@ -1,0 +1,12 @@
+{
+  "handwritten_chn_375d58b7": {
+    "reason": "Eight-metric coverage (T-TableTEDS): smallest authorized MPDocBench document whose ground truth contains genuine cross-page merged-table annotations (two table blocks, anno 1 page 1 'fenduan=上' + anno 2 page 2 'fenduan=下', each carrying merged_html, 891 chars). Two pages at ~1.9/2.1 Mpx stay inside unchanged production limits (5 pages, 8192 tokens, 16 Mpx/page). Chosen from the 45 merged_html documents by structural criteria only (smallest page count, cross-page merge pair, minimal non-table content) before any inference; not present in the P1 8-document selection.",
+    "category_counts": {
+      "pages": 2,
+      "layout_dets": 2,
+      "tables": 2,
+      "merged_html_tables": 2,
+      "text_blocks": 0
+    }
+  }
+}
