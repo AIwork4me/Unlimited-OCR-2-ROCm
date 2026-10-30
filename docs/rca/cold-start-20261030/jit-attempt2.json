@@ -1,0 +1,425 @@
+{
+  "cold_warm": [
+    null,
+    null
+  ],
+  "cold_processes": null,
+  "output_comparisons": [
+    {
+      "raw_exact": true,
+      "output_ids_exact": true,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+      ],
+      "token_hashes": [
+        "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+        "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+      ],
+      "first_differing_token": null,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        3,
+        3
+      ],
+      "signed_delta_distribution": {
+        "0": 24
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            188,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            188,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 4,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 5,
+          "page": 2,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_PASS"
+    },
+    {
+      "raw_exact": true,
+      "output_ids_exact": true,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+      ],
+      "token_hashes": [
+        "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+        "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+      ],
+      "first_differing_token": null,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        3,
+        3
+      ],
+      "signed_delta_distribution": {
+        "0": 24
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            188,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            188,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 4,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 5,
+          "page": 2,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_PASS"
+    }
+  ],
+  "normal_cold_vs_unoptimized_cold_first_difference": {
+    "event_index": 40,
+    "left": {
+      "stage": "clip.transformer.layers.1.mlp.fc2.input",
+      "value": [
+        [
+          {
+            "shape": [
+              1,
+              257,
+              4096
+            ],
+            "dtype": "torch.bfloat16",
+            "sha256": "5729245ed597f448d471359e500ce38c5727c2e1c2a4b53ccb7d50f4915e2141"
+          }
+        ],
+        {}
+      ]
+    },
+    "right": {
+      "stage": "clip.transformer.layers.1.mlp.fc2.input",
+      "value": [
+        [
+          {
+            "shape": [
+              1,
+              257,
+              4096
+            ],
+            "dtype": "torch.bfloat16",
+            "sha256": "42924e490e457e17b1dd9aa952f61c9212d027bc2489d21e9bef47e90448a41a"
+          }
+        ],
+        {}
+      ]
+    },
+    "caveat": "Earliest OBSERVED boundary only, not proof of a kernel cause"
+  }
+}

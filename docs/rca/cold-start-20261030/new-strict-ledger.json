@@ -1,0 +1,184 @@
+{
+  "run_id": "5e064cafccf878c84fe4c8e16e57f547f8257e569e2a563c46f6880d8d8a4ac2",
+  "dataset": "new-strict-cold-start-reliability",
+  "status": "PARTIAL",
+  "expected_documents": 2,
+  "expected_pages": 4,
+  "counts": {
+    "PASS": 0,
+    "FAIL": 2,
+    "TIMEOUT": 0,
+    "OOM": 0,
+    "TRUNCATED": 0,
+    "NOT_RUN": 0
+  },
+  "success_rate": 0.0,
+  "documents": [
+    {
+      "attempt": "000001",
+      "completed_utc": "2026-10-30T05:35:34.214648+00:00",
+      "doc_id": "no_kill",
+      "expected_pages": 2,
+      "metadata": {
+        "error": "EXACT_GOLDEN_PARITY_FAIL",
+        "exact_golden": false,
+        "finish_reason": "stop",
+        "functional_ocr": true,
+        "max_tokens": 2048,
+        "memory": {
+          "gpu_allocated_bytes": 6865832448,
+          "gpu_free_total_bytes": [
+            68059951104,
+            83954728960
+          ],
+          "gpu_peak_allocated_bytes": 9199327744,
+          "gpu_peak_reserved_bytes": 9430892544,
+          "gpu_reserved_bytes": 9430892544,
+          "process_peak_rss_bytes": 9572372480,
+          "process_rss_bytes": 7311003648,
+          "system_available_bytes": 84263038976,
+          "system_memory_percent": 36.5,
+          "system_total_bytes": 132766306304
+        },
+        "output_tokens": 116,
+        "process_completion_cleanup": true,
+        "source": "ACTUAL_NEW_GPU_REQUEST_0",
+        "warm_request": "DIAGNOSTIC_ONLY_NOT_LEDGER_CREDIT"
+      },
+      "raw_page_markers": 3,
+      "reason": "EXACT_GOLDEN_PARITY_FAIL",
+      "state": "FAIL",
+      "terminal_empty_marker": true,
+      "pages": 2,
+      "attempts": [
+        {
+          "attempt": "000001",
+          "completed_utc": "2026-10-30T05:35:34.214648+00:00",
+          "doc_id": "no_kill",
+          "expected_pages": 2,
+          "metadata": {
+            "error": "EXACT_GOLDEN_PARITY_FAIL",
+            "exact_golden": false,
+            "finish_reason": "stop",
+            "functional_ocr": true,
+            "max_tokens": 2048,
+            "memory": {
+              "gpu_allocated_bytes": 6865832448,
+              "gpu_free_total_bytes": [
+                68059951104,
+                83954728960
+              ],
+              "gpu_peak_allocated_bytes": 9199327744,
+              "gpu_peak_reserved_bytes": 9430892544,
+              "gpu_reserved_bytes": 9430892544,
+              "process_peak_rss_bytes": 9572372480,
+              "process_rss_bytes": 7311003648,
+              "system_available_bytes": 84263038976,
+              "system_memory_percent": 36.5,
+              "system_total_bytes": 132766306304
+            },
+            "output_tokens": 116,
+            "process_completion_cleanup": true,
+            "source": "ACTUAL_NEW_GPU_REQUEST_0",
+            "warm_request": "DIAGNOSTIC_ONLY_NOT_LEDGER_CREDIT"
+          },
+          "raw_page_markers": 3,
+          "reason": "EXACT_GOLDEN_PARITY_FAIL",
+          "state": "FAIL",
+          "terminal_empty_marker": true
+        }
+      ]
+    },
+    {
+      "attempt": "000002",
+      "completed_utc": "2026-10-30T05:37:54.193196+00:00",
+      "doc_id": "post_kill",
+      "expected_pages": 2,
+      "metadata": {
+        "error": "EXACT_GOLDEN_PARITY_FAIL",
+        "exact_golden": false,
+        "finish_reason": "stop",
+        "functional_ocr": true,
+        "max_tokens": 2048,
+        "memory": {
+          "gpu_allocated_bytes": 6865832448,
+          "gpu_free_total_bytes": [
+            68059951104,
+            83954728960
+          ],
+          "gpu_peak_allocated_bytes": 9199327744,
+          "gpu_peak_reserved_bytes": 9430892544,
+          "gpu_reserved_bytes": 9430892544,
+          "process_peak_rss_bytes": 9578766336,
+          "process_rss_bytes": 7313920000,
+          "system_available_bytes": 84228431872,
+          "system_memory_percent": 36.6,
+          "system_total_bytes": 132766306304
+        },
+        "output_tokens": 116,
+        "process_completion_cleanup": true,
+        "source": "ACTUAL_NEW_GPU_REQUEST_0",
+        "warm_request": "DIAGNOSTIC_ONLY_NOT_LEDGER_CREDIT"
+      },
+      "raw_page_markers": 3,
+      "reason": "EXACT_GOLDEN_PARITY_FAIL",
+      "state": "FAIL",
+      "terminal_empty_marker": true,
+      "pages": 2,
+      "attempts": [
+        {
+          "attempt": "000001",
+          "completed_utc": "2026-10-30T05:36:24.678632+00:00",
+          "doc_id": "post_kill",
+          "expected_pages": 2,
+          "metadata": {
+            "actual_process_exit": 1,
+            "error": "EXTERNAL_TERMINATION",
+            "native_return_available": false,
+            "partial_native_return": "unavailable"
+          },
+          "raw_page_markers": 0,
+          "reason": "EXTERNAL_TERMINATION",
+          "state": "FAIL",
+          "terminal_empty_marker": false
+        },
+        {
+          "attempt": "000002",
+          "completed_utc": "2026-10-30T05:37:54.193196+00:00",
+          "doc_id": "post_kill",
+          "expected_pages": 2,
+          "metadata": {
+            "error": "EXACT_GOLDEN_PARITY_FAIL",
+            "exact_golden": false,
+            "finish_reason": "stop",
+            "functional_ocr": true,
+            "max_tokens": 2048,
+            "memory": {
+              "gpu_allocated_bytes": 6865832448,
+              "gpu_free_total_bytes": [
+                68059951104,
+                83954728960
+              ],
+              "gpu_peak_allocated_bytes": 9199327744,
+              "gpu_peak_reserved_bytes": 9430892544,
+              "gpu_reserved_bytes": 9430892544,
+              "process_peak_rss_bytes": 9578766336,
+              "process_rss_bytes": 7313920000,
+              "system_available_bytes": 84228431872,
+              "system_memory_percent": 36.6,
+              "system_total_bytes": 132766306304
+            },
+            "output_tokens": 116,
+            "process_completion_cleanup": true,
+            "source": "ACTUAL_NEW_GPU_REQUEST_0",
+            "warm_request": "DIAGNOSTIC_ONLY_NOT_LEDGER_CREDIT"
+          },
+          "raw_page_markers": 3,
+          "reason": "EXACT_GOLDEN_PARITY_FAIL",
+          "state": "FAIL",
+          "terminal_empty_marker": true
+        }
+      ]
+    }
+  ]
+}

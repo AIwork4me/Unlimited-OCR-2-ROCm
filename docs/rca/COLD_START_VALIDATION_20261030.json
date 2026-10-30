@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "pytest": {
+    "passed": 298,
+    "skipped": 7
+  },
+  "checks": [
+    {
+      "name": "ruff",
+      "exit_code": 0,
+      "log": ".b/cold-start-rca/cpu-last/0.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "name": "ruff",
+      "exit_code": 0,
+      "log": ".b/cold-start-rca/cpu-last/1.log",
+      "log_sha256": "87bf6ae342b9d4cf8926374754d47ba335ed8007815b00218638906a349271dc"
+    },
+    {
+      "name": "pytest",
+      "exit_code": 0,
+      "log": ".b/cold-start-rca/cpu-last/2.log",
+      "log_sha256": "e9c07724b864ce925bbde9b5b3e2a0cb5e03564dcd20f66c6df58b931f61fbb9"
+    },
+    {
+      "name": "mypy",
+      "exit_code": 0,
+      "log": ".b/cold-start-rca/cpu-last/3.log",
+      "log_sha256": "63da153bcdac04b2cc982479df4378f21b20029f9acb87ad908fb4d5befe6a43"
+    },
+    {
+      "name": "build",
+      "exit_code": 0,
+      "log": ".b/cold-start-rca/cpu-last/4.log",
+      "log_sha256": "f07fa76eda8565b2676cb68cc2acc24de0521cc1dce86bf5cce428c9644cfed9"
+    },
+    {
+      "name": "pip",
+      "exit_code": 0,
+      "log": ".b/cold-start-rca/cpu-last/5.log",
+      "log_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    }
+  ],
+  "production_source_changes": false,
+  "historical_seals": {
+    "p230": {
+      "checked": 68,
+      "mismatches": []
+    },
+    "p240": {
+      "checked": 338,
+      "mismatches": []
+    }
+  },
+  "publication_seal_sha256": "9ac9075254b596107f1be8fa423be533ca492eae5a042d9aedaa456c6dd0930e",
+  "source_hashes": {
+    "experiments/cold_start/analyze.py": "bb2d3fda634f5d6fca0077a429f7b1cc444f368a5618930abdba3522fc3ea424",
+    "experiments/cold_start/fault.py": "dcc5d84bfe749fb2903d7424478a82efa7db9e52fd076057bf17f4200101f79b",
+    "experiments/cold_start/reliability.py": "6788cf4f32346ca31d625347866fbe5edc300af705eb0016c1c004aac19b96eb",
+    "experiments/cold_start/report.py": "463832e6bbc7140e5cee1545c8cf2f1f297fefdbc62779e2b7bb8c93e30e0876",
+    "experiments/cold_start/run.py": "3f235a05e3079a84247e28465d4eb479922ee2a4acea68eee0b41baefc6a5cf2",
+    "experiments/cold_start/windows_job.py": "58311dd112e29e8a4b55d1a1f297a19bec1d829421d0e1b77fdf698079ee7adb",
+    "experiments/cold_start/worker.py": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0"
+  },
+  "test_sha256": "28bcdca82dff694378a26bfb3b21cbdf839ead875bf7f5c98e874dbaf2637993",
+  "narrative_hashes": {
+    "docs/rca/BBOX_CORRECTNESS_20261030.md": "e0da0d4ac4291bb2eed16316c52b98900d294aec0a6b9e590899b2863c61b07b",
+    "docs/rca/CANDIDATE_BACKEND_ISOLATION_20261030.md": "d6f85f5d231ab51149722e449b75d33a6884320a6fe5a773630ecfdbda0aa756",
+    "docs/rca/COLD_START_MISSION_20261030.md": "41d5215b6b870955b6be2606b64746b96ea26b6699dad12ba4e343d69ac117e7",
+    "docs/rca/COLD_START_RCA_20261030.md": "dcbf25e5eaeeec0ebc40ca84b972b9823e78b6f5436691d1dee48ac0d3ca1cd4",
+    "docs/rca/P3_RESTART_RCA_20261030.md": "9e2e90be4cc6f0e16635b6e344227c3a091fbb986fa6981983717787680d9a9a",
+    "docs/rca/WINDOWS_RELIABILITY_INDEPENDENCE_20261030.md": "b156e7a58bd4b1ed7480b9943c73e7619b1da89f902b062be13a0800beae1334"
+  },
+  "independent_review": {
+    "result": "No actionable final-review findings",
+    "scope": "15 publication members;984 selected local artifact hashes;48 candidate requests;D fault/recovery/ledger raw bindings;deep/JIT claims;sanitization",
+    "cpu_checks": "Reviewer did not rerun CPU checks"
+  },
+  "retained_failed_validation": {
+    "log": ".b/cold-start-rca/cpu-postpublication/2.log",
+    "sha256": "c69454afb6f18c77e1045bd4d1ab1a7b4b684970d50e1966201b6a9bf942630a",
+    "failed_tests": 24,
+    "cause": "Host long-path limit with longer temporary base; rerun uses shorter repository-local .b/cs0/pt without production changes"
+  },
+  "retained_publication_failures": [
+    "Windows separator filter rejected candidate count; fixed to POSIX relative paths",
+    "Unextended inventory encountered disposable long test paths; fixed extended traversal and pruned temporary/build directories"
+  ],
+  "decision": "KEEP EXPERIMENTAL"
+}

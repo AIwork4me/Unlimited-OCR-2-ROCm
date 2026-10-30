@@ -1,0 +1,481 @@
+{
+  "cold_warm": [
+    {
+      "event_index": 24,
+      "left": {
+        "stage": "clip.transformer.layers.0.mlp.fc2.input",
+        "value": [
+          [
+            {
+              "shape": [
+                1,
+                257,
+                4096
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            }
+          ],
+          {}
+        ]
+      },
+      "right": {
+        "stage": "clip.transformer.layers.0.mlp.fc2.input",
+        "value": [
+          [
+            {
+              "shape": [
+                1,
+                257,
+                4096
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "18b88a5e76dfdf19f720b25542ba169a22b17dc44a45bd0ebdf814bce315c258"
+            }
+          ],
+          {}
+        ]
+      },
+      "caveat": "Earliest OBSERVED boundary only, not proof of a kernel cause"
+    },
+    {
+      "event_index": 24,
+      "left": {
+        "stage": "clip.transformer.layers.0.mlp.fc2.input",
+        "value": [
+          [
+            {
+              "shape": [
+                1,
+                257,
+                4096
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            }
+          ],
+          {}
+        ]
+      },
+      "right": {
+        "stage": "clip.transformer.layers.0.mlp.fc2.input",
+        "value": [
+          [
+            {
+              "shape": [
+                1,
+                257,
+                4096
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "18b88a5e76dfdf19f720b25542ba169a22b17dc44a45bd0ebdf814bce315c258"
+            }
+          ],
+          {}
+        ]
+      },
+      "caveat": "Earliest OBSERVED boundary only, not proof of a kernel cause"
+    }
+  ],
+  "cold_processes": null,
+  "output_comparisons": [
+    {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+        "c08e7f728ea1e46dc20c2958bf6d3ac857902542935e257a0b64525b7d7b2a8e"
+      ],
+      "token_hashes": [
+        "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+        "2699d338b14f7e20298c4c9f4abafe426b126a211e95ab541be02b16fcc8790e"
+      ],
+      "first_differing_token": 67,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        3,
+        3
+      ],
+      "signed_delta_distribution": {
+        "0": 23,
+        "1": 1
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            188,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "iou": 0.9924242424242424,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 4,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 5,
+          "page": 2,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+        "c08e7f728ea1e46dc20c2958bf6d3ac857902542935e257a0b64525b7d7b2a8e"
+      ],
+      "token_hashes": [
+        "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+        "2699d338b14f7e20298c4c9f4abafe426b126a211e95ab541be02b16fcc8790e"
+      ],
+      "first_differing_token": 67,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        3,
+        3
+      ],
+      "signed_delta_distribution": {
+        "0": 23,
+        "1": 1
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            188,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "iou": 0.9924242424242424,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 4,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 5,
+          "page": 2,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    }
+  ],
+  "matched_prefix_pre_guard_logits": [
+    {
+      "stage": "lm_head",
+      "top_values": [
+        31.875,
+        31.75
+      ],
+      "margin": 0.125
+    },
+    {
+      "stage": "lm_head",
+      "top_values": [
+        31.75,
+        31.75
+      ],
+      "margin": 0.0
+    }
+  ]
+}

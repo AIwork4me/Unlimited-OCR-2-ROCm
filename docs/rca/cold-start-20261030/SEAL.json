@@ -1,0 +1,17 @@
+{
+  "bbox-correctness.json": "0af905058ef750b41fe806a86a51fb6162500ca72d597464f111f067e8cfe2f6",
+  "bbox-correctness.md": "81e2ef2a4a7cadd4367b567b54704a1e52ed6746daa3bc495280750ca14f8b94",
+  "candidate-backend-matrix.json": "114b111629c61fed0ea386ed734ffb98830720649472d036c720823368effb77",
+  "deep-attempt1.json": "dce2d18bd9c1839d011402a27375f54e6276305139d4a5f91e08a35ac81831a2",
+  "invocation-index.json": "2b045f0c5bc21feaa7619a0c6d2d578bf5d3c17c610faf905dd6807c5ef1616c",
+  "jit-attempt2.json": "eb73f613431a183f4bea583fd8d1f34066e1f07a2f85cd2a26b46be5727193eb",
+  "local-artifact-hashes.json": "aac86e0a1a95815d1283ed7193871e4b1bf30810bdf2e4a1c6dc67f3f7ee9053",
+  "new-strict-ledger.json": "cd6dee5b573e7a6dc2a7d5721364c6e6fcb7763c7dc11446cb93113da00fc163",
+  "original-wheel.json": "a8b58b696ec029a13c81fee129957ffaa4e48c00130a8b65fc331acfe43f8978",
+  "producer-hashes.json": "0100c0276136d926693b50fd5dd4358e46b62e3dbb61a6f7edebaa98dfdc922c",
+  "publication-status.json": "360601ff831da4adfb7f9c575447623ff08feb9c12f59efe63619b411c4e5baf",
+  "restart-categories.json": "5bb721648b1cd5d809998153d80b219f4570adae40d5a0cb296008d5fc82200e",
+  "source-artifact-identities.json": "6c7542fe1dd10e40c13a6477d0832cdc8e108b77da91e7a92a8d33f3bda9edd7",
+  "stage-localization.json": "944d53936769ae0776c3fff73140d347b80b9dbc6d6504d27ca210aafb0b6508",
+  "synthetic-ink-geometry.json": "c303c4dd8a51f3a231a51fd29d54481c397eef44215a71760932c153462a50f6"
+}
