@@ -8,11 +8,13 @@ in Git. Only source, tests, sanitized metrics, hashes and technical evidence
 may be published. Original synthetic fixtures already present in the reviewed
 source are read locally; they are not republished in this change.
 
-This is experimental infrastructure, **PREPARED_ONLY**, not a completed GPU
-benchmark or an AUTO qualification. Default production vision remains MATH;
-experimental PR #5 stays draft/unmerged. Current P0 is HOLD. Both driver and
+The infrastructure was accepted as **PREPARED_ONLY**. Subsequent physical
+diagnostics completed, but **exact parity was rejected**; this is not a completed
+GPU benchmark or an AUTO qualification. Default production vision remains MATH;
+experimental PR #5 stays draft/unmerged. A new Windows-scoped P0 execution receipt
+is PASS; global repository/privacy/Linux reproducibility remains HOLD. Both driver and
 worker require a matching integration-base P0 PASS receipt before GPU work.
-No physical run was made to bypass that dependency. Preparation does not need
+No physical run bypassed the dependency. Preparation does not need
 torch, network access, model loading or a GPU.
 
 ## Frozen design
@@ -132,6 +134,48 @@ Unsupported/unrun: real documents, official full datasets, >5 pages, >8192
 new tokens, other GPUs/OS/dtypes, backward, concurrent inference, physical
 OOM/hard-kill qualification and statistical/general workload claims.
 Recommendation remains **KEEP EXPERIMENTAL** until physical evidence passes.
+
+## Physical diagnostic result (2026-10-30)
+
+All 20 diagnostic requests completed on the same verified source-built candidate.
+Each passed the original synthetic OCR correctness check, canonical structure,
+native stop, twelve DASH GPU calls and HIP-zero checks. Observed SDPA calls:
+MATH control 864; AUTO 288 SAM EFFICIENT + 576 CLIP FLASH, with no observed MATH
+fallback in AUTO. Ninety-six numerical-layout checks passed unchanged BF16
+atol/rtol 0.03/0.03; maximum full-MATH absolute difference 0.015625 and maximum
+CPU FP32-slice difference 0.0080754757. These are diagnostic operator/numerical
+observations, not new lower-level PAL launch traces or performance measurements.
+
+The predeclared exact raw/output-ID parity gate **FAILed in eight of ten pairs**.
+Prompt IDs and token counts agree in all pairs. Removing only bbox coordinates
+leaves identical content, labels, structure and page order in every pair; this
+post-run diagnostic does not replace the acceptance rule.
+
+| Synthetic case | Exact raw/output IDs | Maximum bbox coordinate delta |
+| --- | --- | ---: |
+| English | FAIL | 2 |
+| Chinese | PASS | 0 |
+| Mixed | FAIL | 3 |
+| Table | PASS | 0 |
+| Arithmetic | FAIL | 3 |
+| Unicode recovery | FAIL | 2 |
+| Two pages | FAIL | 1 |
+| Three pages | FAIL | 2 |
+| Five pages | FAIL | 1 |
+| Cross-page table | FAIL | 3 |
+
+The driver rejected diagnostics and never launched the measurement child:
+**0/20 warmups and 0/120 measured requests (0/60 pairs)**. No median latency,
+memory speedup or paired performance claim is available. Instrumented diagnostic
+durations/references are deliberately excluded from performance reporting.
+The initial preparation manifest is preserved; new sanitized diagnostics and a
+new scoped Windows P0 receipt are separate files under `eval/p2/`.
+
+Recommendation: **KEEP EXPERIMENTAL**, not READY FOR OPT-IN. The current strict
+campaign is rejected. Do not loosen bbox/token tolerances after seeing these
+results; any future policy needs a separately declared study and new evidence.
+Real-document evaluation remains **BLOCKED_DATA**, and neither MATH default
+nor draft PR #5/#15 merge status changes.
 
 ## Preparation validation (2026-10-30)
 

@@ -1,0 +1,635 @@
+{
+  "source_commit": "df392d666d1512479346b961e79a7b16d98d90c4",
+  "candidate_wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "workload": "SYNTHETIC_ONLY",
+  "real_documents": "BLOCKED_DATA",
+  "diagnostic_individual_passes": 20,
+  "strict_exact_parity_gate": "FAIL",
+  "measurement": "NOT RUN: predeclared diagnostic parity rejection",
+  "recommendation": "KEEP EXPERIMENTAL",
+  "cases": {
+    "english": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "45e76e31dc6f1e9858f2a6c8250320178c4aba165f275c5a9a7936a42df0717a",
+        "abdb2f7159afdea3bf47f81bcc799e57c8c36f8f445521c0899b080bfc979e9f"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        4,
+        4
+      ],
+      "bbox_changed_coordinate_count": 4,
+      "bbox_max_abs_coordinate_delta": 2,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        80,
+        80
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "chinese": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": true,
+      "raw_sha256": [
+        "d8e6506030defe9e5588ba45064a98bbf6cbe68d6e660e3a9025fd92a31d44df",
+        "d8e6506030defe9e5588ba45064a98bbf6cbe68d6e660e3a9025fd92a31d44df"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        4,
+        4
+      ],
+      "bbox_changed_coordinate_count": 0,
+      "bbox_max_abs_coordinate_delta": 0,
+      "prompt_ids_equal": true,
+      "output_ids_equal": true,
+      "output_token_counts": [
+        82,
+        82
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "mixed": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "07fb7e56534864260ed091396198bd629638e93c12deee1c8701a90d86912d87",
+        "f43b416b2067b61bb836805208b880245be0f39910d8e4869414432f98fee9c3"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        4,
+        4
+      ],
+      "bbox_changed_coordinate_count": 10,
+      "bbox_max_abs_coordinate_delta": 3,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        84,
+        84
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "table": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": true,
+      "raw_sha256": [
+        "add9c0ca008617918122697a60ec53b0fea534c72ba39ce78b593629b9740477",
+        "add9c0ca008617918122697a60ec53b0fea534c72ba39ce78b593629b9740477"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        1,
+        1
+      ],
+      "bbox_changed_coordinate_count": 0,
+      "bbox_max_abs_coordinate_delta": 0,
+      "prompt_ids_equal": true,
+      "output_ids_equal": true,
+      "output_token_counts": [
+        60,
+        60
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "math": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "61fe2228a05cd1059bf9cd0e60b61b3940d6fcd53051a5dc8503685e0e98a3ac",
+        "9f1da17aa935996d0936c4bfef04655b40a283fc1fab0c53bd337ab717351d9a"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        3,
+        3
+      ],
+      "bbox_changed_coordinate_count": 9,
+      "bbox_max_abs_coordinate_delta": 3,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        72,
+        72
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "repeat_unicode_recovery": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "45e76e31dc6f1e9858f2a6c8250320178c4aba165f275c5a9a7936a42df0717a",
+        "abdb2f7159afdea3bf47f81bcc799e57c8c36f8f445521c0899b080bfc979e9f"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        4,
+        4
+      ],
+      "bbox_changed_coordinate_count": 4,
+      "bbox_max_abs_coordinate_delta": 2,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        80,
+        80
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "pages_2": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "c08e7f728ea1e46dc20c2958bf6d3ac857902542935e257a0b64525b7d7b2a8e",
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        6,
+        6
+      ],
+      "bbox_changed_coordinate_count": 1,
+      "bbox_max_abs_coordinate_delta": 1,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        116,
+        116
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "pages_3": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "83d8b6ce9c811f22f4c081bbf0bc869da3c64f8ee2af2e03a25f0a800d422c62",
+        "ec722cf281c53a65f475d0160ce4fc1b01bf93e39b18706ff8e6dd39dc3e7612"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        9,
+        9
+      ],
+      "bbox_changed_coordinate_count": 5,
+      "bbox_max_abs_coordinate_delta": 2,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        171,
+        171
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "pages_5": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "2f6390b8ff4962a50b2cd17fa93dbb20081b46524b5ea1d2c9ae53759b6403b2",
+        "4304e70b77e712f4085d26d8b0916eff3cb85b7f31f0504e2a1d18f78c2575d3"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        15,
+        15
+      ],
+      "bbox_changed_coordinate_count": 4,
+      "bbox_max_abs_coordinate_delta": 1,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        286,
+        286
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    },
+    "table_2_pages": {
+      "per_arm_status": [
+        "PASS",
+        "PASS"
+      ],
+      "raw_equal": false,
+      "raw_sha256": [
+        "150a5ef5f4bc61ad01e9f6f6c25eec9e3d6bc3123f0fcb2290c4686c9b050d70",
+        "6e8468fed46556360ddc8cf04e1ec60abbd223bc45efb400bb96342293f09a46"
+      ],
+      "content_labels_structure_page_order_equal_after_bbox_mask": true,
+      "bbox_counts": [
+        2,
+        2
+      ],
+      "bbox_changed_coordinate_count": 4,
+      "bbox_max_abs_coordinate_delta": 3,
+      "prompt_ids_equal": true,
+      "output_ids_equal": false,
+      "output_token_counts": [
+        94,
+        94
+      ],
+      "native_finish": [
+        "stop",
+        "stop"
+      ],
+      "dispatch": [
+        {
+          "sam_model": [
+            "MATH"
+          ],
+          "vision_model": [
+            "MATH"
+          ]
+        },
+        {
+          "sam_model": [
+            "EFFICIENT_ATTENTION"
+          ],
+          "vision_model": [
+            "FLASH_ATTENTION"
+          ]
+        }
+      ],
+      "numerical_pass": [
+        true,
+        true
+      ],
+      "hip_zero": [
+        true,
+        true
+      ],
+      "dash_calls": [
+        12,
+        12
+      ]
+    }
+  },
+  "status": "DIAGNOSTIC_EXACT_PARITY_REJECTED",
+  "p0_scope": "Windows retained-original-environment short-document execution PASS only; global privacy/Linux reproduction HOLD",
+  "plan_sha256": "0dbdddaf293e1419cf84d9aeffe571228e94690d4027ed79b5a1a702e3e120d9",
+  "diagnostic_expected": 20,
+  "diagnostic_completed": 20,
+  "measurement_expected": 120,
+  "measurement_completed": 0,
+  "warmups_expected": 20,
+  "warmups_completed": 0,
+  "dispatch_counts": [
+    {
+      "mode": "auto",
+      "module": "sam_model",
+      "backend": "EFFICIENT_ATTENTION",
+      "calls": 288
+    },
+    {
+      "mode": "auto",
+      "module": "vision_model",
+      "backend": "FLASH_ATTENTION",
+      "calls": 576
+    },
+    {
+      "mode": "math",
+      "module": "sam_model",
+      "backend": "MATH",
+      "calls": 288
+    },
+    {
+      "mode": "math",
+      "module": "vision_model",
+      "backend": "MATH",
+      "calls": 576
+    }
+  ],
+  "numerical_layout_checks": 96,
+  "numerical_atol": 0.03,
+  "numerical_rtol": 0.03,
+  "maximum_full_math_abs_error": 0.015625,
+  "maximum_cpu_fp32_slice_abs_error": 0.008075475692749023,
+  "hip_nonzero_checkpoints": 0,
+  "bbox_mask_comparison": "INFORMATIONAL_ONLY: does not replace or relax predeclared exact parity",
+  "performance_claim": "NONE: instrumented diagnostic durations are excluded; no warm/measured child launched"
+}
