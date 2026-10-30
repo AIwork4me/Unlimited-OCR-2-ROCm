@@ -1,0 +1,188 @@
+{
+ "examPaper_eng_66b20269": {
+  "cats": {
+   "equation_isolated": 7,
+   "figure": 1,
+   "footer": 4,
+   "header": 1,
+   "header_image": 1,
+   "table": 2,
+   "text_block": 45,
+   "title": 6
+  },
+  "gt_category_counts": {
+   "equation_isolated": 7,
+   "figure": 1,
+   "footer": 4,
+   "header": 1,
+   "header_image": 1,
+   "table": 2,
+   "text_block": 45,
+   "title": 6
+  },
+  "pages": 4,
+  "reason": "English exam paper, multi-page (English text)"
+ },
+ "goverment_eng_aa75e353": {
+  "cats": {
+   "text_block": 56
+  },
+  "gt_category_counts": {
+   "text_block": 56
+  },
+  "pages": 4,
+  "reason": "English manual/government >=4 pages (cross-page)"
+ },
+ "handwritten_chn_1ae487be": {
+  "cats": {
+   "equation_isolated": 98,
+   "figure": 8,
+   "figure_caption": 2,
+   "header": 1,
+   "page_number": 4,
+   "table": 3,
+   "text_block": 96,
+   "title": 31
+  },
+  "gt_category_counts": {
+   "equation_isolated": 98,
+   "figure": 8,
+   "figure_caption": 2,
+   "header": 1,
+   "page_number": 4,
+   "table": 3,
+   "text_block": 96,
+   "title": 31
+  },
+  "pages": 5,
+  "reason": "Handwritten Chinese document"
+ },
+ "newspaper_chn_eb87830d": {
+  "cats": {
+   "figure": 13,
+   "figure_footnote": 7,
+   "footer": 2,
+   "header": 11,
+   "page_number": 4,
+   "text_block": 295,
+   "title": 43
+  },
+  "gt_category_counts": {
+   "figure": 13,
+   "figure_footnote": 7,
+   "footer": 2,
+   "header": 11,
+   "page_number": 4,
+   "text_block": 295,
+   "title": 43
+  },
+  "pages": 5,
+  "reason": "Heading-rich multi-page document (heading tree)"
+ },
+ "newspaper_eng_ed12985c": {
+  "cats": {
+   "figure": 24,
+   "figure_footnote": 19,
+   "header": 6,
+   "page_number": 2,
+   "text_block": 272,
+   "title": 48
+  },
+  "gt_category_counts": {
+   "figure": 24,
+   "figure_footnote": 19,
+   "header": 6,
+   "page_number": 2,
+   "text_block": 272,
+   "title": 48
+  },
+  "pages": 4,
+  "reason": "Figure-heavy document (figures and reading order)"
+ },
+ "paper_chn_3567e55d": {
+  "cats": {
+   "equation_isolated": 8,
+   "figure": 3,
+   "figure_caption": 3,
+   "footnote": 4,
+   "header": 9,
+   "page_number": 5,
+   "table": 3,
+   "table_caption": 3,
+   "text_block": 82,
+   "title": 13
+  },
+  "gt_category_counts": {
+   "equation_isolated": 8,
+   "figure": 3,
+   "figure_caption": 3,
+   "footnote": 4,
+   "header": 9,
+   "page_number": 5,
+   "table": 3,
+   "table_caption": 3,
+   "text_block": 82,
+   "title": 13
+  },
+  "pages": 5,
+  "reason": "Table-heavy document with captions (table continuation)"
+ },
+ "researchReport_chn_a2f46550": {
+  "cats": {
+   "figure": 3,
+   "figure_caption": 1,
+   "figure_footnote": 3,
+   "footer": 4,
+   "header": 6,
+   "header_image": 4,
+   "page_number": 3,
+   "table": 8,
+   "table_caption": 4,
+   "table_footnote": 1,
+   "text_block": 40,
+   "title": 14
+  },
+  "gt_category_counts": {
+   "figure": 3,
+   "figure_caption": 1,
+   "figure_footnote": 3,
+   "footer": 4,
+   "header": 6,
+   "header_image": 4,
+   "page_number": 3,
+   "table": 8,
+   "table_caption": 4,
+   "table_footnote": 1,
+   "text_block": 40,
+   "title": 14
+  },
+  "pages": 5,
+  "reason": "Chinese research report, multi-page text continuation"
+ },
+ "researchReport_chn_dd0407a2": {
+  "cats": {
+   "figure": 2,
+   "footer": 2,
+   "header": 5,
+   "header_image": 3,
+   "table": 10,
+   "table_caption": 4,
+   "table_footnote": 2,
+   "text_block": 22,
+   "title": 23
+  },
+  "gt_category_counts": {
+   "figure": 2,
+   "footer": 2,
+   "header": 5,
+   "header_image": 3,
+   "table": 10,
+   "table_caption": 4,
+   "table_footnote": 2,
+   "text_block": 22,
+   "title": 23
+  },
+  "pages": 4,
+  "reason": "Table-heavy document with captions (table continuation)"
+ }
+}

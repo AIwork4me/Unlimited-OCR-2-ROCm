@@ -1,0 +1,194 @@
+{
+  "expected_documents": 8,
+  "tasks": {
+    "display_formula": {
+      "documents_with_samples": 3,
+      "documents_without_samples": [
+        "goverment_eng_aa75e353.pdf",
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf",
+        "researchReport_chn_a2f46550.pdf",
+        "researchReport_chn_dd0407a2.pdf"
+      ],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 6,
+        "goverment_eng_aa75e353.pdf": 0,
+        "handwritten_chn_1ae487be.pdf": 88,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 8,
+        "researchReport_chn_a2f46550.pdf": 0,
+        "researchReport_chn_dd0407a2.pdf": 0
+      },
+      "sample_count": 102
+    },
+    "figure": {
+      "documents_with_samples": 7,
+      "documents_without_samples": [
+        "goverment_eng_aa75e353.pdf"
+      ],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 1,
+        "goverment_eng_aa75e353.pdf": 0,
+        "handwritten_chn_1ae487be.pdf": 1,
+        "newspaper_chn_eb87830d.pdf": 1,
+        "newspaper_eng_ed12985c.pdf": 1,
+        "paper_chn_3567e55d.pdf": 1,
+        "researchReport_chn_a2f46550.pdf": 1,
+        "researchReport_chn_dd0407a2.pdf": 1
+      },
+      "sample_count": 7
+    },
+    "head": {
+      "documents_with_samples": 8,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 1,
+        "goverment_eng_aa75e353.pdf": 1,
+        "handwritten_chn_1ae487be.pdf": 1,
+        "newspaper_chn_eb87830d.pdf": 1,
+        "newspaper_eng_ed12985c.pdf": 1,
+        "paper_chn_3567e55d.pdf": 1,
+        "researchReport_chn_a2f46550.pdf": 1,
+        "researchReport_chn_dd0407a2.pdf": 1
+      },
+      "sample_count": 8
+    },
+    "merged_table": {
+      "documents_with_samples": 0,
+      "documents_without_samples": [
+        "examPaper_eng_66b20269.pdf",
+        "goverment_eng_aa75e353.pdf",
+        "handwritten_chn_1ae487be.pdf",
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf",
+        "paper_chn_3567e55d.pdf",
+        "researchReport_chn_a2f46550.pdf",
+        "researchReport_chn_dd0407a2.pdf"
+      ],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 0,
+        "goverment_eng_aa75e353.pdf": 0,
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 0,
+        "researchReport_chn_a2f46550.pdf": 0,
+        "researchReport_chn_dd0407a2.pdf": 0
+      },
+      "sample_count": 0
+    },
+    "merged_text_block": {
+      "documents_with_samples": 4,
+      "documents_without_samples": [
+        "examPaper_eng_66b20269.pdf",
+        "handwritten_chn_1ae487be.pdf",
+        "researchReport_chn_a2f46550.pdf",
+        "researchReport_chn_dd0407a2.pdf"
+      ],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 0,
+        "goverment_eng_aa75e353.pdf": 2,
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 39,
+        "newspaper_eng_ed12985c.pdf": 23,
+        "paper_chn_3567e55d.pdf": 10,
+        "researchReport_chn_a2f46550.pdf": 0,
+        "researchReport_chn_dd0407a2.pdf": 0
+      },
+      "sample_count": 74
+    },
+    "reading_order": {
+      "documents_with_samples": 8,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 1,
+        "goverment_eng_aa75e353.pdf": 1,
+        "handwritten_chn_1ae487be.pdf": 1,
+        "newspaper_chn_eb87830d.pdf": 1,
+        "newspaper_eng_ed12985c.pdf": 1,
+        "paper_chn_3567e55d.pdf": 1,
+        "researchReport_chn_a2f46550.pdf": 1,
+        "researchReport_chn_dd0407a2.pdf": 1
+      },
+      "sample_count": 8
+    },
+    "table": {
+      "documents_with_samples": 5,
+      "documents_without_samples": [
+        "goverment_eng_aa75e353.pdf",
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf"
+      ],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 2,
+        "goverment_eng_aa75e353.pdf": 0,
+        "handwritten_chn_1ae487be.pdf": 3,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 3,
+        "researchReport_chn_a2f46550.pdf": 8,
+        "researchReport_chn_dd0407a2.pdf": 10
+      },
+      "sample_count": 26
+    },
+    "table_relation": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [
+        "examPaper_eng_66b20269.pdf",
+        "goverment_eng_aa75e353.pdf",
+        "handwritten_chn_1ae487be.pdf",
+        "newspaper_chn_eb87830d.pdf",
+        "newspaper_eng_ed12985c.pdf",
+        "paper_chn_3567e55d.pdf",
+        "researchReport_chn_dd0407a2.pdf"
+      ],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 0,
+        "goverment_eng_aa75e353.pdf": 0,
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 0,
+        "newspaper_eng_ed12985c.pdf": 0,
+        "paper_chn_3567e55d.pdf": 0,
+        "researchReport_chn_a2f46550.pdf": 1,
+        "researchReport_chn_dd0407a2.pdf": 0
+      },
+      "sample_count": 1
+    },
+    "text_block": {
+      "documents_with_samples": 8,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 52,
+        "goverment_eng_aa75e353.pdf": 40,
+        "handwritten_chn_1ae487be.pdf": 124,
+        "newspaper_chn_eb87830d.pdf": 293,
+        "newspaper_eng_ed12985c.pdf": 287,
+        "paper_chn_3567e55d.pdf": 82,
+        "researchReport_chn_a2f46550.pdf": 53,
+        "researchReport_chn_dd0407a2.pdf": 45
+      },
+      "sample_count": 976
+    },
+    "text_relation": {
+      "documents_with_samples": 4,
+      "documents_without_samples": [
+        "examPaper_eng_66b20269.pdf",
+        "handwritten_chn_1ae487be.pdf",
+        "researchReport_chn_a2f46550.pdf",
+        "researchReport_chn_dd0407a2.pdf"
+      ],
+      "per_document_samples": {
+        "examPaper_eng_66b20269.pdf": 0,
+        "goverment_eng_aa75e353.pdf": 1,
+        "handwritten_chn_1ae487be.pdf": 0,
+        "newspaper_chn_eb87830d.pdf": 1,
+        "newspaper_eng_ed12985c.pdf": 1,
+        "paper_chn_3567e55d.pdf": 1,
+        "researchReport_chn_a2f46550.pdf": 0,
+        "researchReport_chn_dd0407a2.pdf": 0
+      },
+      "sample_count": 4
+    }
+  }
+}
