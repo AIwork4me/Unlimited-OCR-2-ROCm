@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "experiment": "P2A_OUTPUT_TOKEN_BUDGET_RCA",
+  "purpose": "Controlled isolation of the output-token-budget impact on the four P1 documents that ended with native finish_reason=length at the unchanged 8192 budget. Production default caps are NOT changed by this policy.",
+  "documents": [
+    "handwritten_chn_1ae487be",
+    "newspaper_chn_eb87830d",
+    "newspaper_eng_ed12985c",
+    "paper_chn_3567e55d"
+  ],
+  "baseline_new_tokens": 8192,
+  "baseline_evidence": "P1 receipt eval/results/Linux gfx1151 verified/mpdoc-sample/run-receipt.json and P1.5 ledger run (same pages/hashes, same model/prompt/crop policy)",
+  "budgets_new_tokens": [12288, 16384],
+  "unchanged": {
+    "max_pages_per_request": 5,
+    "max_pixels_per_page": 16000000,
+    "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "prompt": "official default document prompt",
+    "crop_policy": "crop_mode=False (infer_multi)",
+    "decoder": "official eager + DASH Triton, 12 routers",
+    "vision_sdpa": "MATH (SAM/CLIP scoped)",
+    "native_page_guard": "enabled (expected_pages from prompt; max_page_tokens=20000)"
+  },
+  "admission": {
+    "context_cap_tokens": 131072,
+    "prompt_upper_bound_tokens_per_page": 300,
+    "required_margin_tokens": 4096,
+    "rule": "pages*prompt_upper_bound + budget + margin must not exceed context_cap_tokens"
+  },
+  "supervision": {
+    "timeout_seconds_per_document": 7200,
+    "worker": "isolated subprocess per attempt (P1.5 supervision)"
+  },
+  "labels": ["EXPERIMENTAL_BUDGET_ONLY", "P2A_RCA"]
+}

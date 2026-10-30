@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import time
 import traceback
 from pathlib import Path
@@ -17,6 +18,28 @@ from .config import file_sha256
 from .doctor import memory_snapshot, write_json
 from .model import NativeModel
 from .output import assess, convert_readable, normalize, preserve_raw
+
+PRODUCTION_MAX_NEW_TOKENS = 8192
+
+
+def validate_budget(max_new_tokens: int, policy_path: Path | None = None) -> None:
+    """Production cap is 8192; larger budgets require the frozen P2-A policy."""
+    if 1 <= max_new_tokens <= PRODUCTION_MAX_NEW_TOKENS:
+        return
+    if policy_path is None:
+        raise ValueError(
+            "max_new_tokens beyond the production cap requires the frozen "
+            "experimental budget policy (production defaults are unchanged)"
+        )
+    try:
+        policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        raise ValueError(f"Unreadable experimental budget policy: {error}") from error
+    budgets = policy.get("budgets_new_tokens")
+    if policy.get("schema") != 1 or not isinstance(budgets, list) or max_new_tokens not in budgets:
+        raise ValueError(
+            f"Requested budget {max_new_tokens} is not authorized by the frozen policy"
+        )
 
 
 def validate_inputs(images: list[Path], multi: bool) -> list[Path]:
@@ -39,13 +62,13 @@ def run_native(
     multi: bool = False,
     truth: list[dict[str, Any]] | None = None,
     max_new_tokens: int = 1024,
+    budget_policy: Path | None = None,
 ) -> dict[str, Any]:
     import torch
     from PIL import Image
 
     images = validate_inputs(images, multi)
-    if not 1 <= max_new_tokens <= 8192:
-        raise ValueError("max_new_tokens must be between 1 and 8192")
+    validate_budget(max_new_tokens, budget_policy)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Use a fresh output directory to preserve earlier evidence")
     output.mkdir(parents=True, exist_ok=True)
@@ -66,6 +89,8 @@ def run_native(
         "max_new_tokens": max_new_tokens,
         "model": native.evidence,
     }
+    if budget_policy is not None:
+        report["experimental_budget_policy_sha256"] = file_sha256(budget_policy)
     previous_kernels = len(native.kernels)
     previous_vision = len(getattr(native, "vision", []))
     torch.cuda.reset_peak_memory_stats()

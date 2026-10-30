@@ -70,6 +70,11 @@ def load_page_index(repo_root: Path) -> dict[str, dict]:
 
 def prepare_command(args: argparse.Namespace) -> int:
     """Write the frozen run inputs: full-dataset manifest, config, environment."""
+    if args.max_new_tokens > 8192:
+        raise ValueError(
+            "Production benchmark runs stay at or below the 8192 default cap; "
+            "larger budgets require the frozen P2-A experimental policy"
+        )
     selection = benchmark_runner.selection_documents(args.selection)
     lock = json.loads(args.lock.read_text("utf-8"))
     pin = lock["datasets"]["MPDocBench"]
