@@ -42,10 +42,11 @@ escalation is authorized or implied.**
   4 500 + 39 321 + 4 096 margin = **47 917 ≤ 131 072** ✓ (measured prompt
   is ~275/page ⇒ ~4 125 actual; upper bound governs admission).
 - KV-cache estimate (DynamicCache, ~60 KiB/token, SWA ring disabled):
-  (4 125 + 39 321) × 60 KiB ≈ **2.6 GiB**, on top of the vision-prefill
-  envelope 8.55 GiB measured at every budget 8 192–16 384 ⇒ expected peak
-  **≈ 11–12 GiB** of the 32 GiB UMA (+100 GiB GTT fallback, untouched
-  co-tenancy ~1.5 GiB). Stage gate: refuse/stop above **16 GiB allocated**.
+  (4 125 + 39 321) × 60 KiB ≈ **2.5 GiB**, on top of the vision-prefill
+  envelope 8.546 GiB allocated / 8.77 GiB reserved measured at every budget
+  8 192–16 384 ⇒ expected peak **≈ 11 GiB** of the 32 GiB UMA (+100 GiB GTT
+  fallback, untouched co-tenancy ~1.5 GiB). Stage gate: refuse/stop above
+  **16 GiB allocated**.
 - The admission report (existing `admission_report` pattern) is persisted
   with the attempt; ADMISSION_REFUSED is a recorded outcome, never a skip.
 
@@ -54,9 +55,15 @@ escalation is authorized or implied.**
 - Isolated subprocess per attempt (P1.5 supervision): process-group
   SIGKILL on timeout, bounded 10 s grace reap, `TERMINATION_INCOMPLETE`
   classified as failure — never PASS.
-- Timeout: 39 321 tokens at the measured 12.6–13.9 tok/s ≈ 2 900–3 120 s
-  decode + ~15 s prefill + ~90 s model load ⇒ **7 200 s timeout** (≥ 2.3×
-  margin), same as every prior stage.
+- Timeout: decode rate FALLS with sequence length (14.6–15.1 tok/s at the
+  8192 stage → 12.0–13.9 at 12288 → **10.4–13.5 at 16384**). Budgeting the
+  worst observed rate, 10.4 tok/s: 39 321 / 10.4 ≈ 3 781 s + ~15 s prefill
+  + ~90 s load ⇒ **7 200 s timeout ≈ 1.85× margin at the observed floor**.
+  The floor may be lower still at 39 k tokens (trend above), so the
+  pre-flight must re-derive the margin from the 16 384-stage measured rate
+  and record it; if the extrapolated decode exceeds ~5.5 tok/s-equivalent
+  risk, the timeout must be raised in the reviewed policy BEFORE the run,
+  never mid-run.
 - Failures, interrupts and partial attempts are preserved in the ledger
   (never deleted, never relabeled); atomic run identity = digest of
   manifest+config+environment.
