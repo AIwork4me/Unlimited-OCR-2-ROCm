@@ -1,0 +1,79 @@
+[
+  {
+    "name": "cuda_codegen.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/tensorexpr/cuda_codegen.cpp",
+    "raw_sha256": "ad4e687551c8980ea00b21f6e066be3374ee2bcd59018e1164ac40e59451a8e4",
+    "local_copy_sha256": "cc390a6c716313747f3b0e9b2136901f22923129659feb209afb46f578fe4878",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "graph_executor.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/runtime/graph_executor.cpp",
+    "raw_sha256": "ecaf47ad9998cfeebdb141eecd48f034f05e6499e03e77b9b55aee188e99eb17",
+    "local_copy_sha256": "ca1599abc8f522a251c913698b351b6105717201c269d43b0d453094e7d462f0",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "half_support.h",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/tensorexpr/half_support.h",
+    "raw_sha256": "3e3351f2e5a5095652a3de6398ae9b5cf655a74ead824d259f7ecd8361a8a856",
+    "local_copy_sha256": "bada219b108b60b84a16acb1405765fffe8134860cfb7b9f417180c32fc1aae2",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "init.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/python/init.cpp",
+    "raw_sha256": "999277121ebb0f2bb2ed720acc972b98f2f521dcdc8a1caecb2fdb237db382b3",
+    "local_copy_sha256": "482bf080779509cf9e977734da7813f26ea6569ccbffa806e1ef463c716fc2f9",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "kernel.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/tensorexpr/kernel.cpp",
+    "raw_sha256": "13a133019bea4cb661d9dd5373bfec1fa98735c8f1913d756efc76f3f61d32ad",
+    "local_copy_sha256": "284ea46eab78d41714462974d13b6210adbb09dd4a38fa2c4320c61deaf64fee",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "lowerings.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/tensorexpr/lowerings.cpp",
+    "raw_sha256": "e11713271a91350057733a7a90730256f39e864d653c6060e47e978b3fa379ab",
+    "local_copy_sha256": "56a8d8c3a3fe37540082b568c7541b0379333be5ad881ee5d76bf5919f582bff",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "misc.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/tensorexpr/operators/misc.cpp",
+    "raw_sha256": "2db06e042d06e8101d390389a9ce32b78152b0e8104604292761825a7b754762",
+    "local_copy_sha256": "802231de72edc643341f0be5d35e7ecc673ac91d32bbec5ec21c42e021cd76ca",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "pointwise.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/tensorexpr/operators/pointwise.cpp",
+    "raw_sha256": "2665fb64e0b22399b84b629debd29dfddae1169fe34b9c9db85f291632f5fde8",
+    "local_copy_sha256": "87530614de6035cdb57ce238aa1e0420d404dd93a4e03e5e1206d619d13330a8",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "profiling_graph_executor_impl.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/runtime/profiling_graph_executor_impl.cpp",
+    "raw_sha256": "950d2e040f627039f714f9fdbdc9378101e299aecb793e176d093c585e796800",
+    "local_copy_sha256": "1999efa34375d3522810a72cfaa5d78ce64ee0e9da0bc8f2893feb63f85c6702",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "update_graph_executor_opt.cpp",
+    "url": "https://raw.githubusercontent.com/pytorch/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/python/update_graph_executor_opt.cpp",
+    "raw_sha256": "470f9445b65c963fce3f7bc5b71129d539ed055b6fea7d9e7319f698daa9e131",
+    "local_copy_sha256": "cc9e2c075b8580c2488505fd00e7cc74a60980e95f2244575258c04f4bf9f99a",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  },
+  {
+    "name": "tensorexpr_init.cpp",
+    "url": "https://raw.githubusercontent.com/ROCm/pytorch/098172edc887399a593f0c74ae5c40b1fe043801/torch/csrc/jit/tensorexpr/tensorexpr_init.cpp",
+    "raw_sha256": "1b7fbe8b3a84556646850b5c8f4f75ad4fa527dc21ccfbbfd7707f894c260d9c",
+    "local_copy_sha256": "e2e988a6beb519908ebd5e4fa14094e706bd967ee3b8d5613d7aeee58a4666b7",
+    "transformation": "CRLF to LF, remove one extra terminal LF"
+  }
+]

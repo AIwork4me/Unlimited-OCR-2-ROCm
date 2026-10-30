@@ -1,0 +1,6 @@
+{
+  "name": "fused_mul_sigmoid_mul",
+  "body": "extern \"C\" __global__\n__attribute__((amdgpu_flat_work_group_size(1, 1024)))\nvoid fused_mul_sigmoid_mul(__nv_bfloat16* tx_1, __nv_bfloat16* aten_mul_1) {\n{\n  float tx_1_1 = __bfloat162float(tx_1[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)]);\n  aten_mul_1[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)] = __float2bfloat16(tx_1_1 * (1.f / (1.f + (expf(0.f - tx_1_1 * 1.703125f)))));\n}\n}\ngpu_block_extents: (2056ll, 1, 1)\ngpu_thread_extents: (512ll, 1, 1)",
+  "provenance": "Normal warm compile log; CPU profiler only; GPU timeline unavailable",
+  "log_sha256": "ff9c69c72121ecf39d3ad374c5977734da52f0b08ff99f77b44d4672031502b5"
+}

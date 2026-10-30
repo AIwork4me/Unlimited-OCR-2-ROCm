@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "decision": "KEEP EXPERIMENTAL",
+  "original_commit": "10067ee690dc5fb1f98c0b1917fe408aebf7b119",
+  "prior_rca_pr": 22,
+  "source_hashes": {
+    "experiments/clip_mlp/analyze.py": "8fb4e685c5e9e26db56b0d1fa8de9066c0fb14bccb6a40f7511dd14aae105a79",
+    "experiments/clip_mlp/capture.py": "60966e693f9bb9b49e1c80f3203374818a557e73f67c17524e35a57abae9b439",
+    "experiments/clip_mlp/multiply.py": "8b2202e0f0373eb432b5c75df42a3f6e791e7984a5c137f70bd4977754efba12",
+    "experiments/clip_mlp/publish.py": "b7bbf81f8e61a68642c4244297ed07aeb64c391e5174f0e5ee75f0e2cec4e878",
+    "experiments/clip_mlp/replay.py": "cb87a64d618b3244c53193145f505a49f8e48176f5f8c9a24062e19ad6061ccd",
+    "experiments/clip_mlp/run_replay.py": "c0f0e37a066055b8ac7bc687a3d798de23c070f83842675af4f74d39a9ebb582"
+  },
+  "test_sha256": "6b001066dfb390b8b9ce549479cf37c6290e5ce50dcca8742d8e22535c6d2315",
+  "report_sha256": "24496e100d1e45232c3007160f7004d889afd7694fc452e5138bbeccbd0dfb12",
+  "seal_sha256": "dd1cd61a0a5ccb4f3e4843cc96c212866d0241cfbce710025eb170c69518db54",
+  "cpu": {
+    "passed": 310,
+    "skipped": 7,
+    "checks": [
+      {
+        "name": "ruff",
+        "exit_code": 0,
+        "log": ".b/mlp/cpu-final/0.log",
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+      },
+      {
+        "name": "ruff",
+        "exit_code": 0,
+        "log": ".b/mlp/cpu-final/1.log",
+        "log_sha256": "87bf6ae342b9d4cf8926374754d47ba335ed8007815b00218638906a349271dc"
+      },
+      {
+        "name": "pytest",
+        "exit_code": 0,
+        "log": ".b/mlp/cpu-final/2.log",
+        "log_sha256": "3a6d0f53d6b3ae32bce9f29ec3340ec0ea43a7fdae0fca1dc66c0652caf860e8"
+      },
+      {
+        "name": "mypy",
+        "exit_code": 0,
+        "log": ".b/mlp/cpu-final/3.log",
+        "log_sha256": "63da153bcdac04b2cc982479df4378f21b20029f9acb87ad908fb4d5befe6a43"
+      },
+      {
+        "name": "build",
+        "exit_code": 0,
+        "log": ".b/mlp/cpu-final/4.log",
+        "log_sha256": "a430ec49c3389ab378aa9f951cfa889d96f1234f0524021da6ba9049445cd097"
+      },
+      {
+        "name": "pip",
+        "exit_code": 0,
+        "log": ".b/mlp/cpu-final/5.log",
+        "log_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+      }
+    ]
+  },
+  "historical_hashes": {
+    "p230": {
+      "checked": 68,
+      "mismatches": 0
+    },
+    "p240": {
+      "checked": 338,
+      "mismatches": 0
+    }
+  },
+  "independent_gpu_processes": 10,
+  "replay_processes": 38,
+  "direct_single_operator_processes": 4,
+  "new_full_ocr_requests": 2,
+  "measured_P2_requests": 0,
+  "production_changes": false,
+  "review": {
+    "result": "Independent numerical reproduction and publication review passed; publisher guards tightened afterwards",
+    "guards": "Before/after HIP PASS plus exact reduction cardinality; 12 focused CPU contract tests pass"
+  },
+  "publication_privacy": "PASS; no tensor/OCR payloads or user paths in sealed artifacts",
+  "rejected_publication_drafts": "Retained locally; copied graph source-location comments were stripped before publication; counts/HIP guards hardened without changing results"
+}

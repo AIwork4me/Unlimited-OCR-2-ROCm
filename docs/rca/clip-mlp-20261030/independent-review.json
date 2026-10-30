@@ -1,0 +1,353 @@
+{
+  "audit_10067ee": {
+    "candidate_requests": 48,
+    "processes": 24,
+    "cpu_passed": 298,
+    "cpu_skipped": 7,
+    "historical_hashes": 406,
+    "findings": []
+  },
+  "operator_reproduction": {
+    "replay": [
+      {
+        "condition": "no-opt-cold-0",
+        "input_exact": true,
+        "tensor_hash_verified": true,
+        "expected_capture_exact": true,
+        "hip_pass": true,
+        "exit_code": 0,
+        "active": 0,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "te_group": false,
+        "operators": [
+          {
+            "name": "quick_gelu",
+            "count": 1
+          },
+          {
+            "name": "aten::mul",
+            "count": 2
+          },
+          {
+            "name": "aten::sigmoid",
+            "count": 1
+          }
+        ],
+        "kernel_visibility": "CPU profiler only; GPU kernel symbols unavailable"
+      },
+      {
+        "condition": "no-opt-warm-0",
+        "input_exact": true,
+        "tensor_hash_verified": true,
+        "expected_capture_exact": true,
+        "hip_pass": true,
+        "exit_code": 0,
+        "active": 0,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "te_group": false,
+        "operators": [
+          {
+            "name": "quick_gelu",
+            "count": 1
+          },
+          {
+            "name": "aten::mul",
+            "count": 2
+          },
+          {
+            "name": "aten::sigmoid",
+            "count": 1
+          }
+        ],
+        "kernel_visibility": "CPU profiler only; GPU kernel symbols unavailable"
+      },
+      {
+        "condition": "normal-cold-0",
+        "input_exact": true,
+        "tensor_hash_verified": true,
+        "expected_capture_exact": true,
+        "hip_pass": true,
+        "exit_code": 0,
+        "active": 0,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "te_group": false,
+        "operators": [
+          {
+            "name": "defaults",
+            "count": 1
+          },
+          {
+            "name": "quick_gelu",
+            "count": 1
+          },
+          {
+            "name": "aten::mul",
+            "count": 2
+          },
+          {
+            "name": "aten::sigmoid",
+            "count": 1
+          }
+        ],
+        "kernel_visibility": "CPU profiler only; GPU kernel symbols unavailable"
+      },
+      {
+        "condition": "normal-warm-0",
+        "input_exact": true,
+        "tensor_hash_verified": true,
+        "expected_capture_exact": true,
+        "hip_pass": true,
+        "exit_code": 0,
+        "active": 0,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "te_group": true,
+        "operators": [
+          {
+            "name": "quick_gelu",
+            "count": 1
+          },
+          {
+            "name": "fused_mul_sigmoid_mul",
+            "count": 1
+          }
+        ],
+        "kernel_visibility": "CPU profiler only; GPU kernel symbols unavailable"
+      },
+      {
+        "condition": "te-off-cold-0",
+        "input_exact": true,
+        "tensor_hash_verified": true,
+        "expected_capture_exact": true,
+        "hip_pass": true,
+        "exit_code": 0,
+        "active": 0,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "te_group": false,
+        "operators": [
+          {
+            "name": "defaults",
+            "count": 1
+          },
+          {
+            "name": "quick_gelu",
+            "count": 1
+          },
+          {
+            "name": "aten::mul",
+            "count": 2
+          },
+          {
+            "name": "aten::sigmoid",
+            "count": 1
+          }
+        ],
+        "kernel_visibility": "CPU profiler only; GPU kernel symbols unavailable"
+      },
+      {
+        "condition": "te-off-warm-0",
+        "input_exact": true,
+        "tensor_hash_verified": true,
+        "expected_capture_exact": true,
+        "hip_pass": true,
+        "exit_code": 0,
+        "active": 0,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "te_group": false,
+        "operators": [
+          {
+            "name": "quick_gelu",
+            "count": 1
+          },
+          {
+            "name": "aten::mul",
+            "count": 2
+          },
+          {
+            "name": "aten::sigmoid",
+            "count": 1
+          }
+        ],
+        "kernel_visibility": "CPU profiler only; GPU kernel symbols unavailable"
+      }
+    ],
+    "cold_warm": {
+      "elements": 1052672,
+      "different_elements": 786589,
+      "left_sha256": "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+      "right_sha256": "18b88a5e76dfdf19f720b25542ba169a22b17dc44a45bd0ebdf814bce315c258",
+      "max_abs": 0.0078125,
+      "mean_abs": 0.00010635799844749272,
+      "min_signed": -0.0078125,
+      "max_signed": 0.0078125,
+      "first_differing_flat_index": 0,
+      "first_differing_coordinate": [
+        0,
+        0,
+        0
+      ],
+      "first_signed_delta": 3.0517578125e-05,
+      "nonfinite_left": 0,
+      "nonfinite_right": 0
+    },
+    "cold_matches_capture01": true,
+    "warm_matches_capture03": true,
+    "cold_cpu_staged_exact": true,
+    "warm_cpu_fused_exact": true,
+    "input_file_hash_exact": true,
+    "input_tensor_hash_exact": true,
+    "multiply": [
+      {
+        "condition": "0",
+        "metrics": {
+          "elements": 1052672,
+          "different_elements": 135175,
+          "left_sha256": "9b9a1e2accdd9b2e3f515982e16cdc2e6798e1b7a33487813bb554b491e50a71",
+          "right_sha256": "c9af2bf7a268bc7c88742838601290351cd9691dc4a13bcdfb3f79169c2c0058",
+          "max_abs": 0.0625,
+          "mean_abs": 0.004949159920215607,
+          "min_signed": -0.0625,
+          "max_signed": 0.015625,
+          "first_differing_flat_index": 7,
+          "first_differing_coordinate": [
+            0,
+            0,
+            7
+          ],
+          "first_signed_delta": -0.0078125,
+          "nonfinite_left": 0,
+          "nonfinite_right": 0
+        },
+        "cpu_original_exact": true,
+        "cpu_emitted_exact": true,
+        "fallback_allowed": false,
+        "hip_before": "PASS",
+        "hip_after": "PASS",
+        "operator_schema": "aten::mul.Scalar(Tensor self, Scalar other) -> Tensor",
+        "IR_constant_1702": true,
+        "kernel_constant_1703125": true
+      },
+      {
+        "condition": "1",
+        "metrics": {
+          "elements": 1052672,
+          "different_elements": 135175,
+          "left_sha256": "9b9a1e2accdd9b2e3f515982e16cdc2e6798e1b7a33487813bb554b491e50a71",
+          "right_sha256": "c9af2bf7a268bc7c88742838601290351cd9691dc4a13bcdfb3f79169c2c0058",
+          "max_abs": 0.0625,
+          "mean_abs": 0.004949159920215607,
+          "min_signed": -0.0625,
+          "max_signed": 0.015625,
+          "first_differing_flat_index": 7,
+          "first_differing_coordinate": [
+            0,
+            0,
+            7
+          ],
+          "first_signed_delta": -0.0078125,
+          "nonfinite_left": 0,
+          "nonfinite_right": 0
+        },
+        "cpu_original_exact": true,
+        "cpu_emitted_exact": true,
+        "fallback_allowed": false,
+        "hip_before": "PASS",
+        "hip_after": "PASS",
+        "operator_schema": "aten::mul.Scalar(Tensor self, Scalar other) -> Tensor",
+        "IR_constant_1702": true,
+        "kernel_constant_1703125": true
+      }
+    ]
+  },
+  "minimal_natural_prefix": {
+    "rows": [
+      {
+        "position": "cold",
+        "output_sha256": "a93958fbcb307a5540aae7eef992d5a63ffb58f7768edd5b36898eee2e4ef3ef",
+        "root_output_exact": true,
+        "input_exact": true,
+        "prefix": 2,
+        "model_loaded": false,
+        "weights_loaded": false,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "exit_code": 0,
+        "active": 0,
+        "hip_before": "PASS",
+        "hip_after": "PASS",
+        "static_graph": "graph(%x.1 : Tensor):\n  %1 : float = prim::Constant[value=1.702]()\n  %2 : Tensor = aten::mul(%x.1, %1)\n  %3 : Tensor = aten::sigmoid(%2)\n  return (%3)\n",
+        "measured_graph": "graph(%x.1 : Tensor):\n  %1 : float = prim::Constant[value=1.702]()\n  %4 : Tensor = prim::profile[profiled_type=BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0), seen_none=0](%x.1)\n  %2 : Tensor = aten::mul(%4, %1)\n  %5 : Tensor = prim::profile[profiled_type=BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0), seen_none=0](%2)\n  %3 : Tensor = aten::sigmoid(%5)\n  %6 : Tensor = prim::profile[profiled_type=BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0), seen_none=0](%3)\n   = prim::profile()\n  return (%6)\n",
+        "operators": [
+          {
+            "name": "defaults",
+            "count": 1
+          },
+          {
+            "name": "original_prefix_2",
+            "count": 1
+          },
+          {
+            "name": "aten::mul",
+            "count": 1
+          },
+          {
+            "name": "aten::sigmoid",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "position": "warm",
+        "output_sha256": "c6478f186ec12dca624ced7e79c4432508022b06c3ecb177e19bfddb70c60b8f",
+        "root_output_exact": true,
+        "input_exact": true,
+        "prefix": 2,
+        "model_loaded": false,
+        "weights_loaded": false,
+        "wheel": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+        "torch_git": "098172edc887399a593f0c74ae5c40b1fe043801",
+        "exit_code": 0,
+        "active": 0,
+        "hip_before": "PASS",
+        "hip_after": "PASS",
+        "static_graph": "graph(%x.1 : Tensor):\n  %1 : float = prim::Constant[value=1.702]()\n  %2 : Tensor = aten::mul(%x.1, %1)\n  %3 : Tensor = aten::sigmoid(%2)\n  return (%3)\n",
+        "measured_graph": "graph(%x.1 : Tensor):\n  %13 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0), %14 : bool = prim::TypeCheck[types=[BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0)]](%x.1)\n  %15 : Tensor = prim::If(%14)\n    block0():\n      %8 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0) = prim::TensorExprGroup_0(%13)\n      -> (%8)\n    block1():\n      %20 : Function = prim::Constant[name=\"fallback_function\", fallback=1]()\n      %21 : (Tensor) = prim::CallFunction(%20, %x.1)\n      %22 : Tensor = prim::TupleUnpack(%21)\n      -> (%22)\n  return (%15)\nwith prim::TensorExprGroup_0 = graph(%x.1 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0)):\n  %3 : float = prim::Constant[value=1.702]()\n  %4 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0) = aten::mul(%x.1, %3)\n  %1 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0) = aten::sigmoid(%4)\n  return (%1)\n",
+        "operators": [
+          {
+            "name": "original_prefix_2",
+            "count": 1
+          },
+          {
+            "name": "fused_mul_sigmoid",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "difference": {
+      "elements": 1052672,
+      "different_elements": 764078,
+      "left_sha256": "a93958fbcb307a5540aae7eef992d5a63ffb58f7768edd5b36898eee2e4ef3ef",
+      "right_sha256": "c6478f186ec12dca624ced7e79c4432508022b06c3ecb177e19bfddb70c60b8f",
+      "max_abs": 0.00390625,
+      "mean_abs": 8.168201748048887e-05,
+      "min_signed": -0.00390625,
+      "max_signed": 0.00390625,
+      "first_differing_flat_index": 0,
+      "first_differing_coordinate": [
+        0,
+        0,
+        0
+      ],
+      "first_signed_delta": -3.814697265625e-06,
+      "nonfinite_left": 0,
+      "nonfinite_right": 0
+    },
+    "source_provenance_members_verified": 11
+  }
+}

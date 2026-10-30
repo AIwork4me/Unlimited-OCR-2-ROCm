@@ -1,0 +1,8 @@
+{
+  "experiments/clip_mlp/analyze.py": "8fb4e685c5e9e26db56b0d1fa8de9066c0fb14bccb6a40f7511dd14aae105a79",
+  "experiments/clip_mlp/capture.py": "60966e693f9bb9b49e1c80f3203374818a557e73f67c17524e35a57abae9b439",
+  "experiments/clip_mlp/multiply.py": "8b2202e0f0373eb432b5c75df42a3f6e791e7984a5c137f70bd4977754efba12",
+  "experiments/clip_mlp/publish.py": "b7bbf81f8e61a68642c4244297ed07aeb64c391e5174f0e5ee75f0e2cec4e878",
+  "experiments/clip_mlp/replay.py": "cb87a64d618b3244c53193145f505a49f8e48176f5f8c9a24062e19ad6061ccd",
+  "experiments/clip_mlp/run_replay.py": "c0f0e37a066055b8ac7bc687a3d798de23c070f83842675af4f74d39a9ebb582"
+}
