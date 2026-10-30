@@ -104,9 +104,13 @@ enabled, as one supervised identity, before any 15-page request.
   official client `infer.py@48ff432`, customized SGLang wheel hash-matched to
   `benchmark-lock.json`, frozen model loop) and its independent review record.
 - Evidence: `eval/results/Linux gfx1151 verified/p2b-ngram/` (run receipt, GT
-  slice identity, per-document replays, both scorer passes with coverage,
-  `p2b-evidence.json`). Raw model bytes and token ids stay in the untracked
-  ledger run (`.b/p2b-runs/…`); nothing in the immutable control evidence was
-  rewritten.
+  slice identity receipt, per-document replays, both scorer passes with
+  coverage, `p2b-evidence.json`). The raw GT annotation slice itself was
+  removed from the published tree by the P0 publication remediation and is
+  preserved outside Git — see `docs/validation/P0_PUBLICATION_REMEDIATION.md`;
+  its identity stays verifiable via `p2b-gt-slice-receipt.json`
+  (slice_sha256 5f2211f8…). Raw model bytes and token ids stay in the
+  untracked ledger run (`.b/p2b-runs/…`); nothing in the immutable control
+  evidence was rewritten.
 - Scorer tree rebuilt 85/85 hash-verified from the P1 closure copies before
   both passes; both official scorer jobs remain green on all PRs.
