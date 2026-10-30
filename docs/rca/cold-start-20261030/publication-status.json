@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP EXPERIMENTAL",
+  "candidate_qualified_requests": 48,
+  "historical_PR15": "EXACT_PARITY_FAIL_UNCHANGED",
+  "historical_PR21": "STRICT_RESTART_FAIL_PARTIAL_UNCHANGED",
+  "production_changes": false
+}

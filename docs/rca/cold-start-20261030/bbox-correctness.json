@@ -1,0 +1,1708 @@
+{
+  "scope": "New analysis only; PR15 exact parity FAIL preserved",
+  "pairs": {
+    "english": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "45e76e31dc6f1e9858f2a6c8250320178c4aba165f275c5a9a7936a42df0717a",
+        "abdb2f7159afdea3bf47f81bcc799e57c8c36f8f445521c0899b080bfc979e9f"
+      ],
+      "token_hashes": [
+        "ba7a9234e46bad67655f1a896fe18915cc8a7d042d9ae65e1fc690eba590de6f",
+        "5b1d1565187d3bbece7464dab0e1f55e25b395ce6d9f43d3002553b8430c9e7b"
+      ],
+      "first_differing_token": 13,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        1,
+        1
+      ],
+      "signed_delta_distribution": {
+        "0": 12,
+        "1": 1,
+        "-1": 2,
+        "-2": 1
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            99,
+            354,
+            156
+          ],
+          "right": [
+            59,
+            99,
+            354,
+            157
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "iou": 0.9827586206896551,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            240,
+            442,
+            301
+          ],
+          "right": [
+            59,
+            240,
+            442,
+            300
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "iou": 0.9836065573770492,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            383,
+            290,
+            443
+          ],
+          "right": [
+            59,
+            383,
+            290,
+            441
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            -2
+          ],
+          "iou": 0.9666666666666667,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            525,
+            279,
+            583
+          ],
+          "right": [
+            59,
+            525,
+            278,
+            583
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            -1,
+            0
+          ],
+          "iou": 0.9954545454545455,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    "chinese": {
+      "raw_exact": true,
+      "output_ids_exact": true,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "d8e6506030defe9e5588ba45064a98bbf6cbe68d6e660e3a9025fd92a31d44df",
+        "d8e6506030defe9e5588ba45064a98bbf6cbe68d6e660e3a9025fd92a31d44df"
+      ],
+      "token_hashes": [
+        "a8523ba33aae563b4aef23f08f90104dc9fadf52175ecfba3f47b9a270612cb0",
+        "a8523ba33aae563b4aef23f08f90104dc9fadf52175ecfba3f47b9a270612cb0"
+      ],
+      "first_differing_token": null,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        1,
+        1
+      ],
+      "signed_delta_distribution": {
+        "0": 16
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            95,
+            294,
+            167
+          ],
+          "right": [
+            56,
+            95,
+            294,
+            167
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            237,
+            368,
+            308
+          ],
+          "right": [
+            56,
+            237,
+            368,
+            308
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            317,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            317,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            522,
+            322,
+            592
+          ],
+          "right": [
+            56,
+            522,
+            322,
+            592
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_PASS"
+    },
+    "mixed": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "07fb7e56534864260ed091396198bd629638e93c12deee1c8701a90d86912d87",
+        "f43b416b2067b61bb836805208b880245be0f39910d8e4869414432f98fee9c3"
+      ],
+      "token_hashes": [
+        "802372f513821425b3e4d7d2230ac52cbaa2fea03a0b1a36133f7639e1649c6d",
+        "872fd707b20146266de846319fd8462f73a15e6b9dad084a6b0145dff12210e1"
+      ],
+      "first_differing_token": 10,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        1,
+        1
+      ],
+      "signed_delta_distribution": {
+        "0": 6,
+        "1": 4,
+        "2": 2,
+        "-1": 2,
+        "3": 2
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            95,
+            379,
+            165
+          ],
+          "right": [
+            56,
+            95,
+            380,
+            167
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "iou": 0.969221536351166,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            55,
+            239,
+            395,
+            306
+          ],
+          "right": [
+            55,
+            238,
+            396,
+            308
+          ],
+          "signed_deltas": [
+            0,
+            -1,
+            1,
+            2
+          ],
+          "iou": 0.9543359865940511,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            55,
+            380,
+            334,
+            448
+          ],
+          "right": [
+            55,
+            379,
+            335,
+            451
+          ],
+          "signed_deltas": [
+            0,
+            -1,
+            1,
+            3
+          ],
+          "iou": 0.9410714285714286,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 1,
+          "label": "text",
+          "left": [
+            55,
+            521,
+            392,
+            591
+          ],
+          "right": [
+            55,
+            521,
+            393,
+            594
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            1,
+            3
+          ],
+          "iou": 0.956067115181973,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    "table": {
+      "raw_exact": true,
+      "output_ids_exact": true,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "add9c0ca008617918122697a60ec53b0fea534c72ba39ce78b593629b9740477",
+        "add9c0ca008617918122697a60ec53b0fea534c72ba39ce78b593629b9740477"
+      ],
+      "token_hashes": [
+        "c107278561b40ce076245ac94d607ad5000d1e857379390c475fd10d8c362d74",
+        "c107278561b40ce076245ac94d607ad5000d1e857379390c475fd10d8c362d74"
+      ],
+      "first_differing_token": null,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        1,
+        1
+      ],
+      "signed_delta_distribution": {
+        "0": 4
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "table",
+          "left": [
+            41,
+            118,
+            959,
+            636
+          ],
+          "right": [
+            41,
+            118,
+            959,
+            636
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_PASS"
+    },
+    "math": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "61fe2228a05cd1059bf9cd0e60b61b3940d6fcd53051a5dc8503685e0e98a3ac",
+        "9f1da17aa935996d0936c4bfef04655b40a283fc1fab0c53bd337ab717351d9a"
+      ],
+      "token_hashes": [
+        "ac11a7e00984fd39034b3c6399047b6787264c33876b1a8b34350fc2a53bc9b9",
+        "4cb3ef5656b8e1adc8cb8710e9c807ec47b4236266f5f552c5f11431eda12d1f"
+      ],
+      "first_differing_token": 4,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        1,
+        1
+      ],
+      "signed_delta_distribution": {
+        "2": 4,
+        "-2": 3,
+        "0": 3,
+        "1": 1,
+        "-3": 1
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            97,
+            432,
+            165
+          ],
+          "right": [
+            58,
+            99,
+            430,
+            165
+          ],
+          "signed_deltas": [
+            2,
+            2,
+            -2,
+            0
+          ],
+          "iou": 0.9602628285356696,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            240,
+            462,
+            301
+          ],
+          "right": [
+            58,
+            240,
+            460,
+            301
+          ],
+          "signed_deltas": [
+            2,
+            0,
+            -2,
+            0
+          ],
+          "iou": 0.9901477832512315,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            382,
+            470,
+            443
+          ],
+          "right": [
+            58,
+            383,
+            468,
+            440
+          ],
+          "signed_deltas": [
+            2,
+            1,
+            -2,
+            -3
+          ],
+          "iou": 0.9253979567593252,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    "repeat_unicode_recovery": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "45e76e31dc6f1e9858f2a6c8250320178c4aba165f275c5a9a7936a42df0717a",
+        "abdb2f7159afdea3bf47f81bcc799e57c8c36f8f445521c0899b080bfc979e9f"
+      ],
+      "token_hashes": [
+        "ba7a9234e46bad67655f1a896fe18915cc8a7d042d9ae65e1fc690eba590de6f",
+        "5b1d1565187d3bbece7464dab0e1f55e25b395ce6d9f43d3002553b8430c9e7b"
+      ],
+      "first_differing_token": 13,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        1,
+        1
+      ],
+      "signed_delta_distribution": {
+        "0": 12,
+        "1": 1,
+        "-1": 2,
+        "-2": 1
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            99,
+            354,
+            156
+          ],
+          "right": [
+            59,
+            99,
+            354,
+            157
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "iou": 0.9827586206896551,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            240,
+            442,
+            301
+          ],
+          "right": [
+            59,
+            240,
+            442,
+            300
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "iou": 0.9836065573770492,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            383,
+            290,
+            443
+          ],
+          "right": [
+            59,
+            383,
+            290,
+            441
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            -2
+          ],
+          "iou": 0.9666666666666667,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 1,
+          "label": "text",
+          "left": [
+            59,
+            525,
+            279,
+            583
+          ],
+          "right": [
+            59,
+            525,
+            278,
+            583
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            -1,
+            0
+          ],
+          "iou": 0.9954545454545455,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    "pages_2": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "c08e7f728ea1e46dc20c2958bf6d3ac857902542935e257a0b64525b7d7b2a8e",
+        "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+      ],
+      "token_hashes": [
+        "2699d338b14f7e20298c4c9f4abafe426b126a211e95ab541be02b16fcc8790e",
+        "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+      ],
+      "first_differing_token": 67,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        3,
+        3
+      ],
+      "signed_delta_distribution": {
+        "0": 23,
+        "-1": 1
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            184,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            188,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            -1,
+            0
+          ],
+          "iou": 0.9924242424242424,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 4,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            379,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 5,
+          "page": 2,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    "pages_3": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "83d8b6ce9c811f22f4c081bbf0bc869da3c64f8ee2af2e03a25f0a800d422c62",
+        "ec722cf281c53a65f475d0160ce4fc1b01bf93e39b18706ff8e6dd39dc3e7612"
+      ],
+      "token_hashes": [
+        "c87547c4ea2dff2ee77123ae118b9daa47f09d943ad0fd293306a878cd884cef",
+        "be2cf15919c166b5a9af2f03ca7dc52ab3f4488d5c7506c0213fa87d97a5c95e"
+      ],
+      "first_differing_token": 10,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        3,
+        3
+      ],
+      "signed_delta_distribution": {
+        "0": 31,
+        "2": 1,
+        "1": 4
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            184,
+            168
+          ],
+          "right": [
+            57,
+            97,
+            186,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "iou": 0.9708225667527993,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            354,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            355,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "iou": 0.9966442953020134,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 4,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            238,
+            379,
+            310
+          ],
+          "right": [
+            57,
+            238,
+            380,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "iou": 0.9969040247678018,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 5,
+          "page": 2,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            239,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "iou": 0.994535519125683,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 6,
+          "page": 3,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 7,
+          "page": 3,
+          "label": "text",
+          "left": [
+            57,
+            238,
+            374,
+            310
+          ],
+          "right": [
+            57,
+            238,
+            374,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 8,
+          "page": 3,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    "pages_5": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "2f6390b8ff4962a50b2cd17fa93dbb20081b46524b5ea1d2c9ae53759b6403b2",
+        "4304e70b77e712f4085d26d8b0916eff3cb85b7f31f0504e2a1d18f78c2575d3"
+      ],
+      "token_hashes": [
+        "8b867659431be7a22a1f5c0089bc90faaa763fe3dc42d25d543b3813ae6a1ad0",
+        "13fcb5b00c7b1621ce52d15a0e6a901e8f2767e0027edc846bc2317a574e046f"
+      ],
+      "first_differing_token": 83,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        5,
+        5
+      ],
+      "signed_delta_distribution": {
+        "0": 56,
+        "1": 4
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            185,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            185,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 1,
+          "label": "text",
+          "left": [
+            57,
+            240,
+            355,
+            310
+          ],
+          "right": [
+            57,
+            240,
+            355,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 2,
+          "page": 1,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            235,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 3,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 4,
+          "page": 2,
+          "label": "text",
+          "left": [
+            57,
+            238,
+            380,
+            310
+          ],
+          "right": [
+            57,
+            239,
+            380,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "iou": 0.9861111111111112,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 5,
+          "page": 2,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 6,
+          "page": 3,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 7,
+          "page": 3,
+          "label": "text",
+          "left": [
+            57,
+            238,
+            374,
+            310
+          ],
+          "right": [
+            57,
+            239,
+            374,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "iou": 0.9861111111111112,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 8,
+          "page": 3,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 9,
+          "page": 4,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 10,
+          "page": 4,
+          "label": "text",
+          "left": [
+            57,
+            238,
+            360,
+            310
+          ],
+          "right": [
+            57,
+            239,
+            360,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "iou": 0.9861111111111112,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 11,
+          "page": 4,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 12,
+          "page": 5,
+          "label": "text",
+          "left": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "right": [
+            57,
+            97,
+            189,
+            169
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 13,
+          "page": 5,
+          "label": "text",
+          "left": [
+            57,
+            238,
+            383,
+            310
+          ],
+          "right": [
+            57,
+            239,
+            383,
+            310
+          ],
+          "signed_deltas": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "iou": 0.9861111111111112,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 14,
+          "page": 5,
+          "label": "text",
+          "left": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "right": [
+            56,
+            380,
+            238,
+            450
+          ],
+          "signed_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "iou": 1.0,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    },
+    "table_2_pages": {
+      "raw_exact": false,
+      "output_ids_exact": false,
+      "prompt_ids_exact": true,
+      "raw_hashes": [
+        "150a5ef5f4bc61ad01e9f6f6c25eec9e3d6bc3123f0fcb2290c4686c9b050d70",
+        "6e8468fed46556360ddc8cf04e1ec60abbd223bc45efb400bb96342293f09a46"
+      ],
+      "token_hashes": [
+        "0193686ea0f979e07f7d007b71449dfca2a61edb479861c5a07d934441277e22",
+        "7ee6da3bf0c7f4b419fb07d34e28bd8a94d01bf47e9ac505f6a9d5ab696d333d"
+      ],
+      "first_differing_token": 4,
+      "alignment_content_labels_reading_order_exact": true,
+      "exact_nonbbox_bytes": true,
+      "page_marker_counts": [
+        3,
+        3
+      ],
+      "signed_delta_distribution": {
+        "3": 2,
+        "0": 4,
+        "-1": 2
+      },
+      "boxes": [
+        {
+          "index": 0,
+          "page": 1,
+          "label": "table",
+          "left": [
+            38,
+            118,
+            960,
+            468
+          ],
+          "right": [
+            41,
+            118,
+            959,
+            468
+          ],
+          "signed_deltas": [
+            3,
+            0,
+            -1,
+            0
+          ],
+          "iou": 0.9956616052060737,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        },
+        {
+          "index": 1,
+          "page": 2,
+          "label": "append_table",
+          "left": [
+            38,
+            118,
+            960,
+            468
+          ],
+          "right": [
+            41,
+            118,
+            959,
+            468
+          ],
+          "signed_deltas": [
+            3,
+            0,
+            -1,
+            0
+          ],
+          "iou": 0.9956616052060737,
+          "valid_left": true,
+          "valid_right": true,
+          "boundary_touch": false
+        }
+      ],
+      "invalid_boxes": [],
+      "acceptance": "EXACT_FAIL"
+    }
+  },
+  "source_hashes": {
+    "experiments\\cold_start\\analyze.py": "5f0fb4a2fd90eabd3687f8dd89db7f6a256e0167b0e215dd66fdcf0afa7622f8",
+    "src\\unlimited_ocr_2_rocm\\_upstream\\process_unlimitedOCR2.py": "fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782"
+  },
+  "coordinate_scale": {
+    "renderer_denominator": 999,
+    "converter_clamp": 1000,
+    "pixel_delta_formula": "signed_delta * image_axis_pixels / 999"
+  }
+}

@@ -17,3 +17,6 @@ eval/benchmarks/g05/scorer/artifacts/** linguist-generated=true
 eval/benchmarks/g05/scorer/final/** linguist-generated=true
 eval/benchmarks/g05/scorer/preliminary/** linguist-generated=true
 eval/g1/** -text -whitespace
+# Preserve the exact bytes bound by the cold-start publication/validation seals.
+docs/rca/cold-start-20261030/** -text -whitespace
+docs/rca/*20261030.* -text -whitespace
