@@ -1,0 +1,97 @@
+{
+ "expected_documents": 1,
+ "tasks": {
+  "display_formula": {
+   "documents_with_samples": 0,
+   "documents_without_samples": [
+    "handwritten_chn_375d58b7.pdf"
+   ],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 0
+   },
+   "sample_count": 0
+  },
+  "figure": {
+   "documents_with_samples": 0,
+   "documents_without_samples": [
+    "handwritten_chn_375d58b7.pdf"
+   ],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 0
+   },
+   "sample_count": 0
+  },
+  "head": {
+   "documents_with_samples": 1,
+   "documents_without_samples": [],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 1
+   },
+   "sample_count": 1
+  },
+  "merged_table": {
+   "documents_with_samples": 1,
+   "documents_without_samples": [],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 1
+   },
+   "sample_count": 1
+  },
+  "merged_text_block": {
+   "documents_with_samples": 0,
+   "documents_without_samples": [
+    "handwritten_chn_375d58b7.pdf"
+   ],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 0
+   },
+   "sample_count": 0
+  },
+  "reading_order": {
+   "documents_with_samples": 0,
+   "documents_without_samples": [
+    "handwritten_chn_375d58b7.pdf"
+   ],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 0
+   },
+   "sample_count": 0
+  },
+  "table": {
+   "documents_with_samples": 1,
+   "documents_without_samples": [],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 1
+   },
+   "sample_count": 1
+  },
+  "table_relation": {
+   "documents_with_samples": 1,
+   "documents_without_samples": [],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 1
+   },
+   "sample_count": 1
+  },
+  "text_block": {
+   "documents_with_samples": 0,
+   "documents_without_samples": [
+    "handwritten_chn_375d58b7.pdf"
+   ],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 0
+   },
+   "sample_count": 0
+  },
+  "text_relation": {
+   "documents_with_samples": 0,
+   "documents_without_samples": [
+    "handwritten_chn_375d58b7.pdf"
+   ],
+   "per_document_samples": {
+    "handwritten_chn_375d58b7.pdf": 0
+   },
+   "sample_count": 0
+  }
+ }
+}
