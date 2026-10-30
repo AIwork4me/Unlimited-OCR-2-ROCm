@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-30T02:24:12.174158+00:00",
+  "source_commit": "82951c73b28bf735f5655e6f5c3306cd170a21c2",
+  "scope": "Windows native short-document integration in retained original-wheel environment; permits separate synthetic candidate diagnostics only",
+  "decision": "PASS_WINDOWS_SCOPED",
+  "matrix": {
+    "P0": "PASS",
+    "Windows_original_wheel_golden": "PASS",
+    "Windows_runtime_dependency_drift_from_golden": "PASS",
+    "Global_repository_privacy": "HOLD",
+    "Linux_reproducibility": "HOLD",
+    "Fresh_exact_integration_clean_install": "NOT RUN",
+    "Real_documents": "BLOCKED_DATA"
+  },
+  "required_windows_execution_gates": {
+    "exact_source_and_ancestry": "PASS",
+    "production_and_platform_dispatch_audit": "PASS",
+    "immutable_model_benchmark_locks": "PASS",
+    "original_wheel_and_loaded_native_identity": "PASS",
+    "runtime_dependencies_unchanged_from_golden": "PASS",
+    "cpu_package_regression": "PASS",
+    "source_bound_physical_13_case_golden_parity": "PASS",
+    "failure_preserving_ledger_contract": "PASS"
+  },
+  "original_wheel_sha256": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+  "candidate_wheel_for_separate_AB": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "disclosures": [
+    "This is a new user-requested Windows execution assessment; previous broad HOLD receipts remain unchanged.",
+    "Exact baseline retains Linux private wheel URL/stale editable-source freeze and Linux evidence-overwrite defects; those remain global privacy/reproducibility/release blockers and are not certified.",
+    "PR12 verifier atomicity finding is outside this baseline, not a Windows runtime input.",
+    "Physical Windows environment is package-identical to golden environment. Strict historical 42-pin comparison has inherited build-tool differences: setuptools79.0.1 vs81.0.0, wheel absent vs0.48.0. Remaining40 pins match. No full-freeze match or fresh integrated clean-install claim.",
+    "Long-document capacity/GTT claims and Linux/other hardware remain outside this short-document decision.",
+    "No merge, release, private-payload publication, wheel redistribution, production AUTO default or real-document authorization."
+  ],
+  "evidence_sha256": {
+    "p0-independent-review.md": "c943e1bec5015862481de952db170c435b0df9aafdd1d2292e24d84162e717d6",
+    "p0-independent-probes.json": "c46e2bc974f193335bcedf571d8913cd4cc03d3b3e333f25b16417c04b949673",
+    "p0-source-probes.json": "9effd9a87712aafeee632c61b09f97ffef4bf21fd395830089ceca6a11582a97",
+    "p0-reproduction-probes.json": "11b0b684b47476eabe22a6d56144fc00bfc2874ce73f6646dc0c8a1977f60b69",
+    "evidence-revalidation.json": "db0e151486d7fc72262cd663ad38644ad28bf4a258e6281fdfc72ea7c294170b",
+    "SHA256SUMS.json": "aef94aa9a8313f60ef34a79ec7c0665aea39ee9b949f32435c276dc820411e62",
+    "qualification.json": "0b121f9ad07f03c98f21bba78b6d3176aa82be21befa959a365efe70686daf71"
+  },
+  "historical_hold_sha256": "0b121f9ad07f03c98f21bba78b6d3176aa82be21befa959a365efe70686daf71"
+}

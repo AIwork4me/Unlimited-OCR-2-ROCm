@@ -1,0 +1,76 @@
+{
+  "status": "PREPARED_ONLY",
+  "synthetic_gpu": "NOT_RUN",
+  "real_documents": "BLOCKED_DATA",
+  "wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "source_commit": "27ef9fa82b23b7f617d8ad09457b76c6b2aec35c",
+  "source_dirty": false,
+  "protocol_sha256": "0dbdddaf293e1419cf84d9aeffe571228e94690d4027ed79b5a1a702e3e120d9",
+  "cases": 10,
+  "trials": 160,
+  "measured_pairs_per_case": 6,
+  "diagnostic_trials": 20,
+  "warmup_trials": 20,
+  "input_hashes": {
+    "english": [
+      "0415e96e99e66b079e12bb7e40006a966cd5c9b3d0e18f8fb070e61bcfde4cd0"
+    ],
+    "chinese": [
+      "a6b464b0f4e6065d952a031b6f09e09efcc1a81a400c7195f1935e1b844e54f5"
+    ],
+    "mixed": [
+      "09714bd58f4042dde37d4c1152b273585f7beb86562b046e02d5b2b58205ef03"
+    ],
+    "table": [
+      "bda4a05724a65eb16d3bc1a5685037ff9ddf2e34e80ae2fd25741fe1294563ae"
+    ],
+    "math": [
+      "ddf58c93e7d5a15c5110747b94b7fe1e9a7579eae3aecd1f80d4e2aca905cb90"
+    ],
+    "repeat_unicode_recovery": [
+      "0415e96e99e66b079e12bb7e40006a966cd5c9b3d0e18f8fb070e61bcfde4cd0"
+    ],
+    "pages_2": [
+      "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e",
+      "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625"
+    ],
+    "pages_3": [
+      "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e",
+      "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625",
+      "4aab8ecfb402dac49daf070704768e0ceeaab14bec572e07ee6c76310ed538d8"
+    ],
+    "pages_5": [
+      "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e",
+      "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625",
+      "4aab8ecfb402dac49daf070704768e0ceeaab14bec572e07ee6c76310ed538d8",
+      "fbbedcae51819976300ae30459c9b6e3dffc3c882b7aa2fb41d93e4b8a44d74e",
+      "530773d30a2907a3644069bf80e3b7aec04f9f20f8c0cd8ccb1ce83ff96bed51"
+    ],
+    "table_2_pages": [
+      "e98e7723145341e5410783a6624b73d2880fd133eefe6a3db6aa5a861a82c9c7",
+      "99af64fe1a270a94089a2a7125a57453d315e122f4ee396a2e4bb5dacf3f0b25"
+    ]
+  },
+  "validation": {
+    "cpu_tests_passed": 327,
+    "cpu_tests_skipped": 8,
+    "focused_tests_passed": 40,
+    "checks": {
+      "ruff": "PASS",
+      "format": "PASS",
+      "pytest": "PASS",
+      "mypy": "PASS",
+      "build": "PASS",
+      "pip-check": "PASS"
+    },
+    "candidate_installed_binaries_checked": 16,
+    "candidate_aotriton_images_checked": 7,
+    "candidate_loaded_native_identity": "NOT RUN in P2 preparation",
+    "p0_hold_rejection": "PASS before GPU child launch",
+    "windows_job_cpu_grandchild_cleanup": "PASS",
+    "independent_review": "No remaining blocking finding for preparation",
+    "model_gpu_quality_latency_memory": "NOT RUN",
+    "recommendation": "KEEP EXPERIMENTAL"
+  }
+}
