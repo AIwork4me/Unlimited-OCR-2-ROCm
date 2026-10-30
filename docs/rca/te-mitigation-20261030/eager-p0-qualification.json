@@ -1,0 +1,2409 @@
+{
+  "producer_sha256": "7e4930644f8393a94b76d37a76d6e529543213d9f8e5d4ca5cde9b4b8ca393df",
+  "declaration_sha256": "44623f40d39384f1df293d7c7042785690af6e94e1d4aed1898fd3d685b0deae",
+  "all_physical_and_functional_gates": true,
+  "independent_process_coverage": true,
+  "matched_model_source_wheel_determinism": true,
+  "option_stage_repeatability": {
+    "eager": true
+  },
+  "option_exact_repeatability": {
+    "eager": true
+  },
+  "performance_acceptance": "UNQUALIFIED: instrumented descriptive measurements only",
+  "recommendation": "KEEP EXPERIMENTAL",
+  "processes": [
+    {
+      "label": "eager-MATH-0",
+      "checks": {
+        "exit_zero": true,
+        "no_descendants": true,
+        "no_failure": true,
+        "complete": true,
+        "wheel": true,
+        "cases": true,
+        "producer": true,
+        "scope": true,
+        "restored": true,
+        "single_model": true,
+        "owned_pid": true
+      },
+      "pid": 106820,
+      "created": 1793356979.6790593,
+      "option": "eager",
+      "modes": null
+    },
+    {
+      "label": "eager-MATH-1",
+      "checks": {
+        "exit_zero": true,
+        "no_descendants": true,
+        "no_failure": true,
+        "complete": true,
+        "wheel": true,
+        "cases": true,
+        "producer": true,
+        "scope": true,
+        "restored": true,
+        "single_model": true,
+        "owned_pid": true
+      },
+      "pid": 94200,
+      "created": 1793357047.6158736,
+      "option": "eager",
+      "modes": null
+    }
+  ],
+  "requests": [
+    {
+      "label": "eager-MATH-0",
+      "option": "eager",
+      "repeat": 0,
+      "ordinal": 0,
+      "mode": "MATH",
+      "case": "pages_2_run_1",
+      "case_equivalence": [
+        [
+          "page_1",
+          "page_2"
+        ],
+        2048
+      ],
+      "gates": {
+        "wrapper": true,
+        "functional": true,
+        "stop": true,
+        "state_restored": true,
+        "hip": true,
+        "dash": true,
+        "guard": true,
+        "observation": true,
+        "layers": true,
+        "layer_calls": true,
+        "actual_graphs": true,
+        "profile_linkage": true,
+        "activation_contract": true,
+        "attention": true,
+        "physical_contract": true,
+        "unfused_graph": true,
+        "unfused_dispatch": true,
+        "case_identity": true,
+        "stage_alignment": true,
+        "tensor_artifacts": true,
+        "geometry_valid": true,
+        "raw_integrity": true,
+        "guard_contract": true,
+        "mutable_state": true
+      },
+      "raw_sha256": "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+      "output_ids_sha256": "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+      "prompt_ids_sha256": "a72064c03c76d6d5a14e40d0e3db9adad68c0f89712d070cb1f1e5eb85d607f8",
+      "prompt_sha256": "3b369e507371b8058c135d642d82149a94ac5f281a0d7028dbc9bfd83bb87be2",
+      "finish_reason": "stop",
+      "page_markers": 3,
+      "block_markers": 6,
+      "latency_seconds": 17.548282800009474,
+      "dispatch": {
+        "sam_model": {
+          "aten.scaled_dot_product_attention.default": 24,
+          "aten::_scaled_dot_product_attention_math": 24
+        },
+        "vision_model": {
+          "aten.scaled_dot_product_attention.default": 48,
+          "aten::_scaled_dot_product_attention_math": 48
+        }
+      },
+      "graph_sha256": [],
+      "fused_events": 0,
+      "memory": {
+        "process_rss_bytes": 7275974656,
+        "process_peak_rss_bytes": 9577209856,
+        "system_total_bytes": 132766306304,
+        "system_available_bytes": 82706366464,
+        "system_memory_percent": 37.7,
+        "gpu_allocated_bytes": 6865832448,
+        "gpu_reserved_bytes": 9430892544,
+        "gpu_peak_allocated_bytes": 9199327744,
+        "gpu_peak_reserved_bytes": 9430892544,
+        "gpu_free_total_bytes": [
+          68059951104,
+          83954728960
+        ]
+      },
+      "effective_options": {
+        "crop_mode": false,
+        "eval_mode": true,
+        "max_length": 131072,
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "page_count_guard": true,
+        "max_page_tokens": 20000,
+        "dash_topm": 16,
+        "return_dict": true
+      },
+      "functional": {
+        "status": "PASS",
+        "threshold_max_cer": 0.02,
+        "input_page_count": 2,
+        "raw_page_markers": 3,
+        "content_page_count": 2,
+        "terminal_empty_marker": true,
+        "raw_marker_count_matches_input": false,
+        "page_count_match": true,
+        "no_substantive_preamble": true,
+        "ordered_page_content_match": true,
+        "pages": [
+          {
+            "page": 1,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          },
+          {
+            "page": 2,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          }
+        ]
+      },
+      "geometry": {
+        "boxes": [
+          {
+            "index": 0,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 4,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          }
+        ],
+        "invalid_boxes": []
+      },
+      "stages": [
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+          "file_sha256": "d966b901037db6abaa7b81823cff38b52560020d9ffe3555b1f023e63713d602"
+        },
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+          "file_sha256": "33b936482c2c68adcf63b26751e53f3ef6130b371108f76505412cb692242449"
+        },
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+          "file_sha256": "e2b10f6555ac0d5217681382e629e34eb297d98cc54aa178f7c731226bf7ac43"
+        },
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+          "file_sha256": "05e9fb29d2c3e19a41bb8f40016b6ce5430377ea982f14169668f31b369f5b56"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+          "file_sha256": "7d5108ed4b777f3d92798bc941296293800fd680d1b8e92e39b4fb87fe01d67b"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+          "file_sha256": "26c99fcc9f60316831cc8d7a16ec33b3e09eb5bdfc27c79271506c6557be6740"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+          "file_sha256": "3c9b9e998d60e0aab74633f88e33994b8a261dfe388f3926416449a46b4babc8"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+          "file_sha256": "a9e6fa00f0880257b5c60d17562653894c12896170cd79d47ccb8be150247b00"
+        }
+      ]
+    },
+    {
+      "label": "eager-MATH-0",
+      "option": "eager",
+      "repeat": 0,
+      "ordinal": 1,
+      "mode": "MATH",
+      "case": "pages_2_run_1",
+      "case_equivalence": [
+        [
+          "page_1",
+          "page_2"
+        ],
+        2048
+      ],
+      "gates": {
+        "wrapper": true,
+        "functional": true,
+        "stop": true,
+        "state_restored": true,
+        "hip": true,
+        "dash": true,
+        "guard": true,
+        "observation": true,
+        "layers": true,
+        "layer_calls": true,
+        "actual_graphs": true,
+        "profile_linkage": true,
+        "activation_contract": true,
+        "attention": true,
+        "physical_contract": true,
+        "unfused_graph": true,
+        "unfused_dispatch": true,
+        "case_identity": true,
+        "stage_alignment": true,
+        "tensor_artifacts": true,
+        "geometry_valid": true,
+        "raw_integrity": true,
+        "guard_contract": true,
+        "mutable_state": true
+      },
+      "raw_sha256": "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+      "output_ids_sha256": "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+      "prompt_ids_sha256": "a72064c03c76d6d5a14e40d0e3db9adad68c0f89712d070cb1f1e5eb85d607f8",
+      "prompt_sha256": "3b369e507371b8058c135d642d82149a94ac5f281a0d7028dbc9bfd83bb87be2",
+      "finish_reason": "stop",
+      "page_markers": 3,
+      "block_markers": 6,
+      "latency_seconds": 13.669897000072524,
+      "dispatch": {
+        "sam_model": {
+          "aten.scaled_dot_product_attention.default": 24,
+          "aten::_scaled_dot_product_attention_math": 24
+        },
+        "vision_model": {
+          "aten.scaled_dot_product_attention.default": 48,
+          "aten::_scaled_dot_product_attention_math": 48
+        }
+      },
+      "graph_sha256": [],
+      "fused_events": 0,
+      "memory": {
+        "process_rss_bytes": 7315103744,
+        "process_peak_rss_bytes": 9577209856,
+        "system_total_bytes": 132766306304,
+        "system_available_bytes": 82603122688,
+        "system_memory_percent": 37.8,
+        "gpu_allocated_bytes": 6865832448,
+        "gpu_reserved_bytes": 9430892544,
+        "gpu_peak_allocated_bytes": 9199336960,
+        "gpu_peak_reserved_bytes": 9430892544,
+        "gpu_free_total_bytes": [
+          68059951104,
+          83954728960
+        ]
+      },
+      "effective_options": {
+        "crop_mode": false,
+        "eval_mode": true,
+        "max_length": 131072,
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "page_count_guard": true,
+        "max_page_tokens": 20000,
+        "dash_topm": 16,
+        "return_dict": true
+      },
+      "functional": {
+        "status": "PASS",
+        "threshold_max_cer": 0.02,
+        "input_page_count": 2,
+        "raw_page_markers": 3,
+        "content_page_count": 2,
+        "terminal_empty_marker": true,
+        "raw_marker_count_matches_input": false,
+        "page_count_match": true,
+        "no_substantive_preamble": true,
+        "ordered_page_content_match": true,
+        "pages": [
+          {
+            "page": 1,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          },
+          {
+            "page": 2,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          }
+        ]
+      },
+      "geometry": {
+        "boxes": [
+          {
+            "index": 0,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 4,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          }
+        ],
+        "invalid_boxes": []
+      },
+      "stages": [
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+          "file_sha256": "d966b901037db6abaa7b81823cff38b52560020d9ffe3555b1f023e63713d602"
+        },
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+          "file_sha256": "33b936482c2c68adcf63b26751e53f3ef6130b371108f76505412cb692242449"
+        },
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+          "file_sha256": "e2b10f6555ac0d5217681382e629e34eb297d98cc54aa178f7c731226bf7ac43"
+        },
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+          "file_sha256": "05e9fb29d2c3e19a41bb8f40016b6ce5430377ea982f14169668f31b369f5b56"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+          "file_sha256": "7d5108ed4b777f3d92798bc941296293800fd680d1b8e92e39b4fb87fe01d67b"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+          "file_sha256": "26c99fcc9f60316831cc8d7a16ec33b3e09eb5bdfc27c79271506c6557be6740"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+          "file_sha256": "3c9b9e998d60e0aab74633f88e33994b8a261dfe388f3926416449a46b4babc8"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+          "file_sha256": "a9e6fa00f0880257b5c60d17562653894c12896170cd79d47ccb8be150247b00"
+        }
+      ]
+    },
+    {
+      "label": "eager-MATH-1",
+      "option": "eager",
+      "repeat": 1,
+      "ordinal": 0,
+      "mode": "MATH",
+      "case": "pages_2_run_1",
+      "case_equivalence": [
+        [
+          "page_1",
+          "page_2"
+        ],
+        2048
+      ],
+      "gates": {
+        "wrapper": true,
+        "functional": true,
+        "stop": true,
+        "state_restored": true,
+        "hip": true,
+        "dash": true,
+        "guard": true,
+        "observation": true,
+        "layers": true,
+        "layer_calls": true,
+        "actual_graphs": true,
+        "profile_linkage": true,
+        "activation_contract": true,
+        "attention": true,
+        "physical_contract": true,
+        "unfused_graph": true,
+        "unfused_dispatch": true,
+        "case_identity": true,
+        "stage_alignment": true,
+        "tensor_artifacts": true,
+        "geometry_valid": true,
+        "raw_integrity": true,
+        "guard_contract": true,
+        "mutable_state": true
+      },
+      "raw_sha256": "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+      "output_ids_sha256": "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+      "prompt_ids_sha256": "a72064c03c76d6d5a14e40d0e3db9adad68c0f89712d070cb1f1e5eb85d607f8",
+      "prompt_sha256": "3b369e507371b8058c135d642d82149a94ac5f281a0d7028dbc9bfd83bb87be2",
+      "finish_reason": "stop",
+      "page_markers": 3,
+      "block_markers": 6,
+      "latency_seconds": 15.71637859987095,
+      "dispatch": {
+        "sam_model": {
+          "aten.scaled_dot_product_attention.default": 24,
+          "aten::_scaled_dot_product_attention_math": 24
+        },
+        "vision_model": {
+          "aten.scaled_dot_product_attention.default": 48,
+          "aten::_scaled_dot_product_attention_math": 48
+        }
+      },
+      "graph_sha256": [],
+      "fused_events": 0,
+      "memory": {
+        "process_rss_bytes": 7277944832,
+        "process_peak_rss_bytes": 9577472000,
+        "system_total_bytes": 132766306304,
+        "system_available_bytes": 83667005440,
+        "system_memory_percent": 37.0,
+        "gpu_allocated_bytes": 6865832448,
+        "gpu_reserved_bytes": 9430892544,
+        "gpu_peak_allocated_bytes": 9199327744,
+        "gpu_peak_reserved_bytes": 9430892544,
+        "gpu_free_total_bytes": [
+          68059951104,
+          83954728960
+        ]
+      },
+      "effective_options": {
+        "crop_mode": false,
+        "eval_mode": true,
+        "max_length": 131072,
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "page_count_guard": true,
+        "max_page_tokens": 20000,
+        "dash_topm": 16,
+        "return_dict": true
+      },
+      "functional": {
+        "status": "PASS",
+        "threshold_max_cer": 0.02,
+        "input_page_count": 2,
+        "raw_page_markers": 3,
+        "content_page_count": 2,
+        "terminal_empty_marker": true,
+        "raw_marker_count_matches_input": false,
+        "page_count_match": true,
+        "no_substantive_preamble": true,
+        "ordered_page_content_match": true,
+        "pages": [
+          {
+            "page": 1,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          },
+          {
+            "page": 2,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          }
+        ]
+      },
+      "geometry": {
+        "boxes": [
+          {
+            "index": 0,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 4,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          }
+        ],
+        "invalid_boxes": []
+      },
+      "stages": [
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+          "file_sha256": "d966b901037db6abaa7b81823cff38b52560020d9ffe3555b1f023e63713d602"
+        },
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+          "file_sha256": "33b936482c2c68adcf63b26751e53f3ef6130b371108f76505412cb692242449"
+        },
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+          "file_sha256": "e2b10f6555ac0d5217681382e629e34eb297d98cc54aa178f7c731226bf7ac43"
+        },
+        {
+          "request": 0,
+          "call": 1,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+          "file_sha256": "05e9fb29d2c3e19a41bb8f40016b6ce5430377ea982f14169668f31b369f5b56"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+          "file_sha256": "7d5108ed4b777f3d92798bc941296293800fd680d1b8e92e39b4fb87fe01d67b"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+          "file_sha256": "26c99fcc9f60316831cc8d7a16ec33b3e09eb5bdfc27c79271506c6557be6740"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+          "file_sha256": "3c9b9e998d60e0aab74633f88e33994b8a261dfe388f3926416449a46b4babc8"
+        },
+        {
+          "request": 0,
+          "call": 2,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+          "file_sha256": "a9e6fa00f0880257b5c60d17562653894c12896170cd79d47ccb8be150247b00"
+        }
+      ]
+    },
+    {
+      "label": "eager-MATH-1",
+      "option": "eager",
+      "repeat": 1,
+      "ordinal": 1,
+      "mode": "MATH",
+      "case": "pages_2_run_1",
+      "case_equivalence": [
+        [
+          "page_1",
+          "page_2"
+        ],
+        2048
+      ],
+      "gates": {
+        "wrapper": true,
+        "functional": true,
+        "stop": true,
+        "state_restored": true,
+        "hip": true,
+        "dash": true,
+        "guard": true,
+        "observation": true,
+        "layers": true,
+        "layer_calls": true,
+        "actual_graphs": true,
+        "profile_linkage": true,
+        "activation_contract": true,
+        "attention": true,
+        "physical_contract": true,
+        "unfused_graph": true,
+        "unfused_dispatch": true,
+        "case_identity": true,
+        "stage_alignment": true,
+        "tensor_artifacts": true,
+        "geometry_valid": true,
+        "raw_integrity": true,
+        "guard_contract": true,
+        "mutable_state": true
+      },
+      "raw_sha256": "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+      "output_ids_sha256": "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+      "prompt_ids_sha256": "a72064c03c76d6d5a14e40d0e3db9adad68c0f89712d070cb1f1e5eb85d607f8",
+      "prompt_sha256": "3b369e507371b8058c135d642d82149a94ac5f281a0d7028dbc9bfd83bb87be2",
+      "finish_reason": "stop",
+      "page_markers": 3,
+      "block_markers": 6,
+      "latency_seconds": 12.883394100004807,
+      "dispatch": {
+        "sam_model": {
+          "aten.scaled_dot_product_attention.default": 24,
+          "aten::_scaled_dot_product_attention_math": 24
+        },
+        "vision_model": {
+          "aten.scaled_dot_product_attention.default": 48,
+          "aten::_scaled_dot_product_attention_math": 48
+        }
+      },
+      "graph_sha256": [],
+      "fused_events": 0,
+      "memory": {
+        "process_rss_bytes": 7317835776,
+        "process_peak_rss_bytes": 9577472000,
+        "system_total_bytes": 132766306304,
+        "system_available_bytes": 83603148800,
+        "system_memory_percent": 37.0,
+        "gpu_allocated_bytes": 6865832448,
+        "gpu_reserved_bytes": 9430892544,
+        "gpu_peak_allocated_bytes": 9199336960,
+        "gpu_peak_reserved_bytes": 9430892544,
+        "gpu_free_total_bytes": [
+          68059951104,
+          83954728960
+        ]
+      },
+      "effective_options": {
+        "crop_mode": false,
+        "eval_mode": true,
+        "max_length": 131072,
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "page_count_guard": true,
+        "max_page_tokens": 20000,
+        "dash_topm": 16,
+        "return_dict": true
+      },
+      "functional": {
+        "status": "PASS",
+        "threshold_max_cer": 0.02,
+        "input_page_count": 2,
+        "raw_page_markers": 3,
+        "content_page_count": 2,
+        "terminal_empty_marker": true,
+        "raw_marker_count_matches_input": false,
+        "page_count_match": true,
+        "no_substantive_preamble": true,
+        "ordered_page_content_match": true,
+        "pages": [
+          {
+            "page": 1,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          },
+          {
+            "page": 2,
+            "character_error_rate": 0.0,
+            "important_numbers_match": true,
+            "structure_valid": true,
+            "status": "PASS"
+          }
+        ]
+      },
+      "geometry": {
+        "boxes": [
+          {
+            "index": 0,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 4,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          }
+        ],
+        "invalid_boxes": []
+      },
+      "stages": [
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+          "file_sha256": "d966b901037db6abaa7b81823cff38b52560020d9ffe3555b1f023e63713d602"
+        },
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+          "file_sha256": "33b936482c2c68adcf63b26751e53f3ef6130b371108f76505412cb692242449"
+        },
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+          "file_sha256": "e2b10f6555ac0d5217681382e629e34eb297d98cc54aa178f7c731226bf7ac43"
+        },
+        {
+          "request": 1,
+          "call": 1,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+          "file_sha256": "05e9fb29d2c3e19a41bb8f40016b6ce5430377ea982f14169668f31b369f5b56"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "mlp-input",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+          "file_sha256": "7d5108ed4b777f3d92798bc941296293800fd680d1b8e92e39b4fb87fe01d67b"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "activation-input",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+          "file_sha256": "26c99fcc9f60316831cc8d7a16ec33b3e09eb5bdfc27c79271506c6557be6740"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "activation-output",
+          "shape": [
+            1,
+            257,
+            4096
+          ],
+          "stride": [
+            1052672,
+            4096,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+          "file_sha256": "3c9b9e998d60e0aab74633f88e33994b8a261dfe388f3926416449a46b4babc8"
+        },
+        {
+          "request": 1,
+          "call": 2,
+          "stage": "mlp-output",
+          "shape": [
+            1,
+            257,
+            1024
+          ],
+          "stride": [
+            263168,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "sha256": "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+          "file_sha256": "a9e6fa00f0880257b5c60d17562653894c12896170cd79d47ccb8be150247b00"
+        }
+      ]
+    }
+  ],
+  "repeat_pairs": [
+    {
+      "option": "eager",
+      "left": [
+        "eager-MATH-0",
+        0
+      ],
+      "right": [
+        "eager-MATH-0",
+        1
+      ],
+      "stage_hashes_exact": true,
+      "comparison": {
+        "raw_exact": true,
+        "output_ids_exact": true,
+        "prompt_ids_exact": true,
+        "raw_hashes": [
+          "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+          "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+        ],
+        "token_hashes": [
+          "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+          "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+        ],
+        "first_differing_token": null,
+        "alignment_content_labels_reading_order_exact": true,
+        "exact_nonbbox_bytes": true,
+        "page_marker_counts": [
+          3,
+          3
+        ],
+        "signed_delta_distribution": {
+          "0": 24
+        },
+        "acceptance": "EXACT_PASS",
+        "boxes": [
+          {
+            "index": 0,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 4,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          }
+        ],
+        "invalid_boxes": []
+      }
+    },
+    {
+      "option": "eager",
+      "left": [
+        "eager-MATH-0",
+        0
+      ],
+      "right": [
+        "eager-MATH-1",
+        0
+      ],
+      "stage_hashes_exact": true,
+      "comparison": {
+        "raw_exact": true,
+        "output_ids_exact": true,
+        "prompt_ids_exact": true,
+        "raw_hashes": [
+          "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+          "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+        ],
+        "token_hashes": [
+          "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+          "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+        ],
+        "first_differing_token": null,
+        "alignment_content_labels_reading_order_exact": true,
+        "exact_nonbbox_bytes": true,
+        "page_marker_counts": [
+          3,
+          3
+        ],
+        "signed_delta_distribution": {
+          "0": 24
+        },
+        "acceptance": "EXACT_PASS",
+        "boxes": [
+          {
+            "index": 0,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 4,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          }
+        ],
+        "invalid_boxes": []
+      }
+    },
+    {
+      "option": "eager",
+      "left": [
+        "eager-MATH-0",
+        0
+      ],
+      "right": [
+        "eager-MATH-1",
+        1
+      ],
+      "stage_hashes_exact": true,
+      "comparison": {
+        "raw_exact": true,
+        "output_ids_exact": true,
+        "prompt_ids_exact": true,
+        "raw_hashes": [
+          "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+          "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+        ],
+        "token_hashes": [
+          "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+          "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+        ],
+        "first_differing_token": null,
+        "alignment_content_labels_reading_order_exact": true,
+        "exact_nonbbox_bytes": true,
+        "page_marker_counts": [
+          3,
+          3
+        ],
+        "signed_delta_distribution": {
+          "0": 24
+        },
+        "acceptance": "EXACT_PASS",
+        "boxes": [
+          {
+            "index": 0,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              184,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              354,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              235,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "right": [
+              57,
+              97,
+              188,
+              169
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 4,
+            "page": 2,
+            "label": "text",
+            "left": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "right": [
+              57,
+              240,
+              379,
+              310
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "label": "text",
+            "left": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "right": [
+              56,
+              380,
+              238,
+              450
+            ],
+            "signed_deltas": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "iou": 1.0,
+            "valid_left": true,
+            "valid_right": true,
+            "boundary_touch": false
+          }
+        ],
+        "invalid_boxes": []
+      }
+    }
+  ],
+  "cross_options": []
+}

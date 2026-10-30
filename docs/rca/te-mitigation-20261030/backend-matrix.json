@@ -1,0 +1,6827 @@
+{
+  "producer_sha256": "b7c8833bafa553e56189e54bc858175affc20a82e061e66da94e39fee79d5659",
+  "declaration_sha256": "d1724bc9322c77f48c789f05bded46224cf12e5d900b94626f76b7359d17bd8a",
+  "physical_functional": true,
+  "categories": {
+    "same_order_fresh_process_repeat": [
+      {
+        "left": [
+          "MATH,MATH",
+          0,
+          0
+        ],
+        "right": [
+          "MATH,MATH",
+          1,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,MATH",
+          0,
+          1
+        ],
+        "right": [
+          "MATH,MATH",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,AUTO",
+          0,
+          0
+        ],
+        "right": [
+          "AUTO,AUTO",
+          1,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,AUTO",
+          0,
+          1
+        ],
+        "right": [
+          "AUTO,AUTO",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,AUTO",
+          0,
+          0
+        ],
+        "right": [
+          "MATH,AUTO",
+          1,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,AUTO",
+          0,
+          1
+        ],
+        "right": [
+          "MATH,AUTO",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,MATH",
+          0,
+          0
+        ],
+        "right": [
+          "AUTO,MATH",
+          1,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,MATH",
+          0,
+          1
+        ],
+        "right": [
+          "AUTO,MATH",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      }
+    ],
+    "within_backend_cold_warm": [
+      {
+        "left": [
+          "MATH,MATH",
+          0,
+          0
+        ],
+        "right": [
+          "MATH,MATH",
+          0,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,AUTO",
+          0,
+          0
+        ],
+        "right": [
+          "AUTO,AUTO",
+          0,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,MATH",
+          1,
+          0
+        ],
+        "right": [
+          "MATH,MATH",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,AUTO",
+          1,
+          0
+        ],
+        "right": [
+          "AUTO,AUTO",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      }
+    ],
+    "matched_cold_backend": [
+      {
+        "left": [
+          "MATH,MATH",
+          0,
+          0
+        ],
+        "right": [
+          "AUTO,AUTO",
+          0,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,AUTO",
+          0,
+          0
+        ],
+        "right": [
+          "AUTO,MATH",
+          0,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,MATH",
+          1,
+          0
+        ],
+        "right": [
+          "AUTO,AUTO",
+          1,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,AUTO",
+          1,
+          0
+        ],
+        "right": [
+          "AUTO,MATH",
+          1,
+          0
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      }
+    ],
+    "matched_warm_backend": [
+      {
+        "left": [
+          "MATH,MATH",
+          0,
+          1
+        ],
+        "right": [
+          "MATH,AUTO",
+          0,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,MATH",
+          0,
+          1
+        ],
+        "right": [
+          "AUTO,AUTO",
+          0,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,MATH",
+          1,
+          1
+        ],
+        "right": [
+          "MATH,AUTO",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,MATH",
+          1,
+          1
+        ],
+        "right": [
+          "AUTO,AUTO",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": false,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      }
+    ],
+    "prior_backend_interaction": [
+      {
+        "left": [
+          "MATH,MATH",
+          0,
+          1
+        ],
+        "right": [
+          "AUTO,MATH",
+          0,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,AUTO",
+          0,
+          1
+        ],
+        "right": [
+          "MATH,AUTO",
+          0,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "MATH,MATH",
+          1,
+          1
+        ],
+        "right": [
+          "AUTO,MATH",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+              "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+              "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+              "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+              "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+              "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+              "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+              "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+              "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      },
+      {
+        "left": [
+          "AUTO,AUTO",
+          1,
+          1
+        ],
+        "right": [
+          "MATH,AUTO",
+          1,
+          1
+        ],
+        "stages": [
+          {
+            "call": 1,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381",
+              "b24b41260acf16298db8684be8a76b9ff4ce54e56cbab7f4f695ac9558dc5381"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451",
+              "9e3b8e5fa5cb48757e2983c3f4265ee5677d4578f852e3018a1940f067ab5451"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908",
+              "f81dd7ce175154ea5c1f90ef807576a11f350f9f1033a06b00692297c0913908"
+            ]
+          },
+          {
+            "call": 1,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34",
+              "723f7ed97742ec66a72ddee33edada3f7f4af0261ca8f9809b4bdeb8a7835c34"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd",
+              "5e8773c1565052a251c526d3e06c9abbf59459ec95de133e3eadb67ce37ff5cd"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-input",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5",
+              "e8c80f9b96b377cb38fc7d6fb322f1283cc5d47b822761f0565512b1181d4ae5"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "activation-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d",
+              "16cec2dc17fed8c385f636d847c755632f9c9e8b860f2acc9a09db603b9f300d"
+            ]
+          },
+          {
+            "call": 2,
+            "stage": "mlp-output",
+            "contracts_exact": true,
+            "bytes_exact": true,
+            "hashes": [
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884",
+              "69abffb5a90b0363121d3109844e7a6719e9d9b3ebcda5f28c7197931a1fd884"
+            ]
+          }
+        ],
+        "comparison": {
+          "raw_exact": true,
+          "output_ids_exact": true,
+          "prompt_ids_exact": true,
+          "raw_hashes": [
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d",
+            "e6408c4a652f7a738abdb14299041a346136528098eca7337443e4a00210e49d"
+          ],
+          "token_hashes": [
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4",
+            "94f5fc6b1c8464a90f97e18c3a71501b0edc9ceccd2bbf6f4f707dc089f08aa4"
+          ],
+          "first_differing_token": null,
+          "alignment_content_labels_reading_order_exact": true,
+          "exact_nonbbox_bytes": true,
+          "page_marker_counts": [
+            3,
+            3
+          ],
+          "signed_delta_distribution": {
+            "0": 24
+          },
+          "acceptance": "EXACT_PASS",
+          "boxes": [
+            {
+              "index": 0,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                184,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 1,
+              "page": 1,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                354,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 2,
+              "page": 1,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                235,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 3,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "right": [
+                57,
+                97,
+                188,
+                169
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 4,
+              "page": 2,
+              "label": "text",
+              "left": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "right": [
+                57,
+                240,
+                379,
+                310
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            },
+            {
+              "index": 5,
+              "page": 2,
+              "label": "text",
+              "left": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "right": [
+                56,
+                380,
+                238,
+                450
+              ],
+              "signed_deltas": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "iou": 1.0,
+              "valid_left": true,
+              "valid_right": true,
+              "boundary_touch": false
+            }
+          ],
+          "invalid_boxes": []
+        }
+      }
+    ]
+  },
+  "exact_by_category": {
+    "same_order_fresh_process_repeat": true,
+    "within_backend_cold_warm": true,
+    "matched_cold_backend": true,
+    "matched_warm_backend": true,
+    "prior_backend_interaction": true
+  },
+  "stage_exact_by_category": {
+    "same_order_fresh_process_repeat": true,
+    "within_backend_cold_warm": true,
+    "matched_cold_backend": false,
+    "matched_warm_backend": false,
+    "prior_backend_interaction": true
+  },
+  "causal_controls_stable": true,
+  "verdict": "EXACT_PASS",
+  "scope": "New candidate-wheel two-page eager-QuickGELU context only; historical PR15 FAIL unchanged",
+  "recommendation": "KEEP EXPERIMENTAL"
+}

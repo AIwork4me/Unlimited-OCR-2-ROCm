@@ -1,0 +1,391 @@
+{
+  "wheel_sha256": "415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c",
+  "source_commit": "82951c73b28bf735f5655e6f5c3306cd170a21c2",
+  "source_hashes": {
+    "src\\unlimited_ocr_2_rocm\\cli.py": "2b1b29a7cab324dd365fe675f03dfc71dcef025416011821f47c47b3fcadb876",
+    "src\\unlimited_ocr_2_rocm\\compat.py": "6d98f07d740a44c48af89976a2ecb66a8b9c92b0b65c91a5074335afb55db119",
+    "src\\unlimited_ocr_2_rocm\\completion.py": "7ea47e656f1dfb5ceb34a1bfa64942838a992cbd12122d87359a5aeaae72f873",
+    "src\\unlimited_ocr_2_rocm\\config.py": "e90513526bb0f1d86ed9d75387a5730fca3e9d851720d528302fb7c63d6a1f93",
+    "src\\unlimited_ocr_2_rocm\\doctor.py": "9708a33cdaed4dc1a09af83e629214f0ea4d892898887a7894fadd443094aa3e",
+    "src\\unlimited_ocr_2_rocm\\inference.py": "6e8a732c14f12dedf0c0a31d151b80dbef196fd686ff9194b0b2720af5ee1564",
+    "src\\unlimited_ocr_2_rocm\\model.py": "398196fd2e7b8f5febc09118c7da50a247597119846ddd8754fa6d9f982d435b",
+    "src\\unlimited_ocr_2_rocm\\output.py": "5c278f67e8de45028aa2795842948226ad67c4400b43ecbe4519110f2c207f33",
+    "src\\unlimited_ocr_2_rocm\\repro.py": "d0701bc8e8aa0add1ae0cc2aae91812ec3737b57002d61a304f99c944b04904c",
+    "src\\unlimited_ocr_2_rocm\\__init__.py": "b5d96949986c5445208d446b41331001aa9df9b3bce706f341ac365bd498df25",
+    "src\\unlimited_ocr_2_rocm\\__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src\\unlimited_ocr_2_rocm\\benchmark\\cli.py": "9f3bdfca9400a8e6d8b8bf5b54008536a3c25a4a4cb607958785bef0ce52dbe8",
+    "src\\unlimited_ocr_2_rocm\\benchmark\\ledger.py": "473e0b35bcca808958a890135220d1be4c9fb133ac1f5a4e07cce93355e274f8",
+    "src\\unlimited_ocr_2_rocm\\benchmark\\manifest.py": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+    "src\\unlimited_ocr_2_rocm\\benchmark\\scorer.py": "5ab71945b38c46e2c67ae733fc5a4dbadcda6a65459cd8ada9f76792fe04f327",
+    "src\\unlimited_ocr_2_rocm\\benchmark\\worker.py": "9bcc6b8a4302c17698fb03ed058719b52c2f000e8950160865ca457dae75bf32",
+    "src\\unlimited_ocr_2_rocm\\benchmark\\__init__.py": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+    "src\\unlimited_ocr_2_rocm\\_upstream\\process_unlimitedOCR2.py": "fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782",
+    "src\\unlimited_ocr_2_rocm\\_upstream\\__init__.py": "bc4567a25369bdc56080213ecddc5d2e9b147417d0f8e869d38dd9fdd99169c2"
+  },
+  "installed_member_count": 2203,
+  "installed_member_manifest_sha256": "d6511b16b1e2f04772713385592a562ee839cb8d612361f9503c77f58099ec94",
+  "loaded_native_hashes": [
+    {
+      "name": "MIOpen.dll",
+      "sha256": "e97891df7ea0ba2b6eda703bd69499521dc9a38300fe626f412b5544dec647bc",
+      "bytes": 492380672
+    },
+    {
+      "name": "_C.cp310-win_amd64.pyd",
+      "sha256": "66fd7dfbc2f2f241680e62a53d474a36d7317185106db5f47cf1fd729d5a0746",
+      "bytes": 10752
+    },
+    {
+      "name": "_C.pyd",
+      "sha256": "66228de14c8218533979f4748461784c1c04d82254702d23769137d85f637dc4",
+      "bytes": 707072
+    },
+    {
+      "name": "_bounded_integers.cp310-win_amd64.pyd",
+      "sha256": "a49b9934184b430fc0d28349ca1e334fe4399b32186276708af2f7f993b067f3",
+      "bytes": 230912
+    },
+    {
+      "name": "_common.cp310-win_amd64.pyd",
+      "sha256": "53316e831a32ec3f824c7f4c6fdfcef45180d7878a71d3581f642b217de0683d",
+      "bytes": 155648
+    },
+    {
+      "name": "_generator.cp310-win_amd64.pyd",
+      "sha256": "d16e40973d57dda880218e262bafa68bb54c96abd360caaa9844e6ede8902266",
+      "bytes": 714240
+    },
+    {
+      "name": "_imaging.cp310-win_amd64.pyd",
+      "sha256": "7b7cbd437dbb29f98c946304b44a0ac4ac40d6b61a719bd47c4d6164dbfdff89",
+      "bytes": 2479616
+    },
+    {
+      "name": "_imagingft.cp310-win_amd64.pyd",
+      "sha256": "a5444cc7f46c9cbfddc904497326b283e8a47d771888509cec4e27f9d3a8ca22",
+      "bytes": 2062848
+    },
+    {
+      "name": "_mt19937.cp310-win_amd64.pyd",
+      "sha256": "dccbde9f33e2376174f50f253a829766466ba4211006afb653ce5629e33a3427",
+      "bytes": 83456
+    },
+    {
+      "name": "_multiarray_umath.cp310-win_amd64.pyd",
+      "sha256": "483f5a560d2a12185dc9cf232c7c234dd68359bd6322282e501007964cd1cab6",
+      "bytes": 4170752
+    },
+    {
+      "name": "_pcg64.cp310-win_amd64.pyd",
+      "sha256": "034199c62a540b8d4d7277bb9cfa3318b7a5e0f9be49109c3e00b39ba7cc3005",
+      "bytes": 93696
+    },
+    {
+      "name": "_philox.cp310-win_amd64.pyd",
+      "sha256": "38772c797373ea8385b085c8b78ae9fba6b0f9aace90d2b3124e55f5eac897fa",
+      "bytes": 77824
+    },
+    {
+      "name": "_pocketfft_umath.cp310-win_amd64.pyd",
+      "sha256": "ea2928ce8515cf79a3528c61e808417367f4b5863d9ae14c85349452ea0e90d6",
+      "bytes": 279040
+    },
+    {
+      "name": "_psutil_windows.pyd",
+      "sha256": "2abb381669ce35b355b3c81943c4ea07e7e0978d9deb03f71d2f2b007b9f8ae8",
+      "bytes": 68608
+    },
+    {
+      "name": "_regex.cp310-win_amd64.pyd",
+      "sha256": "d0bd51a0007816ae45273be48282631e516587529aad84599c9b35dd734612b2",
+      "bytes": 736256
+    },
+    {
+      "name": "_safetensors_rust.pyd",
+      "sha256": "80a2b3f7658854ade855c5fb6192ee38fe2c7fbfd38d1c7c1f4d2c44f67125e4",
+      "bytes": 734720
+    },
+    {
+      "name": "_sfc64.cp310-win_amd64.pyd",
+      "sha256": "7ae5e4bf82eae5bfd775c7bf990eb32597db6d8c316ed60756f13395bf7e13b4",
+      "bytes": 59904
+    },
+    {
+      "name": "_speedups.cp310-win_amd64.pyd",
+      "sha256": "cbd64fe97a519363db2df383a4acb61f712041d56a1ed938a66ac966091e1a0b",
+      "bytes": 13312
+    },
+    {
+      "name": "_torchaudio.pyd",
+      "sha256": "5ea6b269ad14ccad9506ee1e77014f337be7e6087c08220df8912f83151b00b3",
+      "bytes": 25600
+    },
+    {
+      "name": "_umath_linalg.cp310-win_amd64.pyd",
+      "sha256": "16c72b5b018f84efbdd2c1d4469faeb643efd513fa7ed2c0dd4bd4cbf6c66f37",
+      "bytes": 108032
+    },
+    {
+      "name": "_yaml.cp310-win_amd64.pyd",
+      "sha256": "66a1e2f049bc7acb6d8a4abcf08cfe626309547165fc8659a59ceeb72dcfd6d1",
+      "bytes": 258048
+    },
+    {
+      "name": "amd_comgr.dll",
+      "sha256": "1064ca0d2ee3688e564021c6e3b4119a5e35f724c1e5dcc9eb1577f477ee7ec8",
+      "bytes": 120767488
+    },
+    {
+      "name": "amdhip64_7.dll",
+      "sha256": "1c7bad4e8ddefc456e5c073d89b59ee0bcfbcda461a5ada145370fe9941df033",
+      "bytes": 22097408
+    },
+    {
+      "name": "aotriton_v2.dll",
+      "sha256": "259eeb6f064eaf506a032bdb65dc9b52c6d5b7d9128de5372e5c5b1b7c2b5d22",
+      "bytes": 15560192
+    },
+    {
+      "name": "bit_generator.cp310-win_amd64.pyd",
+      "sha256": "5788e8dc719f6696dbd7da364581cf4dacf90b245b55e8a14c2a83bb1cb3b024",
+      "bytes": 164864
+    },
+    {
+      "name": "c10.dll",
+      "sha256": "906db655c17ba69f63a6c13675de9c6d96524eeab63f3052e70613b434937a51",
+      "bytes": 1229312
+    },
+    {
+      "name": "c10_hip.dll",
+      "sha256": "4435535e28ae915db8dc9a6c449737fbaddf79e8b2b88ddcb433e35cd0230a96",
+      "bytes": 1839104
+    },
+    {
+      "name": "caffe2_nvrtc.dll",
+      "sha256": "d47bbc7c40b53262aa21a8e1ec2607b25c01660510114390977918393a84bfac",
+      "bytes": 12800
+    },
+    {
+      "name": "cd.cp310-win_amd64.pyd",
+      "sha256": "cf94146d8e85c0b06e5a5fb9447dd5d05df50b72c6f0a91d73d8e30b5efb5043",
+      "bytes": 116736
+    },
+    {
+      "name": "dl.dll",
+      "sha256": "adc2965e53a6b675b2b0d98c9a0a38caaa4b8b9ab05c72044afd18b2fe3dd9ca",
+      "bytes": 16896
+    },
+    {
+      "name": "hipblas.dll",
+      "sha256": "a2b58f20529f768b22bcde18b0cdbc7ae58b112b9bd1171bdd23197c4fafd27c",
+      "bytes": 801280
+    },
+    {
+      "name": "hipdnn_backend.dll",
+      "sha256": "d115a4355b2c601be236025c3cbd530540c689e27d0742b34ddb62fc7063835f",
+      "bytes": 2172928
+    },
+    {
+      "name": "hipfft.dll",
+      "sha256": "33396b88f67c280cbd5c6462742c1aec154fa8583676835e10bc67317f367e95",
+      "bytes": 153600
+    },
+    {
+      "name": "hiprand.dll",
+      "sha256": "0b321daec320b7e05799dec80f61925b00f028d13b3dd0b2676e099c018ef12e",
+      "bytes": 17408
+    },
+    {
+      "name": "hiprtc0714.dll",
+      "sha256": "c6159dd12714eed42c1d851e49a425404c1a34ba27cd2a8e721b0fe3db4fd86e",
+      "bytes": 2126336
+    },
+    {
+      "name": "hipsolver.dll",
+      "sha256": "9c7bfa0b0200253b5a1c54b652d799b33c7aea50002719be16a7a0e01baf58d4",
+      "bytes": 1506816
+    },
+    {
+      "name": "hipsparse.dll",
+      "sha256": "14a4c66dc83bca56db81913056b9455ec15fbdc44201702dff5d42cfa4b8f55e",
+      "bytes": 219136
+    },
+    {
+      "name": "image.pyd",
+      "sha256": "c632d704ad73a062161971eb5ee8aca959b96dbfad58874b05894210b0d50d05",
+      "bytes": 177152
+    },
+    {
+      "name": "libhipblaslt.dll",
+      "sha256": "59bc43d0dab754f4a3c04ab101792219106cde200af9cb92bc981bfc02f8df50",
+      "bytes": 6535680
+    },
+    {
+      "name": "liblzma.dll",
+      "sha256": "091cd232f18b1e68b42430e2fbd16a7b387f6c25b4e655446217f1de293f753f",
+      "bytes": 195584
+    },
+    {
+      "name": "libomp140.x86_64.dll",
+      "sha256": "9ab1cb787e52b2a36133899c01c1db1f876067d1471cd224ead85f40a8152b99",
+      "bytes": 634936
+    },
+    {
+      "name": "libscipy_openblas64_-13e2df515630b4a41f92893938845698.dll",
+      "sha256": "6547e9fb966e9773caee2755e91a8bf4d6f3a2f0eebf9646b0158f8675ea4ab5",
+      "bytes": 20390912
+    },
+    {
+      "name": "libtorchaudio.pyd",
+      "sha256": "78747680f684f8fb65087fbe9f8c9763ad6eff7e090ff9295c7e6ea4bd4c95a6",
+      "bytes": 283648
+    },
+    {
+      "name": "libtriton.pyd",
+      "sha256": "9ca782c0ae473631ba2452d46d6c073e1494f6a1ed4a7411a59cc2c545613ed9",
+      "bytes": 110880768
+    },
+    {
+      "name": "md.cp310-win_amd64.pyd",
+      "sha256": "8e616d869a34caf39d5089ab9efeeb251bd126a86aff6c7baaeb2b5983d13c3c",
+      "bytes": 215040
+    },
+    {
+      "name": "msvcp140-263139962577ecda4cd9469ca360a746.dll",
+      "sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde",
+      "bytes": 575056
+    },
+    {
+      "name": "mtrand.cp310-win_amd64.pyd",
+      "sha256": "dff8f1ede212e69ee301329b44134a5aabcc927a1c2ff33412aa8cb0ae9b2b7d",
+      "bytes": 607744
+    },
+    {
+      "name": "rocblas.dll",
+      "sha256": "5a912880e711154594d95e9ce2c944e30966265c2e2334c6382e5634c8f52a33",
+      "bytes": 20873728
+    },
+    {
+      "name": "rocfft.dll",
+      "sha256": "5106e0e5f47c0a7564330326a5e4042a07f5b2291f1c9a3f9ae1374707b95eba",
+      "bytes": 27372544
+    },
+    {
+      "name": "rocm-openblas.dll",
+      "sha256": "88f7631d9f7c49cfbf710551a7fa69bef2fd54052007532a518d7ba3699534c0",
+      "bytes": 11719680
+    },
+    {
+      "name": "rocm_kpack.dll",
+      "sha256": "97b59ca4e7b5edfcda72d66c5b6643f557168b3c60091cf5c6fe9bb226597bf1",
+      "bytes": 181248
+    },
+    {
+      "name": "rocrand.dll",
+      "sha256": "9988b2741ca45f4f6c9a57e09031bde863fddb4f627ab43a86ee9ff7d81a2206",
+      "bytes": 36714496
+    },
+    {
+      "name": "rocsolver.dll",
+      "sha256": "a9214eea663e1eba965baa6a9f8a69ce11570b41eda15961e02e39b439f9d464",
+      "bytes": 23884800
+    },
+    {
+      "name": "rocsparse.dll",
+      "sha256": "b3f4b821e7742768ae740d8b7d1a6736f06c89f286c3f3471df1a33ae18e49a2",
+      "bytes": 69130240
+    },
+    {
+      "name": "shm.dll",
+      "sha256": "d4fd15192458de430f184c76b3ac1f0f1e45a4f6813778fdeb95906783ff4306",
+      "bytes": 14336
+    },
+    {
+      "name": "tokenizers.pyd",
+      "sha256": "4ccc571ee71aef83f4a7f362213cad04e309fc8c679b7c4119509d26313fdbf6",
+      "bytes": 7095296
+    },
+    {
+      "name": "torch.dll",
+      "sha256": "6d44ee5b1917a90ba2f289cbfbec5cab3f4b267f7a0a36df2849eed0df8eaffe",
+      "bytes": 9216
+    },
+    {
+      "name": "torch_cpu.dll",
+      "sha256": "bf5a8d64845b8c32d0bf95d90ed2e6d3116bfaa832d5857b988c4cb61f7b9e03",
+      "bytes": 227048448
+    },
+    {
+      "name": "torch_global_deps.dll",
+      "sha256": "24024469209e203eadfe260b8f0e0732b851b7d78d0842ac2aaf0a22d0c7570e",
+      "bytes": 8704
+    },
+    {
+      "name": "torch_hip.dll",
+      "sha256": "aae896f8d1df3454686c8dcc900825fa5f6c98e2f842e79d57b390bc48a8ec94",
+      "bytes": 70957568
+    },
+    {
+      "name": "torch_python.dll",
+      "sha256": "7cad7953d6b0eda6b7df5d162bc219d9ba1da93441c754e08057fd1e8732ee3c",
+      "bytes": 26086400
+    },
+    {
+      "name": "uv.dll",
+      "sha256": "12ddc16136d4dd77f324d76597652016a1db99ac5223e666d73a8be98213db5f",
+      "bytes": 210944
+    }
+  ],
+  "model": {
+    "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "code_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "source_and_weight_hashes": {
+      "configuration_deepseek_v2.py": "b8470dd616ba8745fce6e27b093aef73a098863cc891b2477dcf9326a36000f7",
+      "dash_attention.py": "960b460acd816df8e561e73dccd5683acb95445eddc723c4f0d6ed1f462b2f77",
+      "model.safetensors.index.json": "dc60a31ecb77eb03e166345d18cbe25bc71d2a19cc6fc089d8a9ac1c7f209671",
+      "special_tokens_map.json": "9e89493d7938e7710c524dbaff613c3648f0a018262417af78505128004e5cb4",
+      "tokenizer.json": "c55c165e32c5a67830362a53e1f548c8930dcc8469efa30ff3252a982799c589",
+      "generation_config.json": "dcd0479f3a12e5e4413d956197f8a4074408e4901834b38c7e036519134e05af",
+      "_sparse_base_impl.py": "86da9c5638704bb9338575040568a97b3e10820bbeb426f51c07e866f3423ccd",
+      "sparse_gather_e2e_triton.py": "58f1bc46093d47b00744970677e66bfbd7485a2d13810f46d13d867ceda13dd4",
+      "modeling_deepseekv2.py": "24a15dfd47578ab24a7a4d4e977dc5d7a23dfef0a2a4c4bf73fcf3e2ce7acaf2",
+      "config.json": "607d130a70d5af5a35329aa237acd68651f45504c62cc7ced981066f4e781126",
+      "sparse_gather_triton.py": "c3de717ffaca40240c665b8d645f15a9d1999feeabaa94beb35caad877c2f0f4",
+      "tokenizer_config.json": "ceba7d221f265cca4c98b5e0a1d48c10107270b7b29c12396610d6d0fd64b126",
+      "modeling_unlimitedocr.py": "f6df813cef23cc28b1daca40fd8cb20740d05a238e7b9dfa2334531fdcf39f1f",
+      "deepencoder.py": "419b63388c1645b9b72c716070cdca36cd0be6047049424dc75941d3a00aaf1f",
+      "packing_patch.py": "e60d842c210c9f1d6cd2ae328cf9127a75f7941a0cea2a8e9abc14662f770c6c",
+      "conversation.py": "ec7b6ce89bcda643de1f43269ffa66a7b2e65dc3ed30e427958f776546b4ba03",
+      "model-00001-of-00002.safetensors": "4c40b740f209fd7682040d4ebf19409208acde5c401ccd2dde426d0f41542f18",
+      "model-00002-of-00002.safetensors": "9490b82fa47f89e5110eb5577f8ab1b6694c12121905dbc086ddb10207a4ba0c"
+    },
+    "source_patch": null,
+    "parameter_device": "cuda:0",
+    "parameter_dtype": "torch.bfloat16"
+  },
+  "runtime": {
+    "platform": "Windows",
+    "windows_version": "10.0.26100",
+    "python": "3.10.20",
+    "packages": {
+      "torch": "2.12.0+rocm7.14.1",
+      "torchvision": "0.27.0+rocm7.14.1",
+      "torchaudio": "2.11.0+rocm7.14.1"
+    },
+    "hip": "7.14.60850",
+    "rocm": "7.14.1"
+  },
+  "device": {
+    "name": "AMD Radeon(TM) 8060S Graphics",
+    "arch": "gfx1151",
+    "memory_note": "APU shared system memory; this is not dedicated physical VRAM"
+  },
+  "determinism": {
+    "enabled": false,
+    "warn_only": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "matmul_tf32": false
+  },
+  "cache_policy": "Shared disk Triton cache; fresh process/module/model/KV; no deletion"
+}

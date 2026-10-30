@@ -1,0 +1,421 @@
+{
+  "producer_sha256": "86a46725333427089009e84d7de7c08ed3e8d96b8bb48b6f87f8ee94994a82f9",
+  "rows": [
+    {
+      "process": "eager-MATH-0",
+      "call": 1,
+      "stage": "mlp-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+        "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-0",
+      "call": 1,
+      "stage": "activation-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+        "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-0",
+      "call": 1,
+      "stage": "activation-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+        "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-0",
+      "call": 1,
+      "stage": "mlp-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+        "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-0",
+      "call": 2,
+      "stage": "mlp-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+        "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-0",
+      "call": 2,
+      "stage": "activation-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+        "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-0",
+      "call": 2,
+      "stage": "activation-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+        "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-0",
+      "call": 2,
+      "stage": "mlp-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+        "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 1,
+      "stage": "mlp-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44",
+        "6bd15025111b6ed877e1ed4779f8abc39587c2f3e04f32177292b64a09b76e44"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 1,
+      "stage": "activation-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f",
+        "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 1,
+      "stage": "activation-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8",
+        "22a35f359168cce83891fd161798bf939d9cef0796f0e83c6a48bb983294ddf8"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 1,
+      "stage": "mlp-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b",
+        "c50af7df3fa3ecc711396da2c7ad39db250885e9ca42031be76d538920dd353b"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 2,
+      "stage": "mlp-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183",
+        "e581887db5847ad03183a28f5f6dcf882e4c471dd249c82a2045fbb066d43183"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 2,
+      "stage": "activation-input",
+      "contracts_exact": true,
+      "input_hashes": [
+        "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738",
+        "e775cd602cbd2fb28d7e4f9ab4a1f63c169074f0977e016293ee10931f58e738"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 2,
+      "stage": "activation-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826",
+        "99092cbfd661a5ea81aec44223450a9d7c12828de4f5e3b467f3348693dda826"
+      ],
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    },
+    {
+      "process": "eager-MATH-1",
+      "call": 2,
+      "stage": "mlp-output",
+      "contracts_exact": true,
+      "input_hashes": [
+        "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25",
+        "f2ea7bec477c1183b83250bad4a3e6ee37f770022490057d03323cac2b075c25"
+      ],
+      "shape": [
+        1,
+        257,
+        1024
+      ],
+      "stride": [
+        263168,
+        1024,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "different_elements": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "first_flat_index": null
+    }
+  ]
+}

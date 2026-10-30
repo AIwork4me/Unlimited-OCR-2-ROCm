@@ -1,0 +1,63 @@
+{
+  "protocol_version": 2,
+  "cases": [
+    {
+      "name": "pages_2_run_1",
+      "truth_keys": [
+        "page_1",
+        "page_2"
+      ],
+      "max_new_tokens": 2048
+    },
+    {
+      "name": "pages_2_run_1",
+      "truth_keys": [
+        "page_1",
+        "page_2"
+      ],
+      "max_new_tokens": 2048
+    }
+  ],
+  "source_hashes": {
+    "experiments/te_mitigation/worker.py": "54cbd92cc29dcea0b2f2670065c530518b574be60d3468ddd85a25045abec852",
+    "experiments/te_mitigation/run.py": "5d43c84772ab4c5d55bf6574433a0b6b3f3a0d65a3d3eb830dabe2e351ab7af4",
+    "experiments/cold_start/worker.py": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0",
+    "experiments/native_regression/runner.py": "5983da029cb62ee19d3221d7c9c2700931212fee6c2895b2f33c36e60b027e51",
+    "src/unlimited_ocr_2_rocm/upstream-lock.json": "ffd730234a34504a78f5df5eb025d8341695abd51ce9025caaddeebf45e687de",
+    "docs/superpowers/plans/2026-10-30-te-mitigation-e2e.md": "88267f6575a00084b4f215d667cb488a4ad83071a77d8ae80ace44ba4f0b305e"
+  },
+  "input_hashes": {
+    "tests/fixtures/ground_truth.json": "aeb3c76c2fb401b1e3dc609f2346d11515569e27ce0d5adc4ee21ea36f06e47f",
+    "tests/fixtures/page_1.png": "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e",
+    "tests/fixtures/page_2.png": "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625"
+  },
+  "schedule": [
+    {
+      "option": "default",
+      "repeat": 0,
+      "modes": null
+    },
+    {
+      "option": "default",
+      "repeat": 1,
+      "modes": null
+    },
+    {
+      "option": "te-off",
+      "repeat": 0,
+      "modes": null
+    },
+    {
+      "option": "te-off",
+      "repeat": 1,
+      "modes": null
+    }
+  ],
+  "suite": false,
+  "backend": false,
+  "tensors": true,
+  "worker_sha256": "54cbd92cc29dcea0b2f2670065c530518b574be60d3468ddd85a25045abec852",
+  "controller_sha256": "5d43c84772ab4c5d55bf6574433a0b6b3f3a0d65a3d3eb830dabe2e351ab7af4",
+  "protocol_sha256": "88267f6575a00084b4f215d667cb488a4ad83071a77d8ae80ace44ba4f0b305e",
+  "frozen_helper_sha256": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0"
+}

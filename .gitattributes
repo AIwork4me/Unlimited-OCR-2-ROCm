@@ -20,4 +20,5 @@ eval/g1/** -text -whitespace
 # Preserve the exact bytes bound by the cold-start publication/validation seals.
 docs/rca/cold-start-20261030/** -text -whitespace
 docs/rca/clip-mlp-20261030/** -text -whitespace
+docs/rca/te-mitigation-20261030/** -text -whitespace linguist-generated=true
 docs/rca/*20261030.* -text -whitespace

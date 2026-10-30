@@ -1,0 +1,55 @@
+{
+  "protocol_version": 2,
+  "cases": [
+    {
+      "name": "pages_2_run_1",
+      "truth_keys": [
+        "page_1",
+        "page_2"
+      ],
+      "max_new_tokens": 2048
+    },
+    {
+      "name": "pages_2_run_1",
+      "truth_keys": [
+        "page_1",
+        "page_2"
+      ],
+      "max_new_tokens": 2048
+    }
+  ],
+  "source_hashes": {
+    "experiments/te_mitigation/worker.py": "2fb362cbafb28b4691b099068195d1b70c0d83610cbaa63c295e8903efb4d885",
+    "experiments/te_mitigation/run.py": "df29102b65900e12343d6fffba6a0a9e997c5429f78628ceb295b72f6404c3be",
+    "experiments/cold_start/worker.py": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0",
+    "experiments/cold_start/windows_job.py": "58311dd112e29e8a4b55d1a1f297a19bec1d829421d0e1b77fdf698079ee7adb",
+    "experiments/native_regression/runner.py": "5983da029cb62ee19d3221d7c9c2700931212fee6c2895b2f33c36e60b027e51",
+    "experiments/te_mitigation/analyze.py": "7e4930644f8393a94b76d37a76d6e529543213d9f8e5d4ca5cde9b4b8ca393df",
+    "src/unlimited_ocr_2_rocm/upstream-lock.json": "ffd730234a34504a78f5df5eb025d8341695abd51ce9025caaddeebf45e687de",
+    "docs/superpowers/plans/2026-10-30-te-mitigation-e2e.md": "88267f6575a00084b4f215d667cb488a4ad83071a77d8ae80ace44ba4f0b305e"
+  },
+  "input_hashes": {
+    "tests/fixtures/ground_truth.json": "aeb3c76c2fb401b1e3dc609f2346d11515569e27ce0d5adc4ee21ea36f06e47f",
+    "tests/fixtures/page_1.png": "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e",
+    "tests/fixtures/page_2.png": "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625"
+  },
+  "schedule": [
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": null
+    },
+    {
+      "option": "eager",
+      "repeat": 1,
+      "modes": null
+    }
+  ],
+  "suite": false,
+  "backend": false,
+  "tensors": true,
+  "worker_sha256": "2fb362cbafb28b4691b099068195d1b70c0d83610cbaa63c295e8903efb4d885",
+  "controller_sha256": "df29102b65900e12343d6fffba6a0a9e997c5429f78628ceb295b72f6404c3be",
+  "protocol_sha256": "88267f6575a00084b4f215d667cb488a4ad83071a77d8ae80ace44ba4f0b305e",
+  "frozen_helper_sha256": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0"
+}
