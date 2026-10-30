@@ -1,0 +1,290 @@
+{
+ "budget_policy_sha256": "5e7eec56c047d51205638bf6b833547bc9740cbfb0374c93f035556e688fa635",
+ "config": {
+  "budget_new_tokens": 12288,
+  "budget_policy_repo_path": "eval/experiments/p2a-token-budget/policy.json",
+  "budget_policy_sha256": "5e7eec56c047d51205638bf6b833547bc9740cbfb0374c93f035556e688fa635",
+  "claim_limit": "Four frozen P2-A documents only; NOT full MPDocBench accuracy, NOT leaderboard parity; production defaults unchanged",
+  "control_evidence": "P2-B ledger run 6e1ae22e (ngram=35/window=1024 @8192) and the immutable ngram=0 P1.5/P2-A evidence; never rewritten",
+  "documents": [
+   "handwritten_chn_1ae487be",
+   "newspaper_chn_eb87830d",
+   "newspaper_eng_ed12985c",
+   "paper_chn_3567e55d"
+  ],
+  "experiment": "P2C_COMBINED_NGRAM_BUDGET",
+  "label": "EXPERIMENTAL_NGRAM_BUDGET_COMBINED",
+  "ngram_window": 1024,
+  "no_repeat_ngram_size": 35,
+  "policy_repo_path": "eval/experiments/p2c-combined/policy.json",
+  "policy_sha256": "2068efad7e7e2e037202107027f35c483ae51fbc007099580ecae0fd7bc12397",
+  "schema": 1,
+  "timeout_seconds_per_document": 7200,
+  "unchanged": {
+   "crop_policy": "crop_mode=False (infer_multi)",
+   "decoder": "official eager + DASH Triton, 12 routers",
+   "max_pages_per_request": 5,
+   "max_pixels_per_page": 16000000,
+   "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+   "native_page_guard": "enabled (expected_pages from prompt; max_page_tokens=20000)",
+   "prompt": "official default document prompt",
+   "sampling": "greedy temperature=0",
+   "vision_sdpa": "MATH (SAM/CLIP scoped)"
+  }
+ },
+ "experiment": "P2C_COMBINED_NGRAM_BUDGET",
+ "policy_sha256": "2068efad7e7e2e037202107027f35c483ae51fbc007099580ecae0fd7bc12397",
+ "schema": 1,
+ "stages": {
+  "12288": {
+   "counts": {
+    "FAIL": 0,
+    "NOT_RUN": 416,
+    "OOM": 0,
+    "PASS": 2,
+    "TIMEOUT": 0,
+    "TRUNCATED": 2
+   },
+   "documents": {
+    "handwritten_chn_1ae487be": {
+     "decode_tokens_per_second": 13.9,
+     "finish_reason": "stop",
+     "first_ban_step": 5421,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.546,
+     "gpu_peak_reserved_gib": 8.775,
+     "host_peak_rss_gib": 2.466,
+     "max_ban_size": 1,
+     "output_tokens": 10043,
+     "pages_emitted": 5,
+     "pages_expected": 5,
+     "prefill_seconds": 4.612,
+     "prompt_tokens": 1375,
+     "repeated_tail": {},
+     "state": "PASS",
+     "steps_with_ban": 2,
+     "wall_seconds": 723.438
+    },
+    "newspaper_chn_eb87830d": {
+     "decode_tokens_per_second": 12.6,
+     "finish_reason": "length",
+     "first_ban_step": 711,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.546,
+     "gpu_peak_reserved_gib": 8.773,
+     "host_peak_rss_gib": 2.511,
+     "max_ban_size": 1,
+     "output_tokens": 12288,
+     "pages_emitted": 3,
+     "pages_expected": 5,
+     "prefill_seconds": 4.625,
+     "prompt_tokens": 1375,
+     "repeated_tail": {
+      "count": 3,
+      "cycle_len": 4,
+      "onset_index": 12276
+     },
+     "state": "TRUNCATED",
+     "steps_with_ban": 19,
+     "wall_seconds": 974.347
+    },
+    "newspaper_eng_ed12985c": {
+     "decode_tokens_per_second": 12.0,
+     "finish_reason": "length",
+     "first_ban_step": 6324,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.538,
+     "gpu_peak_reserved_gib": 8.762,
+     "host_peak_rss_gib": 2.504,
+     "max_ban_size": 2,
+     "output_tokens": 12288,
+     "pages_emitted": 3,
+     "pages_expected": 4,
+     "prefill_seconds": 4.143,
+     "prompt_tokens": 1101,
+     "repeated_tail": {
+      "count": 9,
+      "cycle_len": 2,
+      "onset_index": 12270
+     },
+     "state": "TRUNCATED",
+     "steps_with_ban": 19,
+     "wall_seconds": 1023.643
+    },
+    "paper_chn_3567e55d": {
+     "decode_tokens_per_second": 12.9,
+     "finish_reason": "stop",
+     "first_ban_step": 6434,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.546,
+     "gpu_peak_reserved_gib": 8.777,
+     "host_peak_rss_gib": 2.468,
+     "max_ban_size": 1,
+     "output_tokens": 8202,
+     "pages_emitted": 5,
+     "pages_expected": 5,
+     "prefill_seconds": 4.789,
+     "prompt_tokens": 1375,
+     "repeated_tail": {},
+     "state": "PASS",
+     "steps_with_ban": 1,
+     "wall_seconds": 635.202
+    }
+   },
+   "official_scorer_metrics": {
+    "diag": {
+     "FigureF1": 81.27690100430416,
+     "FormulaCDM": 92.7066666666667,
+     "HeadingTEDS": 33.99546776867298,
+     "ReadOrderEdit": 71.10188556016939,
+     "T-TableTEDS": null,
+     "T-TextEdit": 55.09759842555076,
+     "TableTEDS": 46.97210854673949,
+     "TextEdit": 66.62695248170931
+    },
+    "strict": {
+     "FigureF1": 50.0,
+     "FormulaCDM": 92.7066666666667,
+     "HeadingTEDS": 27.989649568376663,
+     "ReadOrderEdit": 45.583603520148216,
+     "T-TableTEDS": null,
+     "T-TextEdit": 30.01204611942866,
+     "TableTEDS": 46.97210854673949,
+     "TextEdit": 48.72725019418641
+    }
+   },
+   "overall_note": "Overall null by rule: T-TableTEDS has no sample in this subset",
+   "run_id": "bccb2252e9dddf189aa46e92bb68c207fdda2da534a5ae65896958552aa8e83e",
+   "stage_gates": {
+    "failures": [],
+    "forced_marker_mismatches": 0,
+    "next_budget_admitted": true,
+    "resource_peaks": {
+     "gpu_peak_allocated_gib": 8.546,
+     "host_peak_rss_gib": 2.511
+    }
+   }
+  },
+  "16384": {
+   "counts": {
+    "FAIL": 0,
+    "NOT_RUN": 416,
+    "OOM": 0,
+    "PASS": 2,
+    "TIMEOUT": 0,
+    "TRUNCATED": 2
+   },
+   "documents": {
+    "handwritten_chn_1ae487be": {
+     "decode_tokens_per_second": 13.5,
+     "finish_reason": "stop",
+     "first_ban_step": 5421,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.546,
+     "gpu_peak_reserved_gib": 8.775,
+     "host_peak_rss_gib": 2.466,
+     "max_ban_size": 1,
+     "output_tokens": 10043,
+     "pages_emitted": 5,
+     "pages_expected": 5,
+     "prefill_seconds": 4.656,
+     "prompt_tokens": 1375,
+     "repeated_tail": {},
+     "state": "PASS",
+     "steps_with_ban": 2,
+     "wall_seconds": 745.4
+    },
+    "newspaper_chn_eb87830d": {
+     "decode_tokens_per_second": 10.4,
+     "finish_reason": "length",
+     "first_ban_step": 711,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.546,
+     "gpu_peak_reserved_gib": 8.773,
+     "host_peak_rss_gib": 2.548,
+     "max_ban_size": 1,
+     "output_tokens": 16384,
+     "pages_emitted": 3,
+     "pages_expected": 5,
+     "prefill_seconds": 4.779,
+     "prompt_tokens": 1375,
+     "repeated_tail": {},
+     "state": "TRUNCATED",
+     "steps_with_ban": 30,
+     "wall_seconds": 1574.889
+    },
+    "newspaper_eng_ed12985c": {
+     "decode_tokens_per_second": 10.6,
+     "finish_reason": "length",
+     "first_ban_step": 6324,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.538,
+     "gpu_peak_reserved_gib": 8.762,
+     "host_peak_rss_gib": 2.541,
+     "max_ban_size": 2,
+     "output_tokens": 16384,
+     "pages_emitted": 4,
+     "pages_expected": 4,
+     "prefill_seconds": 4.143,
+     "prompt_tokens": 1101,
+     "repeated_tail": {},
+     "state": "TRUNCATED",
+     "steps_with_ban": 22,
+     "wall_seconds": 1540.608
+    },
+    "paper_chn_3567e55d": {
+     "decode_tokens_per_second": 12.9,
+     "finish_reason": "stop",
+     "first_ban_step": 6434,
+     "forced_mismatches": 0,
+     "gpu_peak_allocated_gib": 8.546,
+     "gpu_peak_reserved_gib": 8.777,
+     "host_peak_rss_gib": 2.468,
+     "max_ban_size": 1,
+     "output_tokens": 8202,
+     "pages_emitted": 5,
+     "pages_expected": 5,
+     "prefill_seconds": 4.661,
+     "prompt_tokens": 1375,
+     "repeated_tail": {},
+     "state": "PASS",
+     "steps_with_ban": 1,
+     "wall_seconds": 635.678
+    }
+   },
+   "official_scorer_metrics": {
+    "diag": {
+     "FigureF1": 82.00280112044818,
+     "FormulaCDM": 92.7066666666667,
+     "HeadingTEDS": 37.20255637762344,
+     "ReadOrderEdit": 79.17143276015138,
+     "T-TableTEDS": null,
+     "T-TextEdit": 58.18647111742743,
+     "TableTEDS": 46.97210854673949,
+     "TextEdit": 65.75904756289503
+    },
+    "strict": {
+     "FigureF1": 50.0,
+     "FormulaCDM": 92.7066666666667,
+     "HeadingTEDS": 27.989649568376663,
+     "ReadOrderEdit": 45.583603520148216,
+     "T-TableTEDS": null,
+     "T-TextEdit": 30.01204611942866,
+     "TableTEDS": 46.97210854673949,
+     "TextEdit": 48.72725019418641
+    }
+   },
+   "overall_note": "Overall null by rule: T-TableTEDS has no sample in this subset",
+   "run_id": "140f8c20df349659b3c9e4dde9d9b6cf816ace567e644836f4735e1306f1d721",
+   "stage_gates": {
+    "failures": [],
+    "forced_marker_mismatches": 0,
+    "next_budget_admitted": true,
+    "resource_peaks": {
+     "gpu_peak_allocated_gib": 8.546,
+     "host_peak_rss_gib": 2.548
+    }
+   }
+  }
+ }
+}

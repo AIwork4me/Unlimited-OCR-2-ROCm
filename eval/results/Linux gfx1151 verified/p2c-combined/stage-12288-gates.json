@@ -1,0 +1,28 @@
+{
+ "budget": 12288,
+ "counts": {
+  "FAIL": 0,
+  "NOT_RUN": 416,
+  "OOM": 0,
+  "PASS": 2,
+  "TIMEOUT": 0,
+  "TRUNCATED": 2
+ },
+ "documents_completed": [
+  "handwritten_chn_1ae487be",
+  "newspaper_chn_eb87830d",
+  "newspaper_eng_ed12985c",
+  "paper_chn_3567e55d"
+ ],
+ "experiment": "P2C_COMBINED_NGRAM_BUDGET",
+ "failures": [],
+ "forced_marker_mismatches": 0,
+ "next_budget_admitted": true,
+ "resource_peaks": {
+  "gpu_peak_allocated_gib": 8.546,
+  "host_peak_rss_gib": 2.511
+ },
+ "rule": "budget 16384 runs only if the 12288 stage completed all four documents with zero forced-marker mismatches, zero TIMEOUT/OOM/CRASH outcomes, GPU peak allocated within max_gpu_peak_allocated_gib, host peak RSS within max_host_peak_rss_gib, and both policy digests still matching the run identity",
+ "run_id": null,
+ "schema": 1
+}
