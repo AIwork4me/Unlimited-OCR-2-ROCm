@@ -166,13 +166,16 @@ changes; production stays `ngram=0`, ≤5 pages, ≤8192 tokens.
    (`ngram=0`), not re-runs.
 2. **Opt-in plumbing** (the only code change): `run_native`/`infer_document`
    accept `no_repeat_ngram_size`/`ngram_window` (default 0/off). Values > 0 are
-   **fail-closed**: allowed only when the frozen policy file is presented and
-   its identity fields match the run (same gate pattern as
-   `inference.py::validate_budget`). The parameters pass straight into the
-   frozen `model.infer` signature (`modeling_unlimitedocr.py:1041-1042`) — zero
-   changes to vendored/frozen model code. `page_count_guard` stays at its
-   default True. Every ledger attempt records the ngram params + policy sha in
-   run config and receipts.
+   **fail-closed**: allowed only when the frozen policy file is presented, its
+   SHA-256 matches the digest pinned in the gate, and its identity fields match
+   the run — this hardens the one gap found by
+   `docs/reviews/POLICY_IDENTITY_AUDIT.md` (schema-only acceptance in
+   `validate_budget` for direct callers) instead of repeating it. The
+   parameters pass straight into the frozen `model.infer` signature
+   (`modeling_unlimitedocr.py:1041-1042`) — zero changes to vendored/frozen
+   model code. `page_count_guard` stays at its default True. Every ledger
+   attempt records the ngram params + policy sha in run config and receipts,
+   with fail-closed tests mirroring `test_p2a_budget_policy.py`.
 3. **Order-of-work**: two degenerate newspaper documents first
    (`newspaper_chn_eb87830d`, `newspaper_eng_ed12985c`) under the bounded
    budget; no automatic escalation.
