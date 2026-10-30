@@ -25,10 +25,13 @@ safetensors==0.8.0
 sympy==1.14.0
 tokenizers==0.21.4
 torch==2.12.0+rocm7.2
-torchvision @ file:///home/amd/Desktop/UnlimitedOCR/wheels/torchvision-0.27.0%2Brocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl#sha256=7c871ca2c0fc8d0f04cc3cfce1757e3ff6a151ab95d48bd670a380517c8c9c46
+# Acquire from the separately verified wheelhouse/index in linux-stack.txt.
+# SHA256: 7c871ca2c0fc8d0f04cc3cfce1757e3ff6a151ab95d48bd670a380517c8c9c46
+torchvision==0.27.0+rocm7.2
 tqdm==4.70.1
 transformers==4.52.1
 triton-rocm==3.7.0
 typing_extensions==4.16.0
--e git+https://github.com/AIwork4me/Unlimited-OCR-2-ROCm.git@8092ec2dd1107d6a20f64aa787cdf2c6c767da81#egg=unlimited_ocr_2_rocm
+# Install the adapter separately from the audited source checkout with --no-deps -e .
+# Preserve the selected source commit in the run manifest; do not fetch another revision.
 urllib3==2.8.0
