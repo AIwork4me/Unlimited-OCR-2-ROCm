@@ -1,0 +1,1518 @@
+{
+  "source_commit": "df392d666d1512479346b961e79a7b16d98d90c4",
+  "wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "scope": "Representative diagnostic operator/layout/numerical evidence only; not PAL traces or performance samples",
+  "real_documents": "BLOCKED_DATA",
+  "trace_hashes": {
+    "diagnostic_chinese_0_auto": "0abddd46c37a9665186753e8bf0fd31a0536a17e8e2d1a93e7849abfd455cbe2",
+    "diagnostic_chinese_0_math": "9fac3b8eb6ec339ea952a08a888b04bc013cfb7ee39f4a7cd64e9bbf8d47cd90",
+    "diagnostic_english_0_auto": "4aadbfddf6909e2b85bfb96a09a3fdc6c9d40cf3c54bf0a56a2750d19c19bf04",
+    "diagnostic_english_0_math": "417b62faee5c1cda3c075ed1250dc3f72a8e2ae3b94a684dc05d7dd530204f96",
+    "diagnostic_math_0_auto": "8fba11631b74b5f72d6302a7b9c75a5aef6741615a8348b7efcac5279a7d75f0",
+    "diagnostic_math_0_math": "89afabb55250eaae2c13db3d6e7548933085b696dce20cfeb300d88c5e4199c0",
+    "diagnostic_mixed_0_auto": "b93468aad7644921e7ef5a511f590a345989ea31178d4b3ecf98a23e448182b8",
+    "diagnostic_mixed_0_math": "595b65370e07e13bddf588551c22fe3852704cd296a64b5b0c9b9c895ddda86e",
+    "diagnostic_pages_2_0_auto": "d84354f331b65ef942871721b16dafa5004ead62ada0c04031974000e0423e07",
+    "diagnostic_pages_2_0_math": "08e30c80ee24e82de07ae1681dfb027d70ac03bb1df7f8d0e67668778831c5a5",
+    "diagnostic_pages_3_0_auto": "1f997b4cb4c9c3ddfe36470fce3e13b4621a70357ad736639ae88306f570d1ed",
+    "diagnostic_pages_3_0_math": "873e1b061d948a1994034ee4cd1a89ecbe1f8e1e1fe34fa665e41907a6687445",
+    "diagnostic_pages_5_0_auto": "a6b4b6d0276ad94613722c288dba9885efda5f1aa43a3bcf1ed0505037585110",
+    "diagnostic_pages_5_0_math": "6ec60842ebbfd01bc95b1fd1f10889c5c258a8565c2f55f91501dea6d0ec7902",
+    "diagnostic_repeat_unicode_recovery_0_auto": "4aadbfddf6909e2b85bfb96a09a3fdc6c9d40cf3c54bf0a56a2750d19c19bf04",
+    "diagnostic_repeat_unicode_recovery_0_math": "417b62faee5c1cda3c075ed1250dc3f72a8e2ae3b94a684dc05d7dd530204f96",
+    "diagnostic_table_0_auto": "85f821df7118e5350271341f4a0704147da48a7a69d0c21d670c5497c9af8309",
+    "diagnostic_table_0_math": "5510e850e16a388cd4288de5c57a28b6cecee30d45a13e95eb23752b8d059b12",
+    "diagnostic_table_2_pages_0_auto": "da8000ab24dc371c58dab76377c32ac6bafe03fb6f35ae36cc980f2dcfc7a79d",
+    "diagnostic_table_2_pages_0_math": "569c0f9a4d45fb354dd2f3253086fd7991fd2378ee24ee09cb02d42ddb5c47b1"
+  },
+  "representative_layouts": [
+    {
+      "trial_id": "diagnostic_chinese_0_auto",
+      "event_index": 0,
+      "attention_file_sha256": "0abddd46c37a9665186753e8bf0fd31a0536a17e8e2d1a93e7849abfd455cbe2",
+      "mode": "auto",
+      "module": "sam_model",
+      "observed_backend": "EFFICIENT_ATTENTION",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_efficient_attention"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            54,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            54,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            54,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          54,
+          12,
+          196,
+          196
+        ],
+        "stride": [
+          460992,
+          38416,
+          196,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0078125,
+        "full_math_elements": 8128512,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 12544,
+            "max_abs_error": 0.0010082125663757324,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 27,
+            "head": 6,
+            "elements": 12544,
+            "max_abs_error": 0.001027435064315796,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 53,
+            "head": 11,
+            "elements": 12544,
+            "max_abs_error": 0.004340171813964844,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_auto",
+      "event_index": 2,
+      "attention_file_sha256": "0abddd46c37a9665186753e8bf0fd31a0536a17e8e2d1a93e7849abfd455cbe2",
+      "mode": "auto",
+      "module": "sam_model",
+      "observed_backend": "EFFICIENT_ATTENTION",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_efficient_attention"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            6,
+            12,
+            1600,
+            64
+          ],
+          "stride": [
+            1228800,
+            102400,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            12,
+            1600,
+            64
+          ],
+          "stride": [
+            1228800,
+            102400,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            12,
+            1600,
+            64
+          ],
+          "stride": [
+            1228800,
+            102400,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          6,
+          12,
+          1600,
+          1600
+        ],
+        "stride": [
+          30720000,
+          2560000,
+          1600,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.015625,
+        "full_math_elements": 7372800,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 102400,
+            "max_abs_error": 0.007839441299438477,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 3,
+            "head": 6,
+            "elements": 102400,
+            "max_abs_error": 0.004780888557434082,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 5,
+            "head": 11,
+            "elements": 102400,
+            "max_abs_error": 0.0010659098625183105,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_auto",
+      "event_index": 12,
+      "attention_file_sha256": "0abddd46c37a9665186753e8bf0fd31a0536a17e8e2d1a93e7849abfd455cbe2",
+      "mode": "auto",
+      "module": "vision_model",
+      "observed_backend": "FLASH_ATTENTION",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_flash_attention"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            6,
+            16,
+            101,
+            64
+          ],
+          "stride": [
+            310272,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            16,
+            101,
+            64
+          ],
+          "stride": [
+            310272,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            16,
+            101,
+            64
+          ],
+          "stride": [
+            310272,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": null,
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0078125,
+        "full_math_elements": 620544,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 6464,
+            "max_abs_error": 0.0009050965309143066,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 3,
+            "head": 8,
+            "elements": 6464,
+            "max_abs_error": 0.0005232244729995728,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 5,
+            "head": 15,
+            "elements": 6464,
+            "max_abs_error": 0.0005225986242294312,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_auto",
+      "event_index": 36,
+      "attention_file_sha256": "0abddd46c37a9665186753e8bf0fd31a0536a17e8e2d1a93e7849abfd455cbe2",
+      "mode": "auto",
+      "module": "sam_model",
+      "observed_backend": "EFFICIENT_ATTENTION",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_efficient_attention"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            25,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            25,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            25,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          25,
+          12,
+          196,
+          196
+        ],
+        "stride": [
+          460992,
+          38416,
+          196,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0078125,
+        "full_math_elements": 3763200,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 12544,
+            "max_abs_error": 0.0010477006435394287,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 12,
+            "head": 6,
+            "elements": 12544,
+            "max_abs_error": 0.0011019110679626465,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 24,
+            "head": 11,
+            "elements": 12544,
+            "max_abs_error": 0.004509329795837402,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_auto",
+      "event_index": 38,
+      "attention_file_sha256": "0abddd46c37a9665186753e8bf0fd31a0536a17e8e2d1a93e7849abfd455cbe2",
+      "mode": "auto",
+      "module": "sam_model",
+      "observed_backend": "EFFICIENT_ATTENTION",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_efficient_attention"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            1,
+            12,
+            4096,
+            64
+          ],
+          "stride": [
+            768,
+            64,
+            2304,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            12,
+            4096,
+            64
+          ],
+          "stride": [
+            768,
+            64,
+            2304,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            12,
+            4096,
+            64
+          ],
+          "stride": [
+            768,
+            64,
+            2304,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          1,
+          12,
+          4096,
+          4096
+        ],
+        "stride": [
+          201326592,
+          16777216,
+          4096,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.015625,
+        "full_math_elements": 3145728,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 262144,
+            "max_abs_error": 0.0077435970306396484,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 6,
+            "elements": 262144,
+            "max_abs_error": 0.004601120948791504,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 11,
+            "elements": 262144,
+            "max_abs_error": 0.002171158790588379,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_auto",
+      "event_index": 48,
+      "attention_file_sha256": "0abddd46c37a9665186753e8bf0fd31a0536a17e8e2d1a93e7849abfd455cbe2",
+      "mode": "auto",
+      "module": "vision_model",
+      "observed_backend": "FLASH_ATTENTION",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_flash_attention"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            1,
+            16,
+            257,
+            64
+          ],
+          "stride": [
+            789504,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            16,
+            257,
+            64
+          ],
+          "stride": [
+            789504,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            16,
+            257,
+            64
+          ],
+          "stride": [
+            789504,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": null,
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.00390625,
+        "full_math_elements": 263168,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 16448,
+            "max_abs_error": 0.0010223090648651123,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 8,
+            "elements": 16448,
+            "max_abs_error": 0.0005419999361038208,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 15,
+            "elements": 16448,
+            "max_abs_error": 0.0005464851856231689,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_math",
+      "event_index": 0,
+      "attention_file_sha256": "9fac3b8eb6ec339ea952a08a888b04bc013cfb7ee39f4a7cd64e9bbf8d47cd90",
+      "mode": "math",
+      "module": "sam_model",
+      "observed_backend": "MATH",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_attention_math"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            54,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            54,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            54,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          54,
+          12,
+          196,
+          196
+        ],
+        "stride": [
+          460992,
+          38416,
+          196,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0,
+        "full_math_elements": 8128512,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 12544,
+            "max_abs_error": 0.000963747501373291,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 27,
+            "head": 6,
+            "elements": 12544,
+            "max_abs_error": 0.000976651906967163,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 53,
+            "head": 11,
+            "elements": 12544,
+            "max_abs_error": 0.003900766372680664,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_math",
+      "event_index": 2,
+      "attention_file_sha256": "9fac3b8eb6ec339ea952a08a888b04bc013cfb7ee39f4a7cd64e9bbf8d47cd90",
+      "mode": "math",
+      "module": "sam_model",
+      "observed_backend": "MATH",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_attention_math"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            6,
+            12,
+            1600,
+            64
+          ],
+          "stride": [
+            1228800,
+            102400,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            12,
+            1600,
+            64
+          ],
+          "stride": [
+            1228800,
+            102400,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            12,
+            1600,
+            64
+          ],
+          "stride": [
+            1228800,
+            102400,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          6,
+          12,
+          1600,
+          1600
+        ],
+        "stride": [
+          30720000,
+          2560000,
+          1600,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0,
+        "full_math_elements": 7372800,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 102400,
+            "max_abs_error": 0.00781393051147461,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 3,
+            "head": 6,
+            "elements": 102400,
+            "max_abs_error": 0.003906846046447754,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 5,
+            "head": 11,
+            "elements": 102400,
+            "max_abs_error": 0.0009768307209014893,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_math",
+      "event_index": 12,
+      "attention_file_sha256": "9fac3b8eb6ec339ea952a08a888b04bc013cfb7ee39f4a7cd64e9bbf8d47cd90",
+      "mode": "math",
+      "module": "vision_model",
+      "observed_backend": "MATH",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_attention_math"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            6,
+            16,
+            101,
+            64
+          ],
+          "stride": [
+            310272,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            16,
+            101,
+            64
+          ],
+          "stride": [
+            310272,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            6,
+            16,
+            101,
+            64
+          ],
+          "stride": [
+            310272,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": null,
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0,
+        "full_math_elements": 620544,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 6464,
+            "max_abs_error": 0.0009308457374572754,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 3,
+            "head": 8,
+            "elements": 6464,
+            "max_abs_error": 0.000487595796585083,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 5,
+            "head": 15,
+            "elements": 6464,
+            "max_abs_error": 0.00048676133155822754,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_math",
+      "event_index": 36,
+      "attention_file_sha256": "9fac3b8eb6ec339ea952a08a888b04bc013cfb7ee39f4a7cd64e9bbf8d47cd90",
+      "mode": "math",
+      "module": "sam_model",
+      "observed_backend": "MATH",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_attention_math"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            25,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            25,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            25,
+            12,
+            196,
+            64
+          ],
+          "stride": [
+            150528,
+            12544,
+            64,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          25,
+          12,
+          196,
+          196
+        ],
+        "stride": [
+          460992,
+          38416,
+          196,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0,
+        "full_math_elements": 3763200,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 12544,
+            "max_abs_error": 0.0009735524654388428,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 12,
+            "head": 6,
+            "elements": 12544,
+            "max_abs_error": 0.0009746849536895752,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 24,
+            "head": 11,
+            "elements": 12544,
+            "max_abs_error": 0.003903508186340332,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_math",
+      "event_index": 38,
+      "attention_file_sha256": "9fac3b8eb6ec339ea952a08a888b04bc013cfb7ee39f4a7cd64e9bbf8d47cd90",
+      "mode": "math",
+      "module": "sam_model",
+      "observed_backend": "MATH",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_attention_math"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            1,
+            12,
+            4096,
+            64
+          ],
+          "stride": [
+            768,
+            64,
+            2304,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            12,
+            4096,
+            64
+          ],
+          "stride": [
+            768,
+            64,
+            2304,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            12,
+            4096,
+            64
+          ],
+          "stride": [
+            768,
+            64,
+            2304,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": {
+        "shape": [
+          1,
+          12,
+          4096,
+          4096
+        ],
+        "stride": [
+          201326592,
+          16777216,
+          4096,
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "device": "cuda:0"
+      },
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0,
+        "full_math_elements": 3145728,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 262144,
+            "max_abs_error": 0.007797956466674805,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 6,
+            "elements": 262144,
+            "max_abs_error": 0.0039060115814208984,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 11,
+            "elements": 262144,
+            "max_abs_error": 0.001950085163116455,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    },
+    {
+      "trial_id": "diagnostic_chinese_0_math",
+      "event_index": 48,
+      "attention_file_sha256": "9fac3b8eb6ec339ea952a08a888b04bc013cfb7ee39f4a7cd64e9bbf8d47cd90",
+      "mode": "math",
+      "module": "vision_model",
+      "observed_backend": "MATH",
+      "operators": [
+        "aten.scaled_dot_product_attention.default",
+        "aten::scaled_dot_product_attention",
+        "aten::_scaled_dot_product_attention_math"
+      ],
+      "status": "PASS",
+      "qkv_layout": [
+        {
+          "shape": [
+            1,
+            16,
+            257,
+            64
+          ],
+          "stride": [
+            789504,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            16,
+            257,
+            64
+          ],
+          "stride": [
+            789504,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        },
+        {
+          "shape": [
+            1,
+            16,
+            257,
+            64
+          ],
+          "stride": [
+            789504,
+            64,
+            3072,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0"
+        }
+      ],
+      "mask_layout": null,
+      "hip_checkpoints": [
+        {
+          "stage": "before_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_sdpa",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        },
+        {
+          "stage": "after_downstream_copy_arithmetic_reference",
+          "hip_before_sync": 0,
+          "hip_after_sync": 0
+        }
+      ],
+      "numerical": {
+        "atol": 0.03,
+        "rtol": 0.03,
+        "full_math_max_abs_error": 0.0,
+        "full_math_elements": 263168,
+        "cpu_fp32_slices": [
+          {
+            "batch": 0,
+            "head": 0,
+            "elements": 16448,
+            "max_abs_error": 0.0009685754776000977,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 8,
+            "elements": 16448,
+            "max_abs_error": 0.0004876852035522461,
+            "nonfinite": 0,
+            "failing_elements": 0
+          },
+          {
+            "batch": 0,
+            "head": 15,
+            "elements": 16448,
+            "max_abs_error": 0.0004879087209701538,
+            "nonfinite": 0,
+            "failing_elements": 0
+          }
+        ]
+      }
+    }
+  ]
+}

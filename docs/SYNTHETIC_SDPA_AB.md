@@ -145,6 +145,9 @@ fallback in AUTO. Ninety-six numerical-layout checks passed unchanged BF16
 atol/rtol 0.03/0.03; maximum full-MATH absolute difference 0.015625 and maximum
 CPU FP32-slice difference 0.0080754757. These are diagnostic operator/numerical
 observations, not new lower-level PAL launch traces or performance measurements.
+`synthetic-operator-evidence.json` retains twelve representative actual layout /
+operator / HIP / numerical records and hashes of all twenty complete local
+attention traces, with no tensor values, OCR payload or token arrays.
 
 The predeclared exact raw/output-ID parity gate **FAILed in eight of ten pairs**.
 Prompt IDs and token counts agree in all pairs. Removing only bbox coordinates
@@ -189,9 +192,10 @@ No remaining blocking finding was reported for preparation.
 A real local preparation hashed the preserved candidate wheel and checked its
 installed native/AOTriton members without importing torch. Installed metadata
 matches the mandatory Windows trio, Triton and Transformers versions. The plan
-has 10 cases / 160 trials (20 diagnostic, 20 warmup, 120 measured). The current
-HOLD receipt is refused before a worker launches or an execution directory is
-created. Current GPU dispatch, quality, latency and memory results are **NOT RUN**;
-the numbers above are protocol/test counts. No physical qualification or speedup
-is claimed. `eval/p2/synthetic-preparation.json` is the sanitized preparation
+has 10 cases / 160 trials (20 diagnostic, 20 warmup, 120 measured). At preparation
+time, the prior HOLD receipt was refused before a worker launched or an execution
+directory was created. At that point GPU results were **NOT RUN**; the numbers
+above were protocol/test counts. Subsequent physical diagnostics and their strict
+rejection are recorded above; warm measurements remain NOT RUN and no speedup
+is claimed. `eval/p2/synthetic-preparation.json` preserves the sanitized preparation
 manifest; raw plans, profiles, logs and reviewer repros remain under `.b/`.
