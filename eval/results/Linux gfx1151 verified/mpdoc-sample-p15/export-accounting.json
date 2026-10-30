@@ -1,0 +1,37 @@
+{
+ "diagnostic": {
+  "counts": {
+   "FAIL": 0,
+   "NOT_RUN": 412,
+   "OOM": 0,
+   "PASS": 4,
+   "TIMEOUT": 0,
+   "TRUNCATED": 4
+  },
+  "export": {
+   "documents_exported": 8,
+   "mode": "truncation_content_diagnostic",
+   "truncated_documents_as_predictions": [
+    "handwritten_chn_1ae487be",
+    "newspaper_chn_eb87830d",
+    "newspaper_eng_ed12985c",
+    "paper_chn_3567e55d"
+   ]
+  }
+ },
+ "strict": {
+  "counts": {
+   "FAIL": 0,
+   "NOT_RUN": 412,
+   "OOM": 0,
+   "PASS": 4,
+   "TIMEOUT": 0,
+   "TRUNCATED": 4
+  },
+  "export": {
+   "documents_exported": 8,
+   "mode": "strict",
+   "truncated_documents_as_predictions": []
+  }
+ }
+}
