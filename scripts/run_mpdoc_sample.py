@@ -236,9 +236,11 @@ def self_test_outcome(
         time.sleep(args.timeout_seconds + 60)
         return None
     if mode == "crash":
-        # Die like an externally killed worker: SIGKILL on POSIX; on Windows
-        # os.kill maps any non-CTRL signal number to TerminateProcess.
-        os.kill(os.getpid(), 0x1 if sys.platform == "win32" else signal.SIGKILL)
+        # Die like an externally killed worker: SIGKILL on POSIX. On Windows
+        # os.kill maps values other than CTRL_C_EVENT(0)/CTRL_BREAK_EVENT(1)
+        # to TerminateProcess; 1 would broadcast a console break event to
+        # every process sharing the console, including the supervisor.
+        os.kill(os.getpid(), 137 if sys.platform == "win32" else signal.SIGKILL)
         return None
     if mode == "oom":
         raise RuntimeError("torch.OutOfMemoryError: HIP out of memory on allocation of 8192 MiB")
