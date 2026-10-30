@@ -73,8 +73,10 @@ No page-level reset anywhere. The history is continuous for the lifetime of one
 - Native (S1/S4): one request = one whole document → the window spans the whole
   document's generated tokens across all pages.
 - Official SGLang deployment: the doc-limit scheduler splits long documents into
-  windows of ≤10 pages (`SGLANG_UOCR_{GUNDAM,BASE}_PAGE_WINDOW`; official README
-  sets 10, wheel default 1). Each window is a **separate request** with its own
+  windows of ≤10 pages (`SGLANG_UOCR_DOC_GUNDAM_PAGE_WINDOW` /
+  `SGLANG_UOCR_DOC_BASE_PAGE_WINDOW`; official README sets 10, wheel default 1 —
+  the ≤10-page single-window statement rests on the deployment environment, not
+  the wheel defaults). Each window is a **separate request** with its own
   `output_ids`, so the n-gram history **resets at every window boundary**. For
   documents that fit in one window (≤10 pages — including every document in the
   frozen P2 selection at ≤5 pages) the official behavior is exactly
@@ -106,10 +108,18 @@ restated if 15-page experiments are ever unblocked (P5).
   penalties, so no other processor competes.
 - **Native path (S1 loop `:1166-1176`):** n-gram ban **first**, page-count guard
   second, then argmax.
-- **Net equivalence:** in both orders, a guard-*forced* token survives (S3
-  `forced` branch `continue`s past the n-gram ban; S1's guard rewrites all
-  logits after the ban), and guard bans union with n-gram bans. The order
-  difference is not observable at temperature 0 with no penalties.
+- **Order interaction — equivalent for guard bans, NOT for one forced corner:**
+  guard bans union with n-gram bans in both orders. For forced tokens the two
+  implementations diverge: S3's `forced` branch assigns the forced logit `0.0`
+  and `continue`s past the n-gram ban (S3 `:334-339`), so the forced token
+  always survives. S1's guard instead **restores the post-ban value**
+  (`keep = logits[tid].clone()` taken *after* the n-gram ban, `:599,:602`):
+  when the per-page-cap branch forces `<PAGE>` while `<PAGE>` is in that
+  step's n-gram ban set — reachable precisely for repetition-heavy documents —
+  the native row becomes all `-inf` and `torch.argmax` tie-breaks to the lowest
+  index, emitting an arbitrary token instead of `<PAGE>`. This corner is a
+  real native/SGLang divergence (independent-review finding 8) and gets a
+  dedicated post-hoc detector in §10.
 - **HF generic `NoRepeatNGramLogitsProcessor` is NOT equivalent**: it scans the
   full `input_ids` (prompt included), has no trailing-window limit, and no
   whitelist. It must not be substituted (BENCHMARK_PROTOCOL already forbids
@@ -121,8 +131,11 @@ restated if 15-page experiments are ever unblocked (P5).
   every window's `custom_params` (`serving_chat.py::_apply_page_cap` →
   `doc_split.page_guard_params`: `page_token_id` from
   `sparse_attention_config` (128827), `eos_token_id`, `max_page_tokens`
-  (official `SGLANG_UOCR_MAX_PAGE_TOKENS=20000`; wheel default 0 = off), plus
-  `page_stop_only`/lookahead for KV-reuse windows). The guard runs inside the
+  (official `SGLANG_UOCR_MAX_PAGE_TOKENS=20000`; wheel default 0 = off — with
+  the wheel default the guard never arms), plus `page_stop_only`/lookahead for
+  KV-reuse windows). Auto-attaching the processor when a client brings none
+  additionally requires `--enable-custom-logit-processor` (immaterial for the
+  official benchmark, whose client brings its own). The guard runs inside the
   same processor before the n-gram ban (S3 `:317-341`).
 - Guard semantics (S3 `_page_guard:194-262`): pages remaining → EOS banned;
   per-page token cap reached → force `<PAGE>` (or EOS on the last page); marker
@@ -130,11 +143,17 @@ restated if 15-page experiments are ever unblocked (P5).
   override any n-gram ban that step.
 - **EOS can never be n-gram-banned**: EOS is never part of the generated
   history (generation stops at EOS; S1 breaks before appending at `:1179-1182`,
-  S3's `output_ids` likewise), so no seen n-gram ends in EOS. The only way EOS
-  is masked while pages remain is the guard's own ban; the only ways EOS is
-  forced are the guard's cap/overflow branches.
+  S3's `output_ids` likewise), so no seen n-gram ends in EOS — **conditioned on
+  `ignore_eos` being unset**, which the official client does (its payload sets
+  neither `ignore_eos` nor any penalty). The only way EOS is masked while pages
+  remain is the guard's own ban; the only ways EOS is forced are the guard's
+  cap/overflow branches.
 - Native (S1 `_uocr_page_count_guard:583-605`, docstring citing vLLM
-  `_PageCountGuard`): same marker/cap logic at vLLM parity; it is on by default
+  `_PageCountGuard`): same marker/cap logic at vLLM parity, **except** S3 also
+  bans `<PAGE>` on the last owed page (`:260-262`), which the native guard
+  lacks — native can therefore emit one marker past the expected count and
+  EOS-force on the following step (independent-review finding 9; pre-existing,
+  not n-gram-specific). The native guard is on by default
   (`infer(page_count_guard=True)`), and `infer_document` (S4) does not disable
   it — P2 keeps it on.
 
@@ -191,7 +210,14 @@ changes; production stays `ngram=0`, ≤5 pages, ≤8192 tokens.
    exposes no processor counters and will not be instrumented): ban-set size
    per step is recomputable deterministically from the emitted ids, so the
    diagnostic script replays the §2 algorithm over `raw token_ids` and reports
-   invocation/ban counts without touching generation. Errors, timeouts and
+   invocation/ban counts without touching generation. Two review-mandated
+   properties of the replay: (i) it yields ban sets/counts, never the
+   counterfactual un-suppressed token — no logits are persisted; (ii) it is
+   paired with a **forced-marker consistency check**: whenever the replayed
+   guard state indicates a forced `<PAGE>` step, the emitted token must equal
+   the page token id — this detects the §7 native corner (all-`-inf` row) —
+   and with a guard-state replay (marker/page-length counters) that also flags
+   the marker-overshoot divergence of the native guard. Errors, timeouts and
    retries recorded by the existing ledger states.
 6. **Success criteria**: a suppressed loop is not an OCR PASS unless content
    and structure also pass — judged only via the official scorer and the
@@ -199,8 +225,8 @@ changes; production stays `ngram=0`, ≤5 pages, ≤8192 tokens.
 
 ## 11. Open items for the independent reviewer
 
-- Confirm §7's order-equivalence argument (guard-forced override) on the S3
-  source lines cited.
+- Confirm §7's order-interaction argument (guard-forced override in S3; the
+  native post-ban restore corner) on the cited source lines.
 - Confirm the §5 claim that window reset never differs for ≤10-page documents
   (single window) — in particular that Marathon-scale multi-window behavior is
   out of P2 scope.
@@ -209,3 +235,27 @@ changes; production stays `ngram=0`, ≤5 pages, ≤8192 tokens.
 - Confirm the frozen-model default `ngram_window=100` trap: enabling n-grams
   without an explicit window would silently use 100, not 1024 — the plan makes
   the window an explicit required field for this reason.
+
+## 12. Independent review record
+
+2026-10-30: independent reviewer (fresh context, sources only, no trust in
+this document) returned **APPROVE-WITH-NOTES**. All line citations and hashes
+reproduced exactly (reviewer findings 1-7); questions (b), (c), (d) of §11
+confirmed — (b) with the note that the ≤10-page single-window statement rests
+on the deployment environment (README) rather than wheel defaults, (c)
+conditioned on `ignore_eos` unset (the official client sets none), (d) the
+`ngram_window<=0 → 100` coercion confirmed at S1 `:1092`. Question (a)
+confirmed for SGLang and **corrected for native** (finding 8): the native
+guard restores the post-ban logit, so the cap-forces-`<PAGE>`-while-banned
+corner emits an arbitrary argmax tie-break token; §7 and §10 now carry the
+corner and its detector. Finding 9 (S3 last-page `<PAGE>` ban absent from the
+native guard — pre-existing marker-overshoot divergence) added to §8.
+Finding 10 (exact `SGLANG_UOCR_DOC_*_PAGE_WINDOW` names) fixed in §6. Finding
+11 items stay labeled as repo evidence. Finding 12 (gate blocking every
+non-opt-in path) and finding 13's replay limitations are now explicit §10
+requirements to re-verify at the implementation PR review.
+
+The GPU execution gate for P2 is therefore: implement §10 as its own reviewed
+PR (fail-closed pinned-digest gate, replay diagnostics with the forced-marker
+consistency check), pass CPU gates and independent review of that PR, and only
+then run the two degenerate newspaper documents under the bounded budget.
