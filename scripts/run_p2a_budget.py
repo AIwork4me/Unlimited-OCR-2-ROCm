@@ -78,7 +78,7 @@ def prepare_command(args: argparse.Namespace) -> int:
         "label": "EXPERIMENTAL_BUDGET_ONLY",
         "experiment": policy["experiment"],
         "policy_sha256": file_sha256(args.policy),
-        "policy_repo_path": str(args.policy.relative_to(_REPO_ROOT)),
+        "policy_repo_path": str(args.policy.resolve().relative_to(_REPO_ROOT)),
         "documents": sorted(policy["documents"]),
         "budget_new_tokens": args.budget,
         "baseline_new_tokens": policy["baseline_new_tokens"],
@@ -272,6 +272,7 @@ def main(argv: list[str] | None = None) -> int:
     worker.add_argument("--model-cache", required=True, type=Path)
     worker.add_argument("--max-new-tokens", type=int, required=True)
     worker.add_argument("--result", required=True, type=Path)
+    worker.add_argument("--timeout-seconds", type=float, default=7200.0)
 
     report = commands.add_parser("report")
     report.add_argument("--run", required=True, type=Path)
