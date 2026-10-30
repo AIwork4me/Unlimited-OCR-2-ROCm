@@ -1,0 +1,14 @@
+{
+  "metrics": {
+    "FigureF1": 58.333333333333336,
+    "FormulaCDM": 90.64432989690727,
+    "HeadingTEDS": 29.070067071172563,
+    "ReadOrderEdit": 51.380779763787196,
+    "T-TableTEDS": null,
+    "T-TextEdit": 45.30344559405163,
+    "TableTEDS": 46.97210854673949,
+    "TextEdit": 53.94495078644432
+  },
+  "overall": null,
+  "qualification": "SCORER_ONLY; review coverage and failure catalog"
+}

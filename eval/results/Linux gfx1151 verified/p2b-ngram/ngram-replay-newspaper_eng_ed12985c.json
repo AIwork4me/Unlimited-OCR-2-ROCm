@@ -1,0 +1,27 @@
+{
+ "guard": {
+  "emitted_markers": 3,
+  "expected_pages": 4,
+  "forced_mismatches": [],
+  "forced_steps": 0,
+  "marker_overshoot": 0
+ },
+ "ngram": {
+  "first_ban_step": 6324,
+  "max_ban_size": 2,
+  "mean_ban_size": 1.133,
+  "size": 35,
+  "steps_with_ban": 15,
+  "window": 1024
+ },
+ "repeated_tail": {
+  "count": 4,
+  "cycle_len": 9,
+  "onset_index": 8156
+ },
+ "steps": 8192,
+ "verdict": {
+  "forced_marker_corner_detected": false,
+  "notes": ""
+ }
+}
