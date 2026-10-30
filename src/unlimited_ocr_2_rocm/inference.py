@@ -25,10 +25,20 @@ PRODUCTION_MAX_NEW_TOKENS = 8192
 #: locally forged schema-1 policy cannot authorize suppression
 #: (docs/reviews/POLICY_IDENTITY_AUDIT.md hardening requirement).
 EXPECTED_NGRAM_POLICY_SHA256 = "0095b0c47da9a693d6bef70305a4385b986ea79aac129d628a500dac0ef8e1f5"
+#: Pinned digest of the frozen P2-C combined policy (eval/experiments/p2c-combined/
+#: policy.json) — same suppression identity (35/1024, generated ids only) at the
+#: raised budgets it lists. Same fail-closed rule: only these two digests
+#: authorize suppression, ever.
+EXPECTED_P2C_POLICY_SHA256 = "2068efad7e7e2e037202107027f35c483ae51fbc007099580ecae0fd7bc12397"
+#: digest -> required experiment name; the gate enforces both together.
+_AUTHORIZED_NGRAM_POLICIES: dict[str, str] = {
+    EXPECTED_NGRAM_POLICY_SHA256: "P2B_NGRAM_SUPPRESSION_RCA",
+    EXPECTED_P2C_POLICY_SHA256: "P2C_COMBINED_NGRAM_BUDGET",
+}
 
 
 def validate_ngram(ngram_size: int, ngram_window: int, policy_path: Path | None) -> None:
-    """No-repeat n-gram suppression is opt-in via the frozen P2-B policy only.
+    """No-repeat n-gram suppression is opt-in via the frozen policies only.
 
     The window must be passed explicitly and positively: the frozen model
     silently coerces a non-positive window to 100 (modeling_unlimitedocr.py
@@ -51,14 +61,15 @@ def validate_ngram(ngram_size: int, ngram_window: int, policy_path: Path | None)
         policy = json.loads(policy_path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as error:
         raise ValueError(f"Unreadable experimental n-gram policy: {error}") from error
-    if file_sha256(policy_path) != EXPECTED_NGRAM_POLICY_SHA256:
+    experiment = _AUTHORIZED_NGRAM_POLICIES.get(file_sha256(policy_path))
+    if experiment is None:
         raise ValueError(
-            "Experimental n-gram policy digest does not match the pinned frozen identity"
+            "Experimental n-gram policy digest is not one of the pinned frozen identities"
         )
     sizes = policy.get("ngram_sizes") if isinstance(policy, dict) else None
     if (
         policy.get("schema") != 1
-        or policy.get("experiment") != "P2B_NGRAM_SUPPRESSION_RCA"
+        or policy.get("experiment") != experiment
         or not isinstance(sizes, list)
         or ngram_size not in sizes
         or policy.get("ngram_window") != ngram_window

@@ -37,7 +37,7 @@ def test_forged_policy_is_rejected_by_pinned_digest(tmp_path):
     payload = json.loads(POLICY_PATH.read_text("utf-8"))
     payload["ngram_sizes"] = [3, 35]
     forged.write_text(json.dumps(payload), "utf-8")
-    with pytest.raises(ValueError, match="digest does not match"):
+    with pytest.raises(ValueError, match="not one of the pinned frozen"):
         validate_ngram(35, 1024, forged)
 
 
