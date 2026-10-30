@@ -1,0 +1,254 @@
+[
+  {
+    "group": "multiply-1",
+    "condition": "0",
+    "producer_sha256": "8b2202e0f0373eb432b5c75df42a3f6e791e7984a5c137f70bd4977754efba12",
+    "input": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+    },
+    "operator_schema": "aten::mul.Scalar(Tensor self, Scalar other) -> Tensor",
+    "graph": "graph(%x.1 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0)):\n  %1 : float = prim::Constant[value=1.702]()\n  %2 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0) = aten::mul(%x.1, %1)\n  return (%2)\n",
+    "reference": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "9b9a1e2accdd9b2e3f515982e16cdc2e6798e1b7a33487813bb554b491e50a71"
+    },
+    "tensor_expr": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "c9af2bf7a268bc7c88742838601290351cd9691dc4a13bcdfb3f79169c2c0058"
+    },
+    "different_elements": 135175,
+    "max_abs": 0.0625,
+    "first_differing_flat_index": 7,
+    "cpu_original_exact": true,
+    "cpu_emitted_coefficient_exact": true,
+    "fallback_allowed": false,
+    "kernel_body": "extern \"C\" __global__\n__attribute__((amdgpu_flat_work_group_size(1, 1024)))\nvoid fused_mul(__nv_bfloat16* tx_1, __nv_bfloat16* aten_mul) {\n{\n  float v = __bfloat162float(tx_1[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)]);\n  aten_mul[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)] = __float2bfloat16(v * 1.703125f);\n}\n}",
+    "kernel_source_sha256": "6cf81a8f5fd53d3be10377298dff9f3f5705239a3bee6f0e1f619c3c226c2d98"
+  },
+  {
+    "group": "multiply-1",
+    "condition": "1",
+    "producer_sha256": "8b2202e0f0373eb432b5c75df42a3f6e791e7984a5c137f70bd4977754efba12",
+    "input": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+    },
+    "operator_schema": "aten::mul.Scalar(Tensor self, Scalar other) -> Tensor",
+    "graph": "graph(%x.1 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0)):\n  %1 : float = prim::Constant[value=1.702]()\n  %2 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0) = aten::mul(%x.1, %1)\n  return (%2)\n",
+    "reference": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "9b9a1e2accdd9b2e3f515982e16cdc2e6798e1b7a33487813bb554b491e50a71"
+    },
+    "tensor_expr": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "c9af2bf7a268bc7c88742838601290351cd9691dc4a13bcdfb3f79169c2c0058"
+    },
+    "different_elements": 135175,
+    "max_abs": 0.0625,
+    "first_differing_flat_index": 7,
+    "cpu_original_exact": true,
+    "cpu_emitted_coefficient_exact": true,
+    "fallback_allowed": false,
+    "kernel_body": "extern \"C\" __global__\n__attribute__((amdgpu_flat_work_group_size(1, 1024)))\nvoid fused_mul(__nv_bfloat16* tx_1, __nv_bfloat16* aten_mul) {\n{\n  float v = __bfloat162float(tx_1[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)]);\n  aten_mul[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)] = __float2bfloat16(v * 1.703125f);\n}\n}",
+    "kernel_source_sha256": "6cf81a8f5fd53d3be10377298dff9f3f5705239a3bee6f0e1f619c3c226c2d98"
+  },
+  {
+    "group": "reviewer-multiply",
+    "condition": "0",
+    "producer_sha256": "8b2202e0f0373eb432b5c75df42a3f6e791e7984a5c137f70bd4977754efba12",
+    "input": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+    },
+    "operator_schema": "aten::mul.Scalar(Tensor self, Scalar other) -> Tensor",
+    "graph": "graph(%x.1 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0)):\n  %1 : float = prim::Constant[value=1.702]()\n  %2 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0) = aten::mul(%x.1, %1)\n  return (%2)\n",
+    "reference": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "9b9a1e2accdd9b2e3f515982e16cdc2e6798e1b7a33487813bb554b491e50a71"
+    },
+    "tensor_expr": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "c9af2bf7a268bc7c88742838601290351cd9691dc4a13bcdfb3f79169c2c0058"
+    },
+    "different_elements": 135175,
+    "max_abs": 0.0625,
+    "first_differing_flat_index": 7,
+    "cpu_original_exact": true,
+    "cpu_emitted_coefficient_exact": true,
+    "fallback_allowed": false,
+    "kernel_body": "extern \"C\" __global__\n__attribute__((amdgpu_flat_work_group_size(1, 1024)))\nvoid fused_mul(__nv_bfloat16* tx_1, __nv_bfloat16* aten_mul) {\n{\n  float v = __bfloat162float(tx_1[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)]);\n  aten_mul[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)] = __float2bfloat16(v * 1.703125f);\n}\n}",
+    "kernel_source_sha256": "6cf81a8f5fd53d3be10377298dff9f3f5705239a3bee6f0e1f619c3c226c2d98"
+  },
+  {
+    "group": "reviewer-multiply",
+    "condition": "1",
+    "producer_sha256": "8b2202e0f0373eb432b5c75df42a3f6e791e7984a5c137f70bd4977754efba12",
+    "input": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "216582c759ed14c14fea47c3caa099a840b23504bbf0b670b8f72a589ce40f8f"
+    },
+    "operator_schema": "aten::mul.Scalar(Tensor self, Scalar other) -> Tensor",
+    "graph": "graph(%x.1 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0)):\n  %1 : float = prim::Constant[value=1.702]()\n  %2 : BFloat16(1, 257, 4096, strides=[1052672, 4096, 1], requires_grad=0, device=cuda:0) = aten::mul(%x.1, %1)\n  return (%2)\n",
+    "reference": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "9b9a1e2accdd9b2e3f515982e16cdc2e6798e1b7a33487813bb554b491e50a71"
+    },
+    "tensor_expr": {
+      "shape": [
+        1,
+        257,
+        4096
+      ],
+      "stride": [
+        1052672,
+        4096,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "storage_offset": 0,
+      "sha256": "c9af2bf7a268bc7c88742838601290351cd9691dc4a13bcdfb3f79169c2c0058"
+    },
+    "different_elements": 135175,
+    "max_abs": 0.0625,
+    "first_differing_flat_index": 7,
+    "cpu_original_exact": true,
+    "cpu_emitted_coefficient_exact": true,
+    "fallback_allowed": false,
+    "kernel_body": "extern \"C\" __global__\n__attribute__((amdgpu_flat_work_group_size(1, 1024)))\nvoid fused_mul(__nv_bfloat16* tx_1, __nv_bfloat16* aten_mul) {\n{\n  float v = __bfloat162float(tx_1[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)]);\n  aten_mul[(long long)(threadIdx.x) + 512ll * (long long)(blockIdx.x)] = __float2bfloat16(v * 1.703125f);\n}\n}",
+    "kernel_source_sha256": "6cf81a8f5fd53d3be10377298dff9f3f5705239a3bee6f0e1f619c3c226c2d98"
+  }
+]

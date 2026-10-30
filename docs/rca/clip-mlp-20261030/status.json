@@ -1,0 +1,10 @@
+{
+  "decision": "KEEP EXPERIMENTAL",
+  "new_full_ocr_requests": 2,
+  "replay_processes": 38,
+  "single_multiply_processes": 4,
+  "input_identity": "EXACT",
+  "historical_receipts": "UNCHANGED",
+  "production_changes": false,
+  "measured_P2_requests": 0
+}
