@@ -2,6 +2,7 @@
 .local/
 .upstream/
 .superpowers/
+.b/
 __pycache__/
 *.py[cod]
 *.egg-info/
