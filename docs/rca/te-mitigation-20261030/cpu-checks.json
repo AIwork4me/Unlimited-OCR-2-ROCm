@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests",
+        "experiments/te_mitigation"
+      ],
+      "exit_code": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "scripts",
+        "tests",
+        "experiments/te_mitigation"
+      ],
+      "exit_code": 0,
+      "log_sha256": "b75cbfdc648a3350a77e0c7831035d830c486ab9918dbdf3f315551293017f8e"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "--basetemp",
+        "<REPOSITORY>\\.b\\tq4\\pt"
+      ],
+      "exit_code": 0,
+      "log_sha256": "ebe0c31218180554ed6d483a4ee0f54c5193a5ac3f63b64898350e926b5dace1"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "mypy",
+        "src"
+      ],
+      "exit_code": 0,
+      "log_sha256": "63da153bcdac04b2cc982479df4378f21b20029f9acb87ad908fb4d5befe6a43"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "build",
+        "--outdir",
+        "<REPOSITORY>\\.b\\te-e2e\\cpu-final3\\dist"
+      ],
+      "exit_code": 0,
+      "log_sha256": "880e9e9f5038f347435760e8047fed43caff3c089abeedc3e0849025999c589c"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "log_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    }
+  ],
+  "historical": {
+    ".b/p230/SHA256SUMS.json": {
+      "count": 68,
+      "mismatches": []
+    },
+    ".b/p240/SHA256SUMS.json": {
+      "count": 338,
+      "mismatches": []
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "protocol_version": 3,
+  "cases": [
+    {
+      "name": "pages_2_run_1",
+      "truth_keys": [
+        "page_1",
+        "page_2"
+      ],
+      "max_new_tokens": 2048
+    },
+    {
+      "name": "pages_2_run_1",
+      "truth_keys": [
+        "page_1",
+        "page_2"
+      ],
+      "max_new_tokens": 2048
+    }
+  ],
+  "source_hashes": {
+    "experiments/te_mitigation/worker.py": "2fb362cbafb28b4691b099068195d1b70c0d83610cbaa63c295e8903efb4d885",
+    "experiments/te_mitigation/run.py": "15df2c0fb6770209e974fa0489c37954d781667138121f7923492c71ef703096",
+    "experiments/cold_start/worker.py": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0",
+    "experiments/cold_start/windows_job.py": "58311dd112e29e8a4b55d1a1f297a19bec1d829421d0e1b77fdf698079ee7adb",
+    "experiments/native_regression/runner.py": "5983da029cb62ee19d3221d7c9c2700931212fee6c2895b2f33c36e60b027e51",
+    "experiments/te_mitigation/analyze.py": "5a3547532ca077f4ed705eb48d9360060ac4834618eef16d1048861bad19aeba",
+    "src/unlimited_ocr_2_rocm/upstream-lock.json": "ffd730234a34504a78f5df5eb025d8341695abd51ce9025caaddeebf45e687de",
+    "docs/superpowers/plans/2026-10-30-te-mitigation-e2e.md": "88267f6575a00084b4f215d667cb488a4ad83071a77d8ae80ace44ba4f0b305e",
+    "docs/rca/MATCHED_CONTEXT_BACKEND_PROTOCOL_20261030.md": "e8c5759f7ffe32b4732a552b7123523f6caefa605797d7cd12294fd9b272adfe"
+  },
+  "input_hashes": {
+    "tests/fixtures/ground_truth.json": "aeb3c76c2fb401b1e3dc609f2346d11515569e27ce0d5adc4ee21ea36f06e47f",
+    "tests/fixtures/page_1.png": "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e",
+    "tests/fixtures/page_2.png": "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625"
+  },
+  "schedule": [
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "MATH,MATH"
+    },
+    {
+      "option": "eager",
+      "repeat": 1,
+      "modes": "MATH,MATH"
+    },
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "AUTO,AUTO"
+    },
+    {
+      "option": "eager",
+      "repeat": 1,
+      "modes": "AUTO,AUTO"
+    },
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "MATH,AUTO"
+    },
+    {
+      "option": "eager",
+      "repeat": 1,
+      "modes": "MATH,AUTO"
+    },
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "AUTO,MATH"
+    },
+    {
+      "option": "eager",
+      "repeat": 1,
+      "modes": "AUTO,MATH"
+    }
+  ],
+  "suite": false,
+  "backend": true,
+  "tensors": true,
+  "worker_sha256": "2fb362cbafb28b4691b099068195d1b70c0d83610cbaa63c295e8903efb4d885",
+  "controller_sha256": "15df2c0fb6770209e974fa0489c37954d781667138121f7923492c71ef703096",
+  "protocol_sha256": "88267f6575a00084b4f215d667cb488a4ad83071a77d8ae80ace44ba4f0b305e",
+  "frozen_helper_sha256": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0",
+  "wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "model_manifest_sha256": "ffd730234a34504a78f5df5eb025d8341695abd51ce9025caaddeebf45e687de",
+  "admission_receipts": {
+    ".b/te-e2e/eager-p0/qualification.json": "8c5f477e48c47f993b3f4025e39f3b9f56bcd87b9a8fe45c2054e6a8375b5531",
+    ".b/te-e2e/suite-1/qualification.json": "b4367a06f19442754fc826f53f7a2f7a24c3799824372660a75a0ab24220203b"
+  }
+}

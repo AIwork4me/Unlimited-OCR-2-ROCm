@@ -1,0 +1,220 @@
+{
+  "producer_sha256": "609ebea5adf93214b441bcc6c723a1a562d44eb12e31e092acaa88184805b2e5",
+  "declaration_sha256": "47b80c96c664f7e7efe08a95b430ff77c676c12d18e57fa85b9589372659a86c",
+  "source_sha256": "f6df813cef23cc28b1daca40fd8cb20740d05a238e7b9dfa2334531fdcf39f1f",
+  "input_hashes": {
+    "tests/fixtures/chinese.png": "a6b464b0f4e6065d952a031b6f09e09efcc1a81a400c7195f1935e1b844e54f5",
+    "tests/fixtures/english.png": "0415e96e99e66b079e12bb7e40006a966cd5c9b3d0e18f8fb070e61bcfde4cd0",
+    "tests/fixtures/ground_truth.json": "aeb3c76c2fb401b1e3dc609f2346d11515569e27ce0d5adc4ee21ea36f06e47f",
+    "tests/fixtures/math.png": "ddf58c93e7d5a15c5110747b94b7fe1e9a7579eae3aecd1f80d4e2aca905cb90",
+    "tests/fixtures/mixed.png": "09714bd58f4042dde37d4c1152b273585f7beb86562b046e02d5b2b58205ef03",
+    "tests/fixtures/page_1.png": "25e1f9283d1444b82813ce8b9f55c34944e50dd2b90f1ad0df2dc0a329fbcb4e",
+    "tests/fixtures/page_2.png": "1bc65824178d3caef566d1f052457bf98325f2b24da1e6aab0b4f5f97d2d5625",
+    "tests/fixtures/page_3.png": "4aab8ecfb402dac49daf070704768e0ceeaab14bec572e07ee6c76310ed538d8",
+    "tests/fixtures/page_4.png": "fbbedcae51819976300ae30459c9b6e3dffc3c882b7aa2fb41d93e4b8a44d74e",
+    "tests/fixtures/page_5.png": "530773d30a2907a3644069bf80e3b7aec04f9f20f8c0cd8ccb1ce83ff96bed51",
+    "tests/fixtures/table.png": "bda4a05724a65eb16d3bc1a5685037ff9ddf2e34e80ae2fd25741fe1294563ae",
+    "tests/fixtures/table_page_1.png": "e98e7723145341e5410783a6624b73d2880fd133eefe6a3db6aa5a861a82c9c7",
+    "tests/fixtures/table_page_2.png": "99af64fe1a270a94089a2a7125a57453d315e122f4ee396a2e4bb5dacf3f0b25"
+  },
+  "cases": {
+    "english": [
+      [
+        6,
+        101,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "chinese": [
+      [
+        6,
+        101,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "mixed": [
+      [
+        6,
+        101,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "table": [
+      [
+        6,
+        101,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "math": [
+      [
+        6,
+        101,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "repeat_unicode_recovery": [
+      [
+        6,
+        101,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "pages_2_run_1": [
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "pages_2_run_2": [
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "pages_3_run_1": [
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "pages_3_run_2": [
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "pages_5_run_1": [
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "pages_5_run_2": [
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ],
+    "table_2_pages": [
+      [
+        1,
+        257,
+        4096
+      ],
+      [
+        1,
+        257,
+        4096
+      ]
+    ]
+  },
+  "basis": "Pinned _uocr_build_inputs/forward single-image auto crop; SAM stride64 + CLIP CLS; independent source review",
+  "scope": "Invocation/layout checker correction; no numerical/semantic/bbox tolerance change"
+}

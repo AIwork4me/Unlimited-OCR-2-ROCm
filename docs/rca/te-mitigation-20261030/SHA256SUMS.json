@@ -1,0 +1,24 @@
+{
+  "files": {
+    "artifact-hashes.json": "7a7118065457315af41036813add33d70a5346e2133f9021872baf59390b4557",
+    "backend-1-declaration.json": "dce600826315da85f6eece26801fc81e143f447ade1655c7b544c15727e3392b",
+    "backend-1-qualification.json": "2cddd136680004d724dfef33da48a9377c454e1aecdfd836c607a8c93b392eef",
+    "backend-matrix.json": "4e69576a78bee15f2a23b492232fb324c23d55e3c17d3741bbe45e3eef6e923d",
+    "backend-numerics.json": "658830a8636f9660a7a1772fd7874e183cb0b1d8ff7ee5f536e8ccf9355f893d",
+    "cpu-checks.json": "088a8d5578ba60745b437b1a324384f196feb94812f722da069122fcb0f01366",
+    "eager-p0-declaration.json": "44623f40d39384f1df293d7c7042785690af6e94e1d4aed1898fd3d685b0deae",
+    "eager-p0-qualification.json": "f3927ef8fbd268e8fe9af95bfa7f93926f3280932b46852eec785129d1ba77cd",
+    "eager-p0-stages.json": "6b307e086f4ee1cc6a9aa5e4473823da746a4d016bf4125a58cc304232d7f4eb",
+    "execution.json": "836a706199d929e9f5cc2dfcefa01cbeb3ffd18bd2ca7b72e696fb2683b0b9ae",
+    "identity-d581a3b8904b.json": "2c7356429a47c54ebc4e1037d192d74e8767cec521a43fd2fc4e783f9a073e43",
+    "identity-fb5f39acdee1.json": "a1fe2af0286555283e6c730a874af5687a6665affcd6f202b8a99c04ee83d311",
+    "p0-2-declaration.json": "37bc053228c4ddfe23cc663fbe1aa412169639cad4c68d0aedcacb321f76c28c",
+    "p0-2-qualification.json": "3d87ccdbb950a5920d4031aa88b9e54fbbecaa9c50ff2df2d0eaa4158e6aafc0",
+    "p0-2-stages.json": "669b39f49dc4ed3ff84a7bb64d204f1bc8bd3fc0b578803bcf5c439dd753226e",
+    "scalar-prototypes.json": "8e36d50010a5e274fba7cb02dc1e217aee9d291bd1b1a7ff89771bc8c16f4b99",
+    "suite-1-declaration.json": "47b80c96c664f7e7efe08a95b430ff77c676c12d18e57fa85b9589372659a86c",
+    "suite-1-qualification.json": "082c19332bd22de71154862adbc891f87645a3c103c16e410705ab8b56252721",
+    "suite-crop-contract.json": "6738ee1d00773b4b914ee927a1074cfb53764e39d4d125eb936252bdf2b24874",
+    "suite-initial-checker-rejection.json": "d408514977b5fbc479be6386f62a5db07545580c89c25c9b27e3a5a1450b2a6d"
+  }
+}
