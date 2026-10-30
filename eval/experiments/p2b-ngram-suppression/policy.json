@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "experiment": "P2B_NGRAM_SUPPRESSION_RCA",
+  "purpose": "Controlled isolation of the official no-repeat n-gram suppression (size 35, trailing window 1024 over generated ids only) on the four frozen P2-A documents whose 8192-budget evidence is immutable. First stage is bounded to the unchanged 8192 output budget; any budget escalation requires a NEW reviewed policy. Production default caps and the production n-gram-off default are NOT changed by this policy.",
+  "documents": [
+    "handwritten_chn_1ae487be",
+    "newspaper_chn_eb87830d",
+    "newspaper_eng_ed12985c",
+    "paper_chn_3567e55d"
+  ],
+  "control_evidence": "Immutable ngram=0 evidence: eval/results/Linux gfx1151 verified/mpdoc-sample-p15/ (P1.5 ledger) and the P2-A per-budget receipts; controls are never re-run or rewritten for this experiment",
+  "baseline_new_tokens": 8192,
+  "budgets_new_tokens": [8192],
+  "ngram_sizes": [35],
+  "ngram_window": 1024,
+  "ngram_scope": "generated tokens only (official SGLang SGLANG_UOCR_NGRAM_OUTPUT_ONLY=True semantics; frozen model loop scans gen only)",
+  "ngram_provenance": "official client infer.py@48ff432 NGRAM_SIZE=35, window 1024 multi-page; see docs/rca/NGRAM35_SOURCE_AUDIT.md",
+  "unchanged": {
+    "max_pages_per_request": 5,
+    "max_pixels_per_page": 16000000,
+    "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "prompt": "official default document prompt",
+    "crop_policy": "crop_mode=False (infer_multi)",
+    "decoder": "official eager + DASH Triton, 12 routers",
+    "vision_sdpa": "MATH (SAM/CLIP scoped)",
+    "native_page_guard": "enabled (expected_pages from prompt; max_page_tokens=20000)",
+    "sampling": "greedy temperature=0"
+  },
+  "admission": {
+    "context_cap_tokens": 131072,
+    "prompt_upper_bound_tokens_per_page": 300,
+    "required_margin_tokens": 4096,
+    "rule": "pages*prompt_upper_bound + budget + margin must not exceed context_cap_tokens"
+  },
+  "supervision": {
+    "timeout_seconds_per_document": 7200,
+    "worker": "isolated subprocess per attempt (P1.5 supervision; bounded termination grace)"
+  },
+  "order_of_work": "newspaper_chn_eb87830d and newspaper_eng_ed12985c first under the bounded budget; no automatic escalation",
+  "labels": ["EXPERIMENTAL_NGRAM_ONLY", "P2B_RCA"]
+}
