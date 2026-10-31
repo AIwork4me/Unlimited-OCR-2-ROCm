@@ -23,8 +23,8 @@ _REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_REPO_ROOT / "src"))
 
 from unlimited_ocr_2_rocm.publication import (  # noqa: E402
-    WHITELIST,
     publication_findings,
+    scan_staged_files,
     scan_tree,
 )
 
@@ -49,14 +49,7 @@ def main(argv: list[str] | None = None) -> int:
 
     violations: list[tuple[str, list[str]]] = []
     if args.staged:
-        for path in _staged_files():
-            rel = path.relative_to(_REPO_ROOT).as_posix()
-            expected_hash = WHITELIST.get(rel)
-            if expected_hash is not None:
-                continue  # hash-verified by the tree scan in CI
-            findings = publication_findings(path) if path.is_file() else []
-            if findings:
-                violations.append((rel, findings))
+        violations.extend(scan_staged_files(_staged_files(), _REPO_ROOT))
     elif args.scan:
         for root in args.scan:
             prefix = ""

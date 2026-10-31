@@ -149,3 +149,145 @@ def test_gate_cli_blocks_annotation_file(tmp_path: Path) -> None:
     )
     assert result.returncode == 1
     assert "dataset annotation" in result.stdout
+
+
+# ---------------------------------------------------------------------------
+# Security hardening (Task A): staged whitelist hashes, nested/JSONL rows,
+# Windows private paths, coverage, reintroduction, fail-closed evidence.
+# ---------------------------------------------------------------------------
+
+
+def test_nested_annotation_rows_flagged(tmp_path: Path) -> None:
+    wrapped = {"meta": {"experiment": "x", "rows": [_annotation_row()]}}
+    path = tmp_path / "nested-export.json"
+    path.write_text(json.dumps(wrapped, ensure_ascii=False), encoding="utf-8")
+    assert any("dataset annotation" in f for f in publication_findings(path))
+
+
+def test_deeply_nested_annotation_rows_flagged(tmp_path: Path) -> None:
+    wrapped: dict = {"leaf": _annotation_row()}
+    for _ in range(6):
+        wrapped = {"level": [wrapped]}
+    path = tmp_path / "deep.json"
+    path.write_text(json.dumps(wrapped, ensure_ascii=False), encoding="utf-8")
+    assert any("dataset annotation" in f for f in publication_findings(path))
+
+
+def test_jsonl_annotation_rows_flagged(tmp_path: Path) -> None:
+    path = tmp_path / "slice.jsonl"
+    rows = [_annotation_row(), {"ok": 1}]
+    path.write_text(
+        "\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n", encoding="utf-8"
+    )
+    assert any("dataset annotation" in f for f in publication_findings(path))
+
+
+def test_ndjson_annotation_rows_flagged(tmp_path: Path) -> None:
+    path = tmp_path / "slice.ndjson"
+    path.write_text(json.dumps(_annotation_row(), ensure_ascii=False) + "\n", encoding="utf-8")
+    assert any("dataset annotation" in f for f in publication_findings(path))
+
+
+def test_malformed_json_fail_closed(tmp_path: Path) -> None:
+    path = tmp_path / "broken.json"
+    path.write_text('{"experiment": "unterminated', encoding="utf-8")
+    findings = publication_findings(path)
+    assert findings and "unreadable" in findings[0]
+
+
+def test_malformed_jsonl_fail_closed(tmp_path: Path) -> None:
+    path = tmp_path / "broken.jsonl"
+    path.write_text('{"a": 1}\n{"broken": \n', encoding="utf-8")
+    findings = publication_findings(path)
+    assert findings and "unreadable" in findings[0]
+
+
+def test_windows_private_path_flagged(tmp_path: Path) -> None:
+    leaked = "C:" + chr(92) + "Users" + chr(92) + "dev" + chr(92) + "worker"
+    path = tmp_path / "receipt.json"
+    path.write_text(json.dumps({"note": f"ran under {leaked}"}), encoding="utf-8")
+    assert any("private host path" in f for f in publication_findings(path))
+    text_path = tmp_path / "log.txt"
+    text_path.write_text(f"worker dir {leaked}\n", encoding="utf-8")
+    assert any("private host path" in f for f in publication_findings(text_path))
+
+
+def test_scan_tree_covers_deeply_nested_evidence_paths(tmp_path: Path) -> None:
+    deep = tmp_path / "eval" / "results" / "exp" / "sub" / "deeper"
+    deep.mkdir(parents=True)
+    (deep / "p2b-gt-slice.json").write_text(
+        json.dumps([_annotation_row()], ensure_ascii=False), encoding="utf-8"
+    )
+    violations = scan_tree(tmp_path / "eval", prefix="eval")
+    assert len(violations) == 1
+    rel, findings = violations[0]
+    assert rel == "eval/results/exp/sub/deeper/p2b-gt-slice.json"
+    assert any("dataset annotation" in f for f in findings)
+
+
+def test_scan_tree_excludes_git_and_b_workspaces(tmp_path: Path) -> None:
+    (tmp_path / ".git").mkdir()
+    (tmp_path / ".b").mkdir()
+    (tmp_path / "__pycache__").mkdir()
+    for directory in (".git", ".b", "__pycache__"):
+        (tmp_path / directory / "p2b-gt-slice.json").write_text(
+            json.dumps([_annotation_row()]), encoding="utf-8"
+        )
+    assert scan_tree(tmp_path) == []
+
+
+def test_staged_whitelist_hash_mismatch_flagged(tmp_path: Path) -> None:
+    from unlimited_ocr_2_rocm import publication
+
+    rel = "eval/benchmarks/g05/scorer/final/pipelines/marathon-pipeline/ground-truth.json"
+    staged = tmp_path / rel
+    staged.parent.mkdir(parents=True)
+    staged.write_text(json.dumps([_annotation_row(text="tampered")]), encoding="utf-8")
+    original = dict(publication.WHITELIST)
+    try:
+        assert any(
+            "hash changed" in f[0] for _, f in publication.scan_staged_files([staged], tmp_path)
+        )
+        # Exact pinned bytes pass the staged hash verification.
+        pinned = tmp_path / "pinned.json"
+        pinned.write_text(json.dumps([_annotation_row()]), encoding="utf-8")
+        publication.WHITELIST.clear()
+        publication.WHITELIST["pinned.json"] = {
+            "sha256": file_sha256(pinned),
+            "reason": "test fixture",
+        }
+        assert publication.scan_staged_files([pinned], tmp_path) == []
+    finally:
+        publication.WHITELIST.clear()
+        publication.WHITELIST.update(original)
+
+
+def test_staged_whitelist_hash_verified_by_default(tmp_path: Path) -> None:
+    """The real CLI path must verify whitelisted staged files against pinned hashes."""
+    from unlimited_ocr_2_rocm import publication
+
+    rel = "eval/benchmarks/g05/scorer/final/pipelines/marathon-pipeline/ground-truth.json"
+    staged = tmp_path / rel
+    staged.parent.mkdir(parents=True)
+    staged.write_text(json.dumps([_annotation_row(text="reintroduced GT")]), encoding="utf-8")
+    # With the REAL whitelist entry for this path, staged content whose hash
+    # differs from the pinned fixture is refused (historical GT cannot be
+    # reintroduced under a whitelisted path).
+    violations = publication.scan_staged_files([staged], tmp_path)
+    assert violations and "hash changed" in violations[0][1][0]
+
+
+def test_gate_cli_scan_reports_nested_violation(tmp_path: Path) -> None:
+    deep = tmp_path / "eval" / "sub"
+    deep.mkdir(parents=True)
+    (deep / "p2b-gt-slice.json").write_text(
+        json.dumps([_annotation_row()], ensure_ascii=False), encoding="utf-8"
+    )
+    result = subprocess.run(
+        [sys.executable, str(REPO_ROOT / "scripts/publication_gate.py"), "--scan", str(tmp_path)],
+        capture_output=True,
+        text=True,
+        cwd=REPO_ROOT,
+    )
+    assert result.returncode == 1
+    assert "dataset annotation" in result.stdout

@@ -23,6 +23,9 @@ ANNOTATION_ROW_KEYS = frozenset({"page_info", "layout_dets"})
 
 # Published evidence may never contain private host filesystem paths.
 PRIVATE_PATH_PATTERN = re.compile(r"/home/[A-Za-z0-9_.-]+|/Users/[A-Za-z0-9_.-]+")
+# Windows equivalents: escaped or raw backslashes both match (JSON text and
+# plain-text evidence carry different escaping of the same leak).
+_WINDOWS_PATH_PATTERN = re.compile(r"[A-Za-z]:\\+Users\\+[A-Za-z0-9_.\- ]+")
 
 # Binary image files are never publishable evidence (page renders, crops).
 IMAGE_SUFFIXES = frozenset({".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp", ".webp"})
@@ -146,17 +149,48 @@ def looks_like_dataset_annotations(value: Any) -> bool:
     return True
 
 
+#: Bounds for the nested-row search. A value whose scan exceeds either bound
+#: cannot be proven clean, so it fails closed (treated as GT content). The
+#: node budget sits far above the largest committed evidence file (the
+#: Marathon page index, ~73k nodes) while the full 420-document GT alone
+#: measures ~1.09M nodes — budget refusals land on GT-scale exports.
+_ANNOTATION_SEARCH_DEPTH = 8
+_ANNOTATION_SEARCH_NODES = 500_000
+
+
+def _contains_annotation_rows(value: Any) -> bool:
+    """True when annotation-shaped rows appear anywhere inside a JSON value.
+
+    Bounded iterative search: nested exports (rows wrapped in arbitrary
+    containers) must not escape the detector. Oversized structures fail
+    closed instead of being trusted.
+    """
+    stack: list[tuple[Any, int]] = [(value, 0)]
+    nodes = 0
+    while stack:
+        item, depth = stack.pop()
+        nodes += 1
+        if nodes > _ANNOTATION_SEARCH_NODES or depth > _ANNOTATION_SEARCH_DEPTH:
+            return True  # fail closed: oversized/deep candidate is not provably clean
+        if isinstance(item, dict):
+            if ANNOTATION_ROW_KEYS <= item.keys():
+                page_info = item.get("page_info")
+                if isinstance(page_info, dict) and isinstance(page_info.get("image_path"), str):
+                    return True
+            stack.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, list):
+            stack.extend((child, depth + 1) for child in item)
+    return False
+
+
 def publication_findings(path: Path) -> list[str]:
     """Classify one file; empty list means publishable."""
     findings: list[str] = []
-    if path.suffix.lower() in IMAGE_SUFFIXES:
+    suffix = path.suffix.lower()
+    if suffix in IMAGE_SUFFIXES:
         findings.append("binary image content is not publishable evidence")
         return findings
-    if path.suffix.lower() != ".json":
-        if _is_probably_binary(path):
-            return findings
-        text = path.read_text(encoding="utf-8", errors="replace")
-    else:
+    if suffix == ".json":
         try:
             value = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
@@ -165,10 +199,41 @@ def publication_findings(path: Path) -> list[str]:
         if looks_like_dataset_annotations(value):
             findings.append("dataset annotation rows (page_info/layout_dets) — GT content")
             return findings
+        if _contains_annotation_rows(value):
+            findings.append("dataset annotation rows nested inside a JSON export — GT content")
+            return findings
         text = json.dumps(value, ensure_ascii=False)
-    for match in PRIVATE_PATH_PATTERN.finditer(text):
-        findings.append(f"private host path {match.group(0)!r}")
-        break
+    elif suffix in {".jsonl", ".ndjson"}:
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except (OSError, UnicodeDecodeError) as error:
+            findings.append(f"unreadable JSONL evidence file: {error}")
+            return findings
+        text_parts: list[str] = []
+        for number, line in enumerate(lines, start=1):
+            text_parts.append(line)
+            if not line.strip():
+                continue
+            try:
+                value = json.loads(line)
+            except json.JSONDecodeError as error:
+                findings.append(f"unreadable JSONL evidence at line {number}: {error}")
+                return findings
+            if looks_like_dataset_annotations(value) or _contains_annotation_rows(value):
+                findings.append(
+                    f"dataset annotation rows (page_info/layout_dets) — GT content (line {number})"
+                )
+                return findings
+        text = "\n".join(text_parts)
+    else:
+        if _is_probably_binary(path):
+            return findings
+        text = path.read_text(encoding="utf-8", errors="replace")
+    for pattern in (PRIVATE_PATH_PATTERN, _WINDOWS_PATH_PATTERN):
+        match = pattern.search(text)
+        if match:
+            findings.append(f"private host path {match.group(0)!r}")
+            break
     return findings
 
 
@@ -198,6 +263,31 @@ def scan_tree(root: Path, *, prefix: str = "") -> list[tuple[str, list[str]]]:
                 violations.append((rel, ["whitelisted file hash changed — re-review required"]))
             continue
         findings = publication_findings(path)
+        if findings:
+            violations.append((rel, findings))
+    return violations
+
+
+def scan_staged_files(
+    files: list[Path], repo_root: Path, *, whitelist: dict[str, dict[str, str]] | None = None
+) -> list[tuple[str, list[str]]]:
+    """Scan staged candidate files; whitelisted paths are hash-verified here.
+
+    The staged mode must not defer whitelist integrity to a later tree scan:
+    a staged edit at a whitelisted path is refused the moment its bytes drift
+    from the pinned SHA-256 (historical GT cannot be reintroduced under an
+    admitted path).
+    """
+    table = WHITELIST if whitelist is None else whitelist
+    violations: list[tuple[str, list[str]]] = []
+    for path in files:
+        rel = path.relative_to(repo_root).as_posix()
+        entry = table.get(rel)
+        if entry is not None:
+            if not path.is_file() or file_sha256(path) != entry["sha256"]:
+                violations.append((rel, ["whitelisted file hash changed — re-review required"]))
+            continue
+        findings = publication_findings(path) if path.is_file() else []
         if findings:
             violations.append((rel, findings))
     return violations
