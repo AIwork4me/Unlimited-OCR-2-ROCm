@@ -83,12 +83,19 @@ def infer_document(
     *,
     multi: bool,
     max_new_tokens: int,
+    no_repeat_ngram_size: int = 0,
+    ngram_window: int = 0,
 ) -> Any:
     if not image_files or (not multi and len(image_files) != 1):
         raise ValueError("Expected one image or an ordered full document")
     options: dict[str, Any] = {}
     if multi:
         options["crop_mode"] = False
+    if no_repeat_ngram_size > 0:
+        # Opt-in repetition suppression; the caller's policy gate has already
+        # validated the exact (size, window) pair (inference.validate_ngram).
+        options["no_repeat_ngram_size"] = no_repeat_ngram_size
+        options["ngram_window"] = ngram_window
     return model.infer(
         tokenizer,
         image_file=list(image_files) if multi else image_files[0],

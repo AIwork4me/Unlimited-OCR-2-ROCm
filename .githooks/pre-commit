@@ -1,0 +1,5 @@
+#!/bin/sh
+# Publication gate: refuse dataset annotation content at commit time.
+# Enable once per clone: git config core.hooksPath .githooks
+# Enforced centrally by tests/unit/test_publication_gates.py in CI.
+exec python3 scripts/publication_gate.py --staged
