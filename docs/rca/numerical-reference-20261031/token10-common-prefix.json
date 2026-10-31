@@ -1,0 +1,46 @@
+{
+  "derived_from_sha256": "ecc70992b961feb1261988fa7f2d24fed130dfbcbf9a6fa8e586097560433fe3",
+  "requests": [
+    {
+      "label": "MM",
+      "step": 10,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "selection_logit_sha256": "9f2ef399621a5eb60ffcab0139105636ceb5bbd2a9bd0ad5f8d319966e4ecfb7",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "argmax_equals_MM": true
+    },
+    {
+      "label": "AA",
+      "step": 10,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "selection_logit_sha256": "b8d6c3510378d6027d83fa3c7e53cc3cd5f14a421d9c1e4c4795ffbfd77d2cba",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "argmax_equals_MM": true
+    },
+    {
+      "label": "AM",
+      "step": 10,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "selection_logit_sha256": "60e0b037f0d6972081a525927e2572a8db8267be4f1c04f570f4d00e6389c2d0",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "argmax_equals_MM": true
+    },
+    {
+      "label": "MA",
+      "step": 10,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "selection_logit_sha256": "5cb42cdddd18b841aab313a2ce1a76ed162a00b89638ee68107062db22004e9a",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "argmax_equals_MM": true
+    }
+  ],
+  "scope": "Same frozen MMprefix0..9, four backendconditions; no new inference or numerical acceptance criterion."
+}

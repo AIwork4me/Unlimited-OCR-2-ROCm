@@ -26,7 +26,7 @@
 - [x] Seal four new MM/AA/AM/MA one-request owned workers only after review. Diagnostic teacher forcing feeds the frozen MM prefix for steps0–9 after recording actual unchanged logits/argmax; original model source remains untouched. Capture steps7/10 and supported KV iteration, first CLIP residual/norm/MLP, and exact SDPA inputs/outputs including offsets.
 - [x] Analyze matched first CLIP and SAM inputs separately. Audit fixed-hidden-state lm_head FP32/FP64 projection against captured BF16 logits. Preserve token values privately and publish aggregate/hashes only.
 - [x] Run independent read-only review and six CPU checks. Rehash historical artifacts, inspect cleanup and sanitize exports. Classify each subsystem without inventing a numeric contract.
-- [ ] Create a narrowly scoped draft PR from a new branch with only new experimental code, tests and sanitized docs. Preserve unrelated dirty changes; do not merge or submit upstream.
+- [x] Create a narrowly scoped draft PR from a new branch with only new experimental code, tests and sanitized docs. Preserve unrelated dirty changes; do not merge or submit upstream.
 
 ## Ledger
 
@@ -36,4 +36,4 @@
 
 - Execution ruling: two failed pre-inference instrumentation attempts are preserved under separate identities; neither completed an OCR request. The admitted v3 run completes four diagnostics. Both SAM and CLIP retain INSUFFICIENT EVIDENCE for arithmetic-defect determination; no empirical tolerance was introduced.
 
-- Review: independent report/privacy review passed; 424 capture seals, matched inputs, FP64 references, fixed-hidden projection and 192 cache checks independently verified. CPU baseline 340/7 and nine experimental tests pass. Draft PR delivery is the remaining task.
+- Review: independent report/privacy review passed; 424 capture seals, matched inputs, FP64 references, fixed-hidden projection and 192 cache checks independently verified. CPU baseline 340/7 and nine experimental tests pass. Draft PR #27 is created and attached; it is stacked on #26 and remains unmerged.
