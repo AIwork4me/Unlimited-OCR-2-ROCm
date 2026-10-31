@@ -152,6 +152,12 @@ def replay(
             "emitted_markers": markers,
             "marker_overshoot": markers - expected_pages if markers > expected_pages else 0,
             "forced_steps": len(forced_steps),
+            #: Additive (L1 qualification): the per-step forced targets so the
+            #: pre-selection observer can be differentially validated against
+            #: the post-hoc replay. Historical receipts keep the old shape.
+            "forced_step_list": [
+                {"step": entry["step"], "forced": entry["forced"]} for entry in forced_steps
+            ],
             "forced_mismatches": forced_mismatches,
         },
         "repeated_tail": repeated_tail(token_ids),
