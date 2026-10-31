@@ -1,0 +1,90 @@
+{
+ "claim_limit": "Small predeclared MPDocBench subset; NOT full MPDocBench accuracy, NOT leaderboard parity, NOT full dataset completion",
+ "config": {
+  "admission": {
+   "admitted": true,
+   "budget": 39321,
+   "context_cap_tokens": 131072,
+   "pages": 15,
+   "prompt_upper_bound_tokens": 4500,
+   "required_margin_tokens": 4096,
+   "total_upper_bound_tokens": 47917
+  },
+  "budget_new_tokens": 39321,
+  "claim_limit": "One document, one attempt. NOT MPDocBench accuracy, NOT leaderboard parity, NOT official-deployment parity (no windowing, no KV reuse \u2014 see docs/validation/L1_FIFTEEN_PAGE_SPEC.md \u00a77). 15-page promotion requires ALL gates PASS including 15/15 pages emitted, natural valid completion, zero forced-marker mismatches and zero supervision failures.",
+  "documents": [
+   "book_eng_77552588"
+  ],
+  "expected_pages": 15,
+  "experiment": "L1_FIFTEEN_PAGE_NATIVE",
+  "gpu_allocated_hard_limit_gib": 16,
+  "label": "EXPERIMENTAL_L1_FIFTEEN_PAGE_NATIVE",
+  "ngram_window": 1024,
+  "no_repeat_ngram_size": 35,
+  "policy_repo_path": "eval/experiments/l1-fifteen-page/policy.json",
+  "policy_sha256": "dd23a5462c28f3bd93a97c17fe5890e4ad01764de6fb39e9ba0c61a22904db6e",
+  "schema": 1,
+  "selection_receipt_sha256": "6d9b92856f53834eb21040e554a73dc264227e9de87cdd9d4a8dad401f7d434f",
+  "timeout_seconds_per_document": 14400,
+  "unchanged": {
+   "bf16": true,
+   "crop_policy": "crop_mode=False (infer_multi)",
+   "decoder": "official eager + DASH Triton, 12 routers",
+   "max_pixels_per_page": 16000000,
+   "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+   "native_page_guard": "enabled (expected_pages=15 from prompt; max_page_tokens=20000)",
+   "prompt": "official default document prompt",
+   "sampling": "greedy temperature=0",
+   "vision_sdpa": "MATH (SAM/CLIP scoped)"
+  }
+ },
+ "counts": {
+  "FAIL": 0,
+  "NOT_RUN": 419,
+  "OOM": 0,
+  "PASS": 1,
+  "TIMEOUT": 0,
+  "TRUNCATED": 0
+ },
+ "dataset": "MPDocBench",
+ "documents": [
+  {
+   "attempt_wall_seconds": 1214.506,
+   "attempts": 1,
+   "doc_id": "book_eng_77552588",
+   "finish_reason": "stop",
+   "output_tokens": 13151,
+   "pages": 15,
+   "reason": "",
+   "state": "PASS"
+  }
+ ],
+ "environment": {
+  "gpu": {
+   "arch": null,
+   "name": null
+  },
+  "packages": {
+   "huggingface-hub": "0.36.0",
+   "tokenizers": "0.21.4",
+   "torch": "2.12.0+rocm7.2",
+   "transformers": "4.52.1",
+   "triton-rocm": "3.7.0"
+  },
+  "platform": "linux",
+  "python": "3.10.20"
+ },
+ "expected_documents": 420,
+ "label": "REAL_DATA_INTEGRATION_ONLY",
+ "run_id": "3562dbb9da30db6376dc203d81c8cadb001f0189c9b6180449cf783bda6e3556",
+ "schema": 1,
+ "selection_documents": [
+  "book_eng_77552588"
+ ],
+ "selection_sha256": "dd23a5462c28f3bd93a97c17fe5890e4ad01764de6fb39e9ba0c61a22904db6e",
+ "status": "PARTIAL",
+ "worker_identity": {
+  "script": "scripts/run_l1_fifteen_page.py",
+  "supervision": "subprocess"
+ }
+}

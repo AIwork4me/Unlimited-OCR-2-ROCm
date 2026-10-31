@@ -1,0 +1,19 @@
+{
+ "claim_limit": "Single predeclared 15-page L1 document; NOT benchmark accuracy, NOT leaderboard parity; production defaults unchanged.",
+ "dataset": "MPDocBench",
+ "documents": {
+  "book_eng_77552588": {
+   "layout_dets": 323,
+   "pages": 15,
+   "relation_edges": 296
+  }
+ },
+ "experiment": "L1_FIFTEEN_PAGE_NATIVE",
+ "ground_truth_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
+ "label": "SANITIZED_GT_IDENTITY_RECEIPT",
+ "note": "Identity receipt only. The raw annotation slice for these documents was removed from the published tree (P0 publication remediation); it is verifiable by rebuilding the slice from the licensed dataset and comparing against slice_sha256.",
+ "policy_sha256": "dd23a5462c28f3bd93a97c17fe5890e4ad01764de6fb39e9ba0c61a22904db6e",
+ "run_id": "3562dbb9da30db6376dc203d81c8cadb001f0189c9b6180449cf783bda6e3556",
+ "schema": 2,
+ "slice_sha256": "de882788859e9ccea4aa98f7a8da5c9d6f1431e4044772a4bc88b625f977fe32"
+}
