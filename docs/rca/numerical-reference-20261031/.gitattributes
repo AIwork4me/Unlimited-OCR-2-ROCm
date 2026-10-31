@@ -1,0 +1,2 @@
+*.json -text -whitespace linguist-generated=true
+.gitattributes text eol=lf

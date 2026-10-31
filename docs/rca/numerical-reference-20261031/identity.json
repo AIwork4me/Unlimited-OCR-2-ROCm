@@ -1,0 +1,78 @@
+{
+  "wheel_sha256": "6a67d15861538ee217afdccd1ccc09ff318d7f44bff29a10f74c0d51730e6e1e",
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "model_manifest_sha256": "ffd730234a34504a78f5df5eb025d8341695abd51ce9025caaddeebf45e687de",
+  "cases": [
+    {
+      "name": "mixed",
+      "truth_keys": [
+        "mixed"
+      ],
+      "max_new_tokens": 1024
+    }
+  ],
+  "input_hashes": {
+    "tests/fixtures/ground_truth.json": "aeb3c76c2fb401b1e3dc609f2346d11515569e27ce0d5adc4ee21ea36f06e47f",
+    "tests/fixtures/mixed.png": "09714bd58f4042dde37d4c1152b273585f7beb86562b046e02d5b2b58205ef03"
+  },
+  "schedule": [
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "MATH/MATH"
+    },
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "AUTO/AUTO"
+    },
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "AUTO/MATH"
+    },
+    {
+      "option": "eager",
+      "repeat": 0,
+      "modes": "MATH/AUTO"
+    }
+  ],
+  "declaration_sha256": "4e28752a6d676c95622e403019a05c7f9459c8d643031a6c71b7275b4d22b3e4",
+  "runtime": {
+    "transformers": "4.52.1",
+    "cache_source_sha256": "948b63ada8229fa46cc0d6eb28bf9a4f2e0a4721c1eb1b1d19b967019d96e4ac",
+    "torch": "2.12.0+rocm7.14.1",
+    "math_reduced_allowed": false
+  },
+  "common_prefix_sha256": "2c69e14d601b4e5425fafb370aad67c9a921c543eb8cb3c9ccb08803802f5a24",
+  "source_hashes": {
+    "experiments/te_mitigation/worker.py": "fd92295034d7a814603f0dcf96381853d4d255eb3b93707ecb121a82582dfa5c",
+    "experiments/te_mitigation/run.py": "bd3db180d0c9b7cb4a3a40f082caf6302df9dd2df33dd9b89a6ebe4f63ae762d",
+    "experiments/cold_start/worker.py": "272f3131072f2552c125e0d99d6829197846017fab0246a20b8b1051b01a0df0",
+    "experiments/cold_start/windows_job.py": "58311dd112e29e8a4b55d1a1f297a19bec1d829421d0e1b77fdf698079ee7adb",
+    "experiments/native_regression/runner.py": "5983da029cb62ee19d3221d7c9c2700931212fee6c2895b2f33c36e60b027e51",
+    "experiments/te_mitigation/analyze.py": "5a3547532ca077f4ed705eb48d9360060ac4834618eef16d1048861bad19aeba",
+    "src/unlimited_ocr_2_rocm/upstream-lock.json": "ffd730234a34504a78f5df5eb025d8341695abd51ce9025caaddeebf45e687de",
+    "docs/superpowers/plans/2026-10-30-te-mitigation-e2e.md": "88267f6575a00084b4f215d667cb488a4ad83071a77d8ae80ace44ba4f0b305e",
+    "docs/rca/MATCHED_CONTEXT_BACKEND_PROTOCOL_20261030.md": "e8c5759f7ffe32b4732a552b7123523f6caefa605797d7cd12294fd9b272adfe",
+    "docs/superpowers/plans/2026-10-30-pr26-qualification-closure.md": "4aa201403a3c336944b96c032a47d23976f33b02f45c8955d30c4a2c4d14a268",
+    "experiments/numerical_reference/analyze_diagnostics.py": "2d74efa686567456d105b7b86026c2b738f211dfba3b2a49d3e352bf99aaf195",
+    "experiments/numerical_reference/diagnostic.py": "75f1189d3e3d35080f762d17217742491ef16950080c5c6eaf5e7195021c221c",
+    "experiments/numerical_reference/reference.py": "da1bb8c8409df73f3b7d374b531ac38d0f5a04d6697bf89198dedd4fcd4df8ce",
+    "experiments/numerical_reference/retained.py": "6b3a214236d6b351b12c8347bc7fd89b0c7e9fd4c11d31ef60b7a3da067d8553",
+    "experiments/numerical_reference/test_cache.py": "4aa7ae89ef5bb8d63fcefc9efa699a64979d020121a3f5b6ba08e7b45a997a72",
+    "experiments/numerical_reference/test_decorators.py": "98104988d54de3532d1b1febf243eb39a0f3087ee3b17ab47d026dee20fe3e1a",
+    "experiments/numerical_reference/test_diagnostic.py": "d5a4dfb3466dae072d05bf3c8be021eb2cd299d1c0fa8c891026f6104238272c",
+    "experiments/numerical_reference/test_reference.py": "cb5222eb722eb6af5d66670227496befef9ccf8e078dc30135d1cba6d2e4a6c0"
+  },
+  "private_producer_hashes": {
+    "frozen_worker.py": "c9c6917a7d74a692f17a6dc5ae304f044c3ec305a2a5400c2e8308027bdbb0a5",
+    "te_worker.py": "20f378ae983170509f895aebdcb7dd1c7ab0ac0ec874af3cf29b15522977178a",
+    "isolation_control.py": "d913bb4ea1e137f58fad42ba8792e0580296756a7ec9e21ba067be11feeb3657",
+    "capture.py": "486b7cdc256ea5bdd8b984abfb691a2393313e6b3a1f35b2c14a4c798ba65ecd",
+    "run.py": "7212f6cb83165ad4700caff1ae0f0d5620384e89fda43325a33d778335fc92f6",
+    "test_control.py": "424a45beebc8dc8d4bd1361d7a64b57e4ff3529e763091cbc37e8232a54224b7",
+    "audit.py": "11b820301b6ab8e683d5b66dd4d9ec0ea7e7ab5570cd689847bb5711f90c702f"
+  },
+  "teacher_forcing": "MM tokens0..9 fed after recording actual selection; guard/cache/position state uses the fed prefix consistently. Diagnostic, not natural OCR parity."
+}

@@ -1,0 +1,27 @@
+{
+  "capture.py": {
+    "executed_sha256": "486b7cdc256ea5bdd8b984abfb691a2393313e6b3a1f35b2c14a4c798ba65ecd",
+    "published_LF_sha256": "c659b1cbf5175415659e69e9aebc05d5dee9c2ce168570854f5e38c72f68a1fb",
+    "normalization": "CRLF to LF only"
+  },
+  "run.py": {
+    "executed_sha256": "7212f6cb83165ad4700caff1ae0f0d5620384e89fda43325a33d778335fc92f6",
+    "published_LF_sha256": "003734f22635a56263ab81625315e469e2feb802d548b9d492628c07d2776186",
+    "normalization": "CRLF to LF only"
+  },
+  "te_worker.py": {
+    "executed_sha256": "20f378ae983170509f895aebdcb7dd1c7ab0ac0ec874af3cf29b15522977178a",
+    "published_LF_sha256": "42593dd79e90dd0ad382a99a1ba674fed047a650a84a03ffe3b2b0b57b76f5f0",
+    "normalization": "CRLF to LF only"
+  },
+  "frozen_worker.py": {
+    "executed_sha256": "c9c6917a7d74a692f17a6dc5ae304f044c3ec305a2a5400c2e8308027bdbb0a5",
+    "published_LF_sha256": "1582720471fb822c6a8d45ab886fc7ecbf9eb801da25a1fa379d0069bf910fc1",
+    "normalization": "CRLF to LF only"
+  },
+  "isolation_control.py": {
+    "executed_sha256": "d913bb4ea1e137f58fad42ba8792e0580296756a7ec9e21ba067be11feeb3657",
+    "published_LF_sha256": "d913bb4ea1e137f58fad42ba8792e0580296756a7ec9e21ba067be11feeb3657",
+    "normalization": "CRLF to LF only"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "SAM": "INSUFFICIENT EVIDENCE",
+  "CLIP": "INSUFFICIENT EVIDENCE",
+  "interpretation": "Consistent with floating-point variation and demonstrated final BF16 projection quantization/tie amplification; no normative quantitative violation proved.",
+  "new_tolerance": false,
+  "confirmed_defect": false,
+  "keep_experimental": true
+}

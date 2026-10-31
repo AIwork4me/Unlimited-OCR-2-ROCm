@@ -1,0 +1,121 @@
+{
+  "cpu": [
+    {
+      "exit_code": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "check": "ruff"
+    },
+    {
+      "exit_code": 0,
+      "log_sha256": "a70f7dd4dea92217153fb5f41f49b47f586ab31ecae1d696942f53ccf1180f9e",
+      "check": "format"
+    },
+    {
+      "exit_code": 0,
+      "log_sha256": "ca916a46c8480ca49cfc7ed8c6d5214c1868f3d7370fd32fb5f9bb3f9026618a",
+      "check": "pytest"
+    },
+    {
+      "exit_code": 0,
+      "log_sha256": "63da153bcdac04b2cc982479df4378f21b20029f9acb87ad908fb4d5befe6a43",
+      "check": "mypy"
+    },
+    {
+      "exit_code": 0,
+      "log_sha256": "75494e724ad54657949954095696caa99ba0d7a93137c60b890e01aebe24d6e7",
+      "check": "build"
+    },
+    {
+      "exit_code": 0,
+      "log_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+      "check": "pip check"
+    }
+  ],
+  "pytest": "340 passed, 7 skipped",
+  "local_tests": 9,
+  "workers": [
+    {
+      "condition": "MATH/MATH",
+      "pid": 101960,
+      "exit_code": 0,
+      "active_descendants": 0
+    },
+    {
+      "condition": "AUTO/AUTO",
+      "pid": 88672,
+      "exit_code": 0,
+      "active_descendants": 0
+    },
+    {
+      "condition": "AUTO/MATH",
+      "pid": 22112,
+      "exit_code": 0,
+      "active_descendants": 0
+    },
+    {
+      "condition": "MATH/AUTO",
+      "pid": 106148,
+      "exit_code": 0,
+      "active_descendants": 0
+    }
+  ],
+  "historical": {
+    ".b/p230/SHA256SUMS.json": {
+      "count": 68,
+      "mismatches": []
+    },
+    ".b/p240/SHA256SUMS.json": {
+      "count": 338,
+      "mismatches": []
+    }
+  },
+  "failed_attempts": [
+    {
+      "identity": "v1",
+      "stage": "before model loading",
+      "reason": "Premature Transformers import hit unchanged fresh-module guard",
+      "completed_OCR_requests": 0,
+      "active_descendants": 0
+    },
+    {
+      "identity": "v2",
+      "stage": "after loading, before inference",
+      "reason": "Decorator wrapper globals differed from target function globals",
+      "completed_OCR_requests": 0,
+      "active_descendants": 0
+    }
+  ],
+  "scope": "All failed artifacts/producers remain local and sealed. Current v3 completes four requests, one per condition; no new repeat campaign.",
+  "final_preservation": {
+    "isolation": {
+      "count": 261,
+      "mismatches": []
+    },
+    "prior_rca": {
+      "count": 379,
+      "mismatches": []
+    },
+    "failed_v1": {
+      "count": 52,
+      "mismatches": []
+    },
+    "failed_v2": {
+      "count": 29,
+      "mismatches": []
+    },
+    "mixed": {
+      "count": 249,
+      "mismatches": []
+    },
+    ".b/p230/SHA256SUMS.json": {
+      "count": 68,
+      "mismatches": []
+    },
+    ".b/p240/SHA256SUMS.json": {
+      "count": 338,
+      "mismatches": []
+    }
+  },
+  "model_files_verified": 18,
+  "unrelated_dirty_changes_preserved": true
+}

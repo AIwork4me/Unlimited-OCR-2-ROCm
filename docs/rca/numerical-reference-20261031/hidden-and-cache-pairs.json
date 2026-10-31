@@ -1,0 +1,367 @@
+{
+  "hidden": [
+    {
+      "left": "MM",
+      "right": "AA",
+      "step": 0,
+      "left_sha256": "e0b578b9dae0c046f3cf4837e5585410e924e3605f3428664cd8fbb854a1e578",
+      "right_sha256": "cedab26fd10031a58b161fe0bf4de764ca5313a1e925ec066c83f523ec406792",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.0390625,
+        "mean_absolute": 0.00930715948343277,
+        "relative_l2": 0.017338743932469872,
+        "max_relative_nonzero": 21.024539877300615,
+        "mean_relative_nonzero": 0.09172981634305927,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.0078125,
+          "0.9": 0.01953125,
+          "0.99": 0.03125,
+          "0.999": 0.0390625,
+          "1": 0.0390625
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 1141
+      }
+    },
+    {
+      "left": "MM",
+      "right": "AA",
+      "step": 7,
+      "left_sha256": "69622c1cd618ce798ff0cd08571de4dc2a4e402698964995679b8f2ac3d6fada",
+      "right_sha256": "a70d0e58cd3751b29022e07d4113ae84e3a8d6c1728709414ab64dfde38c5220",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.0078125,
+        "mean_absolute": 0.0013435691595077514,
+        "relative_l2": 0.007253811962913537,
+        "max_relative_nonzero": 3.6933333333333334,
+        "mean_relative_nonzero": 0.03315099267093187,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.0009765625,
+          "0.9": 0.0029296875,
+          "0.99": 0.0050878906250000355,
+          "0.999": 0.0078125,
+          "1": 0.0078125
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 1021
+      }
+    },
+    {
+      "left": "MM",
+      "right": "AA",
+      "step": 10,
+      "left_sha256": "268da9d26adf67a396d819cd267fad6f61f111f7ece25a1ee98a3a23fcd552f7",
+      "right_sha256": "654437e37968848afd66dadd19b679fe1be3ed6253a148043773d274e27806ce",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.01171875,
+        "mean_absolute": 0.0025523699820041656,
+        "relative_l2": 0.01165695776058345,
+        "max_relative_nonzero": 5.448484848484848,
+        "mean_relative_nonzero": 0.06595720779151072,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.001953125,
+          "0.9": 0.00537109375,
+          "0.99": 0.0078125,
+          "0.999": 0.011446289062500004,
+          "1": 0.01171875
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 1109
+      }
+    },
+    {
+      "left": "MM",
+      "right": "AM",
+      "step": 0,
+      "left_sha256": "e0b578b9dae0c046f3cf4837e5585410e924e3605f3428664cd8fbb854a1e578",
+      "right_sha256": "d742d04dab2f86103ca03bc0f8669bc504d6febdd3e3fd28fee30ecc1f1c946f",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.0390625,
+        "mean_absolute": 0.009448996186256409,
+        "relative_l2": 0.01748835270273914,
+        "max_relative_nonzero": 13.993288590604028,
+        "mean_relative_nonzero": 0.11670366870544735,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.0078125,
+          "0.9": 0.01953125,
+          "0.99": 0.03125,
+          "0.999": 0.0390625,
+          "1": 0.0390625
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 1145
+      }
+    },
+    {
+      "left": "MM",
+      "right": "AM",
+      "step": 7,
+      "left_sha256": "69622c1cd618ce798ff0cd08571de4dc2a4e402698964995679b8f2ac3d6fada",
+      "right_sha256": "af3d22e3b3ee94d8503d079b3cd65c52eec676ba174f2b4123ec654f6f3794e0",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.015625,
+        "mean_absolute": 0.0013000931590795516,
+        "relative_l2": 0.007153763077527003,
+        "max_relative_nonzero": 12.015544041450777,
+        "mean_relative_nonzero": 0.04284180195872304,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.0009765625,
+          "0.9": 0.0029296875,
+          "0.99": 0.004497070312500018,
+          "0.999": 0.010628906250000014,
+          "1": 0.015625
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          2
+        ],
+        "exact_differing_elements": 1024
+      }
+    },
+    {
+      "left": "MM",
+      "right": "AM",
+      "step": 10,
+      "left_sha256": "268da9d26adf67a396d819cd267fad6f61f111f7ece25a1ee98a3a23fcd552f7",
+      "right_sha256": "dab67823879da9b57403ab998019415bb6d843d3228a4fed98b594ecf404f4d5",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.01953125,
+        "mean_absolute": 0.003854966349899769,
+        "relative_l2": 0.017613344226398632,
+        "max_relative_nonzero": 27.913705583756347,
+        "mean_relative_nonzero": 0.15661407441313213,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.0032958984375,
+          "0.9": 0.0078125,
+          "0.99": 0.01171875,
+          "0.999": 0.018441406250000014,
+          "1": 0.01953125
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 1164
+      }
+    },
+    {
+      "left": "MM",
+      "right": "MA",
+      "step": 0,
+      "left_sha256": "e0b578b9dae0c046f3cf4837e5585410e924e3605f3428664cd8fbb854a1e578",
+      "right_sha256": "8436361672a93d8181d45279406c98a744fa9ec2cb9d886db220ca025542c166",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.0390625,
+        "mean_absolute": 0.003201529383659363,
+        "relative_l2": 0.007059028815641666,
+        "max_relative_nonzero": 4.518987341772152,
+        "mean_relative_nonzero": 0.029497103523011336,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.001953125,
+          "0.9": 0.0078125,
+          "0.99": 0.015625,
+          "0.999": 0.0234375,
+          "1": 0.0390625
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 854
+      }
+    },
+    {
+      "left": "MM",
+      "right": "MA",
+      "step": 7,
+      "left_sha256": "69622c1cd618ce798ff0cd08571de4dc2a4e402698964995679b8f2ac3d6fada",
+      "right_sha256": "c807aba0d001073001649ad301517a504f05d503db38d6a35636ebfc0234f11c",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.0078125,
+        "mean_absolute": 0.0009188495576381683,
+        "relative_l2": 0.005386801191070846,
+        "max_relative_nonzero": 7.0,
+        "mean_relative_nonzero": 0.03022019553987935,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.000732421875,
+          "0.9": 0.001953125,
+          "0.99": 0.00390625,
+          "0.999": 0.005859375,
+          "1": 0.0078125
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 868
+      }
+    },
+    {
+      "left": "MM",
+      "right": "MA",
+      "step": 10,
+      "left_sha256": "268da9d26adf67a396d819cd267fad6f61f111f7ece25a1ee98a3a23fcd552f7",
+      "right_sha256": "ffb3372cb540184c2a6599683b0271f31b133499627dc0d62c52b517faf388df",
+      "metrics": {
+        "elements": 1280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.01171875,
+        "mean_absolute": 0.0020646870136260985,
+        "relative_l2": 0.00972505384226988,
+        "max_relative_nonzero": 5.969072164948454,
+        "mean_relative_nonzero": 0.04916362536143574,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 0.001953125,
+          "0.9": 0.00390625,
+          "0.99": 0.0078125,
+          "0.999": 0.011173828125000007,
+          "1": 0.01171875
+        },
+        "first_differing_coordinate": [
+          0,
+          0,
+          0
+        ],
+        "exact_differing_elements": 1077
+      }
+    }
+  ],
+  "cache": [
+    {
+      "left": "MM",
+      "right": "AA",
+      "step": 0,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.0.0"
+    },
+    {
+      "left": "MM",
+      "right": "AA",
+      "step": 7,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.7.0"
+    },
+    {
+      "left": "MM",
+      "right": "AA",
+      "step": 10,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.10.0"
+    },
+    {
+      "left": "MM",
+      "right": "AM",
+      "step": 0,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.0.0"
+    },
+    {
+      "left": "MM",
+      "right": "AM",
+      "step": 7,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.7.0"
+    },
+    {
+      "left": "MM",
+      "right": "AM",
+      "step": 10,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.10.0"
+    },
+    {
+      "left": "MM",
+      "right": "MA",
+      "step": 0,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.0.0"
+    },
+    {
+      "left": "MM",
+      "right": "MA",
+      "step": 7,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.7.0"
+    },
+    {
+      "left": "MM",
+      "right": "MA",
+      "step": 10,
+      "matched_contracts": true,
+      "exact_count": 0,
+      "total": 24,
+      "first_differing_stage": "cache.K.10.0"
+    }
+  ],
+  "scope": "Same input/prompt/fed prefix, differing backend-derived vision and decoder/cache states. No equal-cache assumption."
+}

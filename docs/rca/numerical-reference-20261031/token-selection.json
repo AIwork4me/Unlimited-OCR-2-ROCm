@@ -1,0 +1,565 @@
+{
+  "requests": [
+    {
+      "label": "MM",
+      "step": 7,
+      "raw_logit_sha256": "c795cb7d864f0a425aee7830d227304d5630457a9d78d2ea4f1a8782b753c18a",
+      "selection_logit_sha256": "c8bf5eb1a6f470a05449c55603a813def6b834393556e57386d6fe9840577ef8",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "actual_argmax_sha256": "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5",
+      "fp64_margin": 0.02049754257313907,
+      "fp64_argmax_sha256": "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.062436860986053944,
+        "mean_absolute": 0.004609889450306144,
+        "relative_l2": 0.0016836809070714628,
+        "max_relative_nonzero": 0.15323257092212203,
+        "mean_relative_nonzero": 0.0014163017529999719,
+        "absolute_quantiles": {
+          "0": 3.119930624961853e-08,
+          "0.5": 0.00329992244951427,
+          "0.9": 0.01089902601670474,
+          "0.99": 0.015574368159286674,
+          "0.999": 0.05403613829985266,
+          "1": 0.062436860986053944
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 1.0349438525736332e-05,
+        "mean_absolute": 8.173125088805308e-07,
+        "relative_l2": 2.87807760142459e-07,
+        "max_relative_nonzero": 0.038804539965652037,
+        "mean_relative_nonzero": 8.883062799746909e-07,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 5.639158189296722e-07,
+          "0.9": 1.903623342514038e-06,
+          "0.99": 3.6262022331356964e-06,
+          "0.999": 5.146781666553607e-06,
+          "1": 1.0349438525736332e-05
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129256
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": true,
+      "MM_minus_AA_competing_logit": 0.125,
+      "fp64_full_vocabulary_sha256": "62c52dfa9b2bd79f525d8c9e792590f6a5825a600c535bd62df9fc62388916bf",
+      "fp32_reference_full_vocabulary_sha256": "88e617561893a983e10c1d419bdfdc21209cdf051d58a0edb4d7ff06f22d121a",
+      "top2_token_hashes": [
+        "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5",
+        "7dcca41d83db6cba2679296467cff1652ca19dd8b405f31cfb9d622c79e5d18f"
+      ],
+      "observed_top1_value": 29.0,
+      "observed_top2_value": 28.875,
+      "fp64_top1_value": 28.942277404712513,
+      "fp64_top2_value": 28.921779862139374
+    },
+    {
+      "label": "MM",
+      "step": 10,
+      "raw_logit_sha256": "0d06f4764a4104eba4dc7ec88fe70db8b1dcc9b9f9d9338811cdc92484f414bc",
+      "selection_logit_sha256": "9f2ef399621a5eb60ffcab0139105636ceb5bbd2a9bd0ad5f8d319966e4ecfb7",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "fp64_margin": 0.10838129941839725,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.06251886207610369,
+        "mean_absolute": 0.002917752915001805,
+        "relative_l2": 0.0017025572659781104,
+        "max_relative_nonzero": 0.10761900773450116,
+        "mean_relative_nonzero": 0.0014134462195181348,
+        "absolute_quantiles": {
+          "0": 3.958120942115784e-09,
+          "0.5": 0.001770492184732575,
+          "0.9": 0.006736493574862835,
+          "0.99": 0.014963073881808668,
+          "0.999": 0.053800174766744494,
+          "1": 0.06251886207610369
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 9.101815521717072e-06,
+        "mean_absolute": 6.362362324484078e-07,
+        "relative_l2": 3.090335722679705e-07,
+        "max_relative_nonzero": 0.03226239060985904,
+        "mean_relative_nonzero": 1.6901620852022274e-06,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 4.3446198105812073e-07,
+          "0.9": 1.470156712457538e-06,
+          "0.99": 3.0334154143929444e-06,
+          "0.999": 4.429089138284364e-06,
+          "1": 9.101815521717072e-06
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129242
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": null,
+      "MM_minus_AA_competing_logit": 0.0,
+      "fp64_full_vocabulary_sha256": "b213ca7be3ffab6c623ebb0698100562cf13287842884763a7859195720f84b5",
+      "fp32_reference_full_vocabulary_sha256": "5e60e5eac88a2d7d5032927cb76385934afd5b754059e9e9669369d8ed720442",
+      "top2_token_hashes": [
+        "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+        "3d2e0eb68bb1ce5337a4a8e6196202bb8c6230ed2652ee288ad8296b6f11bf9d"
+      ],
+      "observed_top1_value": 32.0,
+      "observed_top2_value": 31.875,
+      "fp64_top1_value": 32.04279513435904,
+      "fp64_top2_value": 31.934413834940642
+    },
+    {
+      "label": "AA",
+      "step": 7,
+      "raw_logit_sha256": "293bf6f5ec34dbfbaa914ed74bc07ee7163723eea73bee5deee8254c811c7778",
+      "selection_logit_sha256": "3c23bf5f0070e0360a1bb5e7c730a7f208f5258e25387f18c9c2a941e5b06a76",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.0,
+      "exact_maxima": 2,
+      "actual_argmax_sha256": "7dcca41d83db6cba2679296467cff1652ca19dd8b405f31cfb9d622c79e5d18f",
+      "fp64_margin": 0.014457945944741368,
+      "fp64_argmax_sha256": "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.062460517045110464,
+        "mean_absolute": 0.004632910565857274,
+        "relative_l2": 0.0016863223141291542,
+        "max_relative_nonzero": 0.037179156298543514,
+        "mean_relative_nonzero": 0.0014184517201080741,
+        "absolute_quantiles": {
+          "0": 6.984919309616089e-09,
+          "0.5": 0.0033243324724026024,
+          "0.9": 0.011023019280401062,
+          "0.99": 0.015576987697277216,
+          "0.999": 0.05393662810814599,
+          "1": 0.062460517045110464
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 1.0566320270299911e-05,
+        "mean_absolute": 7.831909813591712e-07,
+        "relative_l2": 2.758401192440568e-07,
+        "max_relative_nonzero": 0.0201648835929625,
+        "mean_relative_nonzero": 8.39970021843136e-07,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 5.41098415851593e-07,
+          "0.9": 1.8329592421650887e-06,
+          "0.99": 3.4879252780228806e-06,
+          "0.999": 4.892546392511596e-06,
+          "1": 1.0566320270299911e-05
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129242
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": true,
+      "MM_minus_AA_competing_logit": 0.0,
+      "fp64_full_vocabulary_sha256": "0fd7ff94e75ab65ae115bbe5bc96cc4830917f987015ecf12f8b8594266789fb",
+      "fp32_reference_full_vocabulary_sha256": "48e214b0152b29b4789121660d1ba67fd3eb52c0b1790932d69d8e6ea1c026e9",
+      "top2_token_hashes": [
+        "7dcca41d83db6cba2679296467cff1652ca19dd8b405f31cfb9d622c79e5d18f",
+        "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5"
+      ],
+      "observed_top1_value": 29.0,
+      "observed_top2_value": 29.0,
+      "fp64_top1_value": 28.964004679815844,
+      "fp64_top2_value": 28.949546733871102
+    },
+    {
+      "label": "AA",
+      "step": 10,
+      "raw_logit_sha256": "6e32cb9a6e3e634dff9c865534e95a29c335ed8fed83274d9c303d6131135d3f",
+      "selection_logit_sha256": "b8d6c3510378d6027d83fa3c7e53cc3cd5f14a421d9c1e4c4795ffbfd77d2cba",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "fp64_margin": 0.12923030442470917,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.0625442594755441,
+        "mean_absolute": 0.002922826533559984,
+        "relative_l2": 0.0017178304315629822,
+        "max_relative_nonzero": 0.1310688481023171,
+        "mean_relative_nonzero": 0.001415750686546834,
+        "absolute_quantiles": {
+          "0": 3.259629011154175e-09,
+          "0.5": 0.001766527071595192,
+          "0.9": 0.006748077570227908,
+          "0.99": 0.014991869248915449,
+          "0.999": 0.0541621857676659,
+          "1": 0.0625442594755441
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 9.006820619106293e-06,
+        "mean_absolute": 6.396499843703653e-07,
+        "relative_l2": 3.116193813033069e-07,
+        "max_relative_nonzero": 0.02051324640810564,
+        "mean_relative_nonzero": 1.772190217111033e-06,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 4.3585896492004395e-07,
+          "0.9": 1.476402394473554e-06,
+          "0.99": 3.032386302947998e-06,
+          "0.999": 4.391689551994208e-06,
+          "1": 9.006820619106293e-06
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129242
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": null,
+      "MM_minus_AA_competing_logit": 0.0,
+      "fp64_full_vocabulary_sha256": "650b5dfe72a10184ee025012b3496a331bf28665d25704ede0230dc8022812fe",
+      "fp32_reference_full_vocabulary_sha256": "76ddbc80a4d1792f9657460f3ff551589917aafece0ffd6ed2a0837d54fdf970",
+      "top2_token_hashes": [
+        "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+        "3d2e0eb68bb1ce5337a4a8e6196202bb8c6230ed2652ee288ad8296b6f11bf9d"
+      ],
+      "observed_top1_value": 32.0,
+      "observed_top2_value": 31.875,
+      "fp64_top1_value": 32.05073292871384,
+      "fp64_top2_value": 31.921502624289133
+    },
+    {
+      "label": "AM",
+      "step": 7,
+      "raw_logit_sha256": "7ff6934b95f109982410d75cf23048f60afc2d632b0000c8df272714ff4ac9a3",
+      "selection_logit_sha256": "3c87428142f54ad2fb1f2d7b2b73ba012111e104118e9aaa7076df0e3a9c1a57",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.0,
+      "exact_maxima": 2,
+      "actual_argmax_sha256": "7dcca41d83db6cba2679296467cff1652ca19dd8b405f31cfb9d622c79e5d18f",
+      "fp64_margin": 0.0030898682307451963,
+      "fp64_argmax_sha256": "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.06250916846329346,
+        "mean_absolute": 0.004656309124461125,
+        "relative_l2": 0.0016899731463782066,
+        "max_relative_nonzero": 0.019655021053144966,
+        "mean_relative_nonzero": 0.001418044654910673,
+        "absolute_quantiles": {
+          "0": 1.210719347000122e-08,
+          "0.5": 0.0033471528731752187,
+          "0.9": 0.011033729696646333,
+          "0.99": 0.015589706285391003,
+          "0.999": 0.05372926267089148,
+          "1": 0.06250916846329346
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 1.3489450793713331e-05,
+        "mean_absolute": 8.211454717676321e-07,
+        "relative_l2": 2.880341475141498e-07,
+        "max_relative_nonzero": 0.006622315341718308,
+        "mean_relative_nonzero": 6.654993901775624e-07,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 5.668262019753456e-07,
+          "0.9": 1.922610681504012e-06,
+          "0.99": 3.6466424353420715e-06,
+          "0.999": 5.143229267559971e-06,
+          "1": 1.3489450793713331e-05
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129267
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": true,
+      "MM_minus_AA_competing_logit": 0.0,
+      "fp64_full_vocabulary_sha256": "5e3e850f1209ed8a3a40f940ef4fbf132b19fe9a6d7628f8f2f219fa462e059b",
+      "fp32_reference_full_vocabulary_sha256": "f88f0695dd0d08076aaf48234465b36b5f61733d314e1f049122339e32fa9de2",
+      "top2_token_hashes": [
+        "7dcca41d83db6cba2679296467cff1652ca19dd8b405f31cfb9d622c79e5d18f",
+        "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5"
+      ],
+      "observed_top1_value": 28.875,
+      "observed_top2_value": 28.875,
+      "fp64_top1_value": 28.903788136551157,
+      "fp64_top2_value": 28.90069826832041
+    },
+    {
+      "label": "AM",
+      "step": 10,
+      "raw_logit_sha256": "9052c48efbeffc183028283dada0d292bfb69dd22fe9b6ffc5f801dc60d1d3e2",
+      "selection_logit_sha256": "60e0b037f0d6972081a525927e2572a8db8267be4f1c04f570f4d00e6389c2d0",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "fp64_margin": 0.14558721700450405,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.06762770208297297,
+        "mean_absolute": 0.0029292428749582667,
+        "relative_l2": 0.0017055845829167802,
+        "max_relative_nonzero": 0.1118706089305829,
+        "mean_relative_nonzero": 0.0014101721592765014,
+        "absolute_quantiles": {
+          "0": 5.413312464952469e-09,
+          "0.5": 0.0017766196397133172,
+          "0.9": 0.006749392359051854,
+          "0.99": 0.014964575792546371,
+          "0.999": 0.05395759115563125,
+          "1": 0.06762770208297297
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 8.929928299039602e-06,
+        "mean_absolute": 6.207097881701329e-07,
+        "relative_l2": 3.0179738686085166e-07,
+        "max_relative_nonzero": 0.01994429874340872,
+        "mean_relative_nonzero": 1.753340626428021e-06,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 4.212488420307636e-07,
+          "0.9": 1.4337711036205292e-06,
+          "0.99": 2.9554142383858547e-06,
+          "0.999": 4.384910804219577e-06,
+          "1": 8.929928299039602e-06
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129271
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": null,
+      "MM_minus_AA_competing_logit": 0.0,
+      "fp64_full_vocabulary_sha256": "570a764379f85a1617fd853892a581a9cdb49fc5d5db557726b8ff066f71203c",
+      "fp32_reference_full_vocabulary_sha256": "ea1285ecff3122b955a23297f2f6cae7db9965aab38c57ee52ba8d261b215170",
+      "top2_token_hashes": [
+        "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+        "3d2e0eb68bb1ce5337a4a8e6196202bb8c6230ed2652ee288ad8296b6f11bf9d"
+      ],
+      "observed_top1_value": 32.0,
+      "observed_top2_value": 31.875,
+      "fp64_top1_value": 32.06762770208297,
+      "fp64_top2_value": 31.92204048507847
+    },
+    {
+      "label": "MA",
+      "step": 7,
+      "raw_logit_sha256": "2dc17e9b1ec0a9504a00bfd6bb6bdeefb2700e48af673018a585182314450a82",
+      "selection_logit_sha256": "125397c7b11cb52f1ba8bf5a9f7efb421cb2e2827e5b392fa266728e285da950",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.0,
+      "exact_maxima": 2,
+      "actual_argmax_sha256": "7dcca41d83db6cba2679296467cff1652ca19dd8b405f31cfb9d622c79e5d18f",
+      "fp64_margin": 0.032029819092713296,
+      "fp64_argmax_sha256": "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.06253349225153215,
+        "mean_absolute": 0.004658075216735595,
+        "relative_l2": 0.0017016681913179284,
+        "max_relative_nonzero": 0.026832919160863795,
+        "mean_relative_nonzero": 0.0014193379821293413,
+        "absolute_quantiles": {
+          "0": 1.862645149230957e-08,
+          "0.5": 0.0033256459864787757,
+          "0.9": 0.011070039472542705,
+          "0.99": 0.01559595835860818,
+          "0.999": 0.054625010432224626,
+          "1": 0.06253349225153215
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 8.960720151662827e-06,
+        "mean_absolute": 8.00258681197148e-07,
+        "relative_l2": 2.801667914655361e-07,
+        "max_relative_nonzero": 0.008022402322787626,
+        "mean_relative_nonzero": 6.31226764734372e-07,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 5.571055226027966e-07,
+          "0.9": 1.8635997548699393e-06,
+          "0.99": 3.543926868587723e-06,
+          "0.999": 5.0164391286671185e-06,
+          "1": 8.960720151662827e-06
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129258
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": true,
+      "MM_minus_AA_competing_logit": 0.0,
+      "fp64_full_vocabulary_sha256": "75c715a9d248209a45666863995f4e17c38caeaa448d4f6fefd7e9140bf6dac9",
+      "fp32_reference_full_vocabulary_sha256": "938f3895c1444b293f7eb551f814196b2fea2d59f63f3df4c486c41e6979d086",
+      "top2_token_hashes": [
+        "7dcca41d83db6cba2679296467cff1652ca19dd8b405f31cfb9d622c79e5d18f",
+        "3d1d7ba7ee26cca4204286eb73a3a1a933ec8ff6a8fb91dec93da37f3ff4b6f5"
+      ],
+      "observed_top1_value": 28.875,
+      "observed_top2_value": 28.875,
+      "fp64_top1_value": 28.894754117936827,
+      "fp64_top2_value": 28.862724298844114
+    },
+    {
+      "label": "MA",
+      "step": 10,
+      "raw_logit_sha256": "7f881b9617e603005f3a31971df90da3cb7cdab7d8706576f043a469f48167ad",
+      "selection_logit_sha256": "5cb42cdddd18b841aab313a2ce1a76ed162a00b89638ee68107062db22004e9a",
+      "dtype_transition": "GPU BF16 lm_head -> GPU FP32 cast -> unchanged page guard -> argmax",
+      "signed_margin": 0.125,
+      "exact_maxima": 1,
+      "actual_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "fp64_margin": 0.10761482734233141,
+      "fp64_argmax_sha256": "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+      "projection_error": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 0.0625483407638967,
+        "mean_absolute": 0.0029234279546041975,
+        "relative_l2": 0.0017020011595824838,
+        "max_relative_nonzero": 0.16737059530782747,
+        "mean_relative_nonzero": 0.001414769113395267,
+        "absolute_quantiles": {
+          "0": 1.0244548320770264e-08,
+          "0.5": 0.0017751433770172298,
+          "0.9": 0.0067607117434818065,
+          "0.99": 0.014962123060831795,
+          "0.999": 0.0537142713749788,
+          "1": 0.0625483407638967
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129280
+      },
+      "projection32_vs64": {
+        "elements": 129280,
+        "nonfinite_observed": 0,
+        "nonfinite_reference": 0,
+        "max_absolute": 1.175515353679657e-05,
+        "mean_absolute": 6.416477452987225e-07,
+        "relative_l2": 3.1157859964873336e-07,
+        "max_relative_nonzero": 0.012002785629429356,
+        "mean_relative_nonzero": 1.6199371972041202e-06,
+        "absolute_quantiles": {
+          "0": 0.0,
+          "0.5": 4.385656211525202e-07,
+          "0.9": 1.483142841607333e-06,
+          "0.99": 3.0455226078629456e-06,
+          "0.999": 4.402739519719037e-06,
+          "1": 1.175515353679657e-05
+        },
+        "first_differing_coordinate": [
+          0
+        ],
+        "exact_differing_elements": 129234
+      },
+      "scope": "FP64 projection from fixed captured BF16 hidden state and immutable BF16 lm_head weights; not higher-precision decoder execution.",
+      "observed_top2_match_bf16_rounded_fp64": true,
+      "fp64_winner_matches_MM_at_step7": null,
+      "MM_minus_AA_competing_logit": 0.0,
+      "fp64_full_vocabulary_sha256": "6c5ed515d0857d93dc044e35cb3d6bbb26faa422a13d256ff3f49910a788d117",
+      "fp32_reference_full_vocabulary_sha256": "e5286c3b5bd1db730d300c0ed760943cbccd51f89466adc77bb870185e9b233c",
+      "top2_token_hashes": [
+        "11fdccb9b15fb77badfd8fd9e4aaee3b438e08cae4b847b291f242934a9a31e8",
+        "3d2e0eb68bb1ce5337a4a8e6196202bb8c6230ed2652ee288ad8296b6f11bf9d"
+      ],
+      "observed_top1_value": 32.0,
+      "observed_top2_value": 31.875,
+      "fp64_top1_value": 32.0345406071865,
+      "fp64_top2_value": 31.92692577984417
+    }
+  ],
+  "privacy": "Actual token IDs and full logit/hidden arrays stay private; public summaries use token hashes and scalar measurements."
+}
