@@ -27,12 +27,21 @@ def test_p2c_policy_authorizes_the_official_suppression():
 def test_p2c_policy_is_pinned_and_unique():
     from unlimited_ocr_2_rocm.inference import (
         _AUTHORIZED_NGRAM_POLICIES,  # noqa: PLC2701 - pin-uniqueness test
+        EXPECTED_L1_POLICY_SHA256,
         EXPECTED_NGRAM_POLICY_SHA256,
         EXPECTED_P2C_POLICY_SHA256,
     )
 
-    assert EXPECTED_NGRAM_POLICY_SHA256 != EXPECTED_P2C_POLICY_SHA256
-    assert len(_AUTHORIZED_NGRAM_POLICIES) == 2
+    # Three authorized digests after the reviewed L1 addition (Task C): the
+    # P2-B, P2-C and L1 policies, each bound to its own experiment name.
+    digests = {
+        EXPECTED_NGRAM_POLICY_SHA256,
+        EXPECTED_P2C_POLICY_SHA256,
+        EXPECTED_L1_POLICY_SHA256,
+    }
+    assert len(digests) == 3
+    assert len(_AUTHORIZED_NGRAM_POLICIES) == 3
+    assert _AUTHORIZED_NGRAM_POLICIES[EXPECTED_L1_POLICY_SHA256] == "L1_FIFTEEN_PAGE_NATIVE"
 
 
 def test_p2c_forged_policy_is_rejected_by_pinned_digest(tmp_path):

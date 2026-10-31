@@ -26,6 +26,7 @@ Non-invasiveness contract:
 from __future__ import annotations
 
 import sys
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -80,10 +81,12 @@ class GuardCollisionObserver:
         page_token_id: int = DEFAULT_PAGE_TOKEN_ID,
         eos_id: int = DEFAULT_EOS_ID,
         max_events: int = 10_000,
+        event_sink: Callable[[dict[str, Any]], None] | None = None,
     ) -> None:
         self.page_token_id = page_token_id
         self.eos_id = eos_id
         self.max_events = max_events
+        self._event_sink = event_sink
         self._module: Any = None
         self._originals: dict[str, Any] = {}
         self._wrappers: dict[str, Any] = {}
@@ -94,7 +97,18 @@ class GuardCollisionObserver:
         self._forced_eos: list[dict[str, int]] = []
         self._anomalies: list[dict[str, int]] = []
         self._dropped = 0
+        self._sink_errors = 0
         self._collision: dict[str, Any] | None = None
+
+    def _emit(self, event: dict[str, Any]) -> None:
+        """Deliver an event to the sink; a broken sink never changes frozen
+        behavior and never masks a collision abort."""
+        if self._event_sink is None:
+            return
+        try:
+            self._event_sink(event)
+        except Exception:  # noqa: BLE001 - observation must stay non-invasive
+            self._sink_errors += 1
 
     # -- installation ------------------------------------------------------
 
@@ -180,6 +194,7 @@ class GuardCollisionObserver:
                 "marker_cum": st.get("marker_cum"),
                 "generated_tokens": len(gen_ids),
             }
+            self._emit({"kind": "collision", **self._collision, "partial_token_ids": list(gen_ids)})
             raise UnsafeSelectionCollision(
                 step=step,
                 expected_pages=expected_pages,
@@ -196,6 +211,11 @@ class GuardCollisionObserver:
                 "page_len": int(st.get("page_len", 0)),
                 "marker_cum": int(st.get("marker_cum", 0)),
             }
+            kind = (
+                "forced_page"
+                if target == page_id
+                else ("forced_eos" if target == eos_id else "anomaly")
+            )
             if target == page_id:
                 bucket = self._forced_page
             elif target == eos_id:
@@ -207,6 +227,7 @@ class GuardCollisionObserver:
                 bucket.append(event)
             else:
                 self._dropped += 1
+            self._emit({"kind": kind, **event})
             return
         self._normal_steps += 1
 
@@ -235,6 +256,7 @@ class GuardCollisionObserver:
             "forced_eos_steps": list(self._forced_eos),
             "anomalies": list(self._anomalies),
             "events_dropped": self._dropped,
+            "sink_errors": self._sink_errors,
             "events_cap": self.max_events,
             "page_token_id": self.page_token_id,
             "eos_id": self.eos_id,

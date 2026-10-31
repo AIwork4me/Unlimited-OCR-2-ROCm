@@ -364,3 +364,53 @@ def test_observer_events_bounded() -> None:
     events = observer.export_events()
     assert len(events["forced_eos_steps"]) <= 5
     assert events["events_dropped"] > 0
+
+
+def test_event_sink_receives_forced_and_collision_evidence() -> None:
+    """The worker persists partial ids AT ABORT TIME: generate() raises after
+    the sink has delivered them, so the partial stream survives the abort."""
+    frozen = _frozen_functions()
+    module = _fake_module(frozen)
+    delivered: list[dict] = []
+    observer = GuardCollisionObserver(event_sink=delivered.append)
+    with observer.session(module):
+        # One safe forced-PAGE step, then the collision.
+        for history in ([3] * 34 + [PAGE_ID] + [7] * 34, _collision_history()):
+            state = _fresh_state()
+            logits = module._uocr_no_repeat_ngram(
+                torch.arange(200000, dtype=torch.float32), history, 35, 1024, set()
+            )
+            try:
+                module._uocr_page_count_guard(logits, history, 5, PAGE_ID, EOS_ID, 8, state)
+            except UnsafeSelectionCollision:
+                pass
+    kinds = [event["kind"] for event in delivered]
+    assert "forced_page" in kinds and "collision" in kinds
+    collision = next(event for event in delivered if event["kind"] == "collision")
+    assert collision["partial_token_ids"] == _collision_history()
+
+
+def test_event_sink_failure_never_breaks_observation() -> None:
+    """A broken sink must not mask the frozen result nor the abort itself."""
+    frozen = _frozen_functions()
+    module = _fake_module(frozen)
+
+    def broken_sink(_event: dict) -> None:
+        raise RuntimeError("sink I/O failure")
+
+    observer = GuardCollisionObserver(event_sink=broken_sink)
+    with observer.session(module):
+        history = [3] * 34 + [PAGE_ID] + [7] * 34
+        logits = module._uocr_no_repeat_ngram(
+            torch.arange(200000, dtype=torch.float32), history, 35, 1024, set()
+        )
+        result = module._uocr_page_count_guard(
+            logits, history, 5, PAGE_ID, EOS_ID, 8, _fresh_state()
+        )
+        assert int(torch.argmax(result)) == PAGE_ID  # call-through intact
+    with observer.session(module), pytest.raises(UnsafeSelectionCollision):
+        state = _fresh_state()
+        logits = module._uocr_no_repeat_ngram(
+            torch.arange(200000, dtype=torch.float32), _collision_history(), 35, 1024, set()
+        )
+        module._uocr_page_count_guard(logits, _collision_history(), 5, PAGE_ID, EOS_ID, 8, state)

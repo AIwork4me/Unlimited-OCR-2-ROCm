@@ -1,0 +1,156 @@
+{
+ "dataset": {
+  "documents": 420,
+  "ground_truth_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
+  "image_archive_revision": "48428421ee985717fbda3a6521165aaedfc42077",
+  "image_archive_sha256": "f9a4c05d586b11a749e60ce13565090fdfbf8f4387fd35e5511a4a1a3d682d22",
+  "license": "CC-BY-NC-SA-4.0",
+  "local_copy": "provided by user 2026-10-29 (Data/ folder); not re-downloaded",
+  "name": "MPDocBench",
+  "pages": 3135
+ },
+ "document": {
+  "class": "book_eng (continuous dense text; closest available dense class)",
+  "doc_id": "book_eng_77552588",
+  "layout_dets_total": 323,
+  "pages_ground_truth": 15,
+  "pages_index": 15
+ },
+ "experiment": "L1_FIFTEEN_PAGE_NATIVE",
+ "frozen_before_inference": true,
+ "ground_truth_content": "NOT included: raw GT stays outside Git (external evidence); scorer consumes a locally built slice",
+ "label": "L1_FIFTEEN_PAGE_NATIVE_SELECTION",
+ "page_bytes_verified_against_frozen_index": true,
+ "pages": [
+  {
+   "bytes": 258802,
+   "path": "images/book_eng_77552588/page_1.jpg",
+   "sha256": "763deb067a1086e8e41a29bed87ff8ee5916ad72e79ad6cda5ea0af6c6b78cbe"
+  },
+  {
+   "bytes": 255227,
+   "path": "images/book_eng_77552588/page_2.jpg",
+   "sha256": "09fd6f626749facf9346ed5eafbca7d3cd9d305487ddf92ef01137e9ecc6349a"
+  },
+  {
+   "bytes": 204816,
+   "path": "images/book_eng_77552588/page_3.jpg",
+   "sha256": "6fbd8f2ecffd4cecd898374a53e8097648b7fa6703e0677b2bf14080ed549513"
+  },
+  {
+   "bytes": 171627,
+   "path": "images/book_eng_77552588/page_4.jpg",
+   "sha256": "2bac3dc3c617557e795479b9635e8e8300635c8f77a14a2e0ff036fc21ec2a43"
+  },
+  {
+   "bytes": 246542,
+   "path": "images/book_eng_77552588/page_5.jpg",
+   "sha256": "d46d1af2c92e8aa4851b452d9de08e71de275f8b1613f9263bb479049e865c4e"
+  },
+  {
+   "bytes": 242503,
+   "path": "images/book_eng_77552588/page_6.jpg",
+   "sha256": "56c1835db8d0be03ad437bfd5b8833d106ce7961272f0b6e90b7fd885d20a1e0"
+  },
+  {
+   "bytes": 248303,
+   "path": "images/book_eng_77552588/page_7.jpg",
+   "sha256": "688bfeecb169c3a53002a21e0cdb03a2499df6bad5df32c7597beb07506a2747"
+  },
+  {
+   "bytes": 250627,
+   "path": "images/book_eng_77552588/page_8.jpg",
+   "sha256": "d918d4cebca18a3ac72ae3b886bde52e1087a0cb3b30fc646dd887f683475d0d"
+  },
+  {
+   "bytes": 292325,
+   "path": "images/book_eng_77552588/page_9.jpg",
+   "sha256": "adb1182d40e7f1bed5f14513ff95da2160146c350942ec9e9e88b878b9f15cca"
+  },
+  {
+   "bytes": 259944,
+   "path": "images/book_eng_77552588/page_10.jpg",
+   "sha256": "3f6b0e59a03cac93cca47a33cef5107c3f2d2b1d0a54f896a13898831c57025b"
+  },
+  {
+   "bytes": 258324,
+   "path": "images/book_eng_77552588/page_11.jpg",
+   "sha256": "cc8dac61120de2695c1f5201668242a6bc9d5d94b81586d587b55a2178958a64"
+  },
+  {
+   "bytes": 240650,
+   "path": "images/book_eng_77552588/page_12.jpg",
+   "sha256": "4f895ebb5fdefb4f1c22690bcf33aa433c7c34cb453bdf9a8f628ed6e1491b8d"
+  },
+  {
+   "bytes": 237743,
+   "path": "images/book_eng_77552588/page_13.jpg",
+   "sha256": "476aba8e0476c1b8a54d93b7107b22f58d25fee19ee831de9a8f7850f39cb05f"
+  },
+  {
+   "bytes": 196777,
+   "path": "images/book_eng_77552588/page_14.jpg",
+   "sha256": "ec893e2ee7e75f753ee474e6a2c4b2f1d1fd3565f24466cad3a2aeb94c60b09e"
+  },
+  {
+   "bytes": 215118,
+   "path": "images/book_eng_77552588/page_15.jpg",
+   "sha256": "859e730873020b57ec63b27c944abbcf7888ea5af9f33bc2a9b641d18b929ff8"
+  }
+ ],
+ "pixel_limit": {
+  "max_pixels_per_page": 16000000,
+  "observed_pixels_per_page": 2003960,
+  "within_limit": true
+ },
+ "preprocessing": {
+  "native_page_guard": "enabled (expected_pages=15; max_page_tokens=20000)",
+  "page_hash_gate": "verify_page_gate against eval/benchmarks/g05/datasets/MPDocBench-page-index.json at worker start"
+ },
+ "producer_identities": {
+  "base_commit": "33099a5e78624fb2be900faf494dac0c4045030a",
+  "checkout": "isolated local clone (NON-PUBLISHABLE: 4d203a1 in ancestry)",
+  "frozen_utc_date": "2026-10-31"
+ },
+ "prompt_identity": {
+  "crop_policy": "crop_mode=False (infer_multi)",
+  "expected_pages": 15,
+  "prompt": "official default document prompt"
+ },
+ "schema": 1,
+ "selection_candidates_exact15": [
+  {
+   "dets_per_page": 21.5,
+   "doc": "book_eng_77552588"
+  },
+  {
+   "dets_per_page": 19.2,
+   "doc": "paper_eng_64b5e1f4"
+  },
+  {
+   "dets_per_page": 15.4,
+   "doc": "book_eng_600ba37c"
+  },
+  {
+   "dets_per_page": 12.7,
+   "doc": "book_eng_0f8b3268"
+  },
+  {
+   "dets_per_page": 11.5,
+   "doc": "book_eng_ab95f5db"
+  },
+  {
+   "dets_per_page": 8.9,
+   "doc": "book_eng_dc66edfa"
+  },
+  {
+   "dets_per_page": 7.9,
+   "doc": "book_eng_21695dfc"
+  },
+  {
+   "dets_per_page": 3.0,
+   "doc": "textBook_eng_9587c15d"
+  }
+ ],
+ "selection_rule": "Predeclared before any GPU minute: among MPDocBench documents with exactly 15 frozen-index pages AND exactly 15 GT pages (8 candidates), rank by GT layout_dets-per-page (objective density metadata, counts only) descending, tie-break doc id ascending; select the top document and all 15 of its pages in frozen-index order. Rationale: the P2-C failure class is text-dense long documents; no newspaper-class document has >=15 pages, and an exact 15/15 page count keeps the scorer denominator clean (request pages == GT pages)."
+}
