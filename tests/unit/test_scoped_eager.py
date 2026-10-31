@@ -271,3 +271,46 @@ def test_install_rollback_survives_failing_deletion_hooks(tmp_path, monkeypatch)
     monkeypatch.setattr(deep.NoTPFeedForward, "__setattr__", original_set)
     monkeypatch.setattr(deep.NoTPFeedForward, "__delattr__", original_delete)
     a.install(model, deep).restore()
+
+
+def test_foreign_hooks_parameters_buffers_and_jit_objects_are_untouched(tmp_path, monkeypatch):
+    a, deep, make = fixture(tmp_path, monkeypatch)
+    first, second = make(), make()
+    hooks = {"foreign": object()}
+    for m in mlps(first):
+        m._forward_hooks = hooks
+        m._parameters = {"weight": object()}
+        m._buffers = {"state": object()}
+    before = [dict(vars(m)) for m in mlps(first)]
+    other = [dict(vars(m)) for m in mlps(second)]
+    jit = deep.torch.jit
+    script = jit.script
+    handle = a.install(first, deep)
+    handle.restore()
+    handle.restore()
+    assert [vars(m) for m in mlps(first)] == before
+    assert [vars(m) for m in mlps(second)] == other
+    assert deep.torch.jit is jit and jit.script is script
+    assert hooks == {"foreign": hooks["foreign"]}
+
+
+def test_owner_marker_mutates_then_raises_without_residue(tmp_path, monkeypatch):
+    a, deep, make = fixture(tmp_path, monkeypatch)
+    first, second = make(), make()
+    before = [dict(vars(m)) for m in mlps(first)]
+    other = [dict(vars(m)) for m in mlps(second)]
+    original = deep.NoTPFeedForward.__setattr__
+    victim = mlps(first)[7]
+    failure = RuntimeError("owner setter mutated then raised")
+
+    def failing(self, name, value):
+        original(self, name, value)
+        if self is victim and name == a._OWNER:
+            raise failure
+
+    monkeypatch.setattr(deep.NoTPFeedForward, "__setattr__", failing)
+    with pytest.raises(RuntimeError) as caught:
+        a.install(first, deep)
+    assert caught.value is failure
+    assert [vars(m) for m in mlps(first)] == before
+    assert [vars(m) for m in mlps(second)] == other

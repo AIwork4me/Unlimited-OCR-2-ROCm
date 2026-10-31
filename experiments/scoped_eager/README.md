@@ -36,4 +36,4 @@ No destructor or garbage-collection callback performs implicit restoration.
 
 CPU regression tests use scalar stand-ins and need no torch/model download.
 Physical BF16/inference evidence and remaining gates are described in
-[overnight qualification](../../docs/overnight/SCOPED_EAGER_QUALIFICATION.md).
+[standalone qualification](../../docs/engineering-closure/QUICKGELU_QUALIFICATION.md).
