@@ -198,46 +198,71 @@ def worker_command(args: argparse.Namespace) -> int:
 
     started = time.time()
     scratch = Path(tempfile.mkdtemp(prefix="uocr2-l1-"))
-    observer = GuardCollisionObserver()
+    collision_evidence: list[dict[str, Any]] = []
+    observer = GuardCollisionObserver(event_sink=collision_evidence.append)
     watchdog: ResourceWatchdog | None = None
     try:
-        model = load_model(args.model_cache, offline=True)
-        decode_module = locate_decode_module(model.model)
-        observer.install(decode_module)
-        limit_bytes = int(float(policy["resource_admission"]["gpu_allocated_hard_limit_gib"]) * GIB)
-        watchdog = ResourceWatchdog(
-            sampler=lambda: _allocated_bytes(),
-            limit_bytes=limit_bytes,
-            heartbeat_path=attempt_directory / "heartbeat.json",
-            heartbeat_seconds=float(policy["supervision"]["heartbeat_seconds"]),
-        )
-        watchdog.start()
-        report = run_native(
-            model,
-            pages,
-            scratch,
-            multi=True,
-            max_new_tokens=args.max_new_tokens,
-            no_repeat_ngram_size=int(policy["ngram_sizes"][0]),
-            ngram_window=int(policy["ngram_window"]),
-            ngram_policy=args.policy,
-            budget_policy=args.policy,
-            page_limit=policy["pages"],
-        )
-    except BaseException as error:  # noqa: BLE001 - outcome must reach the parent
-        import traceback
+        try:
+            model = load_model(args.model_cache, offline=True)
+            decode_module = locate_decode_module(model.model)
+            observer.install(decode_module)
+            limit_bytes = int(
+                float(policy["resource_admission"]["gpu_allocated_hard_limit_gib"]) * GIB
+            )
+            watchdog = ResourceWatchdog(
+                sampler=lambda: _allocated_bytes(),
+                limit_bytes=limit_bytes,
+                heartbeat_path=attempt_directory / "heartbeat.json",
+                heartbeat_seconds=float(policy["supervision"]["heartbeat_seconds"]),
+            )
+            watchdog.start()
+            report = run_native(
+                model,
+                pages,
+                scratch,
+                multi=True,
+                max_new_tokens=args.max_new_tokens,
+                no_repeat_ngram_size=int(policy["ngram_sizes"][0]),
+                ngram_window=int(policy["ngram_window"]),
+                ngram_policy=args.policy,
+                budget_policy=args.policy,
+                page_limit=policy["pages"],
+            )
+        except BaseException as error:  # noqa: BLE001 - outcome must reach the parent
+            import traceback
 
-        benchmark_runner.write_outcome(
-            Path(args.result),
-            {
-                "kind": "error",
-                "error": f"{type(error).__name__}: {error}",
-                "traceback": traceback.format_exc(),
-                "admission": admission,
-                "observer_collision": observer.export_events()["collision"],
-            },
-        )
-        return 0
+            # Persist whatever evidence exists before the outcome: the event
+            # sink carries the collision record with the FULL partial token
+            # stream (delivered before the observer's raise), and the scratch
+            # manifest may hold a partial attempt report.
+            for name, payload in (
+                ("observer-events.json", observer.export_events()),
+                ("collision-evidence.json", collision_evidence),
+            ):
+                try:
+                    (attempt_directory / name).write_text(
+                        json.dumps(payload, indent=1, sort_keys=True) + "\n", "utf-8"
+                    )
+                except OSError:
+                    pass
+            scratch_manifest = scratch / "manifest.json"
+            if scratch_manifest.is_file():
+                try:
+                    shutil.copy2(scratch_manifest, attempt_directory / "scratch-manifest.json")
+                except OSError:
+                    pass
+            benchmark_runner.write_outcome(
+                Path(args.result),
+                {
+                    "kind": "error",
+                    "error": f"{type(error).__name__}: {error}",
+                    "traceback": traceback.format_exc(),
+                    "admission": admission,
+                    "observer_collision": observer.export_events()["collision"],
+                    "collision_evidence_events": len(collision_evidence),
+                },
+            )
+            return 0
     finally:
         try:
             observer.uninstall()
@@ -245,6 +270,7 @@ def worker_command(args: argparse.Namespace) -> int:
             pass
         if watchdog is not None:
             watchdog.stop()
+        shutil.rmtree(scratch, ignore_errors=True)
     try:
         native = report.get("native_generation") or {}
         prompt_ids = native.get("prompt_token_ids") or []
@@ -308,14 +334,24 @@ def _allocated_bytes() -> int:
     return int(torch.cuda.memory_allocated())
 
 
-def evaluate_l1_gates(run: Run, policy: dict[str, Any], reports: list[dict[str, Any]]) -> dict:
-    """Pure L1 gate evaluation over the finished single-document attempt."""
+def evaluate_l1_gates(
+    summary: dict[str, Any],
+    policy: dict[str, Any],
+    reports: list[dict[str, Any]],
+    replay: dict[str, Any] | None = None,
+) -> dict:
+    """Pure L1 gate evaluation over the finished single-document attempt.
+
+    ``replay`` is the post-hoc analyzer verdict over the persisted token ids
+    (scripts/analyze_ngram_evidence.py). It is the forced-marker HARD gate:
+    promotion is refused when it is missing or reports any mismatch — a
+    missing result is never reinterpreted as PASS.
+    """
     failures: list[str] = []
     resource = policy["resource_admission"]
     max_gpu = float(resource["gpu_allocated_hard_limit_gib"])
     max_rss = float(resource["host_rss_soft_limit_gib"])
     selection = set(policy["documents"])
-    summary = run.summary()
     completed = {
         row["doc_id"]: row
         for row in summary["documents"]
@@ -335,29 +371,40 @@ def evaluate_l1_gates(run: Run, policy: dict[str, Any], reports: list[dict[str, 
         )
         peaks["gpu_peak_allocated_gib"] = max(peaks["gpu_peak_allocated_gib"], round(gpu, 3))
         peaks["host_peak_rss_gib"] = max(peaks["host_peak_rss_gib"], round(rss, 3))
-        experiment = report.get("experiment") or {}
-        guard = experiment.get("page_guard") or {}
-        if guard.get("forced_mismatches"):
-            forced_mismatches += 1
-        observer = experiment.get("observer") or {}
+        observer = (report.get("experiment") or {}).get("observer") or {}
         if observer.get("aborted"):
             observer_aborted = True
-        watchdog_receipt = experiment.get("watchdog") or {}
+        watchdog_receipt = (report.get("experiment") or {}).get("watchdog") or {}
         if (watchdog_receipt or {}).get("breach"):
             watchdog_breach = True
     if peaks["gpu_peak_allocated_gib"] > max_gpu:
         failures.append(f"GPU peak {peaks['gpu_peak_allocated_gib']} GiB exceeds {max_gpu}")
     if peaks["host_peak_rss_gib"] > max_rss:
         failures.append(f"host RSS peak {peaks['host_peak_rss_gib']} GiB exceeds {max_rss}")
-    if forced_mismatches:
-        failures.append("forced-marker mismatches present (replay hard gate)")
     if observer_aborted:
         failures.append("guard-collision observer aborted the attempt")
     if watchdog_breach:
         failures.append("GPU allocated hard limit breached")
+    replay_mismatches: list[dict[str, Any]] = []
+    if isinstance(replay, dict):
+        replay_guard = replay.get("guard") or {}
+        replay_mismatches = replay_guard.get("forced_mismatches") or []
+        forced_mismatches = len(replay_mismatches)
+        if replay_guard.get("expected_pages") != policy["pages"]:
+            failures.append("replay expected_pages disagrees with the frozen policy")
+        if forced_mismatches:
+            failures.append(
+                f"forced-marker mismatches present in the token replay: {forced_mismatches}"
+            )
+    else:
+        failures.append("token replay evidence missing — the forced-marker hard gate is not armed")
     promotion = list(failures) == []
     if completed:
         row = next(iter(completed.values()))
+        if len(row.get("attempts") or []) != 1:
+            promotion = False
+            seen = len(row.get("attempts") or [])
+            failures.append(f"exactly one supervised attempt is authorized, saw {seen}")
         if row["state"] != "PASS":
             promotion = False
             failures.append(f"15-page promotion requires natural completion, got {row['state']}")
@@ -374,6 +421,7 @@ def evaluate_l1_gates(run: Run, policy: dict[str, Any], reports: list[dict[str, 
         "experiment": policy["experiment"],
         "resource_peaks": peaks,
         "forced_marker_mismatches": forced_mismatches,
+        "replay_forced_mismatches": replay_mismatches,
         "observer_aborted": observer_aborted,
         "watchdog_breach": watchdog_breach,
         "failures": failures,
@@ -407,9 +455,12 @@ def gates_command(args: argparse.Namespace) -> int:
     config = run.data["config"]
     if config.get("policy_sha256") != file_sha256(args.policy):
         raise ValueError("Policy file does not match the frozen experiment identity")
-    verdict = evaluate_l1_gates(run, policy, _attempt_reports(run, sorted(policy["documents"])))
+    replay = json.loads(args.replay.read_text(encoding="utf-8")) if args.replay else None
     summary = run.summary()
-    verdict["run_id"] = run.data.get("run_id") if hasattr(run.data, "get") else None
+    verdict = evaluate_l1_gates(
+        summary, policy, _attempt_reports(run, sorted(policy["documents"])), replay=replay
+    )
+    verdict["run_id"] = run.path.name
     verdict["counts"] = summary["counts"]
     verdict["ledger_status"] = summary["status"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -474,6 +525,7 @@ def main(argv: list[str] | None = None) -> int:
     gates = commands.add_parser("gates")
     gates.add_argument("--run", required=True, type=Path)
     gates.add_argument("--policy", required=True, type=Path)
+    gates.add_argument("--replay", type=Path, default=None)
     gates.add_argument("--output", required=True, type=Path)
 
     worker = commands.add_parser("worker")
