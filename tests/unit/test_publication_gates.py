@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -236,45 +237,127 @@ def test_scan_tree_excludes_git_and_b_workspaces(tmp_path: Path) -> None:
     assert scan_tree(tmp_path) == []
 
 
-def test_staged_whitelist_hash_mismatch_flagged(tmp_path: Path) -> None:
+def test_staged_whitelist_hash_mismatch_flagged() -> None:
     from unlimited_ocr_2_rocm import publication
 
     rel = "eval/benchmarks/g05/scorer/final/pipelines/marathon-pipeline/ground-truth.json"
-    staged = tmp_path / rel
-    staged.parent.mkdir(parents=True)
-    staged.write_text(json.dumps([_annotation_row(text="tampered")]), encoding="utf-8")
+    tampered = json.dumps([_annotation_row(text="tampered")]).encode("utf-8")
     original = dict(publication.WHITELIST)
     try:
-        assert any(
-            "hash changed" in f[0] for _, f in publication.scan_staged_files([staged], tmp_path)
-        )
+        violations = publication.scan_staged_files([(rel, tampered)])
+        assert violations and "hash changed" in violations[0][1][0]
         # Exact pinned bytes pass the staged hash verification.
-        pinned = tmp_path / "pinned.json"
-        pinned.write_text(json.dumps([_annotation_row()]), encoding="utf-8")
+        pinned = json.dumps([_annotation_row()]).encode("utf-8")
         publication.WHITELIST.clear()
         publication.WHITELIST["pinned.json"] = {
-            "sha256": file_sha256(pinned),
+            "sha256": hashlib.sha256(pinned).hexdigest(),
             "reason": "test fixture",
         }
-        assert publication.scan_staged_files([pinned], tmp_path) == []
+        assert publication.scan_staged_files([("pinned.json", pinned)]) == []
     finally:
         publication.WHITELIST.clear()
         publication.WHITELIST.update(original)
 
 
-def test_staged_whitelist_hash_verified_by_default(tmp_path: Path) -> None:
-    """The real CLI path must verify whitelisted staged files against pinned hashes."""
+def test_staged_whitelist_hash_verified_by_default() -> None:
+    """The real whitelist entry must verify staged BYTES (index blobs, not worktree)."""
     from unlimited_ocr_2_rocm import publication
 
     rel = "eval/benchmarks/g05/scorer/final/pipelines/marathon-pipeline/ground-truth.json"
-    staged = tmp_path / rel
-    staged.parent.mkdir(parents=True)
-    staged.write_text(json.dumps([_annotation_row(text="reintroduced GT")]), encoding="utf-8")
-    # With the REAL whitelist entry for this path, staged content whose hash
-    # differs from the pinned fixture is refused (historical GT cannot be
-    # reintroduced under a whitelisted path).
-    violations = publication.scan_staged_files([staged], tmp_path)
+    reintroduced = json.dumps([_annotation_row(text="reintroduced GT")]).encode("utf-8")
+    violations = publication.scan_staged_files([(rel, reintroduced)])
     assert violations and "hash changed" in violations[0][1][0]
+
+
+def test_staged_index_blob_toctou_closed() -> None:
+    """F3: verification hashes the INDEX BLOB; a restored worktree cannot help."""
+    from unlimited_ocr_2_rocm import publication
+
+    rel = "eval/benchmarks/g05/scorer/final/pipelines/marathon-pipeline/ground-truth.json"
+    index_blob = json.dumps([_annotation_row(text="REINTRODUCED REAL GT")]).encode("utf-8")
+    # The caller passes what the INDEX holds; whatever the worktree contains
+    # is irrelevant to this verdict.
+    violations = publication.scan_staged_files([(rel, index_blob)])
+    assert violations and "hash changed" in violations[0][1][0]
+
+
+def test_staged_missing_blob_fail_closed() -> None:
+    from unlimited_ocr_2_rocm import publication
+
+    violations = publication.scan_staged_files([("eval/x/new.json", None)])
+    assert violations and "fail-closed" in violations[0][1][0]
+
+
+def test_staged_name_status_parsing_covers_renames_and_typechanges() -> None:
+    from unlimited_ocr_2_rocm import publication
+
+    raw = (
+        b"A\0eval/new.json\0M\0eval/edited.json\0R100\0eval/old.json\0"
+        b"eval/renamed.json\0T\0eval/link.json\0D\0eval/gone.json\0"
+    )
+    entries = publication.parse_staged_name_status(raw)
+    # Deleted files never enter the repo; renames report BOTH endpoints —
+    # the destination must exist in the index, the rename source may not.
+    assert entries == [
+        ("eval/new.json", True),
+        ("eval/edited.json", True),
+        ("eval/old.json", False),
+        ("eval/renamed.json", True),
+        ("eval/link.json", True),
+    ]
+
+
+def test_duplicate_json_keys_fail_closed(tmp_path: Path) -> None:
+    smuggle = (
+        '{"rows": [{"page_info":{"image_path":"d.pdf","images_list":["p1.jpg"],'
+        '"annotations_list":[{}]},"layout_dets":[{"label":"title","text":"GT"}]}],'
+        ' "rows": {"clean": true}}'
+    )
+    path = tmp_path / "dup.json"
+    path.write_text(smuggle, encoding="utf-8")
+    findings = publication_findings(path)
+    assert findings and "duplicate" in findings[0]
+    jsonl = tmp_path / "dup.jsonl"
+    jsonl.write_text('{"a": 1, "a": 2}\n', encoding="utf-8")
+    assert any("duplicate" in f for f in publication_findings(jsonl))
+
+
+def test_type_mangled_rows_flagged_nested_and_top(tmp_path: Path) -> None:
+    row = {
+        "page_info": {"image_path": 12345, "images_list": ["p1.jpg"], "annotations_list": [{}]},
+        "layout_dets": [{"label": "title", "text": "GT text", "bbox": [1, 2, 3, 4]}],
+    }
+    top = tmp_path / "mangled.json"
+    top.write_text(json.dumps([row]), encoding="utf-8")
+    assert any("dataset annotation" in f for f in publication_findings(top))
+    wrapped = tmp_path / "mangled-wrapped.json"
+    wrapped.write_text(json.dumps({"rows": [row]}), encoding="utf-8")
+    assert any("dataset annotation" in f for f in publication_findings(wrapped))
+    str_page_info = {
+        "page_info": "doc.pdf",
+        "layout_dets": [{"label": "title", "text": "GT text"}],
+    }
+    loose = tmp_path / "mangled-str.json"
+    loose.write_text(json.dumps({"rows": [str_page_info]}), encoding="utf-8")
+    assert any("dataset annotation" in f for f in publication_findings(loose))
+
+
+def test_windows_lowercase_and_mixed_separator_paths_flagged(tmp_path: Path) -> None:
+    lowered = "c:" + chr(92) + "users" + chr(92) + "dev"
+    path = tmp_path / "receipt.json"
+    path.write_text(json.dumps({"note": f"ran under {lowered}"}), encoding="utf-8")
+    assert any("private host path" in f for f in publication_findings(path))
+    mixed = "C:" + "/Users" + "/dev/worker"  # assembled: keep the literal out of this file
+    text_path = tmp_path / "log.txt"
+    text_path.write_text(f"dir {mixed}\n", encoding="utf-8")
+    assert any("private host path" in f for f in publication_findings(text_path))
+
+
+def test_binary_like_non_json_evidence_fail_closed(tmp_path: Path) -> None:
+    path = tmp_path / "payload.dat"
+    path.write_bytes(b"\x00some packed annotation bytes\x00")
+    findings = publication_findings(path)
+    assert findings  # binary-like evidence is no longer silently skipped
 
 
 def test_gate_cli_scan_reports_nested_violation(tmp_path: Path) -> None:

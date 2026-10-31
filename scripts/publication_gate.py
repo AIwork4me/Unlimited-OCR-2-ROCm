@@ -23,20 +23,43 @@ _REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_REPO_ROOT / "src"))
 
 from unlimited_ocr_2_rocm.publication import (  # noqa: E402
+    parse_staged_name_status,
     publication_findings,
     scan_staged_files,
     scan_tree,
 )
 
 
-def _staged_files() -> list[Path]:
-    out = subprocess.run(
-        ["git", "-C", str(_REPO_ROOT), "diff", "--cached", "--name-only", "--diff-filter=ACM"],
+def _git(*args: str) -> bytes:
+    return subprocess.run(  # noqa: S603 - fixed argv from this code base
+        ["git", "-C", str(_REPO_ROOT), *args],
         check=True,
         capture_output=True,
-        text=True,
     ).stdout
-    return [_REPO_ROOT / line for line in out.splitlines() if line.strip()]
+
+
+def _staged_entries() -> list[tuple[str, bytes | None]]:
+    """Index-side staged content: (path, blob bytes or None when unreadable).
+
+    Reads the INDEX, not the worktree (TOCTOU-proof), with -z output so
+    quoted/non-ASCII paths cannot slip through unscanned, and with rename/
+    typechange statuses included (deletions commit no content). Unmerged
+    index entries fail closed.
+    """
+    if _git("ls-files", "-u", "-z"):
+        return [("<unmerged index entries present>", None)]
+    entries: list[tuple[str, bytes | None]] = []
+    for path, must_exist in parse_staged_name_status(
+        _git("diff", "--cached", "--name-status", "-z", "--diff-filter=ACMRT")
+    ):
+        try:
+            blob = _git("cat-file", "blob", f":{path}")
+        except subprocess.CalledProcessError:
+            if not must_exist:
+                continue  # rename source removed from the index: nothing commits
+            blob = None  # exists in the index but unreadable: fail closed
+        entries.append((path, blob))
+    return entries
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -49,7 +72,7 @@ def main(argv: list[str] | None = None) -> int:
 
     violations: list[tuple[str, list[str]]] = []
     if args.staged:
-        violations.extend(scan_staged_files(_staged_files(), _REPO_ROOT))
+        violations.extend(scan_staged_files(_staged_entries()))
     elif args.scan:
         for root in args.scan:
             prefix = ""

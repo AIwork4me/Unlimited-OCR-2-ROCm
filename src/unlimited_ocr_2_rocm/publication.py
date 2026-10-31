@@ -11,9 +11,10 @@ file names known today.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
-from pathlib import Path
+from pathlib import Path, PosixPath
 from typing import Any
 
 from .config import file_sha256
@@ -25,7 +26,7 @@ ANNOTATION_ROW_KEYS = frozenset({"page_info", "layout_dets"})
 PRIVATE_PATH_PATTERN = re.compile(r"/home/[A-Za-z0-9_.-]+|/Users/[A-Za-z0-9_.-]+")
 # Windows equivalents: escaped or raw backslashes both match (JSON text and
 # plain-text evidence carry different escaping of the same leak).
-_WINDOWS_PATH_PATTERN = re.compile(r"[A-Za-z]:\\+Users\\+[A-Za-z0-9_.\- ]+")
+_WINDOWS_PATH_PATTERN = re.compile(r"[A-Za-z]:[/\\]+Users[/\\]+[A-Za-z0-9_.\- ]+", re.IGNORECASE)
 
 # Binary image files are never publishable evidence (page renders, crops).
 IMAGE_SUFFIXES = frozenset({".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp", ".webp"})
@@ -112,6 +113,45 @@ WHITELIST: dict[str, dict[str, str]] = {
         "sha256": "bb0990ab06de182d1825b8425f33990c4e771e8e241cd7bc63ac9ffa61f990f3",
         "reason": "historical GitHub Actions runner-home infra path",
     },
+    # Historical binary artifacts, hash-pinned when binary-like content became
+    # fail-closed (Task A independent review F8): any byte drift re-trips the
+    # gate, and no NEW binary-like file can pass anywhere.
+    "eval/rca/gfx1151-rocm7141/pdf-followup/input/Unlimited-OCR-2.pdf": {
+        "sha256": "1eb5885f4ddfa4ec6fbff375092377f30b5d6a5e034ec4936213f125bf2f9444",
+        "reason": "historical committed RCA test input (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/build-after-kineto.stdout.log.gz": {
+        "sha256": "c0304ec60156dd9c01f787d8083c18bfa72ada22c338cbc3db114fa30af55492",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/build-after-psimd.stderr.log.gz": {
+        "sha256": "a82fc9f5faaf2b38fabb0f9240740bc21302d9d4f166dca9fbfb0d5339526fbe",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/build-after-psimd.stdout.log.gz": {
+        "sha256": "4d9ec479b631509abec7c6a6381aca0a2132d47a1ce6296451dd4130f91c16fd",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/build-cached.stdout.log.gz": {
+        "sha256": "d8567fbffefda10235d2c4d67ac8389f16923f00efb6471888f0f3c8b272901e",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/build-deps-ready.stdout.log.gz": {
+        "sha256": "ab88e787df87100b7db7bed63dcc86843cdf2f243f895779fe42b1858a8d6b17",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/build-prepared.stdout.log.gz": {
+        "sha256": "e7bc5326cab50a25c1766ab74994b87e4c81dd5a532b37e5eeb5d2d487f73f47",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/cutlass-tree-api.json.gz": {
+        "sha256": "e3682233193f7bfbdcd15eb004ff5c675dee20957d79f069cefa605a1f51b6c4",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
+    "eval/wheel-validation/windows-gfx1151/continuation/logs/torch-cpu-component.stdout.log.gz": {
+        "sha256": "fe01285b42dcb7f6fd980723317957a233f6fb83b64e09dda70b400a8143f405",
+        "reason": "historical compressed wheel-validation log (F8: binary fail-closed)",
+    },
 }
 
 RECEIPT_SCHEMA = 2
@@ -172,77 +212,89 @@ def _contains_annotation_rows(value: Any) -> bool:
         nodes += 1
         if nodes > _ANNOTATION_SEARCH_NODES or depth > _ANNOTATION_SEARCH_DEPTH:
             return True  # fail closed: oversized/deep candidate is not provably clean
+        if isinstance(item, dict) and ANNOTATION_ROW_KEYS <= item.keys():
+            # Key presence is the criterion (matching the top-level detector):
+            # type-mangled rows (page_info as str, image_path as int) are GT
+            # content just the same and must not escape when wrapped.
+            return True
         if isinstance(item, dict):
-            if ANNOTATION_ROW_KEYS <= item.keys():
-                page_info = item.get("page_info")
-                if isinstance(page_info, dict) and isinstance(page_info.get("image_path"), str):
-                    return True
             stack.extend((child, depth + 1) for child in item.values())
         elif isinstance(item, list):
             stack.extend((child, depth + 1) for child in item)
     return False
 
 
-def publication_findings(path: Path) -> list[str]:
-    """Classify one file; empty list means publishable."""
-    findings: list[str] = []
-    suffix = path.suffix.lower()
+def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """object_pairs_hook that refuses duplicate keys ( smuggling vector: a
+    later duplicate can hide annotation rows from the parsed value while the
+    raw bytes carry them)."""
+    keys = [key for key, _ in pairs]
+    duplicates = {key for key in keys if keys.count(key) > 1}
+    if duplicates:
+        raise ValueError(f"duplicate JSON keys: {sorted(duplicates)[:4]}")
+    return dict(pairs)
+
+
+def _parse_json_strict(text: str) -> Any:
+    return json.loads(text, object_pairs_hook=_reject_duplicate_keys)
+
+
+def _findings_for_bytes(suffix: str, data: bytes) -> list[str]:
+    """Shared detection core over raw bytes; used for files and index blobs."""
     if suffix in IMAGE_SUFFIXES:
-        findings.append("binary image content is not publishable evidence")
-        return findings
+        return ["binary image content is not publishable evidence"]
     if suffix == ".json":
         try:
-            value = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
-            findings.append(f"unreadable JSON evidence file: {error}")
-            return findings
+            value = _parse_json_strict(data.decode("utf-8"))
+        except (UnicodeDecodeError, ValueError) as error:
+            return [f"unreadable JSON evidence file: {error}"]
         if looks_like_dataset_annotations(value):
-            findings.append("dataset annotation rows (page_info/layout_dets) — GT content")
-            return findings
+            return ["dataset annotation rows (page_info/layout_dets) — GT content"]
         if _contains_annotation_rows(value):
-            findings.append("dataset annotation rows nested inside a JSON export — GT content")
-            return findings
+            return ["dataset annotation rows nested inside a JSON export — GT content"]
         text = json.dumps(value, ensure_ascii=False)
     elif suffix in {".jsonl", ".ndjson"}:
         try:
-            lines = path.read_text(encoding="utf-8").splitlines()
-        except (OSError, UnicodeDecodeError) as error:
-            findings.append(f"unreadable JSONL evidence file: {error}")
-            return findings
+            full_text = data.decode("utf-8")
+        except UnicodeDecodeError as error:
+            return [f"unreadable JSONL evidence file: {error}"]
+        lines = full_text.splitlines()
         text_parts: list[str] = []
         for number, line in enumerate(lines, start=1):
             text_parts.append(line)
             if not line.strip():
                 continue
             try:
-                value = json.loads(line)
-            except json.JSONDecodeError as error:
-                findings.append(f"unreadable JSONL evidence at line {number}: {error}")
-                return findings
+                value = _parse_json_strict(line)
+            except ValueError as error:
+                return [f"unreadable JSONL evidence at line {number}: {error}"]
             if looks_like_dataset_annotations(value) or _contains_annotation_rows(value):
-                findings.append(
+                return [
                     f"dataset annotation rows (page_info/layout_dets) — GT content (line {number})"
-                )
-                return findings
+                ]
         text = "\n".join(text_parts)
     else:
-        if _is_probably_binary(path):
-            return findings
-        text = path.read_text(encoding="utf-8", errors="replace")
+        if b"\x00" in data[:4096]:
+            return ["binary-like evidence file is not publishable (fail-closed)"]
+        text = data.decode("utf-8", errors="replace")
+    return _private_path_findings(text)
+
+
+def _private_path_findings(text: str) -> list[str]:
     for pattern in (PRIVATE_PATH_PATTERN, _WINDOWS_PATH_PATTERN):
         match = pattern.search(text)
         if match:
-            findings.append(f"private host path {match.group(0)!r}")
-            break
-    return findings
+            return [f"private host path {match.group(0)!r}"]
+    return []
 
 
-def _is_probably_binary(path: Path) -> bool:
+def publication_findings(path: Path) -> list[str]:
+    """Classify one file; empty list means publishable."""
     try:
-        head = path.read_bytes()[:4096]
-    except OSError:
-        return True
-    return b"\x00" in head
+        data = path.read_bytes()
+    except OSError as error:
+        return [f"unreadable evidence file: {error}"]
+    return _findings_for_bytes(path.suffix.lower(), data)
 
 
 def scan_tree(root: Path, *, prefix: str = "") -> list[tuple[str, list[str]]]:
@@ -269,28 +321,63 @@ def scan_tree(root: Path, *, prefix: str = "") -> list[tuple[str, list[str]]]:
 
 
 def scan_staged_files(
-    files: list[Path], repo_root: Path, *, whitelist: dict[str, dict[str, str]] | None = None
+    entries: list[tuple[str, bytes | None]], *, whitelist: dict[str, dict[str, str]] | None = None
 ) -> list[tuple[str, list[str]]]:
-    """Scan staged candidate files; whitelisted paths are hash-verified here.
+    """Scan staged index blobs; whitelisted paths are hash-verified here.
 
-    The staged mode must not defer whitelist integrity to a later tree scan:
-    a staged edit at a whitelisted path is refused the moment its bytes drift
-    from the pinned SHA-256 (historical GT cannot be reintroduced under an
-    admitted path).
+    ``entries`` carry what the INDEX holds (``git cat-file blob :path``), not
+    the worktree: a stage-tamper-restore sequence cannot defeat verification,
+    and quoted/unreadable worktree paths cannot silently pass. A ``None``
+    blob for a path that exists in the index is itself a violation.
     """
     table = WHITELIST if whitelist is None else whitelist
     violations: list[tuple[str, list[str]]] = []
-    for path in files:
-        rel = path.relative_to(repo_root).as_posix()
+    for rel, data in entries:
         entry = table.get(rel)
         if entry is not None:
-            if not path.is_file() or file_sha256(path) != entry["sha256"]:
+            if data is None or hashlib.sha256(data).hexdigest() != entry["sha256"]:
                 violations.append((rel, ["whitelisted file hash changed — re-review required"]))
             continue
-        findings = publication_findings(path) if path.is_file() else []
+        if data is None:
+            violations.append((rel, ["unreadable staged blob — fail-closed"]))
+            continue
+        findings = _findings_for_bytes(PosixPath(rel).suffix.lower(), data)
         if findings:
             violations.append((rel, findings))
     return violations
+
+
+def parse_staged_name_status(raw: bytes) -> list[tuple[str, bool]]:
+    """Parse ``git diff --cached --name-status -z`` output.
+
+    Returns (path, must_exist_in_index) pairs; deletions are skipped (a
+    deletion commits no content) and rename/copy entries report BOTH
+    endpoints — the destination must exist in the index, the source may have
+    been removed by the rename (its bytes are the destination's bytes).
+    """
+    tokens = raw.split(b"\0")
+    parsed: list[tuple[str, bool]] = []
+    index = 0
+    while index < len(tokens):
+        status = tokens[index].decode("utf-8", errors="replace")
+        if not status:
+            index += 1
+            continue
+        kind = status[:1]
+        if kind == "D":
+            index += 2
+            continue
+        if kind in {"R", "C"}:
+            old = tokens[index + 1].decode("utf-8", errors="surrogateescape")
+            new = tokens[index + 2].decode("utf-8", errors="surrogateescape")
+            parsed.append((old, kind == "C"))
+            parsed.append((new, True))
+            index += 3
+            continue
+        path = tokens[index + 1].decode("utf-8", errors="surrogateescape")
+        parsed.append((path, True))
+        index += 2
+    return parsed
 
 
 def build_gt_slice_receipt(
