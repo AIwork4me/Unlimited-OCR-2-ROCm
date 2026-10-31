@@ -1,0 +1,20 @@
+{
+  ".gitattributes": "d29c67da2b9d31520201cb3701bbb1577deb991d47dc76b347b8e4bd33398979",
+  "analysis-provenance.json": "ead9b6647e775f660d14f5efe72680cc95a5dbeebe1c2930bc287a1bc7aaac5e",
+  "attention-reference.json": "cb6f0474b8262978034c78a5e1195042c85d56963648c1dc7a2a6c8a195a66e2",
+  "cache-contract.json": "8ae596ee63bc8d5fa85cbc7c8f5ec4bb53a60a924e35bd5f968fc05f8c4a3493",
+  "classification.json": "2c81396c170357761837cceaf20c5f7ef31a2cd1e1f1b7084cef1abb41514039",
+  "hidden-and-cache-pairs.json": "81208dfafefa0034dcc8c544b0b06ac80b709f6a760302e9b538ad0b5fd1a3c8",
+  "identity.json": "ed5090ce9d9091e3f93246c2e7cfcdee0882c6c40936e6966bf56b9f99b4482a",
+  "independent-review.md": "5f1e83fb4bb91d1fc4a13fdff37feccf057c4fce07d42aec54a4078dda99543c",
+  "producer-fidelity.json": "a2648e25799106932f261c0b3efa9d262547156d230f560a5c7a396831b6c913",
+  "producers/capture.py": "c659b1cbf5175415659e69e9aebc05d5dee9c2ce168570854f5e38c72f68a1fb",
+  "producers/frozen_worker.py": "1582720471fb822c6a8d45ab886fc7ecbf9eb801da25a1fa379d0069bf910fc1",
+  "producers/isolation_control.py": "d913bb4ea1e137f58fad42ba8792e0580296756a7ec9e21ba067be11feeb3657",
+  "producers/README.md": "1cb30bd8d9a434d7f47cde81a2f9c7747dcc2c3e843acd7ace0c6a67d8ac744a",
+  "producers/run.py": "003734f22635a56263ab81625315e469e2feb802d548b9d492628c07d2776186",
+  "producers/te_worker.py": "42593dd79e90dd0ad382a99a1ba674fed047a650a84a03ffe3b2b0b57b76f5f0",
+  "README.md": "57025108ba98b3b61cf5ceac6e2aa3200e02e95a705592ecbc4406247d261c16",
+  "token-selection.json": "ecc70992b961feb1261988fa7f2d24fed130dfbcbf9a6fa8e586097560433fe3",
+  "verification.json": "e0f77f896fe2b08f387700ee7bf3a403b2f914a7aedf0540f087ca815795e585"
+}

@@ -1,0 +1,6 @@
+{
+  "declared_unused_analysis_sha256": "2d74efa686567456d105b7b86026c2b738f211dfba3b2a49d3e352bf99aaf195",
+  "preserved_executed_source_sha256": "2d74efa686567456d105b7b86026c2b738f211dfba3b2a49d3e352bf99aaf195",
+  "final_analysis_sha256": "98ea36f602893a0ab43168c911d2314c770df213807ee4972149770478532a0d",
+  "note": "After all GPU workers finished, the CPU-only analyzer generic dispatch filter and cache append reporting were corrected. Its original declared bytes are preserved locally, with separate relocation record. Model computation/instrumentation inputs were not changed."
+}
