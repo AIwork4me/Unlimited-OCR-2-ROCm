@@ -11,15 +11,21 @@ is made anywhere.
 | --- | --- |
 | Original-wheel installation | PASS, two fresh environments |
 | Native Transformers BF16 MATH | PASS, bounded scope |
-| Golden synthetic OCR | 26/26 PASS |
+| Golden synthetic OCR (delivered tree `3556e38`) | 26/26 PASS |
+| Golden synthetic OCR (frozen execution tree `6d8e481`) | 26/26 PASS (fresh rerun, exact cross-environment parity; allocator/available envelope matches: 10.510/8.589 GiB peaks) |
+| Integration of main+PR#33 combined tree | PASS — actual two-parent merge, conflict-free, convergent tree `7eb5c1cd`; combined CPU suite 521 passed / 0 failed; publication gate PASS |
+| Fail-closed experiment admission (PR #28 contract) | VENDORED on the execution tree, byte-identical; real-gate dry-run 18 cases / 14 verified refusals |
+| 1 Hz resource telemetry + watchdog in the supervised runner | IMPLEMENTED (staleness rule, memory floors, breach classification), CPU suite green |
+| Linux scorer bridge (Option B) | IMPLEMENTED, synthetic-fixture tests incl. the real eight-metric positive control; no GT/prediction transfer executed |
 | MPDocBench dataset verification | 420 documents / 3135 pages PASS |
 | Marathon dataset verification | 100 documents / 18272 pages PASS |
 | MPDocBench full GPU inference | NOT_RUN |
 | Marathon full GPU inference | NOT_RUN |
-| Eight official metrics | null |
+| Eight official metrics | null (Windows route BLOCKED; Linux bridge ready but no campaign run) |
 | Overall scores | null |
 | Difference versus Baidu official | null |
 | Native Windows SGLang | BLOCKED / NOT_TESTED |
+| Real-document GPU pilot | PREPARED (reconciled policy, prerequisites P1/P2/P5/P6 closed, exact packet returned); NOT AUTHORIZED |
 | Production release | KEEP EXPERIMENTAL |
 
 Reference scores from the official paper (not measured here): MPDocBench
@@ -69,13 +75,19 @@ until a complete, correctly scored benchmark exists; they are never zero.
 8. **Which results have actually been measured?** Offline install
    reproducibility (two fresh environments, 13,343 installed members
    verified each), and 26/26 bounded synthetic golden OCR requests with
-   exact cross-environment token/bbox parity and CER 0. Nothing else.
+   exact cross-environment token/bbox parity and CER 0 — executed twice:
+   at the delivered tree `3556e38` and, after main merged PR #32 and the
+   execution tree gained the vendored admission contract, P5 telemetry and
+   the scorer bridge, again as a fresh 26/26 rerun at the frozen execution
+   commit `6d8e481` (same envelope: 10.510 GiB peak reserved / 8.589 GiB
+   peak allocated). Nothing else.
 9. **What remains experimental or blocked?** Full-corpus GPU inference
    (NOT_RUN / not authorized), the eight official metrics and Overall
-   (null), a native Windows official scorer (BLOCKED: XeLaTeX, Ghostscript,
-   latexmlc, POSIX assumptions), native Windows SGLang (BLOCKED /
-   NOT_TESTED), real-document GPU experiments (blocked pending separate
-   admission and authorization)
+   (null — the Linux bridge is implemented but no campaign ran; a native
+   Windows official scorer stays BLOCKED: XeLaTeX, Ghostscript, latexmlc,
+   POSIX assumptions), native Windows SGLang (BLOCKED / NOT_TESTED), and
+   the real-document GPU pilot, whose exact packet is prepared and awaiting
+   explicit owner authorization
    ([readiness](WINDOWS_NATIVE_READINESS.md),
    [SGLang](WINDOWS_SGLANG_FEASIBILITY.md),
    [admission](REAL_DOCUMENT_ADMISSION.md)).

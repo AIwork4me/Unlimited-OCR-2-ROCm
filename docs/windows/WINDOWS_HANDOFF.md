@@ -17,4 +17,31 @@ Retained private evidence: initial baseline failure, checks-r2, fake-worker RED/
 
 A qualified Linux CPU official scorer is a possible future scoring endpoint because native Windows renderer closure is blocked. Transfer of private Windows predictions requires explicit authorization and frozen input/output digests; no transfer occurred. Linux GPU validation and Windows validation remain separate hardware/stack evidence.
 
-Next integration dependency is a common reviewed ngram/budget policy with a single bounded real-document admission proposal; no full-campaign execution grant exists. See [protocol](WINDOWS_BENCHMARK_PROTOCOL.md) and [Chinese report](../../WINDOWS_PRODUCT_DELIVERY_REPORT.md).
+## Integration status after this branch was published (2026-11-01)
+
+This branch is published as **Draft PR #33** (head `a987dca`, 8 commits). PR
+#32 has since merged into main (`a2b91aa`). The combined integration tree was
+constructed as a real two-parent merge (conflict-free, convergent tree
+`7eb5c1cd`), passed the full combined CPU gate (521 passed / 0 failed with
+test-tree pinned imports; ruff, format, dual-platform mypy, build, pip check,
+publication repo-root scan), and was extended on the integration branch with
+the vendored PR #28 fail-closed admission contract (byte-identical, real-gate
+dry-run 18 cases / 14 verified refusals), the P5 1 Hz telemetry + watchdog
+wiring in the supervised runner, and the Option B scorer bridge
+(synthetic-fixture tested, including the real eight-metric positive control
+from the frozen scorer's own selftest output). A fresh bounded synthetic
+golden rerun was executed at the frozen execution commit under
+GOLDEN_PROTOCOL_V3 (see [PRODUCT_STATUS](PRODUCT_STATUS.md)).
+
+The bounded real-document pilot is prepared to the packet level — reconciled
+admission policy (revision 2, deviations D1–D4 recorded), closed
+prerequisites P1/P2/P5 (P3/P4 remain by design), and one exact executable
+pilot packet returned for explicit owner authorization. See
+[REAL_DOCUMENT_ADMISSION](REAL_DOCUMENT_ADMISSION.md). No real-document GPU
+request, full campaign, GT transfer or prediction transfer has been executed;
+no automatic merge or release has occurred.
+
+Next integration dependency is the owner's explicit GO/NO-GO on the pilot
+packet; no full-campaign execution grant exists. See
+[protocol](WINDOWS_BENCHMARK_PROTOCOL.md) and
+[Chinese report](../../WINDOWS_PRODUCT_DELIVERY_REPORT.md).
