@@ -51,7 +51,7 @@ $Wheelhouse = Join-Path $PWD '.b/wh'
 
 当前交付是本地可审阅准备，没有新分支远程推送或新 PR。四个本地代码提交为 `4abba4f`（Job supervision 与 publication）、`c431027`（原始 wheel / fresh offline install）、`3556e3867a086437a43a645fa907689f4dd25260`（PowerShell 入口、冻结 GT 绑定），以及 `5436f80233477cf53f0e5eda4406c27a9e09c035`（继承 HF 缓存的仓库内隔离与恢复测试）。[PR 基线审计](docs/windows/PR_BASELINE_AUDIT.md) 记录所有指定 PR 的冻结状态。原目录42项 dirty 文件与 index、历史406项及全部既有 seals、旧模型/原始及候选 wheel 和已安装成员均已重新按字节验证保持不变；旧 Draft #28/#29 仍为原 head、未合并。原有 Draft #28/#29 未改动，README、Linux 推理/模型/评分代码与 Linux 结果未修改。
 
-保留 initial349 PASS /8 skipped /1 publication ancestor failure。修复后只按选定 root 的相对路径跳过私有目录，并经审阅更新旧 source-fixture whitelist hash；不是删除失败或绕过扫描。CPU/构建证据在私有 checks-r2 / checks-r3，最终文档/JSON 仍需主控对最终提交运行公开范围和 source archive 安全门禁。
+保留 initial349 PASS /8 skipped /1 publication ancestor failure。修复后只按选定 root 的相对路径跳过私有目录，并经审阅更新旧 source-fixture whitelist hash；不是删除失败或绕过扫描。CPU/构建证据在私有 checks-r2 / checks-r3；最终公开范围及 source archive 的独立验证收据与所有失败另行封存。安装指南提供单页用户 CLI 命令，语法已作 CPU 核验；本次真机证明由同一共享推理路径的有界控制器产生，不额外执行 CLI GPU 请求。
 
 ## 8. Remaining Blockers
 

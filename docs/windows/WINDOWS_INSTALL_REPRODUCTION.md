@@ -71,3 +71,30 @@ if ($LASTEXITCODE -ne 0) { throw 'Model acquisition failed' }
 ```
 
 `reproduce_windows.ps1` is a real GPU workflow, not an installation-only command: it executes doctor/BF16, Triton, DASH, MATH and single/multi smoke suites. `-ReuseEnvironment -Offline` reuses a prepared environment/model cache without pip; fresh offline reproduction also accepts a complete `-Wheelhouse`. Use new output paths and an independently reviewed bounded controller. The mission permits at most two existing13-case suites (26 full OCR requests), one per clean environment, conditional on gates; do not launch them by copying this guide. The actual completed baseline proof is [recorded separately](NATIVE_BASELINE_VALIDATION.md); copying these setup commands does not reproduce its independently reviewed controller identity. Full real-data campaigns and larger-token experiments require separate explicit admission/authorization.
+
+## Deliberate one-page user run
+
+After installation and offline model verification, a user can run the public single-page CLI below. Its argument syntax was CPU-checked with `single --help`; this mission's physical proof used the same shared `run_native` inference path through the frozen bounded controller. The standalone CLI process was not separately GPU-run here. Select an unused short runtime/output path, preserving earlier runs.
+
+```powershell
+$UserRun = Join-Path $PWD '.b/user1'
+if (Test-Path $UserRun) { throw 'Choose an unused short runtime/output path' }
+$CacheVariables = @('TEMP','TMP','TRITON_CACHE_DIR','TORCHINDUCTOR_CACHE_DIR','HF_HUB_CACHE','HUGGINGFACE_HUB_CACHE')
+$SavedCache = @{}
+foreach ($n in $CacheVariables) { $SavedCache[$n] = [Environment]::GetEnvironmentVariable($n,'Process') }
+try {
+    $env:TEMP = Join-Path $UserRun 'tmp'
+    $env:TMP = $env:TEMP
+    $env:TRITON_CACHE_DIR = Join-Path $UserRun 'triton'
+    $env:TORCHINDUCTOR_CACHE_DIR = Join-Path $UserRun 'inductor'
+    $env:HF_HUB_CACHE = $Cache
+    $env:HUGGINGFACE_HUB_CACHE = $Cache
+    New-Item -ItemType Directory -Force $env:TEMP,$env:TRITON_CACHE_DIR,$env:TORCHINDUCTOR_CACHE_DIR | Out-Null
+    & $OcrPython -m unlimited_ocr_2_rocm single (Join-Path $Source 'tests/fixtures/english.png') --cache-dir $Cache --offline --max-new-tokens 1024 --output (Join-Path $UserRun 'output')
+    if ($LASTEXITCODE -ne 0) { throw 'Native inference failed; retain all output and logs' }
+} finally {
+    foreach ($n in $CacheVariables) { [Environment]::SetEnvironmentVariable($n,$SavedCache[$n],'Process') }
+}
+```
+
+This is one whole single-page request, with the unchanged original model and production backend. Use the public `multi` CLI only within the documented five-image/8192-token production limits. Do not substitute page concatenation for official long-document inference or treat a successful smoke output as a benchmark score.
