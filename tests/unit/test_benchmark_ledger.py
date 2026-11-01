@@ -17,6 +17,11 @@ def complete(run, doc_id, state="PASS"):
     count = 10 if doc_id == "a" else 2
     raw = "<PAGE><BLOCK>text[0,0,1,1]<FORK>hello" * count
     attempt = run.begin(doc_id)
+    # Mirror the real worker: the supervised path always lands the watchdog
+    # heartbeat receipt in the attempt directory before commit.
+    (run.path / "documents" / doc_id / f"{attempt}.pending" / "heartbeat.json").write_text(
+        json.dumps({"watchdog": {"breach": None}}), "utf-8"
+    )
     run.finish(
         doc_id,
         attempt,

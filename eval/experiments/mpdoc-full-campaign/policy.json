@@ -1,0 +1,95 @@
+{
+ "schema": 1,
+ "experiment": "MPDOC_FULL_CAMPAIGN",
+ "purpose": "The FIFTH pinned policy: authorizes the official-class budget (39321 new tokens) with the official no-repeat suppression (35/1024, generated ids only) for the 221 CAMPAIGN_POLICY_REQUIRED documents (6..15 pages) of the frozen full-scope MPDocBench manifest, executed sequentially through the ledger-integrated campaign runner after TWO conditions are met: this digest is pinned by a reviewed commit, AND an explicit owner authorization names this digest in the run config. Neither condition alone executes anything. Production-class documents (171, <=5 pages) never consume this policy: they run on the production path at budget 8192 exactly as validated and piloted.",
+ "claim_limit": "REAL_MEASUREMENT_ONLY until the full-scope run completes and passes the comparability audit. A campaign run is NOT a leaderboard claim, NOT official-deployment parity (no SGLang windowing, no KV reuse), and produces no delta versus the Baidu reference until public_report comparability gates pass. Truncated/failed/timed-out documents are published as FULL_WITH_FAILURES with failures visible — never retried into PASS, never silently dropped from the 420 denominator.",
+ "documents": {
+  "rule": "every document the frozen full-scope classifier places in CAMPAIGN_POLICY_REQUIRED (6..15 pages, benchmark.campaign.classify_document) at execution time, from the frozen manifest",
+  "expected_count": 221,
+  "expected_pages": 1999,
+  "full_scope_manifest_sha256": "f59337e42eb387b81baffe4bd37923e4ad32e95d65f90c45acb9c7e43446d5c0",
+  "classification_report_sha256": "346f295269b419d40f346fec3fcd718f65da29ae87ba84467dfb82dae3177241",
+  "page_hash_gate": "eval/benchmarks/g05/datasets/MPDocBench-page-index.json (worker verifies actual bytes per page before inference)"
+ },
+ "admission": {
+  "context_cap_tokens": 131072,
+  "prompt_upper_bound_tokens_per_page": 300,
+  "required_margin_tokens": 4096,
+  "rule": "pages*prompt_upper_bound + budget + margin must not exceed context_cap_tokens; classify/admit arithmetic ONLY — budget sufficiency is a runtime outcome (TRUNCATED accounting), never a pre-flight guarantee"
+ },
+ "budgets_new_tokens": [
+  39321
+ ],
+ "ngram_sizes": [
+  35
+ ],
+ "ngram_window": 1024,
+ "ngram_scope": "generated tokens only (official SGLang SGLANG_UOCR_NGRAM_OUTPUT_ONLY=True semantics; frozen model loop scans gen only)",
+ "ngram_provenance": "official client infer.py@48ff432 (docs/rca/NGRAM35_SOURCE_AUDIT.md); same suppression identity validated by L1 (dd23a546) and L1.1-B (d95e5bd0) at this exact budget class; the guard-collision corner is LIVE at this budget class per docs/validation/P2C_GUARD_COLLISION_SAFETY.md §6",
+ "guard_collision_safety": {
+  "contract": "observer aborts before selection on the audited corner; any abort classifies the attempt FAIL and BLOCKS campaign promotion; the post-run replay forced-marker detector remains a HARD gate with no bypass",
+  "cpu_test_file": "tests/unit/test_l1_collision_observer.py",
+  "observer": "pre-selection all--inf abort (src/unlimited_ocr_2_rocm/collision_observer.py), REQUIRED for every campaign-class attempt",
+  "qualification": "docs/validation/L1_GUARD_COLLISION_QUALIFICATION.md",
+  "qualification_sha256": "4e76542455270dba6544def93be4dc42d884d0afb0becfb4e7f93fe85ac43305"
+ },
+ "ledger": {
+  "dataset_documents": 420,
+  "production_documents": 171,
+  "campaign_documents": 221,
+  "unsupported_documents": 28,
+  "not_run_marking": "the 28 NATIVE_UNSUPPORTED_OVER_15P documents stay NOT_RUN/BLOCKED in every ledger and public accounting; NOT_RUN is never PASS; the 420-document denominator is never subset",
+  "failure_visibility": "TRUNCATED/FAIL/TIMEOUT rows are preserved and published as-is; the ledger is append-only; no terminal state is ever retried into PASS"
+ },
+ "resource_admission": {
+  "gpu_allocated_hard_limit_gib": 16,
+  "gpu_enforcement": "worker ResourceWatchdog samples torch.cuda.memory_allocated and aborts the attempt (exit 86 + breach receipt) when the hard limit is crossed — enforced during execution, not merely checked afterward",
+  "host_rss_soft_limit_gib": 4,
+  "measured_envelope": "pilot 24-doc measured envelope 38-128 GPU-hours (median per-page 38.3 s, P95 117.4 s, L1.1-B 194 s/page upper anchor); watchdog peaks 8.55 GiB allocated / 8.78 GiB reserved / 2.48 GiB RSS; per-attempt model load ~4 s is inside the anchors",
+  "timeout_rationale": "L1.1-B measured this budget class at 2913 s wall for the densest 15-page document; 7200 s is a 2.47x margin (>=1.8x at the L1 decode floor of 10.4 tok/s). May only be changed via a reviewed policy update BEFORE the run, never mid-run.",
+  "timeout_seconds": 7200
+ },
+ "supervision": {
+  "grace_seconds": 10,
+  "heartbeat_seconds": 20,
+  "process_group_sigkill": true,
+  "terminate_incomplete_is_failure": true,
+  "timeout_seconds_per_document": 7200
+ },
+ "batching": {
+  "mode": "sequential documents, one supervised worker per document",
+  "resume": "ledger resume after any interruption re-serves only non-terminal documents; every attempt keeps its numbered receipt with hash seals",
+  "protocol_freeze": "no mid-campaign parameter changes — a protocol change means a new Run ID and a new receipt lineage, never an amendment of the running one"
+ },
+ "abort_criteria": [
+  "watchdog breach (16 GiB allocated) halts the campaign for review",
+  "OOM classification halts the campaign for review",
+  "ledger hash-seal mismatch halts the campaign for review",
+  "TIMEOUT does NOT halt: the document is kept as TIMEOUT and the campaign continues; a systemic timeout pattern is a review trigger, not a silent continue"
+ ],
+ "unchanged": {
+  "bf16": true,
+  "crop_policy": "crop_mode=False (infer_multi)",
+  "decoder": "official eager + DASH Triton, 12 routers",
+  "max_pixels_per_page": 16000000,
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "native_page_guard": "enabled (expected_pages = the document's page count from the frozen manifest; max_page_tokens=20000)",
+  "prompt": "official default document prompt",
+  "sampling": "greedy temperature=0",
+  "vision_sdpa": "MATH (SAM/CLIP scoped)"
+ },
+ "environment_pin": {
+  "python": "3.10",
+  "torch": "2.12.0+rocm7.2",
+  "transformers": "4.52.1",
+  "triton-rocm": "3.7.0",
+  "tokenizers": "0.21.4",
+  "huggingface-hub": "0.36.0",
+  "wheel_source": "wheels/ local builds (gfx1151); unchanged from L1/L1.1-B and the pilot"
+ },
+ "scoring": {
+  "strict": "official eight-metric scorer over every completed document, frozen gt-slice export; metrics without samples stay null and Overall is null by rule for any document set where the rule applies",
+  "diagnostic": "diagnostic scorer receipt per document as in the pilot; full-denominator accounting preserved (420 documents in every public report)",
+  "publication": "public-results.json only through benchmark/public_report.py comparability gates; the audit refuses denominator mismatches and unverified comparisons"
+ }
+}

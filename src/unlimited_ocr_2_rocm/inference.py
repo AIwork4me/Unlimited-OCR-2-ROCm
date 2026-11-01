@@ -54,11 +54,21 @@ EXPECTED_L1_POLICY_SHA256 = "dd23a5462c28f3bd93a97c17fe5890e4ad01764de6fb39e9ba0
 #: Delta vs the draft = exactly the two receipt-reference fields (path +
 #: inline digest), both pre-declared by the admission packet.
 EXPECTED_L11_B_POLICY_SHA256 = "d95e5bd03904da635fd8b6c82b9ab0ee586c299b872bd9c5cc5a13d3592b4aa9"
+#: Pinned digest of the frozen campaign policy (eval/experiments/mpdoc-full-campaign/
+#: policy.json) — the FIFTH authorized digest: the MPDOC_FULL_CAMPAIGN experiment,
+#: official-class budget 39321 with suppression 35/1024 for the 221
+#: CAMPAIGN_POLICY_REQUIRED documents (6..15 pages) of the frozen full-scope
+#: manifest f59337e4…. Pinning this digest in code is NOT an authorization to
+#: run: execution additionally requires an explicit owner authorization naming
+#: this digest in the run config (benchmark.campaign.execution_plan enforces
+#: both, fail-closed).
+EXPECTED_CAMPAIGN_POLICY_SHA256 = "47a494a985bf0058396c3dd762f83593217072a9708ecf3e08d6291fe2677edc"
 _AUTHORIZED_NGRAM_POLICIES: dict[str, str] = {
     EXPECTED_NGRAM_POLICY_SHA256: "P2B_NGRAM_SUPPRESSION_RCA",
     EXPECTED_P2C_POLICY_SHA256: "P2C_COMBINED_NGRAM_BUDGET",
     EXPECTED_L1_POLICY_SHA256: "L1_FIFTEEN_PAGE_NATIVE",
     EXPECTED_L11_B_POLICY_SHA256: "L11_FIFTEEN_PAGE_NATIVE_B",
+    EXPECTED_CAMPAIGN_POLICY_SHA256: "MPDOC_FULL_CAMPAIGN",
 }
 
 # The ONLY budget policies the API-layer budget gate admits, pinned by exact
@@ -82,6 +92,16 @@ AUTHORIZED_BUDGET_POLICIES: dict[str, dict[str, Any]] = {
     },
     EXPECTED_L11_B_POLICY_SHA256: {
         "experiment": "L11_FIFTEEN_PAGE_NATIVE_B",
+        "budgets": frozenset({39321}),
+    },
+    # The FIFTH digest (campaign policy) authorizes the official-class budget
+    # 39321 for the MPDOC_FULL_CAMPAIGN experiment only — the 221
+    # CAMPAIGN_POLICY_REQUIRED documents of the frozen full-scope manifest,
+    # and ONLY behind an owner authorization naming this digest in the run
+    # config. Pinning here is the physical possibility to run; it is not the
+    # authorization itself.
+    EXPECTED_CAMPAIGN_POLICY_SHA256: {
+        "experiment": "MPDOC_FULL_CAMPAIGN",
         "budgets": frozenset({39321}),
     },
 }
