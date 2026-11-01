@@ -10,6 +10,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      # Publication safety gate: fail the build before anything else runs.
+      - run: python scripts/publication_gate.py --scan .
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
