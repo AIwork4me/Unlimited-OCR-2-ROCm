@@ -2,6 +2,9 @@
 .local/
 .upstream/
 .superpowers/
+# Raw evidence workspace (P1.5 finding R5): licensed dataset derivatives and
+# raw OCR evidence must never be committed.
+.b/
 # P0 publication containment: scorer GT slices carry licensed annotation bytes.
 # Publish identity receipts (*-gt-slice-receipt.json) instead — see
 # scripts/publication_gate.py and src/unlimited_ocr_2_rocm/publication.py.

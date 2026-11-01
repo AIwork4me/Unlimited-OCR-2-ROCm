@@ -1,0 +1,151 @@
+{
+ "claim_limit": "Small predeclared MPDocBench subset; NOT full MPDocBench accuracy, NOT leaderboard parity, NOT full dataset completion",
+ "config": {
+  "claim_limit": "Small predeclared MPDocBench subset; NOT full MPDocBench accuracy, NOT leaderboard parity, NOT full dataset completion",
+  "label": "REAL_DATA_INTEGRATION_ONLY",
+  "max_new_tokens": 8192,
+  "max_pages_per_request": 5,
+  "max_pixels_per_page": 16000000,
+  "page_hash_gate": "eval/benchmarks/g05/datasets/MPDocBench-page-index.json",
+  "runner": "scripts/run_mpdoc_sample.py (ledger-integrated P1.5)",
+  "schema": 1,
+  "selection_documents": [
+   "examPaper_eng_66b20269",
+   "goverment_eng_aa75e353",
+   "handwritten_chn_1ae487be",
+   "newspaper_chn_eb87830d",
+   "newspaper_eng_ed12985c",
+   "paper_chn_3567e55d",
+   "researchReport_chn_a2f46550",
+   "researchReport_chn_dd0407a2"
+  ],
+  "selection_sha256": "5cbce32bbaf786dfc6b29444260920ac840fc3ccfd008afaf379bb43c283ae9d",
+  "timeout_seconds_per_document": 3600.0
+ },
+ "counts": {
+  "FAIL": 0,
+  "NOT_RUN": 412,
+  "OOM": 0,
+  "PASS": 4,
+  "TIMEOUT": 0,
+  "TRUNCATED": 4
+ },
+ "dataset": "MPDocBench",
+ "documents": [
+  {
+   "attempt_wall_seconds": 154.292,
+   "attempts": 1,
+   "doc_id": "examPaper_eng_66b20269",
+   "finish_reason": "stop",
+   "output_tokens": 2894,
+   "pages": 4,
+   "reason": "",
+   "state": "PASS"
+  },
+  {
+   "attempt_wall_seconds": 168.094,
+   "attempts": 1,
+   "doc_id": "goverment_eng_aa75e353",
+   "finish_reason": "stop",
+   "output_tokens": 3143,
+   "pages": 4,
+   "reason": "",
+   "state": "PASS"
+  },
+  {
+   "attempt_wall_seconds": 563.374,
+   "attempts": 1,
+   "doc_id": "handwritten_chn_1ae487be",
+   "finish_reason": "length",
+   "output_tokens": 8192,
+   "pages": 5,
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "state": "TRUNCATED"
+  },
+  {
+   "attempt_wall_seconds": 558.817,
+   "attempts": 1,
+   "doc_id": "newspaper_chn_eb87830d",
+   "finish_reason": "length",
+   "output_tokens": 8192,
+   "pages": 5,
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "state": "TRUNCATED"
+  },
+  {
+   "attempt_wall_seconds": 570.802,
+   "attempts": 1,
+   "doc_id": "newspaper_eng_ed12985c",
+   "finish_reason": "length",
+   "output_tokens": 8192,
+   "pages": 4,
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "state": "TRUNCATED"
+  },
+  {
+   "attempt_wall_seconds": 612.231,
+   "attempts": 1,
+   "doc_id": "paper_chn_3567e55d",
+   "finish_reason": "length",
+   "output_tokens": 8192,
+   "pages": 5,
+   "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+   "state": "TRUNCATED"
+  },
+  {
+   "attempt_wall_seconds": 567.684,
+   "attempts": 1,
+   "doc_id": "researchReport_chn_a2f46550",
+   "finish_reason": "stop",
+   "output_tokens": 7631,
+   "pages": 5,
+   "reason": "",
+   "state": "PASS"
+  },
+  {
+   "attempt_wall_seconds": 275.14,
+   "attempts": 1,
+   "doc_id": "researchReport_chn_dd0407a2",
+   "finish_reason": "stop",
+   "output_tokens": 4829,
+   "pages": 4,
+   "reason": "",
+   "state": "PASS"
+  }
+ ],
+ "environment": {
+  "gpu": {
+   "arch": null,
+   "name": null
+  },
+  "packages": {
+   "huggingface-hub": "0.36.0",
+   "tokenizers": "0.21.4",
+   "torch": "2.12.0+rocm7.2",
+   "transformers": "4.52.1",
+   "triton-rocm": "3.7.0"
+  },
+  "platform": "linux",
+  "python": "3.10.20"
+ },
+ "expected_documents": 420,
+ "label": "REAL_DATA_INTEGRATION_ONLY",
+ "run_id": "bf55b5099f2cd8e334a8793b4c77c7a85273b873ca08a0fb195e81108c10e677",
+ "schema": 1,
+ "selection_documents": [
+  "examPaper_eng_66b20269",
+  "goverment_eng_aa75e353",
+  "handwritten_chn_1ae487be",
+  "newspaper_chn_eb87830d",
+  "newspaper_eng_ed12985c",
+  "paper_chn_3567e55d",
+  "researchReport_chn_a2f46550",
+  "researchReport_chn_dd0407a2"
+ ],
+ "selection_sha256": "5cbce32bbaf786dfc6b29444260920ac840fc3ccfd008afaf379bb43c283ae9d",
+ "status": "PARTIAL",
+ "worker_identity": {
+  "script": "scripts/run_mpdoc_sample.py",
+  "supervision": "subprocess"
+ }
+}
