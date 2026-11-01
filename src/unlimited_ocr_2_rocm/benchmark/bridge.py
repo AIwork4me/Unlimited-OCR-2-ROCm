@@ -100,8 +100,9 @@ def export_predictions(
         raise ValueError(f"Publication scan refused the export: {violations[:4]}")
     predictions_dir = destination / PREDICTIONS_DIRNAME
     predictions_dir.mkdir(parents=True)
-    for relative, body in staged:
-        write_bytes(destination / relative, body)
+    for relative, staged_body in staged:
+        assert staged_body is not None  # only this function appends, always with bytes
+        write_bytes(destination / relative, staged_body)
     return {
         "destination": str(destination),
         "campaign_id": campaign_id,
