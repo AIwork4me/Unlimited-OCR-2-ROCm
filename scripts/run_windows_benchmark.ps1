@@ -20,7 +20,7 @@ if (-not $runtime.StartsWith(($root + [IO.Path]::DirectorySeparatorChar), [Strin
     throw "RuntimeRoot must stay inside the development root."
 }
 $sourceRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
-$names = @("PYTHONPATH", "PYTHONUTF8", "PYTHONDONTWRITEBYTECODE", "TEMP", "TMP", "TRITON_CACHE_DIR", "HF_HOME", "PIP_CACHE_DIR")
+$names = @("PYTHONPATH", "PYTHONUTF8", "PYTHONDONTWRITEBYTECODE", "TEMP", "TMP", "TRITON_CACHE_DIR", "HF_HOME", "HF_HUB_CACHE", "HUGGINGFACE_HUB_CACHE", "PIP_CACHE_DIR")
 $prior = @{}
 foreach ($name in $names) { $prior[$name] = [Environment]::GetEnvironmentVariable($name, "Process") }
 try {
@@ -31,6 +31,8 @@ try {
     $env:TMP = $env:TEMP
     $env:TRITON_CACHE_DIR = Join-Path $runtime "triton"
     $env:HF_HOME = Join-Path $runtime "huggingface"
+    $env:HF_HUB_CACHE = Join-Path $env:HF_HOME "hub"
+    $env:HUGGINGFACE_HUB_CACHE = $env:HF_HUB_CACHE
     $env:PIP_CACHE_DIR = Join-Path $runtime "pip"
     foreach ($path in @($env:TEMP, $env:TRITON_CACHE_DIR, $env:HF_HOME, $env:PIP_CACHE_DIR)) {
         New-Item -ItemType Directory -Force -Path $path | Out-Null
