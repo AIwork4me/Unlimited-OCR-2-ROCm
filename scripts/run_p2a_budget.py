@@ -178,6 +178,7 @@ def worker_command(args: argparse.Namespace) -> int:
             multi=True,
             max_new_tokens=args.max_new_tokens,
             budget_policy=args.policy,
+            experiment=policy["experiment"],
         )
         native = report.get("native_generation") or {}
         prompt_ids = native.get("prompt_token_ids") or []
