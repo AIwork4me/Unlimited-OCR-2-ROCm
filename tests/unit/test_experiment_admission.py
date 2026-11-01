@@ -468,12 +468,23 @@ def test_reserved_owner_waits_for_short_handoff_contention(tmp_path, monkeypatch
 
 
 @pytest.mark.skipif(os.name != "nt", reason="native prospective Windows dispatcher")
-def test_prospective_cli_refuses_before_worker_execution(tmp_path):
+@pytest.mark.parametrize("inherited_flags", [None, "0", "1"])
+def test_prospective_cli_refuses_before_worker_execution(tmp_path, monkeypatch, inherited_flags):
+    # Freeze the CLI's normalized worker environment, independently of the
+    # controller's inherited flags. Rejection must reach the missing predecessor.
+    monkeypatch.setenv("PYTHONUTF8", "1")
+    monkeypatch.setenv("PYTHONDONTWRITEBYTECODE", "1")
     gate, identity, command, marker = setup(tmp_path)
     gate.prepare("performance", identity, command)
     manifest = tmp_path / "identity.json"
     manifest.write_text(json.dumps(identity), encoding="utf-8")
     root = Path(__file__).resolve().parents[2]
+    cli_env = dict(os.environ)
+    for name in ("PYTHONUTF8", "PYTHONDONTWRITEBYTECODE"):
+        if inherited_flags is None:
+            cli_env.pop(name)
+        else:
+            cli_env[name] = inherited_flags
     result = subprocess.run(
         [
             sys.executable,
@@ -494,6 +505,7 @@ def test_prospective_cli_refuses_before_worker_execution(tmp_path):
         ],
         capture_output=True,
         timeout=10,
+        env=cli_env,
     )
     assert result.returncode != 0
     assert (
