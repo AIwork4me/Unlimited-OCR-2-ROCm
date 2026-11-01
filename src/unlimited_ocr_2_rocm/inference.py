@@ -38,10 +38,20 @@ EXPECTED_P2C_POLICY_SHA256 = "2068efad7e7e2e037202107027f35c483ae51fbc007099580e
 #: enforcement. Authorizes the L1_FIFTEEN_PAGE_NATIVE experiment only.
 EXPECTED_L1_POLICY_SHA256 = "dd23a5462c28f3bd93a97c17fe5890e4ad01764de6fb39e9ba0c61a22904db6e"
 #: digest -> required experiment name; the gate enforces both together.
+#: the FOURTH authorized digest: the L1.1 case-B experiment (ONE supervised
+#: 15-page request on paper_eng_64b5e1f4, the predeclared complex-layout
+#: candidate), finalized from the admission-packet draft 64bae56a... at
+#: authorization time. The only delta vs the draft is the selection_receipt
+#: field (mission-workspace annotation -> committed repo path); the selection
+#: receipt itself is byte-identical to the reviewed packet (8d80ae7b...).
+#: Delta vs the draft = exactly the two receipt-reference fields (path +
+#: inline digest), both pre-declared by the admission packet.
+EXPECTED_L11_B_POLICY_SHA256 = "d95e5bd03904da635fd8b6c82b9ab0ee586c299b872bd9c5cc5a13d3592b4aa9"
 _AUTHORIZED_NGRAM_POLICIES: dict[str, str] = {
     EXPECTED_NGRAM_POLICY_SHA256: "P2B_NGRAM_SUPPRESSION_RCA",
     EXPECTED_P2C_POLICY_SHA256: "P2C_COMBINED_NGRAM_BUDGET",
     EXPECTED_L1_POLICY_SHA256: "L1_FIFTEEN_PAGE_NATIVE",
+    EXPECTED_L11_B_POLICY_SHA256: "L11_FIFTEEN_PAGE_NATIVE_B",
 }
 
 

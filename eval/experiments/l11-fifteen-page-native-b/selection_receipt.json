@@ -1,0 +1,149 @@
+{
+ "schema": 2,
+ "label": "L11_DOCUMENT_SELECTION_RECEIPT_B",
+ "experiment": "L11_FIFTEEN_PAGE_NATIVE_B",
+ "dataset": {
+  "name": "MPDocBench",
+  "documents": 420,
+  "pages": 3135,
+  "revision": "4e5aee32280febb7b0844237ba087f837e3c8905",
+  "ground_truth_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
+  "local_copy": "provided by user 2026-10-29 (Data/ folder); not re-downloaded",
+  "license": "CC-BY-NC-SA-4.0"
+ },
+ "document": {
+  "doc_id": "paper_eng_64b5e1f4",
+  "class": "paper_eng (research paper; the only paper in the exact-15-page set)",
+  "pages_ground_truth": 15,
+  "pages_index": 15,
+  "layout_dets_total": 288,
+  "layout_counts": {
+   "equation_isolated": 7,
+   "figure": 7,
+   "figure_caption": 9,
+   "footnote": 1,
+   "page_number": 14,
+   "table": 7,
+   "table_caption": 7,
+   "text_block": 219,
+   "title": 17,
+   "note": "exact GT layout_dets category_type counts (metadata only; no annotation text read)"
+  },
+  "relation_edges": 289
+ },
+ "selection_rule": "Predeclared before any GPU minute: case B of mission L1.1 requires a complex-layout / table / formula-rich document with exactly 15 frozen-index pages and exactly 15 GT pages. Among the 8 such documents (verified 2026-11-01 from the local GT metadata), rank by complexity objective metadata: equation_isolated count desc, then table count desc, then layout_dets desc. paper_eng_64b5e1f4 is the unique maximum (7 equations on pages 6-8, 7 tables, 288 dets). Case A (dense multi-column / newspaper-like) is BLOCKED: no newspaper_* or magazine_* document has 15 pages (max 14: magazine_eng_2b291ce7, newspaper_eng_ad370234); per mission, no fabrication.",
+ "frozen_before_inference": true,
+ "ground_truth_content": "NOT included: raw GT stays outside Git (external evidence); scorer consumes a locally built slice",
+ "pages": [
+  {
+   "id": 1,
+   "path": "images/paper_eng_64b5e1f4/page_1.jpg",
+   "sha256": "1518bb549d2fc4f5dd0b7447b0bdb83642f581f259ad3904a3f46fe08c95823d",
+   "bytes": 447026
+  },
+  {
+   "id": 2,
+   "path": "images/paper_eng_64b5e1f4/page_2.jpg",
+   "sha256": "9b047ebc116e5d2f20793fe67207be3d8088d0dad835950f748848e363230b9f",
+   "bytes": 468788
+  },
+  {
+   "id": 3,
+   "path": "images/paper_eng_64b5e1f4/page_3.jpg",
+   "sha256": "ba37ece0f08b0838287fa262e64dfa18ecc54c8e342b0469dbc8957a62fae642",
+   "bytes": 396775
+  },
+  {
+   "id": 4,
+   "path": "images/paper_eng_64b5e1f4/page_4.jpg",
+   "sha256": "b935760bf2fa6f0cd78ba47c0206dadecd7809ce2903013f89f2a4ea6c3b365a",
+   "bytes": 483637
+  },
+  {
+   "id": 5,
+   "path": "images/paper_eng_64b5e1f4/page_5.jpg",
+   "sha256": "3eb9f14cba5f1c9bce7ac7fdba8d508997530dec0da3584f7988efa7249f232d",
+   "bytes": 459261
+  },
+  {
+   "id": 6,
+   "path": "images/paper_eng_64b5e1f4/page_6.jpg",
+   "sha256": "667b4af725db69cbde5f1a9670bbfbae1a96217ef72615e2f8117f712a467282",
+   "bytes": 313276
+  },
+  {
+   "id": 7,
+   "path": "images/paper_eng_64b5e1f4/page_7.jpg",
+   "sha256": "1f69eab3c0bd57bc877e6f1707ecbba6fcc2f37b9f8cfbaf7d02749879480c7b",
+   "bytes": 433618
+  },
+  {
+   "id": 8,
+   "path": "images/paper_eng_64b5e1f4/page_8.jpg",
+   "sha256": "1e9be87fcb480898db0666c06afc0517db63aed60bede6cd0cd4e420943d10a3",
+   "bytes": 303551
+  },
+  {
+   "id": 9,
+   "path": "images/paper_eng_64b5e1f4/page_9.jpg",
+   "sha256": "c913d28c3ae2980436ddd48cbd591c2a1cda375df4cba9db06ff50d252d84e4a",
+   "bytes": 314291
+  },
+  {
+   "id": 10,
+   "path": "images/paper_eng_64b5e1f4/page_10.jpg",
+   "sha256": "4b9a460c3200ed5181a65642f8f1ff4baf5da73569a2e0561a3f4da9faf5f66e",
+   "bytes": 477867
+  },
+  {
+   "id": 11,
+   "path": "images/paper_eng_64b5e1f4/page_11.jpg",
+   "sha256": "755456b4d789e552cbeefc4c4d03fc4418f30b9c3fb543a8203e0d37ac957834",
+   "bytes": 333556
+  },
+  {
+   "id": 12,
+   "path": "images/paper_eng_64b5e1f4/page_12.jpg",
+   "sha256": "615a5cd417052cb86a4ad1446cfad226703ad01796628c379db0777832cc88d9",
+   "bytes": 485182
+  },
+  {
+   "id": 13,
+   "path": "images/paper_eng_64b5e1f4/page_13.jpg",
+   "sha256": "216e071bed1732276a4fd02bbbbf68fbcb53b6113ed6efab94de8a0902974e0e",
+   "bytes": 370103
+  },
+  {
+   "id": 14,
+   "path": "images/paper_eng_64b5e1f4/page_14.jpg",
+   "sha256": "cfc2950f2086d1f18bd08370d6790eea1392ab06c04cf3e1259b9c6bd2b54475",
+   "bytes": 466978
+  },
+  {
+   "id": 15,
+   "path": "images/paper_eng_64b5e1f4/page_15.jpg",
+   "sha256": "522ab81d4355abb796ef9c75636a0f295a8629a64b5a39a95860ea11a58deadf",
+   "bytes": 361228
+  }
+ ],
+ "page_bytes_verified_against_frozen_index": true,
+ "pixel_limit": {
+  "max_pixels_per_page": 16000000,
+  "note": "observed pixels per page to be recorded at run time; limit unchanged from L1"
+ },
+ "preprocessing": {
+  "native_page_guard": "enabled (expected_pages=15; max_page_tokens=20000)",
+  "page_hash_gate": "verify_page_gate against eval/benchmarks/g05/datasets/MPDocBench-page-index.json at worker start"
+ },
+ "prompt_identity": {
+  "prompt": "official default document prompt",
+  "expected_pages": 15,
+  "crop_policy": "crop_mode=False (infer_multi)"
+ },
+ "producer_identities": {
+  "base_commit": "4903976f38b1814d4b215b6d19b2ea54b89c45cb",
+  "feature_head": "3993fc492729eb6fbb5f4e4c5a3fa794bfbe87d2",
+  "checkout": "isolated CLEAN migration repository (l1-migration/migration-repo; NO leaked commit in ancestry; object pool verified purged)",
+  "frozen_utc_date": "2026-11-01"
+ }
+}
