@@ -1,0 +1,192 @@
+{
+    "text_block": {
+        "all": {
+            "Edit_dist": {
+                "ALL_page_avg": 0.0,
+                "edit_whole": 0.0,
+                "edit_sample_avg": 0.0
+            }
+        },
+        "group": {
+            "Edit_dist": {
+                "text_merge_cross_pages: 2": 0.0
+            },
+            "sample_count": {
+                "text_merge_cross_pages: 2": 1
+            }
+        },
+        "page": {
+            "Edit_dist": {
+                "ALL": 0.0,
+                "data_source: authored_synthetic": 0.0,
+                "language: english": 0.0
+            }
+        }
+    },
+    "merged_text_block": {
+        "all": {
+            "Edit_dist": {
+                "ALL_page_avg": 0.0,
+                "edit_whole": 0.0,
+                "edit_sample_avg": 0.0
+            }
+        },
+        "group": {
+            "Edit_dist": {
+                "text_merge_cross_pages: 2": 0.0
+            },
+            "sample_count": {
+                "text_merge_cross_pages: 2": 1
+            }
+        },
+        "page": {
+            "Edit_dist": {
+                "ALL": 0.0,
+                "data_source: authored_synthetic": 0.0,
+                "language: english": 0.0
+            }
+        }
+    },
+    "table": {
+        "all": {
+            "TEDS": {
+                "all": 1.0
+            },
+            "TEDS_structure_only": {
+                "all": 1.0
+            }
+        },
+        "group": {
+            "TEDS": {
+                "table_merge_cross_pages: 2": 1.0
+            },
+            "TEDS_structure_only": {
+                "table_merge_cross_pages: 2": 1.0
+            },
+            "sample_count": {
+                "table_merge_cross_pages: 2": 1
+            }
+        },
+        "page": {
+            "TEDS": {
+                "ALL": 1.0,
+                "data_source: authored_synthetic": 1.0,
+                "language: english": 1.0
+            },
+            "TEDS_structure_only": {
+                "ALL": 1.0,
+                "data_source: authored_synthetic": 1.0,
+                "language: english": 1.0
+            }
+        }
+    },
+    "merged_table": {
+        "all": {
+            "TEDS": {
+                "all": 1.0
+            },
+            "TEDS_structure_only": {
+                "all": 1.0
+            }
+        },
+        "group": {
+            "TEDS": {
+                "table_merge_cross_pages: 2": 1.0
+            },
+            "TEDS_structure_only": {
+                "table_merge_cross_pages: 2": 1.0
+            },
+            "sample_count": {
+                "table_merge_cross_pages: 2": 1
+            }
+        },
+        "page": {
+            "TEDS": {
+                "ALL": 1.0,
+                "data_source: authored_synthetic": 1.0,
+                "language: english": 1.0
+            },
+            "TEDS_structure_only": {
+                "ALL": 1.0,
+                "data_source: authored_synthetic": 1.0,
+                "language: english": 1.0
+            }
+        }
+    },
+    "reading_order": {
+        "all": {
+            "Edit_dist": {
+                "ALL_page_avg": 0.0,
+                "edit_whole": 0.0,
+                "edit_sample_avg": 0.0
+            }
+        },
+        "group": {
+            "sample_count": {}
+        },
+        "page": {
+            "Edit_dist": {
+                "ALL": 0.0,
+                "data_source: authored_synthetic": 0.0,
+                "language: english": 0.0
+            }
+        }
+    },
+    "figure": {
+        "all": {
+            "FigureF1": {
+                "all": 1.0
+            }
+        },
+        "group": {
+            "FigureF1": {
+                "data_source: authored_synthetic": 1.0,
+                "language: english": 1.0
+            },
+            "sample_count": {
+                "data_source: authored_synthetic": 1,
+                "language: english": 1
+            }
+        },
+        "page": {
+            "FigureF1": {
+                "ALL": 1.0,
+                "data_source: authored_synthetic": 1.0,
+                "language: english": 1.0
+            }
+        },
+        "figure_label": {
+            "FigureF1_by_label(micro)": {
+                "figure": 1.0
+            },
+            "FigureF1_by_label(macro)": {
+                "figure": 1.0
+            },
+            "gt_count_by_label": {
+                "figure": 1
+            }
+        }
+    },
+    "head": {
+        "all": {
+            "HeadTEDS": {
+                "all": 1.0
+            }
+        },
+        "group": {
+            "HeadTEDS": {
+                "heading tree depth: 1": 1.0
+            },
+            "sample_count": {
+                "heading tree depth: 1": 1
+            }
+        },
+        "page": {
+            "HeadTEDS": {
+                "ALL": 1.0,
+                "data_source: authored_synthetic": 1.0,
+                "language: english": 1.0
+            }
+        }
+    }
+}
