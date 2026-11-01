@@ -1,0 +1,13 @@
+{
+ "files": {
+  "examPaper_eng_66b20269.md": "6ff9e1864cd24284915b5b908533219566c6e0c49b0abc6896885fd18eb0e1f9",
+  "goverment_eng_aa75e353.md": "aa22360f112379f8ccb5745e0d9f0dadf64ff8533720845f10261b52f0a5b04c",
+  "handwritten_chn_1ae487be.md": "2cbf3ddda0ef694cb7aaa8e092f506faaf48cee11dfe84bd18600256dffdbcd8",
+  "newspaper_chn_eb87830d.md": "e0e616df8d567f4ba912edcebd7e136a83877da612b201fdf03f8455c60db542",
+  "newspaper_eng_ed12985c.md": "f1f9ff4d25e99af6c16fc691b9b99f37970f3f7fe7cce447e3ad98a31fdfbacc",
+  "paper_chn_3567e55d.md": "ea955be0a122e4e5e3a2df27a02e528e55e795021b820b46207bc0ccebe8a258",
+  "researchReport_chn_a2f46550.md": "1ab59ef55532f3caae3f25b5f16af9615eb23bdad4207af634a7c7b0004e3d43",
+  "researchReport_chn_dd0407a2.md": "66dec84b3e48fc0e6a85cb52e3030308f28d279e69e973b494a154ad9386628d"
+ },
+ "note": "SHA256 of official-converter Markdown outputs; contents retained locally under .b/ (licensed document derivatives), not committed"
+}

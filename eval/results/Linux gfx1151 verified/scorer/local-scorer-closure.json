@@ -1,0 +1,53 @@
+{
+ "schema": 1,
+ "phase": "P1_phase3_local_official_scorer",
+ "status": "PASS",
+ "recorded_utc": "2026-10-30T00:45:00Z",
+ "host": "HP ZBook Ultra G1a — Ubuntu 24.04.4, kernel 6.17.0-1033-oem (native Linux gfx1151 host)",
+ "repo_head": "0ec78b0a01cd126d22a0c8db09c4f733c2c8763f (PR #13)",
+ "claim": "The locked official Qwen and Marathon CPU scorers reproduced on THIS Linux host with REAL FormulaCDM rendering (xelatex + ImageMagick + Ghostscript), isolated from the GPU environment; seven non-formula metrics byte-identical to the PR #9 WSL evidence; FormulaCDM upgraded from null (renderer unavailable in PR #9 pipeline record) to a real rendered value (100.0 on the authored x+y=z fixture, CDM distance 0).",
+ "environments": {
+  "python_venv": "uv CPython 3.10.20 venv at ../scorer-build/venv (outside Git), 73 packages from requirements/benchmark-scorer.lock.txt, pip check PASS, torch-free",
+  "scorer_sources": {
+   "qwen": "../scorer-build/source/qwen — all 85 files SHA256-matched against benchmark-lock qwen.files (upstream Tongyi-Zhiwen/Qwen-Doc MPDocBench/ @ 4e5aee32280febb7b0844237ba087f837e3c8905, sparse clone via github.com)",
+   "marathon": "../scorer-build/source/marathon — qwen tree + 3 official patch files from HF baidu/MarathonDocBench utils/mpdocbench_patch @ fa05fccbe82ee6ec628006a1d58bb153954c3ee3, all 85 files matched against lock qwen.files + MarathonDocBench.patch"
+  },
+  "tex_stack": "Ubuntu jammy 2021 texlive debs extracted under ../scorer-build/tools/usr (texlive-binaries 2021.20210626.59705-1ubuntu0.3 [universe pool], texlive-base, texlive-latex-base, texlive-latex-recommended, texlive-fonts-recommended, texlive-latex-extra, texlive-science, texlive-xetex, texlive-lang-chinese, fontconfig, teckit, libicu70, libteckit0, libgl1/libglvnd0/libglx0) — no system packages installed",
+  "xelatex_engine": "XeTeX 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) — version string identical to the PR #9 inventory record; xelatex.fmt generated locally via xetex -ini",
+  "imagemagick": "ImageMagick 7.1.2-34 Q16-HDRI gcc AppImage (PR #9 WSL used 7.1.2-26 Q16-HDRI; same Q16-HDRI configuration, newer patch level — recorded difference)",
+  "ghostscript": "system gs 9.55.0 (identical version to the PR #9 WSL system gs)",
+  "node": "v16.13.1 official tarball — binary SHA256 c4dfb2d77ed7aa8e099a5923798642fc72fe312f2839bcbd95f9fb7b0560dd80, byte-identical to the PR #9 inventory record",
+  "font": "SourceHanSansSC-Regular.otf @ adobe-fonts/source-han-sans a8b073bb — SHA256 84bbd4ace91d327b3ad1a581c688196278a4e41308520176f419180064e4af2b (matches inventory)"
+ },
+ "runs": {
+  "qwen_pipeline": {
+   "command": "scorer-build/run-scorer.sh --source <abs>/source/qwen --profile qwen --output .b/scorer-runs/qwen-pipeline --pipeline",
+   "metrics": {"TextEdit": 37.5, "T-TextEdit": 37.5, "TableTEDS": 50.0, "T-TableTEDS": 50.0, "FormulaCDM": 100.0, "ReadOrderEdit": 66.66666666666667, "FigureF1": 25.0, "HeadingTEDS": 75.0},
+   "overall": 55.208333333333336,
+   "comparison": "7 non-formula metrics identical to PR #9 scorer/qwen/report.json; FormulaCDM 100.0 via real rendering (CDM distance 0 on identical gt/pred x+y=z)"
+  },
+  "qwen_cases": {
+   "exact": "PASS F1=1.0, gt+pred both rendered (5 color-bbox tokens each, valid PNGs)",
+   "mismatch": "PASS F1=0.4, both rendered",
+   "error": "EXPECTED_RENDER_ERROR — gt rendered, pred (\\ThisCommandDoesNotExist) renderer error retained",
+   "timeout": "EXPECTED_TIMEOUT — 0.05s startup budget exceeded, SIGKILL cleanup left 0 descendant processes"
+  },
+  "marathon_pipeline": {
+   "command": "--source <abs>/source/marathon --profile marathon --output .b/scorer-runs/marathon-pipeline --pipeline",
+   "metrics": {"TextEdit": 37.5, "T-TextEdit": 37.5, "TableTEDS": 50.0, "T-TableTEDS": 50.0, "FormulaCDM": 100.0, "ReadOrderEdit": 66.66666666666667, "FigureF1": 25.0, "HeadingTEDS": 75.0},
+   "overall": 55.208333333333336
+  },
+  "marathon_cases": "4/4 PASS with the same classifications as qwen cases"
+ },
+ "integrity_gates_observed": {
+  "check_sources": "rejected a __pycache__ artifact that the first pipeline run left in the source tree (refusal verified, not bypassed); sources re-cleaned and re-run",
+  "requirements_lock": "hash gate + version gate PASS; environment is torch-free",
+  "cdm_silent_zero_check": "the initial (pre-TeX-fix) run produced FormulaCDM=0.0 with rendered=false — correctly identified as a renderer failure, not a score; after completing the TeX stack the same fixture yields 100.0 with real bbox/PNG artifacts"
+ },
+ "known_differences_vs_pr9": [
+  "ImageMagick patch level 7.1.2-34 vs 7.1.2-26 (same Q16-HDRI)",
+  "xelatex wrapper script content differs in absolute paths (engine binary and fmt are local); wrapper semantics unchanged",
+  "outputs under repo-local .b/scorer-runs/ (untracked); launcher run-scorer.sh retained outside Git at ../scorer-build/"
+ ],
+ "raw_evidence": "repo-local untracked .b/scorer-runs/{qwen,marathon}-{pipeline,cases}/ (selftest.json, cases.json, per-case logs and render artifacts)"
+}

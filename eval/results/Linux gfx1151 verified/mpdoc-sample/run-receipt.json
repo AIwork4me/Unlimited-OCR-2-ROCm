@@ -1,0 +1,646 @@
+{
+ "claim_limit": "Small predeclared MPDocBench subset; NOT full MPDocBench accuracy, NOT leaderboard parity, NOT full dataset completion",
+ "documents_completed": 4,
+ "documents_selected": 8,
+ "failed_documents": [
+  "handwritten_chn_1ae487be",
+  "newspaper_chn_eb87830d",
+  "newspaper_eng_ed12985c",
+  "paper_chn_3567e55d"
+ ],
+ "host": {
+  "node": "amd-HP-ZBook-Ultra",
+  "system": "Linux"
+ },
+ "label": "REAL_DATA_INTEGRATION_ONLY",
+ "max_new_tokens": 8192,
+ "memory_final": {
+  "gpu_allocated_bytes": 6819704320,
+  "gpu_free_total_bytes": [
+   87516430336,
+   107374182400
+  ],
+  "gpu_peak_allocated_bytes": 9167938560,
+  "gpu_peak_reserved_bytes": 9418309632,
+  "gpu_reserved_bytes": 9418309632,
+  "process_peak_rss_bytes": 2906333184,
+  "process_rss_bytes": 2906333184,
+  "system_available_bytes": 83232305152,
+  "system_memory_percent": 17.6,
+  "system_total_bytes": 101001261056
+ },
+ "model": {
+  "attention_dispatch": "mha_eager with official DASH enabled",
+  "code_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "cold_load_seconds": 3.659369846995105,
+  "environment": {
+   "cuda_build": null,
+   "environment": {},
+   "environment_id": "1fdf943f2cd306d1a8a7b0302afc214393863acc81f7b04c10463818371e5d9a",
+   "executable": "/home/amd/Desktop/UnlimitedOCR/envs/linux-gfx1151-rocm/bin/python",
+   "gpu": {
+    "arch": "gfx1151",
+    "memory_note": "APU shared system memory; this is not dedicated physical VRAM",
+    "name": "AMD Radeon 8060S",
+    "properties": "_CudaDeviceProperties(name='AMD Radeon 8060S', major=11, minor=5, gcnArchName='gfx1151', total_memory=102400MB, multi_processor_count=20, uuid=58580000-0000-0000-0000-000000000000, pci_bus_id=195, pci_device_id=0, pci_domain_id=0, L2_cache_size=2MB)",
+    "pytorch_visible_budget_bytes": 107374182400
+   },
+   "gpu_available": true,
+   "hip": "7.2.53211",
+   "installed_packages": {
+    "addict": "2.4.0",
+    "certifi": "2026.10.23",
+    "charset-normalizer": "3.5.2",
+    "easydict": "1.13",
+    "einops": "0.8.2",
+    "filelock": "4.1.0",
+    "fsspec": "2026.9.0",
+    "hf-xet": "1.7.1",
+    "huggingface-hub": "0.36.0",
+    "idna": "3.20",
+    "jinja2": "3.1.6",
+    "markupsafe": "3.0.4",
+    "mpmath": "1.3.0",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "packaging": "26.3",
+    "pillow": "12.0.0",
+    "pip": "26.2.2",
+    "psutil": "7.1.2",
+    "py-spy": "0.4.2",
+    "pyyaml": "6.0.3",
+    "regex": "2026.9.29",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "setuptools": "81.0.0",
+    "sympy": "1.14.0",
+    "tokenizers": "0.21.4",
+    "torch": "2.12.0+rocm7.2",
+    "torchvision": "0.27.0+rocm7.2",
+    "tqdm": "4.70.1",
+    "transformers": "4.52.1",
+    "triton-rocm": "3.7.0",
+    "typing-extensions": "4.16.0",
+    "unlimited-ocr-2-rocm": "0.0.1.dev0",
+    "urllib3": "2.8.0",
+    "wheel": "0.48.0"
+   },
+   "isolated_environment": true,
+   "linux_hardware": {
+    "cpu_model_name": "AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S",
+    "kernel_release": "6.17.0-1033-oem",
+    "kfd_access": true,
+    "machine_id_sha256": "321f9ad1ebb415d46813ecd68086d0bc9bb0d7202297f0961d1c5421019eba47",
+    "product_name": "HP ZBook Ultra G1a 14 inch Mobile Workstation PC",
+    "render_node": "/dev/dri/renderD128"
+   },
+   "machine": "x86_64",
+   "memory": {
+    "gpu_allocated_bytes": 0,
+    "gpu_free_total_bytes": [
+     97804066816,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 0,
+    "gpu_peak_reserved_bytes": 0,
+    "gpu_reserved_bytes": 0,
+    "process_peak_rss_bytes": 1231036416,
+    "process_rss_bytes": 1231036416,
+    "system_available_bytes": 94798184448,
+    "system_memory_percent": 6.1,
+    "system_total_bytes": 101001261056
+   },
+   "packages": {
+    "torch": "2.12.0+rocm7.2",
+    "torchvision": "0.27.0+rocm7.2"
+   },
+   "platform": "Linux",
+   "python": "3.10.20",
+   "rocm": "7.2.1",
+   "timestamp_utc": "2026-10-30T00:41:14.098523+00:00",
+   "windows_version": "#33-Ubuntu SMP PREEMPT_DYNAMIC Mon Aug 24 05:45:54 UTC 2026"
+  },
+  "memory_after_load": {
+   "gpu_allocated_bytes": 6786129920,
+   "gpu_free_total_bytes": [
+    90775674880,
+    107374182400
+   ],
+   "gpu_peak_allocated_bytes": 6786129920,
+   "gpu_peak_reserved_bytes": 6822035456,
+   "gpu_reserved_bytes": 6822035456,
+   "process_peak_rss_bytes": 1523933184,
+   "process_rss_bytes": 1523933184,
+   "system_available_bytes": 87512190976,
+   "system_memory_percent": 13.4,
+   "system_total_bytes": 101001261056
+  },
+  "memory_before_load": {
+   "gpu_allocated_bytes": 0,
+   "gpu_free_total_bytes": [
+    97804066816,
+    107374182400
+   ],
+   "gpu_peak_allocated_bytes": 0,
+   "gpu_peak_reserved_bytes": 0,
+   "gpu_reserved_bytes": 0,
+   "process_peak_rss_bytes": 1269886976,
+   "process_rss_bytes": 1269886976,
+   "system_available_bytes": 94750072832,
+   "system_memory_percent": 6.2,
+   "system_total_bytes": 101001261056
+  },
+  "model_id": "baidu/Unlimited-OCR-2",
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "native_dependencies": {
+   "huggingface-hub": "0.36.0",
+   "tokenizers": "0.21.4",
+   "transformers": "4.52.1",
+   "triton-rocm": "3.7.0"
+  },
+  "parameter_device": "cuda:0",
+  "parameter_dtype": "torch.bfloat16",
+  "runtime_compatibility": {
+   "decoder_DASH_and_Triton": "unchanged",
+   "global_attention_settings": "restored after each vision call",
+   "reason": "default SDPA leaves hipErrorInvalidValue and fails numerical reference",
+   "vision_sdpa": "GPU MATH, scoped separately to SAM and CLIP forward"
+  },
+  "source_and_weight_hashes": {
+   "_sparse_base_impl.py": "86da9c5638704bb9338575040568a97b3e10820bbeb426f51c07e866f3423ccd",
+   "config.json": "607d130a70d5af5a35329aa237acd68651f45504c62cc7ced981066f4e781126",
+   "configuration_deepseek_v2.py": "b8470dd616ba8745fce6e27b093aef73a098863cc891b2477dcf9326a36000f7",
+   "conversation.py": "ec7b6ce89bcda643de1f43269ffa66a7b2e65dc3ed30e427958f776546b4ba03",
+   "dash_attention.py": "960b460acd816df8e561e73dccd5683acb95445eddc723c4f0d6ed1f462b2f77",
+   "deepencoder.py": "419b63388c1645b9b72c716070cdca36cd0be6047049424dc75941d3a00aaf1f",
+   "generation_config.json": "dcd0479f3a12e5e4413d956197f8a4074408e4901834b38c7e036519134e05af",
+   "model-00001-of-00002.safetensors": "4c40b740f209fd7682040d4ebf19409208acde5c401ccd2dde426d0f41542f18",
+   "model-00002-of-00002.safetensors": "9490b82fa47f89e5110eb5577f8ab1b6694c12121905dbc086ddb10207a4ba0c",
+   "model.safetensors.index.json": "dc60a31ecb77eb03e166345d18cbe25bc71d2a19cc6fc089d8a9ac1c7f209671",
+   "modeling_deepseekv2.py": "24a15dfd47578ab24a7a4d4e977dc5d7a23dfef0a2a4c4bf73fcf3e2ce7acaf2",
+   "modeling_unlimitedocr.py": "f6df813cef23cc28b1daca40fd8cb20740d05a238e7b9dfa2334531fdcf39f1f",
+   "packing_patch.py": "e60d842c210c9f1d6cd2ae328cf9127a75f7941a0cea2a8e9abc14662f770c6c",
+   "sparse_gather_e2e_triton.py": "58f1bc46093d47b00744970677e66bfbd7485a2d13810f46d13d867ceda13dd4",
+   "sparse_gather_triton.py": "c3de717ffaca40240c665b8d645f15a9d1999feeabaa94beb35caad877c2f0f4",
+   "special_tokens_map.json": "9e89493d7938e7710c524dbaff613c3648f0a018262417af78505128004e5cb4",
+   "tokenizer.json": "c55c165e32c5a67830362a53e1f548c8930dcc8469efa30ff3252a982799c589",
+   "tokenizer_config.json": "ceba7d221f265cca4c98b5e0a1d48c10107270b7b29c12396610d6d0fd64b126"
+  },
+  "source_patch": null,
+  "status": "PASS",
+  "wrapper_source_hashes": {
+   "__init__.py": "b5d96949986c5445208d446b41331001aa9df9b3bce706f341ac365bd498df25",
+   "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+   "_upstream/__init__.py": "bc4567a25369bdc56080213ecddc5d2e9b147417d0f8e869d38dd9fdd99169c2",
+   "_upstream/process_unlimitedOCR2.py": "fb38738cd5f09625fb1095d201533b6059a85820bca99c4262347cc7b078a782",
+   "benchmark/__init__.py": "8cd4387e5c32b3af03d67dbfe8bb4d5f0570823a6a07fcf9a8852c1f5cde5b5f",
+   "benchmark/cli.py": "9f3bdfca9400a8e6d8b8bf5b54008536a3c25a4a4cb607958785bef0ce52dbe8",
+   "benchmark/ledger.py": "473e0b35bcca808958a890135220d1be4c9fb133ac1f5a4e07cce93355e274f8",
+   "benchmark/manifest.py": "0ebf875547802baf2adc269d1c474d4ff8cc1db31c08235bc5c2149b7ff2cf95",
+   "benchmark/scorer.py": "5ab71945b38c46e2c67ae733fc5a4dbadcda6a65459cd8ada9f76792fe04f327",
+   "benchmark/worker.py": "9bcc6b8a4302c17698fb03ed058719b52c2f000e8950160865ca457dae75bf32",
+   "cli.py": "2b1b29a7cab324dd365fe675f03dfc71dcef025416011821f47c47b3fcadb876",
+   "compat.py": "6d98f07d740a44c48af89976a2ecb66a8b9c92b0b65c91a5074335afb55db119",
+   "completion.py": "7ea47e656f1dfb5ceb34a1bfa64942838a992cbd12122d87359a5aeaae72f873",
+   "config.py": "e90513526bb0f1d86ed9d75387a5730fca3e9d851720d528302fb7c63d6a1f93",
+   "doctor.py": "9708a33cdaed4dc1a09af83e629214f0ea4d892898887a7894fadd443094aa3e",
+   "inference.py": "6e8a732c14f12dedf0c0a31d151b80dbef196fd686ff9194b0b2720af5ee1564",
+   "model.py": "398196fd2e7b8f5febc09118c7da50a247597119846ddd8754fa6d9f982d435b",
+   "output.py": "5c278f67e8de45028aa2795842948226ad67c4400b43ecbe4519110f2c207f33",
+   "repro.py": "d0701bc8e8aa0add1ae0cc2aae91812ec3737b57002d61a304f99c944b04904c"
+  }
+ },
+ "records": [
+  {
+   "document": "examPaper_eng_66b20269",
+   "document_wall_seconds": 140.871,
+   "expected_pages": 4,
+   "finish_reason": "stop",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819704320,
+    "gpu_free_total_bytes": [
+     87648604160,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9167916032,
+    "gpu_peak_reserved_bytes": 9412018176,
+    "gpu_reserved_bytes": 9412018176,
+    "process_peak_rss_bytes": 2733019136,
+    "process_rss_bytes": 2733019136,
+    "system_available_bytes": 83743617024,
+    "system_memory_percent": 17.1,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 2894,
+   "pages": [
+    {
+     "path": "images/examPaper_eng_66b20269/page_1.jpg",
+     "sha256": "bb7028cb9b58422f007d4f8b368973150c24e9aedb9d3d088e28103f871171b8"
+    },
+    {
+     "path": "images/examPaper_eng_66b20269/page_2.jpg",
+     "sha256": "ae440a04b7f509b52e6bc560492606c6791ae5b27bc451e339cb4fadef136f6a"
+    },
+    {
+     "path": "images/examPaper_eng_66b20269/page_3.jpg",
+     "sha256": "4dddf6649f3ba5bba1646f75d31451f5c3c6005ac186ce48b56bbfd15666d9cb"
+    },
+    {
+     "path": "images/examPaper_eng_66b20269/page_4.jpg",
+     "sha256": "f6d04dd34c064064166a0ca47881c3e565a6ffe0585de32a785b50ce1a3a4ae1"
+    }
+   ],
+   "prediction_sha256": "6ff9e1864cd24284915b5b908533219566c6e0c49b0abc6896885fd18eb0e1f9",
+   "raw_sha256": "3ecbdee5a4b626b66b64a3b58bc766b05d1cb06886782229813dd63af487d15e",
+   "selection_reason": "English exam paper, multi-page (English text)",
+   "status": "INFERENCE_ONLY",
+   "synchronized_wall_seconds": 140.86222982400068,
+   "upstream_timing": {
+    "generation_seconds": 140.75157356262207,
+    "prefill_seconds": 4.4151458740234375
+   }
+  },
+  {
+   "document": "goverment_eng_aa75e353",
+   "document_wall_seconds": 153.859,
+   "expected_pages": 4,
+   "finish_reason": "stop",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819704320,
+    "gpu_free_total_bytes": [
+     87617142784,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9167934464,
+    "gpu_peak_reserved_bytes": 9412018176,
+    "gpu_reserved_bytes": 9412018176,
+    "process_peak_rss_bytes": 2797842432,
+    "process_rss_bytes": 2797842432,
+    "system_available_bytes": 83702161408,
+    "system_memory_percent": 17.1,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 3143,
+   "pages": [
+    {
+     "path": "images/goverment_eng_aa75e353/page_1.jpg",
+     "sha256": "35fef13e884cef894e15df7f73248647daef79432d3115c365a632fd397ea2a9"
+    },
+    {
+     "path": "images/goverment_eng_aa75e353/page_2.jpg",
+     "sha256": "5a8a78bb63ff6fb406dfbdb658b70644aab376e57d021f30b1952aa8693fd539"
+    },
+    {
+     "path": "images/goverment_eng_aa75e353/page_3.jpg",
+     "sha256": "90c42797d798f319b7926137a9d59632481946a9dcd4b2b56f105afba20c4e20"
+    },
+    {
+     "path": "images/goverment_eng_aa75e353/page_4.jpg",
+     "sha256": "59d2a332903ee7929f18ce0f4f26ec7b9d94f1a94e9a79b94f4c6e705be392f5"
+    }
+   ],
+   "prediction_sha256": "aa22360f112379f8ccb5745e0d9f0dadf64ff8533720845f10261b52f0a5b04c",
+   "raw_sha256": "a00798da9b172e99749f91cbb30605ef92b2bdec85038df698a40485d42ee9cb",
+   "selection_reason": "English manual/government >=4 pages (cross-page)",
+   "status": "INFERENCE_ONLY",
+   "synchronized_wall_seconds": 153.85410805800348,
+   "upstream_timing": {
+    "generation_seconds": 153.7693543434143,
+    "prefill_seconds": 2.2199392318725586
+   }
+  },
+  {
+   "document": "handwritten_chn_1ae487be",
+   "document_wall_seconds": 554.61,
+   "error": [
+    "RuntimeError: Empty or native length-truncated OCR output"
+   ],
+   "expected_pages": 5,
+   "finish_reason": "length",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819708416,
+    "gpu_free_total_bytes": [
+     87575146496,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9176310784,
+    "gpu_peak_reserved_bytes": 9416212480,
+    "gpu_reserved_bytes": 9416212480,
+    "process_peak_rss_bytes": 2874413056,
+    "process_rss_bytes": 2874413056,
+    "system_available_bytes": 83268337664,
+    "system_memory_percent": 17.6,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 8192,
+   "pages": [
+    {
+     "path": "images/handwritten_chn_1ae487be/page_1.jpg",
+     "sha256": "0a65fa987e62d7469f42888412a80b025addad8bd460c7e1853599ce13011caf"
+    },
+    {
+     "path": "images/handwritten_chn_1ae487be/page_2.jpg",
+     "sha256": "f58ec349c215435e3c7fa0fe009bd422cac64951084efff5df692b21f2059014"
+    },
+    {
+     "path": "images/handwritten_chn_1ae487be/page_3.jpg",
+     "sha256": "d8f18301335f9e938665fbf670a5c5162a6ff0bcaaf43d0e83e9a8bfe4bdd601"
+    },
+    {
+     "path": "images/handwritten_chn_1ae487be/page_4.jpg",
+     "sha256": "cc73732adcd130610ea1f6faf582a8c1719d128ef1d182b7e9ab5ac3460106a4"
+    },
+    {
+     "path": "images/handwritten_chn_1ae487be/page_5.jpg",
+     "sha256": "6d6b8aeda2d731c7a8fca8ac381e945a0db41382d16b29725b3aee313159ca6d"
+    }
+   ],
+   "prediction_sha256": "2cbf3ddda0ef694cb7aaa8e092f506faaf48cee11dfe84bd18600256dffdbcd8",
+   "raw_sha256": "fb6ffa6ff00741828ba590f1f51aaf23b2db9ef92d6b8ae8541e40cca0abd6e7",
+   "selection_reason": "Handwritten Chinese document",
+   "status": "FAIL",
+   "synchronized_wall_seconds": 554.5986850140034,
+   "upstream_timing": {
+    "generation_seconds": 554.4217422008514,
+    "prefill_seconds": 2.721118211746216
+   }
+  },
+  {
+   "document": "newspaper_chn_eb87830d",
+   "document_wall_seconds": 558.537,
+   "error": [
+    "RuntimeError: Empty or native length-truncated OCR output"
+   ],
+   "expected_pages": 5,
+   "finish_reason": "length",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819708416,
+    "gpu_free_total_bytes": [
+     87543685120,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9176314880,
+    "gpu_peak_reserved_bytes": 9416212480,
+    "gpu_reserved_bytes": 9416212480,
+    "process_peak_rss_bytes": 2906128384,
+    "process_rss_bytes": 2906128384,
+    "system_available_bytes": 83586457600,
+    "system_memory_percent": 17.2,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 8192,
+   "pages": [
+    {
+     "path": "images/newspaper_chn_eb87830d/page_1.jpg",
+     "sha256": "48dd1102312a11c2fbbc49e7969322739f246f04e87b0a9018ff0e0471710419"
+    },
+    {
+     "path": "images/newspaper_chn_eb87830d/page_2.jpg",
+     "sha256": "7f009e49ea270dbc94bbab2a7c9eb4e99b4a3d7f1122305ac36ba9a8f9bae1b7"
+    },
+    {
+     "path": "images/newspaper_chn_eb87830d/page_3.jpg",
+     "sha256": "60ebee84827b16f0673bada93e9719eeb61e77f85a68af3b3b0c73e93e41214c"
+    },
+    {
+     "path": "images/newspaper_chn_eb87830d/page_4.jpg",
+     "sha256": "dc9f6f67328a6cfade8310ae4ad18052dd0379b4401603af03b4a0be9469f901"
+    },
+    {
+     "path": "images/newspaper_chn_eb87830d/page_5.jpg",
+     "sha256": "20a540ad8396cc199fc46a88f9aaab169547375f327230e4d1edd4d4f1fc8678"
+    }
+   ],
+   "prediction_sha256": "e0e616df8d567f4ba912edcebd7e136a83877da612b201fdf03f8455c60db542",
+   "raw_sha256": "ca8856baf21f5bdbfe1ffb686f5a8bfeef4a5927c165f9bb22ac13f161579183",
+   "selection_reason": "Heading-rich multi-page document (heading tree)",
+   "status": "FAIL",
+   "synchronized_wall_seconds": 558.5293050530017,
+   "upstream_timing": {
+    "generation_seconds": 558.4046204090118,
+    "prefill_seconds": 2.731736660003662
+   }
+  },
+  {
+   "document": "newspaper_eng_ed12985c",
+   "document_wall_seconds": 554.427,
+   "error": [
+    "RuntimeError: Empty or native length-truncated OCR output"
+   ],
+   "expected_pages": 4,
+   "finish_reason": "length",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819704320,
+    "gpu_free_total_bytes": [
+     87529377792,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9167938560,
+    "gpu_peak_reserved_bytes": 9416212480,
+    "gpu_reserved_bytes": 9416212480,
+    "process_peak_rss_bytes": 2906329088,
+    "process_rss_bytes": 2906329088,
+    "system_available_bytes": 83233755136,
+    "system_memory_percent": 17.6,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 8192,
+   "pages": [
+    {
+     "path": "images/newspaper_eng_ed12985c/page_1.jpg",
+     "sha256": "e4ac633b70f543deaceaeb4652bc42d64a15180862871d6e9303cf6754d873fd"
+    },
+    {
+     "path": "images/newspaper_eng_ed12985c/page_2.jpg",
+     "sha256": "9ebb65ee2b4b906696b110baa2cad60a28896f46cc1a0035e72976ef0b79e96b"
+    },
+    {
+     "path": "images/newspaper_eng_ed12985c/page_3.jpg",
+     "sha256": "2addea3d6ece991a36d9a126c54150d381d62ef3d6e0f3d602b25f4003a902b6"
+    },
+    {
+     "path": "images/newspaper_eng_ed12985c/page_4.jpg",
+     "sha256": "3d796e38fc9386a69faae9f34474cc28dba46a7e8fec3e94b69875ac9f07cdbf"
+    }
+   ],
+   "prediction_sha256": "f1f9ff4d25e99af6c16fc691b9b99f37970f3f7fe7cce447e3ad98a31fdfbacc",
+   "raw_sha256": "484023a74e25670bc1434b99ddc1f3152acbefb62636d3a838ec1b83f7661f2b",
+   "selection_reason": "Figure-heavy document (figures and reading order)",
+   "status": "FAIL",
+   "synchronized_wall_seconds": 554.4182107289962,
+   "upstream_timing": {
+    "generation_seconds": 554.3182322978973,
+    "prefill_seconds": 2.271702766418457
+   }
+  },
+  {
+   "document": "paper_chn_3567e55d",
+   "document_wall_seconds": 591.873,
+   "error": [
+    "RuntimeError: Empty or native length-truncated OCR output"
+   ],
+   "expected_pages": 5,
+   "finish_reason": "length",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819708416,
+    "gpu_free_total_bytes": [
+     87520989184,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9176310784,
+    "gpu_peak_reserved_bytes": 9418309632,
+    "gpu_reserved_bytes": 9418309632,
+    "process_peak_rss_bytes": 2906333184,
+    "process_rss_bytes": 2906333184,
+    "system_available_bytes": 83547107328,
+    "system_memory_percent": 17.3,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 8192,
+   "pages": [
+    {
+     "path": "images/paper_chn_3567e55d/page_1.jpg",
+     "sha256": "f8bd479039fad8036a2b8497d89d749c04a2135ed07614f23076b72e80143313"
+    },
+    {
+     "path": "images/paper_chn_3567e55d/page_2.jpg",
+     "sha256": "567b0cb1a6ffc9e48003de6c64a679e4db161eef6c9036e92e9aee097e0717f8"
+    },
+    {
+     "path": "images/paper_chn_3567e55d/page_3.jpg",
+     "sha256": "f66d11f3ccf8d83a9db1ead07b8791e755174ed86118dd76fdf7be9cee7560ae"
+    },
+    {
+     "path": "images/paper_chn_3567e55d/page_4.jpg",
+     "sha256": "4cec27a2b113d4e738a46d3584fae3da6bceb50176e8ceac96570010182d13e4"
+    },
+    {
+     "path": "images/paper_chn_3567e55d/page_5.jpg",
+     "sha256": "dff064cecfb4e2a6c2d7bc868296ba59a637f29e7e74bfb1b543179642317eb5"
+    }
+   ],
+   "prediction_sha256": "ea955be0a122e4e5e3a2df27a02e528e55e795021b820b46207bc0ccebe8a258",
+   "raw_sha256": "c094ccb3fe767be5b7d6674355c15e45a0ff6a07efbe24d1e23753039ab1cc95",
+   "selection_reason": "Table-heavy document with captions (table continuation)",
+   "status": "FAIL",
+   "synchronized_wall_seconds": 591.8648490649939,
+   "upstream_timing": {
+    "generation_seconds": 591.7379248142242,
+    "prefill_seconds": 2.7776119709014893
+   }
+  },
+  {
+   "document": "researchReport_chn_a2f46550",
+   "document_wall_seconds": 544.667,
+   "expected_pages": 5,
+   "finish_reason": "stop",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819708416,
+    "gpu_free_total_bytes": [
+     87520989184,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9176314880,
+    "gpu_peak_reserved_bytes": 9418309632,
+    "gpu_reserved_bytes": 9418309632,
+    "process_peak_rss_bytes": 2906333184,
+    "process_rss_bytes": 2906333184,
+    "system_available_bytes": 83185577984,
+    "system_memory_percent": 17.6,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 7603,
+   "pages": [
+    {
+     "path": "images/researchReport_chn_a2f46550/page_1.jpg",
+     "sha256": "46fd8fe3749779b79c3b6fab2c81808216344a59c722368beafaf1dbb9b672e8"
+    },
+    {
+     "path": "images/researchReport_chn_a2f46550/page_2.jpg",
+     "sha256": "e293f21d873ddfe10356c8ca69897fbff9dcabe2c7dc08324db9f0b30fd9a124"
+    },
+    {
+     "path": "images/researchReport_chn_a2f46550/page_3.jpg",
+     "sha256": "e82bb46b464640909831b0281dab36b208ec9f927c1307d410aa798819a3eea0"
+    },
+    {
+     "path": "images/researchReport_chn_a2f46550/page_4.jpg",
+     "sha256": "e59e516e8091a183059beecf454e0a62721df748420437e0dd00f6a7bddd905e"
+    },
+    {
+     "path": "images/researchReport_chn_a2f46550/page_5.jpg",
+     "sha256": "9487c850ddd1dbb98470790651db05de54fbd9f775edd37e730eb34d23e85f35"
+    }
+   ],
+   "prediction_sha256": "1ab59ef55532f3caae3f25b5f16af9615eb23bdad4207af634a7c7b0004e3d43",
+   "raw_sha256": "86a8e7eb6a8819e56198544f28d46b85cb256850abf70b636d3186262b3f6abe",
+   "selection_reason": "Chinese research report, multi-page text continuation",
+   "status": "INFERENCE_ONLY",
+   "synchronized_wall_seconds": 544.6584436830017,
+   "upstream_timing": {
+    "generation_seconds": 544.5483658313751,
+    "prefill_seconds": 2.7944376468658447
+   }
+  },
+  {
+   "document": "researchReport_chn_dd0407a2",
+   "document_wall_seconds": 299.118,
+   "expected_pages": 4,
+   "finish_reason": "stop",
+   "memory_snapshot": {
+    "gpu_allocated_bytes": 6819704320,
+    "gpu_free_total_bytes": [
+     87516430336,
+     107374182400
+    ],
+    "gpu_peak_allocated_bytes": 9167938560,
+    "gpu_peak_reserved_bytes": 9418309632,
+    "gpu_reserved_bytes": 9418309632,
+    "process_peak_rss_bytes": 2906333184,
+    "process_rss_bytes": 2906333184,
+    "system_available_bytes": 83232305152,
+    "system_memory_percent": 17.6,
+    "system_total_bytes": 101001261056
+   },
+   "native_kernel_count": 12,
+   "output_token_count": 4829,
+   "pages": [
+    {
+     "path": "images/researchReport_chn_dd0407a2/page_1.jpg",
+     "sha256": "8be49bd15083f8988b7a75a2394920b2feb6e2460fe8fdd6eed1361872833980"
+    },
+    {
+     "path": "images/researchReport_chn_dd0407a2/page_2.jpg",
+     "sha256": "44a90be3a359a8a13f8e6fd830ceb9abcb49045d77d693cfc2fd508174b87222"
+    },
+    {
+     "path": "images/researchReport_chn_dd0407a2/page_3.jpg",
+     "sha256": "0bc57ac98e3c00c160bb4e8faa4d60fa068d32b860b0119d8754491127789f2a"
+    },
+    {
+     "path": "images/researchReport_chn_dd0407a2/page_4.jpg",
+     "sha256": "b6d73a46cd18c184f9c071f91573a971da1a5b6936037b806402f20be99c201a"
+    }
+   ],
+   "prediction_sha256": "66dec84b3e48fc0e6a85cb52e3030308f28d279e69e973b494a154ad9386628d",
+   "raw_sha256": "cbe62fbc58839d2363e85ae8589678b6247451fb019aebad7107568c4900a6af",
+   "selection_reason": "Table-heavy document with captions (table continuation)",
+   "status": "INFERENCE_ONLY",
+   "synchronized_wall_seconds": 299.1115962840049,
+   "upstream_timing": {
+    "generation_seconds": 299.02715158462524,
+    "prefill_seconds": 2.2673304080963135
+   }
+  }
+ ],
+ "sanitization": "raw_output/native_generation fields removed; hashes retained; no GT or licensed page content in Git",
+ "schema": 1,
+ "total_wall_seconds": 3407.193
+}
