@@ -10,7 +10,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .._upstream.process_unlimitedOCR2 import _parse_blocks, convert
+from .._upstream.process_unlimitedOCR2 import convert
+from ..completion import require_complete_pages
 from .manifest import digest, file_hash, safe_id, validate_manifest
 
 STATES = ("PASS", "FAIL", "TIMEOUT", "OOM", "TRUNCATED")
@@ -117,20 +118,11 @@ class Run:
             ):
                 state, reason = "TRUNCATED", "TOKEN_LIMIT"
             else:
-                pages = raw.split("<PAGE>")
-                if pages[-1:] == [""]:
-                    pages = pages[:-1]
-                if (
-                    metadata["finish_reason"] != "stop"
-                    or not raw.strip()
-                    or not pages
-                    or pages[0].strip()
-                    or len(pages) - 1 != len(self.documents[doc_id]["pages"])
-                    or any(
-                        "<BLOCK>" not in page or "<FORK>" not in page or not _parse_blocks(page)
-                        for page in pages[1:]
-                    )
-                ):
+                try:
+                    if metadata["finish_reason"] != "stop":
+                        raise ValueError("Native stop required")
+                    require_complete_pages(raw, len(self.documents[doc_id]["pages"]))
+                except ValueError:
                     state, reason = "FAIL", "EMPTY_MALFORMED_OR_PAGE_MISMATCH"
         # Raw is persisted even if conversion fails. No normalization of model bytes.
         if state == "PASS":
