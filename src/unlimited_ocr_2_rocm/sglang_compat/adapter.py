@@ -1,53 +1,77 @@
-"""B1 adapter: route sglang's ``moe.moe_align_block_size`` to the torch fallback.
+"""B1 adapter: route sglang's CUDA-only sgl_kernel ops to torch fallbacks.
 
-The frozen wheel resolves the op through ``KernelBackend.AOT`` to the
-``sgl_kernel`` wheel (CUDA-only). This adapter rebinds the single import
-point the HIP serving path uses —
-``sglang.kernels.ops.moe.moe_align_block_size`` — to the CPU-tested torch
-fallback in :mod:`unlimited_ocr_2_rocm.sglang_compat.moe_align`. It must be
-installed BEFORE ``sglang.srt.layers.moe.moe_runner.triton_utils.moe_align_block_size``
-is imported (the consumer binds the name at import time); the B1 launch
-wrapper imports this module first.
+The frozen wheel resolves ``moe.moe_align_block_size`` through
+``KernelBackend.AOT`` to the ``sgl_kernel`` wheel (CUDA-only), and the HIP
+branches of the fused-MoE and activation layers bind the elementwise
+activations from the same wheel. This adapter rebinds those names to the
+CPU-tested torch fallbacks in :mod:`unlimited_ocr_2_rocm.sglang_compat`:
 
-Isolation: nothing inside the sglang tree is modified; the adapter is a
-runtime rebinding performed by the launch wrapper, recorded in the kernel
-identity receipt (``call_count``) so every smoke receipt can state which
-implementation served the call.
+- ``sglang.kernels.ops.moe.moe_align_block_size`` (the single import point
+  the HIP serving path uses for the align op), and
+- the ``sgl_kernel`` module attributes for the elementwise activations
+  (the single choke point every consumer binds through).
+
+It must be installed BEFORE the consuming sglang modules are imported (the
+B1 launcher does this at interpreter startup via sitecustomize, spawn-safe).
+Nothing inside the sglang tree is modified; unpatched sgl_kernel attributes
+keep raising the env's loud-fail stub. The receipt records which fallbacks
+are installed and how often each served, so every smoke receipt can state
+the kernel identity.
 """
 
 from __future__ import annotations
 
 from typing import Any
 
-_STATE: dict[str, Any] = {"installed": False, "call_count": 0}
+_STATE: dict[str, Any] = {"installed": False, "call_counts": {}}
 
 
-def _counting_wrapper(torch_impl):  # type: ignore[no-untyped-def]
-    def wrapper(*args: Any, **kwargs: Any) -> None:
-        _STATE["call_count"] += 1
-        return torch_impl(*args, **kwargs)
+def _counting(name: str, impl):  # type: ignore[no-untyped-def]
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
+        _STATE["call_counts"][name] = _STATE["call_counts"].get(name, 0) + 1
+        return impl(*args, **kwargs)
 
     return wrapper
 
 
 def install() -> None:
-    """Rebind ``sglang.kernels.ops.moe.moe_align_block_size`` (idempotent)."""
+    """Rebind the CUDA-only ops to the torch fallbacks (idempotent)."""
     if _STATE["installed"]:
         return
-    import sglang.kernels.ops.moe as ops_moe
 
+    import sgl_kernel
+
+    from .activation import gelu_and_mul, gelu_quick, gelu_tanh_and_mul, silu_and_mul
     from .moe_align import torch_moe_align_block_size
 
-    ops_moe.moe_align_block_size = _counting_wrapper(torch_moe_align_block_size)
+    for name, impl in (
+        ("silu_and_mul", silu_and_mul),
+        ("gelu_and_mul", gelu_and_mul),
+        ("gelu_tanh_and_mul", gelu_tanh_and_mul),
+        ("gelu_quick", gelu_quick),
+        ("moe_align_block_size", torch_moe_align_block_size),
+    ):
+        setattr(sgl_kernel, name, _counting(name, impl))
+
+    # The align op's HIP import point binds the ops-wrapper function, not the
+    # sgl_kernel attribute; rebind it too (idempotent, same fallback).
+    import sglang.kernels.ops.moe as ops_moe
+
+    ops_moe.moe_align_block_size = _counting("moe_align_block_size", torch_moe_align_block_size)
     _STATE["installed"] = True
 
 
 def receipt() -> dict[str, Any]:
     """Kernel identity for the smoke receipts."""
     return {
-        "moe_align_block_size": "unlimited_ocr_2_rocm.sglang_compat.moe_align."
-        "torch_moe_align_block_size (B1 HIP fallback, upstream ref "
-        "sglang v0.5.20 aot/csrc/moe/moe_align_kernel.cu)",
+        "fallbacks": {
+            "moe_align_block_size": "sglang_compat.moe_align.torch_moe_align_block_size "
+            "(upstream ref: sglang v0.5.20 aot/csrc/moe/moe_align_kernel.cu)",
+            "silu_and_mul": "sglang_compat.activation (exact torch)",
+            "gelu_and_mul": "sglang_compat.activation (exact torch, erf)",
+            "gelu_tanh_and_mul": "sglang_compat.activation (exact torch, tanh)",
+            "gelu_quick": "sglang_compat.activation (exact torch, 1.702)",
+        },
         "installed": _STATE["installed"],
-        "call_count": _STATE["call_count"],
+        "call_counts": dict(_STATE["call_counts"]),
     }
