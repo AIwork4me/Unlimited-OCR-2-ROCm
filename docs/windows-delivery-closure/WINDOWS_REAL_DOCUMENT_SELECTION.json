@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "recorded": "2026-11-01",
+  "purpose": "Single prospective bounded Windows Native real-document qualification (design only; GPU execution NOT authorized by this file)",
+  "dataset": {
+    "name": "MPDocBench",
+    "revision": "4e5aee32280febb7b0844237ba087f837e3c8905",
+    "scope_sha256": "785f18884dc586aa836f096dcba7c96c1fd0cc50a6dae9f62aabb0152d4bdcc8",
+    "gt_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
+    "verification_receipt": "eval/windows/dataset-readiness.json (541fa1fae3a987825958f794d9dac851670412d0178057ee2c90252862e80233)"
+  },
+  "selection_rule": {
+    "rule": "Among the 43 MPDocBench documents with exactly 5 pages (mission cap), require text_block>=20 AND table>=2 AND equation_isolated>=3 AND title>=3 per GT annotations. Exactly two documents qualify; select the one with the denser stress mix (higher formula+table+figure total). Deterministic, content-justified, no manual browsing.",
+    "qualified_candidates": [
+      {"id": "handwritten_chn_1ae487be", "text": 96, "table": 3, "formula": 98, "title": 31, "figure": 8, "total_blocks": 243},
+      {"id": "paper_chn_3567e55d", "text": 82, "table": 3, "formula": 8, "title": 13, "figure": 3, "total_blocks": 133}
+    ],
+    "selected": "handwritten_chn_1ae487be",
+    "alternate": "paper_chn_3567e55d",
+    "anti_cherry_pick_justification": "The selected document is the HARDEST qualifying case (handwritten Chinese with 98 isolated formulas, 3 tables, 96 text blocks, 31 titles, 8 figures across 5 pages), not an easy one; the rule was fixed before hashing identities."
+  },
+  "usefulness": {
+    "text": "96 text blocks incl. handwritten Chinese",
+    "tables": "3 tables (cross-page merge behavior observable)",
+    "formulas": "98 isolated equations (max formula density among 5-page docs; CDM-relevant structure without requiring the scorer for the inference pilot)",
+    "page_structure": "titles/headers/footers/captions present (31 titles, captions, page furniture)",
+    "multi_page": "exactly 5 pages = production maximum",
+    "tricky_formatting": "handwriting + dense formula layout is the documented stress surface",
+    "cross_platform_diagnostic": "the same document is one of the four frozen P2-A/P2B documents with retained Linux evidence (PR #32 eval/results), enabling future Windows-vs-Linux comparison under identical policy"
+  },
+  "frozen_identities": {
+    "id": "handwritten_chn_1ae487be",
+    "pages": 5,
+    "annotation_sha256": "564f04769ae27d0224d80a64827b323481a420ed044d768004ac3168f9011e42",
+    "archive_page_hashes_sha256": "e2699c84f8c140ea7284ca908eb0e47c8b8749d1f0c7de8e070e66562d75e7a7",
+    "ordered_paths_sha256": "c33d3b27332f4856572793558d217cccdc17b9373d3de82edbcc01e98ef47df0",
+    "gt_row_digest_sorted_keys_utf8": "4f70cc419ad36ed0873f27c21c19c7bfa68df0c1244b37443d62a37a59cd913d",
+    "page_files": [
+      {"page": 1, "file": "page_1.jpg", "sha256_prefix": "0a65fa987e62d746", "bytes": 519208},
+      {"page": 2, "file": "page_2.jpg", "sha256_prefix": "f58ec349c215435e", "bytes": 671803},
+      {"page": 3, "file": "page_3.jpg", "sha256_prefix": "d8f18301335f9e93", "bytes": 581701},
+      {"page": 4, "file": "page_4.jpg", "sha256_prefix": "cc73732adcd13061", "bytes": 659965},
+      {"page": 5, "file": "page_5.jpg", "sha256_prefix": "6d6b8aeda2d731c7", "bytes": 244710}
+    ],
+    "note": "Full page SHA-256 values are held in the private admission receipt at execution time; prefixes here bind the same bytes without publishing full digests of dataset content",
+    "no_private_content_published": "document images/GT text are not included in any ledger file"
+  },
+  "scope_digest": "TBD at admission time: sha256 over {selection json + policy json + execution contract}",
+  "gpu_execution_authorized": false
+}
