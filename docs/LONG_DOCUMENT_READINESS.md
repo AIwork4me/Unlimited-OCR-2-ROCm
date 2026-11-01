@@ -107,9 +107,24 @@ truncation event must be recorded per document.
   with total tokens — the SR-SWA window does *not* bound memory here.
 - Decoder is not MLA (`use_mla: false`, `kv_lora_rank: null`): KV per token
   per layer = 2 × 10 heads × 128 dim = 2,560 BF16 elements = 5 KiB; ×12 layers
-  = **~60 KiB per token** (≈ 58.6 GiB at the full 131,072 context — not
-  reachable on this host in the 32 GiB carve-out without GTT spill; reachable
-  ceilings below).
+  = **~60 KiB per token** → the basic full-context KV figure is
+  **131,072 × 60 KiB = 7,864,320 KiB = 7.5 GiB** (an earlier revision of this
+  document mis-stated this as 58.6 GiB; corrected 2026-10-30).
+- The 7.5 GiB figure is **only the KV tensors themselves**. Independent
+  additions on top of it, each to be measured rather than folded into the
+  per-token rate:
+  1. **Router-index cache** (DASH sparse-attention router state), size scaling
+     unknown until measured;
+  2. **Temporary FP32 attention copies** — operator working memory can exceed
+     the BF16 tensor footprint (per-op transposes/accumulation buffers);
+  3. **Vision peak allocations** — SAM+CLIP encode all pages' 1024² base
+     images up front; this peak co-exists with partial KV during prefill;
+  4. **Allocator fragmentation and runtime overhead** — reserved-but-unused
+     pool growth under mixed-size vision/decode shapes;
+  5. **APU shared-system-memory behavior** — on gfx1151 the carve-out is not
+     a hard wall: GTT spill changes *latency*, not feasibility, so
+     "fits/does not fit" statements must cite measured `allocated/reserved`
+     plus GTT, not the 7.5 GiB arithmetic alone.
 - DASH decode further restricts *attention* per query to KV blocks holding the
   current page's image tokens (plus fallback-open rows) — this bounds compute,
   not memory.
@@ -118,9 +133,10 @@ truncation event must be recorded per document.
   tokens — far beyond 131,072; so **context position table (131,072), not KV
   capacity, is the binding constraint** for ≤100-page runs: 100 pages ≈ 27.5 K
   prompt + ≤39,321 output ≈ 66.8 K tokens ≈ **3.9 GiB KV** — comfortably
-  inside the carve-out. Vision prefill peaks (273-token pages are tiny; SAM+CLIP
-  encode all pages' 1024² base images) dominate short-run memory and must be
-  measured, not assumed.
+  inside the carve-out before the five additions above, which is exactly why
+  each of them must be measured at L1–L4 rather than assumed away. Vision
+  prefill peaks (273-token pages are tiny; SAM+CLIP encode all pages' 1024²
+  base images) dominate short-run memory and must be measured, not assumed.
 - APU accounting rule: all figures are shared-system-memory accounting.
 
 ## 6. Proposed physical validation ladder (explicit stop conditions)

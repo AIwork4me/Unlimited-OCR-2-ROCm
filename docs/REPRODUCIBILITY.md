@@ -1,7 +1,11 @@
 # Reproducing Phase 1
 
 Use the same physical Windows gfx1151 machine, 64-bit CPython 3.10 and
-sufficient free RAM/disk. CPU CI does not perform these tests.
+sufficient free RAM/disk. CPU CI does not perform these tests. (The Linux
+gfx1151 environment is a different pinned stack — `torch 2.12.0+rocm7.2`,
+not the Windows rocm7.14.1 wheel below; see
+`docs/validation/LINUX_GFX1151_ENVIRONMENT_DECISION.md` and
+`docs/validation/LINUX_GFX1151_NATIVE_VALIDATION.md`.)
 
 ```powershell
 # Select an installed CPython 3.10 interpreter, for example:
