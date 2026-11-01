@@ -21,6 +21,8 @@ from typing import IO, Any
 
 from .ledger import Run, json_bytes, write_bytes
 from .manifest import file_hash, local_path
+from .telemetry import ResourceTelemetryPolicy, TelemetryMonitor
+from .watchdog import WATCHDOG_EXIT_CODE
 
 WORKER_TIMEOUT_STATE = "TIMEOUT"
 _OOM_MARKERS = (
@@ -174,11 +176,21 @@ def supervise_worker(
     *,
     attempt_directory: Path,
     timeout_seconds: float,
+    resource_policy: ResourceTelemetryPolicy | None = None,
 ) -> tuple[dict[str, Any] | None, str]:
-    """Run one worker subprocess; returns (outcome JSON or None, failure kind)."""
+    """Run one worker subprocess; returns (outcome JSON or None, failure kind).
+
+    ``resource_policy`` (Rev-2 prerequisite P5) additionally runs the 1 Hz
+    telemetry monitor with the staleness rule and the host available-memory
+    floor; a policy stop terminates the attempt with an explicit
+    ``WORKER_RESOURCE_STOP_<REASON>`` failure kind — never silently.
+    """
     if sys.platform == "win32":
         return _supervise_windows_worker(
-            command, attempt_directory=attempt_directory, timeout_seconds=timeout_seconds
+            command,
+            attempt_directory=attempt_directory,
+            timeout_seconds=timeout_seconds,
+            resource_policy=resource_policy,
         )
     staging = Path(tempfile.mkdtemp(prefix="uocr2-worker-"))
     result_path = staging / "outcome.json"
@@ -219,7 +231,11 @@ class WorkerCleanupError(RuntimeError):
 
 
 def _supervise_windows_worker(
-    command: list[str], *, attempt_directory: Path, timeout_seconds: float
+    command: list[str],
+    *,
+    attempt_directory: Path,
+    timeout_seconds: float,
+    resource_policy: ResourceTelemetryPolicy | None = None,
 ) -> tuple[dict[str, Any] | None, str]:
     from .windows_job import NativeJob
 
@@ -231,7 +247,11 @@ def _supervise_windows_worker(
     job: NativeJob | None = None
     code: int | None = None
     timed_out = False
+    resource_stop: str | None = None
     cleanup_error: BaseException | None = None
+    monitor: TelemetryMonitor | None = None
+    if resource_policy is not None:
+        monitor = TelemetryMonitor(attempt_directory, resource_policy)
     try:
         job = NativeJob()
         with (attempt_directory / "worker.log").open("xb") as log:
@@ -239,10 +259,25 @@ def _supervise_windows_worker(
                 [*command, "--result", str(result_path)], stdout=log, stderr=subprocess.STDOUT
             )
             accounting["worker_pid"] = process.pid
-            try:
-                code = process.wait(timeout=timeout_seconds)
-            except subprocess.TimeoutExpired:
-                timed_out = True
+            if monitor is not None:
+                monitor.start()
+                deadline = time.monotonic() + timeout_seconds
+                while True:
+                    try:
+                        code = process.wait(timeout=min(1.0, max(deadline - time.monotonic(), 0.1)))
+                        break
+                    except subprocess.TimeoutExpired:
+                        if time.monotonic() >= deadline:
+                            timed_out = True
+                            break
+                        if monitor.stop_reason is not None:
+                            resource_stop = monitor.stop_reason
+                            break
+            else:
+                try:
+                    code = process.wait(timeout=timeout_seconds)
+                except subprocess.TimeoutExpired:
+                    timed_out = True
     except BaseException as error:
         accounting["exception"] = type(error).__name__
         accounting["exception_detail"] = str(error)
@@ -278,6 +313,8 @@ def _supervise_windows_worker(
                 cleanup_error = error
                 accounting["close_error"] = type(error).__name__
                 accounting["close_error_detail"] = str(error)
+            if monitor is not None:
+                accounting.update(monitor.stop())
             accounting.update(exit_code=code, timed_out=timed_out)
             write_bytes(attempt_directory / "supervision.json", json_bytes(accounting))
         if cleanup_error is not None:
@@ -286,6 +323,13 @@ def _supervise_windows_worker(
             ) from cleanup_error
     if timed_out:
         return None, "WORKER_TIMEOUT"
+    if resource_stop is not None:
+        return None, f"WORKER_RESOURCE_STOP_{resource_stop}"
+    if code == WATCHDOG_EXIT_CODE:
+        # The worker-side ResourceWatchdog aborted at a frozen limit (its
+        # breach receipt lives next to the heartbeat); os._exit may leave the
+        # outcome file missing or truncated, so classify before parsing it.
+        return None, "WORKER_RESOURCE_LIMIT_BREACH"
     if not result_path.is_file():
         return None, f"WORKER_CRASH_EXIT_{code}"
     try:
@@ -315,6 +359,14 @@ def worker_outcome_to_finish(
     base: dict[str, Any] = {"attempt_wall_seconds": wall, "max_tokens": max_new_tokens}
     if failure_kind == "WORKER_TIMEOUT":
         return WORKER_TIMEOUT_STATE, "WORKER_TIMEOUT", {**base, "error": "WORKER_TIMEOUT"}
+    if failure_kind == "WORKER_RESOURCE_LIMIT_BREACH":
+        # Allocator/reserved hard limit enforced in-worker by ResourceWatchdog;
+        # OOM-class, evidence retained next to the attempt's heartbeat.
+        return (
+            "OOM",
+            "WORKER_RESOURCE_LIMIT_BREACH",
+            {**base, "error": "WORKER_RESOURCE_LIMIT_BREACH"},
+        )
     if outcome is None:
         return "FAIL", failure_kind, {**base, "error": failure_kind}
     if failure_kind:
@@ -366,6 +418,7 @@ def execute_selection(
     max_new_tokens: int,
     timeout_seconds: float,
     restrict: set[str] | None = None,
+    resource_policy: ResourceTelemetryPolicy | None = None,
 ) -> dict[str, Any]:
     """Attempt every selected, not-yet-PASS document exactly once per call."""
     unknown = sorted(set(selection) - set(run.documents))
@@ -395,7 +448,10 @@ def execute_selection(
             str(timeout_seconds),
         ]
         outcome, failure = supervise_worker(
-            command, attempt_directory=attempt_directory, timeout_seconds=timeout_seconds
+            command,
+            attempt_directory=attempt_directory,
+            timeout_seconds=timeout_seconds,
+            resource_policy=resource_policy,
         )
         state, reason, metadata = worker_outcome_to_finish(
             outcome,
