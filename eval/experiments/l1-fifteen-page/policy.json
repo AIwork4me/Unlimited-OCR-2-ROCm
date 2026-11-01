@@ -1,0 +1,82 @@
+{
+ "admission": {
+  "context_cap_tokens": 131072,
+  "prompt_upper_bound_tokens_per_page": 300,
+  "required_margin_tokens": 4096,
+  "rule": "pages*prompt_upper_bound + budget + margin must not exceed context_cap_tokens"
+ },
+ "budgets_new_tokens": [
+  39321
+ ],
+ "claim_limit": "One document, one attempt. NOT MPDocBench accuracy, NOT leaderboard parity, NOT official-deployment parity (no windowing, no KV reuse \u2014 see docs/validation/L1_FIFTEEN_PAGE_SPEC.md \u00a77). 15-page promotion requires ALL gates PASS including 15/15 pages emitted, natural valid completion, zero forced-marker mismatches and zero supervision failures.",
+ "documents": [
+  "book_eng_77552588"
+ ],
+ "experiment": "L1_FIFTEEN_PAGE_NATIVE",
+ "guard_collision_safety": {
+  "contract": "observer aborts before selection on the audited corner; any abort classifies the attempt FAIL and BLOCKS promotion; the post-run replay forced-marker detector remains a HARD gate with no bypass",
+  "cpu_test_file": "tests/unit/test_l1_collision_observer.py",
+  "observer": "opt-in pre-selection all--inf abort (src/unlimited_ocr_2_rocm/collision_observer.py), installed for this attempt",
+  "qualification": "docs/validation/L1_GUARD_COLLISION_QUALIFICATION.md",
+  "qualification_sha256": "4e76542455270dba6544def93be4dc42d884d0afb0becfb4e7f93fe85ac43305"
+ },
+ "ledger": {
+  "dataset_documents": 420,
+  "executed_documents": 1,
+  "not_run_marking": "NOT_RUN for the other 419 documents; NOT_RUN is never PASS"
+ },
+ "ngram_provenance": "official client infer.py@48ff432 (docs/rca/NGRAM35_SOURCE_AUDIT.md); the guard-collision corner is LIVE at this budget class per docs/validation/P2C_GUARD_COLLISION_SAFETY.md \u00a76",
+ "ngram_scope": "generated tokens only (official SGLang SGLANG_UOCR_NGRAM_OUTPUT_ONLY=True semantics; frozen model loop scans gen only)",
+ "ngram_sizes": [
+  35
+ ],
+ "ngram_window": 1024,
+ "page_hash_order": "frozen-index order, page_1..page_15; worker verifies actual bytes against BOTH this list and the frozen page-index gate",
+ "page_hashes": [
+  "763deb067a1086e8e41a29bed87ff8ee5916ad72e79ad6cda5ea0af6c6b78cbe",
+  "09fd6f626749facf9346ed5eafbca7d3cd9d305487ddf92ef01137e9ecc6349a",
+  "6fbd8f2ecffd4cecd898374a53e8097648b7fa6703e0677b2bf14080ed549513",
+  "2bac3dc3c617557e795479b9635e8e8300635c8f77a14a2e0ff036fc21ec2a43",
+  "d46d1af2c92e8aa4851b452d9de08e71de275f8b1613f9263bb479049e865c4e",
+  "56c1835db8d0be03ad437bfd5b8833d106ce7961272f0b6e90b7fd885d20a1e0",
+  "688bfeecb169c3a53002a21e0cdb03a2499df6bad5df32c7597beb07506a2747",
+  "d918d4cebca18a3ac72ae3b886bde52e1087a0cb3b30fc646dd887f683475d0d",
+  "adb1182d40e7f1bed5f14513ff95da2160146c350942ec9e9e88b878b9f15cca",
+  "3f6b0e59a03cac93cca47a33cef5107c3f2d2b1d0a54f896a13898831c57025b",
+  "cc8dac61120de2695c1f5201668242a6bc9d5d94b81586d587b55a2178958a64",
+  "4f895ebb5fdefb4f1c22690bcf33aa433c7c34cb453bdf9a8f628ed6e1491b8d",
+  "476aba8e0476c1b8a54d93b7107b22f58d25fee19ee831de9a8f7850f39cb05f",
+  "ec893e2ee7e75f753ee474e6a2c4b2f1d1fd3565f24466cad3a2aeb94c60b09e",
+  "859e730873020b57ec63b27c944abbcf7888ea5af9f33bc2a9b641d18b929ff8"
+ ],
+ "pages": 15,
+ "purpose": "ONE supervised physical 15-page native request at the official deployment budget class (39321 new tokens) with the official no-repeat suppression (35/1024, generated ids only), on the frozen model/weights/prompt/crop policy. Production defaults are NOT changed: budgets above 8192 and suppression remain opt-in behind pinned-digest policies; this third digest authorizes this experiment only.",
+ "resource_admission": {
+  "gpu_allocated_hard_limit_gib": 16,
+  "gpu_enforcement": "worker ResourceWatchdog samples torch.cuda.memory_allocated and aborts the attempt (exit 86 + breach receipt) when the hard limit is crossed \u2014 enforced during execution, not merely checked afterward",
+  "host_rss_soft_limit_gib": 4,
+  "timeout_rationale": "P2-C measured decode step-time grows linearly with sequence length (14.6 tok/s at S~5.5k, 10.4 tok/s at S~9.6k average); the linear step model integrated over S in [~4.2k, ~43.5k] yields ~7.5e3 s decode + ~105 s load/prefill; 14400 s is ~1.9x that point estimate and absorbs the observer sync overhead and superlinear risk. May only be changed via a reviewed policy update BEFORE the run, never mid-run.",
+  "timeout_seconds": 14400
+ },
+ "schema": 1,
+ "selection_receipt": "eval/experiments/l1-fifteen-page/selection.json",
+ "selection_receipt_sha256": "6d9b92856f53834eb21040e554a73dc264227e9de87cdd9d4a8dad401f7d434f",
+ "supervision": {
+  "grace_seconds": 10,
+  "heartbeat_seconds": 20,
+  "process_group_sigkill": true,
+  "terminate_incomplete_is_failure": true,
+  "timeout_seconds_per_document": 14400
+ },
+ "unchanged": {
+  "bf16": true,
+  "crop_policy": "crop_mode=False (infer_multi)",
+  "decoder": "official eager + DASH Triton, 12 routers",
+  "max_pixels_per_page": 16000000,
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "native_page_guard": "enabled (expected_pages=15 from prompt; max_page_tokens=20000)",
+  "prompt": "official default document prompt",
+  "sampling": "greedy temperature=0",
+  "vision_sdpa": "MATH (SAM/CLIP scoped)"
+ }
+}

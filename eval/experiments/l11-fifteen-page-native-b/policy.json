@@ -1,0 +1,95 @@
+{
+ "schema": 1,
+ "experiment": "L11_FIFTEEN_PAGE_NATIVE_B",
+ "purpose": "ONE supervised physical 15-page native request on a complex-layout/table/formula-rich document (paper_eng_64b5e1f4) at the official deployment budget class (39321 new tokens) with the official no-repeat suppression (35/1024, generated ids only), on the frozen model/weights/prompt/crop policy, executed from the CLEAN migrated history. Production defaults are NOT changed: budgets above 8192 and suppression remain opt-in behind pinned-digest policies; this digest authorizes this experiment only.",
+ "claim_limit": "One document, one attempt. NOT MPDocBench accuracy, NOT leaderboard parity, NOT official-deployment parity (no windowing, no KV reuse). 15-page promotion requires ALL gates PASS including 15/15 pages emitted, natural valid completion, zero forced-marker mismatches and zero supervision failures. Second L1.1 attempt (case A substitute or other) requires a fresh gate review AFTER this attempt's evidence is sealed.",
+ "documents": [
+  "paper_eng_64b5e1f4"
+ ],
+ "pages": 15,
+ "page_hash_order": "frozen-index order, page_1..page_15; worker verifies actual bytes against BOTH this list and the frozen page-index gate",
+ "page_hashes": [
+  "1518bb549d2fc4f5dd0b7447b0bdb83642f581f259ad3904a3f46fe08c95823d",
+  "9b047ebc116e5d2f20793fe67207be3d8088d0dad835950f748848e363230b9f",
+  "ba37ece0f08b0838287fa262e64dfa18ecc54c8e342b0469dbc8957a62fae642",
+  "b935760bf2fa6f0cd78ba47c0206dadecd7809ce2903013f89f2a4ea6c3b365a",
+  "3eb9f14cba5f1c9bce7ac7fdba8d508997530dec0da3584f7988efa7249f232d",
+  "667b4af725db69cbde5f1a9670bbfbae1a96217ef72615e2f8117f712a467282",
+  "1f69eab3c0bd57bc877e6f1707ecbba6fcc2f37b9f8cfbaf7d02749879480c7b",
+  "1e9be87fcb480898db0666c06afc0517db63aed60bede6cd0cd4e420943d10a3",
+  "c913d28c3ae2980436ddd48cbd591c2a1cda375df4cba9db06ff50d252d84e4a",
+  "4b9a460c3200ed5181a65642f8f1ff4baf5da73569a2e0561a3f4da9faf5f66e",
+  "755456b4d789e552cbeefc4c4d03fc4418f30b9c3fb543a8203e0d37ac957834",
+  "615a5cd417052cb86a4ad1446cfad226703ad01796628c379db0777832cc88d9",
+  "216e071bed1732276a4fd02bbbbf68fbcb53b6113ed6efab94de8a0902974e0e",
+  "cfc2950f2086d1f18bd08370d6790eea1392ab06c04cf3e1259b9c6bd2b54475",
+  "522ab81d4355abb796ef9c75636a0f295a8629a64b5a39a95860ea11a58deadf"
+ ],
+ "admission": {
+  "context_cap_tokens": 131072,
+  "prompt_upper_bound_tokens_per_page": 300,
+  "required_margin_tokens": 4096,
+  "rule": "pages*prompt_upper_bound + budget + margin must not exceed context_cap_tokens"
+ },
+ "budgets_new_tokens": [
+  39321
+ ],
+ "ngram_sizes": [
+  35
+ ],
+ "ngram_window": 1024,
+ "ngram_scope": "generated tokens only (official SGLang SGLANG_UOCR_NGRAM_OUTPUT_ONLY=True semantics; frozen model loop scans gen only)",
+ "ngram_provenance": "official client infer.py@48ff432 (docs/rca/NGRAM35_SOURCE_AUDIT.md); the guard-collision corner is LIVE at this budget class per docs/validation/P2C_GUARD_COLLISION_SAFETY.md §6",
+ "guard_collision_safety": {
+  "contract": "observer aborts before selection on the audited corner; any abort classifies the attempt FAIL and BLOCKS promotion; the post-run replay forced-marker detector remains a HARD gate with no bypass",
+  "cpu_test_file": "tests/unit/test_l1_collision_observer.py",
+  "observer": "opt-in pre-selection all--inf abort (src/unlimited_ocr_2_rocm/collision_observer.py), installed for this attempt",
+  "qualification": "docs/validation/L1_GUARD_COLLISION_QUALIFICATION.md",
+  "qualification_sha256": "4e76542455270dba6544def93be4dc42d884d0afb0becfb4e7f93fe85ac43305"
+ },
+ "ledger": {
+  "dataset_documents": 420,
+  "executed_documents": 1,
+  "not_run_marking": "NOT_RUN for the other 419 documents; NOT_RUN is never PASS"
+ },
+ "resource_admission": {
+  "gpu_allocated_hard_limit_gib": 16,
+  "gpu_enforcement": "worker ResourceWatchdog samples torch.cuda.memory_allocated and aborts the attempt (exit 86 + breach receipt) when the hard limit is crossed — enforced during execution, not merely checked afterward",
+  "host_rss_soft_limit_gib": 4,
+  "timeout_rationale": "L1 measured this budget class at 1214 s wall for a dense book (13151 tokens, 10.93 tok/s). The paper class is denser per page (288 layout dets vs 323 over same 15 pages, plus equations/tables); the reviewed integral model (linear step-time over S, ~1.9x point estimate) is retained unchanged at 14400 s. May only be changed via a reviewed policy update BEFORE the run, never mid-run.",
+  "timeout_seconds": 14400
+ },
+ "supervision": {
+  "grace_seconds": 10,
+  "heartbeat_seconds": 20,
+  "process_group_sigkill": true,
+  "terminate_incomplete_is_failure": true,
+  "timeout_seconds_per_document": 14400
+ },
+ "unchanged": {
+  "bf16": true,
+  "crop_policy": "crop_mode=False (infer_multi)",
+  "decoder": "official eager + DASH Triton, 12 routers",
+  "max_pixels_per_page": 16000000,
+  "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+  "native_page_guard": "enabled (expected_pages=15 from prompt; max_page_tokens=20000)",
+  "prompt": "official default document prompt",
+  "sampling": "greedy temperature=0",
+  "vision_sdpa": "MATH (SAM/CLIP scoped)"
+ },
+ "environment_pin": {
+  "python": "3.10.20",
+  "torch": "2.12.0+rocm7.2",
+  "transformers": "4.52.1",
+  "triton-rocm": "3.7.0",
+  "tokenizers": "0.21.4",
+  "huggingface-hub": "0.36.0",
+  "wheel_source": "wheels/ local builds (gfx1151); unchanged from L1"
+ },
+ "selection_receipt": "eval/experiments/l11-fifteen-page-native-b/selection_receipt.json",
+ "scoring": {
+  "strict": "official scorer, frozen selection; TableTEDS/T-TableTEDS/FormulaCDM evaluated where samples exist (paper has 7 tables + 7 equations, so unlike L1 these are expected to be non-null)",
+  "diagnostic": "diagnostic scorer receipt as in L1; full denominator accounting preserved (1 executed + 419 NOT_RUN)"
+ },
+ "selection_receipt_sha256": "8d80ae7bb720df2908d34de301a8ac12fd7490f6d3bb27460fd475bfc428b9ec"
+}

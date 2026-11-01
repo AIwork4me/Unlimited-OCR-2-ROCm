@@ -21,8 +21,7 @@ import hashlib
 import json
 import os
 import re
-import tempfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 from .config import file_sha256
@@ -46,6 +45,10 @@ CREDENTIAL_PATTERN = re.compile(
     r"|AKIA[0-9A-Z]{16}"
     r"|-----BEGIN [A-Z ]*PRIVATE KEY-----"
 )
+#: Windows private paths beyond the ``C:\Users\<name>`` form above: any drive
+#: letter (case-insensitive), spaces and mixed separators included. Checked
+#: in addition to PRIVATE_PATH_PATTERN, so neither weakens the other.
+_WINDOWS_PATH_PATTERN = re.compile(r"[A-Za-z]:[/\\]+Users[/\\]+[A-Za-z0-9_.\- ]+", re.IGNORECASE)
 
 # Raw page renders and other opaque binaries are never publishable evidence.
 IMAGE_SUFFIXES = frozenset(
@@ -354,10 +357,11 @@ def _is_annotation_row(value: Any) -> bool:
 def looks_like_dataset_annotations(value: Any, *, _depth: int = 0) -> bool:
     """True for annotation-shaped exports (full GT or any slice of it).
 
-    Matches a top-level list of annotation rows, a homogenous list of such
-    rows nested anywhere inside the JSON value, and JSONL documents where any
-    parsed line is such a list. Depth-bounded so pathological inputs cannot
-    recurse unbounded.
+    Matches a top-level list of annotation rows and a homogenous list of such
+    rows nested anywhere inside the JSON value. Depth-bounded so pathological
+    inputs cannot recurse unbounded; the bounded *nested* search is
+    :func:`_contains_annotation_rows` (fail-closed), which callers run
+    additionally.
     """
     if _depth > 8:
         return False
@@ -372,24 +376,60 @@ def looks_like_dataset_annotations(value: Any, *, _depth: int = 0) -> bool:
     return False
 
 
-def _jsonl_annotation_hit(text: str) -> bool:
-    for line in text.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            value = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if looks_like_dataset_annotations(value):
+#: Bounds for the nested-row search. A value whose scan exceeds either bound
+#: cannot be proven clean, so it fails closed (treated as GT content). The
+#: node budget sits far above the largest committed evidence file (the
+#: Marathon page index, ~73k nodes) while the full 420-document GT alone
+#: measures ~1.09M nodes — budget refusals land on GT-scale exports.
+_ANNOTATION_SEARCH_DEPTH = 8
+_ANNOTATION_SEARCH_NODES = 500_000
+
+
+def _contains_annotation_rows(value: Any) -> bool:
+    """True when annotation-shaped rows appear anywhere inside a JSON value.
+
+    Bounded iterative search: nested exports (rows wrapped in arbitrary
+    containers) must not escape the detector. Oversized structures fail
+    closed instead of being trusted. Key presence is the criterion (matching
+    the top-level detector): type-mangled rows (page_info as str, image_path
+    as int) are GT content just the same and must not escape when wrapped.
+    """
+    stack: list[tuple[Any, int]] = [(value, 0)]
+    nodes = 0
+    while stack:
+        item, depth = stack.pop()
+        nodes += 1
+        if nodes > _ANNOTATION_SEARCH_NODES or depth > _ANNOTATION_SEARCH_DEPTH:
+            return True  # fail closed: oversized/deep candidate is not provably clean
+        if isinstance(item, dict) and ANNOTATION_ROW_KEYS <= item.keys():
             return True
+        if isinstance(item, dict):
+            stack.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, list):
+            stack.extend((child, depth + 1) for child in item)
     return False
+
+
+def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """object_pairs_hook that refuses duplicate keys (smuggling vector: a
+    later duplicate can hide annotation rows from the parsed value while the
+    raw bytes carry them)."""
+    keys = [key for key, _ in pairs]
+    duplicates = {key for key in keys if keys.count(key) > 1}
+    if duplicates:
+        raise ValueError(f"duplicate JSON keys: {sorted(duplicates)[:4]}")
+    return dict(pairs)
+
+
+def _parse_json_strict(text: str) -> Any:
+    return json.loads(text, object_pairs_hook=_reject_duplicate_keys)
 
 
 def _text_findings(text: str) -> list[str]:
     findings: list[str] = []
     for pattern, label in (
         (PRIVATE_PATH_PATTERN, "private host path"),
+        (_WINDOWS_PATH_PATTERN, "private host path"),
         (HOST_IDENTITY_PATTERN, "host identity field"),
         (CREDENTIAL_PATTERN, "credential or secret material"),
     ):
@@ -399,32 +439,56 @@ def _text_findings(text: str) -> list[str]:
     return findings
 
 
-def publication_findings(path: Path) -> list[str]:
-    """Classify one file; empty list means publishable."""
-    suffix = path.suffix.lower()
+def _findings_for_bytes(suffix: str, data: bytes) -> list[str]:
+    """Shared detection core over raw bytes; used for files and index blobs."""
     if suffix in IMAGE_SUFFIXES:
         return ["binary image content is not publishable evidence"]
     if suffix in BINARY_SUFFIXES:
         return [f"binary content ({suffix}) is not publishable evidence"]
-    try:
-        raw = path.read_bytes()
-    except OSError as error:
-        return [f"unreadable evidence file: {error}"]
-    if suffix not in TEXT_SUFFIXES and b"\x00" in raw[:4096]:
-        return ["binary content is not publishable evidence"]
-    text = raw.decode("utf-8", errors="replace")
     if suffix == ".json":
         try:
-            value = json.loads(text)
-        except json.JSONDecodeError as error:
+            value = _parse_json_strict(data.decode("utf-8"))
+        except (UnicodeDecodeError, ValueError) as error:
             return [f"unreadable JSON evidence file: {error}"]
         if looks_like_dataset_annotations(value):
             return ["dataset annotation rows (page_info/layout_dets) — GT content"]
+        if _contains_annotation_rows(value):
+            return ["dataset annotation rows nested inside a JSON export — GT content"]
         text = json.dumps(value, ensure_ascii=False)
-    elif suffix == ".jsonl":
-        if _jsonl_annotation_hit(text):
-            return ["dataset annotation rows (jsonl) — GT content"]
+    elif suffix in {".jsonl", ".ndjson"}:
+        try:
+            full_text = data.decode("utf-8")
+        except UnicodeDecodeError as error:
+            return [f"unreadable JSONL evidence file: {error}"]
+        lines = full_text.splitlines()
+        text_parts: list[str] = []
+        for number, line in enumerate(lines, start=1):
+            text_parts.append(line)
+            if not line.strip():
+                continue
+            try:
+                value = _parse_json_strict(line)
+            except ValueError as error:
+                return [f"unreadable JSONL evidence at line {number}: {error}"]
+            if looks_like_dataset_annotations(value) or _contains_annotation_rows(value):
+                return [
+                    f"dataset annotation rows (page_info/layout_dets) — GT content (line {number})"
+                ]
+        text = "\n".join(text_parts)
+    else:
+        if suffix not in TEXT_SUFFIXES and b"\x00" in data[:4096]:
+            return ["binary content is not publishable evidence"]
+        text = data.decode("utf-8", errors="replace")
     return _text_findings(text)
+
+
+def publication_findings(path: Path) -> list[str]:
+    """Classify one file; empty list means publishable."""
+    try:
+        data = path.read_bytes()
+    except OSError as error:
+        return [f"unreadable evidence file: {error}"]
+    return _findings_for_bytes(path.suffix.lower(), data)
 
 
 def _normalized_prefix(root: Path, repo_root: Path) -> str:
@@ -464,63 +528,112 @@ def scan_tree(root: Path, *, prefix: str | None = None) -> list[tuple[str, list[
     return violations
 
 
-def scan_staged(repo_root: Path) -> list[tuple[str, list[str]]]:
-    """Scan files staged in the git index of ``repo_root``.
+def parse_staged_name_status(raw: bytes) -> list[tuple[str, bool]]:
+    """Parse ``git diff --cached --name-status -z`` output.
 
-    Everything is read from the INDEX (``git cat-file blob :path``), never
-    from the worktree, so the check cannot be defeated by modifying the
-    worktree after staging, and rename entries (R) are scanned at their new
-    path — PR #24 filtered renames out with ``--diff-filter=ACM`` and hashed
-    the mutable worktree copy. Deleted paths resolve no index blob and are
-    skipped (a removal cannot leak content). Whitelisted staged files are
-    verified against their pinned hash (an edit re-trips the gate at commit
-    time, not only at tree-scan time).
+    Returns (path, must_exist_in_index) pairs; deletions are skipped (a
+    deletion commits no content) and rename/copy entries report BOTH
+    endpoints — the destination must exist in the index, the source may have
+    been removed by the rename (its bytes are the destination's bytes).
     """
-    import subprocess
-
-    out = subprocess.run(
-        ["git", "-C", str(repo_root), "diff", "--cached", "--name-only", "-z"],
-        check=True,
-        capture_output=True,
-    ).stdout
-    violations: list[tuple[str, list[str]]] = []
-    for raw in out.split(b"\x00"):
-        # fsdecode/surrogateescape round-trips non-UTF-8 paths back through
-        # os.fsencode in the subprocess call below; errors="replace" here would
-        # corrupt the path and silently skip the entry.
-        rel = os.fsdecode(raw)
-        if not rel:
+    tokens = raw.split(b"\0")
+    parsed: list[tuple[str, bool]] = []
+    index = 0
+    while index < len(tokens):
+        status = tokens[index].decode("utf-8", errors="replace")
+        if not status:
+            index += 1
             continue
-        staged = subprocess.run(
-            ["git", "-C", str(repo_root), "cat-file", "blob", f":{rel}"],
-            check=False,
-            capture_output=True,
-        )
-        if staged.returncode != 0 or not staged.stdout:
-            continue  # deleted from the index, or unreadable: nothing to scan
-        blob = staged.stdout
-        entry = WHITELIST.get(rel)
+        kind = status[:1]
+        if kind == "D":
+            index += 2
+            continue
+        if kind in {"R", "C"}:
+            old = tokens[index + 1].decode("utf-8", errors="surrogateescape")
+            new = tokens[index + 2].decode("utf-8", errors="surrogateescape")
+            parsed.append((old, kind == "C"))
+            parsed.append((new, True))
+            index += 3
+            continue
+        path = tokens[index + 1].decode("utf-8", errors="surrogateescape")
+        parsed.append((path, True))
+        index += 2
+    return parsed
+
+
+def scan_staged_files(
+    entries: list[tuple[str, bytes | None]], *, whitelist: dict[str, dict[str, str]] | None = None
+) -> list[tuple[str, list[str]]]:
+    """Scan staged index blobs; whitelisted paths are hash-verified here.
+
+    ``entries`` carry what the INDEX holds (``git cat-file blob :path``), not
+    the worktree: a stage-tamper-restore sequence cannot defeat verification,
+    and quoted/unreadable worktree paths cannot silently pass. A ``None``
+    blob for a path that exists in the index is itself a violation
+    (fail-closed — an unreadable staged blob must never look clean).
+    """
+    table = WHITELIST if whitelist is None else whitelist
+    violations: list[tuple[str, list[str]]] = []
+    for rel, data in entries:
+        entry = table.get(rel)
         if entry is not None:
-            if hashlib.sha256(blob).hexdigest() != entry["sha256"]:
+            if data is None or hashlib.sha256(data).hexdigest() != entry["sha256"]:
                 violations.append((rel, ["whitelisted file hash changed — re-review required"]))
             continue
-        probe = _index_blob_probe(rel, blob)
-        try:
-            findings = publication_findings(probe)
-        finally:
-            probe.unlink(missing_ok=True)
+        if data is None:
+            violations.append((rel, ["unreadable staged blob — fail-closed"]))
+            continue
+        # PurePosixPath: staged paths are git (POSIX) paths; the pure variant
+        # is instantiable on every host OS and never touches the filesystem.
+        findings = _findings_for_bytes(PurePosixPath(rel).suffix.lower(), data)
         if findings:
             violations.append((rel, findings))
     return violations
 
 
-def _index_blob_probe(rel: str, blob: bytes) -> Path:
-    """Materialize an index blob under the original suffix for classification."""
-    descriptor, name = tempfile.mkstemp(prefix="pubgate-index-", suffix=Path(rel).suffix)
-    probe = Path(name)
-    with os.fdopen(descriptor, "wb") as handle:
-        handle.write(blob)
-    return probe
+def _staged_entries(repo_root: Path) -> list[tuple[str, bytes | None]]:
+    """Index-side staged content: (path, blob bytes or None when unreadable).
+
+    Reads the INDEX, never the worktree (TOCTOU-proof). Unmerged index
+    entries fail closed. Rename/typechange statuses are included so both
+    endpoints are scanned; deletions commit no content and are skipped.
+    """
+    import subprocess
+
+    def _git(*args: str) -> bytes:
+        return subprocess.run(  # noqa: S603 - fixed argv from this code base
+            ["git", "-C", str(repo_root), *args],
+            check=True,
+            capture_output=True,
+        ).stdout
+
+    if _git("ls-files", "-u", "-z"):
+        return [("<unmerged index entries present>", None)]
+    entries: list[tuple[str, bytes | None]] = []
+    for path, must_exist in parse_staged_name_status(
+        _git("diff", "--cached", "--name-status", "-z", "--diff-filter=ACMRT")
+    ):
+        try:
+            blob = _git("cat-file", "blob", f":{path}")
+        except subprocess.CalledProcessError:
+            if not must_exist:
+                continue  # rename source removed from the index: nothing commits
+            blob = None  # exists in the index but unreadable: fail closed
+        entries.append((path, blob))
+    return entries
+
+
+def scan_staged(repo_root: Path) -> list[tuple[str, list[str]]]:
+    """Scan files staged in the git index of ``repo_root``.
+
+    Everything is read from the INDEX, never from the worktree, so the check
+    cannot be defeated by modifying the worktree after staging. Renames and
+    typechanges are scanned at both endpoints, unmerged index entries and
+    unreadable staged blobs fail closed, and whitelisted staged files are
+    verified against their pinned hash (an edit re-trips the gate at commit
+    time, not only at tree-scan time).
+    """
+    return scan_staged_files(_staged_entries(repo_root))
 
 
 def scan_tracked(repo_root: Path) -> list[tuple[str, list[str]]]:
