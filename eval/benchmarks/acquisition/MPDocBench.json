@@ -1,0 +1,65 @@
+{
+  "archive_layout": "<doc>/page_n.jpg; mount/extract under dataset-root/images/ without changing image bytes",
+  "archive_revision": "48428421ee985717fbda3a6521165aaedfc42077",
+  "archive_sha256": "f9a4c05d586b11a749e60ce13565090fdfbf8f4387fd35e5511a4a1a3d682d22",
+  "archive_size": 600152009,
+  "archive_verified_documents": 409,
+  "archive_verified_pages": 3051,
+  "expected_documents": 420,
+  "expected_pages": 3135,
+  "not_acquired_documents": [
+    {
+      "id": "pptSlides_eng_26f4ebca",
+      "pages": 12
+    },
+    {
+      "id": "pptSlides_eng_5bb58cde",
+      "pages": 8
+    },
+    {
+      "id": "pptSlides_eng_bd47b74b",
+      "pages": 4
+    },
+    {
+      "id": "pptSlides_eng_24541ef2",
+      "pages": 12
+    },
+    {
+      "id": "pptSlides_eng_6d3fdf72",
+      "pages": 4
+    },
+    {
+      "id": "pptSlides_eng_a04b6aef",
+      "pages": 9
+    },
+    {
+      "id": "pptSlides_eng_52c9fd59",
+      "pages": 4
+    },
+    {
+      "id": "pptSlides_eng_82a06813",
+      "pages": 7
+    },
+    {
+      "id": "pptSlides_eng_1e8e2f71",
+      "pages": 3
+    },
+    {
+      "id": "pptSlides_eng_312b78ba",
+      "pages": 12
+    },
+    {
+      "id": "pptSlides_eng_f280f799",
+      "pages": 9
+    }
+  ],
+  "not_acquired_pages": 84,
+  "notes": [
+    "No images/source documents or GT transcriptions are redistributed.",
+    "Initial prefix-only inventory found zero paths because the archive omits images/; its complete local report is retained separately. Corrected mapping rehashes all expected archive pages.",
+    "Serial transport prefix and one failed range retry were preserved; assembled archive matched its complete official SHA256 before inventory."
+  ],
+  "page_hash_index_sha256": "14c0be1d5c3324705437efbebb6e738b3e1e44f7b580c00c76f10db510a9e29a",
+  "producer_sha256": "9ec8f972827f0d48a2bdd9efc5320fe5fa5d104868e0240343b0591df65c02f4",
+  "status": "BLOCKED"
+}

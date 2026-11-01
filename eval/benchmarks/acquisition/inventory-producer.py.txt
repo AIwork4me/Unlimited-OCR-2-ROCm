@@ -1,0 +1,22 @@
+import pathlib,urllib.request,hashlib,json,time,zipfile
+r=pathlib.Path('.b/benchmark-audit');out=pathlib.Path('.b/benchmark-data');out.mkdir(exist_ok=True)
+rev='48428421ee985717fbda3a6521165aaedfc42077';url=f'https://modelscope.cn/datasets/zhoubb/MPDocBench/resolve/{rev}/MPDocBench_data.zip';target=out/'MPDocBench_data.zip'
+if not target.exists():
+ h=hashlib.sha256();n=0;last=time.monotonic()
+ with urllib.request.urlopen(url,timeout=90) as src,(out/'MPDocBench_data.zip.part').open('xb') as dst:
+  while b:=src.read(4*1024*1024):
+   dst.write(b);h.update(b);n+=len(b)
+   if time.monotonic()-last>20:print('archive bytes',n,flush=True);last=time.monotonic()
+ assert n==600152009 and h.hexdigest()=='f9a4c05d586b11a749e60ce13565090fdfbf8f4387fd35e5511a4a1a3d682d22',(n,h.hexdigest())
+ (out/'MPDocBench_data.zip.part').rename(target)
+print('archive verified',target.stat().st_size,flush=True)
+with zipfile.ZipFile(target) as z:
+ names=z.namelist();print('members',len(names),'first',names[:10],flush=True)
+ gt=json.loads((r/'qwen/MPDocBench/MPDocBench.json').read_text(encoding='utf-8'));paths=[p for d in gt for p in d['page_info']['images_list']];mapped={};missing=[]
+ for path in paths:
+  found=[n for n in names if n==path or n==path.removeprefix('images/') or n.endswith('/'+path)]
+  if len(found)==1:mapped[path]=hashlib.sha256(z.read(found[0])).hexdigest()
+  elif not found:missing.append(path)
+  else:raise ValueError('ambiguous archive paths')
+ report={'revision':rev,'archive_size':target.stat().st_size,'archive_sha256':'f9a4c05d586b11a749e60ce13565090fdfbf8f4387fd35e5511a4a1a3d682d22','pages_hashed':len(mapped),'missing_pages':missing,'page_sha256':mapped}
+ (r/'mpdoc-archive-inventory-final.json').write_text(json.dumps(report,indent=2),encoding='utf-8');print('expected pages',len(paths),'hashed',len(mapped),'missing',len(missing),flush=True)

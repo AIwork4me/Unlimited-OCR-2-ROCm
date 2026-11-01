@@ -4,5 +4,7 @@ recursive-include scripts *.py *.ps1
 recursive-include requirements *.txt
 recursive-include docs *.md
 recursive-include tests *.py *.png *.json
+recursive-include tests/fixtures/benchmark *.txt *.md
+recursive-include eval/benchmarks *.json *.jsonl *.md *.log
 global-exclude *.py[cod]
 global-exclude __pycache__

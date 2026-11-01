@@ -1,0 +1,20 @@
+{
+  "README.md": "f3ba85014388c0fff17cd58707d89c892d73f0e1b5b35d78dec6ab7e50b77830",
+  "acquisition/MPDocBench.json": "3b6d90fb881c7d8e0b8b38e09c386b502688bc6599fb899dabfb37d129163cc7",
+  "acquisition/inventory-producer.py.txt": "9ec8f972827f0d48a2bdd9efc5320fe5fa5d104868e0240343b0591df65c02f4",
+  "benchmark-lock.json": "39f3dc09a9f9aa917f3ecf5f0deea690a7d1ed91ffb4e8e70803aac9e8dd7e08",
+  "manifests/MPDocBench.jsonl": "785f18884dc586aa836f096dcba7c96c1fd0cc50a6dae9f62aabb0152d4bdcc8",
+  "manifests/MarathonDocBench.jsonl": "2515b579828e787c6cc928421abd6c693086d64084ba26a459f82ccf21a9fe76",
+  "scorer/SHA256SUMS.json": "6be4e2f2875728061c8505cdef1d086387fd86a47402caf164eeceb871c101ca",
+  "scorer/export.json": "0b8747b09ce55f87759a872acb24b1f83c70abdb929eeb3169b1df25e40fc3a9",
+  "scorer/marathon/report.json": "e62309c8e7f7bdafd6cf0fa3813908438cc86e57bf70a759b8a827883a237242",
+  "scorer/marathon/stderr.log": "f16bbc37989504c9617eb958d06bc032fbd0d3493bbbd93925724ef758d9f728",
+  "scorer/marathon/stdout.log": "d47c8cd1785a0049d444dc87bf2010822fafd4f0b8973823794af47675df0feb",
+  "scorer/producer-source-mapping.json": "66c5c29fce1e621b58025d44aac6e65678ada279f3dcd2deb081d766fe80e7cf",
+  "scorer/qwen/report.json": "ab49b12923be31c5550138568cf22bc89213e3310170a3e4b6f8be43637ce4bc",
+  "scorer/qwen/stderr.log": "2f903e30043e8ddc7165cf9468d40110924b2cb82281e500b338a678ca823f3f",
+  "scorer/qwen/stdout.log": "a947a08c509e1ca268a06370405d4d9219d6a18fb6472e10716968cf7f2a88df",
+  "scorer/verified-import-receipt.json": "5027035337cb6e09c4775729b260eb72cb4a74bce223e13bcda576baa3d2f610",
+  "scorer/windows-marathon-fork-failure.log": "bd1cd7a34eeacee3750b09774cf3400d13dc4f55b2e5d82a5843bc50c09c996c",
+  "verification.json": "cd2940b6d96766b65d9556cd79946a06a8f9a7a422e8c8dc842bd8e7c57e65e9"
+}

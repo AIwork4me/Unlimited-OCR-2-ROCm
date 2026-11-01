@@ -1,0 +1,21 @@
+# Isolated optional CPU scorer environment; never install into the GPU environment.
+# Upstream has no top-level requirements.txt at the frozen commit. These are
+# integration pins, not a claim that upstream declared these exact versions.
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.13.1
+scikit-image==0.20.0
+matplotlib==3.9.4
+pillow==10.4.0
+lxml==5.3.0
+apted==1.0.3
+Levenshtein==0.27.1
+evaluate==0.4.3
+beautifulsoup4==4.13.4
+pylatexenc==2.10
+func_timeout==4.3.5
+loguru==0.7.3
+mmeval==0.2.1
+PyYAML==6.0.2
+tqdm==4.67.1
+tabulate==0.9.0

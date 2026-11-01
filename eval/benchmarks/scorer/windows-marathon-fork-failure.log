@@ -1,0 +1,27 @@
+  0%|                                                                                                                 | 0/1 [00:00<?, ?it/s]  0%|                                                                                                                 | 0/1 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "<home>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "<home>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "<repository>\src\unlimited_ocr_2_rocm\benchmark\worker.py", line 272, in <module>
+    raise SystemExit(main())
+  File "<repository>\src\unlimited_ocr_2_rocm\benchmark\worker.py", line 226, in main
+    report = selftest(output, save_name)
+  File "<repository>\src\unlimited_ocr_2_rocm\benchmark\worker.py", line 178, in selftest
+    pipeline = pipeline_fixture(output, save_name)
+  File "<repository>\src\unlimited_ocr_2_rocm\benchmark\worker.py", line 65, in pipeline_fixture
+    End2EndEval(End2EndDataset(cfg), metrics, str(gt), save_name + "/pipeline")
+  File "<repository>\.b\benchmark-ci-marathon-2\dataset\end2end_dataset.py", line 179, in __init__
+    self.samples = self.get_matched_elements(filtered_gt_samples, pred_folder)
+  File "<repository>\.b\benchmark-ci-marathon-2\dataset\end2end_dataset.py", line 652, in get_matched_elements
+    res = _mp_worker((self, sample, pred_folder, save_time))
+  File "<repository>\.b\benchmark-ci-marathon-2\dataset\end2end_dataset.py", line 111, in _mp_worker
+    return _run_with_budget(ds._process_one_doc, sample, pred_folder, save_time)
+  File "<repository>\.b\benchmark-ci-marathon-2\dataset\end2end_dataset.py", line 72, in _run_with_budget
+    ctx = mp.get_context('fork')
+  File "<home>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\multiprocessing\context.py", line 243, in get_context
+    return super().get_context(method)
+  File "<home>\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\lib\multiprocessing\context.py", line 193, in get_context
+    raise ValueError('cannot find context for %r' % method) from None
+ValueError: cannot find context for 'fork'
