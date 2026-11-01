@@ -135,3 +135,17 @@ def execution_plan(manifest_docs: list[dict[str, Any]], config: dict[str, Any]) 
         else:
             blocked[doc["id"]] = "NATIVE_UNSUPPORTED_OVER_15P"
     return {"executable": executable, "blocked": blocked}
+
+
+def new_observer_if_required(category: str, event_sink: Any = None) -> Any:
+    """The fifth policy REQUIRES the guard-collision observer on every
+    campaign-class attempt (the all--inf guard corner is LIVE at budget
+    39321). Returns an uninstalled observer for campaign-class documents
+    (the caller installs it on the decode module and MUST uninstall it in a
+    finally block), None otherwise; raises without the module rather than
+    silently skipping the safety contract."""
+    if category != "CAMPAIGN_POLICY_REQUIRED":
+        return None
+    from unlimited_ocr_2_rocm.collision_observer import GuardCollisionObserver
+
+    return GuardCollisionObserver(event_sink=event_sink)

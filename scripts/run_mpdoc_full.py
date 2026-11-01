@@ -351,9 +351,18 @@ def worker_command(args: argparse.Namespace) -> int:
             ngram_policy = _REPO_ROOT / config["ngram_policy_repo_path"]
 
     from unlimited_ocr_2_rocm.benchmark.watchdog import ResourceWatchdog
+    from unlimited_ocr_2_rocm.collision_observer import locate_decode_module
     from unlimited_ocr_2_rocm.doctor import memory_snapshot
     from unlimited_ocr_2_rocm.inference import run_native
     from unlimited_ocr_2_rocm.model import load_model
+
+    # The fifth policy requires the guard-collision observer on EVERY
+    # campaign-class attempt; an observer abort propagates as a worker
+    # failure (fail closed, no retry).
+    collision_evidence: list[dict[str, Any]] = []
+    observer = campaign.new_observer_if_required(
+        classification["category"], collision_evidence.append
+    )
 
     def _gpu_allocated_bytes() -> int:
         import torch
@@ -365,6 +374,8 @@ def worker_command(args: argparse.Namespace) -> int:
     watchdog = None
     try:
         model = load_model(args.model_cache, offline=True)
+        if observer is not None:
+            observer.install(locate_decode_module(model.model))
         # L1.1-B measured envelope: 16 GiB GPU-allocated hard gate with a
         # heartbeat in the attempt directory. A breach triggers the watchdog's
         # safe abort; the parent records the attempt as FAIL, never as a
@@ -388,6 +399,8 @@ def worker_command(args: argparse.Namespace) -> int:
         )
         report["worker_load_seconds"] = round(time.time() - started, 3)
         watchdog.stop()
+        if observer is not None:
+            report["observer_collision"] = observer.export_events()["collision"]
         report["watchdog"] = watchdog.receipt()["watchdog"]
         sanitized = json.loads(
             json.dumps(
@@ -404,6 +417,11 @@ def worker_command(args: argparse.Namespace) -> int:
         (attempt_directory / "model-evidence.json").write_text(
             json.dumps(model.evidence, indent=1, sort_keys=True) + "\n", "utf-8"
         )
+        if observer is not None:
+            observer.uninstall()
+            (attempt_directory / "collision-observer-events.json").write_text(
+                json.dumps(observer.export_events(), indent=1) + "\n", "utf-8"
+            )
         benchmark_runner.write_outcome(
             result_path,
             {"kind": "ok", "report": report, "memory_final": memory_snapshot()},
@@ -413,6 +431,10 @@ def worker_command(args: argparse.Namespace) -> int:
 
         if watchdog is not None:
             watchdog.stop()
+        if observer is not None:
+            (attempt_directory / "collision-observer-events.json").write_text(
+                json.dumps(observer.export_events(), indent=1) + "\n", "utf-8"
+            )
         benchmark_runner.write_outcome(
             result_path,
             {

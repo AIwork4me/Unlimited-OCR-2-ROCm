@@ -224,3 +224,16 @@ def test_gate_10_run_identity_tamper_refuses(tmp_path: Path) -> None:
     (run.path / "run.json").write_text(json.dumps(data), "utf-8")
     with pytest.raises(ValueError, match="identity hash mismatch"):
         Run(run.path)
+
+
+def test_observer_required_for_campaign_class_only() -> None:
+    """The fifth policy's collision-observer contract: campaign-class attempts
+    get an observer; production-class attempts must not silently grow one."""
+    from unlimited_ocr_2_rocm.benchmark.campaign import new_observer_if_required
+
+    assert new_observer_if_required("PRODUCTION_ADMITTED") is None
+    observer = new_observer_if_required("CAMPAIGN_POLICY_REQUIRED")
+    assert observer is not None
+    seen: list[dict] = []
+    observer2 = new_observer_if_required("CAMPAIGN_POLICY_REQUIRED", seen.append)
+    assert observer2 is not None and seen == []
