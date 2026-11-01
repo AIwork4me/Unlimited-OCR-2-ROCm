@@ -1,0 +1,67 @@
+{
+ "claim_limit": "Small predeclared MPDocBench subset; NOT full MPDocBench accuracy, NOT leaderboard parity, NOT full dataset completion",
+ "config": {
+  "claim_limit": "Small predeclared MPDocBench subset; NOT full MPDocBench accuracy, NOT leaderboard parity, NOT full dataset completion",
+  "label": "REAL_DATA_INTEGRATION_ONLY",
+  "max_new_tokens": 8192,
+  "max_pages_per_request": 5,
+  "max_pixels_per_page": 16000000,
+  "page_hash_gate": "eval/benchmarks/g05/datasets/MPDocBench-page-index.json",
+  "runner": "scripts/run_mpdoc_sample.py (ledger-integrated P1.5)",
+  "schema": 1,
+  "selection_documents": [
+   "handwritten_chn_375d58b7"
+  ],
+  "selection_sha256": "0ce25dafb463e89144f43c8e53c78773dc912c5d26c5865a2b030f8a496382a6",
+  "timeout_seconds_per_document": 3600.0
+ },
+ "counts": {
+  "FAIL": 0,
+  "NOT_RUN": 419,
+  "OOM": 0,
+  "PASS": 1,
+  "TIMEOUT": 0,
+  "TRUNCATED": 0
+ },
+ "dataset": "MPDocBench",
+ "documents": [
+  {
+   "attempt_wall_seconds": 43.702,
+   "attempts": 1,
+   "doc_id": "handwritten_chn_375d58b7",
+   "finish_reason": "stop",
+   "output_tokens": 430,
+   "pages": 2,
+   "reason": "",
+   "state": "PASS"
+  }
+ ],
+ "environment": {
+  "gpu": {
+   "arch": null,
+   "name": null
+  },
+  "packages": {
+   "huggingface-hub": "0.36.0",
+   "tokenizers": "0.21.4",
+   "torch": "2.12.0+rocm7.2",
+   "transformers": "4.52.1",
+   "triton-rocm": "3.7.0"
+  },
+  "platform": "linux",
+  "python": "3.10.20"
+ },
+ "expected_documents": 420,
+ "label": "REAL_DATA_INTEGRATION_ONLY",
+ "run_id": "e438812a4b4e91f2fe7591aad291e77633b9caf0b1a330bd3b73911107cd73a6",
+ "schema": 1,
+ "selection_documents": [
+  "handwritten_chn_375d58b7"
+ ],
+ "selection_sha256": "0ce25dafb463e89144f43c8e53c78773dc912c5d26c5865a2b030f8a496382a6",
+ "status": "PARTIAL",
+ "worker_identity": {
+  "script": "scripts/run_mpdoc_sample.py",
+  "supervision": "subprocess"
+ }
+}
