@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import time
@@ -27,13 +28,6 @@ PRODUCTION_MAX_NEW_TOKENS = 8192
 # forged. Extending this table for future experiments (e.g. additional
 # reviewed RCA policies) requires a new pinned digest landed by a reviewed
 # commit — never a loosening of the gate.
-AUTHORIZED_BUDGET_POLICIES: dict[str, dict[str, Any]] = {
-    "5e7eec56c047d51205638bf6b833547bc9740cbfb0374c93f035556e688fa635": {
-        "experiment": "P2A_OUTPUT_TOKEN_BUDGET_RCA",
-        "budgets": frozenset({12288, 16384}),
-    },
-}
-
 #: Pinned digest of the frozen P2-B policy (eval/experiments/p2b-ngram-suppression/
 #: policy.json). The gate compares the presented file against this digest, so a
 #: locally forged schema-1 policy cannot authorize suppression
@@ -67,6 +61,31 @@ _AUTHORIZED_NGRAM_POLICIES: dict[str, str] = {
     EXPECTED_L11_B_POLICY_SHA256: "L11_FIFTEEN_PAGE_NATIVE_B",
 }
 
+# The ONLY budget policies the API-layer budget gate admits, pinned by exact
+# content digest. A schema-valid but unpinned policy is worthless: it can be
+# forged. Extending this table for future experiments (e.g. additional
+# reviewed RCA policies) requires a new pinned digest landed by a reviewed
+# commit — never a loosening of the gate.
+AUTHORIZED_BUDGET_POLICIES: dict[str, dict[str, Any]] = {
+    "5e7eec56c047d51205638bf6b833547bc9740cbfb0374c93f035556e688fa635": {
+        "experiment": "P2A_OUTPUT_TOKEN_BUDGET_RCA",
+        "budgets": frozenset({12288, 16384}),
+    },
+    # The L1 and L1.1-B policies authorize the official-class budget 39321 for
+    # their own predeclared single-document experiments ONLY (same digests as
+    # _AUTHORIZED_NGRAM_POLICIES above, suppression side). Without these
+    # entries the merged digest-pinned budget gate would refuse the reviewed
+    # L1 drivers that the pinned digests exist to admit.
+    EXPECTED_L1_POLICY_SHA256: {
+        "experiment": "L1_FIFTEEN_PAGE_NATIVE",
+        "budgets": frozenset({39321}),
+    },
+    EXPECTED_L11_B_POLICY_SHA256: {
+        "experiment": "L11_FIFTEEN_PAGE_NATIVE_B",
+        "budgets": frozenset({39321}),
+    },
+}
+
 
 def validate_ngram(ngram_size: int, ngram_window: int, policy_path: Path | None) -> None:
     """No-repeat n-gram suppression is opt-in via the frozen policies only.
@@ -89,14 +108,20 @@ def validate_ngram(ngram_size: int, ngram_window: int, policy_path: Path | None)
             "silently coerced to 100 by the frozen model, not the official 1024)"
         )
     try:
-        policy = json.loads(policy_path.read_text(encoding="utf-8"))
-    except (OSError, ValueError) as error:
+        raw = policy_path.read_bytes()
+    except OSError as error:
         raise ValueError(f"Unreadable experimental n-gram policy: {error}") from error
-    experiment = _AUTHORIZED_NGRAM_POLICIES.get(file_sha256(policy_path))
+    # Single read: digest and parse consume the same buffer, so a file swapped
+    # between the two steps cannot present one identity and another content.
+    experiment = _AUTHORIZED_NGRAM_POLICIES.get(hashlib.sha256(raw).hexdigest())
     if experiment is None:
         raise ValueError(
             "Experimental n-gram policy digest is not one of the pinned frozen identities"
         )
+    try:
+        policy = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError) as error:
+        raise ValueError(f"Unreadable experimental n-gram policy: {error}") from error
     sizes = policy.get("ngram_sizes") if isinstance(policy, dict) else None
     if (
         policy.get("schema") != 1
@@ -133,9 +158,11 @@ def validate_budget(
             "experimental budget policy (production defaults are unchanged)"
         )
     try:
-        digest = file_sha256(policy_path)
+        raw = policy_path.read_bytes()
     except OSError as error:
         raise ValueError(f"Unreadable experimental budget policy: {error}") from error
+    # Single read: digest and parse consume the same buffer (no TOCTOU window).
+    digest = hashlib.sha256(raw).hexdigest()
     authorized = AUTHORIZED_BUDGET_POLICIES.get(digest)
     if authorized is None:
         raise ValueError(
@@ -143,8 +170,8 @@ def validate_budget(
             f"({digest}); schema-only validation is refused"
         )
     try:
-        policy = json.loads(policy_path.read_text(encoding="utf-8"))
-    except (OSError, ValueError) as error:
+        policy = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError) as error:
         raise ValueError(f"Unreadable experimental budget policy: {error}") from error
     if policy.get("experiment") != authorized["experiment"]:
         raise ValueError(
@@ -225,13 +252,18 @@ def validate_l1_policy(
     resource/supervision admission block. ``expected_digest`` exists for
     tests; production always pins the frozen constant.
     """
-    digest = expected_digest if expected_digest is not None else file_sha256(policy_path)
+    try:
+        raw = policy_path.read_bytes()
+    except OSError as error:
+        raise ValueError(f"Unreadable L1 policy: {error}") from error
+    # Single read (no TOCTOU window): digest and parse consume the same bytes.
+    digest = expected_digest if expected_digest is not None else hashlib.sha256(raw).hexdigest()
     experiment = _AUTHORIZED_NGRAM_POLICIES.get(digest)
     if experiment is None:
         raise ValueError("L1 policy digest is not the pinned frozen identity")
     try:
-        policy = json.loads(policy_path.read_text(encoding="utf-8"))
-    except (OSError, ValueError) as error:
+        policy = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError) as error:
         raise ValueError(f"Unreadable L1 policy: {error}") from error
     if not isinstance(policy, dict) or policy.get("experiment") != experiment:
         raise ValueError(f"L1 policy experiment name is not {experiment!r}")

@@ -61,10 +61,16 @@ def test_nonpositive_window_is_refused_before_the_model_coerces_it():
 def test_malformed_or_missing_policy_is_refused(tmp_path):
     broken = tmp_path / "broken.json"
     broken.write_text("{not json", "utf-8")
-    with pytest.raises(ValueError, match="Unreadable"):
+    # Digest-first gate: an unpinned digest is refused before any parse, so a
+    # malformed AND unpinned file reports the digest refusal (still fail-closed);
+    # absent files report the read failure. Both are hard ValueError refusals.
+    with pytest.raises(ValueError, match="pinned frozen identities"):
         validate_ngram(35, 1024, broken)
     with pytest.raises(ValueError, match="Unreadable"):
         validate_ngram(35, 1024, tmp_path / "absent.json")
+    # A malformed file at a PINNED digest is impossible by construction; assert
+    # the pinned path still parses normally.
+    validate_ngram(35, 1024, POLICY_PATH)
 
 
 def test_driver_policy_binding_and_admission(tmp_path):

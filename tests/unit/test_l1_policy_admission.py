@@ -17,13 +17,36 @@ import pytest
 
 from unlimited_ocr_2_rocm.config import file_sha256
 from unlimited_ocr_2_rocm.inference import (
+    AUTHORIZED_BUDGET_POLICIES,
     EXPECTED_L1_POLICY_SHA256,
+    validate_budget,
     validate_l1_policy,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 POLICY_PATH = REPO_ROOT / "eval/experiments/l1-fifteen-page/policy.json"
 SELECTION_PATH = REPO_ROOT / "eval/experiments/l1-fifteen-page/selection.json"
+
+
+def test_l1_policy_digest_is_pinned_in_the_budget_gate() -> None:
+    """Regression for the independent release review P1: the merged digest-pinned
+    validate_budget must admit the L1/L1.1-B policies at 39321 — otherwise the
+    reviewed drivers physically refuse their own authorized policies."""
+    from unlimited_ocr_2_rocm.inference import EXPECTED_L11_B_POLICY_SHA256
+
+    assert validate_budget(39321, POLICY_PATH) is None
+    l11 = REPO_ROOT / "eval/experiments/l11-fifteen-page-native-b/policy.json"
+    assert validate_budget(39321, l11) is None
+    assert AUTHORIZED_BUDGET_POLICIES[EXPECTED_L1_POLICY_SHA256]["budgets"] == frozenset({39321})
+    assert AUTHORIZED_BUDGET_POLICIES[EXPECTED_L11_B_POLICY_SHA256]["budgets"] == frozenset({39321})
+    # The budget gate still binds experiment identity and refuses cross-use:
+    # the P2-A policy must NOT admit 39321, and the L1 policy must NOT admit
+    # a budget outside its frozen list.
+    p2a = REPO_ROOT / "eval/experiments/p2a-token-budget/policy.json"
+    with pytest.raises(ValueError, match="not authorized"):
+        validate_budget(39321, p2a)
+    with pytest.raises(ValueError, match="not authorized"):
+        validate_budget(16384, POLICY_PATH)
 
 
 def _accept(policy_path: Path = POLICY_PATH) -> dict:
