@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 import time
 import traceback
 from pathlib import Path
@@ -17,6 +19,78 @@ from .config import file_sha256
 from .doctor import memory_snapshot, write_json
 from .model import NativeModel
 from .output import assess, convert_readable, normalize, preserve_raw
+
+PRODUCTION_MAX_NEW_TOKENS = 8192
+
+# The ONLY policies the API-layer budget gate admits, pinned by exact content
+# digest. A schema-valid but unpinned policy is worthless: it can be forged.
+# Extending this table for future experiments (e.g. additional reviewed RCA
+# policies) requires a new pinned digest landed by a reviewed commit — never a
+# loosening of the gate.
+AUTHORIZED_BUDGET_POLICIES: dict[str, dict[str, Any]] = {
+    "5e7eec56c047d51205638bf6b833547bc9740cbfb0374c93f035556e688fa635": {
+        "experiment": "P2A_OUTPUT_TOKEN_BUDGET_RCA",
+        "budgets": frozenset({12288, 16384}),
+    },
+}
+
+
+def validate_budget(
+    max_new_tokens: int,
+    policy_path: Path | None = None,
+    *,
+    experiment: str | None = None,
+) -> None:
+    """Production cap is 8192; larger budgets require the pinned P2-A policy.
+
+    Fail closed: the policy file must hash-match a trusted, code-pinned
+    digest BEFORE it is parsed, and its experiment identity and budget set
+    must match the pinned entry. A forged schema-valid JSON, a tampered
+    policy, a missing file, a wrong experiment identity, or an unknown
+    budget is refused. Production defaults are unchanged.
+    """
+    if 1 <= max_new_tokens <= PRODUCTION_MAX_NEW_TOKENS:
+        return
+    if policy_path is None:
+        raise ValueError(
+            "max_new_tokens beyond the production cap requires the frozen "
+            "experimental budget policy (production defaults are unchanged)"
+        )
+    try:
+        raw = policy_path.read_bytes()
+    except OSError as error:
+        raise ValueError(f"Unreadable experimental budget policy: {error}") from error
+    digest = hashlib.sha256(raw).hexdigest()
+    authorized = AUTHORIZED_BUDGET_POLICIES.get(digest)
+    if authorized is None:
+        raise ValueError(
+            "Experimental budget policy digest is not pinned by this gate "
+            f"({digest}); schema-only validation is refused"
+        )
+    try:
+        policy = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError) as error:
+        raise ValueError(f"Unreadable experimental budget policy: {error}") from error
+    if policy.get("experiment") != authorized["experiment"]:
+        raise ValueError(
+            f"Pinned policy experiment identity {policy.get('experiment')!r} "
+            f"does not match the authorized {authorized['experiment']!r}"
+        )
+    if experiment is not None and policy.get("experiment") != experiment:
+        raise ValueError(
+            f"Policy experiment identity {policy.get('experiment')!r} does not "
+            f"match the requested experiment {experiment!r}"
+        )
+    budgets = policy.get("budgets_new_tokens")
+    if (
+        policy.get("schema") != 1
+        or not isinstance(budgets, list)
+        or max_new_tokens not in budgets
+        or set(budgets) != set(authorized["budgets"])
+    ):
+        raise ValueError(
+            f"Requested budget {max_new_tokens} is not authorized by the frozen policy"
+        )
 
 
 def validate_inputs(images: list[Path], multi: bool) -> list[Path]:
@@ -39,13 +113,14 @@ def run_native(
     multi: bool = False,
     truth: list[dict[str, Any]] | None = None,
     max_new_tokens: int = 1024,
+    budget_policy: Path | None = None,
+    experiment: str | None = None,
 ) -> dict[str, Any]:
     import torch
     from PIL import Image
 
     images = validate_inputs(images, multi)
-    if not 1 <= max_new_tokens <= 8192:
-        raise ValueError("max_new_tokens must be between 1 and 8192")
+    validate_budget(max_new_tokens, budget_policy, experiment=experiment)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Use a fresh output directory to preserve earlier evidence")
     output.mkdir(parents=True, exist_ok=True)
@@ -66,6 +141,8 @@ def run_native(
         "max_new_tokens": max_new_tokens,
         "model": native.evidence,
     }
+    if budget_policy is not None:
+        report["experimental_budget_policy_sha256"] = file_sha256(budget_policy)
     previous_kernels = len(native.kernels)
     previous_vision = len(getattr(native, "vision", []))
     torch.cuda.reset_peak_memory_stats()

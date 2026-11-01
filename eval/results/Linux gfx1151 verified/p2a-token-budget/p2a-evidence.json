@@ -1,0 +1,250 @@
+{
+ "budgets": {
+  "baseline": 8192,
+  "experimental": [
+   12288,
+   16384
+  ]
+ },
+ "diagnostic_scores": {
+  "12288": {
+   "FigureF1": 58.333333333333336,
+   "FormulaCDM": 93.27333333333337,
+   "HeadingTEDS": 31.30220992831542,
+   "ReadOrderEdit": 55.51232214451902,
+   "T-TableTEDS": null,
+   "T-TextEdit": 45.26417815648552,
+   "TableTEDS": 46.97210854673949,
+   "TextEdit": 54.54001818035361
+  },
+  "16384": {
+   "FigureF1": 58.333333333333336,
+   "FormulaCDM": 93.27333333333337,
+   "HeadingTEDS": 31.30220992831542,
+   "ReadOrderEdit": 55.51232214451902,
+   "T-TableTEDS": null,
+   "T-TextEdit": 45.237346756878495,
+   "TableTEDS": 46.97210854673949,
+   "TextEdit": 54.00786896869927
+  },
+  "8192": {
+   "FigureF1": 58.333333333333336,
+   "FormulaCDM": 90.64432989690727,
+   "HeadingTEDS": 29.070067071172563,
+   "ReadOrderEdit": 51.380779763787196,
+   "T-TableTEDS": null,
+   "T-TextEdit": 45.30344559405163,
+   "TableTEDS": 46.97210854673949,
+   "TextEdit": 53.94495078644432
+  }
+ },
+ "documents": [
+  "handwritten_chn_1ae487be",
+  "newspaper_chn_eb87830d",
+  "newspaper_eng_ed12985c",
+  "paper_chn_3567e55d"
+ ],
+ "experiment": "P2A_OUTPUT_TOKEN_BUDGET_RCA",
+ "label": "EXPERIMENTAL_BUDGET_ONLY",
+ "per_budget_outcomes": {
+  "12288": {
+   "handwritten_chn_1ae487be": {
+    "expected_pages": 5,
+    "finish_reason": "stop",
+    "generation_seconds": 731.5,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.78,
+    "output_tokens": 10021,
+    "prefill_seconds": 4.682585954666138,
+    "prompt_token_count_actual": 1375,
+    "raw_page_markers": 5,
+    "raw_sha256": "0656c23d64e62a64505577dfdb2f124617a7c21fceec9b8fa6a8e063061af01a",
+    "reason": "",
+    "rss_peak_gib": 2.47,
+    "state": "PASS"
+   },
+   "newspaper_chn_eb87830d": {
+    "expected_pages": 5,
+    "finish_reason": "length",
+    "generation_seconds": 975.6,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.77,
+    "output_tokens": 12288,
+    "prefill_seconds": 4.674013137817383,
+    "prompt_token_count_actual": 1375,
+    "raw_page_markers": 1,
+    "raw_sha256": "169c0f78a5723be756438c29f66c8b1277ac2099b35b33a8beb10dbbc27265db",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.51,
+    "state": "TRUNCATED"
+   },
+   "newspaper_eng_ed12985c": {
+    "expected_pages": 4,
+    "finish_reason": "length",
+    "generation_seconds": 1034.2,
+    "gpu_peak_allocated_gib": 8.54,
+    "gpu_peak_reserved_gib": 8.76,
+    "output_tokens": 12288,
+    "prefill_seconds": 4.202791929244995,
+    "prompt_token_count_actual": 1101,
+    "raw_page_markers": 2,
+    "raw_sha256": "42b8814a9a17b73ee216bf0669a0bc489c1d6225bd2ef9e30b9f38d96baad2a6",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.5,
+    "state": "TRUNCATED"
+   },
+   "paper_chn_3567e55d": {
+    "expected_pages": 5,
+    "finish_reason": "stop",
+    "generation_seconds": 625.1,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.78,
+    "output_tokens": 8245,
+    "prefill_seconds": 4.756391763687134,
+    "prompt_token_count_actual": 1375,
+    "raw_page_markers": 5,
+    "raw_sha256": "bce0a994c54a2ce6066a4d1d9e22c7ee09e1944b94747039edb895e2509b217f",
+    "reason": "",
+    "rss_peak_gib": 2.47,
+    "state": "PASS"
+   }
+  },
+  "16384": {
+   "handwritten_chn_1ae487be": {
+    "expected_pages": 5,
+    "finish_reason": "stop",
+    "generation_seconds": 740.2,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.78,
+    "output_tokens": 10021,
+    "prefill_seconds": 4.689698219299316,
+    "prompt_token_count_actual": 1375,
+    "raw_page_markers": 5,
+    "raw_sha256": "0656c23d64e62a64505577dfdb2f124617a7c21fceec9b8fa6a8e063061af01a",
+    "reason": "",
+    "rss_peak_gib": 2.47,
+    "state": "PASS"
+   },
+   "newspaper_chn_eb87830d": {
+    "expected_pages": 5,
+    "finish_reason": "length",
+    "generation_seconds": 1549.1,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.77,
+    "output_tokens": 16384,
+    "prefill_seconds": 4.714050054550171,
+    "prompt_token_count_actual": 1375,
+    "raw_page_markers": 1,
+    "raw_sha256": "1bcd27ced24c65a29c7f1279c185362cfa522c0ec16cb1494cd5ecccc71ac6cc",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.55,
+    "state": "TRUNCATED"
+   },
+   "newspaper_eng_ed12985c": {
+    "expected_pages": 4,
+    "finish_reason": "length",
+    "generation_seconds": 1547.3,
+    "gpu_peak_allocated_gib": 8.54,
+    "gpu_peak_reserved_gib": 8.76,
+    "output_tokens": 16384,
+    "prefill_seconds": 4.239523410797119,
+    "prompt_token_count_actual": 1101,
+    "raw_page_markers": 2,
+    "raw_sha256": "be6290bb0fc95bea5c5a65a7aaef1412a6d95a319400f109b4e71168ce0b1247",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.54,
+    "state": "TRUNCATED"
+   },
+   "paper_chn_3567e55d": {
+    "expected_pages": 5,
+    "finish_reason": "stop",
+    "generation_seconds": 640.0,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.78,
+    "output_tokens": 8245,
+    "prefill_seconds": 4.714359521865845,
+    "prompt_token_count_actual": 1375,
+    "raw_page_markers": 5,
+    "raw_sha256": "bce0a994c54a2ce6066a4d1d9e22c7ee09e1944b94747039edb895e2509b217f",
+    "reason": "",
+    "rss_peak_gib": 2.47,
+    "state": "PASS"
+   }
+  },
+  "8192": {
+   "handwritten_chn_1ae487be": {
+    "expected_pages": 5,
+    "finish_reason": "length",
+    "generation_seconds": 551.7,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.78,
+    "output_tokens": 8192,
+    "prefill_seconds": 4.6438210010528564,
+    "prompt_token_count_actual": null,
+    "raw_page_markers": 4,
+    "raw_sha256": "037816c48a7019380da8d349740b6d8565237ee6b745676e26ca7d65969e75a6",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.45,
+    "state": "TRUNCATED"
+   },
+   "newspaper_chn_eb87830d": {
+    "expected_pages": 5,
+    "finish_reason": "length",
+    "generation_seconds": 547.0,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.77,
+    "output_tokens": 8192,
+    "prefill_seconds": 4.674932479858398,
+    "prompt_token_count_actual": null,
+    "raw_page_markers": 1,
+    "raw_sha256": "1dbd8191bd59edf7deb6af5beece3f88669f99e0fc9a7ce990b2fd4a3f159a27",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.48,
+    "state": "TRUNCATED"
+   },
+   "newspaper_eng_ed12985c": {
+    "expected_pages": 4,
+    "finish_reason": "length",
+    "generation_seconds": 559.4,
+    "gpu_peak_allocated_gib": 8.54,
+    "gpu_peak_reserved_gib": 8.76,
+    "output_tokens": 8192,
+    "prefill_seconds": 4.105424642562866,
+    "prompt_token_count_actual": null,
+    "raw_page_markers": 2,
+    "raw_sha256": "11b4146fd91f88b84a67e7513934cf7298d399b22a43accf81b0cbe0683162fc",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.47,
+    "state": "TRUNCATED"
+   },
+   "paper_chn_3567e55d": {
+    "expected_pages": 5,
+    "finish_reason": "length",
+    "generation_seconds": 600.9,
+    "gpu_peak_allocated_gib": 8.55,
+    "gpu_peak_reserved_gib": 8.78,
+    "output_tokens": 8192,
+    "prefill_seconds": 4.65995454788208,
+    "prompt_token_count_actual": null,
+    "raw_page_markers": 5,
+    "raw_sha256": "0371c20db708c5100a33faf0ac24f5545a170ac05b56ee49a8cc9b1a03266ac5",
+    "reason": "TOKEN_LIMIT_NATIVE_LENGTH",
+    "rss_peak_gib": 2.47,
+    "state": "TRUNCATED"
+   }
+  }
+ },
+ "policy_sha256": "5e7eec56c047d51205638bf6b833547bc9740cbfb0374c93f035556e688fa635",
+ "runs": {
+  "12288": {
+   "run_id": "3031002c75cf010df83db5331ded8e278c91fe728dcf80a86ecc3cc9b3b871f5"
+  },
+  "16384": {
+   "run_id": "f7ad7a3a3b4c059e82c3df1874c2c5d8aa34c39e8c346d13fd7db7b9f8c0c582"
+  },
+  "8192": {
+   "run_id": "bf55b5099f2cd8e334a8793b4c77c7a85273b873ca08a0fb195e81108c10e677"
+  }
+ },
+ "schema": 1
+}
