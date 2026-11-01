@@ -245,10 +245,10 @@ WHITELIST: dict[str, dict[str, str]] = {
         "reason": "historical build-container infra path",
     },
     "requirements/linux-cp310.lock.txt": {
-        "sha256": "c4b364128e8182ccc72c901e057f5bfcbc7761594301f9576b860f260615f090",
+        "sha256": "549072addd8b84fcc65e7422b22fec7c304566302de96f7d6a86309a80bc9447",
         "reason": (
-            "transitional: pre-#14 lock carrying a historical local wheelhouse URL; "
-            "replaced by the clean portable lock in the immediately following PR #14 merge"
+            "clean portable dependency lock introduced by PR #14 (no machine-local "
+            "wheel URL; torchvision acquired via the separately verified wheelhouse)"
         ),
     },
     "tests/fixtures/benchmark/synthetic.json": {
