@@ -319,6 +319,10 @@ WHITELIST: dict[str, dict[str, str]] = {
         "sha256": "a753e7d01c08861213a201dfc1a8635a1540c1eed510157c4af2633d2524833e",
         "reason": "sanitizer test with a synthetic path literal",
     },
+    "tests/unit/test_windows_benchmark_runner.py": {
+        "sha256": "dfaf2f9b03a623efd50b203f737c45d0fecf16d86828ad57b510a9017c4c0c1c",
+        "reason": "sanitizer test with synthetic private-path refusal literals",
+    },
 }
 
 
