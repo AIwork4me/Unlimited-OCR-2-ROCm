@@ -57,13 +57,17 @@ def main(argv: list[str] | None = None) -> int:
         for root in args.scan:
             violations.extend(scan_tree(root, prefix=_anchored_prefix(root)))
     else:
-        for path in args.paths:
-            if path.is_file():
-                from unlimited_ocr_2_rocm.publication import publication_findings
+        from unlimited_ocr_2_rocm.publication import publication_findings
 
-                findings = publication_findings(path)
-                if findings:
-                    violations.append((str(path), findings))
+        for path in args.paths:
+            if not path.is_file():
+                # Refuse silently-passing inputs: a directory or missing path
+                # must never look like a clean scan.
+                violations.append((str(path), ["not a readable file"]))
+                continue
+            findings = publication_findings(path)
+            if findings:
+                violations.append((str(path), findings))
 
     if violations:
         print(json.dumps({"publication_gate": "FAIL", "violations": violations}, indent=1))

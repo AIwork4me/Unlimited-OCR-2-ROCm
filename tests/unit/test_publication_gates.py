@@ -288,5 +288,47 @@ def test_staged_whitelisted_tamper_blocked() -> None:
         shutil.rmtree(clone.parent, ignore_errors=True)
 
 
+def test_staged_rename_smuggle_blocked() -> None:
+    """git mv of a GT-shaped file must still be scanned at its new path
+    (PR #24 filtered rename entries out of the staged listing)."""
+    clone = _make_temp_clone()
+    try:
+        slice_dir = clone / "eval" / "results" / "pollution-probe"
+        slice_dir.mkdir(parents=True)
+        _write(slice_dir / "benign-name.json", [_annotation_row(doc_id="rename_doc")])
+        subprocess.run(["git", "-C", str(clone), "add", "-A"], check=True, capture_output=True)
+        subprocess.run(
+            ["git", "-C", str(clone), "commit", "-q", "-m", "setup"],
+            check=True,
+            capture_output=True,
+        )
+        subprocess.run(
+            ["git", "-C", str(clone), "mv", str(slice_dir / "benign-name.json"), "moved.json"],
+            check=True,
+            capture_output=True,
+        )
+        violations = scan_staged(clone)
+        assert violations and violations[0][0] == "moved.json"
+    finally:
+        shutil.rmtree(clone.parent, ignore_errors=True)
+
+
+def test_staged_scan_reads_index_not_worktree() -> None:
+    """Stage a GT-shaped file, then scrub the worktree copy: the staged scan
+    must still flag it (PR #24 hashed the mutable worktree file)."""
+    clone = _make_temp_clone()
+    try:
+        slice_dir = clone / "eval" / "results" / "pollution-probe"
+        slice_dir.mkdir(parents=True)
+        target = slice_dir / "index-probe.json"
+        _write(target, [_annotation_row(doc_id="index_doc")])
+        subprocess.run(["git", "-C", str(clone), "add", "-A"], check=True, capture_output=True)
+        target.unlink()
+        violations = scan_staged(clone)
+        assert violations and violations[0][0].endswith("index-probe.json")
+    finally:
+        shutil.rmtree(clone.parent, ignore_errors=True)
+
+
 def test_clean_staged_scan_passes() -> None:
     assert scan_staged(REPO_ROOT) == []

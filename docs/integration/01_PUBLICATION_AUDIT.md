@@ -35,15 +35,15 @@ Full inventory is embedded in `src/unlimited_ocr_2_rocm/publication.py` (`WHITEL
 - 12 `tests/fixtures/*.png` — repo-owned synthetic OCR fixture images (required by the test suite).
 - 1 `eval/g1/windows-gfx1151/evidence.tar.gz` — sealed G1 evidence (independent review PASS).
 - 1 `Unlimited-OCR-2.pdf` — user-supplied third-party paper (disclosed provenance).
-- 7 `eval/wheel-validation/.../logs/*.gz` — historical wheel-build logs.
-- 6 provenance/container records with historical CI-runner/container paths (`eval/rca/gfx1151-rocm7141/provenance-*.json` ×5, `baseline-provenance.json`, `build-tool-preinstall.json`).
+- 8 `eval/wheel-validation/.../logs/*.gz` — historical wheel-build logs.
+- 7 provenance/container records with historical CI-runner/container paths (`eval/rca/gfx1151-rocm7141/provenance-*.json` ×5, `baseline-provenance.json`, `build-tool-preinstall.json`).
 - 3 `*-redaction-red.txt` — synthetic redaction self-test content.
 - 5 historical Linux validation receipts (`dataset-verification*.json` ×3, `page-repair-mp3lan_0165-43.json`, `mpdoc-sample/run-receipt.json`) — contain local home paths + host name; PR #17 review ruled "history intact, future receipts sanitized"; this audit concurs (no credential, no GT; evidentiary value is in hashes/metrics).
 - 2 prose docs (`docs/validation/LINUX_DATASET_READINESS.md`, `docs/reviews/PR16_INDEPENDENT_REVIEW.md`) — historical host-layout prose.
 - 4 `tests/unit/test_*.py` — sanitizer tests using synthetic path literals.
 
 Notes:
-- `requirements/linux-cp310.lock.txt` initially matched in a prototype run — false positive: the pre-#14 version (still on the #23 side of the stack) contains the private wheel URL that #14 exists to remove; the post-#14 content is clean. The final gate correctly passes it.
+- `requirements/linux-cp310.lock.txt` is dual-versioned across the merge sequence: the pre-#14 chain version (which contains the historical local wheelhouse URL that #14 exists to remove) is what `main` holds between the #11 and #14 merges, so it is pinned as an explicitly **transitional** whitelist entry; the #14 merge must be preceded by updating that pin to the clean portable lock (`549072ad…`), which is folded into the #14 merge step.
 - `machine_id_sha256` receipt fields are one-way hashes; the gate does not flag them (documented decision — a hash cannot be dereferenced, and the prior review accepted them).
 
 ## 4. PR #24 gate extraction: reproduction of known defects and fixes
@@ -51,7 +51,7 @@ Notes:
 1. `--scan .` whitelist-anchoring defect (recorded as `scripts/publication_gate.py:80` in PR #24): `Path(".").resolve().relative_to(repo_root).as_posix()` evaluates to `"."`, producing `./`-prefixed report paths that miss every whitelist key — the command fails on exactly the whitelisted fixtures it should admit, which must not be disguised as a successful scan. **Reproduced** against the PR #24 code by inspection of the anchoring arithmetic and the recorded failure; **fixed** in the extraction (both `scan_tree` default-prefix derivation and the CLI anchor via the script location; `--scan .` and `--scan $PWD` are now equivalent), with a regression test (`test_gate_cli_scan_dot_anchors_whitelist` / `test_scan_repo_root_anchors_whitelist`).
 2. `--staged` skipped whitelisted files entirely in PR #24 (a tampered whitelisted file passed stage-time checking and relied on a later CI tree scan). **Fixed**: staged whitelisted files are hash-verified at commit time (`test_staged_whitelisted_tamper_blocked`).
 3. Detection strengthened beyond PR #24: recursive nested annotation rows, JSONL annotation lines, Windows home paths, host-identity keys, credential material, and binary files fail CLOSED (PR #24 admitted unknown opaque binaries silently). Every strengthening was verified to add zero new hits on the current scope, so the whitelist above is complete for the post-merge tree.
-4. PR #24's whitelist referenced files that must exist independently of #24 (they all pre-exist on main or arrive via the 14 PRs); each of its 19 entries was re-verified — all are covered by the new 49-entry whitelist with fresh hashes computed from the post-merge tree (e.g. the receipts' hashes changed on the #23 side of the stack vs. the values PR #24 pinned; the new pins match the content that will actually merge — and the gate re-verifies at every merge, so any drift fails closed).
+4. PR #24's whitelist referenced files that must exist independently of #24 (they all pre-exist on main or arrive via the 14 PRs); each of its 19 entries was re-verified against the post-merge tree — all 19 hashes are byte-identical to the new pins (0 drift), and the gate re-verifies every pin at each merge, so any future drift fails closed.
 
 ## 5. Historical GT exposure (mission 1.3 — audit and record only)
 

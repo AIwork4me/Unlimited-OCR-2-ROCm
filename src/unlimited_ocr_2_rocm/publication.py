@@ -17,8 +17,10 @@ verifying whitelisted files by hash instead of skipping them.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -243,7 +245,10 @@ WHITELIST: dict[str, dict[str, str]] = {
     },
     "requirements/linux-cp310.lock.txt": {
         "sha256": "c4b364128e8182ccc72c901e057f5bfcbc7761594301f9576b860f260615f090",
-        "reason": "reviewed historical content",
+        "reason": (
+            "transitional: pre-#14 lock carrying a historical local wheelhouse URL; "
+            "replaced by the clean portable lock in the immediately following PR #14 merge"
+        ),
     },
     "tests/fixtures/benchmark/synthetic.json": {
         "sha256": "a0974da4a956c0a8f65840ffd35cd2d1251035de433dca9cf710b32cb4d18997",
@@ -461,32 +466,55 @@ def scan_tree(root: Path, *, prefix: str | None = None) -> list[tuple[str, list[
 def scan_staged(repo_root: Path) -> list[tuple[str, list[str]]]:
     """Scan files staged in the git index of ``repo_root``.
 
-    Whitelisted staged files are verified against their pinned hash (an edit
-    re-trips the gate at commit time, not only at tree-scan time).
+    Everything is read from the INDEX (``git cat-file blob :path``), never
+    from the worktree, so the check cannot be defeated by modifying the
+    worktree after staging, and rename entries (R) are scanned at their new
+    path — PR #24 filtered renames out with ``--diff-filter=ACM`` and hashed
+    the mutable worktree copy. Deleted paths resolve no index blob and are
+    skipped (a removal cannot leak content). Whitelisted staged files are
+    verified against their pinned hash (an edit re-trips the gate at commit
+    time, not only at tree-scan time).
     """
     import subprocess
 
     out = subprocess.run(
-        ["git", "-C", str(repo_root), "diff", "--cached", "--name-only", "--diff-filter=ACM"],
+        ["git", "-C", str(repo_root), "diff", "--cached", "--name-only", "-z"],
         check=True,
         capture_output=True,
-        text=True,
     ).stdout
     violations: list[tuple[str, list[str]]] = []
-    for line in out.splitlines():
-        if not line.strip():
+    for raw in out.split(b"\x00"):
+        rel = raw.decode("utf-8", errors="replace")
+        if not rel:
             continue
-        rel = line
-        path = repo_root / rel
+        staged = subprocess.run(
+            ["git", "-C", str(repo_root), "cat-file", "blob", f":{rel}"],
+            check=False,
+            capture_output=True,
+        )
+        if staged.returncode != 0 or not staged.stdout:
+            continue  # deleted from the index, or unreadable: nothing to scan
+        blob = staged.stdout
         entry = WHITELIST.get(rel)
         if entry is not None:
-            if not path.is_file() or file_sha256(path) != entry["sha256"]:
+            if hashlib.sha256(blob).hexdigest() != entry["sha256"]:
                 violations.append((rel, ["whitelisted file hash changed — re-review required"]))
             continue
-        findings = publication_findings(path) if path.is_file() else []
+        probe = _index_blob_probe(rel, blob)
+        try:
+            findings = publication_findings(probe)
+        finally:
+            probe.unlink(missing_ok=True)
         if findings:
             violations.append((rel, findings))
     return violations
+
+
+def _index_blob_probe(rel: str, blob: bytes) -> Path:
+    """Materialize an index blob under the original suffix for classification."""
+    probe = Path(tempfile.gettempdir()) / f"pubgate-index-{abs(hash(rel))}-{Path(rel).name}"
+    probe.write_bytes(blob)
+    return probe
 
 
 def scan_tracked(repo_root: Path) -> list[tuple[str, list[str]]]:
