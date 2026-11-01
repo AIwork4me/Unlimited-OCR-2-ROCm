@@ -209,7 +209,7 @@ def main() -> int:
 
         # -- 2. refusals on a reusable PREPARED probe stage (failures roll back
         #       before RUNNING, so the probe stays PREPARED for the next case)
-        gate.prepare(PROBE, identity, plan_for(policy_path, "PROBE"))
+        gate.prepare(PROBE, identity, plan_for(policy_path, PROBE))
 
         def tampered(group: str, path: Path, action, restore) -> None:
             original = path.read_bytes()
@@ -370,7 +370,7 @@ def main() -> int:
         )
 
         # -- 3. worker crash is terminal FAIL and blocks its stage (semantics)
-        gate.prepare(CRASH, identity, plan_for(policy_path, "CRASH"))
+        gate.prepare(CRASH, identity, plan_for(policy_path, CRASH))
         expect_reject(
             "worker_crash_is_fail",
             "Worker failed; no correctness qualification",
@@ -414,7 +414,7 @@ def main() -> int:
             lock.close()
 
         # -- 5. the real-document arm admits after golden PASS (gate 8 positive)
-        gate.prepare(ARM, identity, plan_for(policy_path, "ARM"))
+        gate.prepare(ARM, identity, plan_for(policy_path, ARM))
         try:
             state = dispatch(gate, ARM, identity)
             record(
@@ -426,7 +426,7 @@ def main() -> int:
             record("dependent_arm_admit_after_golden", "REJECTED", reason=str(error))
 
         # -- 6. with the device busy, a third experiment is refused (gate 9)
-        gate.prepare(ARM3, identity, plan_for(policy_path, "ARM3"))
+        gate.prepare(ARM3, identity, plan_for(policy_path, ARM3))
         expect_reject(
             "refuse_unfinished_device_work",
             "Unfinished device work",
