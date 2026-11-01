@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import tempfile
 from pathlib import Path
@@ -484,7 +485,10 @@ def scan_staged(repo_root: Path) -> list[tuple[str, list[str]]]:
     ).stdout
     violations: list[tuple[str, list[str]]] = []
     for raw in out.split(b"\x00"):
-        rel = raw.decode("utf-8", errors="replace")
+        # fsdecode/surrogateescape round-trips non-UTF-8 paths back through
+        # os.fsencode in the subprocess call below; errors="replace" here would
+        # corrupt the path and silently skip the entry.
+        rel = os.fsdecode(raw)
         if not rel:
             continue
         staged = subprocess.run(
@@ -512,8 +516,10 @@ def scan_staged(repo_root: Path) -> list[tuple[str, list[str]]]:
 
 def _index_blob_probe(rel: str, blob: bytes) -> Path:
     """Materialize an index blob under the original suffix for classification."""
-    probe = Path(tempfile.gettempdir()) / f"pubgate-index-{abs(hash(rel))}-{Path(rel).name}"
-    probe.write_bytes(blob)
+    descriptor, name = tempfile.mkstemp(prefix="pubgate-index-", suffix=Path(rel).suffix)
+    probe = Path(name)
+    with os.fdopen(descriptor, "wb") as handle:
+        handle.write(blob)
     return probe
 
 
@@ -532,7 +538,7 @@ def scan_tracked(repo_root: Path) -> list[tuple[str, list[str]]]:
     ).stdout
     violations: list[tuple[str, list[str]]] = []
     for raw in out.split(b"\x00"):
-        rel = raw.decode("utf-8", errors="replace")
+        rel = os.fsdecode(raw)
         if not rel:
             continue
         path = repo_root / rel
