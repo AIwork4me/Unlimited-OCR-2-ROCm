@@ -326,6 +326,10 @@ WHITELIST: dict[str, dict[str, str]] = {
         "sha256": "dfaf2f9b03a623efd50b203f737c45d0fecf16d86828ad57b510a9017c4c0c1c",
         "reason": "sanitizer test with synthetic private-path refusal literals",
     },
+    "tests/unit/test_scorer_bridge.py": {
+        "sha256": "15e681eb494bbdd43028a63b578a33ad691d19b36fc37c84263cca73908123b6",
+        "reason": "bridge sanitizer test with a synthetic private-path refusal literal",
+    },
 }
 
 
