@@ -85,11 +85,21 @@ def execution_plan(manifest_docs: list[dict[str, Any]], config: dict[str, Any]) 
 
     Campaign-class documents enter the executable set only when the run
     config carries an authorization block naming the PINNED fifth campaign
-    policy digest (``CAMPAIGN_POLICY_SHA256``); a foreign digest is refused
-    with ``CAMPAIGN_POLICY_DIGEST_MISMATCH``. Unsupported documents NEVER do.
-    Even with a matching authorization, execution stays fail-closed end to
-    end: the worker refuses campaign-class documents without a frozen budget
-    policy in the run config, and the pinned budget gate inside
+    policy digest (``CAMPAIGN_POLICY_SHA256``) AND the run config's recorded
+    budget policy digest equals the same pin — the authorization block and
+    the frozen policy presented to the worker must be one identity. A
+    foreign digest is refused with ``CAMPAIGN_POLICY_DIGEST_MISMATCH``.
+
+    When the config carries the prepare-time frozen class counts
+    (``expected_class_counts``), the LIVE manifest classification must match
+    them exactly; a mismatch (a modified selection, a different dataset
+    revision, a silently reclassified stratum) blocks every campaign-class
+    document with ``CAMPAIGN_POLICY_MANIFEST_MISMATCH``.
+
+    Unsupported documents NEVER enter the executable set. Even with a
+    matching authorization, execution stays fail-closed end to end: the
+    worker refuses campaign-class documents without a frozen budget policy
+    in the run config, and the pinned budget gate inside
     ``inference.validate_budget`` admits 39321 only for the same digest.
     """
     executable: list[str] = []
@@ -98,12 +108,25 @@ def execution_plan(manifest_docs: list[dict[str, Any]], config: dict[str, Any]) 
     authorized_digest = (
         authorization.get("campaign_policy_sha256") if isinstance(authorization, dict) else None
     )
+    expected_counts = config.get("expected_class_counts")
+    manifest_mismatch = False
+    if expected_counts is not None:
+        live_counts: dict[str, int] = {}
+        for doc in manifest_docs:
+            row = classify_document(len(doc["pages"]))
+            live_counts[row["category"]] = live_counts.get(row["category"], 0) + 1
+        manifest_mismatch = live_counts != dict(expected_counts)
     for doc in sorted(manifest_docs, key=lambda row: row["id"]):
         row = classify_document(len(doc["pages"]))
         if row["category"] == "PRODUCTION_ADMITTED":
             executable.append(doc["id"])
         elif row["category"] == "CAMPAIGN_POLICY_REQUIRED":
-            if authorized_digest == CAMPAIGN_POLICY_SHA256:
+            if manifest_mismatch:
+                blocked[doc["id"]] = "CAMPAIGN_POLICY_MANIFEST_MISMATCH"
+            elif (
+                authorized_digest == CAMPAIGN_POLICY_SHA256
+                and config.get("budget_policy_sha256") == CAMPAIGN_POLICY_SHA256
+            ):
                 executable.append(doc["id"])
             elif authorized_digest:
                 blocked[doc["id"]] = "CAMPAIGN_POLICY_DIGEST_MISMATCH"

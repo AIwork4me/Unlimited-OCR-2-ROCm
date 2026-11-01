@@ -165,6 +165,17 @@ def dryrun_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _expected_class_counts(manifest: dict[str, Any]) -> dict[str, int]:
+    """Prepare-time frozen classification of the manifest, for the plan-level
+    selection binding: execution_plan refuses an authorized campaign when the
+    LIVE manifest classification no longer matches these counts."""
+    counts: dict[str, int] = {}
+    for doc in manifest["documents"]:
+        row = campaign.classify_document(len(doc["pages"]))
+        counts[row["category"]] = counts.get(row["category"], 0) + 1
+    return counts
+
+
 def prepare_command(args: argparse.Namespace) -> int:
     """Frozen run inputs for the FULL dataset (no selection, no subsetting)."""
     if args.max_new_tokens > campaign.PRODUCTION_BUDGET:
@@ -202,6 +213,8 @@ def prepare_command(args: argparse.Namespace) -> int:
         "campaign_budget": campaign.CAMPAIGN_BUDGET,
         "timeout_seconds_per_document": args.timeout_seconds,
         "page_hash_gate": PAGE_INDEX_REPO_PATH,
+        "full_scope_manifest_sha256": report["manifest_sha256"],
+        "expected_class_counts": _expected_class_counts(manifest),
         "claim_limit": (
             "Full-scope campaign manifest. Executable set is gated by "
             "authorization + a reviewed campaign policy; blocked documents "
@@ -422,6 +435,19 @@ def _self_test_outcome(
     count = len(pages)
     good_raw = "<PAGE><BLOCK>text[0,0,1,1]<FORK>hello" * count
     mode = args.self_test_failure
+    # Mirror the real worker's artifact set: the supervised path always runs
+    # the ResourceWatchdog and lands its heartbeat receipt in the attempt
+    # directory; the CPU failure-injection path does the same so the ledger's
+    # telemetry enforcement sees an identical shape.
+    (attempt_directory / "heartbeat.json").write_text(
+        json.dumps(
+            {"watchdog": {"breach": None, "limit_bytes": 0, "peak_allocated_bytes": 1,
+                          "samples": 1, "sink_errors": 0}},
+            indent=1,
+        )
+        + "\n",
+        "utf-8",
+    )
     if mode == "hang":
         time.sleep(args.timeout_seconds + 60)
         return None

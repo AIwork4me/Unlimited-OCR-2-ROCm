@@ -125,6 +125,14 @@ class Run:
                 except ValueError:
                     state, reason = "FAIL", "EMPTY_MALFORMED_OR_PAGE_MISMATCH"
         # Raw is persisted even if conversion fails. No normalization of model bytes.
+        if state == "PASS" and not (pending / "heartbeat.json").is_file():
+            # Telemetry enforcement at commit time, applied AFTER the
+            # truncation/structure classification (a TRUNCATED attempt keeps
+            # its honest state): the real worker always runs the
+            # ResourceWatchdog and lands its heartbeat receipt in the attempt
+            # directory. A resource-gated PASS without that telemetry cannot
+            # be trusted — it becomes FAIL.
+            state, reason = "FAIL", "MISSING_WATCHDOG_TELEMETRY"
         if state == "PASS":
             try:
                 for level in re.findall(
@@ -175,6 +183,11 @@ class Run:
                 raise ValueError("Invalid committed attempt identity/state")
             if row["state"] == "PASS" and "prediction.md" not in seal:
                 raise ValueError("Missing PASS prediction hash")
+            if row["state"] == "PASS" and "heartbeat.json" not in seal:
+                # Telemetry enforcement: a PASS attempt must carry the watchdog
+                # heartbeat receipt in its own hash seal — a resource gate that
+                # produced no telemetry cannot be trusted as PASS.
+                raise ValueError("Missing watchdog heartbeat receipt in PASS attempt")
             rows.append(row)
         return rows
 

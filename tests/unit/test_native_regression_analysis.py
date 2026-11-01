@@ -7,6 +7,15 @@ from pathlib import Path
 
 import pytest
 
+def _worker_heartbeat(run, doc_id, attempt):
+    """Mirror the real worker: the supervised path always lands the watchdog
+    heartbeat receipt in the attempt directory before commit."""
+    pending = run.path / "documents" / doc_id / f"{attempt}.pending"
+    pending.mkdir(parents=True, exist_ok=True)
+    (pending / "heartbeat.json").write_text(
+        json.dumps({"watchdog": {"breach": None}}), "utf-8"
+    )
+
 
 @pytest.fixture
 def analysis():

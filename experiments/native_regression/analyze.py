@@ -393,6 +393,11 @@ def replay_failures(source_arm: Path, fixtures: Path, output: Path) -> dict[str,
 
     def finish(name: str, text: str, summary: dict[str, Any] = accepted) -> str:
         attempt = run.begin(name)
+        # Mirror the real worker: a resource-gated PASS carries the watchdog
+        # heartbeat receipt in its attempt directory (ledger commit enforces).
+        (run.path / "documents" / name / f"{attempt}.pending" / "heartbeat.json").write_text(
+            json.dumps({"watchdog": {"breach": None}}), "utf-8"
+        )
         run.finish(name, attempt, text, "PASS", metadata(summary, labels[name]))
         return attempt
 

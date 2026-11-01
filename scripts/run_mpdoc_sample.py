@@ -281,6 +281,20 @@ def self_test_outcome(
     (attempt_directory / "selftest.json").write_text(
         json.dumps({"mode": mode, "pages": count}) + "\n", "utf-8"
     )
+    # Mirror the real worker's artifact set: the supervised path always runs
+    # the ResourceWatchdog and lands its heartbeat receipt in the attempt
+    # directory; the CPU failure-injection path does the same so the ledger's
+    # telemetry enforcement (PASS requires a sealed heartbeat) sees an
+    # identical shape.
+    (attempt_directory / "heartbeat.json").write_text(
+        json.dumps(
+            {"watchdog": {"breach": None, "limit_bytes": 0, "peak_allocated_bytes": 1,
+                          "samples": 1, "sink_errors": 0}},
+            indent=1,
+        )
+        + "\n",
+        "utf-8",
+    )
     return {"kind": "selftest", "mode": mode, "raw": report["raw_output"], "report": report}
 
 

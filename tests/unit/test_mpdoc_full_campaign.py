@@ -82,15 +82,71 @@ def test_execution_plan_refuses_campaign_docs_without_authorization() -> None:
     }
     # An authorization entry flips campaign-class docs into the executable set,
     # but NEVER the unsupported ones — and ONLY when it names the pinned
-    # fifth campaign-policy digest, not an arbitrary string.
+    # fifth campaign-policy digest AND the run config presents the SAME
+    # digest as its frozen budget policy (one identity, both gates).
     authorized = {
         "schema": 1,
         "campaign_policy_sha256": CAMPAIGN_POLICY_SHA256,
         "authorized_by": "owner",
     }
-    plan = execution_plan(manifest_docs, config={"schema": 1, "authorization": authorized})
+    plan = execution_plan(
+        manifest_docs,
+        config={
+            "schema": 1,
+            "authorization": authorized,
+            "budget_policy_sha256": CAMPAIGN_POLICY_SHA256,
+        },
+    )
     assert plan["executable"] == ["camp_b", "prod_a"]  # sorted by id
     assert plan["blocked"] == {"huge_c": "NATIVE_UNSUPPORTED_OVER_15P"}
+
+
+def test_execution_plan_refuses_authorization_without_matching_budget_policy() -> None:
+    """A run whose authorization names the fifth digest but whose recorded
+    budget policy is absent or different is not one identity — fail closed."""
+    manifest_docs = [{"id": "camp_b", "pages": [{"path": f"p{i}.png"} for i in range(8)]}]
+    authorized = {
+        "schema": 1,
+        "campaign_policy_sha256": CAMPAIGN_POLICY_SHA256,
+        "authorized_by": "owner",
+    }
+    for budget_digest in (None, "e" * 64):
+        config = {"schema": 1, "authorization": authorized}
+        if budget_digest:
+            config["budget_policy_sha256"] = budget_digest
+        plan = execution_plan(manifest_docs, config=config)
+        assert plan["executable"] == []
+        assert plan["blocked"]["camp_b"] == "CAMPAIGN_POLICY_DIGEST_MISMATCH"
+
+
+def test_execution_plan_refuses_a_modified_selection() -> None:
+    """Prepare freezes the manifest class counts; an authorized campaign whose
+    LIVE manifest classification no longer matches them (a modified selection,
+    a different revision, a reclassified stratum) must not execute."""
+    from unlimited_ocr_2_rocm.benchmark.campaign import CAMPAIGN_MAX_PAGES
+
+    frozen_counts = {"PRODUCTION_ADMITTED": 1, "CAMPAIGN_POLICY_REQUIRED": 1}
+    ok_docs = [
+        {"id": "prod_a", "pages": [{"path": "p0.png"} for _ in range(3)]},
+        {"id": "camp_b", "pages": [{"path": "p0.png"} for _ in range(8)]},
+    ]
+    authorized = {"schema": 1, "campaign_policy_sha256": CAMPAIGN_POLICY_SHA256}
+    config = {
+        "schema": 1,
+        "authorization": authorized,
+        "budget_policy_sha256": CAMPAIGN_POLICY_SHA256,
+        "expected_class_counts": frozen_counts,
+    }
+    plan = execution_plan(ok_docs, config=config)
+    assert plan["executable"] == ["camp_b", "prod_a"]
+    # ONE extra campaign-class document appears (selection modified 1 -> 2):
+    drifted_docs = ok_docs + [
+        {"id": "camp_c", "pages": [{"path": "p0.png"} for _ in range(CAMPAIGN_MAX_PAGES)]}
+    ]
+    plan = execution_plan(drifted_docs, config=config)
+    assert plan["executable"] == ["prod_a"]
+    assert plan["blocked"]["camp_b"] == "CAMPAIGN_POLICY_MANIFEST_MISMATCH"
+    assert plan["blocked"]["camp_c"] == "CAMPAIGN_POLICY_MANIFEST_MISMATCH"
 
 
 def test_execution_plan_refuses_campaign_docs_under_a_foreign_digest() -> None:

@@ -182,6 +182,7 @@ def test_native_metadata_real_ledger_requires_complete_pages(tmp_path, kind, sta
     metadata = completion.completion_metadata(result, expected_pages=2, max_new_tokens=8192)
     metadata["memory"] = {"rss": 1}
     attempt = run.begin("z")
+    _worker_heartbeat(run, "z", attempt)
     run.finish("z", attempt, result["text"], "PASS", metadata)
     assert run.attempts("z")[-1]["state"] == state
     assert (run.path / "documents/z/000001/raw.txt").read_bytes() == result["text"].encode()
@@ -194,6 +195,7 @@ def test_generic_ledger_does_not_inherit_native_one_million_character_bound(tmp_
     run = make_run(tmp_path)
     raw = ("<PAGE><BLOCK>text[0,0,1,1]<FORK>" + "x" * 500_001) * 2
     attempt = run.begin("z")
+    _worker_heartbeat(run, "z", attempt)
     run.finish(
         "z",
         attempt,
@@ -210,6 +212,16 @@ def test_generic_ledger_does_not_inherit_native_one_million_character_bound(tmp_
     assert (run.path / "documents/z/000001/raw.txt").read_bytes() == raw.encode()
 
 
+def _worker_heartbeat(run, doc_id, attempt):
+    """Mirror the real worker: the supervised path always lands the watchdog
+    heartbeat receipt in the attempt directory before commit."""
+    pending = run.path / "documents" / doc_id / f"{attempt}.pending"
+    pending.mkdir(parents=True, exist_ok=True)
+    (pending / "heartbeat.json").write_text(
+        json.dumps({"watchdog": {"breach": None}}), "utf-8"
+    )
+
+
 def test_completion_retry_preserves_interrupted_and_committed_bytes(tmp_path, monkeypatch):
     from test_benchmark_ledger import make_run
 
@@ -221,6 +233,7 @@ def test_completion_retry_preserves_interrupted_and_committed_bytes(tmp_path, mo
     meta = completion.completion_metadata(result, expected_pages=2, max_new_tokens=8192)
     meta["memory"] = {}
     second = run.begin("z")
+    _worker_heartbeat(run, "z", second)
     run.finish("z", second, result["text"], "PASS", meta)
     committed = run.path / "documents/z" / second
     before = {p.name: p.read_bytes() for p in committed.iterdir()}
