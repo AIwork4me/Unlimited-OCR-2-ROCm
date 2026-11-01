@@ -1,0 +1,3 @@
+# Evidence receipts retain their recorded byte hashes in every checkout.
+.gitattributes text eol=lf
+*.json -text -whitespace
