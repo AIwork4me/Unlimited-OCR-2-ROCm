@@ -78,6 +78,8 @@ def prepare_command(args: argparse.Namespace) -> int:
     selection = benchmark_runner.selection_documents(args.selection)
     lock = json.loads(args.lock.read_text("utf-8"))
     pin = lock["datasets"]["MPDocBench"]
+    if file_sha256(args.ground_truth) != pin["ground_truth_sha256"]:
+        raise ValueError("Annotations do not match the frozen ground-truth identity")
     manifest = inventory(
         args.ground_truth,
         args.dataset_root,
