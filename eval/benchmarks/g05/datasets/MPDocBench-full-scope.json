@@ -1,0 +1,93 @@
+{
+  "archive_bytes": 600152009,
+  "archive_sha256": "f9a4c05d586b11a749e60ce13565090fdfbf8f4387fd35e5511a4a1a3d682d22",
+  "data_root": ".b/g05-data/MPDocBench",
+  "dataset": "MPDocBench",
+  "expected_documents": 420,
+  "expected_pages": 3135,
+  "ground_truth_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
+  "independently_verified_documents": 420,
+  "independently_verified_original_pages_unchanged": 3051,
+  "independently_verified_pages": 3135,
+  "independently_verified_slidevqa_pages": 84,
+  "independently_verified_test_shards": [
+    {
+      "bytes": 99745883,
+      "path": "data/test-00000-of-00012.parquet",
+      "sha256": "d4a56e03d915c969080250e84d24eaf4eea56af3965c81496e2464d3832708a4"
+    },
+    {
+      "bytes": 103188042,
+      "path": "data/test-00001-of-00012.parquet",
+      "sha256": "1fd65418b36865697d83628863ff8d4ff4311f4f7b0b0292c198bed22c200f10"
+    },
+    {
+      "bytes": 109984948,
+      "path": "data/test-00002-of-00012.parquet",
+      "sha256": "b9fe3da8b6df79d51fa67025f18cd2d3b400d40f5c74db1cb7892535c92fa828"
+    },
+    {
+      "bytes": 110068100,
+      "path": "data/test-00003-of-00012.parquet",
+      "sha256": "e13af33fd53a43477690db6e0ced05e5c05e47e667095bfe3275b3a69f315f4c"
+    },
+    {
+      "bytes": 98343708,
+      "path": "data/test-00004-of-00012.parquet",
+      "sha256": "3a31c7c188d91bb9f730ab7b1af0933f3306fc0bf33489c2e311eb70a5f68cae"
+    },
+    {
+      "bytes": 111857605,
+      "path": "data/test-00005-of-00012.parquet",
+      "sha256": "b430fff03af458ccabc303fcea403c0562f9f06884672c1a112ed04ee8258648"
+    },
+    {
+      "bytes": 98091203,
+      "path": "data/test-00006-of-00012.parquet",
+      "sha256": "ae8a06a58d65ced6357367cd35b85c4fd279548eea67ef26a285e29fb3d36dbc"
+    },
+    {
+      "bytes": 90509062,
+      "path": "data/test-00007-of-00012.parquet",
+      "sha256": "2024fcb4e71cd9d7b36385a484fb000d9d1598603406e9300fdc84f771ed9367"
+    },
+    {
+      "bytes": 108305379,
+      "path": "data/test-00008-of-00012.parquet",
+      "sha256": "6d432a0fd605a9031d77dc860732c59ed56c76114d256c8db8717433dda34b9b"
+    },
+    {
+      "bytes": 61222079,
+      "path": "data/test-00009-of-00012.parquet",
+      "sha256": "00ac117cbf540862c987195f3784e5fc3c69c76e2dff49e408736b966de09823"
+    },
+    {
+      "bytes": 52798346,
+      "path": "data/test-00010-of-00012.parquet",
+      "sha256": "331094c177635a955fc583450582c7b7a316dcfb20cf16918e9476f9e17b6d7f"
+    },
+    {
+      "bytes": 349825244,
+      "path": "data/test-00011-of-00012.parquet",
+      "sha256": "32cd35ab3d4fc61296650fc623f648d6f7067ce77f72ec327dcbff3667f7c03c"
+    }
+  ],
+  "missing_documents": [],
+  "missing_pages": [],
+  "original_page_inventory_sha256": "14c0be1d5c3324705437efbebb6e738b3e1e44f7b580c00c76f10db510a9e29a",
+  "page_hash_index": "eval/benchmarks/g05/datasets/MPDocBench-page-index.json",
+  "page_hash_index_sha256": "7279a5fcd2d0450e7dc492151c5ccbf92046e0eea37de9a30c5703a8cc824f9d",
+  "producer": "scripts/g05_reconcile_mpdoc.py",
+  "producer_sha256": "9512903dc05e0b41a5bb6835d24db92c83f417294676075e9bdb51b11c8361c4",
+  "redistribution": "Public files contain only IDs, counts, versions and hashes; restricted images, Parquet and GT remain ignored",
+  "schema": 1,
+  "scope_sha256": "785f18884dc586aa836f096dcba7c96c1fd0cc50a6dae9f62aabb0152d4bdcc8",
+  "serialization_runtime_receipt": "SlideVQA-runtime.json",
+  "serialization_runtime_receipt_sha256": "0089d683ef4bf494d906053fd5f8897ba700dc643facc3fc6ed4b36acd19ee3f",
+  "slidevqa_page_index_sha256": "58c4272457939da8b757f0febabce72dc4b8549b24d7c723553ae44054cadaea",
+  "slidevqa_receipt_sha256": "c7796705bc379befcf24ccbd7d68648881b986fc65e7eee3bdaab8bf952ac283",
+  "slidevqa_revision": "e780ea258d734958befbfaed19fa059584642ca8",
+  "source_constraints": "Retained MPDocBench image metadata and pinned NTT evaluation terms apply; no inferred legal permission",
+  "status": "VERIFIED_FULL_SCOPE",
+  "verification": "Separate process reread of all 3135 GT-defined page bytes, original ZIP and all 12 frozen SlideVQA shards"
+}

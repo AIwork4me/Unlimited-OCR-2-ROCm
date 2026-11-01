@@ -1,0 +1,10 @@
+{
+  "data_check_algorithms_ast_equivalent": true,
+  "normalization": "Ignore producer-location constant and two supplemental serialization runtime receipt metadata fields only; formatting and line positions excluded",
+  "original_producer": ".b/g05-data/mpdoc-full-reconcile.py",
+  "original_producer_sha256": "af3fd8d8ff3d674037823d2872486a288fab6e70026a1f3f127f7c1ad181c58a",
+  "original_producer_unchanged": true,
+  "schema": 1,
+  "tracked_producer": "scripts/g05_reconcile_mpdoc.py",
+  "tracked_producer_sha256": "9512903dc05e0b41a5bb6835d24db92c83f417294676075e9bdb51b11c8361c4"
+}

@@ -1,0 +1,7 @@
+<PAGE><BLOCK>title<LEVEL1>[0,0,100,100]<FORK>Heading
+<BLOCK>cross_text[0,100,100,200]<FORK>Alpha
+<BLOCK>cross_table[0,200,100,300]<FORK><table><tr><td>A</td></tr></table>
+<PAGE><BLOCK>append_text[0,0,100,100]<FORK>Beta
+<BLOCK>append_table[0,200,100,300]<FORK><table><tr><td>B</td></tr></table>
+<BLOCK>image[100,100,200,200]<FORK>
+<BLOCK>equation[300,300,500,400]<FORK>$$x+y=z$$

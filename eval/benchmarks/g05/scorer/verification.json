@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "published_artifact_hashes": 309,
+  "raw_artifact_hashes": 455,
+  "producer_hashes_match": true,
+  "both_profile_status": {
+    "qwen": "PASS",
+    "marathon": "PASS"
+  },
+  "active_descendants": 0,
+  "max_repo_relative_public_path": 100,
+  "measurements": {
+    "marathon-pipeline.log": {
+      "elapsed_seconds": 48.560818862999994,
+      "maximum_child_process_rss_kib": 239872,
+      "child_user_seconds": 9.036005,
+      "child_system_seconds": 8.499479,
+      "exit_code": 0
+    },
+    "qwen-pipeline.log": {
+      "elapsed_seconds": 49.034034758000004,
+      "maximum_child_process_rss_kib": 239676,
+      "child_user_seconds": 9.440571,
+      "child_system_seconds": 9.230703,
+      "exit_code": 0
+    },
+    "marathon-cases.log": {
+      "elapsed_seconds": 93.40316562500001,
+      "maximum_child_process_rss_kib": 210660,
+      "child_user_seconds": 26.497588,
+      "child_system_seconds": 24.38003,
+      "exit_code": 0
+    },
+    "qwen-cases.log": {
+      "elapsed_seconds": 98.622950433,
+      "maximum_child_process_rss_kib": 212668,
+      "child_user_seconds": 25.93889,
+      "child_system_seconds": 25.689218,
+      "exit_code": 0
+    }
+  }
+}

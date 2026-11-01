@@ -1,0 +1,138 @@
+{
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "tools": {
+    "node": {
+      "path": "<repo>/.b/g05-scorer/tools/node-v16.13.1-linux-x64/bin/node",
+      "binary_sha256": "c4dfb2d77ed7aa8e099a5923798642fc72fe312f2839bcbd95f9fb7b0560dd80",
+      "returncode": 0,
+      "stdout": "v16.13.1\n",
+      "stderr": ""
+    },
+    "xelatex": {
+      "path": "<repo>/.b/g05-scorer/bin/xelatex",
+      "binary_sha256": "f2a2c3f0af5a037766db2e7ab721ba6d85bb69b1e7fd6de40b0fde46bf2f43af",
+      "returncode": 0,
+      "stdout": "XeTeX 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian)\nkpathsea version 6.3.4/dev\nCopyright 2021 SIL International, Jonathan Kew and Khaled Hosny.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the XeTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the XeTeX source.\nPrimary author of XeTeX: Jonathan Kew.\nCompiled with ICU version 70.1; using 70.1\nCompiled with zlib version 1.2.11; using 1.2.11\nCompiled with FreeType2 version 2.11.1; using 2.11.1\nCompiled with Graphite2 version 1.3.14; using 1.3.14\nCompiled with HarfBuzz version 2.7.4; using 2.7.4\nCompiled with libpng version 1.6.37; using 1.6.37\nCompiled with pplib version v2.05 less toxic i hope\nCompiled with fontconfig version 2.13.1; using 2.13.1\n",
+      "stderr": ""
+    },
+    "xetex": {
+      "path": "/usr/bin/xetex",
+      "binary_sha256": "0b07eb99ca9d5f2de4268c95f33106b7bd4c0ae286f78414813a0585ccb16cc4",
+      "returncode": 0,
+      "stdout": "XeTeX 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian)\nkpathsea version 6.3.4/dev\nCopyright 2021 SIL International, Jonathan Kew and Khaled Hosny.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the XeTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the XeTeX source.\nPrimary author of XeTeX: Jonathan Kew.\nCompiled with ICU version 70.1; using 70.1\nCompiled with zlib version 1.2.11; using 1.2.11\nCompiled with FreeType2 version 2.11.1; using 2.11.1\nCompiled with Graphite2 version 1.3.14; using 1.3.14\nCompiled with HarfBuzz version 2.7.4; using 2.7.4\nCompiled with libpng version 1.6.37; using 1.6.37\nCompiled with pplib version v2.05 less toxic i hope\nCompiled with fontconfig version 2.13.1; using 2.13.1\n",
+      "stderr": ""
+    },
+    "kpsewhich": {
+      "path": "/usr/bin/kpsewhich",
+      "binary_sha256": "ae30057832d4870b13d3abcbf10187b538dc3439afff15d624a65b920dc7911b",
+      "returncode": 0,
+      "stdout": "kpathsea version 6.3.4/dev\nCopyright 2021 Karl Berry & Olaf Weber.\nLicense LGPLv2.1+: GNU Lesser GPL version 2.1 or later <https://gnu.org/licenses/lgpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n",
+      "stderr": ""
+    },
+    "magick": {
+      "path": "/usr/local/bin/magick",
+      "binary_sha256": "25d59b6dfe8aadf0bedba3fd5d80ba45fc9f51ed227874f3d5887375c074b586",
+      "returncode": 0,
+      "stdout": "Version: ImageMagick 7.1.2-26 Q16-HDRI x86_64 702175ac4:20260621 https://imagemagick.org\nCopyright: (C) 1999 ImageMagick Studio LLC\nLicense: https://imagemagick.org/license/\nFeatures: Cipher DPC HDRI OpenMP(4.5) \nDelegates (built-in): bzlib djvu fontconfig freetype heic jbig jng jp2 jpeg lcms lqr lzma openexr png raqm tiff webp x xml zlib\nCompiler: gcc (11.4)\n",
+      "stderr": ""
+    },
+    "gs": {
+      "path": "/usr/bin/gs",
+      "binary_sha256": "7354a9e165d960a4d55e2af5e7af3203777054dfd50228d99814860263ec09ff",
+      "returncode": 0,
+      "stdout": "9.55.0\n",
+      "stderr": ""
+    },
+    "fc-match": {
+      "path": "<repo>/.b/g05-scorer/tools/usr/bin/fc-match",
+      "binary_sha256": "146d16c6f3e6a0f7edfd2fd9724154a5ed0c0976de0087a0751f169093706d42",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "fontconfig version 2.13.1\n"
+    }
+  },
+  "environment_overrides": {
+    "PATH": "<repo>/.b/g05-scorer/bin:<repo>/.b/g05-scorer/tools/node-v16.13.1-linux-x64/bin:<repo>/.b/g05-scorer/tools/usr/bin:/usr/local/bin:/usr/bin:/bin",
+    "LD_LIBRARY_PATH": "<repo>/.b/g05-scorer/tools/usr/lib/x86_64-linux-gnu",
+    "FONTCONFIG_FILE": "<repo>/.b/g05-scorer/fontconfig.xml",
+    "FONTCONFIG_PATH": "<repo>/.b/g05-scorer",
+    "TEXMFHOME": "!!<repo>/.b/g05-scorer/tools/usr/share/texlive/texmf-dist",
+    "TEXMFVAR": "<repo>/.b/g05-scorer/cache/texmf",
+    "TEXMFCONFIG": "<repo>/.b/g05-scorer/cache/texmf-config",
+    "TEXMFCACHE": "<repo>/.b/g05-scorer/cache/texmf",
+    "TMPDIR": "<repo>/.b/g05-scorer/tmp",
+    "TMP": "<repo>/.b/g05-scorer/tmp",
+    "TEMP": "<repo>/.b/g05-scorer/tmp",
+    "MAGICK_TEMPORARY_PATH": "<repo>/.b/g05-scorer/tmp",
+    "MAGICK_TMPDIR": "<repo>/.b/g05-scorer/tmp",
+    "XDG_CACHE_HOME": "<repo>/.b/g05-scorer/cache",
+    "MPLCONFIGDIR": "<repo>/.b/g05-scorer/cache/matplotlib",
+    "HF_HOME": "<repo>/.b/g05-scorer/cache/huggingface",
+    "PIP_CACHE_DIR": "<repo>/.b/g05-scorer/cache/pip",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "<repo>/src",
+    "XDG_CONFIG_HOME": "<repo>/.b/g05-scorer/cache/config",
+    "HUGGINGFACE_HUB_CACHE": "<repo>/.b/g05-scorer/cache/huggingface/hub",
+    "TEXMFDBS": "{<repo>/.b/g05-scorer/tools/usr/share/texlive/texmf-dist,/usr/share/texmf,/usr/share/texlive/texmf-dist,/var/lib/texmf}",
+    "MPDOC_CDM_NPROC": "1",
+    "MPDOC_TEDS_NPROC": "1",
+    "MPDOC_EVAL_NPROC": "1"
+  },
+  "font": {
+    "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/a8b073bbf80f7226af03abeeb31e27017d5e3f67/OTF/SimplifiedChinese/SourceHanSansSC-Regular.otf",
+    "revision": "a8b073bbf80f7226af03abeeb31e27017d5e3f67",
+    "sha256": "84bbd4ace91d327b3ad1a581c688196278a4e41308520176f419180064e4af2b",
+    "license": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/a8b073bbf80f7226af03abeeb31e27017d5e3f67/LICENSE.txt"
+  },
+  "node_download": {
+    "url": "https://nodejs.org/dist/v16.13.1/node-v16.13.1-linux-x64.tar.xz",
+    "sha256": "a3721f87cecc0b52b0be8587c20776ac7305db413751db02c55aa2bffac15198"
+  },
+  "debs": [
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/f/fontconfig/fontconfig_2.13.1-4.2ubuntu5_amd64.deb",
+      "file": "fontconfig_2.13.1-4.2ubuntu5_amd64.deb",
+      "sha256": "9a844b4e8c27b76f39a00dd36dc833b2c99bfa24959df9b6b0749659c31a5c1c"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/t/teckit/teckit_2.5.11%2bds1-1_amd64.deb",
+      "file": "teckit_2.5.11+ds1-1_amd64.deb",
+      "sha256": "00cdf10929647107ad6070ea21fc4afaa3d6f97de30a18e82e4aae831d952231"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/t/texlive-lang/texlive-lang-chinese_2021.20220204-1_all.deb",
+      "file": "texlive-lang-chinese_2021.20220204-1_all.deb",
+      "sha256": "b3d8c66421311be770ba1eaa42f1877510483505d82cdaeb7e435dea84ebb545"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/t/texlive-base/texlive-xetex_2021.20220204-1_all.deb",
+      "file": "texlive-xetex_2021.20220204-1_all.deb",
+      "sha256": "be8ccd789f83a8ce2497aefc53cd370c25b2a54097a1a3709563906bb5897d9e"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libglvnd/libgl1_1.4.0-1_amd64.deb",
+      "file": "libgl1_1.4.0-1_amd64.deb",
+      "sha256": "4fb2bbff94bb1a59bbdb40041e7a8ab58db2a003a151f4055357af03f0b78666"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libglvnd/libglvnd0_1.4.0-1_amd64.deb",
+      "file": "libglvnd0_1.4.0-1_amd64.deb",
+      "sha256": "6956d8be93b160b439a043141a061adfd54561d877423a956ace84d2fb3bfb4e"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libglvnd/libglx0_1.4.0-1_amd64.deb",
+      "file": "libglx0_1.4.0-1_amd64.deb",
+      "sha256": "950068e8a3ad3905058d21a8c870c37989e48c0a537a7c57231c277af19f5395"
+    }
+  ],
+  "system_package_inventory": "fonts-lmodern 2.004.5-6.1 install ok installed\nghostscript 9.55.0~dfsg1-0ubuntu5.13 install ok installed\nlibc6 2.35-0ubuntu3.8 install ok installed\nlibfontconfig1 2.13.1-4.2ubuntu5 install ok installed\nlibfreetype6 2.11.1+dfsg-1ubuntu0.3 install ok installed\nlibglib2.0-0 2.72.4-0ubuntu2.9 install ok installed\nlibgs9 9.55.0~dfsg1-0ubuntu5.13 install ok installed\nlibharfbuzz0b 2.7.4-1ubuntu3.2 install ok installed\nlibicu70 70.1-2 install ok installed\nlibpng16-16 1.6.37-3ubuntu0.5 install ok installed\nlibteckit0 2.5.11+ds1-1 install ok installed\nlibx11-6 2:1.7.5-1ubuntu0.3 install ok installed\ntex-common 6.17 install ok installed\ntexlive-base 2021.20220204-1 install ok installed\ntexlive-binaries 2021.20210626.59705-1ubuntu0.3 install ok installed\ntexlive-fonts-recommended 2021.20220204-1 install ok installed\ntexlive-latex-base 2021.20220204-1 install ok installed\ntexlive-latex-extra 2021.20220204-1 install ok installed\ntexlive-latex-recommended 2021.20220204-1 install ok installed\n",
+  "system_package_inventory_stderr": "",
+  "local_libraries": {
+    ".b/g05-scorer/tools/usr/lib/x86_64-linux-gnu/libGL.so.1": "92e6ea9f8caa3c265f3ef141a122a18f7d2e27d6e5fd2b490cfea83262df745e",
+    ".b/g05-scorer/tools/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0": "92e6ea9f8caa3c265f3ef141a122a18f7d2e27d6e5fd2b490cfea83262df745e",
+    ".b/g05-scorer/tools/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0": "a4f2642498fba54d2f39e90ca3daa94340cdd52198473185a5285608ae318cb6",
+    ".b/g05-scorer/tools/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0": "a4f2642498fba54d2f39e90ca3daa94340cdd52198473185a5285608ae318cb6",
+    ".b/g05-scorer/tools/usr/lib/x86_64-linux-gnu/libGLX.so.0": "19ad2625b20a3afe6f5e55f9acd1e18e0dfc81b0965d7d3f2181a05b6d48edbf",
+    ".b/g05-scorer/tools/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0": "19ad2625b20a3afe6f5e55f9acd1e18e0dfc81b0965d7d3f2181a05b6d48edbf"
+  }
+}

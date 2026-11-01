@@ -1,0 +1,458 @@
+{
+  "status": "PASS",
+  "qualification": "SCORER_ONLY_SYNTHETIC_NO_MODEL_QUALITY_CONCLUSION",
+  "date_utc": "2026-10-29T11:52:33.726250+00:00",
+  "profiles": {
+    "qwen": {
+      "status": "PASS",
+      "known_answers": {
+        "FigureF1": {
+          "actual": 25.0,
+          "expected": 25,
+          "status": "PASS"
+        },
+        "FormulaCDM": {
+          "actual": 100.0,
+          "expected": 100,
+          "status": "PASS"
+        },
+        "HeadingTEDS": {
+          "actual": 75.0,
+          "expected": 75,
+          "status": "PASS"
+        },
+        "ReadOrderEdit": {
+          "actual": 66.66666666666667,
+          "expected": 66.66666666666667,
+          "status": "PASS"
+        },
+        "T-TableTEDS": {
+          "actual": 50.0,
+          "expected": 50,
+          "status": "PASS"
+        },
+        "T-TextEdit": {
+          "actual": 37.5,
+          "expected": 37.5,
+          "status": "PASS"
+        },
+        "TableTEDS": {
+          "actual": 50.0,
+          "expected": 50,
+          "status": "PASS"
+        },
+        "TextEdit": {
+          "actual": 37.5,
+          "expected": 37.5,
+          "status": "PASS"
+        }
+      },
+      "full_pipeline": {
+        "metrics": {
+          "FigureF1": 100.0,
+          "FormulaCDM": 100.0,
+          "HeadingTEDS": 100.0,
+          "ReadOrderEdit": 100.0,
+          "T-TableTEDS": 100.0,
+          "T-TextEdit": 100.0,
+          "TableTEDS": 100.0,
+          "TextEdit": 100.0
+        },
+        "overall": 100.0,
+        "qualification": "SCORER_ONLY; review coverage and failure catalog"
+      },
+      "formula_samples": 1,
+      "cases": {
+        "exact": {
+          "status": "PASS",
+          "original_result": {
+            "recall": 1.0,
+            "precision": 1.0,
+            "F1_score": 1.0
+          },
+          "rendered_both": true,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            }
+          },
+          "error_observed": false,
+          "timed_out": false,
+          "timeout_renderer_started": false,
+          "returncode": 0,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 24.73680245,
+          "timeout_seconds": 120,
+          "startup_timeout_seconds": 120
+        },
+        "mismatch": {
+          "status": "PASS",
+          "original_result": {
+            "recall": 0.4,
+            "precision": 0.4,
+            "F1_score": 0.4
+          },
+          "rendered_both": true,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                110,
+                41
+              ]
+            }
+          },
+          "error_observed": false,
+          "timed_out": false,
+          "timeout_renderer_started": false,
+          "returncode": 0,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 24.414150427,
+          "timeout_seconds": 120,
+          "startup_timeout_seconds": 120
+        },
+        "error": {
+          "status": "EXPECTED_RENDER_ERROR",
+          "original_result": {
+            "recall": 0,
+            "precision": 0,
+            "F1_score": 0
+          },
+          "rendered_both": false,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": false,
+              "valid_boxes": 0,
+              "png_valid": true,
+              "image_size": [
+                26,
+                26
+              ]
+            }
+          },
+          "error_observed": true,
+          "timed_out": false,
+          "timeout_renderer_started": false,
+          "returncode": 0,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 27.516764730999995,
+          "timeout_seconds": 120,
+          "startup_timeout_seconds": 120
+        },
+        "timeout": {
+          "status": "EXPECTED_TIMEOUT",
+          "original_result": null,
+          "rendered_both": false,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": false,
+              "valid_boxes": 0,
+              "png_valid": false
+            }
+          },
+          "error_observed": false,
+          "timed_out": true,
+          "timeout_renderer_started": true,
+          "returncode": -9,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 21.691290308999996,
+          "timeout_seconds": 0.05,
+          "startup_timeout_seconds": 120
+        }
+      },
+      "torch_present": false
+    },
+    "marathon": {
+      "status": "PASS",
+      "known_answers": {
+        "FigureF1": {
+          "actual": 25.0,
+          "expected": 25,
+          "status": "PASS"
+        },
+        "FormulaCDM": {
+          "actual": 100.0,
+          "expected": 100,
+          "status": "PASS"
+        },
+        "HeadingTEDS": {
+          "actual": 75.0,
+          "expected": 75,
+          "status": "PASS"
+        },
+        "ReadOrderEdit": {
+          "actual": 66.66666666666667,
+          "expected": 66.66666666666667,
+          "status": "PASS"
+        },
+        "T-TableTEDS": {
+          "actual": 50.0,
+          "expected": 50,
+          "status": "PASS"
+        },
+        "T-TextEdit": {
+          "actual": 37.5,
+          "expected": 37.5,
+          "status": "PASS"
+        },
+        "TableTEDS": {
+          "actual": 50.0,
+          "expected": 50,
+          "status": "PASS"
+        },
+        "TextEdit": {
+          "actual": 37.5,
+          "expected": 37.5,
+          "status": "PASS"
+        }
+      },
+      "full_pipeline": {
+        "metrics": {
+          "FigureF1": 100.0,
+          "FormulaCDM": 100.0,
+          "HeadingTEDS": 100.0,
+          "ReadOrderEdit": 100.0,
+          "T-TableTEDS": 100.0,
+          "T-TextEdit": 100.0,
+          "TableTEDS": 100.0,
+          "TextEdit": 100.0
+        },
+        "overall": 100.0,
+        "qualification": "SCORER_ONLY; review coverage and failure catalog"
+      },
+      "formula_samples": 1,
+      "cases": {
+        "exact": {
+          "status": "PASS",
+          "original_result": {
+            "recall": 1.0,
+            "precision": 1.0,
+            "F1_score": 1.0
+          },
+          "rendered_both": true,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            }
+          },
+          "error_observed": false,
+          "timed_out": false,
+          "timeout_renderer_started": false,
+          "returncode": 0,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 23.777625225999998,
+          "timeout_seconds": 120,
+          "startup_timeout_seconds": 120
+        },
+        "mismatch": {
+          "status": "PASS",
+          "original_result": {
+            "recall": 0.4,
+            "precision": 0.4,
+            "F1_score": 0.4
+          },
+          "rendered_both": true,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                110,
+                41
+              ]
+            }
+          },
+          "error_observed": false,
+          "timed_out": false,
+          "timeout_renderer_started": false,
+          "returncode": 0,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 22.954473503000003,
+          "timeout_seconds": 120,
+          "startup_timeout_seconds": 120
+        },
+        "error": {
+          "status": "EXPECTED_RENDER_ERROR",
+          "original_result": {
+            "recall": 0,
+            "precision": 0,
+            "F1_score": 0
+          },
+          "rendered_both": false,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": false,
+              "valid_boxes": 0,
+              "png_valid": true,
+              "image_size": [
+                26,
+                26
+              ]
+            }
+          },
+          "error_observed": true,
+          "timed_out": false,
+          "timeout_renderer_started": false,
+          "returncode": 0,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 26.27632482200002,
+          "timeout_seconds": 120,
+          "startup_timeout_seconds": 120
+        },
+        "timeout": {
+          "status": "EXPECTED_TIMEOUT",
+          "original_result": null,
+          "rendered_both": false,
+          "artifacts": {
+            "gt": {
+              "rendered": true,
+              "valid_boxes": 5,
+              "png_valid": true,
+              "image_size": [
+                117,
+                41
+              ]
+            },
+            "pred": {
+              "rendered": false,
+              "valid_boxes": 0,
+              "png_valid": false
+            }
+          },
+          "error_observed": false,
+          "timed_out": true,
+          "timeout_renderer_started": true,
+          "returncode": -9,
+          "active_processes_after_cleanup": [],
+          "elapsed_seconds": 20.14983522899999,
+          "timeout_seconds": 0.05,
+          "startup_timeout_seconds": 120
+        }
+      },
+      "torch_present": false
+    }
+  },
+  "measurements": {
+    "marathon-pipeline.log": {
+      "elapsed_seconds": 48.560818862999994,
+      "maximum_child_process_rss_kib": 239872,
+      "child_user_seconds": 9.036005,
+      "child_system_seconds": 8.499479,
+      "exit_code": 0
+    },
+    "qwen-pipeline.log": {
+      "elapsed_seconds": 49.034034758000004,
+      "maximum_child_process_rss_kib": 239676,
+      "child_user_seconds": 9.440571,
+      "child_system_seconds": 9.230703,
+      "exit_code": 0
+    },
+    "marathon-cases.log": {
+      "elapsed_seconds": 93.40316562500001,
+      "maximum_child_process_rss_kib": 210660,
+      "child_user_seconds": 26.497588,
+      "child_system_seconds": 24.38003,
+      "exit_code": 0
+    },
+    "qwen-cases.log": {
+      "elapsed_seconds": 98.622950433,
+      "maximum_child_process_rss_kib": 212668,
+      "child_user_seconds": 25.93889,
+      "child_system_seconds": 25.689218,
+      "exit_code": 0
+    }
+  },
+  "memory_definition": "Linux resource.getrusage(RUSAGE_CHILDREN).ru_maxrss: maximum child process resident set in KiB, not sum, dedicated VRAM, APU allocation, or total system memory.",
+  "thresholds": {
+    "exact_cdm": 1.0,
+    "mismatch_cdm": 0.4,
+    "absolute_tolerance": 1e-07,
+    "full_pipeline_each_metric": 100.0,
+    "forced_renderer_deadline_seconds": 0.05,
+    "startup_deadline_seconds": 120
+  },
+  "not_run": [
+    "dataset model inference",
+    "GPU benchmark",
+    "full dataset scoring",
+    "upstream hardcoded30s native Timer path: two unconstrained diagnostics returned naturally; only explicit outer renderer deadline was exercised"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "expected_documents": 1,
+  "tasks": {
+    "display_formula": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "figure": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "head": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "merged_table": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "merged_text_block": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "reading_order": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "table": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "table_relation": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    },
+    "text_block": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 2
+      },
+      "sample_count": 2
+    },
+    "text_relation": {
+      "documents_with_samples": 1,
+      "documents_without_samples": [],
+      "per_document_samples": {
+        "synthetic.pdf": 1
+      },
+      "sample_count": 1
+    }
+  }
+}

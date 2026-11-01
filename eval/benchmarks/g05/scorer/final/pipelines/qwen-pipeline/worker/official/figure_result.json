@@ -1,0 +1,25 @@
+[
+    {
+        "img_id": "synthetic.pdf",
+        "gt_count": 1,
+        "pred_count": 1,
+        "matched_count": 1,
+        "gt": "",
+        "pred": "",
+        "gt_attribute": [
+            {
+                "language": "english",
+                "data_source": "authored_synthetic"
+            }
+        ],
+        "metric": {
+            "FigureF1": 1.0
+        },
+        "label_stats": {
+            "figure": {
+                "gt_count": 1,
+                "matched_count": 1
+            }
+        }
+    }
+]

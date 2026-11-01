@@ -1,0 +1,8 @@
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+<repo>/.b/g05-scorer/venv/lib/python3.10/site-packages/PIL/Image.py:1056: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+magick: profile 'icc': 'RGB ': RGB color space not permitted on grayscale PNG `<repo>/.b/g05-scorer/runs-cleanup/marathon-cases/error/pred/vis/error_base.png' @ warning/png.c/MagickPNGWarningHandler/1534.
+magick: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/722.
+magick: profile 'icc': 'RGB ': RGB color space not permitted on grayscale PNG `<repo>/.b/g05-scorer/runs-cleanup/marathon-cases/error/diagnostic/vis/error_base.png' @ warning/png.c/MagickPNGWarningHandler/1534.
+METRIC_REGISTRY:  ['TEDS', 'BLEU', 'METEOR', 'Edit_dist', 'CDM', 'CDM_plain', 'HeadTEDS', 'FigureF1', 'Relation_F1']

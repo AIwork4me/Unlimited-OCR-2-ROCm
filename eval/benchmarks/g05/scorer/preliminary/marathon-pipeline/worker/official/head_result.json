@@ -1,0 +1,47 @@
+[
+    {
+        "gt": [
+            [
+                {
+                    "relation_type": "parent_son",
+                    "source_anno_id": "root",
+                    "target_anno_id": 1
+                }
+            ],
+            {
+                "1": {
+                    "anno_id": 1,
+                    "category_type": "title",
+                    "text": "Heading",
+                    "order": 1,
+                    "page_id": 1,
+                    "poly": [
+                        0,
+                        0,
+                        100,
+                        0,
+                        100,
+                        100,
+                        0,
+                        100
+                    ],
+                    "ignore": false,
+                    "attribute": {}
+                }
+            }
+        ],
+        "pred": [
+            "# Heading"
+        ],
+        "img_id": "synthetic.pdf",
+        "edit": 1.0,
+        "metric": {
+            "HeadTEDS": 1.0
+        },
+        "gt_attribute": [
+            {
+                "heading tree depth": 1
+            }
+        ]
+    }
+]

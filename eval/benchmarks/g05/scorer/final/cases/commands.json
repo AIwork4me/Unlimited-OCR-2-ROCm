@@ -1,0 +1,34 @@
+[
+  {
+    "profile": "qwen",
+    "mode": "cases",
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/qwen",
+      "--profile",
+      "qwen",
+      "--output",
+      "<repo>/.b/g05-scorer/runs-cleanup/qwen-cases"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 98.785010632
+  },
+  {
+    "profile": "marathon",
+    "mode": "cases",
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/marathon",
+      "--profile",
+      "marathon",
+      "--output",
+      "<repo>/.b/g05-scorer/runs-cleanup/marathon-cases"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 93.56430088700002
+  }
+]

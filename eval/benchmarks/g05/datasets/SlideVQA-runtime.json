@@ -1,0 +1,31 @@
+{
+  "credentials_in_receipt": false,
+  "credentials_read": false,
+  "dataset": "SlideVQA",
+  "pillow_imaging_binary": ".b/benchmark-scorer/lib/site-packages/PIL/_imaging.cp310-win_amd64.pyd",
+  "pillow_imaging_binary_sha256": "433681b1e01606b1730d2a7f7811fab558e4e8c0fa91d403cfd8d7cc1a2b6a09",
+  "pillow_jpeg_codec_version": "8.0",
+  "pillow_libjpeg_turbo_enabled": true,
+  "pillow_libjpeg_turbo_version": "3.0.3",
+  "python_base_executable_name": "python.exe",
+  "python_base_executable_sha256": "2bdbae17400bff061816d79509538f89fd9ac028eeff59d09909574754d1f0be",
+  "python_executable": ".b/benchmark-scorer/Scripts/python.exe",
+  "python_executable_sha256": "9148604557f300ef091486b518764079fe1d3b269bdd54b9150b15b8ea0343b4",
+  "python_implementation": "cpython",
+  "python_sys_version": "3.10.20 (main, May 10 2026, 19:31:32) [MSC v.1944 64 bit (AMD64)]",
+  "recorded_utc": "2026-10-29T11:56:39.923721+00:00",
+  "revision": "e780ea258d734958befbfaed19fa059584642ca8",
+  "schema": 1,
+  "scope": "Supplemental identity of the unchanged scorer interpreter and JPEG codec used by the successful serialization command",
+  "serialization_command_argv": [
+    ".b/benchmark-scorer/Scripts/python.exe",
+    "scripts/g05_acquire_slidevqa.py"
+  ],
+  "serialization_library_versions": {
+    "Pillow": "10.4.0",
+    "datasets": "5.1.0",
+    "pyarrow": "25.0.1"
+  },
+  "serialization_receipt": "SlideVQA.json",
+  "serialization_receipt_sha256": "c7796705bc379befcf24ccbd7d68648881b986fc65e7eee3bdaab8bf952ac283"
+}

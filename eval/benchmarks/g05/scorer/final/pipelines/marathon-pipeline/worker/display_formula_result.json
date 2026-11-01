@@ -1,0 +1,17 @@
+[
+    {
+        "gt": "x+y=z",
+        "pred": "x+y=z",
+        "norm_gt": "x+y=z",
+        "norm_pred": "x+y=z",
+        "gt_idx": 1,
+        "img_id": "a.pdf",
+        "gt_attribute": [
+            {}
+        ],
+        "img_id_cdm": "0",
+        "metric": {
+            "CDM": 1.0
+        }
+    }
+]

@@ -1,0 +1,33 @@
+[
+    {
+        "gt_idx": [
+            0
+        ],
+        "gt": "AlphaBeta",
+        "norm_gt": "AlphaBeta",
+        "gt_category_type": "text_block",
+        "gt_position": [
+            2
+        ],
+        "gt_attribute": [
+            {
+                "text_merge_cross_pages": "2"
+            }
+        ],
+        "pred_idx": [
+            1
+        ],
+        "pred": "AlphaBeta",
+        "norm_pred": "AlphaBeta",
+        "pred_category_type": "text_block",
+        "pred_position": 9,
+        "edit": 0.0,
+        "img_id": "synthetic.pdf",
+        "image_name": "synthetic.pdf",
+        "upper_len": 9,
+        "metric": {
+            "Edit_dist": 0.0
+        },
+        "Edit_num": 0
+    }
+]

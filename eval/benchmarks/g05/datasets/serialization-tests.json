@@ -1,0 +1,27 @@
+{
+  "cases": [
+    "last matching row uses byte-identical Pillow default JPEG output",
+    "missing expected page raises without substitution"
+  ],
+  "check": "SlideVQA official serialization synthetic local Parquet tests",
+  "command_argv": [
+    ".b/benchmark-scorer/Scripts/python.exe",
+    "-c",
+    "import sys,json,importlib.metadata; sys.path.insert(0,'scripts'); sys.path.append('.b/benchmark-cpu/Lib/site-packages'); print(json.dumps({k:importlib.metadata.version(k) for k in ['datasets','pyarrow','Pillow']})); import pytest; raise SystemExit(pytest.main(['tests/test_g05_slidevqa.py','-q','--basetemp=.b/g05-data/slide-tests-temp']))"
+  ],
+  "dependency_resolution": "Existing scorer environment first; append CPU environment site-packages only to load pytest. No package installation or version changes.",
+  "extractor_sha256": "7503d84ce555c20ec209f03b5d0f010ae0394ca751a752f6d58059b5c520b8cb",
+  "raw_output": ".b/g05-data/slidevqa-serialization-tests.log",
+  "raw_output_sha256": "d8a71148dc10593e195c58576b2af5278eed99652a26776bae6df03aee1de8ab",
+  "recorded_utc": "2026-10-29T11:41:10.168223+00:00",
+  "returncode": 0,
+  "schema": 1,
+  "status": "PASS",
+  "test_sha256": "45d040b1658273518e1178151fe2bdec1b590d81fe0fd67fcb626f192f72dac3",
+  "tested_versions": {
+    "Pillow": "10.4.0",
+    "datasets": "5.1.0",
+    "pyarrow": "25.0.1"
+  },
+  "working_directory": "repository root"
+}

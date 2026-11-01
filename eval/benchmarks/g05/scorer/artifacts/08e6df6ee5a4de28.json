@@ -1,0 +1,29 @@
+[
+    {
+        "gt_idx": [
+            2
+        ],
+        "gt": "x+y=z",
+        "pred_idx": [
+            2
+        ],
+        "pred": "x+y=z",
+        "edit": 0.0,
+        "gt_category_type": "equation_isolated",
+        "gt_position": [
+            7
+        ],
+        "pred_position": 79,
+        "pred_category_type": "equation_isolated",
+        "gt_attribute": [
+            {}
+        ],
+        "img_id": "synthetic.pdf",
+        "norm_gt": "x+y=z",
+        "norm_pred": "x+y=z",
+        "img_id_cdm": "0",
+        "metric": {
+            "CDM": 1.0
+        }
+    }
+]

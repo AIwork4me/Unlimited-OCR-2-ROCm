@@ -1,0 +1,68 @@
+[
+  {
+    "profile": "qwen",
+    "mode": "pipeline",
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/qwen",
+      "--profile",
+      "qwen",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/qwen-pipeline",
+      "--pipeline"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 50.36099152800011
+  },
+  {
+    "profile": "qwen",
+    "mode": "cases",
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/qwen",
+      "--profile",
+      "qwen",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/qwen-cases"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 96.74844688300004
+  },
+  {
+    "profile": "marathon",
+    "mode": "pipeline",
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/marathon",
+      "--profile",
+      "marathon",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/marathon-pipeline",
+      "--pipeline"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 48.936284976000024
+  },
+  {
+    "profile": "marathon",
+    "mode": "cases",
+    "command": [
+      "<repo>/.b/g05-scorer/venv/bin/python",
+      "scripts/g05_scorer_closure.py",
+      "--source",
+      ".b/g05-scorer/source/marathon",
+      "--profile",
+      "marathon",
+      "--output",
+      "<repo>/.b/g05-scorer/runs/marathon-cases"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 97.62683102300002
+  }
+]

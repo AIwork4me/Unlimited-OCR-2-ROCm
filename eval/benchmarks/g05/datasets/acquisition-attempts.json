@@ -1,0 +1,57 @@
+{
+  "attempts": [
+    {
+      "outcome": "Replaced by verified LFS batch transport; accepted pages preserved",
+      "transport": "resolve"
+    },
+    {
+      "outcome": "Transient TLS failure; no insecure transport or source change",
+      "transport": "eager LFS batch resolution"
+    },
+    {
+      "last_reported_pages": 9500,
+      "outcome": "Tool session closed before completion",
+      "transport": "bounded LFS batches in agent session"
+    },
+    {
+      "downloaded_verified_pages": 8704,
+      "final_pages": 18272,
+      "independent_reread": "PASS",
+      "outcome": "PASS",
+      "reused_verified_pages": 9568,
+      "transport": "parent-owned bounded LFS batches"
+    }
+  ],
+  "raw_evidence_sha256": {
+    ".b/g05-data/marathon-acquire-batch-streaming.log": "dfa6cf75ca286512575f70ca0a07ba306f7b6f047fb336e1c2de7a7a8704f73b",
+    ".b/g05-data/marathon-acquire-batch.log": "223f936cd51b92b79c0e4118335caf9012516fb40f771812d5d7481193659e5a",
+    ".b/g05-data/marathon-acquire.log": "03272bee958540a245201982517f832146f986ef42b06144afc61f69487f74ed",
+    ".b/g05-data/marathon-parent-acquire.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".b/g05-data/marathon-parent-acquire.stdout.log": "591587b99f492b8f9f8201a3a73d21168d92c3afcc601fa248da856e51a986fb",
+    ".b/g05-data/marathon-parent-verify.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".b/g05-data/marathon-parent-verify.stdout.log": "63e90a21fee11b87100a8bfdadf7c9e41d8b2680830db98069ac4a698d46198b"
+  },
+  "scope": "Acquisition transport history only; no benchmark inference",
+  "supervisor_checks": {
+    "acquire": {
+      "command": [
+        "python",
+        "scripts/g05_acquire_datasets.py",
+        "acquire",
+        "--workers",
+        "48",
+        "--transport",
+        "lfs-batch"
+      ],
+      "exit_code": 0
+    },
+    "verify": {
+      "command": [
+        "python",
+        "scripts/g05_acquire_datasets.py",
+        "verify"
+      ],
+      "exit_code": 0
+    }
+  }
+}
