@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "p1": [],
+  "p2": [],
+  "source_entries_verified": 505,
+  "published_members_native_and_PurePosix_parity": 489,
+  "excluded_png_raw_bindings": 16,
+  "archive_sha256": "491dc83a3d65528672060ef2001a2133ffb7842e13a553482693a5ec51dac9d5",
+  "five_staged_publication_files_unchanged": true,
+  "portable_publisher_sha256": "7b680fdfd336dee8473aa3eab1d819e736b21012762729c5e6ffc3ff84a0bbe2",
+  "sealed_archive_original_producer_commit": "b1d3c21cfffa07d7e4272391cd487e9d0124e9be",
+  "original_producer_binding_valid": true,
+  "tests": "5 passed in 0.04s"
+}

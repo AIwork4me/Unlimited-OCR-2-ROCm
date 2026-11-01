@@ -1,0 +1,113 @@
+{
+  "additional_diagnostic_ruff": "PASS: experiments/native_regression check and format",
+  "archive_local_cpu_snapshot": "269 passed / 7 skipped before two publisher regression cases",
+  "checked_source_commit": "c091632a6930e79835e242a85fe1727b65f3d3fe",
+  "checks": {
+    "build": {
+      "command": [
+        "python",
+        "-m",
+        "build",
+        "--outdir",
+        ".b/g1-physical/checks-portable/dist"
+      ],
+      "exit_code": 0,
+      "seconds": 19.95756409992464,
+      "status": "PASS",
+      "stderr_sha256": "e06196cdafefab81f4a8cb1a71a04f85dbaa5d476437922b1e2cb04d6b2d6fc7",
+      "stdout_sha256": "28cb9da7910255c9a5e5d4534758ed06b050653e5b191269efe54f598ceac73e"
+    },
+    "format": {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.11411019996739924,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "d29644cebc037e2a733db225b8964bef215b4d0e037a4d4d2ce1aeb46f05a78c"
+    },
+    "mypy": {
+      "command": [
+        "python",
+        "-m",
+        "mypy",
+        "src"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4008216999936849,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "63da153bcdac04b2cc982479df4378f21b20029f9acb87ad908fb4d5befe6a43"
+    },
+    "pip-check": {
+      "command": [
+        "python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8702626000158489,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    },
+    "pytest": {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        ".b/g1-physical/checks-portable/pytest-temp"
+      ],
+      "exit_code": 0,
+      "seconds": 19.63918330008164,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ad5e4b132160dcd15b4e1ec5af952bbe14af38fd609ff2ffebb91e23f76640ef"
+    },
+    "ruff": {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.10915210004895926,
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    }
+  },
+  "pytest_summary": "271 passed, 7 skipped",
+  "scopes": {
+    "above_five_pages": "NOT RUN",
+    "full_420_100_inference": "NOT RUN",
+    "linux_gpu": "NOT RUN",
+    "local_cpu": "PASS",
+    "windows_gpu": "PASS: original wheel MATH 1/2/3/5 synthetic fixtures"
+  },
+  "source_sha256": {
+    "experiments/native_regression/analyze.py": "c9b15a44b6555d45365906b4a19aa5bc96f9e90ec34146f9e6d1df4d5f59d899",
+    "experiments/native_regression/publish.py": "7b680fdfd336dee8473aa3eab1d819e736b21012762729c5e6ffc3ff84a0bbe2",
+    "experiments/native_regression/runner.py": "5983da029cb62ee19d3221d7c9c2700931212fee6c2895b2f33c36e60b027e51",
+    "tests/unit/test_native_regression.py": "1fccac63497cafb3cecf7e5363e627ab60b22a483e5d211135f86537edaf8c2f",
+    "tests/unit/test_native_regression_analysis.py": "94752edaa6d74a83b6317c6f141c6dc0bce456d1843c1817f97997594ec2aa48",
+    "tests/unit/test_native_regression_publish.py": "fd11a3e99f37e1727b192d246022955be82152b16182ce87c8e072eb4f68d9fb"
+  },
+  "status": "PASS",
+  "verified_utc": "2026-10-29T14:38:58.690171+00:00"
+}
