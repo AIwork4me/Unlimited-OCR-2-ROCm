@@ -27,25 +27,31 @@ def test_p2c_policy_authorizes_the_official_suppression():
 def test_p2c_policy_is_pinned_and_unique():
     from unlimited_ocr_2_rocm.inference import (
         _AUTHORIZED_NGRAM_POLICIES,  # noqa: PLC2701 - pin-uniqueness test
+        EXPECTED_CAMPAIGN_POLICY_SHA256,
         EXPECTED_L1_POLICY_SHA256,
         EXPECTED_L11_B_POLICY_SHA256,
         EXPECTED_NGRAM_POLICY_SHA256,
         EXPECTED_P2C_POLICY_SHA256,
     )
 
-    # Four authorized digests: the P2-B, P2-C, L1 and L1.1-B policies, each
-    # bound to its own experiment name. The fourth digest was authorized by
-    # commit 39c3813 (the L1.1-B admission) and its test was updated here.
+    # Five authorized digests: the P2-B, P2-C, L1, L1.1-B and campaign
+    # policies, each bound to its own experiment name. The fourth digest was
+    # authorized by commit 39c3813 (the L1.1-B admission) and its test was
+    # updated here; the fifth is the MPDOC_FULL_CAMPAIGN policy (execution
+    # additionally gated on an explicit owner authorization — pinning is not
+    # authorization).
     digests = {
         EXPECTED_NGRAM_POLICY_SHA256,
         EXPECTED_P2C_POLICY_SHA256,
         EXPECTED_L1_POLICY_SHA256,
         EXPECTED_L11_B_POLICY_SHA256,
+        EXPECTED_CAMPAIGN_POLICY_SHA256,
     }
-    assert len(digests) == 4
-    assert len(_AUTHORIZED_NGRAM_POLICIES) == 4
+    assert len(digests) == 5
+    assert len(_AUTHORIZED_NGRAM_POLICIES) == 5
     assert _AUTHORIZED_NGRAM_POLICIES[EXPECTED_L1_POLICY_SHA256] == "L1_FIFTEEN_PAGE_NATIVE"
     assert _AUTHORIZED_NGRAM_POLICIES[EXPECTED_L11_B_POLICY_SHA256] == "L11_FIFTEEN_PAGE_NATIVE_B"
+    assert _AUTHORIZED_NGRAM_POLICIES[EXPECTED_CAMPAIGN_POLICY_SHA256] == "MPDOC_FULL_CAMPAIGN"
 
 
 def test_p2c_forged_policy_is_rejected_by_pinned_digest(tmp_path):

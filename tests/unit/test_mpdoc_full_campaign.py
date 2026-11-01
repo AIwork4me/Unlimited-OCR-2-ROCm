@@ -19,6 +19,7 @@ REPO_ROOT = Path(__file__).parents[2]
 
 from unlimited_ocr_2_rocm.benchmark.campaign import (  # noqa: E402
     CAMPAIGN_BUDGET,
+    CAMPAIGN_POLICY_SHA256,
     classify_document,
     execution_plan,
     production_budget,
@@ -80,11 +81,31 @@ def test_execution_plan_refuses_campaign_docs_without_authorization() -> None:
         "huge_c": "NATIVE_UNSUPPORTED_OVER_15P",
     }
     # An authorization entry flips campaign-class docs into the executable set,
-    # but NEVER the unsupported ones.
-    authorized = {"schema": 1, "campaign_policy_sha256": "d" * 64, "authorized_by": "owner"}
+    # but NEVER the unsupported ones — and ONLY when it names the pinned
+    # fifth campaign-policy digest, not an arbitrary string.
+    authorized = {
+        "schema": 1,
+        "campaign_policy_sha256": CAMPAIGN_POLICY_SHA256,
+        "authorized_by": "owner",
+    }
     plan = execution_plan(manifest_docs, config={"schema": 1, "authorization": authorized})
     assert plan["executable"] == ["camp_b", "prod_a"]  # sorted by id
     assert plan["blocked"] == {"huge_c": "NATIVE_UNSUPPORTED_OVER_15P"}
+
+
+def test_execution_plan_refuses_campaign_docs_under_a_foreign_digest() -> None:
+    manifest_docs = [
+        {"id": "prod_a", "pages": [{"path": f"p{i}.png"} for i in range(3)]},
+        {"id": "camp_b", "pages": [{"path": f"p{i}.png"} for i in range(8)]},
+    ]
+    authorized = {
+        "schema": 1,
+        "campaign_policy_sha256": "d" * 64,
+        "authorized_by": "owner",
+    }
+    plan = execution_plan(manifest_docs, config={"schema": 1, "authorization": authorized})
+    assert plan["executable"] == ["prod_a"]
+    assert plan["blocked"]["camp_b"] == "CAMPAIGN_POLICY_DIGEST_MISMATCH"
 
 
 def test_execution_plan_is_deterministic() -> None:
@@ -175,6 +196,74 @@ def test_dryrun_flags_hash_mismatch_instead_of_skipping(tmp_path: Path) -> None:
     assert row["page_hashes"] == "MISMATCH"
     assert report["page_hash_failures"] == 1
     assert report["zero_exclusion"] is True  # counted and reported, never dropped
+
+
+CAMPAIGN_POLICY = REPO_ROOT / "eval/experiments/mpdoc-full-campaign/policy.json"
+
+
+def test_fifth_campaign_policy_authorizes_the_official_class_gates() -> None:
+    """The FIFTH pinned digest admits budget 39321 + suppression 35/1024 for
+    the MPDOC_FULL_CAMPAIGN experiment — and nothing else."""
+    from unlimited_ocr_2_rocm.inference import validate_budget, validate_ngram
+
+    assert CAMPAIGN_POLICY.is_file(), "the frozen fifth campaign policy must exist in the repo"
+    # Exactly the official-class budget; nothing above, nothing below.
+    validate_budget(39321, policy_path=CAMPAIGN_POLICY)
+    with pytest.raises(ValueError):
+        validate_budget(39322, policy_path=CAMPAIGN_POLICY)
+    with pytest.raises(ValueError):
+        validate_budget(16384, policy_path=CAMPAIGN_POLICY)
+    # Official suppression identity, generated ids only (window 1024, not the
+    # frozen model's coerced 100).
+    validate_ngram(35, 1024, policy_path=CAMPAIGN_POLICY)
+    with pytest.raises(ValueError):
+        validate_ngram(35, 100, policy_path=CAMPAIGN_POLICY)
+    # (0, 0) is the documented suppression-off production default and never
+    # reaches the policy gate — covered by the n-gram gate's own tests.
+
+
+def test_fifth_campaign_policy_refuses_a_forged_copy() -> None:
+    from unlimited_ocr_2_rocm.inference import validate_budget
+
+    forged = json.loads(CAMPAIGN_POLICY.read_text("utf-8"))
+    forged["budgets_new_tokens"] = [39321, 65536]
+    forged_file = CAMPAIGN_POLICY.parent / "forged.policy.json"
+    forged_file.write_text(json.dumps(forged, indent=1), "utf-8")
+    try:
+        with pytest.raises(ValueError, match="not pinned by this gate"):
+            validate_budget(65536, policy_path=forged_file)
+        # Even the legitimate budget is refused through the forged file.
+        with pytest.raises(ValueError, match="not pinned by this gate"):
+            validate_budget(39321, policy_path=forged_file)
+    finally:
+        forged_file.unlink()
+
+
+def test_campaign_policy_identity_is_bound_across_gates() -> None:
+    """campaign.py's plan gate and inference.py's budget/n-gram gates must pin
+    the SAME digest as the frozen policy file on disk — one identity, three
+    enforcement points, zero drift."""
+    from unlimited_ocr_2_rocm.config import file_sha256
+    from unlimited_ocr_2_rocm.inference import (
+        _AUTHORIZED_NGRAM_POLICIES,
+        AUTHORIZED_BUDGET_POLICIES,
+        EXPECTED_CAMPAIGN_POLICY_SHA256,
+    )
+
+    on_disk = file_sha256(CAMPAIGN_POLICY)
+    assert CAMPAIGN_POLICY_SHA256 == on_disk
+    assert EXPECTED_CAMPAIGN_POLICY_SHA256 == on_disk
+    assert AUTHORIZED_BUDGET_POLICIES[on_disk]["experiment"] == "MPDOC_FULL_CAMPAIGN"
+    assert AUTHORIZED_BUDGET_POLICIES[on_disk]["budgets"] == frozenset({39321})
+    assert _AUTHORIZED_NGRAM_POLICIES[on_disk] == "MPDOC_FULL_CAMPAIGN"
+    policy = json.loads(CAMPAIGN_POLICY.read_text("utf-8"))
+    assert policy["experiment"] == "MPDOC_FULL_CAMPAIGN"
+    assert policy["schema"] == 1
+    assert policy["budgets_new_tokens"] == [39321]
+    assert policy["ngram_sizes"] == [35] and policy["ngram_window"] == 1024
+    # The policy binds the frozen full-scope manifest, not a document list.
+    assert policy["documents"]["expected_count"] == 221
+    assert policy["ledger"]["dataset_documents"] == 420
 
 
 def _synthetic_gt(tmp_path: Path, page_counts: tuple[int, ...]) -> Path:
