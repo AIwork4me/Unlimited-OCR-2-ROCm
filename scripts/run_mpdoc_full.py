@@ -340,6 +340,7 @@ def worker_command(args: argparse.Namespace) -> int:
     config = run.data["config"]
     budget_policy = None
     ngram_policy = None
+    ngram_size, ngram_window = 0, 0
     if classification["category"] == "CAMPAIGN_POLICY_REQUIRED":
         if not config.get("budget_policy_sha256"):
             raise ValueError(
@@ -349,6 +350,10 @@ def worker_command(args: argparse.Namespace) -> int:
         budget_policy = _REPO_ROOT / config["budget_policy_repo_path"]
         if config.get("ngram_policy_sha256"):
             ngram_policy = _REPO_ROOT / config["ngram_policy_repo_path"]
+            # The frozen policy's suppression identity must be passed
+            # EXPLICITLY — the (0, 0) defaults mean suppression OFF, which
+            # would silently violate the authorized ngram contract.
+            ngram_size, ngram_window = campaign.ngram_params_from_policy(ngram_policy)
 
     from unlimited_ocr_2_rocm.benchmark.watchdog import ResourceWatchdog
     from unlimited_ocr_2_rocm.collision_observer import locate_decode_module
@@ -394,6 +399,8 @@ def worker_command(args: argparse.Namespace) -> int:
             multi=True,
             max_new_tokens=classification["budget_new_tokens"],
             budget_policy=budget_policy,
+            no_repeat_ngram_size=ngram_size,
+            ngram_window=ngram_window,
             ngram_policy=ngram_policy,
             page_limit=len(pages),
         )

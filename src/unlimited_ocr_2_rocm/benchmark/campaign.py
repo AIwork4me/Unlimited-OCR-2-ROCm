@@ -149,3 +149,27 @@ def new_observer_if_required(category: str, event_sink: Any = None) -> Any:
     from unlimited_ocr_2_rocm.collision_observer import GuardCollisionObserver
 
     return GuardCollisionObserver(event_sink=event_sink)
+
+
+def ngram_params_from_policy(policy_path: Any) -> tuple[int, int]:
+    """Extract the frozen policy's official suppression identity.
+
+    The campaign worker MUST pass these explicitly to run_native — the
+    defaults (0, 0) mean suppression OFF, which would silently violate the
+    frozen policy's ngram contract while still passing the gate (validate_
+    ngram short-circuits on (0, 0)). Fail-closed: a policy without the
+    fields is refused, never defaulted."""
+    import json as _json
+
+    from unlimited_ocr_2_rocm.config import file_sha256 as _sha
+
+    policy = _json.loads(policy_path.read_text("utf-8"))  # type: ignore[attr-defined]
+    sizes = policy.get("ngram_sizes")
+    window = policy.get("ngram_window")
+    if not isinstance(sizes, list) or len(sizes) != 1 or not isinstance(window, int):
+        raise ValueError(
+            f"frozen policy {policy_path} ({_sha(policy_path)}) does not carry "
+            "a single ngram_sizes entry + ngram_window; refusing to guess the "
+            "suppression identity"
+        )
+    return int(sizes[0]), int(window)

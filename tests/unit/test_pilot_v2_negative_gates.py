@@ -237,3 +237,20 @@ def test_observer_required_for_campaign_class_only() -> None:
     seen: list[dict] = []
     observer2 = new_observer_if_required("CAMPAIGN_POLICY_REQUIRED", seen.append)
     assert observer2 is not None and seen == []
+
+
+def test_ngram_params_come_from_the_frozen_policy() -> None:
+    """The worker must pass the policy's suppression identity explicitly —
+    a policy without the fields is refused, never defaulted to OFF."""
+    from unlimited_ocr_2_rocm.benchmark.campaign import ngram_params_from_policy
+
+    assert ngram_params_from_policy(CAMPAIGN_POLICY) == (35, 1024)
+    stripped = CAMPAIGN_POLICY.parent / "stripped.policy.json"
+    payload = json.loads(CAMPAIGN_POLICY.read_text("utf-8"))
+    del payload["ngram_sizes"]
+    stripped.write_text(json.dumps(payload, indent=1), "utf-8")
+    try:
+        with pytest.raises(ValueError, match="refusing to guess"):
+            ngram_params_from_policy(stripped)
+    finally:
+        stripped.unlink()
