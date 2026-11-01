@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "experiment": "P2C_COMBINED_NGRAM_BUDGET",
+  "purpose": "Controlled COMBINED experiment: the official no-repeat n-gram suppression (size 35, trailing window 1024 over generated ids only) at RAISED output budgets 12288 then 16384, on the same four frozen P2-A documents whose ngram=0 and ngram=35@8192 evidence is immutable. Controls are never re-run or overwritten. No 39321 escalation and no 30/50/100-page escalation is authorized by this policy. Production defaults are NOT changed: the production cap stays 8192 and suppression stays opt-in off.",
+  "documents": [
+    "handwritten_chn_1ae487be",
+    "newspaper_chn_eb87830d",
+    "newspaper_eng_ed12985c",
+    "paper_chn_3567e55d"
+  ],
+  "baseline_new_tokens": 8192,
+  "baseline_evidence": "P2-B ledger run 6e1ae22e (ngram=35/window=1024 @8192) and the immutable ngram=0 P1.5/P2-A evidence; never rewritten",
+  "budgets_new_tokens": [12288, 16384],
+  "budget_policy": "eval/experiments/p2a-token-budget/policy.json — the budget source of truth, presented to validate_budget at run time",
+  "ngram_sizes": [35],
+  "ngram_window": 1024,
+  "ngram_scope": "generated tokens only (official SGLang SGLANG_UOCR_NGRAM_OUTPUT_ONLY=True semantics; frozen model loop scans gen only)",
+  "ngram_provenance": "official client infer.py@48ff432 (docs/rca/NGRAM35_SOURCE_AUDIT.md); guard-collision safety revalidated in docs/validation/P2C_GUARD_COLLISION_SAFETY.md",
+  "unchanged": {
+    "max_pages_per_request": 5,
+    "max_pixels_per_page": 16000000,
+    "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "prompt": "official default document prompt",
+    "crop_policy": "crop_mode=False (infer_multi)",
+    "decoder": "official eager + DASH Triton, 12 routers",
+    "vision_sdpa": "MATH (SAM/CLIP scoped)",
+    "native_page_guard": "enabled (expected_pages from prompt; max_page_tokens=20000)",
+    "sampling": "greedy temperature=0"
+  },
+  "admission": {
+    "context_cap_tokens": 131072,
+    "prompt_upper_bound_tokens_per_page": 300,
+    "required_margin_tokens": 4096,
+    "rule": "pages*prompt_upper_bound + budget + margin must not exceed context_cap_tokens"
+  },
+  "stage_admission": {
+    "rule": "budget 16384 runs only if the 12288 stage completed all four documents with zero forced-marker mismatches, zero TIMEOUT/OOM/CRASH outcomes, GPU peak allocated within max_gpu_peak_allocated_gib, host peak RSS within max_host_peak_rss_gib, and both policy digests still matching the run identity",
+    "max_gpu_peak_allocated_gib": 10.0,
+    "max_host_peak_rss_gib": 4.0
+  },
+  "supervision": {
+    "timeout_seconds_per_document": 7200,
+    "worker": "isolated subprocess per attempt (P1.5 supervision); workers persist token ids for replay"
+  },
+  "labels": ["EXPERIMENTAL_NGRAM_BUDGET_COMBINED", "P2C_RCA"]
+}

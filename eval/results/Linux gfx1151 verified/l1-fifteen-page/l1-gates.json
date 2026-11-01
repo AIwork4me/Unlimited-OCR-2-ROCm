@@ -1,0 +1,25 @@
+{
+ "claim_limit": "One document, one attempt. NOT MPDocBench accuracy, NOT leaderboard parity, NOT official-deployment parity (no windowing, no KV reuse \u2014 see docs/validation/L1_FIFTEEN_PAGE_SPEC.md \u00a77). 15-page promotion requires ALL gates PASS including 15/15 pages emitted, natural valid completion, zero forced-marker mismatches and zero supervision failures.",
+ "counts": {
+  "FAIL": 0,
+  "NOT_RUN": 419,
+  "OOM": 0,
+  "PASS": 1,
+  "TIMEOUT": 0,
+  "TRUNCATED": 0
+ },
+ "experiment": "L1_FIFTEEN_PAGE_NATIVE",
+ "failures": [],
+ "forced_marker_mismatches": 0,
+ "ledger_status": "PARTIAL",
+ "observer_aborted": false,
+ "promotion_admitted": true,
+ "replay_forced_mismatches": [],
+ "resource_peaks": {
+  "gpu_peak_allocated_gib": 8.617,
+  "host_peak_rss_gib": 2.66
+ },
+ "run_id": "3562dbb9da30db6376dc203d81c8cadb001f0189c9b6180449cf783bda6e3556",
+ "schema": 1,
+ "watchdog_breach": false
+}
