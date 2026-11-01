@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "recorded": "2026-11-01",
+  "mode": "CPU_FAKE_WORKERS_ONLY",
+  "gpu_executed": false,
+  "cases": [
+    {
+      "case": "admit_pass",
+      "admission": "ADMIT",
+      "worker_started": true,
+      "exit": 0,
+      "state": "PASS",
+      "spawned_total": 1,
+      "seconds": 0.03
+    },
+    {
+      "case": "refuse_source_identity",
+      "admission": "REFUSE_SOURCE_IDENTITY",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_model_identity",
+      "admission": "REFUSE_MODEL_IDENTITY",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_wheel_identity",
+      "admission": "REFUSE_WHEEL_IDENTITY",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_dataset_identity",
+      "admission": "REFUSE_DATASET_IDENTITY",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_scorer_route",
+      "admission": "REFUSE_SCORER_ROUTE_NOT_READY",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_missing_policy",
+      "admission": "REFUSE_MISSING_RESOURCE_OR_TIMEOUT_POLICY",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_missing_timeout",
+      "admission": "REFUSE_MISSING_RESOURCE_OR_TIMEOUT_POLICY",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_receipt_absent",
+      "admission": "REFUSE_ADMISSION_RECEIPT_ABSENT_OR_MISMATCHED",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_correctness_prerequisite",
+      "admission": "REFUSE_CORRECTNESS_PREREQUISITE",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_output_outside",
+      "admission": "REFUSE_OUTPUT_OUTSIDE_APPROVED_DIR",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "refuse_active_experiment",
+      "admission": "REFUSE_ANOTHER_EXPERIMENT_ACTIVE",
+      "worker_started": false,
+      "spawned_total": 0
+    },
+    {
+      "case": "worker_crash_fail",
+      "admission": "ADMIT",
+      "worker_started": true,
+      "exit": 1,
+      "state": "FAIL",
+      "spawned_total": 1,
+      "seconds": 0.03
+    },
+    {
+      "case": "resume_after_fail_refused",
+      "admission": "REFUSE_LEDGER_BLOCKED_AFTER_FAILURE",
+      "worker_started": false,
+      "spawned_total": 1
+    },
+    {
+      "case": "worker_timeout_killed",
+      "admission": "ADMIT",
+      "worker_started": true,
+      "state": "TIMEOUT",
+      "spawned_total": 1,
+      "seconds": 2.03
+    }
+  ],
+  "summary": {
+    "cases_total": 15,
+    "refusals_verified": 12,
+    "no_worker_after_refuse": true,
+    "max_workers_per_experiment": 1,
+    "resume_after_failure": "REFUSED (ledger blocks until review)",
+    "timeout_cleanup": "PASS (fake worker killed, state TIMEOUT)",
+    "evidence_seal": "cb208942602e3af66f8daa1f3e64f17645e3f653489e1fc8b2f64723302ab200",
+    "gpu_executed": false,
+    "production_code_executed": false,
+    "note": "Validates policy gate logic only. Real admission uses the vendored PR #28 contract at implementation time."
+  },
+  "status": "DRYRUN_PASS"
+}

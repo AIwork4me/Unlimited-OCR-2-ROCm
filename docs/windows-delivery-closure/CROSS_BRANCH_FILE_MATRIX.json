@@ -1,0 +1,552 @@
+{
+  "generated": "2026-11-01",
+  "base": "52d593e0686176b3842d78fbac3ef76956ecf1ae",
+  "pr32": {
+    "head": "a01db7de0f2cc26142f7b5269fbde46f506a3cff",
+    "branch": "feat/l1-mainline-integration",
+    "title": "merge: L1 fifteen-page native run tree into mainline",
+    "files_changed": 69
+  },
+  "windows": {
+    "head": "a987dca00cf5ecf01f456c90462e188261f219d0",
+    "branch": "delivery/windows-native-benchmark",
+    "files_changed": 36,
+    "note": "eight commits: six validated originals (4abba4f..0ba45dd), whitelist compatibility fix c432861, product-status/README docs a987dca"
+  },
+  "both_branches": [
+    {
+      "path": "src/unlimited_ocr_2_rocm/publication.py",
+      "pr32_status": "M",
+      "windows_status": "M",
+      "resolution": "complementary_hunks",
+      "conflict": "none_git",
+      "semantic": "PR32 hardens detectors (windows path pattern, strict JSON parse, bounded nested annotation search, byte-based scan); Windows updates one WHITELIST hash and fixes scan_tree selected-root skip-parts. All hardening present on merged tree (verified)"
+    },
+    {
+      "path": "tests/unit/test_publication_gates.py",
+      "pr32_status": "M",
+      "windows_status": "M",
+      "resolution": "merged_side_by_side",
+      "conflict": "none_git",
+      "semantic": "PR32 adds fail-closed JSON/JSONL, duplicate-key, nested-row and Windows-path tests; Windows adds selected-root scan test; both suites coexist on merged tree (verified)"
+    }
+  ],
+  "shared_interfaces_changed_by_one_side": [
+    {
+      "path": "MANIFEST.in",
+      "side": "windows",
+      "status": "M"
+    },
+    {
+      "path": "WINDOWS_PRODUCT_DELIVERY_REPORT.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/reviews/P2C_INDEPENDENT_REVIEW.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/validation/L1_FIFTEEN_PAGE_SPEC.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/validation/L1_GUARD_COLLISION_QUALIFICATION.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/validation/P0_PUBLICATION_REMEDIATION.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/validation/P2B_NGRAM_SUPPRESSION_RCA.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/validation/P2C_COMBINED_RCA.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/validation/P2C_FIFTEEN_PAGE_DECISION.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/validation/P2C_GUARD_COLLISION_SAFETY.md",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/DATASET_READINESS.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/DELIVERY_PLAN.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/MARATHON_FULL_RESULTS.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/MPDOCBENCH_FULL_RESULTS.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/NATIVE_BASELINE_VALIDATION.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/PR_BASELINE_AUDIT.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/REAL_DOCUMENT_ADMISSION.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/WINDOWS_BENCHMARK_PROTOCOL.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/WINDOWS_HANDOFF.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/WINDOWS_INSTALL_REPRODUCTION.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/WINDOWS_NATIVE_READINESS.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "docs/windows/WINDOWS_SGLANG_FEASIBILITY.md",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "eval/experiments/l1-fifteen-page/policy.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/experiments/l1-fifteen-page/selection.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/experiments/l11-fifteen-page-native-b/policy.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/experiments/l11-fifteen-page-native-b/selection_receipt.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/experiments/p2b-ngram-suppression/policy.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/experiments/p2c-combined/policy.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/l1-fifteen-page/l1-gates.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/l1-fifteen-page/l1-gt-slice-receipt.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/l1-fifteen-page/l1-run-receipt.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/l1-fifteen-page/ngram-replay.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/ngram-replay-handwritten_chn_1ae487be.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/ngram-replay-newspaper_chn_eb87830d.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/ngram-replay-newspaper_eng_ed12985c.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/ngram-replay-paper_chn_3567e55d.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/p2b-evidence.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/p2b-gt-slice-receipt.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/run-receipt.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/score-control8192-coverage.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/score-control8192-scores.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/score-experiment-coverage.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2b-ngram/score-experiment-scores.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-handwritten_chn_1ae487be-b12288.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-handwritten_chn_1ae487be-b16384.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-newspaper_chn_eb87830d-b12288.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-newspaper_chn_eb87830d-b16384.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-newspaper_eng_ed12985c-b12288.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-newspaper_eng_ed12985c-b16384.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-paper_chn_3567e55d-b12288.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/ngram-replay-paper_chn_3567e55d-b16384.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/p2c-evidence.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/run-receipt-12288.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/run-receipt-16384.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-12288-diag-coverage.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-12288-diag-scores.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-12288-strict-coverage.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-12288-strict-scores.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-16384-diag-coverage.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-16384-diag-scores.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-16384-strict-coverage.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/score-16384-strict-scores.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/stage-12288-gates.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/results/Linux gfx1151 verified/p2c-combined/stage-16384-gates.json",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "eval/windows/.gitattributes",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "eval/windows/benchmark-status.json",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "eval/windows/dataset-readiness.json",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "eval/windows/golden-validation.json",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "eval/windows/wheelhouse-SHA256SUMS.json",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "requirements/windows-rocm7141.lock.txt",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "scripts/analyze_ngram_evidence.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "scripts/reproduce_windows.ps1",
+      "side": "windows",
+      "status": "M"
+    },
+    {
+      "path": "scripts/run_l1_fifteen_page.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "scripts/run_mpdoc_sample.py",
+      "side": "windows",
+      "status": "M"
+    },
+    {
+      "path": "scripts/run_p2b_ngram.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "scripts/run_p2c_combined.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "scripts/run_windows_benchmark.ps1",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "scripts/sanitize_gt_slice.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "scripts/setup_windows_rocm7141.ps1",
+      "side": "windows",
+      "status": "M"
+    },
+    {
+      "path": "scripts/windows_install_preflight.py",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "src/unlimited_ocr_2_rocm/benchmark/runner.py",
+      "side": "windows",
+      "status": "M"
+    },
+    {
+      "path": "src/unlimited_ocr_2_rocm/benchmark/watchdog.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "src/unlimited_ocr_2_rocm/benchmark/windows_job.py",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "src/unlimited_ocr_2_rocm/collision_observer.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "src/unlimited_ocr_2_rocm/completion.py",
+      "side": "pr32",
+      "status": "M"
+    },
+    {
+      "path": "src/unlimited_ocr_2_rocm/inference.py",
+      "side": "pr32",
+      "status": "M"
+    },
+    {
+      "path": "tests/unit/test_l11_b_policy.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_l1_collision_observer.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_l1_gates.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_l1_policy_admission.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_p15_runner_hardening.py",
+      "side": "windows",
+      "status": "M"
+    },
+    {
+      "path": "tests/unit/test_p2b_ngram_policy.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_p2c_combined_policy.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_p2c_guard_collision.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_resource_watchdog.py",
+      "side": "pr32",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_windows_benchmark_powershell.py",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_windows_benchmark_preflight.py",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_windows_benchmark_runner.py",
+      "side": "windows",
+      "status": "A"
+    },
+    {
+      "path": "tests/unit/test_windows_install_preflight.py",
+      "side": "windows",
+      "status": "A"
+    }
+  ],
+  "simulation": {
+    "original_windows_head_0ba45dd": {
+      "merge_orders": "both clean, identical tree 4c090697fd649c43fe41631d561b2b608d8b5da9",
+      "result": "3 publication-gate failures: PR32 case-insensitive Windows path detector flags synthetic literals in tests/unit/test_windows_benchmark_runner.py"
+    },
+    "fixed_windows_head_c432861": {
+      "merge_orders": "both clean, identical tree 5b26f0fe32166893e6ffa6f6c6646b7ff1a7c64c",
+      "result": "PASS: 459 passed / 10 skipped; ruff, format, mypy win32+linux all pass"
+    }
+  },
+  "classification": "COMPATIBLE_WITH_CONDITIONS",
+  "condition": "Windows follow-up commit c432861 (publication WHITELIST entry for tests/unit/test_windows_benchmark_runner.py) must be included in the Windows PR; no change to PR #32 code required.",
+  "pr32_refreshed": {
+    "head": "a720c49c2e9f755633fd7efa95ab523fe072e871",
+    "delta_from_a01db7de": "one commit: pin L1/L1.1-B policy digests in budget gate + single-read policies (inference.py, test_l1_policy_admission.py, test_p2b_ngram_policy.py)",
+    "overlap_unchanged": [
+      "src/unlimited_ocr_2_rocm/publication.py",
+      "tests/unit/test_publication_gates.py"
+    ],
+    "simulation": "both orders converge to tree 7eb5c1cd27739d4cbddcf763e1f54033af0d0aee; 460 passed / 10 skipped / 0 failed"
+  }
+}

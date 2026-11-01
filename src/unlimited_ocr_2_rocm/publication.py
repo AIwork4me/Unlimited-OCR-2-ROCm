@@ -322,6 +322,14 @@ WHITELIST: dict[str, dict[str, str]] = {
         "sha256": "a753e7d01c08861213a201dfc1a8635a1540c1eed510157c4af2633d2524833e",
         "reason": "sanitizer test with a synthetic path literal",
     },
+    "docs/windows-delivery-closure/INTEGRATION_SIMULATION.md": {
+        "sha256": "3d03428b20cfe04678e9011324a1a173e84c6e06356558708dce9f39ec8962f2",
+        "reason": "sealed ledger prose with synthetic private-path example literals",
+    },
+    "docs/windows-delivery-closure/PR32_WINDOWS_COMPATIBILITY.md": {
+        "sha256": "de8cb7b3a4bd3f8aa58e7542b296a470044e1d8f10b127a3c141d40ccabd0f56",
+        "reason": "sealed ledger prose with synthetic private-path example literals",
+    },
 }
 
 

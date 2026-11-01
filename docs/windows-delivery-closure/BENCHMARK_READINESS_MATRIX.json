@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "generated": "2026-11-01",
+  "scope": "Windows Radeon Native official benchmark readiness (CPU/documentation assessment; no full-corpus GPU inference authorized or run)",
+  "datasets": {
+    "MPDocBench": {
+      "documents_expected": 420,
+      "pages_expected": 3135,
+      "dataset_downloaded": "PASS",
+      "files_verified": "PASS",
+      "ground_truth_verified": "PASS",
+      "gt_sha256": "0a579dca6cf875a41fdab0975efee6d4e0fea999e0fa6c3ca95ad08b948f40df",
+      "scope_sha256": "785f18884dc586aa836f096dcba7c96c1fd0cc50a6dae9f62aabb0152d4bdcc8",
+      "gpu_inference": "NOT_RUN",
+      "documents_inferred": 0,
+      "pages_inferred": 0,
+      "scorer_run": "NOT_RUN",
+      "metrics": {"TextEdit": null, "T-TextEdit": null, "TableTEDS": null, "T-TableTEDS": null, "FormulaCDM": null, "ReadOrderEdit": null, "FigureF1": null, "HeadingTEDS": null},
+      "overall": null,
+      "official_reference_overall": 84.59,
+      "official_delta": null
+    },
+    "MarathonDocBench": {
+      "documents_expected": 100,
+      "pages_expected": 18272,
+      "dataset_downloaded": "PASS",
+      "files_verified": "PASS",
+      "ground_truth_verified": "PASS",
+      "gt_sha256": "7db0e659c76661ce87d4e1b3d47e010edbd48adfb446e3e2ee37260c60adf51c",
+      "scope_sha256": "2515b579828e787c6cc928421abd6c693086d64084ba26a459f82ccf21a9fe76",
+      "gpu_inference": "NOT_RUN",
+      "documents_inferred": 0,
+      "pages_inferred": 0,
+      "scorer_run": "NOT_RUN",
+      "metrics": {"TextEdit": null, "T-TextEdit": null, "TableTEDS": null, "T-TableTEDS": null, "FormulaCDM": null, "ReadOrderEdit": null, "FigureF1": null, "HeadingTEDS": null},
+      "overall": null,
+      "official_reference_overall": 77.06,
+      "official_delta": null
+    }
+  },
+  "requirements": {
+    "R1_full_gpu_campaign_authorization": {"status": "BLOCKED", "note": "Both campaigns NOT_AUTHORIZED; separate execution approval required"},
+    "R2_production_limits_extension": {"status": "BLOCKED", "note": "5-image/8192-token production limits in force; 39321/235929 budget classes exist only as pinned single-document experiment policies (PR #32); no 235929 policy exists"},
+    "R3_protocol_equivalence": {"status": "BLOCKED", "note": "Native loop has no 10-page windowing, no KV-tail continuation, no per-window ngram reset; official SGLang protocol not reproducible natively yet; comparability NOT_ESTABLISHED"},
+    "R4_pr32_capabilities_on_windows": {"status": "BLOCKED", "note": "ngram/budget/guard-collision/watchdog gates exist in PR #32 (fail-closed, policy-pinned) but are not on the Windows delivery branch until #32 merges; L1 physical evidence is Linux-only"},
+    "R5_native_windows_scorer": {"status": "BLOCKED", "note": "XeLaTeX/Ghostscript(+ImageMagick)/latexmlc absent; Marathon scoring refused on nt (SIGALRM); POSIX assumptions; no CDM render ever executed on Windows"},
+    "R6_scorer_route": {"status": "PASS_DESIGN_READY", "note": "Linux scorer qualified twice (WSL PR #9, native Linux PR #13); Option B bridge designed (WINDOWS_LINUX_SCORER_BRIDGE_DESIGN.md) with hash-bound transfer; execution requires separate authorization"},
+    "R7_metric_coverage_gate": {"status": "PASS", "note": "Eight-metric contract verified from scorer source; Overall null on any missing metric; denominator preservation enforced in manifest/worker/tests"},
+    "R8_official_reference_semantics": {"status": "PASS", "note": "84.59/77.06 frozen from paper Tables 1/2; never recomputed from rounded cells; deltas null until complete campaign"},
+    "R9_dataset_denominators": {"status": "PASS", "note": "420/3135 and 100/18272 verified and code-enforced (manifest.py DENOMINATORS + tests)"},
+    "R10_windows_physical_inference_baseline": {"status": "PASS_BOUNDED", "note": "26/26 synthetic golden at 3556e38 on gfx1151; bounded scope only, not benchmark evidence"}
+  },
+  "classification_rule": "Every requirement PASS (or PASS_BOUNDED where bounded is acceptable) AND complete campaign executed AND scorer completed AND comparability established => official score available; otherwise all score fields stay null",
+  "current_verdict": "OFFICIAL_BENCHMARK_NOT_READY; all metric/overall/delta fields null by design"
+}
