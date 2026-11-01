@@ -308,8 +308,8 @@ WHITELIST: dict[str, dict[str, str]] = {
         "reason": "sanitizer test with a synthetic path literal",
     },
     "tests/unit/test_p15_runner_hardening.py": {
-        "sha256": "433de88c55df7239d2f0339c125af3693393257cc786e04b0125652da3637133",
-        "reason": "sanitizer test with a synthetic path literal",
+        "sha256": "4abd6d64abc4ab764894b89f23a1d857e0706309e9f2968c8cd03189702f6017",
+        "reason": "sanitizer fixture; reviewed non-destructive Windows liveness probe",
     },
     "tests/unit/test_sdpa_rca_reporting.py": {
         "sha256": "32161608a588c21f9f00fa838d1826848d46d5ce45eb618ad98361b4de0e15bc",
@@ -450,7 +450,7 @@ def scan_tree(root: Path, *, prefix: str | None = None) -> list[tuple[str, list[
         prefix = _normalized_prefix(root, repo_root)
     violations: list[tuple[str, list[str]]] = []
     for path in sorted(root.rglob("*")):
-        if not path.is_file() or any(part in _SKIP_PARTS for part in path.parts):
+        if not path.is_file() or any(part in _SKIP_PARTS for part in path.relative_to(root).parts):
             continue
         rel = (f"{prefix}/" if prefix else "") + path.relative_to(root).as_posix()
         entry = WHITELIST.get(rel)
