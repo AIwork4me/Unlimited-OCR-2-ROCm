@@ -182,26 +182,56 @@ def test_second_check_rejects_changed_receipt_before_spawn(tmp_path):
 
 
 def test_simultaneous_launches_cannot_bypass_gate(tmp_path):
+    import threading
+
     gate, identity, command, marker = setup(tmp_path)
     qualify(gate, identity, command, tmp_path)
     marker.unlink()
     for name in ("first", "second"):
         gate.prepare(name, identity, command)
-    jobs = [Worker(), Worker()]
+    # Initialization may legitimately reject both zero-timeout contenders.
+    # Pin this race to the actual admission/spawn boundary instead.
+    gates = [Gate(gate.path), Gate(gate.path)]
+    owner_at_spawn, contender_done = threading.Event(), threading.Event()
+
+    class PausedOwner(Worker):
+        def spawn(self, command, **kwargs):
+            owner_at_spawn.set()
+            assert contender_done.wait(5)
+            return super().spawn(command, **kwargs)
+
+    jobs = [PausedOwner(), Worker()]
 
     def attempt(i):
+        if i == 1:
+            assert owner_at_spawn.wait(5)
         try:
-            Gate(gate.path).dispatch(
-                ("first", "second")[i], "correctness", identity, jobs[i], timeout=5
-            )
+            gates[i].dispatch(("first", "second")[i], "correctness", identity, jobs[i], timeout=5)
             return True
         except Rejected:
             return False
+        finally:
+            if i == 1:
+                contender_done.set()
 
     with ThreadPoolExecutor(max_workers=2) as pool:
         results = list(pool.map(attempt, range(2)))
     assert sum(results) == sum(j.starts for j in jobs) == 1
     assert all(j.active == 0 for j in jobs)
+    assert marker.exists() and gate.state("first") == "EVALUATING"
+
+
+def test_busy_constructor_refuses_without_launch(tmp_path):
+    import sqlite3
+
+    gate, identity, command, marker = setup(tmp_path)
+    job = Worker()
+    with sqlite3.connect(gate.path, isolation_level=None) as db:
+        db.execute("BEGIN IMMEDIATE")
+        with pytest.raises(Rejected, match="Busy or invalid admission ledger"):
+            Gate(gate.path).dispatch("correctness", None, identity, job, timeout=5)
+        db.rollback()
+    assert job.starts == 0 and not marker.exists()
 
 
 def test_failure_after_reservation_is_not_admitted_on_restart(tmp_path):
@@ -315,18 +345,36 @@ def test_separate_controllers_cannot_bypass_device_ledger(tmp_path):
     manifest = tmp_path / "identity.json"
     manifest.write_text(json.dumps(identity), encoding="utf-8")
     code = """
-import json, sys
+import json, sys, time
 from pathlib import Path
 from test_experiment_admission import Worker
 from unlimited_ocr_2_rocm.benchmark.admission import Gate, Rejected
-job = Worker()
+folder = Path(sys.argv[3]).parent
+def wait(name):
+    deadline = time.monotonic() + 5
+    while not (folder / name).exists():
+        if time.monotonic() >= deadline:
+            raise TimeoutError(name)
+        time.sleep(0.01)
+class PausedOwner(Worker):
+    def spawn(self, command, **kwargs):
+        (folder / 'owner-at-spawn').touch()
+        wait('contender-done')
+        return super().spawn(command, **kwargs)
+job = PausedOwner() if sys.argv[2] == 'first' else Worker()
 identity = json.loads(Path(sys.argv[3]).read_text())
 environment = json.loads(Path(next(iter(identity['policy']))).read_text())['first']['env']
+gate = Gate(Path(sys.argv[1]))
+(folder / ('ready-' + sys.argv[2])).touch()
+wait('ready-second' if sys.argv[2] == 'first' else 'owner-at-spawn')
 try:
-    Gate(Path(sys.argv[1])).dispatch(sys.argv[2], 'correctness',
+    gate.dispatch(sys.argv[2], 'correctness',
         identity, job, timeout=5, env=environment)
 except Rejected:
     pass
+finally:
+    if sys.argv[2] == 'second':
+        (folder / 'contender-done').touch()
 print(job.starts, job.active)
 """
     root = Path(__file__).resolve().parents[2]
@@ -339,26 +387,35 @@ print(job.starts, job.active)
             ]
         ),
     )
-    children = [
-        subprocess.Popen(
-            [
-                sys.executable,
-                "-c",
-                code,
-                str(gate.path),
-                name,
-                str(manifest),
-            ],
-            env=env,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
+    import time
+
+    children = []
+    for name in ("first", "second"):
+        children.append(
+            subprocess.Popen(
+                [
+                    sys.executable,
+                    "-c",
+                    code,
+                    str(gate.path),
+                    name,
+                    str(manifest),
+                ],
+                env=env,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
         )
-        for name in ("first", "second")
-    ]
+        deadline = time.monotonic() + 5
+        while not (tmp_path / ("ready-" + name)).exists():
+            assert children[-1].poll() is None
+            assert time.monotonic() < deadline
+            time.sleep(0.01)
     outputs = [child.communicate(timeout=15) for child in children]
     assert [child.returncode for child in children] == [0, 0], outputs
     assert sorted(out.strip() for out, err in outputs) == [b"0 0", b"1 0"]
     assert marker.exists()
+    assert gate.state("first") == "EVALUATING"
 
 
 @pytest.mark.skipif(os.name != "nt", reason="native Windows Job ownership")
@@ -467,9 +524,23 @@ def test_reserved_owner_waits_for_short_handoff_contention(tmp_path, monkeypatch
     assert job.starts == 1 and marker.exists() and job.active == 0
 
 
+@pytest.fixture
+def cli_output():
+    from tempfile import TemporaryDirectory
+
+    # The CLI permits evidence only below cwd; hosted pytest's tmp_path is
+    # normally outside the checkout. Keep this output within the owned root.
+    parent = Path.cwd() / ".b" / "admission-cli-tests"
+    parent.mkdir(parents=True, exist_ok=True)
+    with TemporaryDirectory(dir=parent) as directory:
+        yield Path(directory) / "output"
+
+
 @pytest.mark.skipif(os.name != "nt", reason="native prospective Windows dispatcher")
 @pytest.mark.parametrize("inherited_flags", [None, "0", "1"])
-def test_prospective_cli_refuses_before_worker_execution(tmp_path, monkeypatch, inherited_flags):
+def test_prospective_cli_refuses_before_worker_execution(
+    tmp_path, monkeypatch, inherited_flags, cli_output
+):
     # Freeze the CLI's normalized worker environment, independently of the
     # controller's inherited flags. Rejection must reach the missing predecessor.
     monkeypatch.setenv("PYTHONUTF8", "1")
@@ -498,7 +569,7 @@ def test_prospective_cli_refuses_before_worker_execution(tmp_path, monkeypatch, 
             "--identity",
             str(manifest),
             "--output",
-            str(tmp_path / "cli-output"),
+            str(cli_output),
             "--timeout",
             "5",
             "--execute-gpu",
@@ -509,7 +580,7 @@ def test_prospective_cli_refuses_before_worker_execution(tmp_path, monkeypatch, 
     )
     assert result.returncode != 0
     assert (
-        b"Missing qualification/stage" in (tmp_path / "cli-output/stderr.log").read_bytes()
+        b"Missing qualification/stage" in (cli_output / "stderr.log").read_bytes()
         or b"Missing qualification/stage" in result.stderr
     )
     assert not marker.exists()
