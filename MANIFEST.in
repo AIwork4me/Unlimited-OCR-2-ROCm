@@ -6,5 +6,7 @@ recursive-include docs *.md
 recursive-include tests *.py *.png *.json
 recursive-include tests/fixtures/benchmark *.txt *.md
 recursive-include eval/benchmarks *.json *.jsonl *.md *.log
+recursive-include experiments/native_regression *.py
+recursive-include eval/g1 *.json *.md *.gz
 global-exclude *.py[cod]
 global-exclude __pycache__
