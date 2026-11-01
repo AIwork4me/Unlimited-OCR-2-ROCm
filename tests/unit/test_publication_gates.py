@@ -253,11 +253,11 @@ def test_staged_pollution_injection_blocked() -> None:
     try:
         slice_dir = clone / "eval" / "results" / "pollution-probe"
         slice_dir.mkdir(parents=True)
-        _write(slice_dir / "injected-gt-slice.json", [_annotation_row(doc_id="injected_doc")])
+        _write(slice_dir / "injected-payload.json", [_annotation_row(doc_id="injected_doc")])
         subprocess.run(["git", "-C", str(clone), "add", "-A"], check=True, capture_output=True)
 
         violations = scan_staged(clone)
-        assert violations and violations[0][0].endswith("injected-gt-slice.json")
+        assert violations and violations[0][0].endswith("injected-payload.json")
 
         result = subprocess.run(
             [sys.executable, str(clone / "scripts" / "publication_gate.py"), "--staged"],
