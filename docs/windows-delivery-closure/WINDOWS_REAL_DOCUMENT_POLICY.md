@@ -44,7 +44,7 @@ authorized ≥16384-token arm with a ≥750 s ceiling.
 | Sequencing | arm 1 then arm 2. **TRUNCATED completes the arm's diagnostic record and does NOT cancel arm 2** (TRUNCATED is never PASS). A process-level failure (FAIL/TIMEOUT/OOM/INTERRUPTED) in arm 1 cancels arm 2 (stop-after-failure) and blocks the ledger pending review |
 | Inference | native Transformers BF16, scoped MATH vision SDPA, native DASH/Triton/SR-SWA, original weights, sequential pages 1→5 |
 | Memory stops | admit only ≥64 GiB system available at start; hard stop at <48 GiB available or >16 GiB allocator reserved (1 Hz samples); **no process working-set cap below 16 GiB** — Windows UMA golden evidence peaked 11.2 GiB working set / 10.51 GiB reserved; the envelope's 4 GiB host-RSS rule is dropped as undefined-and-contradicted (deviation register D3) |
-| Telemetry | 1 Hz sampler (available memory, allocator reserved/peak, wall clock, token count); **staleness rule: ≥5 consecutive missed samples ⇒ treat as unknown ⇒ stop**; enforcing component: PR #32 `ResourceWatchdog` wired into the supervised Windows runner (prerequisite P5) |
+| Telemetry | 1 Hz sampler (available memory, allocator reserved/peak, wall clock; token count recorded per attempt in completion metadata); **staleness rule as implemented (P5, rev 3): a 1 Hz supervisor tick counts as missed when the host sampler fails to read, or — after a 60 s post-spawn warm-up — when the worker heartbeat is older than 40 s (2× the ResourceWatchdog's 20 s write cadence); ≥5 consecutive missed ticks ⇒ telemetry unknown ⇒ stop**. Enforcing components: worker-side `ResourceWatchdog` over CUDA reserved memory (16 GiB hard limit, breach ⇒ exit 86 ⇒ OOM classification) plus a 1 Hz in-worker memory sampler with a ≤5 s capture-freshness check, and supervisor-side `TelemetryMonitor` (`benchmark/telemetry.py`) with the rule above; the ≥64 GiB admit-time floor is enforced by the pilot controller before every stage (GlobalMemoryStatusEx probe) (deviation register D5) |
 | Timeout | per-arm ceiling **1200 s** (retained Linux 8192-token wall 551.7–572.3 s; ~2× margin for unmeasured Windows real-doc speed); total wall clock **45 min** including model load and receipts; per-arm ceiling governs its arm; total-wall expiry kills the in-flight arm as INTERRUPTED; TIMEOUT never masquerades as length |
 | Failure rules | native authoritative stop or `length` recorded verbatim; `length` ⇒ TRUNCATED (recorded, never PASS); FAIL/TIMEOUT/OOM/INTERRUPTED preserve partial outputs + accounting; stdout/stderr captured per attempt |
 | Cancellation | host-side cancel = Job terminate, 10 s grace; partial attempt retained as INTERRUPTED |
@@ -77,7 +77,7 @@ authorized ≥16384-token arm with a ≥750 s ceiling.
 
 **Admission mechanism:** the independently reviewed fail-closed design of
 PR #28 (`codex/experiment-admission-safety` @ head
-`39584aca3a1723d319b925a54d880bf2caa23dce`,
+`39584aca3a1727d319b925a54d880bf2caa23dce`,
 `src/unlimited_ocr_2_rocm/benchmark/admission.py`): identity-bound `_verify`
 (sources/wheels/fixtures/policy/artifacts/target groups, absolute paths,
 per-file hashes, single-read policy), SQLite ledger with exclusive device
@@ -86,11 +86,14 @@ recovery never invents PASS, trusted-controller assumption (the controller
 owns the ledger and immutable files). PR #28 is not in main and not installed
 by the delivery branch: at implementation time the contract must be
 **vendored or integrated under a separate reviewed commit** binding the exact
-source; relying on the unmerged side branch is forbidden. The dry-run receipt
-in this ledger validates the policy's gate logic only (a mock
-re-implementation); the real vendored gate must be dry-run again before
-authorization, including TOCTOU (receipt/policy swap), concurrent gate
-instances, and `ordered_paths_sha256` cases.
+source; relying on the unmerged side branch is forbidden. The rev-1 dry-run
+receipt in this ledger validated the policy's gate logic against a mock
+re-implementation; the real vendored gate has since been dry-run again on the
+execution tree — 18 cases / 14 verified refusals / 0 reason mismatches,
+including TOCTOU (policy swap and receipt swap), concurrent ledger instances
+and `ordered_paths_sha256` page-order cases (receipt
+`.b/integration-20261101/admission-real-gate-dryrun.json`,
+sha256 `4aae6a16eae16e08…`; DRYRUN_PASS).
 
 ## Prerequisites (all open — honest blockers)
 
@@ -115,6 +118,7 @@ instances, and `ordered_paths_sha256` cases.
 | D2 | Baseline arm uses ngram 0 (envelope: both arms ngram35/window1024, only budget differs) | arm-1 measures the production default; the experiment's axis is ngram on/off at fixed budget — inverted from the envelope, recorded here |
 | D3 | Envelope's 4 GiB host-RSS soft limit dropped | contradicted by Windows golden working-set peak 11.2 GiB (UMA shared memory); no Windows host-only RSS measurement exists; replaced by available-memory/reserved stops + watchdog |
 | D4 | Timeouts raised: 1200 s/arm, 45 min total (envelope: ≤600 s/arm, ≤20 min) | retained same-document Linux wall 551.7–572.3 s at 8192 leaves <5% margin at 600 s; alternate candidate hit 600.9 s; two arms cannot fit 20 min |
+| D5 | Staleness rule implemented with a 60 s warm-up and a 40 s heartbeat-freshness window (literal reading: any 5 consecutive missed 1 Hz samples) | a 1 Hz supervisor cannot demand worker heartbeat data fresher than the worker's own write cadence (ResourceWatchdog default 20 s); 40 s = 2× cadence. Fail-closed direction: detection at ~45 s worst case for heartbeat death (never later than the per-arm ceiling); host-sampler failure still triggers in ~5 s; the in-worker sampler independently stops at ≤5 s capture staleness, so the tighter layer governs inside the worker |
 
 ## Success criteria (attainable, review-aligned)
 
@@ -152,4 +156,21 @@ memory/wall diversity evidence, and campaign authorization.
   (4) 4 GiB RSS rule dropped with evidence; (5) P5 telemetry/watchdog
   prerequisite with staleness rule; (6) deviation register added, request
   shape corrected. Also adopted notes: full wheel hash in gate 3,
-  strict-export condition, recast expansion criteria. **Not yet re-reviewed.**
+  strict-export condition, recast expansion criteria.
+- rev 3 (2026-11-01): independent re-review of rev 2 returned REVISION_REQUIRED
+  with two P1s (no P0): (1) the pinned PR #28 head hash had a one-character
+  typo (`…a1723d319…`); corrected to `39584aca3a1727d319b925a54d880bf2caa23dce`
+  — the binding identity is and remains the vendored file's sha256
+  `9df35b9bc37cc184032122983057d073f339ce0587429d78d4b7044e78293ece`
+  (verified byte-identical to the branch head by the reviewer); (2) the
+  telemetry row now records the contract exactly as implemented (channels,
+  60 s warm-up, 40 s heartbeat-freshness window, ≥5-missed-tick stop, token
+  count source, admit-floor enforcement point) and deviation D5 registers the
+  bounded departure from the literal 5-sample reading with its fail-closed
+  direction; the in-worker ≤5 s freshness layer and the supervisor layer are
+  both named. Reviewer adjudication: the implementation is a defensible,
+  fail-closed-direction engineering reading. Also recorded per the review's
+  P2 notes: the rev-1 dry-run receipt is superseded by the real-gate dry-run
+  (18 cases / 14 verified refusals / DRYRUN_PASS, receipt
+  `.b/integration-20261101/admission-real-gate-dryrun.json`), and the pilot's
+  worker heartbeat cadence is pinned at 1 s (pilot packet).
