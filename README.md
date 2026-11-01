@@ -37,6 +37,16 @@ torch.cuda is also the AMD ROCm API. This APU shares system RAM; its reported
 GPU budget is not dedicated physical VRAM. No other operating system or GPU
 has been physically validated by this project.
 
+## Windows native delivery status (experimental)
+
+The reproducible Windows Radeon Native delivery is **KEEP EXPERIMENTAL**:
+fresh offline original-wheel installation and 26/26 bounded synthetic golden
+OCR requests are validated on this machine; full MPDocBench/Marathon GPU
+inference, the eight official metrics and Overall scores are **NOT_RUN/null**.
+See the one-page [product status matrix](docs/windows/PRODUCT_STATUS.md), the
+[install guide](docs/windows/WINDOWS_INSTALL_REPRODUCTION.md) and the
+[benchmark protocol](docs/windows/WINDOWS_BENCHMARK_PROTOCOL.md).
+
 ## Setup and validation
 
 Run from the repository root. Select an existing CPython 3.10 interpreter.
