@@ -68,5 +68,18 @@ def gelu_tanh_and_mul(input: torch.Tensor, out: torch.Tensor | None = None) -> t
 
 
 def gelu_quick(input: torch.Tensor, out: torch.Tensor | None = None) -> torch.Tensor:
-    gate, up = _split(input)
-    return _finish(gate * torch.sigmoid(GELU_QUICK_COEFFICIENT * gate) * up, out)
+    """Elementwise quick-GELU per the frozen AOT reference.
+
+    sglang v0.5.20's AOT activation kernel implements gelu_quick with the
+    ELEMENTWISE act_only_kernel (out same shape as input, d = input.size(-1);
+    csrc/elementwise/activation.cu@v0.5.20 gelu_quick, lines 152-170), and the
+    wheel's only call site (QuickGELU.forward_hip) passes out with x.shape —
+    NOT the gated and-mul form used by some other ecosystems. An earlier
+    revision of this module used the gated form; corrected to the reference
+    contract (independent review finding, delivery session 2).
+    """
+    result = input * torch.sigmoid(GELU_QUICK_COEFFICIENT * input)
+    if out is None:
+        return result
+    out.copy_(result)
+    return out

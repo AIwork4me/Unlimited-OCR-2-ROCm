@@ -27,11 +27,17 @@ called by the triton_utils caller with ``pad_sorted_token_ids=True``:
   ``cumsum[num_experts] = total`` (the CUDA count_and_sort pass advances
   the prefix cursors in place).
 
-Intentional deviations, both invisible to the fused_moe consumer:
+Intentional deviations, invisible to the fused_moe consumer:
 - intra-bucket order is STABLE in flat index (the reference's atomicAdd
   order is scheduling-dependent; consumers place rows per block);
 - out-of-range expert ids raise ValueError instead of the reference's
-  undefined behavior.
+  undefined behavior;
+- with pad_sorted_token_ids=False the module fills [0, total) with numel
+  while the reference leaves pad slots unwritten (the frozen caller always
+  passes True); the small-batch regime the reference short-circuits
+  (numel < 1024 and experts <= 64, where its cumsum_buffer is never
+  written) is not special-cased here — the frozen caller's buffers make
+  the difference unobservable and B1 (257 buckets) never enters it.
 
 Performance note: this is a CORRECTNESS fallback for bounded B1 smoke
 validation, not a benchmark identity. It adds one host synchronization
@@ -67,7 +73,7 @@ def torch_moe_align_block_size(
     device = topk_ids.device
     if bool((ids < 0).any().item()) or bool((ids >= num_experts).any().item()):
         raise ValueError(
-            "topk_ids contains expert ids outside [-1, num_experts-1] after the "
+            "topk_ids contains expert ids outside [-1, num_experts-2] after the "
             f"+1 offset mapping (num_experts={num_experts}, "
             "ignore_invalid_expert="
             f"{ignore_invalid_expert}); the CUDA reference is undefined here "

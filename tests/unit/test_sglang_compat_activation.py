@@ -33,7 +33,12 @@ def test_gelu_variants_match_their_formulas():
     gate, up = x[..., :16], x[..., 16:]
     assert torch.allclose(gelu_and_mul(x), F.gelu(gate) * up, rtol=1e-6)
     assert torch.allclose(gelu_tanh_and_mul(x), F.gelu(gate, approximate="tanh") * up, rtol=1e-6)
-    assert torch.allclose(gelu_quick(x), gate * torch.sigmoid(1.702 * gate) * up, rtol=1e-6)
+    # gelu_quick is ELEMENTWISE at the frozen AOT reference (act_only_kernel,
+    # out same shape as input) — NOT the gated and-mul form.
+    assert torch.allclose(gelu_quick(x), x * torch.sigmoid(1.702 * x), rtol=1e-6)
+    out_q = torch.empty_like(x)
+    assert gelu_quick(x, out_q) is out_q
+    assert torch.allclose(out_q, x * torch.sigmoid(1.702 * x), rtol=1e-6)
 
 
 def test_routed_variant_refuses_instead_of_silently_misfiltering():
