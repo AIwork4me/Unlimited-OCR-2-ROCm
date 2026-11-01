@@ -1,11 +1,12 @@
 [CmdletBinding()]
 param(
     [string]$Python = "python",
-    [string]$VenvPath = (Join-Path $PSScriptRoot "..\.venv-repro"),
-    [string]$CacheDir = (Join-Path $env:USERPROFILE ".cache\unlimited-ocr2-phase1\models"),
+    [string]$VenvPath = (Join-Path (Get-Location).Path ".b\windows-repro"),
+    [string]$CacheDir = (Join-Path (Get-Location).Path ".b\windows-install-cache\huggingface\hub"),
     [string]$OutputPath = (Join-Path $PSScriptRoot ("..\eval\results\run-" + (Get-Date -Format "yyyyMMdd-HHmmss"))),
     [switch]$ReuseEnvironment,
     [switch]$Offline,
+    [string]$Wheelhouse = "",
     [string]$BaselinePath = ""
 )
 $ErrorActionPreference = "Stop"
@@ -17,8 +18,8 @@ $venvPython = Join-Path $environmentRoot "Scripts\python.exe"
 if ((Test-Path $outputRoot) -and (Get-ChildItem -Force $outputRoot)) {
     throw "Use a new output directory to preserve earlier evidence."
 }
-if ($Offline -and -not $ReuseEnvironment) {
-    throw "Offline rerun requires -ReuseEnvironment and an already prepared isolated environment."
+if ($Offline -and -not $ReuseEnvironment -and -not $Wheelhouse) {
+    throw "Offline requires -ReuseEnvironment or a complete verified -Wheelhouse for a fresh install."
 }
 New-Item -ItemType Directory -Force -Path $outputRoot | Out-Null
 $steps = [Collections.Generic.List[object]]::new()
@@ -43,8 +44,22 @@ function Invoke-Step {
     }
 }
 
-Push-Location $repoRoot
+$cacheNames = @("TEMP", "TMP", "PIP_CACHE_DIR", "TRITON_CACHE_DIR", "HF_HOME", "HF_HUB_CACHE")
+$priorEnvironment = @{}
+foreach ($name in $cacheNames) {
+    $priorEnvironment[$name] = [Environment]::GetEnvironmentVariable($name, "Process")
+}
 try {
+    $cacheRoot = Join-Path (Get-Location).Path ".b\windows-install-cache"
+    $env:TEMP = Join-Path $cacheRoot "tmp"
+    $env:TMP = $env:TEMP
+    $env:PIP_CACHE_DIR = Join-Path $cacheRoot "pip"
+    $env:TRITON_CACHE_DIR = Join-Path $cacheRoot "triton"
+    $env:HF_HOME = Join-Path $cacheRoot "huggingface"
+    $env:HF_HUB_CACHE = [IO.Path]::GetFullPath($CacheDir)
+    foreach ($name in @("TEMP", "PIP_CACHE_DIR", "TRITON_CACHE_DIR", "HF_HOME", "HF_HUB_CACHE")) {
+        New-Item -ItemType Directory -Force -Path ([Environment]::GetEnvironmentVariable($name, "Process")) | Out-Null
+    }
     if ($ReuseEnvironment) {
         if (-not (Test-Path (Join-Path $environmentRoot "pyvenv.cfg"))) {
             throw "Reuse requires an existing dedicated virtual environment."
@@ -53,7 +68,7 @@ try {
         if (Test-Path $environmentRoot) {
             throw "Clean reproduction requires a new VenvPath; use -ReuseEnvironment for reruns."
         }
-        & (Join-Path $PSScriptRoot "setup_windows_rocm7141.ps1") -Python $Python -VenvPath $environmentRoot -RunId $runId *> (Join-Path $outputRoot "setup.log")
+        & (Join-Path $PSScriptRoot "setup_windows_rocm7141.ps1") -Python $Python -VenvPath $environmentRoot -RunId $runId -Wheelhouse $Wheelhouse -Offline:$Offline *> (Join-Path $outputRoot "setup.log")
         Copy-Item -LiteralPath (Join-Path $environmentRoot "phase1-install\creation.json") -Destination (Join-Path $outputRoot "environment-creation.json")
     }
     Invoke-Step "isolated-python" @("-c", "import sys; assert sys.prefix!=sys.base_prefix")
@@ -73,27 +88,32 @@ try {
     $failure = $_ | Out-String
     Write-Error -Message $failure -ErrorAction Continue
 } finally {
-    Pop-Location
-    $manifest = [ordered]@{
-        status=$status; run_id=$runId; timestamp_utc=[DateTime]::UtcNow.ToString("o")
-        clean_environment=(-not $ReuseEnvironment); offline_model=$Offline.IsPresent
-        model_revision="9cf077c4b206e0e2a31879df937b0b0bcba3661c"
-        same_physical_machine=$null; steps=@($steps.ToArray())
-        gate_A="see doctor.json"; gate_B="see sparse.json and single/load.json"
-        gate_C="see single/suite.json"; gate_D="see multi/suite.json"
-        gate_E="NOT PROVEN"; phase1_status="BLOCKED"
-    }
-    if (Get-Variable failure -ErrorAction SilentlyContinue) { $manifest.error=$failure }
-    $json=$manifest | ConvertTo-Json -Depth 12
-    $json=$json.Replace($env:USERPROFILE.Replace("\","\\"), "<USERPROFILE>").Replace($env:USERPROFILE, "<USERPROFILE>")
-    [IO.File]::WriteAllText((Join-Path $outputRoot "reproduction.json"), $json, [Text.UTF8Encoding]::new($false))
-    if (Test-Path -LiteralPath $venvPython) {
-        $summaryArgs=@("-m", "unlimited_ocr_2_rocm.repro", "--root", $outputRoot,
-            "--fixtures", (Join-Path $repoRoot "tests\fixtures"))
-        if (-not $ReuseEnvironment) {$summaryArgs += "--fresh"}
-        if ($BaselinePath) {$summaryArgs += @("--baseline", [IO.Path]::GetFullPath($BaselinePath))}
-        & $venvPython @summaryArgs
-        if ($LASTEXITCODE -ne 0) { $status="FAIL" }
+    try {
+        $manifest = [ordered]@{
+            status=$status; run_id=$runId; timestamp_utc=[DateTime]::UtcNow.ToString("o")
+            clean_environment=(-not $ReuseEnvironment); offline_model=$Offline.IsPresent
+            model_revision="9cf077c4b206e0e2a31879df937b0b0bcba3661c"
+            same_physical_machine=$null; steps=@($steps.ToArray())
+            gate_A="see doctor.json"; gate_B="see sparse.json and single/load.json"
+            gate_C="see single/suite.json"; gate_D="see multi/suite.json"
+            gate_E="NOT PROVEN"; phase1_status="BLOCKED"
+        }
+        if (Get-Variable failure -ErrorAction SilentlyContinue) { $manifest.error=$failure }
+        $json=$manifest | ConvertTo-Json -Depth 12
+        $json=$json.Replace($env:USERPROFILE.Replace("\","\\"), "<USERPROFILE>").Replace($env:USERPROFILE, "<USERPROFILE>")
+        [IO.File]::WriteAllText((Join-Path $outputRoot "reproduction.json"), $json, [Text.UTF8Encoding]::new($false))
+        if (Test-Path -LiteralPath $venvPython) {
+            $summaryArgs=@("-m", "unlimited_ocr_2_rocm.repro", "--root", $outputRoot,
+                "--fixtures", (Join-Path $repoRoot "tests\fixtures"))
+            if (-not $ReuseEnvironment) {$summaryArgs += "--fresh"}
+            if ($BaselinePath) {$summaryArgs += @("--baseline", [IO.Path]::GetFullPath($BaselinePath))}
+            & $venvPython @summaryArgs
+            if ($LASTEXITCODE -ne 0) { $status="FAIL" }
+        }
+    } finally {
+        foreach ($name in $cacheNames) {
+            [Environment]::SetEnvironmentVariable($name, $priorEnvironment[$name], "Process")
+        }
     }
 }
 if ($status -ne "PASS") { exit 1 }

@@ -1,0 +1,39 @@
+# Original AMD Windows runtime archives; local SHA256 receipts, not publisher signatures.
+# Sources: eval/wheel-validation/windows-gfx1151/provenance/official-wheel-verification.json
+# Install with --no-deps --require-hashes; platform is CPython 3.10 Windows x64.
+
+# wheel: torchaudio-2.11.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/torchaudio-2.11.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl
+torchaudio==2.11.0+rocm7.14.1 --hash=sha256:956ada280525ce09457e700773912704667d8521b1ad1fe64baa4d314f1cc71b
+
+# wheel: rocm_sdk_core-7.14.1-py3-none-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_core-7.14.1-py3-none-win_amd64.whl
+rocm-sdk-core==7.14.1 --hash=sha256:49eb83cb89d50562944a1f0eaf65f4e21f4557813de53e78d022fee81bbfb6e7
+
+# wheel: amd_torch_device_gfx1151-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/amd_torch_device_gfx1151-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl
+amd-torch-device-gfx1151==2.12.0+rocm7.14.1 --hash=sha256:38c95de7f1000dff6c4f879fc4b26250fd0dcec5824e5d0f6527273568bb9c0a
+
+# wheel: torch-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/torch-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl
+torch==2.12.0+rocm7.14.1 --hash=sha256:415d2dbd4b6ab002cff1c54795fdd66322abd9a46bf982cb64eebb4493ac2e7c
+
+# wheel: rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_device_gfx1151-7.14.1-py3-none-win_amd64.whl
+rocm-sdk-device-gfx1151==7.14.1 --hash=sha256:8ea906238b6247ce8230bc7a02ab99d410fbae524e3c1ce57e6457c9229ff79a
+
+# wheel: amd_torch_device_gfx115x-2.12.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/amd_torch_device_gfx115x-2.12.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl
+amd-torch-device-gfx115x==2.12.0+rocm7.14.1 --hash=sha256:b3fd2b99a8f0e814e83721052a3e9932ab8f37c367e025f2202d86ec815b424e
+
+# wheel: rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/rocm_sdk_libraries-7.14.1-py3-none-win_amd64.whl
+rocm-sdk-libraries==7.14.1 --hash=sha256:f5f639b488e3e78a44bebba786e917a98c4386001a3fa2a27393a9ce97e2a32d
+
+# wheel: amd_torchvision_device_gfx1151-0.27.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/amd_torchvision_device_gfx1151-0.27.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl
+amd-torchvision-device-gfx1151==0.27.0+rocm7.14.1 --hash=sha256:3b3f99b2edaaaa5d64fa76e9c8f6a515cf9a0b761554818023ee76efd4c0b73d
+
+# wheel: torchvision-0.27.0+rocm7.14.1-cp310-cp310-win_amd64.whl
+# source: https://repo.amd.com/rocm/whl-multi-arch/torchvision-0.27.0%2Brocm7.14.1-cp310-cp310-win_amd64.whl
+torchvision==0.27.0+rocm7.14.1 --hash=sha256:9d0addbc8bba4174d56fb90bb68df23edfbb0d68db4f63b3649db6de8ce9225f
