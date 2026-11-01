@@ -58,6 +58,23 @@ def install() -> None:
     import sglang.kernels.ops.moe as ops_moe
 
     ops_moe.moe_align_block_size = _counting("moe_align_block_size", torch_moe_align_block_size)
+
+    # DASH attention decode kernels: disable the launch_pdl kwarg on HIP (the
+    # wheel's SM90+ probe misfires on gfx1151, which torch reports as major
+    # 11; ROCm Triton has no launch_pdl). USE_PDL=False is the ordinary
+    # non-Hopper path upstream.
+    from sglang.srt.utils import is_hip
+
+    if is_hip():
+        import torch
+        from sglang.srt.layers.attention.unlimited_dash_ops import common as dash_common
+
+        from .pdl import pdl_supported
+
+        major, _ = torch.cuda.get_device_capability()
+        dash_common._PDL_SUPPORTED = pdl_supported(major, is_hip=True)
+        _STATE["pdl_disabled_hip"] = True
+
     _STATE["installed"] = True
 
 
@@ -73,5 +90,6 @@ def receipt() -> dict[str, Any]:
             "gelu_quick": "sglang_compat.activation (exact torch, 1.702)",
         },
         "installed": _STATE["installed"],
+        "pdl_disabled_hip": _STATE.get("pdl_disabled_hip", False),
         "call_counts": dict(_STATE["call_counts"]),
     }
