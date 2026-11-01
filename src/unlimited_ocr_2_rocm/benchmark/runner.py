@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import re
 import signal
 import subprocess
 import sys
@@ -56,8 +57,10 @@ def sanitize_tree(value: Any) -> Any:
             return [scrub(child) for child in item]
         if isinstance(item, float) and not math.isfinite(item):
             return str(item)
-        if isinstance(item, str) and ("/home/" in item or "C:\\Users\\" in item):
-            raise ValueError(f"Private local path in sanitized evidence: {item!r}")
+        if isinstance(item, str) and re.search(
+            r"/home/|/Users/|[a-z]:[/\\]users[/\\]", item, flags=re.IGNORECASE
+        ):
+            raise ValueError("Private local path in sanitized evidence")
         return item
 
     return scrub(value)
@@ -72,7 +75,14 @@ def sanitized_environment(model_evidence: dict[str, Any] | None = None) -> dict[
         "gpu": {},
     }
     evidence = model_evidence or {}
-    for name in ("torch", "transformers", "triton-rocm", "huggingface-hub", "tokenizers"):
+    for name in (
+        "torch",
+        "transformers",
+        "triton-rocm",
+        "triton-windows",
+        "huggingface-hub",
+        "tokenizers",
+    ):
         version = (evidence.get("native_dependencies") or {}).get(name)
         if version is None:
             try:
@@ -166,6 +176,10 @@ def supervise_worker(
     timeout_seconds: float,
 ) -> tuple[dict[str, Any] | None, str]:
     """Run one worker subprocess; returns (outcome JSON or None, failure kind)."""
+    if sys.platform == "win32":
+        return _supervise_windows_worker(
+            command, attempt_directory=attempt_directory, timeout_seconds=timeout_seconds
+        )
     staging = Path(tempfile.mkdtemp(prefix="uocr2-worker-"))
     result_path = staging / "outcome.json"
     command = [*command, "--result", str(result_path)]
@@ -200,6 +214,94 @@ def supervise_worker(
         staging.rmdir()
 
 
+class WorkerCleanupError(RuntimeError):
+    """Ownership could not be drained; stop the campaign with evidence retained."""
+
+
+def _supervise_windows_worker(
+    command: list[str], *, attempt_directory: Path, timeout_seconds: float
+) -> tuple[dict[str, Any] | None, str]:
+    from .windows_job import NativeJob
+
+    # The worker publishes its own atomic outcome here. Retain both complete
+    # and partial bytes on every failure; no system temp or shared scratch.
+    result_path = attempt_directory / "worker-outcome.json"
+    accounting: dict[str, Any] = {"ownership": "windows-job-suspended-before-assignment"}
+    process: subprocess.Popen[bytes] | None = None
+    job: NativeJob | None = None
+    code: int | None = None
+    timed_out = False
+    cleanup_error: BaseException | None = None
+    try:
+        job = NativeJob()
+        with (attempt_directory / "worker.log").open("xb") as log:
+            process = job.spawn(
+                [*command, "--result", str(result_path)], stdout=log, stderr=subprocess.STDOUT
+            )
+            accounting["worker_pid"] = process.pid
+            try:
+                code = process.wait(timeout=timeout_seconds)
+            except subprocess.TimeoutExpired:
+                timed_out = True
+    except BaseException as error:
+        accounting["exception"] = type(error).__name__
+        accounting["exception_detail"] = str(error)
+        raise
+    finally:
+        # This must also run after a normal worker exit: descendants can detach
+        # from its console while remaining owned by the Job. No process runs
+        # before assignment; KILL_ON_JOB_CLOSE protects assigned processes on
+        # supervisor death (the creation/assignment hard-exit gap is documented
+        # in windows_job.py).
+        try:
+            if job is None:
+                accounting["cleanup"] = {"status": "NOT_STARTED"}
+            else:
+                cleanup = job.terminate(grace_seconds=TERMINATION_GRACE_SECONDS)
+                if process is not None:
+                    code = process.wait(timeout=TERMINATION_GRACE_SECONDS)
+                if cleanup["active_processes"] != 0:
+                    raise WorkerCleanupError("Windows Job still has active processes")
+                accounting["cleanup"] = {"status": "TERMINATED", **cleanup}
+        except BaseException as error:
+            cleanup_error = error
+            accounting["cleanup"] = {
+                "status": "UNVERIFIED",
+                "error": type(error).__name__,
+                "detail": str(error),
+            }
+        finally:
+            try:
+                if job is not None:
+                    job.close()
+            except BaseException as error:
+                cleanup_error = error
+                accounting["close_error"] = type(error).__name__
+                accounting["close_error_detail"] = str(error)
+            accounting.update(exit_code=code, timed_out=timed_out)
+            write_bytes(attempt_directory / "supervision.json", json_bytes(accounting))
+        if cleanup_error is not None:
+            raise WorkerCleanupError(
+                "Windows Job cleanup unverified; campaign stopped"
+            ) from cleanup_error
+    if timed_out:
+        return None, "WORKER_TIMEOUT"
+    if not result_path.is_file():
+        return None, f"WORKER_CRASH_EXIT_{code}"
+    try:
+        outcome = json.loads(result_path.read_text(encoding="utf-8"))
+    except (ValueError, UnicodeError):
+        return None, f"WORKER_CRASH_EXIT_{code}_UNREADABLE_OUTCOME"
+    kind = outcome.get("kind") if isinstance(outcome, dict) else None
+    if not isinstance(kind, str) or kind not in {"ok", "error", "selftest"}:
+        return None, "WORKER_INVALID_OUTCOME"
+    if outcome["kind"] != "error" and not isinstance(outcome.get("report"), dict):
+        return None, "WORKER_INVALID_OUTCOME"
+    if code != 0 and outcome["kind"] != "error":
+        return outcome, f"WORKER_EXIT_{code}"
+    return outcome, ""
+
+
 def worker_outcome_to_finish(
     outcome: dict[str, Any] | None,
     failure_kind: str,
@@ -214,6 +316,8 @@ def worker_outcome_to_finish(
     if failure_kind == "WORKER_TIMEOUT":
         return WORKER_TIMEOUT_STATE, "WORKER_TIMEOUT", {**base, "error": "WORKER_TIMEOUT"}
     if outcome is None:
+        return "FAIL", failure_kind, {**base, "error": failure_kind}
+    if failure_kind:
         return "FAIL", failure_kind, {**base, "error": failure_kind}
     if outcome.get("kind") == "error":
         traceback_text = str(outcome.get("traceback") or "")

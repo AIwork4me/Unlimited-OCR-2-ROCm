@@ -268,6 +268,17 @@ def test_whitelisted_fixture_hash_enforced(tmp_path: Path) -> None:
         publication.WHITELIST.update(original)
 
 
+def test_explicit_scan_root_inside_cache_still_scans_its_files(tmp_path: Path) -> None:
+    root = tmp_path / ".b" / "selected"
+    root.mkdir(parents=True)
+    _write(root / "fixture.json", [_annotation_row()])
+    cache = root / ".b"
+    cache.mkdir()
+    _write(cache / "ignored.json", [_annotation_row()])
+    findings = scan_tree(root, prefix="")
+    assert [name for name, _ in findings] == ["fixture.json"]
+
+
 def test_receipt_builder_and_validator(tmp_path: Path) -> None:
     slice_path = _write(tmp_path / "slice.json", [_annotation_row()])
     receipt = build_gt_slice_receipt(
