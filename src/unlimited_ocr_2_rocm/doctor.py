@@ -22,6 +22,25 @@ STACK = {
     "torchaudio": "2.11.0+rocm7.14.1",
 }
 
+# Primary Linux native profile: officially published AMD/PyTorch manylinux wheel
+# from https://download.pytorch.org/whl/rocm7.2 (torch-2.12.0+rocm7.2,
+# SHA-256 099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6).
+# The wheel bundles its ROCm/HIP runtime, so the untouched system userland
+# (7.2.1) and the inbox 6.17 OEM kernel driver are all that is required.
+# This artifact is independently pinned from the reviewed Windows source-built
+# wheel (same 2.12.0 torch line, different platform and binary identity);
+# neither validates the other. The newer +rocm7.14 wheel line was rejected:
+# it depends on rocm==7.14.* / triton-rocm~=3.8.0 pip packages published only
+# on AMD's own index, which is not reachable from this host.
+# torchvision is required by the frozen upstream modeling import chain
+# (same 0.27.0 version as the Windows trio); torchaudio is not imported by
+# the model path and stays absent on Linux.
+LINUX_STACK = {
+    "torch": "2.12.0+rocm7.2",
+    "torchvision": "0.27.0+rocm7.2",
+}
+LINUX_ROCM = "7.2.1"
+
 
 def environment_identity() -> str:
     return hashlib.sha256(str(Path(sys.prefix).resolve()).casefold().encode()).hexdigest()
@@ -29,6 +48,15 @@ def environment_identity() -> str:
 
 def require_stack(report: dict[str, Any]) -> None:
     """Reject version drift, alternate hardware and CPU execution."""
+    if report.get("platform") == "Linux":
+        errors = _linux_stack_errors(report)
+    else:
+        errors = _windows_stack_errors(report)
+    if errors:
+        raise RuntimeError("; ".join(errors))
+
+
+def _windows_stack_errors(report: dict[str, Any]) -> list[str]:
     errors = []
     if report.get("platform") != "Windows":
         errors.append("Phase 1 requires native Windows")
@@ -62,8 +90,41 @@ def require_stack(report: dict[str, Any]) -> None:
         errors.append("physical gfx1151 required")
     if "8060S" not in str(gpu.get("name", "")):
         errors.append("Radeon 8060S required")
-    if errors:
-        raise RuntimeError("; ".join(errors))
+    return errors
+
+
+def _linux_stack_errors(report: dict[str, Any]) -> list[str]:
+    """Primary Linux native profile: Ryzen AI MAX+ 395 / Radeon 8060S / gfx1151.
+
+    The officially published rocm7.14 manylinux wheel is a distinct artifact
+    from the Windows source-built wheel; no Windows evidence transfers here.
+    """
+    errors = []
+    hardware = report.get("linux_hardware", {})
+    cpu = str(hardware.get("cpu_model_name", ""))
+    if re.search(r"AMD.*RYZEN\s+AI\s+MAX\+?\s+(?:PRO\s+)?395\b", cpu, re.IGNORECASE) is None:
+        errors.append("Ryzen AI MAX+ 395 / confirmed PRO 395 CPU evidence required")
+    if "8060S" not in cpu:
+        errors.append("Radeon 8060S CPU evidence required")
+    if not str(report.get("python", "")).startswith("3.10."):
+        errors.append("Linux native profile requires CPython 3.10")
+    if str(report.get("machine", "")).lower() != "x86_64":
+        errors.append("64-bit x86 CPython required")
+    for name, version in LINUX_STACK.items():
+        if report.get("packages", {}).get(name) != version:
+            errors.append(f"{name} must be {version}")
+    if report.get("rocm") != LINUX_ROCM or report.get("hip") != "7.2.53211":
+        errors.append("ROCm 7.2.1 wheel runtime with HIP build 7.2.53211 required")
+    if report.get("cuda_build") is not None:
+        errors.append("NVIDIA CUDA build refused")
+    if not report.get("gpu_available"):
+        errors.append("GPU unavailable; CPU fallback refused")
+    gpu = report.get("gpu", {})
+    if str(gpu.get("arch", "")).split(":")[0] != "gfx1151":
+        errors.append("physical gfx1151 required")
+    if "8060S" not in str(gpu.get("name", "")):
+        errors.append("Radeon 8060S required")
+    return errors
 
 
 def sanitize(text: str) -> str:
@@ -126,10 +187,11 @@ def collect_environment() -> dict[str, Any]:
             or key in {"HIP_PATH", "CC", "CUDA_VISIBLE_DEVICES", "HF_HUB_OFFLINE"}
         },
     }
-    for name in STACK:
+    stack = LINUX_STACK if platform.system() == "Linux" else STACK
+    for name in stack:
         result["packages"][name] = importlib.metadata.version(name)
         module = importlib.import_module(name)
-        if module.__version__ != STACK[name]:
+        if module.__version__ != stack[name]:
             raise RuntimeError(f"{name} imported version differs from required distribution")
     torch = importlib.import_module("torch")
     result.update(
@@ -171,6 +233,37 @@ def collect_environment() -> dict[str, Any]:
             else None
         )
         result["windows_hardware"] = hardware
+    if platform.system() == "Linux":
+        cpu_model_name = ""
+        for line in (
+            Path("/proc/cpuinfo").read_text(encoding="utf-8", errors="replace").splitlines()
+        ):
+            if line.startswith("model name"):
+                cpu_model_name = line.split(":", 1)[1].strip()
+                break
+        product_name = ""
+        try:
+            product_name = Path("/sys/class/dmi/id/product_name").read_text().strip()
+        except OSError:
+            pass
+        machine_id = ""
+        try:
+            machine_id = Path("/etc/machine-id").read_text().strip()
+        except OSError:
+            pass
+        result["linux_hardware"] = {
+            "cpu_model_name": cpu_model_name,
+            "product_name": product_name,
+            "kernel_release": platform.release(),
+            "machine_id_sha256": (
+                hashlib.sha256(machine_id.encode()).hexdigest() if machine_id else None
+            ),
+            "kfd_access": os.access("/dev/kfd", os.R_OK | os.W_OK),
+            "render_node": next(
+                (str(path) for path in sorted(Path("/dev/dri").glob("renderD*")) if path.exists()),
+                None,
+            ),
+        }
     result["memory"] = memory_snapshot()
     return result
 

@@ -1,0 +1,4 @@
+{
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"<USERPROFILE>/Desktop/UnlimitedOCR/Unlimited-OCR-2-ROCm/src/unlimited_ocr_2_rocm/cli.py\", line 154, in main\n    return smoke(args)\n  File \"<USERPROFILE>/Desktop/UnlimitedOCR/Unlimited-OCR-2-ROCm/src/unlimited_ocr_2_rocm/cli.py\", line 53, in smoke\n    raise ValueError(\"Use a fresh suite output directory\")\nValueError: Use a fresh suite output directory\n"
+}

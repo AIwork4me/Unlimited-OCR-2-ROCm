@@ -1,0 +1,27 @@
+{
+  "source_index": "https://download.pytorch.org/whl/rocm7.2",
+  "wheels": {
+    "torch-2.12.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl": {
+      "expected_sha256": "099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6",
+      "observed_sha256": "099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6",
+      "expected_bytes": 6176896129,
+      "observed_bytes": 6176896129,
+      "verified": true
+    },
+    "triton_rocm-3.7.0-cp310-cp310-linux_x86_64.whl": {
+      "expected_sha256": "b7a9e90ceae67668202958f7b180d51421df441dc73ae100b89cf0aa19e0b71e",
+      "observed_sha256": "b7a9e90ceae67668202958f7b180d51421df441dc73ae100b89cf0aa19e0b71e",
+      "expected_bytes": 315212279,
+      "observed_bytes": 315212279,
+      "verified": true
+    },
+    "torchvision-0.27.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl": {
+      "expected_sha256": "7c871ca2c0fc8d0f04cc3cfce1757e3ff6a151ab95d48bd670a380517c8c9c46",
+      "observed_sha256": "7c871ca2c0fc8d0f04cc3cfce1757e3ff6a151ab95d48bd670a380517c8c9c46",
+      "expected_bytes": 3588425,
+      "observed_bytes": 3588425,
+      "verified": true
+    }
+  },
+  "all_verified": true
+}

@@ -1,0 +1,3 @@
+<PAGE><BLOCK>text[58, 99, 430, 165]<FORK>Simple Mathematics
+<BLOCK>text[58, 240, 460, 301]<FORK>Math check: 2 + 3 = 5
+<BLOCK>text[58, 383, 468, 440]<FORK>Subtraction: 10 - 4 = 6

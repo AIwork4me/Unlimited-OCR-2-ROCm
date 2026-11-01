@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "pages_2_run_1",
+      "status": "PASS"
+    },
+    {
+      "case": "pages_2_run_2",
+      "status": "PASS"
+    },
+    {
+      "case": "pages_3_run_1",
+      "status": "PASS"
+    },
+    {
+      "case": "pages_3_run_2",
+      "status": "PASS"
+    },
+    {
+      "case": "pages_5_run_1",
+      "status": "PASS"
+    },
+    {
+      "case": "pages_5_run_2",
+      "status": "PASS"
+    },
+    {
+      "case": "table_2_pages",
+      "status": "PASS"
+    }
+  ]
+}

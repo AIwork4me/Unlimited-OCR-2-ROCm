@@ -160,9 +160,16 @@ incomplete, blocked or non-equivalent configuration.
    Expose authoritative finish/page/window fields, errors and atomic ingestion.
    Validate 1/5/15/30/50/100/300-page requests progressively where supported.
    Keep OOM/timeout/unsupported cases; increasing a cap is not acceptance.
-4. Physically validate a separately pinned Linux W7900 native profile before
-   assigning any Linux PASS. Then audit/port the customized SGLang dependency
-   and HIP path in its separate workstream; never replace it with generic SGLang.
+4. Physically validate a separately pinned native Linux profile before
+   assigning any Linux PASS. Amended 2026-10-29: the **primary Linux target is
+   now the physically available Ryzen AI MAX+ 395 / Radeon 8060S / gfx1151
+   native host** (profile `linux-gfx1151-native-bf16-math`, see
+   docs/validation/LINUX_GFX1151_PREFLIGHT.md and the environment decision);
+   Radeon PRO W7900 / gfx1100 is retained as a future optional independent
+   hardware-compatibility target with its own pins and physical host — no
+   gfx1100 claim derives from gfx1151 evidence. Then audit/port the customized
+   SGLang dependency and HIP path in its separate workstream; never replace it
+   with generic SGLang.
 5. After data/CDM/protocol/quality gates are reviewed, execute all 420 and all 100
    documents, separately by platform/backend/image mode/precision, with the
    ledger/export/scorer workflow. This full GPU work is **not authorized as part

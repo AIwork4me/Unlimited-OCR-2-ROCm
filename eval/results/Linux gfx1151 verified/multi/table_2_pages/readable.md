@@ -1,0 +1,1 @@
+<table><tr><td>Item</td><td>Quantity</td><td>Price</td></tr><tr><td>Apples</td><td>3</td><td>12.50</td></tr><tr><td>Oranges</td><td>5</td><td>8.00</td></tr></table>

@@ -14,6 +14,7 @@ dependencies = []
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
   "Operating System :: Microsoft :: Windows :: Windows 11",
+  "Operating System :: POSIX :: Linux",
   "Programming Language :: Python :: 3.10",
 ]
 
@@ -36,7 +37,7 @@ unlimited_ocr_2_rocm = ["upstream-lock.json", "py.typed"]
 testpaths = ["tests"]
 pythonpath = ["src"]
 addopts = "-ra"
-markers = ["gpu: opt-in physical Windows gfx1151 execution"]
+markers = ["gpu: opt-in physical gfx1151 execution (platform-pinned Windows/Linux profiles)"]
 
 [tool.ruff]
 target-version = "py310"

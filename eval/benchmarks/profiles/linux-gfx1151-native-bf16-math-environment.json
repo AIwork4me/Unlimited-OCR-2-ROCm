@@ -1,0 +1,88 @@
+{
+  "schema": "uocr2-benchmark-profile/environment@1",
+  "profile_id": "linux-gfx1151-native-bf16-math",
+  "created_utc": "2026-10-29",
+  "scope": "Primary Linux physical validation target for issue #6. Prepared profiles only; no full-dataset run is claimed by this file.",
+  "platform": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "kernel": "6.17.0-1033-oem",
+    "driver": "inbox amdgpu (in-tree 6.17 OEM module); no amdgpu-dkms",
+    "system_rocm_userland": "7.2.1 (untouched global; not used by the wheel runtime)",
+    "matrix_reference": "AMD ROCm docs-7.14.1 compatibility matrix, Ryzen AI MAX+ 395 family: Ubuntu 24.04.4 OEM kernel 6.17 supported"
+  },
+  "device": {
+    "product": "HP ZBook Ultra G1a 14 inch Mobile Workstation PC",
+    "cpu_model_name": "AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S",
+    "gpu_arch": "gfx1151",
+    "gpu_marketing": "AMD Radeon Graphics (Radeon 8060S)",
+    "compute_units": 40,
+    "memory": "96 GiB nominal system RAM; 32.0 GiB UMA dedicated carve-out; GTT up to 100 GiB; all GPU memory accounting is shared-system-memory, not dedicated VRAM",
+    "npu": "aie2p RyzenAI-npu5 present; NOT used by the native Transformers stack"
+  },
+  "stack": {
+    "python": "3.10",
+    "torch": {
+      "distribution": "torch",
+      "version": "2.12.0+rocm7.2",
+      "wheel": "torch-2.12.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl",
+      "sha256": "099e265de73094cb6a2112ce9d7940c59bae0c884e9516f16719e392a5471df6",
+      "index": "https://download.pytorch.org/whl/rocm7.2"
+    },
+    "triton": {
+      "distribution": "triton-rocm",
+      "version": "3.7.0",
+      "wheel": "triton_rocm-3.7.0-cp310-cp310-linux_x86_64.whl",
+      "sha256": "b7a9e90ceae67668202958f7b180d51421df441dc73ae100b89cf0aa19e0b71e"
+    },
+    "transformers": "4.52.1",
+    "huggingface-hub": "0.36.0",
+    "tokenizers": "0.21.4",
+    "torchvision": {
+      "version": "0.27.0+rocm7.2",
+      "wheel": "torchvision-0.27.0+rocm7.2-cp310-cp310-manylinux_2_28_x86_64.whl",
+      "sha256": "7c871ca2c0fc8d0f04cc3cfce1757e3ff6a151ab95d48bd670a380517c8c9c46",
+      "index": "https://download.pytorch.org/whl/rocm7.2"
+    },
+    "torchaudio": null,
+    "windows_candidate_wheel_installed": false
+  },
+  "backend": {
+    "implementation": "native Transformers (trust_remote_code, frozen snapshot)",
+    "precision": "bfloat16 parameters and compute",
+    "decoder_attention": "eager with original DASH sparse attention (12 DashAttention layers, Triton kernels, dense-prefill fallback refused)",
+    "vision_attention": "SDPBackend.MATH scoped to SAM and CLIP vision forwards (reviewed default; no AUTO switch)",
+    "model_revision": "9cf077c4b206e0e2a31879df937b0b0bcba3661c",
+    "upstream_lock": "src/unlimited_ocr_2_rocm/upstream-lock.json (unchanged)"
+  },
+  "policy_limits_unchanged": {
+    "images_per_request": 5,
+    "max_new_tokens": 8192,
+    "note": "Production caps are NOT lifted by preparing these profiles. Long-document window/token policy is a separate reviewed change (docs/LONG_DOCUMENT_READINESS.md) that must pass physical gates before any >5-page or >8192-token benchmark run."
+  },
+  "metrics": [
+    "TextEdit",
+    "T-TextEdit",
+    "TableTEDS",
+    "T-TableTEDS",
+    "FormulaCDM",
+    "ReadOrderEdit",
+    "FigureF1",
+    "HeadingTEDS"
+  ],
+  "failure_accounting": {
+    "denominator": "all 420 MPDocBench documents / all 100 MarathonDocBench documents; failed documents never dropped",
+    "per_document": "raw output, finish reason, page counts, token counts, error class, retries preserved per ledger format",
+    "truncation": "finish_reason=length recorded as truncated, not silently retried to completion",
+    "memory_latency": "cold/warm model load, prefill/generation split, synchronized wall time, process RSS, GPU allocated/reserved/peak, per document and per page",
+    "labels": "APU shared-memory accounting; no dedicated-VRAM claims"
+  },
+  "parity": {
+    "official_leaderboard_parity_claimable": false,
+    "blockers": [
+      "backend: official customized SGLang vs native Transformers not yet demonstrated equivalent on HIP",
+      "preprocessing: complete local image archive (11 gated SlideVQA decks / 84 pages) and JPEG serialization reconciliation pending",
+      "token policy: long-document page-window and output-token policy not yet reviewed against the official one-request semantics",
+      "scoring methodology: FormulaCDM renderer closure (xelatex/TeX/fonts) unverified on this host; Overall aggregation remains null until all eight metrics run"
+    ]
+  }
+}
